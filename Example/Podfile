@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'MBHealthTracker_Example' do
+  pod 'MBHealthTracker', :path => '../'
+
+  target 'MBHealthTracker_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
