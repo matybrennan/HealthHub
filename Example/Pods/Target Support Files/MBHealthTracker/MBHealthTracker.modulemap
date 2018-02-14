@@ -1,0 +1,6 @@
+framework module MBHealthTracker {
+  umbrella header "MBHealthTracker-umbrella.h"
+
+  export *
+  module * { export * }
+}
