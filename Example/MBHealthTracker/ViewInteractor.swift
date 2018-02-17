@@ -34,7 +34,7 @@ extension ViewInteractor: ViewInteractorProtocol {
     
     func runTest() {
         do {
-            try healthTracker.steps.getSteps(fromStepsType: .today(timeInterval: 1)) { (result) in
+            try healthTracker.steps.getSteps(fromStepsType: .lastHour) { (result) in
                 //
             }
         } catch {

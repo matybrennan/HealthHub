@@ -28,22 +28,27 @@ extension StepsService: StepsServiceProtocol {
         var query: HKQuery!
         
         switch type {
-            
+        
+        // Get the sum of the last hour of steps
         case .lastHour:
             
             let now = Date()
             let oneHourAgo = Date(timeIntervalSinceNow: -StepsConfig.oneHour)
             
-            // Get order from last steps recorded to previous time
-            let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
+            // set timeInterval for grabbing data from hour period
+            var component = DateComponents()
+            component.hour = 1
             
             let predicate = HKQuery.predicateForSamples(withStart: oneHourAgo, end: now, options: [])
             
-            query = HKStatisticsQuery(quantityType: steps, quantitySamplePredicate: predicate, options: [.cumulativeSum], completionHandler: { (query, stats, error) in
-                //
-            })
+            query = HKStatisticsCollectionQuery(quantityType: steps, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: now, intervalComponents: component)
             
+            (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [unowned self] query, collection, error in
+                
+                self.configure(query: query, collectionStats: collection, error: error, completionHandler: completionHandler)
+            }
             
+        // Get the sum of the steps from today and state the timeInterval you want to recevie batches of steps count defaults to each hour
         case let .today(timeInterval):
             
             // create predicate for start and end of day
@@ -55,43 +60,80 @@ extension StepsService: StepsServiceProtocol {
             let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: [])
             
             // set timeInterval for grabbing data batches (in mins)
-            // If no interval is set create it for 1 hour batches
             var component = DateComponents()
-            component.hour = timeInterval
+            component.hour = timeInterval ?? 1
             
             query = HKStatisticsCollectionQuery(quantityType: steps, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: startDate, intervalComponents: component)
             
+            (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [unowned self]
+                query, collection, error in
+
+                self.configure(query: query, collectionStats: collection, error: error, completionHandler: completionHandler)
+            }
+        
+        // Get the sum of the steps from week and state the timeInterval you want to recevie batches of steps count defaults to each day
+        case let .thisWeek(timeInterval):
             
-            (query as! HKStatisticsCollectionQuery).initialResultsHandler = {
+            // create predicate for start and end of week
+            let now = Date()
+            guard let startDate = now.startOfWeek else { return }
+            let endDate = now.endOfWeek
+            let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: [])
+            
+            // set timeInterval for grabbing data batches (in mins)
+            var component = DateComponents()
+            component.hour = timeInterval ?? 1
+            
+            query = HKStatisticsCollectionQuery(quantityType: steps, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: startDate, intervalComponents: component)
+            
+            (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [unowned self]
                 query, collection, error in
                 
-                guard error == nil else {
-                    completionHandler(.failed(error!))
-                    return
-                }
-                
-                guard let quantitySamples = collection?.statistics() else {
-                    completionHandler(.failed(StepsParsingError.unableToParse("Today steps")))
-                    return
-                }
-                
-                let items = quantitySamples.map {
-                    StepsVM.StepsItem(count: $0.sumQuantity()?.doubleValue(for: HKUnit(from: StepsConfig.stepsCount)))
-                }
-                
-                let vm = StepsVM(items: items)
-                completionHandler(.success(vm))
+                self.configure(query: query, collectionStats: collection, error: error, completionHandler: completionHandler)
             }
             
             
-        case .thisWeek: break
-        case .betweenTimePref: break
+        // Get the steps from within a time preference and select timeInterval batches that want from time period
+        case let .betweenTimePref(start, end, timeInterval):
             
+            // create predicate for timePref
+            let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: [])
+            
+            // set timeInterval for grabbing data batches (in mins)
+            var component = DateComponents()
+            component.hour = timeInterval
+            
+            query = HKStatisticsCollectionQuery(quantityType: steps, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: start, intervalComponents: component)
+            
+            (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [unowned self]
+                query, collection, error in
+                self.configure(query: query, collectionStats: collection, error: error, completionHandler: completionHandler)
+            }
         }
-        
-        
         healthStore.execute(query)
     }
+}
+
+private extension StepsService {
     
+    func configure(query: HKStatisticsCollectionQuery, collectionStats: HKStatisticsCollection?, error: Error?, completionHandler: @escaping (AsyncCallResult<StepsVM>) -> Void) {
+        
+        guard error == nil else {
+            completionHandler(.failed(error!))
+            return
+        }
+        
+        guard let quantitySamples = collectionStats?.statistics() else {
+            completionHandler(.failed(StepsParsingError.unableToParse("Today steps")))
+            return
+        }
+        
+        let items = quantitySamples.map {
+            StepsVM.StepsItem(count: $0.sumQuantity()?.doubleValue(for: HKUnit(from: StepsConfig.stepsCount)))
+        }
+        
+        let vm = StepsVM(items: items)
+        completionHandler(.success(vm))
+    }
     
 }

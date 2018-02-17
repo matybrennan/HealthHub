@@ -26,11 +26,13 @@ public enum StepsType {
     // timeInterval for collections of data throughout the day
     /// mainly for graphing purposes
     // timeinterval is in hours
-    case today(timeInterval: Int)
+    case today(timeInterval: Int?)
     
-    
-    case thisWeek
-    case betweenTimePref(start: Double, end: Double)
+    // timeInterval for collections of data throughout the week
+    /// mainly for graphing purposes
+    // timeinterval is in days
+    case thisWeek(timeInterval: Int?)
+    case betweenTimePref(start: Date, end: Date, timeInterval: Int)
     
 }
 
