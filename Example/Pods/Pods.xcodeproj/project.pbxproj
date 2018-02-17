@@ -13,6 +13,9 @@
 		221B64E20B6BEBD15FAA52AEE03406C6 /* HeartRateModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678CE407956F67AB9A55D8E211426EE /* HeartRateModels.swift */; };
 		2A32BBD3B6791FF3D283B613A240DEAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		2E15F1E7203475E300F6AB56 /* MBHealthTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F9B503FF53D0B3DBA417C7991F2040 /* MBHealthTracker.framework */; };
+		2E5F4A0C20380C4500947553 /* StepsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A0B20380C4500947553 /* StepsService.swift */; };
+		2E5F4A0E20380C5000947553 /* StepsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A0D20380C5000947553 /* StepsServiceProtocol.swift */; };
+		2E5F4A1120380D4500947553 /* StepsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A1020380D4500947553 /* StepsModels.swift */; };
 		32EF6E789DAEEB361DCDBA37F8610070 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1316C446F58FFDB96D80E986A05584 /* Helpers.swift */; };
 		34E525AB192CB1BAF9930DEC1235C311 /* MBHealthTrackerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262CEAE77CE117CCE1466B1F120E666 /* MBHealthTrackerProtocol.swift */; };
 		3A2EFDAB6031DC0D37D0E643F789B413 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
@@ -56,6 +59,9 @@
 		20D938457BC81921D7343C3E790B76AB /* Pods-MBHealthTracker_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MBHealthTracker_Tests-umbrella.h"; sourceTree = "<group>"; };
 		2E15F1E2203475E300F6AB56 /* MBHealthTrackerPodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MBHealthTrackerPodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E3FECD1B22F4ECA9F5B470E27038BD6 /* Pods-MBHealthTracker_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MBHealthTracker_Example-dummy.m"; sourceTree = "<group>"; };
+		2E5F4A0B20380C4500947553 /* StepsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsService.swift; sourceTree = "<group>"; };
+		2E5F4A0D20380C5000947553 /* StepsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsServiceProtocol.swift; sourceTree = "<group>"; };
+		2E5F4A1020380D4500947553 /* StepsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsModels.swift; sourceTree = "<group>"; };
 		39F9B503FF53D0B3DBA417C7991F2040 /* MBHealthTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBHealthTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8E123C47AB09FF3F2A72198069950F /* Pods-MBHealthTracker_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MBHealthTracker_Tests.modulemap"; sourceTree = "<group>"; };
 		476550078FAED367104F42C0E918B344 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,6 +133,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E5F4A0A20380C2D00947553 /* Steps */ = {
+			isa = PBXGroup;
+			children = (
+				2E5F4A0B20380C4500947553 /* StepsService.swift */,
+				2E5F4A0D20380C5000947553 /* StepsServiceProtocol.swift */,
+			);
+			path = Steps;
+			sourceTree = "<group>";
+		};
+		2E5F4A0F20380D3400947553 /* Steps */ = {
+			isa = PBXGroup;
+			children = (
+				2E5F4A1020380D4500947553 /* StepsModels.swift */,
+			);
+			path = Steps;
+			sourceTree = "<group>";
+		};
 		4F8A88231C493E60FB25422F000B05CA /* MBHealthTracker */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +173,7 @@
 		6B099F10D01AEF156A3F4C80D3D96862 /* Business Logic */ = {
 			isa = PBXGroup;
 			children = (
+				2E5F4A0A20380C2D00947553 /* Steps */,
 				B08A9A7F951F239CD026F9C0BE0B1F5F /* Configuration */,
 				B9DA7E3F122F7D85DD9FD81C6BB8F151 /* HeartRate */,
 			);
@@ -170,6 +194,7 @@
 		81A77F2D867212F9CCA1A1C2E956B20B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				2E5F4A0F20380D3400947553 /* Steps */,
 				9CF7277310EE87D8B1684D64FAAE3150 /* HeartRate */,
 			);
 			path = Presentation;
@@ -482,6 +507,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B9B9E0C58C3635DF278A129DD45483D /* ConfigurationService.swift in Sources */,
+				2E5F4A0E20380C5000947553 /* StepsServiceProtocol.swift in Sources */,
+				2E5F4A0C20380C4500947553 /* StepsService.swift in Sources */,
+				2E5F4A1120380D4500947553 /* StepsModels.swift in Sources */,
 				5638330ADBC437778CA6012B273D62F3 /* ConfigurationServiceProtocol.swift in Sources */,
 				C0CE875520A0329B38CBCA9E589122E3 /* HealthTypes.swift in Sources */,
 				221B64E20B6BEBD15FAA52AEE03406C6 /* HeartRateModels.swift in Sources */,

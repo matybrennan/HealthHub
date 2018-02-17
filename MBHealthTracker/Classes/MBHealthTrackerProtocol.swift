@@ -13,4 +13,6 @@ public protocol MBHealthTrackerProtocol {
     var configuration: ConfigurationServiceProtocol { get }
     
     var heartRate: HeartRateServiceProtocol { get }
+    
+    var steps: StepsServiceProtocol { get }
 }

@@ -24,4 +24,8 @@ extension MBHealthTracker: MBHealthTrackerProtocol {
         return HeartRateService()
     }
     
+    public var steps: StepsServiceProtocol {
+        return StepsService()
+    }
+    
 }
