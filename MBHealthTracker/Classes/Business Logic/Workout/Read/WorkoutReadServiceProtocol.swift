@@ -8,6 +8,13 @@
 import Foundation
 import HealthKit
 
+public enum WorkoutType {
+    
+    case today
+    case thisWeek
+    
+}
+
 public protocol WorkoutReadServiceProtocol {
     
     func getWorkouts(fromWorkoutType type: WorkoutType, completionHandler: (AsyncCallResult<WorkoutVM>) -> Void) throws

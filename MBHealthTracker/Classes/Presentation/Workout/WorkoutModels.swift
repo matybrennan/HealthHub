@@ -15,6 +15,8 @@ public struct WorkoutVM {
         let duration: Double // secs
         let energyBurned: Double // cals/kilocals
         let distance: Double // mi/km
+        let startDate: Date
+        let endDate: Date
         
         // TODO: Create some helper to get name of sport/activityType used as string and not healthKit type
         // let activityName: String
