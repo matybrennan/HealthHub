@@ -26,7 +26,7 @@ extension ViewInteractor: ViewInteractorProtocol {
     }
     
     func configurePermissions() {
-        healthTracker.configuration.requestAuthorization(toShare: [HKQuantityType.quantityType(forIdentifier: .heartRate)!, HKQuantityType.quantityType(forIdentifier: .stepCount)!], toRead: [HKQuantityType.quantityType(forIdentifier: .heartRate)!, HKQuantityType.quantityType(forIdentifier: .stepCount)!]) { _ in
+        healthTracker.configuration.requestAuthorization(toShare: [HKQuantityType.quantityType(forIdentifier: .heartRate)!, HKQuantityType.quantityType(forIdentifier: .stepCount)!, HKWorkoutType.workoutType()], toRead: [HKQuantityType.quantityType(forIdentifier: .heartRate)!, HKQuantityType.quantityType(forIdentifier: .stepCount)!, HKWorkoutType.workoutType()]) { _ in
             //
         }
     }
@@ -34,9 +34,9 @@ extension ViewInteractor: ViewInteractorProtocol {
     
     func runTest() {
         do {
-            try healthTracker.steps.getSteps(fromStepsType: .lastHour) { (result) in
+            try healthTracker.workout.getWorkouts(fromWorkoutType: .today, completionHandler: { result in
                 //
-            }
+            })
         } catch {
             print("Uable to get: \(error.localizedDescription)")
         }

@@ -15,4 +15,6 @@ public protocol MBHealthTrackerProtocol {
     var heartRate: HeartRateServiceProtocol { get }
     
     var steps: StepsServiceProtocol { get }
+    
+    var workout: WorkoutManagerProtocol { get }
 }

@@ -16,16 +16,26 @@ open class MBHealthTracker {
 
 extension MBHealthTracker: MBHealthTrackerProtocol {
     
+    // Handles logic for permissions, navigation to health app
     public var configuration: ConfigurationServiceProtocol {
         return ConfigurationService()
     }
     
+    // handles gathering logic from healthKit regarding heartRate details
     public var heartRate: HeartRateServiceProtocol {
         return HeartRateService()
     }
     
+    // handles gathering logic from healthKit regarding stepCount details
     public var steps: StepsServiceProtocol {
         return StepsService()
+    }
+    
+    // handles gathering logic from healthKit regarding workouts
+    public var workout: WorkoutManagerProtocol {
+        let readService = WorkoutReadService()
+        let writeService = WorkoutWriteService()
+        return WorkoutManager(readService: readService, writeService: writeService)
     }
     
 }
