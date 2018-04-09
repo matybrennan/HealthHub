@@ -22,7 +22,7 @@ class ViewInteractor {
 extension ViewInteractor: ViewInteractorProtocol {
     
     func getHeartRate(completionHandler: @escaping (AsyncCallResult<HeartRateVM>) -> Void) throws {
-        try healthTracker.heartRate.getHeartRate(fromHeartRateType: .current, completionHandler: completionHandler)
+        try healthTracker.heartRate.getHeartRate(fromHeartRateType: .all(TimeInterval: nil), completionHandler: completionHandler)
     }
     
     func configurePermissions() {

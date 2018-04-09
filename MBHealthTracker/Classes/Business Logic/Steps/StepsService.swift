@@ -52,18 +52,13 @@ extension StepsService: StepsServiceProtocol {
         case let .today(timeInterval):
             
             // create predicate for start and end of day
-            let calendar = Calendar.current
-            let now = Date()
-            let components = calendar.dateComponents([.year, .month, .day], from: now)
-            guard let startDate = calendar.date(from: components) else { return }
-            let endDate = calendar.date(byAdding: .day, value: 1, to: startDate)
-            let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: [])
+            let predicate = try NSPredicate.today()
             
             // set timeInterval for grabbing data batches (in mins)
             var component = DateComponents()
             component.hour = timeInterval ?? 1
             
-            query = HKStatisticsCollectionQuery(quantityType: steps, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: startDate, intervalComponents: component)
+            query = HKStatisticsCollectionQuery(quantityType: steps, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: Date().startOfDay, intervalComponents: component)
             
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [unowned self]
                 query, collection, error in
@@ -75,16 +70,13 @@ extension StepsService: StepsServiceProtocol {
         case let .thisWeek(timeInterval):
             
             // create predicate for start and end of week
-            let now = Date()
-            guard let startDate = now.startOfWeek else { return }
-            let endDate = now.endOfWeek
-            let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: [])
+            let predicate = try NSPredicate.thisWeek()
             
             // set timeInterval for grabbing data batches (in mins)
             var component = DateComponents()
             component.hour = timeInterval ?? 1
             
-            query = HKStatisticsCollectionQuery(quantityType: steps, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: startDate, intervalComponents: component)
+            query = HKStatisticsCollectionQuery(quantityType: steps, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: Date().startOfWeek!, intervalComponents: component)
             
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [unowned self]
                 query, collection, error in
@@ -124,7 +116,7 @@ private extension StepsService {
         }
         
         guard let quantitySamples = collectionStats?.statistics() else {
-            completionHandler(.failed(StepsParsingError.unableToParse("Today steps")))
+            completionHandler(.failed(StepsParsingError.unableToParse("Steps log")))
             return
         }
         

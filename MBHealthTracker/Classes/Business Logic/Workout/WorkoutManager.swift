@@ -17,14 +17,13 @@ public class WorkoutManager {
         workoutReadService = readService
         workoutWriteService = writeService
     }
-    
 }
 
 extension WorkoutManager: WorkoutManagerProtocol {
     
     // MARK: Read Service
     
-    public func getWorkouts(fromWorkoutType type: WorkoutType, completionHandler: (AsyncCallResult<WorkoutVM>) -> Void) throws {
+    public func getWorkouts(fromWorkoutType type: WorkoutType, completionHandler: @escaping (AsyncCallResult<WorkoutVM>) -> Void) throws {
         try workoutReadService.getWorkouts(fromWorkoutType: type, completionHandler: completionHandler)
     }
     
@@ -35,5 +34,4 @@ extension WorkoutManager: WorkoutManagerProtocol {
     public func saveWorkout(workout: WorkoutVM.Item, extra: [String : Any]?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) {
         workoutWriteService.saveWorkout(workout: workout, extra: extra, completionHandler: completionHandler)
     }
-    
 }

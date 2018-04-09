@@ -21,6 +21,7 @@ extension WorkoutWriteService: WorkoutWriteServiceProtocol {
         let energyBurned = HKQuantity(unit: HKUnit.calorie(), doubleValue: workout.energyBurned)
         let distance = HKQuantity(unit: HKUnit.meter(), doubleValue: workout.energyBurned)
         let workoutObj = HKWorkout(activityType: workout.activityType, start: workout.startDate, end: workout.endDate, duration: workout.duration, totalEnergyBurned: energyBurned, totalDistance: distance, device: HKDevice.local(), metadata: extra)
+        
         healthStore.save(workoutObj) { (status, error) in
             if let error = error {
                 completionHandler(.failed(error))
@@ -29,5 +30,4 @@ extension WorkoutWriteService: WorkoutWriteServiceProtocol {
             }
         }
     }
-    
 }

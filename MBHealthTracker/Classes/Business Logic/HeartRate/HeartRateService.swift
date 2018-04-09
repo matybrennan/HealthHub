@@ -41,7 +41,7 @@ extension HeartRateService: HeartRateServiceProtocol {
                 }
                 
                 guard let quantitySample = samples?.first as? HKQuantitySample else {
-                    completionHandler(AsyncCallResult.failed(HeartRateParsingError.unableToParse("current heartRate")))
+                    completionHandler(AsyncCallResult.failed(HeartRateParsingError.unableToParse("current heartRate or no heart rate samples")))
                     return
                 }
                 let hr = quantitySample.quantity.doubleValue(for: HKUnit(from: Unit.heartRateCountMin))
@@ -53,12 +53,7 @@ extension HeartRateService: HeartRateServiceProtocol {
         case let .today(interval):
             
             // create predicate for start and end of day
-            let calendar = Calendar.current
-            let now = Date()
-            let components = calendar.dateComponents([.year, .month, .day], from: now)
-            guard let startDate = calendar.date(from: components) else { return }
-            let endDate = calendar.date(byAdding: .day, value: 1, to: startDate)
-            let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: [])
+            let predicate = try NSPredicate.today()
             
             // set timeInterval for grabbing data batches (in mins)
             // If no interval is set create it for 1 hour batches
@@ -66,38 +61,70 @@ extension HeartRateService: HeartRateServiceProtocol {
             component.minute = interval ?? 60
         
             // create query
-            query = HKStatisticsCollectionQuery(quantityType: heartRate, quantitySamplePredicate: predicate, options: [.discreteAverage, .discreteMax, .discreteMin], anchorDate: startDate, intervalComponents: component)
+            query = HKStatisticsCollectionQuery(quantityType: heartRate, quantitySamplePredicate: predicate, options: [.discreteAverage, .discreteMax, .discreteMin], anchorDate: Date().startOfDay, intervalComponents: component)
             
             
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = {
                 query, collection, error in
-                
-                guard error == nil else {
-                    completionHandler(.failed(error!))
-                    return
-                }
-                
-                guard let quantitySamples = collection?.statistics() else {
-                    completionHandler(.failed(HeartRateParsingError.unableToParse("Today heartRate")))
-                    return
-                }
-                
-                let items = quantitySamples.map {
-                    HeartRateVM.HeartRateItem(max: $0.maximumQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)),
-                                              min: $0.minimumQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)),
-                                              average: $0.averageQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)))
-                }
-                
-                let vm = HeartRateVM(items: items)
-                completionHandler(.success(vm))
+                self.configure(query: query, collection: collection, error: error, completionHandler: completionHandler)
             }
+        case let .thisWeek(interval):
             
-        case .thisWeek: break
-        case .thisYear: break
-        case .all: break
+            // create predicate for start and end of day
+            let predicate = try NSPredicate.thisWeek()
+            
+            var component = DateComponents()
+            component.day = interval ?? 1
+            
+            // create query
+            query = HKStatisticsCollectionQuery(quantityType: heartRate, quantitySamplePredicate: predicate, options: [.discreteAverage, .discreteMax, .discreteMin], anchorDate: Date().startOfDay, intervalComponents: component)
+            
+            
+            (query as! HKStatisticsCollectionQuery).initialResultsHandler = {
+                query, collection, error in
+                self.configure(query: query, collection: collection, error: error, completionHandler: completionHandler)
+            }
+        case let .all(interval):
+                
+            var component = DateComponents()
+            component.day = interval ?? 1
+            
+            // create query
+            query = HKStatisticsCollectionQuery(quantityType: heartRate, quantitySamplePredicate: nil, options: [.discreteAverage, .discreteMax, .discreteMin], anchorDate: Date().startOfDay, intervalComponents: component)
+            
+            
+            (query as! HKStatisticsCollectionQuery).initialResultsHandler = {
+                query, collection, error in
+                self.configure(query: query, collection: collection, error: error, completionHandler: completionHandler)
+            }
         }
         
         healthStore.execute(query)
+    }
+    
+}
+
+private extension HeartRateService {
+    
+    func configure(query: HKStatisticsCollectionQuery, collection: HKStatisticsCollection?, error: Error?, completionHandler: @escaping (AsyncCallResult<HeartRateVM>) -> Void) {
+        guard error == nil else {
+            completionHandler(.failed(error!))
+            return
+        }
+        
+        guard let quantitySamples = collection?.statistics() else {
+            completionHandler(.failed(HeartRateParsingError.unableToParse("HeartRate log")))
+            return
+        }
+        
+        let items = quantitySamples.map {
+            HeartRateVM.HeartRateItem(max: $0.maximumQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)),
+                                      min: $0.minimumQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)),
+                                      average: $0.averageQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)))
+        }
+        
+        let vm = HeartRateVM(items: items)
+        completionHandler(.success(vm))
     }
     
 }

@@ -24,6 +24,7 @@
 		2E5F4A21203ABB4500947553 /* WorkoutReadServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A20203ABB4500947553 /* WorkoutReadServiceProtocol.swift */; };
 		2E5F4A23203ABBC400947553 /* WorkoutWriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A22203ABBC400947553 /* WorkoutWriteService.swift */; };
 		2E5F4A25203ABBD000947553 /* WorkoutWriteServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A24203ABBD000947553 /* WorkoutWriteServiceProtocol.swift */; };
+		2EF55717207B5E6400FDC284 /* NSPredicate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF55716207B5E6400FDC284 /* NSPredicate+Extension.swift */; };
 		32EF6E789DAEEB361DCDBA37F8610070 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1316C446F58FFDB96D80E986A05584 /* Helpers.swift */; };
 		34E525AB192CB1BAF9930DEC1235C311 /* MBHealthTrackerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262CEAE77CE117CCE1466B1F120E666 /* MBHealthTrackerProtocol.swift */; };
 		3A2EFDAB6031DC0D37D0E643F789B413 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
@@ -78,6 +79,7 @@
 		2E5F4A20203ABB4500947553 /* WorkoutReadServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutReadServiceProtocol.swift; sourceTree = "<group>"; };
 		2E5F4A22203ABBC400947553 /* WorkoutWriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutWriteService.swift; sourceTree = "<group>"; };
 		2E5F4A24203ABBD000947553 /* WorkoutWriteServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutWriteServiceProtocol.swift; sourceTree = "<group>"; };
+		2EF55716207B5E6400FDC284 /* NSPredicate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPredicate+Extension.swift"; sourceTree = "<group>"; };
 		39F9B503FF53D0B3DBA417C7991F2040 /* MBHealthTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBHealthTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8E123C47AB09FF3F2A72198069950F /* Pods-MBHealthTracker_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MBHealthTracker_Tests.modulemap"; sourceTree = "<group>"; };
 		476550078FAED367104F42C0E918B344 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				8B1316C446F58FFDB96D80E986A05584 /* Helpers.swift */,
 				C72BAF3E5B5E8189A5D90945BD093612 /* NetworkResult.swift */,
 				2E5F4A1220383D7300947553 /* Date+Extension.swift */,
+				2EF55716207B5E6400FDC284 /* NSPredicate+Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				C0CE875520A0329B38CBCA9E589122E3 /* HealthTypes.swift in Sources */,
 				221B64E20B6BEBD15FAA52AEE03406C6 /* HeartRateModels.swift in Sources */,
 				3C51D2DBA2E2AFEE7068E5A0985E3CAE /* HeartRateService.swift in Sources */,
+				2EF55717207B5E6400FDC284 /* NSPredicate+Extension.swift in Sources */,
 				5AFBECA8E2E3A501864C6BE5F424F607 /* HeartRateServiceProtocol.swift in Sources */,
 				32EF6E789DAEEB361DCDBA37F8610070 /* Helpers.swift in Sources */,
 				2E5F4A162038436D00947553 /* WorkoutManager.swift in Sources */,

@@ -15,7 +15,7 @@ public protocol WorkoutManagerWriteProtocol {
 
 public protocol WorkoutManagerReadProtocol {
     
-    func getWorkouts(fromWorkoutType type: WorkoutType, completionHandler: (AsyncCallResult<WorkoutVM>) -> Void) throws
+    func getWorkouts(fromWorkoutType type: WorkoutType, completionHandler: @escaping (AsyncCallResult<WorkoutVM>) -> Void) throws
 }
 
 public typealias WorkoutManagerProtocol = WorkoutManagerWriteProtocol &  WorkoutManagerReadProtocol

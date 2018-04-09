@@ -10,13 +10,15 @@ import HealthKit
 
 public class WorkoutReadService {
     
-    //
-    
+    struct Unit {
+        static let workoutEnergy = HKUnit.calorie()
+        static let workoutDistance = HKUnit.meter()
+    }
 }
 
 extension WorkoutReadService: WorkoutReadServiceProtocol {
     
-    public func getWorkouts(fromWorkoutType type: WorkoutType, completionHandler: (AsyncCallResult<WorkoutVM>) -> Void) throws {
+    public func getWorkouts(fromWorkoutType type: WorkoutType, completionHandler: @escaping (AsyncCallResult<WorkoutVM>) -> Void) throws {
         
         // Confirm that the type and device works
         let workout = HKWorkoutType.workoutType()
@@ -27,14 +29,48 @@ extension WorkoutReadService: WorkoutReadServiceProtocol {
         switch type {
         case .today:
             
-            query = HKSampleQuery(sampleType: workout, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (query, samples, error) in
-                //
+            let predicate = try NSPredicate.today()
+            
+            query = HKSampleQuery(sampleType: workout, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (query, samples, error) in
+                self.configure(query: query, samples: samples, error: error, completionHandler: completionHandler)
             })
             
-        case .thisWeek: break
+        case .thisWeek:
+            
+            let predicate = try NSPredicate.thisWeek()
+            query = HKSampleQuery(sampleType: workout, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (query, samples, error) in
+                self.configure(query: query, samples: samples, error: error, completionHandler: completionHandler)
+            })
+            
+            
+        case .all:
+            
+            query = HKSampleQuery(sampleType: workout, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (query, samples, error) in
+                self.configure(query: query, samples: samples, error: error, completionHandler: completionHandler)
+            })
         }
         
         healthStore.execute(query)
     }
+}
+
+private extension WorkoutReadService {
     
+    func configure(query: HKSampleQuery, samples: [HKSample]?, error: Error?, completionHandler: @escaping (AsyncCallResult<WorkoutVM>) -> Void) {
+        
+        guard error == nil else {
+            completionHandler(.failed(error!))
+            return
+        }
+        
+        guard let workoutSamples = samples as? [HKWorkout] else {
+            completionHandler(.failed(WorkoutReadParsingError.unableToParse("Workout log")))
+            return
+        }
+        
+        let workoutItems = workoutSamples.map { WorkoutVM.Item(duration: $0.duration, energyBurned: $0.totalEnergyBurned?.doubleValue(for: Unit.workoutEnergy) ?? 0, distance: $0.totalDistance?.doubleValue(for: Unit.workoutDistance) ?? 0, startDate: $0.startDate, endDate: $0.endDate, activityType: $0.workoutActivityType)  }
+        
+        let workout = WorkoutVM(items: workoutItems)
+        completionHandler(.success(workout))
+    }
 }
