@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
   # s.resource_bundles = {
   #   'MBHealthTracker' => ['MBHealthTracker/Assets/*.png']
   # }
-
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
