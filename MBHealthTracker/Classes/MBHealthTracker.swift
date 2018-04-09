@@ -12,27 +12,27 @@ open class MBHealthTracker {
     
     public init() { }
     
-    private lazy var privateConfiguration: ConfigurationServiceProtocol = {
+    private(set) lazy var privateConfiguration: ConfigurationServiceProtocol = {
         return ConfigurationService()
     }()
     
-    private lazy var privateHeartRate: HeartRateServiceProtocol = {
+    private(set) lazy var privateHeartRate: HeartRateServiceProtocol = {
         return HeartRateService()
     }()
     
-    private lazy var privateSteps: StepsServiceProtocol = {
+    private(set) lazy var privateSteps: StepsServiceProtocol = {
         return StepsService()
     }()
     
-    private lazy var privateWorkoutReadService: WorkoutReadServiceProtocol = {
+    private(set) lazy var privateWorkoutReadService: WorkoutReadServiceProtocol = {
         return WorkoutReadService()
     }()
     
-    private lazy var privateWorkoutWriteService: WorkoutWriteServiceProtocol = {
+    private(set) lazy var privateWorkoutWriteService: WorkoutWriteServiceProtocol = {
         return WorkoutWriteService()
     }()
     
-    private lazy var privateWorkout: WorkoutManagerProtocol = {
+    private(set) lazy var privateWorkout: WorkoutManagerProtocol = {
         return WorkoutManager(readService: privateWorkoutReadService, writeService: privateWorkoutWriteService)
     }()
 }
