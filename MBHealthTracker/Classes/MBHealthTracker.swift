@@ -33,7 +33,7 @@ open class MBHealthTracker {
     }()
     
     private(set) lazy var privateWorkout: WorkoutManagerProtocol = {
-        return WorkoutManager(readService: privateWorkoutReadService, writeService: privateWorkoutWriteService)
+        return WorkoutManager(readService: self.privateWorkoutReadService, writeService: self.privateWorkoutWriteService)
     }()
 }
 
