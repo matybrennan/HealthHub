@@ -29,7 +29,7 @@ extension ConfigurationService: ConfigurationServiceProtocol {
     }
     
     public func navigateToHealthSettings() {
-        UIApplication.shared.open(URL(string: ConfigurationService.appleHealthAppURL)!, options: [], completionHandler: nil)
+        UIApplication.shared.open(URL(string: ConfigurationService.appleHealthAppURL)!, options: [:], completionHandler: nil)
     }
     
 }

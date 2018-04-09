@@ -33,12 +33,10 @@ public enum StepsType {
     // timeinterval is in days
     case thisWeek(timeInterval: Int?)
     case betweenTimePref(start: Date, end: Date, timeInterval: Int)
-    
 }
 
 
 public protocol StepsServiceProtocol {
     
     func getSteps(fromStepsType type: StepsType, completionHandler: @escaping (AsyncCallResult<StepsVM>) -> Void) throws
-    
 }

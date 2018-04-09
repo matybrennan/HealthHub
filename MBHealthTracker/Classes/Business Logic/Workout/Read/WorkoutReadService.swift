@@ -24,9 +24,15 @@ extension WorkoutReadService: WorkoutReadServiceProtocol {
         
         var query: HKQuery!
         
-        query = HKSampleQuery(sampleType: workout, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (query, samples, error) in
-            //
-        })
+        switch type {
+        case .today:
+            
+            query = HKSampleQuery(sampleType: workout, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (query, samples, error) in
+                //
+            })
+            
+        case .thisWeek: break
+        }
         
         healthStore.execute(query)
     }
