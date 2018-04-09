@@ -13,6 +13,18 @@
 		221B64E20B6BEBD15FAA52AEE03406C6 /* HeartRateModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678CE407956F67AB9A55D8E211426EE /* HeartRateModels.swift */; };
 		2A32BBD3B6791FF3D283B613A240DEAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		2E15F1E7203475E300F6AB56 /* MBHealthTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F9B503FF53D0B3DBA417C7991F2040 /* MBHealthTracker.framework */; };
+		2E5F4A0C20380C4500947553 /* StepsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A0B20380C4500947553 /* StepsService.swift */; };
+		2E5F4A0E20380C5000947553 /* StepsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A0D20380C5000947553 /* StepsServiceProtocol.swift */; };
+		2E5F4A1120380D4500947553 /* StepsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A1020380D4500947553 /* StepsModels.swift */; };
+		2E5F4A1320383D7300947553 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A1220383D7300947553 /* Date+Extension.swift */; };
+		2E5F4A162038436D00947553 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A152038436D00947553 /* WorkoutManager.swift */; };
+		2E5F4A182038437A00947553 /* WorkoutManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A172038437A00947553 /* WorkoutManagerProtocol.swift */; };
+		2E5F4A1B2039986E00947553 /* WorkoutModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A1A2039986E00947553 /* WorkoutModels.swift */; };
+		2E5F4A1F203ABB3300947553 /* WorkoutReadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A1E203ABB3300947553 /* WorkoutReadService.swift */; };
+		2E5F4A21203ABB4500947553 /* WorkoutReadServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A20203ABB4500947553 /* WorkoutReadServiceProtocol.swift */; };
+		2E5F4A23203ABBC400947553 /* WorkoutWriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A22203ABBC400947553 /* WorkoutWriteService.swift */; };
+		2E5F4A25203ABBD000947553 /* WorkoutWriteServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A24203ABBD000947553 /* WorkoutWriteServiceProtocol.swift */; };
+		2EF55717207B5E6400FDC284 /* NSPredicate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF55716207B5E6400FDC284 /* NSPredicate+Extension.swift */; };
 		32EF6E789DAEEB361DCDBA37F8610070 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1316C446F58FFDB96D80E986A05584 /* Helpers.swift */; };
 		34E525AB192CB1BAF9930DEC1235C311 /* MBHealthTrackerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262CEAE77CE117CCE1466B1F120E666 /* MBHealthTrackerProtocol.swift */; };
 		3A2EFDAB6031DC0D37D0E643F789B413 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
@@ -56,6 +68,18 @@
 		20D938457BC81921D7343C3E790B76AB /* Pods-MBHealthTracker_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MBHealthTracker_Tests-umbrella.h"; sourceTree = "<group>"; };
 		2E15F1E2203475E300F6AB56 /* MBHealthTrackerPodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MBHealthTrackerPodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E3FECD1B22F4ECA9F5B470E27038BD6 /* Pods-MBHealthTracker_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MBHealthTracker_Example-dummy.m"; sourceTree = "<group>"; };
+		2E5F4A0B20380C4500947553 /* StepsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsService.swift; sourceTree = "<group>"; };
+		2E5F4A0D20380C5000947553 /* StepsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsServiceProtocol.swift; sourceTree = "<group>"; };
+		2E5F4A1020380D4500947553 /* StepsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsModels.swift; sourceTree = "<group>"; };
+		2E5F4A1220383D7300947553 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		2E5F4A152038436D00947553 /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
+		2E5F4A172038437A00947553 /* WorkoutManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManagerProtocol.swift; sourceTree = "<group>"; };
+		2E5F4A1A2039986E00947553 /* WorkoutModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutModels.swift; sourceTree = "<group>"; };
+		2E5F4A1E203ABB3300947553 /* WorkoutReadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutReadService.swift; sourceTree = "<group>"; };
+		2E5F4A20203ABB4500947553 /* WorkoutReadServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutReadServiceProtocol.swift; sourceTree = "<group>"; };
+		2E5F4A22203ABBC400947553 /* WorkoutWriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutWriteService.swift; sourceTree = "<group>"; };
+		2E5F4A24203ABBD000947553 /* WorkoutWriteServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutWriteServiceProtocol.swift; sourceTree = "<group>"; };
+		2EF55716207B5E6400FDC284 /* NSPredicate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPredicate+Extension.swift"; sourceTree = "<group>"; };
 		39F9B503FF53D0B3DBA417C7991F2040 /* MBHealthTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBHealthTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8E123C47AB09FF3F2A72198069950F /* Pods-MBHealthTracker_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MBHealthTracker_Tests.modulemap"; sourceTree = "<group>"; };
 		476550078FAED367104F42C0E918B344 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,6 +151,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E5F4A0A20380C2D00947553 /* Steps */ = {
+			isa = PBXGroup;
+			children = (
+				2E5F4A0B20380C4500947553 /* StepsService.swift */,
+				2E5F4A0D20380C5000947553 /* StepsServiceProtocol.swift */,
+			);
+			path = Steps;
+			sourceTree = "<group>";
+		};
+		2E5F4A0F20380D3400947553 /* Steps */ = {
+			isa = PBXGroup;
+			children = (
+				2E5F4A1020380D4500947553 /* StepsModels.swift */,
+			);
+			path = Steps;
+			sourceTree = "<group>";
+		};
+		2E5F4A142038435800947553 /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+				2E5F4A1D203ABAF000947553 /* Write */,
+				2E5F4A1C203ABAEA00947553 /* Read */,
+				2E5F4A152038436D00947553 /* WorkoutManager.swift */,
+				2E5F4A172038437A00947553 /* WorkoutManagerProtocol.swift */,
+			);
+			path = Workout;
+			sourceTree = "<group>";
+		};
+		2E5F4A192039985900947553 /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+				2E5F4A1A2039986E00947553 /* WorkoutModels.swift */,
+			);
+			path = Workout;
+			sourceTree = "<group>";
+		};
+		2E5F4A1C203ABAEA00947553 /* Read */ = {
+			isa = PBXGroup;
+			children = (
+				2E5F4A1E203ABB3300947553 /* WorkoutReadService.swift */,
+				2E5F4A20203ABB4500947553 /* WorkoutReadServiceProtocol.swift */,
+			);
+			path = Read;
+			sourceTree = "<group>";
+		};
+		2E5F4A1D203ABAF000947553 /* Write */ = {
+			isa = PBXGroup;
+			children = (
+				2E5F4A22203ABBC400947553 /* WorkoutWriteService.swift */,
+				2E5F4A24203ABBD000947553 /* WorkoutWriteServiceProtocol.swift */,
+			);
+			path = Write;
+			sourceTree = "<group>";
+		};
 		4F8A88231C493E60FB25422F000B05CA /* MBHealthTracker */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +221,8 @@
 				F84A2155271EE1740CC102A2E708D9AD /* HealthTypes.swift */,
 				8B1316C446F58FFDB96D80E986A05584 /* Helpers.swift */,
 				C72BAF3E5B5E8189A5D90945BD093612 /* NetworkResult.swift */,
+				2E5F4A1220383D7300947553 /* Date+Extension.swift */,
+				2EF55716207B5E6400FDC284 /* NSPredicate+Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -150,6 +230,8 @@
 		6B099F10D01AEF156A3F4C80D3D96862 /* Business Logic */ = {
 			isa = PBXGroup;
 			children = (
+				2E5F4A142038435800947553 /* Workout */,
+				2E5F4A0A20380C2D00947553 /* Steps */,
 				B08A9A7F951F239CD026F9C0BE0B1F5F /* Configuration */,
 				B9DA7E3F122F7D85DD9FD81C6BB8F151 /* HeartRate */,
 			);
@@ -170,6 +252,8 @@
 		81A77F2D867212F9CCA1A1C2E956B20B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				2E5F4A192039985900947553 /* Workout */,
+				2E5F4A0F20380D3400947553 /* Steps */,
 				9CF7277310EE87D8B1684D64FAAE3150 /* HeartRate */,
 			);
 			path = Presentation;
@@ -482,16 +566,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B9B9E0C58C3635DF278A129DD45483D /* ConfigurationService.swift in Sources */,
+				2E5F4A182038437A00947553 /* WorkoutManagerProtocol.swift in Sources */,
+				2E5F4A0E20380C5000947553 /* StepsServiceProtocol.swift in Sources */,
+				2E5F4A0C20380C4500947553 /* StepsService.swift in Sources */,
+				2E5F4A1120380D4500947553 /* StepsModels.swift in Sources */,
+				2E5F4A1F203ABB3300947553 /* WorkoutReadService.swift in Sources */,
 				5638330ADBC437778CA6012B273D62F3 /* ConfigurationServiceProtocol.swift in Sources */,
+				2E5F4A1320383D7300947553 /* Date+Extension.swift in Sources */,
+				2E5F4A23203ABBC400947553 /* WorkoutWriteService.swift in Sources */,
+				2E5F4A1B2039986E00947553 /* WorkoutModels.swift in Sources */,
 				C0CE875520A0329B38CBCA9E589122E3 /* HealthTypes.swift in Sources */,
 				221B64E20B6BEBD15FAA52AEE03406C6 /* HeartRateModels.swift in Sources */,
 				3C51D2DBA2E2AFEE7068E5A0985E3CAE /* HeartRateService.swift in Sources */,
+				2EF55717207B5E6400FDC284 /* NSPredicate+Extension.swift in Sources */,
 				5AFBECA8E2E3A501864C6BE5F424F607 /* HeartRateServiceProtocol.swift in Sources */,
 				32EF6E789DAEEB361DCDBA37F8610070 /* Helpers.swift in Sources */,
+				2E5F4A162038436D00947553 /* WorkoutManager.swift in Sources */,
 				A2D56789BB66A50E5E3DD31A711052E1 /* MBHealthTracker-dummy.m in Sources */,
 				0FB01B3701B32589C4566742DE5FA1F3 /* MBHealthTracker.swift in Sources */,
 				34E525AB192CB1BAF9930DEC1235C311 /* MBHealthTrackerProtocol.swift in Sources */,
+				2E5F4A21203ABB4500947553 /* WorkoutReadServiceProtocol.swift in Sources */,
 				AC5DA2EFE6E2E00FFEB9BA728CDFFD65 /* NetworkResult.swift in Sources */,
+				2E5F4A25203ABBD000947553 /* WorkoutWriteServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,7 +652,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
@@ -583,7 +679,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/MBHealthTracker/MBHealthTracker-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/MBHealthTracker/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/MBHealthTracker/MBHealthTracker.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -694,7 +790,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-MBHealthTracker_Example/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-MBHealthTracker_Example/Pods-MBHealthTracker_Example.modulemap";
@@ -732,7 +828,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-MBHealthTracker_Tests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-MBHealthTracker_Tests/Pods-MBHealthTracker_Tests.modulemap";
@@ -769,7 +865,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/MBHealthTracker/MBHealthTracker-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/MBHealthTracker/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/MBHealthTracker/MBHealthTracker.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -803,7 +899,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-MBHealthTracker_Example/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-MBHealthTracker_Example/Pods-MBHealthTracker_Example.modulemap";
@@ -842,7 +938,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-MBHealthTracker_Tests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-MBHealthTracker_Tests/Pods-MBHealthTracker_Tests.modulemap";
@@ -900,7 +996,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;

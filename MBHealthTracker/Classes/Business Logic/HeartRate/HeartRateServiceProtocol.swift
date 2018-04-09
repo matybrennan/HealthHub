@@ -15,22 +15,18 @@ public enum HeartRateParsingError: LocalizedError {
         case let .unableToParse(value): return "Unable to parse: \(value)"
         }
     }
-    
 }
 
 public enum HeartRateType {
     
     case current
     
-    // time intervals between heartRate
-    
     // made in mins to get heartRate items for time interval periods
     case today(timeInterval: Int?)
     
-    case thisWeek
+    case thisWeek(TimeInterval: Int?)
     
-    case thisYear
-    case all
+    case all(TimeInterval: Int?)
     
     // TODO: Add custom think more into it
     //case between(start: TimeInterval, end: TimeInterval)
@@ -39,5 +35,4 @@ public enum HeartRateType {
 public protocol HeartRateServiceProtocol {
     
     func getHeartRate(fromHeartRateType type: HeartRateType, completionHandler: @escaping (AsyncCallResult<HeartRateVM>) -> Void) throws
-    
 }

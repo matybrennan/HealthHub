@@ -12,7 +12,6 @@ import HealthKit
 public class ConfigurationService {
     
     static let appleHealthAppURL = "x-apple-health://"
-    
 }
 
 extension ConfigurationService: ConfigurationServiceProtocol {
@@ -29,7 +28,6 @@ extension ConfigurationService: ConfigurationServiceProtocol {
     }
     
     public func navigateToHealthSettings() {
-        UIApplication.shared.openURL(URL(string: ConfigurationService.appleHealthAppURL)!)
+        UIApplication.shared.open(URL(string: ConfigurationService.appleHealthAppURL)!, options: [:], completionHandler: nil)
     }
-    
 }

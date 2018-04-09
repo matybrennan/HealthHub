@@ -21,4 +21,5 @@ open class HealthType {
         return result
     }
     
+    
 }

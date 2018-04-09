@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E5F4A052037B02400947553 /* ViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A042037B02400947553 /* ViewInteractor.swift */; };
+		2E5F4A082037B3E700947553 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5F4A072037B3E700947553 /* HealthKit.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -31,7 +33,10 @@
 		18F9552CCB843A027792D41D /* Pods-MBHealthTracker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBHealthTracker_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MBHealthTracker_Example/Pods-MBHealthTracker_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		1C11631471DD576709D8827C /* Pods-MBHealthTracker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBHealthTracker_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MBHealthTracker_Tests/Pods-MBHealthTracker_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		28AE631557300FFC4C5B58B4 /* Pods-MBHealthTracker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBHealthTracker_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MBHealthTracker_Example/Pods-MBHealthTracker_Example.release.xcconfig"; sourceTree = "<group>"; };
-		28E44660807AACCE4A6F0ED8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		28E44660807AACCE4A6F0ED8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		2E5F4A042037B02400947553 /* ViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInteractor.swift; sourceTree = "<group>"; };
+		2E5F4A072037B3E700947553 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		2E5F4A092037B3E700947553 /* MBHealthTracker_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MBHealthTracker_Example.entitlements; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* MBHealthTracker_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBHealthTracker_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,8 +48,8 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		78244801AAD4580441A6FCEC /* Pods_MBHealthTracker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBHealthTracker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		86AC7ED57D8615382B544EBD /* MBHealthTracker.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = MBHealthTracker.podspec; path = ../MBHealthTracker.podspec; sourceTree = "<group>"; };
-		AAD62AA7E2CE76FE279EE95A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		86AC7ED57D8615382B544EBD /* MBHealthTracker.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MBHealthTracker.podspec; path = ../MBHealthTracker.podspec; sourceTree = "<group>"; };
+		AAD62AA7E2CE76FE279EE95A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		E561F1AAEECB94D8EE86D112 /* Pods_MBHealthTracker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBHealthTracker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E806BD090C8C17AD126A4C7E /* Pods-MBHealthTracker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBHealthTracker_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MBHealthTracker_Tests/Pods-MBHealthTracker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -55,6 +60,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE6CB50C4D9EA18716965EA4 /* Pods_MBHealthTracker_Example.framework in Frameworks */,
+				2E5F4A082037B3E700947553 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,15 +78,26 @@
 		02BA928BCA7C6E9DFD281A34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2E5F4A072037B3E700947553 /* HealthKit.framework */,
 				E561F1AAEECB94D8EE86D112 /* Pods_MBHealthTracker_Example.framework */,
 				78244801AAD4580441A6FCEC /* Pods_MBHealthTracker_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2E5F4A062037B03500947553 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				2E5F4A042037B02400947553 /* ViewInteractor.swift */,
+			);
+			name = Presentation;
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				2E5F4A092037B3E700947553 /* MBHealthTracker_Example.entitlements */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for MBHealthTracker */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -102,11 +119,9 @@
 		607FACD21AFB9204008FA782 /* Example for MBHealthTracker */ = {
 			isa = PBXGroup;
 			children = (
+				2E5F4A062037B03500947553 /* Presentation */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
-				607FACDC1AFB9204008FA782 /* Images.xcassets */,
-				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for MBHealthTracker";
@@ -116,6 +131,8 @@
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				607FACDC1AFB9204008FA782 /* Images.xcassets */,
+				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD41AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -215,10 +232,17 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = W29334NPH8;
 						LastSwiftMigration = 0900;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = W29334NPH8;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -363,6 +387,7 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				2E5F4A052037B02400947553 /* ViewInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,7 +474,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -495,7 +520,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -508,6 +533,8 @@
 			baseConfigurationReference = 18F9552CCB843A027792D41D /* Pods-MBHealthTracker_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MBHealthTracker_Example.entitlements;
+				DEVELOPMENT_TEAM = W29334NPH8;
 				INFOPLIST_FILE = MBHealthTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -523,6 +550,8 @@
 			baseConfigurationReference = 28AE631557300FFC4C5B58B4 /* Pods-MBHealthTracker_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MBHealthTracker_Example.entitlements;
+				DEVELOPMENT_TEAM = W29334NPH8;
 				INFOPLIST_FILE = MBHealthTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -537,6 +566,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E806BD090C8C17AD126A4C7E /* Pods-MBHealthTracker_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = W29334NPH8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -558,6 +588,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C11631471DD576709D8827C /* Pods-MBHealthTracker_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = W29334NPH8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
