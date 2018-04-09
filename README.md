@@ -20,6 +20,17 @@ it, simply add the following line to your Podfile:
 pod 'MBHealthTracker'
 ```
 
+Add health kit in capabilities through project in "Capabilities"
+
+Add below code to your info.plist
+```
+<key>NSHealthShareUsageDescription</key>
+<string>Health Share</string>
+<key>NSHealthUpdateUsageDescription</key>
+<string>Health Writing</string>
+```
+
+
 ## Author
 
 matybrennan, matybrennan@gmail.com
