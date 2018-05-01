@@ -22,7 +22,7 @@ extension StepsService: StepsServiceProtocol {
     public func getSteps(fromStepsType type: StepsType, completionHandler: @escaping (AsyncCallResult<StepsVM>) -> Void) throws {
         
         // Confirm that the type and device works
-        let steps = try HealthType.unbox(quantityIdentifier: .stepCount)
+        let steps = try MBHealthParser.unbox(quantityIdentifier: .stepCount)
         try authorizationStatusSuccessful(for: steps)
         
         var query: HKQuery!

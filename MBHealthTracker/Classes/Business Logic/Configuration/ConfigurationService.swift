@@ -16,15 +16,23 @@ public class ConfigurationService {
 
 extension ConfigurationService: ConfigurationServiceProtocol {
     
-    public func requestAuthorization(toShare share: Set<HKSampleType>?, toRead read: Set<HKObjectType>?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) {
+    public func requestAuthorization(toShare share: [MBShareType], toRead read: [MBReadType], completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) {
         
-        healthStore.requestAuthorization(toShare: share, read: read) { (status, error) in
+        let shareTypes = MBHealthType.shareTypes(share)
+        let readTypes = MBHealthType.readTypes(read)
+        
+        healthStore.requestAuthorization(toShare: shareTypes, read: readTypes) { (status, error) in
             if let error = error {
                 completionHandler(.failed(error))
             } else {
                 completionHandler(.success(status))
             }
         }
+    }
+    
+    public func requestAuthorization(toShare share: Set<HKSampleType>?, toRead read: Set<HKObjectType>?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) {
+        
+        
     }
     
     public func navigateToHealthSettings() {

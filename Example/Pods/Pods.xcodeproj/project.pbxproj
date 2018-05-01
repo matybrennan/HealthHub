@@ -12,6 +12,7 @@
 		1120311ED17A97B8C12648FEAD74331C /* Pods-MBHealthTracker_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 20D938457BC81921D7343C3E790B76AB /* Pods-MBHealthTracker_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		221B64E20B6BEBD15FAA52AEE03406C6 /* HeartRateModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678CE407956F67AB9A55D8E211426EE /* HeartRateModels.swift */; };
 		2A32BBD3B6791FF3D283B613A240DEAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		2E051EA7208DDB04004DAD9F /* HealthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E051EA6208DDB04004DAD9F /* HealthType.swift */; };
 		2E15F1E7203475E300F6AB56 /* MBHealthTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F9B503FF53D0B3DBA417C7991F2040 /* MBHealthTracker.framework */; };
 		2E5F4A0C20380C4500947553 /* StepsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A0B20380C4500947553 /* StepsService.swift */; };
 		2E5F4A0E20380C5000947553 /* StepsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A0D20380C5000947553 /* StepsServiceProtocol.swift */; };
@@ -36,7 +37,7 @@
 		A2D56789BB66A50E5E3DD31A711052E1 /* MBHealthTracker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 568469EF1BB5814B51E40B1EDBC43A66 /* MBHealthTracker-dummy.m */; };
 		A3F3C4B33789E62EBE4CD3FCBED9392B /* Pods-MBHealthTracker_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E8B97F675F3807DFF450BF12D676B7 /* Pods-MBHealthTracker_Tests-dummy.m */; };
 		AC5DA2EFE6E2E00FFEB9BA728CDFFD65 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72BAF3E5B5E8189A5D90945BD093612 /* NetworkResult.swift */; };
-		C0CE875520A0329B38CBCA9E589122E3 /* HealthTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84A2155271EE1740CC102A2E708D9AD /* HealthTypes.swift */; };
+		C0CE875520A0329B38CBCA9E589122E3 /* HealthParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84A2155271EE1740CC102A2E708D9AD /* HealthParser.swift */; };
 		F4075620C11619811B27A37A0F9A50F9 /* Pods-MBHealthTracker_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0955C253086602693D6F1D74C4D99C11 /* Pods-MBHealthTracker_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F814A9BBB16CABDACBD99D577F6C9AD8 /* MBHealthTracker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 78C41E110C18B496248852FA2548F20F /* MBHealthTracker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 		1C9E7C84C1470F6B2087DB6169380676 /* MBHealthTracker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MBHealthTracker.swift; sourceTree = "<group>"; };
 		1F1F81234C79BF0766E8285D119F9AEC /* Pods-MBHealthTracker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MBHealthTracker_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		20D938457BC81921D7343C3E790B76AB /* Pods-MBHealthTracker_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MBHealthTracker_Tests-umbrella.h"; sourceTree = "<group>"; };
+		2E051EA6208DDB04004DAD9F /* HealthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthType.swift; sourceTree = "<group>"; };
 		2E15F1E2203475E300F6AB56 /* MBHealthTrackerPodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MBHealthTrackerPodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E3FECD1B22F4ECA9F5B470E27038BD6 /* Pods-MBHealthTracker_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MBHealthTracker_Example-dummy.m"; sourceTree = "<group>"; };
 		2E5F4A0B20380C4500947553 /* StepsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsService.swift; sourceTree = "<group>"; };
@@ -112,7 +114,7 @@
 		F5BEB2FD084684ED2A6A1B732C4ED8A2 /* MBHealthTracker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MBHealthTracker.modulemap; sourceTree = "<group>"; };
 		F65B5EA4EE8F0AEEC85CDB74C10DC1B4 /* MBHealthTracker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBHealthTracker-prefix.pch"; sourceTree = "<group>"; };
 		F833C7BEB3498FE235D58FED33156774 /* HeartRateService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeartRateService.swift; sourceTree = "<group>"; };
-		F84A2155271EE1740CC102A2E708D9AD /* HealthTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HealthTypes.swift; sourceTree = "<group>"; };
+		F84A2155271EE1740CC102A2E708D9AD /* HealthParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HealthParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,11 +220,12 @@
 		5865A13AF65EFB3E034B2A22E911D4EF /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				F84A2155271EE1740CC102A2E708D9AD /* HealthTypes.swift */,
+				F84A2155271EE1740CC102A2E708D9AD /* HealthParser.swift */,
 				8B1316C446F58FFDB96D80E986A05584 /* Helpers.swift */,
 				C72BAF3E5B5E8189A5D90945BD093612 /* NetworkResult.swift */,
 				2E5F4A1220383D7300947553 /* Date+Extension.swift */,
 				2EF55716207B5E6400FDC284 /* NSPredicate+Extension.swift */,
+				2E051EA6208DDB04004DAD9F /* HealthType.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -506,7 +509,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				TargetAttributes = {
 					2E15F1E1203475E300F6AB56 = {
 						CreatedOnToolsVersion = 9.0;
@@ -575,7 +578,8 @@
 				2E5F4A1320383D7300947553 /* Date+Extension.swift in Sources */,
 				2E5F4A23203ABBC400947553 /* WorkoutWriteService.swift in Sources */,
 				2E5F4A1B2039986E00947553 /* WorkoutModels.swift in Sources */,
-				C0CE875520A0329B38CBCA9E589122E3 /* HealthTypes.swift in Sources */,
+				C0CE875520A0329B38CBCA9E589122E3 /* HealthParser.swift in Sources */,
+				2E051EA7208DDB04004DAD9F /* HealthType.swift in Sources */,
 				221B64E20B6BEBD15FAA52AEE03406C6 /* HeartRateModels.swift in Sources */,
 				3C51D2DBA2E2AFEE7068E5A0985E3CAE /* HeartRateService.swift in Sources */,
 				2EF55717207B5E6400FDC284 /* NSPredicate+Extension.swift in Sources */,
@@ -630,6 +634,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -637,6 +642,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -979,6 +985,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -986,6 +993,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

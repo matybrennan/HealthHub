@@ -21,7 +21,7 @@ extension HeartRateService: HeartRateServiceProtocol {
     public func getHeartRate(fromHeartRateType type: HeartRateType, completionHandler: @escaping (AsyncCallResult<HeartRateVM>) -> Void) throws {
         
         // Confirm that the type and device works
-        let heartRate = try HealthType.unbox(quantityIdentifier: .heartRate)
+        let heartRate = try MBHealthParser.unbox(quantityIdentifier: .heartRate)
         try authorizationStatusSuccessful(for: heartRate)
         
         var query: HKQuery!

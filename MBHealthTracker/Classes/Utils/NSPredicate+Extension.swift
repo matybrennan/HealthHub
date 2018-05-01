@@ -38,6 +38,4 @@ extension NSPredicate {
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: [])
         return predicate
     }
-    
-    
 }

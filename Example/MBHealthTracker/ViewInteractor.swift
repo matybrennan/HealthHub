@@ -8,11 +8,10 @@
 
 import Foundation
 import MBHealthTracker
-import HealthKit
 
 class ViewInteractor {
     
-    fileprivate var healthTracker: MBHealthTrackerProtocol!
+    private let healthTracker: MBHealthTrackerProtocol
     
     init(healthTracker: MBHealthTrackerProtocol) {
         self.healthTracker = healthTracker
@@ -26,11 +25,8 @@ extension ViewInteractor: ViewInteractorProtocol {
     }
     
     func configurePermissions() {
-        healthTracker.configuration.requestAuthorization(toShare: [HKQuantityType.quantityType(forIdentifier: .heartRate)!, HKQuantityType.quantityType(forIdentifier: .stepCount)!, HKWorkoutType.workoutType()], toRead: [HKQuantityType.quantityType(forIdentifier: .heartRate)!, HKQuantityType.quantityType(forIdentifier: .stepCount)!, HKWorkoutType.workoutType()]) { _ in
-            //
-        }
+        healthTracker.configuration.requestAuthorization(toShare: [MBShareType.heartRate, .stepCount, .workout],toRead: [MBReadType.heartRate, .stepCount, .workout]) { _ in }
     }
-    
     
     func runTest() {
         do {
@@ -40,8 +36,5 @@ extension ViewInteractor: ViewInteractorProtocol {
         } catch {
             print("Uable to get: \(error.localizedDescription)")
         }
-        
     }
-    
-    
 }

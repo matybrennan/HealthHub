@@ -11,7 +11,7 @@ import HealthKit
 
 public protocol ConfigurationServiceProtocol {
     
-    func requestAuthorization(toShare share: Set<HKSampleType>?, toRead read: Set<HKObjectType>?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void)
+    func requestAuthorization(toShare share: [MBShareType], toRead read: [MBReadType], completionHandler: @escaping (AsyncCallResult<Bool>) -> Void)
     
     func navigateToHealthSettings()
 }

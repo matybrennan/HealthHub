@@ -15,7 +15,6 @@ protocol ViewInteractorProtocol {
     func configurePermissions()
     
     func runTest()
-    
 }
 
 class ViewController: UIViewController {
@@ -41,9 +40,6 @@ class ViewController: UIViewController {
         } catch {
             print("catch error: \(error)")
         }
-        
-        
     }
-
 }
 
