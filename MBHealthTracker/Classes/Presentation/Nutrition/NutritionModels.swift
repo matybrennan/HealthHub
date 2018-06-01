@@ -10,7 +10,7 @@ import Foundation
 public struct NutritionViewModel {
     
     public struct NutritionInfo {
-        let value: String
+        let value: Double
         let unit: String
         let startDate: Date
         let endDate: Date

@@ -27,11 +27,13 @@ public enum AuthorizationStatusError: LocalizedError {
     }
 }
 
-public func authorizationStatusSuccessful(for type: HKObjectType) throws {
-    
+public func isDataStoreAvailable() throws {
     if !HKHealthStore.isHealthDataAvailable() {
         throw AuthorizationStatusError.healthDataNotAvailable
     }
+}
+
+public func checkAuthorizationStatusForSharing(for type: HKObjectType) throws {
     
     switch healthStore.authorizationStatus(for: type) {
     case .notDetermined:

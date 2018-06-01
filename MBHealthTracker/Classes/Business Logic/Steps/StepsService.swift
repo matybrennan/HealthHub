@@ -23,7 +23,7 @@ extension StepsService: StepsServiceProtocol {
         
         // Confirm that the type and device works
         let steps = try MBHealthParser.unbox(quantityIdentifier: .stepCount)
-        try authorizationStatusSuccessful(for: steps)
+        try isDataStoreAvailable()
         
         var query: HKQuery!
         
@@ -116,7 +116,7 @@ private extension StepsService {
         }
         
         guard let quantitySamples = collectionStats?.statistics() else {
-            completionHandler(.failed(StepsParsingError.unableToParse("Steps log")))
+            completionHandler(.failed(MBAsyncParsingError.unableToParse("Steps log")))
             return
         }
         

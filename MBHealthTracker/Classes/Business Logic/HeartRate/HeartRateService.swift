@@ -22,7 +22,7 @@ extension HeartRateService: HeartRateServiceProtocol {
         
         // Confirm that the type and device works
         let heartRate = try MBHealthParser.unbox(quantityIdentifier: .heartRate)
-        try authorizationStatusSuccessful(for: heartRate)
+        try isDataStoreAvailable()
         
         var query: HKQuery!
         
@@ -41,7 +41,7 @@ extension HeartRateService: HeartRateServiceProtocol {
                 }
                 
                 guard let quantitySample = samples?.first as? HKQuantitySample else {
-                    completionHandler(AsyncCallResult.failed(HeartRateParsingError.unableToParse("current heartRate or no heart rate samples")))
+                    completionHandler(AsyncCallResult.failed(MBAsyncParsingError.unableToParse("current heartRate or no heart rate samples")))
                     return
                 }
                 let hr = quantitySample.quantity.doubleValue(for: HKUnit(from: Unit.heartRateCountMin))
@@ -113,7 +113,7 @@ private extension HeartRateService {
         }
         
         guard let quantitySamples = collection?.statistics() else {
-            completionHandler(.failed(HeartRateParsingError.unableToParse("HeartRate log")))
+            completionHandler(.failed(MBAsyncParsingError.unableToParse("HeartRate log")))
             return
         }
         

@@ -30,11 +30,6 @@ extension ConfigurationService: ConfigurationServiceProtocol {
         }
     }
     
-    public func requestAuthorization(toShare share: Set<HKSampleType>?, toRead read: Set<HKObjectType>?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) {
-        
-        
-    }
-    
     public func navigateToHealthSettings() {
         UIApplication.shared.open(URL(string: ConfigurationService.appleHealthAppURL)!, options: [:], completionHandler: nil)
     }

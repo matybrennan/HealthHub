@@ -22,7 +22,7 @@ extension WorkoutReadService: WorkoutReadServiceProtocol {
         
         // Confirm that the type and device works
         let workout = HKWorkoutType.workoutType()
-        try authorizationStatusSuccessful(for: workout)
+        try isDataStoreAvailable()
         
         var query: HKQuery!
         
@@ -64,7 +64,7 @@ private extension WorkoutReadService {
         }
         
         guard let workoutSamples = samples as? [HKWorkout] else {
-            completionHandler(.failed(WorkoutReadParsingError.unableToParse("Workout log")))
+            completionHandler(.failed(MBAsyncParsingError.unableToParse("Workout log")))
             return
         }
         

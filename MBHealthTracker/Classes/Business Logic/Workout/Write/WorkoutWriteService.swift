@@ -16,7 +16,10 @@ public class WorkoutWriteService {
 
 extension WorkoutWriteService: WorkoutWriteServiceProtocol {
     
-    public func saveWorkout(workout: WorkoutVM.Item, extra: [String : Any]?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) {
+    public func saveWorkout(workout: WorkoutVM.Item, extra: [String : Any]?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws {
+        
+        try checkAuthorizationStatusForSharing(for: HKWorkoutType.workoutType())
+        try isDataStoreAvailable()
         
         let energyBurned = HKQuantity(unit: HKUnit.calorie(), doubleValue: workout.energyBurned)
         let distance = HKQuantity(unit: HKUnit.meter(), doubleValue: workout.energyBurned)

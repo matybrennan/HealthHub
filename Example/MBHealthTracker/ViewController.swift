@@ -31,8 +31,8 @@ class ViewController: UIViewController {
         do {
             try interactor.getHeartRate { result in
                 switch result {
-                case let .success(vm):
-                    print("Success: \(vm)")
+                case let .success(vm): break
+                    //print("Success: \(vm)")
                 case let .failed(error):
                     print("Error: \(error.localizedDescription)")
                 }

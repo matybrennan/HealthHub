@@ -17,4 +17,8 @@ public protocol MBHealthTrackerProtocol {
     var steps: StepsServiceProtocol { get }
     
     var workout: WorkoutManagerProtocol { get }
+    
+    var characteristics: CharacteristicServiceProtocol { get }
+    
+    var nutritionService: NutritionServiceProtocol { get }
 }

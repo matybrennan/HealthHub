@@ -26,9 +26,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
 
         let nService = NutritionService()
-        nService.getNutrition(fromType: nil) { (result) in
-            //
+        do {
+            try nService.getNutrition(fromType: .energyConsumed, completionHandler: { res in
+                switch res {
+                case let .failed(error): print("res error: \(error)")
+                case let .success(vm): print("res success: \(vm)")
+                }
+            })
+        } catch {
+            print("Error: \(error.localizedDescription)")
         }
+        
         
         
         return true

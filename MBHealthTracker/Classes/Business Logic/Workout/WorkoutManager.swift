@@ -31,7 +31,7 @@ extension WorkoutManager: WorkoutManagerProtocol {
     
     // MARK: Write Service
     
-    public func saveWorkout(workout: WorkoutVM.Item, extra: [String : Any]?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) {
-        workoutWriteService.saveWorkout(workout: workout, extra: extra, completionHandler: completionHandler)
+    public func saveWorkout(workout: WorkoutVM.Item, extra: [String : Any]?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws {
+        try workoutWriteService.saveWorkout(workout: workout, extra: extra, completionHandler: completionHandler)
     }
 }

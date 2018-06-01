@@ -8,16 +8,6 @@
 import Foundation
 import HealthKit
 
-public enum StepsParsingError: LocalizedError {
-    case unableToParse(String)
-    
-    public var errorDescription: String? {
-        switch self {
-        case let .unableToParse(value): return "Unable to parse: \(value)"
-        }
-    }
-}
-
 public enum StepsType {
     
     // count of steps

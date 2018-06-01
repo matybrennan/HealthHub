@@ -12,19 +12,63 @@ public class NutritionService {
     
     public init() { }
     
-    public func getNutrition(fromType type: HKObjectType?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) {
+}
+
+extension NutritionService: NutritionServiceProtocol {
+    
+    public func getNutrition(fromType type: NutritionType, completionHandler: @escaping (AsyncCallResult<NutritionViewModel>) -> Void) throws {
         
-        let type = HKQuantityType.quantityType(forIdentifier: .dietaryIron)!
+        // Confirm that the type and device works
+        try isDataStoreAvailable()
         
-        let query = HKSampleQuery(sampleType: type, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { (query, samples, error) in
+        let unitToUse = getNutritionUnitMeasure(from: type)
+        
+        let query = HKSampleQuery(sampleType: type.value, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { (query, samples, error) in
             
-            let value = (samples?.first as? HKQuantitySample)?.quantity.doubleValue(for: HKUnit(from: MassFormatter.Unit.gram))
-            print(value)
+            guard error == nil else {
+                completionHandler(.failed(error!))
+                return
+            }
+            
+            guard let quantitySamples = samples as? [HKQuantitySample] else {
+                completionHandler(.failed(MBAsyncParsingError.unableToParse("Unable to parse: Nutrition: \(type.value.identifier)")))
+                return
+            }
+            
+            let items = quantitySamples.map {
+
+                NutritionViewModel.NutritionInfo(value: $0.quantity.doubleValue(for: unitToUse.unit), unit: unitToUse.unitStr, startDate: $0.startDate, endDate: $0.endDate)
+            }
+            
+            let vm = NutritionViewModel(items: items)
+            
+            completionHandler(AsyncCallResult.success(vm))
+        }
+        healthStore.execute(query)
+    }
+}
+
+private extension NutritionService {
+    
+    func getNutritionUnitMeasure(from nutritionType: NutritionType) -> (unit: HKUnit, unitStr: String) {
+        
+        var unitTuple: (HKUnit, String)!
+        
+        switch nutritionType {
+            
+        case .energyConsumed: unitTuple = (HKUnit.kilocalorie() , "kcal")
+        case .carbohydrates: print("is carbs....")
+            
+        case .vitaminA: print("is vitaminA....")
+            
+        case .calcium: print("is calcium....")
+        case .chloride: print("is chloride....")
+        case .iron: unitTuple = (HKUnit(from: "mg") , "mg")
+            
             
         }
         
-        
-        healthStore.execute(query)
+        return unitTuple
     }
     
 }

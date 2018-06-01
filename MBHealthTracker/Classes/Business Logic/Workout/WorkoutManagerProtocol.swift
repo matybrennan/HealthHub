@@ -10,7 +10,7 @@ import HealthKit
 
 public protocol WorkoutManagerWriteProtocol {
     
-    func saveWorkout(workout: WorkoutVM.Item, extra: [String: Any]?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void)
+    func saveWorkout(workout: WorkoutVM.Item, extra: [String: Any]?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws
 }
 
 public protocol WorkoutManagerReadProtocol {

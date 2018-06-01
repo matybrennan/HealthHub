@@ -33,10 +33,8 @@ public enum MBObjectType: SharableType, ReadableType {
         case .stepCount: return HKQuantityType.quantityType(forIdentifier: .stepCount)!
         case .heartRate: return HKQuantityType.quantityType(forIdentifier: .heartRate)!
         case .workout: return HKWorkoutType.workoutType()
-        case .iron:
-            return HKQuantityType.quantityType(forIdentifier: .dietaryIron)!
-        case .energyConsumed:
-            return HKQuantityType.quantityType(forIdentifier: .dietaryEnergyConsumed)!
+        case .iron: return HKQuantityType.quantityType(forIdentifier: .dietaryIron)!
+        case .energyConsumed: return HKQuantityType.quantityType(forIdentifier: .dietaryEnergyConsumed)!
         }
     }
     
@@ -45,11 +43,13 @@ public enum MBObjectType: SharableType, ReadableType {
         case .stepCount: return HKQuantityType.quantityType(forIdentifier: .stepCount)!
         case .heartRate: return HKQuantityType.quantityType(forIdentifier: .heartRate)!
         case .workout: return HKWorkoutType.workoutType()
+        case .iron: return HKQuantityType.quantityType(forIdentifier: .dietaryIron)!
+        case .energyConsumed: return HKQuantityType.quantityType(forIdentifier: .dietaryEnergyConsumed)!
         }
     }
 }
 
-
+/// Just has read capabilities
 public enum MBReadType: ReadableType {
     
     case dob
@@ -62,6 +62,7 @@ public enum MBReadType: ReadableType {
     }
 }
 
+/// Just has share capabilities
 public enum MBShareType: SharableType {
     
     public var sharable: HKSampleType {
