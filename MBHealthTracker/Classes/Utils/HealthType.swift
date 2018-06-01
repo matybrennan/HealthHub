@@ -24,12 +24,19 @@ public enum MBObjectType: SharableType, ReadableType {
     case stepCount
     case heartRate
     case workout
+    case iron
+    case energyConsumed
+    
     
     public var sharable: HKSampleType {
         switch self {
         case .stepCount: return HKQuantityType.quantityType(forIdentifier: .stepCount)!
         case .heartRate: return HKQuantityType.quantityType(forIdentifier: .heartRate)!
         case .workout: return HKWorkoutType.workoutType()
+        case .iron:
+            return HKQuantityType.quantityType(forIdentifier: .dietaryIron)!
+        case .energyConsumed:
+            return HKQuantityType.quantityType(forIdentifier: .dietaryEnergyConsumed)!
         }
     }
     

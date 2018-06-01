@@ -16,20 +16,20 @@ public struct HeartRateVM {
     }
     
     // Computed from timeIntervals and if One item
-    public var items: [HeartRateItem]!
+    let items: [HeartRateItem]!
 }
 
 extension HeartRateVM {
     
-    var first: HeartRateItem {
+    public var first: HeartRateItem {
         return items.first!
     }
     
-    var last: HeartRateItem {
+    public var last: HeartRateItem {
         return items.last!
     }
     
-    var count: Int {
+    public var count: Int {
         return items.count
     }
     
