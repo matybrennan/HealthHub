@@ -14,6 +14,9 @@ public enum MBReadType { // HKObjectType
     case stepCount
     case heartRate
     case workout
+    case iron
+    case energyConsumed
+    
     
     public var type: HKObjectType {
         switch self {
@@ -23,6 +26,10 @@ public enum MBReadType { // HKObjectType
             return HKQuantityType.quantityType(forIdentifier: .heartRate)!
         case .workout:
             return HKWorkoutType.workoutType()
+        case .iron:
+            return HKQuantityType.quantityType(forIdentifier: .dietaryIron)!
+        case .energyConsumed:
+            return HKQuantityType.quantityType(forIdentifier: .dietaryEnergyConsumed)!
         }
     }
     

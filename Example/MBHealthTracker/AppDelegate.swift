@@ -25,6 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = controller
         window?.makeKeyAndVisible()
 
+        let nService = NutritionService()
+        nService.getNutrition(fromType: nil) { (result) in
+            //
+        }
+        
+        
         return true
     }
     

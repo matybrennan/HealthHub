@@ -25,7 +25,7 @@ extension ViewInteractor: ViewInteractorProtocol {
     }
     
     func configurePermissions() {
-        healthTracker.configuration.requestAuthorization(toShare: [MBShareType.heartRate, .stepCount, .workout],toRead: [MBReadType.heartRate, .stepCount, .workout]) { _ in }
+        healthTracker.configuration.requestAuthorization(toShare: [MBShareType.heartRate, .stepCount, .workout],toRead: [MBReadType.heartRate, .stepCount, .workout, .iron, .energyConsumed]) { _ in }
     }
     
     func runTest() {
