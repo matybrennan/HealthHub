@@ -16,7 +16,7 @@ public class NutritionService {
 
 extension NutritionService: NutritionServiceProtocol {
     
-    public func getNutrition(fromType type: NutritionType, completionHandler: @escaping (AsyncCallResult<NutritionViewModel>) -> Void) throws {
+    public func getNutrition(fromType type: NutritionType, completionHandler: @escaping (AsyncCallResult<Nutrition>) -> Void) throws {
         
         // Confirm that the type and device works
         try isDataStoreAvailable()
@@ -37,10 +37,10 @@ extension NutritionService: NutritionServiceProtocol {
             
             let items = quantitySamples.map {
 
-                NutritionViewModel.NutritionInfo(value: $0.quantity.doubleValue(for: unitToUse.unit), unit: unitToUse.unitStr, startDate: $0.startDate, endDate: $0.endDate)
+                Nutrition.NutritionInfo(value: $0.quantity.doubleValue(for: unitToUse.unit), unit: unitToUse.unitStr, startDate: $0.startDate, endDate: $0.endDate)
             }
             
-            let vm = NutritionViewModel(items: items)
+            let vm = Nutrition(items: items)
             
             completionHandler(AsyncCallResult.success(vm))
         }

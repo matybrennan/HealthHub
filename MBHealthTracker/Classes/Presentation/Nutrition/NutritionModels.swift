@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct NutritionViewModel {
+public struct Nutrition {
     
     public struct NutritionInfo {
         let value: Double

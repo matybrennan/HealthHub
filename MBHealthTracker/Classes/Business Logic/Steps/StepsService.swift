@@ -19,7 +19,7 @@ public class StepsService {
 
 extension StepsService: StepsServiceProtocol {
     
-    public func getSteps(fromStepsType type: StepsType, completionHandler: @escaping (AsyncCallResult<StepsVM>) -> Void) throws {
+    public func getSteps(fromStepsType type: StepsType, completionHandler: @escaping (AsyncCallResult<Steps>) -> Void) throws {
         
         // Confirm that the type and device works
         let steps = try MBHealthParser.unbox(quantityIdentifier: .stepCount)
@@ -108,7 +108,7 @@ extension StepsService: StepsServiceProtocol {
 
 private extension StepsService {
     
-    func configure(query: HKStatisticsCollectionQuery, collectionStats: HKStatisticsCollection?, error: Error?, completionHandler: @escaping (AsyncCallResult<StepsVM>) -> Void) {
+    func configure(query: HKStatisticsCollectionQuery, collectionStats: HKStatisticsCollection?, error: Error?, completionHandler: @escaping (AsyncCallResult<Steps>) -> Void) {
         
         guard error == nil else {
             completionHandler(.failed(error!))
@@ -121,10 +121,10 @@ private extension StepsService {
         }
         
         let items = quantitySamples.map {
-            StepsVM.StepsItem(count: $0.sumQuantity()?.doubleValue(for: HKUnit(from: StepsConfig.stepsCount)))
+            Steps.StepsItem(count: $0.sumQuantity()?.doubleValue(for: HKUnit(from: StepsConfig.stepsCount)))
         }
         
-        let vm = StepsVM(items: items)
+        let vm = Steps(items: items)
         completionHandler(.success(vm))
     }
     

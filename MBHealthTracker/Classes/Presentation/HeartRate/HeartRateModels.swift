@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct HeartRateVM {
+public struct HeartRate {
     
     public struct HeartRateItem {
         let max: Double!
@@ -19,7 +19,7 @@ public struct HeartRateVM {
     let items: [HeartRateItem]!
 }
 
-extension HeartRateVM {
+extension HeartRate {
     
     public var first: HeartRateItem {
         return items.first!

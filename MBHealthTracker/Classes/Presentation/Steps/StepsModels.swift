@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct StepsVM {
+public struct Steps {
     
     public struct StepsItem {
         

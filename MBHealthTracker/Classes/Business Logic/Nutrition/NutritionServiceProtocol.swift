@@ -45,5 +45,5 @@ public enum NutritionType {
 
 public protocol NutritionServiceProtocol {
     
-    func getNutrition(fromType type: NutritionType, completionHandler: @escaping (AsyncCallResult<NutritionViewModel>) -> Void) throws
+    func getNutrition(fromType type: NutritionType, completionHandler: @escaping (AsyncCallResult<Nutrition>) -> Void) throws
 }

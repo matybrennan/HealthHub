@@ -43,6 +43,10 @@ open class MBHealthTracker {
     lazy var privateNutritionService: NutritionServiceProtocol = {
         return NutritionService()
     }()
+    
+    lazy var activeEnergyService: ActiveEnergyServiceProtocol = {
+        return ActiveEnergyService()
+    }()
 }
 
 extension MBHealthTracker: MBHealthTrackerProtocol {
@@ -75,6 +79,10 @@ extension MBHealthTracker: MBHealthTrackerProtocol {
     /// handles gathering logic about any nutrition info from healthstore
     public var nutritionService: NutritionServiceProtocol {
         return privateNutritionService
+    }
+    
+    public var activeEnergy: ActiveEnergyServiceProtocol {
+        return activeEnergyService
     }
     
 }

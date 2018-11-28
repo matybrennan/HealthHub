@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-public struct WorkoutVM {
+public struct Workout {
     
     public struct Item {
         

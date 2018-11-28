@@ -11,9 +11,9 @@ import MBHealthTracker
 
 protocol ViewInteractorProtocol {
     
-    func getHeartRate(completionHandler: @escaping (AsyncCallResult<HeartRateVM>) -> Void) throws
+    func getHeartRate(completionHandler: @escaping (AsyncCallResult<HeartRate>) -> Void) throws
     func configurePermissions()
-    
+    func getActivEenergy(completionHandler: @escaping (AsyncCallResult<ActiveEnergy>) -> Void) throws
     func runTest()
 }
 
@@ -27,6 +27,19 @@ class ViewController: UIViewController {
         
         interactor.configurePermissions()
         interactor.runTest()
+        
+        do {
+            try interactor.getActivEenergy(completionHandler: { [unowned self] result in
+                switch result {
+                case let .success(model):
+                    print("Success: \(model)")
+                case let .failed(error):
+                    print("Error: \(error.localizedDescription)")
+                }
+            })
+        } catch {
+            print("error: \(error.localizedDescription)")
+        }
         
         do {
             try interactor.getHeartRate { result in

@@ -25,7 +25,7 @@ public enum MBObjectType: SharableType, ReadableType {
     case heartRate
     case workout
     case iron
-    case energyConsumed
+    case activeEnergy
     
     
     public var sharable: HKSampleType {
@@ -34,7 +34,7 @@ public enum MBObjectType: SharableType, ReadableType {
         case .heartRate: return HKQuantityType.quantityType(forIdentifier: .heartRate)!
         case .workout: return HKWorkoutType.workoutType()
         case .iron: return HKQuantityType.quantityType(forIdentifier: .dietaryIron)!
-        case .energyConsumed: return HKQuantityType.quantityType(forIdentifier: .dietaryEnergyConsumed)!
+        case .activeEnergy: return HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
         }
     }
     
@@ -44,7 +44,7 @@ public enum MBObjectType: SharableType, ReadableType {
         case .heartRate: return HKQuantityType.quantityType(forIdentifier: .heartRate)!
         case .workout: return HKWorkoutType.workoutType()
         case .iron: return HKQuantityType.quantityType(forIdentifier: .dietaryIron)!
-        case .energyConsumed: return HKQuantityType.quantityType(forIdentifier: .dietaryEnergyConsumed)!
+        case .activeEnergy: return HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
         }
     }
 }
