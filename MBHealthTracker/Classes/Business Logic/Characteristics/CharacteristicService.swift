@@ -29,8 +29,13 @@ extension CharacteristicService: CharacteristicServiceProtocol {
     }
     
     public var bloodType: String? {
-        // TODO
-        return nil
+        guard let bloodType = try? healthStore.bloodType().bloodType.rawValue else {
+            return nil
+        }
+        switch bloodType {
+        case 0: return "Not Set"
+        default: return "finish"
+        }
     }
     
     public var dateOfBirth: DateComponents? {
@@ -38,8 +43,14 @@ extension CharacteristicService: CharacteristicServiceProtocol {
     }
     
     public var skinType: String? {
-        // TODO
-        return nil
+        guard let skin = try? healthStore.fitzpatrickSkinType().skinType.rawValue else {
+            return nil
+        }
+        
+        switch skin {
+        case 0: return "Not Set"
+        default: return "finish"
+        }
     }
     
     public var isWheelChairUser: Bool? {
