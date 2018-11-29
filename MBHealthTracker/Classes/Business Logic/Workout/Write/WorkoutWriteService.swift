@@ -18,7 +18,7 @@ extension WorkoutWriteService: WorkoutWriteServiceProtocol {
     
     public func saveWorkout(workout: Workout.Item, extra: [String : Any]?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws {
         
-        try checkAuthorizationStatusForSharing(for: HKWorkoutType.workoutType())
+        try checkSharingAuthorizationStatus(for: HKWorkoutType.workoutType())
         try isDataStoreAvailable()
         
         let energyBurned = HKQuantity(unit: HKUnit.calorie(), doubleValue: workout.energyBurned)

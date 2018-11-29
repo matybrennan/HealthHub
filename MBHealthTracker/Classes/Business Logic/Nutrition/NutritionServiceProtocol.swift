@@ -32,7 +32,7 @@ public enum NutritionType {
         switch self {
         case .energyConsumed: return HKQuantityType.quantityType(forIdentifier: .dietaryEnergyConsumed)!
         case .carbohydrates: return HKQuantityType.quantityType(forIdentifier: .dietaryCarbohydrates)!
-        
+
         case .vitaminA: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminA)!
         
         case .calcium: return HKQuantityType.quantityType(forIdentifier: .dietaryCalcium)!

@@ -12,16 +12,29 @@ public struct Workout {
     
     public struct Item {
         
-        let duration: Double // secs
-        let energyBurned: Double // cals/kilocals
-        let distance: Double // mi/km
-        let startDate: Date
-        let endDate: Date
+        public let duration: Double // secs
+        public let energyBurned: Double // cals/kilocals
+        public let distance: Double // mi/km
+        public let startDate: Date
+        public let endDate: Date
         
         // TODO: Create some helper to get name of sport/activityType used as string and not healthKit type
         // let activityName: String
-        let activityType: HKWorkoutActivityType
+        public let activityType: HKWorkoutActivityType
     }
     
-    let items: [Item]!
+    public let items: [Item]!
+}
+
+extension Workout.Item {
+    
+    public init(duration: Double, energyBurned: Double, distance: Double, startDate: Date, activityType: HKWorkoutActivityType) {
+        self.duration = duration
+        self.energyBurned = energyBurned
+        self.distance = distance
+        self.startDate = startDate
+        self.endDate = Date()
+        self.activityType = activityType
+    }
+    
 }

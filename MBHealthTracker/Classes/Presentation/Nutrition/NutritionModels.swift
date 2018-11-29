@@ -10,12 +10,12 @@ import Foundation
 public struct Nutrition {
     
     public struct NutritionInfo {
-        let value: Double
-        let unit: String
-        let startDate: Date
-        let endDate: Date
+        public let value: Double
+        public let unit: String
+        public let startDate: Date
+        public let endDate: Date
     }
     
-    let items: [NutritionInfo]
+    public let items: [NutritionInfo]
     
 }

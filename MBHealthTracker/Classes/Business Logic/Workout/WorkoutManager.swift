@@ -10,8 +10,8 @@ import HealthKit
 
 public class WorkoutManager {
     
-    var workoutReadService: WorkoutReadServiceProtocol
-    var workoutWriteService: WorkoutWriteServiceProtocol
+    private let workoutReadService: WorkoutReadServiceProtocol
+    private let workoutWriteService: WorkoutWriteServiceProtocol
     
     init(readService: WorkoutReadServiceProtocol, writeService: WorkoutWriteServiceProtocol) {
         workoutReadService = readService

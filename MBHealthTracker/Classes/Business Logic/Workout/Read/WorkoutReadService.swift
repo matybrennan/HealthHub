@@ -24,31 +24,20 @@ extension WorkoutReadService: WorkoutReadServiceProtocol {
         let workout = HKWorkoutType.workoutType()
         try isDataStoreAvailable()
         
-        var query: HKQuery!
+        var pred: NSPredicate?
         
         switch type {
         case .today:
-            
-            let predicate = try NSPredicate.today()
-            
-            query = HKSampleQuery(sampleType: workout, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (query, samples, error) in
-                self.configure(query: query, samples: samples, error: error, completionHandler: completionHandler)
-            })
-            
+            pred = try NSPredicate.today()
         case .thisWeek:
-            
-            let predicate = try NSPredicate.thisWeek()
-            query = HKSampleQuery(sampleType: workout, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (query, samples, error) in
-                self.configure(query: query, samples: samples, error: error, completionHandler: completionHandler)
-            })
-            
-            
+            pred = try NSPredicate.thisWeek()
         case .all:
-            
-            query = HKSampleQuery(sampleType: workout, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (query, samples, error) in
-                self.configure(query: query, samples: samples, error: error, completionHandler: completionHandler)
-            })
+            pred = nil
         }
+        
+        let query = HKSampleQuery(sampleType: workout, predicate: pred, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (query, samples, error) in
+            self.configure(query: query, samples: samples, error: error, completionHandler: completionHandler)
+        })
         
         healthStore.execute(query)
     }

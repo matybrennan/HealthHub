@@ -22,7 +22,7 @@ extension StepsService: StepsServiceProtocol {
     public func getSteps(fromStepsType type: StepsType, completionHandler: @escaping (AsyncCallResult<Steps>) -> Void) throws {
         
         // Confirm that the type and device works
-        let steps = try MBHealthParser.unbox(quantityIdentifier: .stepCount)
+        let stepCountType = try MBHealthParser.unbox(quantityIdentifier: .stepCount)
         try isDataStoreAvailable()
         
         var query: HKQuery!
@@ -41,7 +41,7 @@ extension StepsService: StepsServiceProtocol {
             
             let predicate = HKQuery.predicateForSamples(withStart: oneHourAgo, end: now, options: [])
             
-            query = HKStatisticsCollectionQuery(quantityType: steps, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: now, intervalComponents: component)
+            query = HKStatisticsCollectionQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: now, intervalComponents: component)
             
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [unowned self] query, collection, error in
                 
@@ -58,7 +58,7 @@ extension StepsService: StepsServiceProtocol {
             var component = DateComponents()
             component.hour = timeInterval ?? 1
             
-            query = HKStatisticsCollectionQuery(quantityType: steps, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: Date().startOfDay, intervalComponents: component)
+            query = HKStatisticsCollectionQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: Date().startOfDay, intervalComponents: component)
             
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [unowned self]
                 query, collection, error in
@@ -76,7 +76,7 @@ extension StepsService: StepsServiceProtocol {
             var component = DateComponents()
             component.hour = timeInterval ?? 1
             
-            query = HKStatisticsCollectionQuery(quantityType: steps, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: Date().startOfWeek!, intervalComponents: component)
+            query = HKStatisticsCollectionQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: Date().startOfWeek!, intervalComponents: component)
             
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [unowned self]
                 query, collection, error in
@@ -95,7 +95,7 @@ extension StepsService: StepsServiceProtocol {
             var component = DateComponents()
             component.hour = timeInterval
             
-            query = HKStatisticsCollectionQuery(quantityType: steps, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: start, intervalComponents: component)
+            query = HKStatisticsCollectionQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: start, intervalComponents: component)
             
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [unowned self]
                 query, collection, error in

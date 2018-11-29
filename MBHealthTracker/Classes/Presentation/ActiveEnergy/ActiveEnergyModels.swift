@@ -8,5 +8,5 @@
 import Foundation
 
 public struct ActiveEnergy {
-    let calories: Double
+    public let calories: Double
 }

@@ -81,6 +81,7 @@ extension MBHealthTracker: MBHealthTrackerProtocol {
         return privateNutritionService
     }
     
+    /// handles gathering logic about active energy burned from healthstore
     public var activeEnergy: ActiveEnergyServiceProtocol {
         return activeEnergyService
     }

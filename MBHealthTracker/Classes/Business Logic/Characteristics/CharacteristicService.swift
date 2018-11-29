@@ -14,7 +14,9 @@ public class CharacteristicService {
     
 }
 
+// MARK: - CharacteristicServiceProtocol
 extension CharacteristicService: CharacteristicServiceProtocol {
+    
     public var biologicalSex: String? {
         guard let sexCase: Int = try? healthStore.biologicalSex().biologicalSex.rawValue else {
             return nil
@@ -32,9 +34,18 @@ extension CharacteristicService: CharacteristicServiceProtocol {
         guard let bloodType = try? healthStore.bloodType().bloodType.rawValue else {
             return nil
         }
+        
         switch bloodType {
         case 0: return "Not Set"
-        default: return "finish"
+        case 1: return "aPositive"
+        case 2: return "aNegative"
+        case 3: return "bPositive"
+        case 4: return "bNegative"
+        case 5: return "abPositive"
+        case 6: return "abNegative"
+        case 7: return "oPositive"
+        case 8: return "oNegative"
+        default: return "Not Set"
         }
     }
     
@@ -49,7 +60,13 @@ extension CharacteristicService: CharacteristicServiceProtocol {
         
         switch skin {
         case 0: return "Not Set"
-        default: return "finish"
+        case 1: return "Pale white skin, blue/green eyes, blond/red hair"
+        case 2: return "Fair skin, blue eyes"
+        case 3: return "Darker white skin"
+        case 4: return "Light brown skin"
+        case 5: return "Brown skin"
+        case 6: return "Dark brown or black skin"
+        default: return "Not Set"
         }
     }
     

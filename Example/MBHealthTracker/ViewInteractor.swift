@@ -8,6 +8,7 @@
 
 import Foundation
 import MBHealthTracker
+import HealthKit
 
 class ViewInteractor {
     
@@ -41,5 +42,15 @@ extension ViewInteractor: ViewInteractorProtocol {
         } catch {
             print("Uable to get: \(error.localizedDescription)")
         }
+    }
+    
+    func getWorkouts(completionHandler: @escaping (AsyncCallResult<Workout>) -> Void) throws {
+        try healthTracker.workout.getWorkouts(fromWorkoutType: .all, completionHandler: completionHandler)
+    }
+    
+    func saveWorkout(completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws {
+        
+        let item = Workout.Item(duration: 10.0, energyBurned: 20.0, distance: 10.0, startDate: Date(), activityType: HKWorkoutActivityType.archery)
+        try healthTracker.workout.saveWorkout(workout: item, extra: nil, completionHandler: completionHandler)
     }
 }
