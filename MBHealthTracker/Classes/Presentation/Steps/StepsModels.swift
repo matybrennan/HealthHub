@@ -7,13 +7,13 @@
 
 import Foundation
 
-public struct StepsVM {
+public struct Steps {
     
     public struct StepsItem {
         
-        let count: Double!
+        public let count: Double!
     }
     
     // can get one item from hour or mutliple from timeIntervals
-    var items: [StepsItem]!
+    public let items: [StepsItem]!
 }

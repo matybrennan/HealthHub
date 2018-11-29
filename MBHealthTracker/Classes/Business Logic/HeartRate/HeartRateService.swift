@@ -13,16 +13,15 @@ public class HeartRateService {
     struct Unit {
         static let heartRateCountMin = "count/min"
     }
-    
 }
 
 extension HeartRateService: HeartRateServiceProtocol {
     
-    public func getHeartRate(fromHeartRateType type: HeartRateType, completionHandler: @escaping (AsyncCallResult<HeartRateVM>) -> Void) throws {
+    public func getHeartRate(fromHeartRateType type: HeartRateType, completionHandler: @escaping (AsyncCallResult<HeartRate>) -> Void) throws {
         
         // Confirm that the type and device works
         let heartRate = try MBHealthParser.unbox(quantityIdentifier: .heartRate)
-        try authorizationStatusSuccessful(for: heartRate)
+        try isDataStoreAvailable()
         
         var query: HKQuery!
         
@@ -41,12 +40,12 @@ extension HeartRateService: HeartRateServiceProtocol {
                 }
                 
                 guard let quantitySample = samples?.first as? HKQuantitySample else {
-                    completionHandler(AsyncCallResult.failed(HeartRateParsingError.unableToParse("current heartRate or no heart rate samples")))
+                    completionHandler(AsyncCallResult.failed(MBAsyncParsingError.unableToParse("current heartRate or no heart rate samples")))
                     return
                 }
                 let hr = quantitySample.quantity.doubleValue(for: HKUnit(from: Unit.heartRateCountMin))
-                let item = HeartRateVM.HeartRateItem(max: hr, min: hr, average: hr)
-                let vm = HeartRateVM(items: [item])
+                let item = HeartRate.HeartRateItem(max: hr, min: hr, average: hr)
+                let vm = HeartRate(items: [item])
                 completionHandler(.success(vm))
             })
             
@@ -106,24 +105,24 @@ extension HeartRateService: HeartRateServiceProtocol {
 
 private extension HeartRateService {
     
-    func configure(query: HKStatisticsCollectionQuery, collection: HKStatisticsCollection?, error: Error?, completionHandler: @escaping (AsyncCallResult<HeartRateVM>) -> Void) {
+    func configure(query: HKStatisticsCollectionQuery, collection: HKStatisticsCollection?, error: Error?, completionHandler: @escaping (AsyncCallResult<HeartRate>) -> Void) {
         guard error == nil else {
             completionHandler(.failed(error!))
             return
         }
         
         guard let quantitySamples = collection?.statistics() else {
-            completionHandler(.failed(HeartRateParsingError.unableToParse("HeartRate log")))
+            completionHandler(.failed(MBAsyncParsingError.unableToParse("HeartRate log")))
             return
         }
         
         let items = quantitySamples.map {
-            HeartRateVM.HeartRateItem(max: $0.maximumQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)),
+            HeartRate.HeartRateItem(max: $0.maximumQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)),
                                       min: $0.minimumQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)),
                                       average: $0.averageQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)))
         }
         
-        let vm = HeartRateVM(items: items)
+        let vm = HeartRate(items: items)
         completionHandler(.success(vm))
     }
     

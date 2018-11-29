@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>Update health data</string>
+	<string>This app wants to write your info to save your progress</string>
 	<key>NSHealthShareUsageDescription</key>
-	<string>Share health data</string>
+	<string>This app wants to read data to track your progress</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

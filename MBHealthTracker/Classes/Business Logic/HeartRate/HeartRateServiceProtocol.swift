@@ -7,16 +7,6 @@
 
 import Foundation
 
-public enum HeartRateParsingError: LocalizedError {
-    case unableToParse(String)
-    
-    public var errorDescription: String? {
-        switch self {
-        case let .unableToParse(value): return "Unable to parse: \(value)"
-        }
-    }
-}
-
 public enum HeartRateType {
     
     case current
@@ -34,5 +24,5 @@ public enum HeartRateType {
 
 public protocol HeartRateServiceProtocol {
     
-    func getHeartRate(fromHeartRateType type: HeartRateType, completionHandler: @escaping (AsyncCallResult<HeartRateVM>) -> Void) throws
+    func getHeartRate(fromHeartRateType type: HeartRateType, completionHandler: @escaping (AsyncCallResult<HeartRate>) -> Void) throws
 }

@@ -10,8 +10,8 @@ import HealthKit
 
 public class WorkoutManager {
     
-    var workoutReadService: WorkoutReadServiceProtocol
-    var workoutWriteService: WorkoutWriteServiceProtocol
+    private let workoutReadService: WorkoutReadServiceProtocol
+    private let workoutWriteService: WorkoutWriteServiceProtocol
     
     init(readService: WorkoutReadServiceProtocol, writeService: WorkoutWriteServiceProtocol) {
         workoutReadService = readService
@@ -23,7 +23,7 @@ extension WorkoutManager: WorkoutManagerProtocol {
     
     // MARK: Read Service
     
-    public func getWorkouts(fromWorkoutType type: WorkoutType, completionHandler: @escaping (AsyncCallResult<WorkoutVM>) -> Void) throws {
+    public func getWorkouts(fromWorkoutType type: WorkoutType, completionHandler: @escaping (AsyncCallResult<Workout>) -> Void) throws {
         try workoutReadService.getWorkouts(fromWorkoutType: type, completionHandler: completionHandler)
     }
     
@@ -31,7 +31,7 @@ extension WorkoutManager: WorkoutManagerProtocol {
     
     // MARK: Write Service
     
-    public func saveWorkout(workout: WorkoutVM.Item, extra: [String : Any]?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) {
-        workoutWriteService.saveWorkout(workout: workout, extra: extra, completionHandler: completionHandler)
+    public func saveWorkout(workout: Workout.Item, extra: [String : Any]?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws {
+        try workoutWriteService.saveWorkout(workout: workout, extra: extra, completionHandler: completionHandler)
     }
 }

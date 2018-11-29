@@ -19,11 +19,11 @@ public class StepsService {
 
 extension StepsService: StepsServiceProtocol {
     
-    public func getSteps(fromStepsType type: StepsType, completionHandler: @escaping (AsyncCallResult<StepsVM>) -> Void) throws {
+    public func getSteps(fromStepsType type: StepsType, completionHandler: @escaping (AsyncCallResult<Steps>) -> Void) throws {
         
         // Confirm that the type and device works
-        let steps = try MBHealthParser.unbox(quantityIdentifier: .stepCount)
-        try authorizationStatusSuccessful(for: steps)
+        let stepCountType = try MBHealthParser.unbox(quantityIdentifier: .stepCount)
+        try isDataStoreAvailable()
         
         var query: HKQuery!
         
@@ -41,7 +41,7 @@ extension StepsService: StepsServiceProtocol {
             
             let predicate = HKQuery.predicateForSamples(withStart: oneHourAgo, end: now, options: [])
             
-            query = HKStatisticsCollectionQuery(quantityType: steps, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: now, intervalComponents: component)
+            query = HKStatisticsCollectionQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: now, intervalComponents: component)
             
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [unowned self] query, collection, error in
                 
@@ -58,7 +58,7 @@ extension StepsService: StepsServiceProtocol {
             var component = DateComponents()
             component.hour = timeInterval ?? 1
             
-            query = HKStatisticsCollectionQuery(quantityType: steps, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: Date().startOfDay, intervalComponents: component)
+            query = HKStatisticsCollectionQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: Date().startOfDay, intervalComponents: component)
             
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [unowned self]
                 query, collection, error in
@@ -76,7 +76,7 @@ extension StepsService: StepsServiceProtocol {
             var component = DateComponents()
             component.hour = timeInterval ?? 1
             
-            query = HKStatisticsCollectionQuery(quantityType: steps, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: Date().startOfWeek!, intervalComponents: component)
+            query = HKStatisticsCollectionQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: Date().startOfWeek!, intervalComponents: component)
             
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [unowned self]
                 query, collection, error in
@@ -95,7 +95,7 @@ extension StepsService: StepsServiceProtocol {
             var component = DateComponents()
             component.hour = timeInterval
             
-            query = HKStatisticsCollectionQuery(quantityType: steps, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: start, intervalComponents: component)
+            query = HKStatisticsCollectionQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: start, intervalComponents: component)
             
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [unowned self]
                 query, collection, error in
@@ -108,7 +108,7 @@ extension StepsService: StepsServiceProtocol {
 
 private extension StepsService {
     
-    func configure(query: HKStatisticsCollectionQuery, collectionStats: HKStatisticsCollection?, error: Error?, completionHandler: @escaping (AsyncCallResult<StepsVM>) -> Void) {
+    func configure(query: HKStatisticsCollectionQuery, collectionStats: HKStatisticsCollection?, error: Error?, completionHandler: @escaping (AsyncCallResult<Steps>) -> Void) {
         
         guard error == nil else {
             completionHandler(.failed(error!))
@@ -116,15 +116,15 @@ private extension StepsService {
         }
         
         guard let quantitySamples = collectionStats?.statistics() else {
-            completionHandler(.failed(StepsParsingError.unableToParse("Steps log")))
+            completionHandler(.failed(MBAsyncParsingError.unableToParse("Steps log")))
             return
         }
         
         let items = quantitySamples.map {
-            StepsVM.StepsItem(count: $0.sumQuantity()?.doubleValue(for: HKUnit(from: StepsConfig.stepsCount)))
+            Steps.StepsItem(count: $0.sumQuantity()?.doubleValue(for: HKUnit(from: StepsConfig.stepsCount)))
         }
         
-        let vm = StepsVM(items: items)
+        let vm = Steps(items: items)
         completionHandler(.success(vm))
     }
     

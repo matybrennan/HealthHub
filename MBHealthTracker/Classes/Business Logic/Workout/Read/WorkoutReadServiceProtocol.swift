@@ -8,16 +8,6 @@
 import Foundation
 import HealthKit
 
-public enum WorkoutReadParsingError: LocalizedError {
-    case unableToParse(String)
-    
-    public var errorDescription: String? {
-        switch self {
-        case let .unableToParse(value): return "Unable to parse: \(value)"
-        }
-    }
-}
-
 public enum WorkoutType {
     
     case today
@@ -27,5 +17,5 @@ public enum WorkoutType {
 
 public protocol WorkoutReadServiceProtocol {
     
-    func getWorkouts(fromWorkoutType type: WorkoutType, completionHandler: @escaping (AsyncCallResult<WorkoutVM>) -> Void) throws
+    func getWorkouts(fromWorkoutType type: WorkoutType, completionHandler: @escaping (AsyncCallResult<Workout>) -> Void) throws
 }

@@ -11,10 +11,12 @@ import MBHealthTracker
 
 protocol ViewInteractorProtocol {
     
-    func getHeartRate(completionHandler: @escaping (AsyncCallResult<HeartRateVM>) -> Void) throws
+    func getHeartRate(completionHandler: @escaping (AsyncCallResult<HeartRate>) -> Void) throws
     func configurePermissions()
-    
+    func getActivEenergy(completionHandler: @escaping (AsyncCallResult<ActiveEnergy>) -> Void) throws
     func runTest()
+    func getWorkouts(completionHandler: @escaping (AsyncCallResult<Workout>) -> Void) throws
+    func saveWorkout(completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws
 }
 
 class ViewController: UIViewController {
@@ -29,12 +31,51 @@ class ViewController: UIViewController {
         interactor.runTest()
         
         do {
+            try interactor.saveWorkout(completionHandler: { (result) in
+                switch result {
+                case let .success(model):
+                    print("Success: \(model)")
+                case let .failed(error):
+                    print("Error: \(error.localizedDescription) for save workout")
+                }
+            })
+        } catch {
+            print("catch error: \(error.localizedDescription)")
+        }
+        
+        do {
+            try interactor.getWorkouts(completionHandler: { (result) in
+                switch result {
+                case let .success(model):
+                    print("Success: \(model)")
+                case let .failed(error):
+                    print("Error: \(error.localizedDescription) for workouts")
+                }
+            })
+        } catch {
+            print("catch error: \(error.localizedDescription)")
+        }
+        
+        do {
+            try interactor.getActivEenergy(completionHandler: { [unowned self] result in
+                switch result {
+                case let .success(model):
+                    print("Success: \(model)")
+                case let .failed(error):
+                    print("Error: \(error.localizedDescription) for active energy")
+                }
+            })
+        } catch {
+            print("catch error: \(error.localizedDescription)")
+        }
+        
+        do {
             try interactor.getHeartRate { result in
                 switch result {
-                case let .success(vm):
-                    print("Success: \(vm)")
+                case let .success(vm): break
+                    //print("Success: \(vm)")
                 case let .failed(error):
-                    print("Error: \(error.localizedDescription)")
+                    print("Error: \(error.localizedDescription) for heart rate")
                 }
             }
         } catch {
