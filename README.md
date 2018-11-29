@@ -25,9 +25,9 @@ Add health kit in capabilities through project in "Capabilities"
 Add below code to your info.plist
 ```
 <key>NSHealthShareUsageDescription</key>
-<string>Health Share</string>
+<string>Health want to read your health data</string>
 <key>NSHealthUpdateUsageDescription</key>
-<string>Health Writing</string>
+<string>Health wants to write your progress to health store</string>
 ```
 
 
