@@ -17,6 +17,7 @@ protocol ViewInteractorProtocol {
     func runTest()
     func getWorkouts(completionHandler: @escaping (AsyncCallResult<Workout>) -> Void) throws
     func saveWorkout(completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws
+    func saveNutrition(completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws
     func getNutrition(completionHandler: @escaping (AsyncCallResult<Nutrition>) -> Void) throws
 }
 
@@ -34,7 +35,7 @@ class ViewController: UIViewController {
         print("---------------------------------")
         
         do {
-            try interactor.getNutrition(completionHandler: { result in
+            try interactor.saveNutrition(completionHandler: { result in
                 switch result {
                 case let .success(model):
                     print("Success: \(model)")

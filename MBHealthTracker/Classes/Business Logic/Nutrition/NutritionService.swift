@@ -36,7 +36,7 @@ extension NutritionService: NutritionServiceProtocol {
             
             let items = quantitySamples.map {
 
-                Nutrition.Info(value: $0.quantity.doubleValue(for: unitToUse.unit), unit: unitToUse.unitStr, type: type.value, startDate: $0.startDate, endDate: $0.endDate)
+                Nutrition.Info(value: $0.quantity.doubleValue(for: unitToUse.unit), unit: unitToUse.unitStr, startDate: $0.startDate, endDate: $0.endDate, type: type.value)
             }
             
             let vm = Nutrition(items: items)
