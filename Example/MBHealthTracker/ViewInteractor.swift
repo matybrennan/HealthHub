@@ -31,7 +31,7 @@ extension ViewInteractor: ViewInteractorProtocol {
     }
     
     func configurePermissions() {
-        healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.heartRate, MBObjectType.stepCount, MBObjectType.workout],toRead: [MBObjectType.heartRate, MBObjectType.stepCount, MBObjectType.workout, MBObjectType.iron, MBObjectType.activeEnergy]) { _ in }
+        healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.heartRate, MBObjectType.stepCount, MBObjectType.workout],toRead: [MBObjectType.heartRate, MBObjectType.stepCount, MBObjectType.workout, MBObjectType.iron, MBObjectType.activeEnergy, MBObjectType.energyConsumed, MBObjectType.carbohydrates, MBObjectType.fiber, MBObjectType.sugar, MBObjectType.fatTotal, MBObjectType.fatMono, MBObjectType.fatPoly, MBObjectType.fatSaturated, MBObjectType.cholesterol, MBObjectType.protein, MBObjectType.vitaminA, MBObjectType.thiamin, MBObjectType.riboflavin, MBObjectType.niacin, MBObjectType.pathothenicAcid, MBObjectType.vitaminB6, MBObjectType.biotin, MBObjectType.vitaminB12, MBObjectType.vitaminC, MBObjectType.vitaminD, MBObjectType.vitaminE, MBObjectType.vitaminK, MBObjectType.folate, MBObjectType.water, MBObjectType.caffeine]) { _ in }
     }
     
     func runTest() {
@@ -52,5 +52,9 @@ extension ViewInteractor: ViewInteractorProtocol {
         
         let item = Workout.Item(duration: 10.0, energyBurned: 20.0, distance: 10.0, startDate: Date(), activityType: HKWorkoutActivityType.archery)
         try healthTracker.workout.saveWorkout(workout: item, extra: nil, completionHandler: completionHandler)
+    }
+    
+    func getNutrition(completionHandler: @escaping (AsyncCallResult<Nutrition>) -> Void) throws {
+        try healthTracker.nutritionService.getNutrition(fromType: .caffeine, completionHandler: completionHandler)
     }
 }
