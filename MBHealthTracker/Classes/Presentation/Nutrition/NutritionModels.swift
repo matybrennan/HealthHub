@@ -6,16 +6,17 @@
 //
 
 import Foundation
+import HealthKit
 
 public struct Nutrition {
     
-    public struct NutritionInfo {
+    public struct Info {
         public let value: Double
         public let unit: String
+        public let type: HKQuantityType
         public let startDate: Date
         public let endDate: Date
     }
     
-    public let items: [NutritionInfo]
-    
+    public let items: [Info]
 }

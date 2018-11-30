@@ -36,7 +36,7 @@ extension NutritionService: NutritionServiceProtocol {
             
             let items = quantitySamples.map {
 
-                Nutrition.NutritionInfo(value: $0.quantity.doubleValue(for: unitToUse.unit), unit: unitToUse.unitStr, startDate: $0.startDate, endDate: $0.endDate)
+                Nutrition.Info(value: $0.quantity.doubleValue(for: unitToUse.unit), unit: unitToUse.unitStr, type: type.value, startDate: $0.startDate, endDate: $0.endDate)
             }
             
             let vm = Nutrition(items: items)
@@ -44,6 +44,23 @@ extension NutritionService: NutritionServiceProtocol {
             completionHandler(AsyncCallResult.success(vm))
         }
         healthStore.execute(query)
+    }
+    
+    public func save(nutrition: Nutrition.Info, extra: [String : Any]?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws {
+        
+        try checkSharingAuthorizationStatus(for: nutrition.type)
+        try isDataStoreAvailable()
+        
+        let quantity = HKQuantity(unit: HKUnit(from: nutrition.unit), doubleValue: nutrition.value)
+        let nutritionObj = HKQuantitySample.init(type: nutrition.type, quantity: quantity, start: nutrition.startDate, end: nutrition.endDate, metadata: extra)
+        
+        healthStore.save(nutritionObj) { (status, error) in
+            if let error = error {
+                completionHandler(.failed(error))
+            } else {
+                completionHandler(.success(status))
+            }
+        }
     }
 }
 

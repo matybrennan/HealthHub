@@ -127,4 +127,5 @@ public enum NutritionType {
 public protocol NutritionServiceProtocol {
     
     func getNutrition(fromType type: NutritionType, completionHandler: @escaping (AsyncCallResult<Nutrition>) -> Void) throws
+    func save(nutrition: Nutrition.Info, extra: [String : Any]?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws
 }
