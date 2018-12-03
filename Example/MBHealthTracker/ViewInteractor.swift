@@ -21,12 +21,12 @@ class ViewInteractor {
 
 extension ViewInteractor: ViewInteractorProtocol {
     
-    func getActivEenergy(completionHandler: @escaping (AsyncCallResult<ActiveEnergy>) -> Void) throws {
+    func getActivEenergy(completionHandler: @escaping (MBAsyncCallResult<ActiveEnergy>) -> Void) throws {
         try healthTracker.activeEnergy.getActiveEnergy(from: .today, completionHandler: completionHandler)
     }
     
     
-    func getHeartRate(completionHandler: @escaping (AsyncCallResult<HeartRate>) -> Void) throws {
+    func getHeartRate(completionHandler: @escaping (MBAsyncCallResult<HeartRate>) -> Void) throws {
         try healthTracker.heartRate.getHeartRate(fromHeartRateType: .all(TimeInterval: nil), completionHandler: completionHandler)
     }
     
@@ -47,21 +47,21 @@ extension ViewInteractor: ViewInteractorProtocol {
         }
     }
     
-    func getWorkouts(completionHandler: @escaping (AsyncCallResult<Workout>) -> Void) throws {
+    func getWorkouts(completionHandler: @escaping (MBAsyncCallResult<Workout>) -> Void) throws {
         try healthTracker.workout.getWorkouts(fromWorkoutType: .all, completionHandler: completionHandler)
     }
     
-    func saveWorkout(completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws {
+    func saveWorkout(completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws {
         let item = Workout.Item(duration: 10.0, energyBurned: 20.0, distance: 10.0, startDate: Date(timeIntervalSinceNow: -100), activityType: HKWorkoutActivityType.archery)
         try healthTracker.workout.saveWorkout(workout: item, extra: nil, completionHandler: completionHandler)
     }
     
-    func saveSleep(completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws {
+    func saveSleep(completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws {
         let sleepInfo = Sleep.Info.init(style: MBSleepStyle.awake, startDate: Date(), type: MBObjectType.sleep.sharable as! HKCategoryType)
         try healthTracker.sleep.save(sleep: sleepInfo, extra: nil, completionHandler: completionHandler)
     }
     
-    func getSleep(completionHandler: @escaping (AsyncCallResult<Sleep>) -> Void) throws {
+    func getSleep(completionHandler: @escaping (MBAsyncCallResult<Sleep>) -> Void) throws {
         try healthTracker.sleep.getSleep(completionHandler: completionHandler)
     }
 }

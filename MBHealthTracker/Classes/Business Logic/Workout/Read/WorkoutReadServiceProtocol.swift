@@ -17,5 +17,5 @@ public enum WorkoutType {
 
 public protocol WorkoutReadServiceProtocol {
     
-    func getWorkouts(fromWorkoutType type: WorkoutType, completionHandler: @escaping (AsyncCallResult<Workout>) -> Void) throws
+    func getWorkouts(fromWorkoutType type: WorkoutType, completionHandler: @escaping (MBAsyncCallResult<Workout>) -> Void) throws
 }

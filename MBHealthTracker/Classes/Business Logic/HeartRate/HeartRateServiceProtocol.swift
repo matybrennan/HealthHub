@@ -24,5 +24,5 @@ public enum HeartRateType {
 
 public protocol HeartRateServiceProtocol {
     
-    func getHeartRate(fromHeartRateType type: HeartRateType, completionHandler: @escaping (AsyncCallResult<HeartRate>) -> Void) throws
+    func getHeartRate(fromHeartRateType type: HeartRateType, completionHandler: @escaping (MBAsyncCallResult<HeartRate>) -> Void) throws
 }

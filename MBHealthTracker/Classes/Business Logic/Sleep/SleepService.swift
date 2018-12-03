@@ -16,7 +16,7 @@ public class SleepService {
 // MARK: - SleepServiceProtocol
 extension SleepService: SleepServiceProtocol {
     
-    public func getSleep(completionHandler: @escaping (AsyncCallResult<Sleep>) -> Void) throws {
+    public func getSleep(completionHandler: @escaping (MBAsyncCallResult<Sleep>) -> Void) throws {
         
         // Confirm that the type and device works
         try isDataStoreAvailable()
@@ -43,13 +43,13 @@ extension SleepService: SleepServiceProtocol {
             
             let vm = Sleep(items: items)
             
-            completionHandler(AsyncCallResult.success(vm))
+            completionHandler(MBAsyncCallResult.success(vm))
         }
         
         healthStore.execute(query)
     }
     
-    public func save(sleep: Sleep.Info, extra: [String : Any]?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws {
+    public func save(sleep: Sleep.Info, extra: [String : Any]?, completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws {
         
         try checkSharingAuthorizationStatus(for: sleep.type)
         try isDataStoreAvailable()

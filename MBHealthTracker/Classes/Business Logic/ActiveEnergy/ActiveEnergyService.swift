@@ -16,7 +16,7 @@ class ActiveEnergyService {
 // MARK: - ActiveEnergyServiceProtocol
 extension ActiveEnergyService: ActiveEnergyServiceProtocol {
     
-    func getActiveEnergy(from type: ActiveEnergyType, completionHandler: @escaping (AsyncCallResult<ActiveEnergy>) -> Void) throws {
+    func getActiveEnergy(from type: ActiveEnergyType, completionHandler: @escaping (MBAsyncCallResult<ActiveEnergy>) -> Void) throws {
         
         // Confirm that the type and device works
         let activeEnergyType = try MBHealthParser.unbox(quantityIdentifier: .activeEnergyBurned)
@@ -45,7 +45,7 @@ extension ActiveEnergyService: ActiveEnergyServiceProtocol {
 // MARK: - Private methods
 private extension ActiveEnergyService {
     
-    func configure(query: HKSampleQuery, samples: [HKSample]?, error: Error?, completionHandler: @escaping (AsyncCallResult<ActiveEnergy>) -> Void) {
+    func configure(query: HKSampleQuery, samples: [HKSample]?, error: Error?, completionHandler: @escaping (MBAsyncCallResult<ActiveEnergy>) -> Void) {
         
         guard error == nil else {
             completionHandler(.failed(error!))

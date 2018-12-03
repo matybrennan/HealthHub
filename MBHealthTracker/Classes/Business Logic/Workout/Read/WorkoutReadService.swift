@@ -18,7 +18,7 @@ public class WorkoutReadService {
 
 extension WorkoutReadService: WorkoutReadServiceProtocol {
     
-    public func getWorkouts(fromWorkoutType type: WorkoutType, completionHandler: @escaping (AsyncCallResult<Workout>) -> Void) throws {
+    public func getWorkouts(fromWorkoutType type: WorkoutType, completionHandler: @escaping (MBAsyncCallResult<Workout>) -> Void) throws {
         
         // Confirm that the type and device works
         let workout = HKWorkoutType.workoutType()
@@ -45,7 +45,7 @@ extension WorkoutReadService: WorkoutReadServiceProtocol {
 
 private extension WorkoutReadService {
     
-    func configure(query: HKSampleQuery, samples: [HKSample]?, error: Error?, completionHandler: @escaping (AsyncCallResult<Workout>) -> Void) {
+    func configure(query: HKSampleQuery, samples: [HKSample]?, error: Error?, completionHandler: @escaping (MBAsyncCallResult<Workout>) -> Void) {
         
         guard error == nil else {
             completionHandler(.failed(error!))

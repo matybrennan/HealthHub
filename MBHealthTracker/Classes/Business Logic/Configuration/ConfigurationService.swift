@@ -16,7 +16,7 @@ public class ConfigurationService {
 
 extension ConfigurationService: ConfigurationServiceProtocol {
     
-    public func requestAuthorization(toShare share: [SharableType], toRead read: [ReadableType], completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) {
+    public func requestAuthorization(toShare share: [SharableType], toRead read: [ReadableType], completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) {
         
         let shareTypes = MBHealthType.shareTypes(share)
         let readTypes = MBHealthType.readTypes(read)

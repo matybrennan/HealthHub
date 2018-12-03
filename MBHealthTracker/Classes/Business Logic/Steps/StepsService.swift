@@ -19,7 +19,7 @@ public class StepsService {
 
 extension StepsService: StepsServiceProtocol {
     
-    public func getSteps(fromStepsType type: StepsType, completionHandler: @escaping (AsyncCallResult<Steps>) -> Void) throws {
+    public func getSteps(fromStepsType type: StepsType, completionHandler: @escaping (MBAsyncCallResult<Steps>) -> Void) throws {
         
         // Confirm that the type and device works
         let stepCountType = try MBHealthParser.unbox(quantityIdentifier: .stepCount)
@@ -108,7 +108,7 @@ extension StepsService: StepsServiceProtocol {
 
 private extension StepsService {
     
-    func configure(query: HKStatisticsCollectionQuery, collectionStats: HKStatisticsCollection?, error: Error?, completionHandler: @escaping (AsyncCallResult<Steps>) -> Void) {
+    func configure(query: HKStatisticsCollectionQuery, collectionStats: HKStatisticsCollection?, error: Error?, completionHandler: @escaping (MBAsyncCallResult<Steps>) -> Void) {
         
         guard error == nil else {
             completionHandler(.failed(error!))

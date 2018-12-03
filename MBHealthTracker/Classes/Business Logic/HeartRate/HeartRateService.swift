@@ -17,7 +17,7 @@ public class HeartRateService {
 
 extension HeartRateService: HeartRateServiceProtocol {
     
-    public func getHeartRate(fromHeartRateType type: HeartRateType, completionHandler: @escaping (AsyncCallResult<HeartRate>) -> Void) throws {
+    public func getHeartRate(fromHeartRateType type: HeartRateType, completionHandler: @escaping (MBAsyncCallResult<HeartRate>) -> Void) throws {
         
         // Confirm that the type and device works
         let heartRate = try MBHealthParser.unbox(quantityIdentifier: .heartRate)
@@ -40,7 +40,7 @@ extension HeartRateService: HeartRateServiceProtocol {
                 }
                 
                 guard let quantitySample = samples?.first as? HKQuantitySample else {
-                    completionHandler(AsyncCallResult.failed(MBAsyncParsingError.unableToParse("current heartRate or no heart rate samples")))
+                    completionHandler(MBAsyncCallResult.failed(MBAsyncParsingError.unableToParse("current heartRate or no heart rate samples")))
                     return
                 }
                 let hr = quantitySample.quantity.doubleValue(for: HKUnit(from: Unit.heartRateCountMin))
@@ -105,7 +105,7 @@ extension HeartRateService: HeartRateServiceProtocol {
 
 private extension HeartRateService {
     
-    func configure(query: HKStatisticsCollectionQuery, collection: HKStatisticsCollection?, error: Error?, completionHandler: @escaping (AsyncCallResult<HeartRate>) -> Void) {
+    func configure(query: HKStatisticsCollectionQuery, collection: HKStatisticsCollection?, error: Error?, completionHandler: @escaping (MBAsyncCallResult<HeartRate>) -> Void) {
         guard error == nil else {
             completionHandler(.failed(error!))
             return

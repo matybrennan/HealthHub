@@ -289,6 +289,15 @@
 			path = Sleep;
 			sourceTree = "<group>";
 		};
+		2EA2897A21B4E4FA002F6F7D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2E5F4A1220383D7300947553 /* Date+Extension.swift */,
+				2EF55716207B5E6400FDC284 /* NSPredicate+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		4F8A88231C493E60FB25422F000B05CA /* MBHealthTracker */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,8 +314,6 @@
 				F84A2155271EE1740CC102A2E708D9AD /* HealthParser.swift */,
 				8B1316C446F58FFDB96D80E986A05584 /* Helpers.swift */,
 				C72BAF3E5B5E8189A5D90945BD093612 /* NetworkResult.swift */,
-				2E5F4A1220383D7300947553 /* Date+Extension.swift */,
-				2EF55716207B5E6400FDC284 /* NSPredicate+Extension.swift */,
 				2E051EA6208DDB04004DAD9F /* HealthType.swift */,
 			);
 			path = Utils;
@@ -437,6 +444,7 @@
 				6B099F10D01AEF156A3F4C80D3D96862 /* Business Logic */,
 				81A77F2D867212F9CCA1A1C2E956B20B /* Presentation */,
 				5865A13AF65EFB3E034B2A22E911D4EF /* Utils */,
+				2EA2897A21B4E4FA002F6F7D /* Extensions */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

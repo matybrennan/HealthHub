@@ -11,14 +11,14 @@ import MBHealthTracker
 
 protocol ViewInteractorProtocol {
     
-    func getHeartRate(completionHandler: @escaping (AsyncCallResult<HeartRate>) -> Void) throws
+    func getHeartRate(completionHandler: @escaping (MBAsyncCallResult<HeartRate>) -> Void) throws
     func configurePermissions()
-    func getActivEenergy(completionHandler: @escaping (AsyncCallResult<ActiveEnergy>) -> Void) throws
+    func getActivEenergy(completionHandler: @escaping (MBAsyncCallResult<ActiveEnergy>) -> Void) throws
     func runTest()
-    func getWorkouts(completionHandler: @escaping (AsyncCallResult<Workout>) -> Void) throws
-    func saveWorkout(completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws
-    func saveSleep(completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws
-    func getSleep(completionHandler: @escaping (AsyncCallResult<Sleep>) -> Void) throws
+    func getWorkouts(completionHandler: @escaping (MBAsyncCallResult<Workout>) -> Void) throws
+    func saveWorkout(completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws
+    func saveSleep(completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws
+    func getSleep(completionHandler: @escaping (MBAsyncCallResult<Sleep>) -> Void) throws
 }
 
 class ViewController: UIViewController {

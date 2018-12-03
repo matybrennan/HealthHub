@@ -10,5 +10,5 @@ import HealthKit
 
 public protocol WorkoutWriteServiceProtocol {
     
-    func saveWorkout(workout: Workout.Item, extra: [String: Any]?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws
+    func saveWorkout(workout: Workout.Item, extra: [String: Any]?, completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws
 }

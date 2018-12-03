@@ -16,7 +16,7 @@ public class NutritionService {
 
 extension NutritionService: NutritionServiceProtocol {
     
-    public func getNutrition(fromType type: NutritionType, completionHandler: @escaping (AsyncCallResult<Nutrition>) -> Void) throws {
+    public func getNutrition(fromType type: NutritionType, completionHandler: @escaping (MBAsyncCallResult<Nutrition>) -> Void) throws {
         
         // Confirm that the type and device works
         try isDataStoreAvailable()
@@ -41,12 +41,12 @@ extension NutritionService: NutritionServiceProtocol {
             
             let vm = Nutrition(items: items)
             
-            completionHandler(AsyncCallResult.success(vm))
+            completionHandler(MBAsyncCallResult.success(vm))
         }
         healthStore.execute(query)
     }
     
-    public func save(nutrition: Nutrition.Info, extra: [String : Any]?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws {
+    public func save(nutrition: Nutrition.Info, extra: [String : Any]?, completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws {
         
         try checkSharingAuthorizationStatus(for: nutrition.type)
         try isDataStoreAvailable()

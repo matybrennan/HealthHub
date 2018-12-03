@@ -16,6 +16,6 @@ public enum MBSleepStyle: Int {
 
 public protocol SleepServiceProtocol {
     
-    func getSleep(completionHandler: @escaping (AsyncCallResult<Sleep>) -> Void) throws
-    func save(sleep: Sleep.Info, extra: [String : Any]?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws
+    func getSleep(completionHandler: @escaping (MBAsyncCallResult<Sleep>) -> Void) throws
+    func save(sleep: Sleep.Info, extra: [String : Any]?, completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws
 }

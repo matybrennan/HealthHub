@@ -16,7 +16,7 @@ public class WorkoutWriteService {
 
 extension WorkoutWriteService: WorkoutWriteServiceProtocol {
     
-    public func saveWorkout(workout: Workout.Item, extra: [String : Any]?, completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws {
+    public func saveWorkout(workout: Workout.Item, extra: [String : Any]?, completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws {
         
         try checkSharingAuthorizationStatus(for: HKWorkoutType.workoutType())
         try isDataStoreAvailable()

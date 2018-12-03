@@ -7,8 +7,7 @@
 
 import Foundation
 
-/// Result can come back empty meaning may not have access to property or its empty
-public enum AsyncCallResult<T> {
+public enum MBAsyncCallResult<T> {
     case success(T)
     case failed(Error)
 }
