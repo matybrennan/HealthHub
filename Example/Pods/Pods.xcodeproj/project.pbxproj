@@ -33,6 +33,9 @@
 		2E5F4A21203ABB4500947553 /* WorkoutReadServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A20203ABB4500947553 /* WorkoutReadServiceProtocol.swift */; };
 		2E5F4A23203ABBC400947553 /* WorkoutWriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A22203ABBC400947553 /* WorkoutWriteService.swift */; };
 		2E5F4A25203ABBD000947553 /* WorkoutWriteServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A24203ABBD000947553 /* WorkoutWriteServiceProtocol.swift */; };
+		2EA2897421B21A76002F6F7D /* SleepService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2897321B21A76002F6F7D /* SleepService.swift */; };
+		2EA2897621B21A84002F6F7D /* SleepServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2897521B21A84002F6F7D /* SleepServiceProtocol.swift */; };
+		2EA2897921B21C1B002F6F7D /* Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2897821B21C1B002F6F7D /* Sleep.swift */; };
 		2EF55717207B5E6400FDC284 /* NSPredicate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF55716207B5E6400FDC284 /* NSPredicate+Extension.swift */; };
 		32EF6E789DAEEB361DCDBA37F8610070 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1316C446F58FFDB96D80E986A05584 /* Helpers.swift */; };
 		34E525AB192CB1BAF9930DEC1235C311 /* MBHealthTrackerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262CEAE77CE117CCE1466B1F120E666 /* MBHealthTrackerProtocol.swift */; };
@@ -97,6 +100,9 @@
 		2E5F4A20203ABB4500947553 /* WorkoutReadServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutReadServiceProtocol.swift; sourceTree = "<group>"; };
 		2E5F4A22203ABBC400947553 /* WorkoutWriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutWriteService.swift; sourceTree = "<group>"; };
 		2E5F4A24203ABBD000947553 /* WorkoutWriteServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutWriteServiceProtocol.swift; sourceTree = "<group>"; };
+		2EA2897321B21A76002F6F7D /* SleepService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepService.swift; sourceTree = "<group>"; };
+		2EA2897521B21A84002F6F7D /* SleepServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepServiceProtocol.swift; sourceTree = "<group>"; };
+		2EA2897821B21C1B002F6F7D /* Sleep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sleep.swift; sourceTree = "<group>"; };
 		2EF55716207B5E6400FDC284 /* NSPredicate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPredicate+Extension.swift"; sourceTree = "<group>"; };
 		39F9B503FF53D0B3DBA417C7991F2040 /* MBHealthTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBHealthTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8E123C47AB09FF3F2A72198069950F /* Pods-MBHealthTracker_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MBHealthTracker_Tests.modulemap"; sourceTree = "<group>"; };
@@ -266,6 +272,23 @@
 			path = Write;
 			sourceTree = "<group>";
 		};
+		2EA2897221B21A68002F6F7D /* Sleep */ = {
+			isa = PBXGroup;
+			children = (
+				2EA2897321B21A76002F6F7D /* SleepService.swift */,
+				2EA2897521B21A84002F6F7D /* SleepServiceProtocol.swift */,
+			);
+			path = Sleep;
+			sourceTree = "<group>";
+		};
+		2EA2897721B21C13002F6F7D /* Sleep */ = {
+			isa = PBXGroup;
+			children = (
+				2EA2897821B21C1B002F6F7D /* Sleep.swift */,
+			);
+			path = Sleep;
+			sourceTree = "<group>";
+		};
 		4F8A88231C493E60FB25422F000B05CA /* MBHealthTracker */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +315,7 @@
 		6B099F10D01AEF156A3F4C80D3D96862 /* Business Logic */ = {
 			isa = PBXGroup;
 			children = (
+				2EA2897221B21A68002F6F7D /* Sleep */,
 				2E0B615321AD21A500827FBD /* ActiveEnergy */,
 				2E193AD320B6C21F002D0D59 /* Nutrition */,
 				2E193ACE20B58509002D0D59 /* Characteristics */,
@@ -317,6 +341,7 @@
 		81A77F2D867212F9CCA1A1C2E956B20B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				2EA2897721B21C13002F6F7D /* Sleep */,
 				2E0B615021AD20F200827FBD /* ActiveEnergy */,
 				2E193AD820B6CC29002D0D59 /* Nutrition */,
 				2E5F4A192039985900947553 /* Workout */,
@@ -641,6 +666,7 @@
 				2E5F4A1F203ABB3300947553 /* WorkoutReadService.swift in Sources */,
 				5638330ADBC437778CA6012B273D62F3 /* ConfigurationServiceProtocol.swift in Sources */,
 				2E5F4A1320383D7300947553 /* Date+Extension.swift in Sources */,
+				2EA2897621B21A84002F6F7D /* SleepServiceProtocol.swift in Sources */,
 				2E5F4A23203ABBC400947553 /* WorkoutWriteService.swift in Sources */,
 				2E5F4A1B2039986E00947553 /* WorkoutModels.swift in Sources */,
 				C0CE875520A0329B38CBCA9E589122E3 /* HealthParser.swift in Sources */,
@@ -651,11 +677,13 @@
 				3C51D2DBA2E2AFEE7068E5A0985E3CAE /* HeartRateService.swift in Sources */,
 				2EF55717207B5E6400FDC284 /* NSPredicate+Extension.swift in Sources */,
 				5AFBECA8E2E3A501864C6BE5F424F607 /* HeartRateServiceProtocol.swift in Sources */,
+				2EA2897421B21A76002F6F7D /* SleepService.swift in Sources */,
 				2E193AD020B58531002D0D59 /* CharacteristicService.swift in Sources */,
 				32EF6E789DAEEB361DCDBA37F8610070 /* Helpers.swift in Sources */,
 				2E5F4A162038436D00947553 /* WorkoutManager.swift in Sources */,
 				A2D56789BB66A50E5E3DD31A711052E1 /* MBHealthTracker-dummy.m in Sources */,
 				0FB01B3701B32589C4566742DE5FA1F3 /* MBHealthTracker.swift in Sources */,
+				2EA2897921B21C1B002F6F7D /* Sleep.swift in Sources */,
 				34E525AB192CB1BAF9930DEC1235C311 /* MBHealthTrackerProtocol.swift in Sources */,
 				2E0B615521AD21B800827FBD /* ActiveEnergyService.swift in Sources */,
 				2E5F4A21203ABB4500947553 /* WorkoutReadServiceProtocol.swift in Sources */,

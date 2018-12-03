@@ -17,8 +17,8 @@ protocol ViewInteractorProtocol {
     func runTest()
     func getWorkouts(completionHandler: @escaping (AsyncCallResult<Workout>) -> Void) throws
     func saveWorkout(completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws
-    func saveNutrition(completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws
-    func getNutrition(completionHandler: @escaping (AsyncCallResult<Nutrition>) -> Void) throws
+    func saveSleep(completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws
+    func getSleep(completionHandler: @escaping (AsyncCallResult<Sleep>) -> Void) throws
 }
 
 class ViewController: UIViewController {
@@ -35,12 +35,12 @@ class ViewController: UIViewController {
         print("---------------------------------")
         
         do {
-            try interactor.saveNutrition(completionHandler: { result in
+            try interactor.getSleep(completionHandler: { result in
                 switch result {
                 case let .success(model):
                     print("Success: \(model)")
                 case let .failed(error):
-                    print("Error: \(error.localizedDescription) for nutrition value")
+                    print("Error: \(error.localizedDescription) for sleep value")
                 }
             })
         } catch {

@@ -39,7 +39,6 @@ public enum MBObjectType: SharableType, ReadableType {
     case fatSaturated
     case cholesterol
     case protein
-    
     /// Vitamins
     case vitaminA
     case thiamin
@@ -54,7 +53,6 @@ public enum MBObjectType: SharableType, ReadableType {
     case vitaminE
     case vitaminK
     case folate
-    
     /// Minerals
     case calcium
     case chloride
@@ -64,7 +62,6 @@ public enum MBObjectType: SharableType, ReadableType {
     case potassium
     case sodium
     case zinc
-    
     /// Ultratrace Minerals
     case chromium
     case copper
@@ -72,12 +69,14 @@ public enum MBObjectType: SharableType, ReadableType {
     case manganese
     case molybdenum
     case selenium
-    
     /// Hydration
     case water
-    
     /// Caffeine
     case caffeine
+    
+    
+    /// Sleep
+    case sleep
     
     public var sharable: HKSampleType {
         switch self {
@@ -139,6 +138,9 @@ public enum MBObjectType: SharableType, ReadableType {
             
         /// Caffeine
         case .caffeine: return HKQuantityType.quantityType(forIdentifier: .dietaryCaffeine)!
+            
+        /// Sleep
+        case .sleep: return HKCategoryType.categoryType(forIdentifier: .sleepAnalysis)!
             
         }
     }
@@ -202,6 +204,9 @@ public enum MBObjectType: SharableType, ReadableType {
             
         /// Caffeine
         case .caffeine: return HKQuantityType.quantityType(forIdentifier: .dietaryCaffeine)!
+            
+        /// Sleep
+        case .sleep: return HKCategoryType.categoryType(forIdentifier: .sleepAnalysis)!
             
         }
     }

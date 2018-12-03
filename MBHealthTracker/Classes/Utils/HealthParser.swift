@@ -27,4 +27,11 @@ open class MBHealthParser {
         }
         return result
     }
+    
+    static func unbox(categoryIdentifier: HKCategoryTypeIdentifier) throws -> HKCategoryType {
+        guard let result = HKCategoryType.categoryType(forIdentifier: categoryIdentifier) else {
+            throw MBHealthParserError.unableToAccess(categoryIdentifier.rawValue)
+        }
+        return result
+    }
 }

@@ -47,6 +47,10 @@ open class MBHealthTracker {
     lazy var activeEnergyService: ActiveEnergyServiceProtocol = {
         return ActiveEnergyService()
     }()
+    
+    lazy var sleepService: SleepServiceProtocol = {
+        return SleepService()
+    }()
 }
 
 extension MBHealthTracker: MBHealthTrackerProtocol {
@@ -84,6 +88,10 @@ extension MBHealthTracker: MBHealthTrackerProtocol {
     /// handles gathering logic about active energy burned from healthstore
     public var activeEnergy: ActiveEnergyServiceProtocol {
         return activeEnergyService
+    }
+    
+    public var sleep: SleepServiceProtocol {
+        return sleepService
     }
     
 }

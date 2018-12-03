@@ -31,7 +31,10 @@ extension ViewInteractor: ViewInteractorProtocol {
     }
     
     func configurePermissions() {
-        healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.heartRate, MBObjectType.stepCount, MBObjectType.workout, MBObjectType.water],toRead: [MBObjectType.heartRate, MBObjectType.stepCount, MBObjectType.workout, MBObjectType.iron, MBObjectType.activeEnergy, MBObjectType.energyConsumed, MBObjectType.carbohydrates, MBObjectType.fiber, MBObjectType.sugar, MBObjectType.fatTotal, MBObjectType.fatMono, MBObjectType.fatPoly, MBObjectType.fatSaturated, MBObjectType.cholesterol, MBObjectType.protein, MBObjectType.vitaminA, MBObjectType.thiamin, MBObjectType.riboflavin, MBObjectType.niacin, MBObjectType.pathothenicAcid, MBObjectType.vitaminB6, MBObjectType.biotin, MBObjectType.vitaminB12, MBObjectType.vitaminC, MBObjectType.vitaminD, MBObjectType.vitaminE, MBObjectType.vitaminK, MBObjectType.folate, MBObjectType.water, MBObjectType.caffeine]) { _ in }
+        healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.heartRate, MBObjectType.stepCount, MBObjectType.workout, MBObjectType.water, MBObjectType.sleep]
+        
+        
+        ,toRead: [MBObjectType.heartRate, MBObjectType.stepCount, MBObjectType.workout, MBObjectType.iron, MBObjectType.activeEnergy, MBObjectType.energyConsumed, MBObjectType.carbohydrates, MBObjectType.fiber, MBObjectType.sugar, MBObjectType.fatTotal, MBObjectType.fatMono, MBObjectType.fatPoly, MBObjectType.fatSaturated, MBObjectType.cholesterol, MBObjectType.protein, MBObjectType.vitaminA, MBObjectType.thiamin, MBObjectType.riboflavin, MBObjectType.niacin, MBObjectType.pathothenicAcid, MBObjectType.vitaminB6, MBObjectType.biotin, MBObjectType.vitaminB12, MBObjectType.vitaminC, MBObjectType.vitaminD, MBObjectType.vitaminE, MBObjectType.vitaminK, MBObjectType.folate, MBObjectType.water, MBObjectType.caffeine, MBObjectType.sleep]) { _ in }
     }
     
     func runTest() {
@@ -49,17 +52,16 @@ extension ViewInteractor: ViewInteractorProtocol {
     }
     
     func saveWorkout(completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws {
-        
-        let item = Workout.Item(duration: 10.0, energyBurned: 20.0, distance: 10.0, startDate: Date(), activityType: HKWorkoutActivityType.archery)
+        let item = Workout.Item(duration: 10.0, energyBurned: 20.0, distance: 10.0, startDate: Date(timeIntervalSinceNow: -100), activityType: HKWorkoutActivityType.archery)
         try healthTracker.workout.saveWorkout(workout: item, extra: nil, completionHandler: completionHandler)
     }
     
-    func getNutrition(completionHandler: @escaping (AsyncCallResult<Nutrition>) -> Void) throws {
-        try healthTracker.nutritionService.getNutrition(fromType: .caffeine, completionHandler: completionHandler)
+    func saveSleep(completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws {
+        let sleepInfo = Sleep.Info.init(style: MBSleepStyle.awake, startDate: Date(), type: MBObjectType.sleep.sharable as! HKCategoryType)
+        try healthTracker.sleep.save(sleep: sleepInfo, extra: nil, completionHandler: completionHandler)
     }
     
-    func saveNutrition(completionHandler: @escaping (AsyncCallResult<Bool>) -> Void) throws {
-        let nutrition = Nutrition.Info(value: 10.0, unit: "mL", startDate: Date(), type: MBObjectType.water.sharable as! HKQuantityType)
-        try healthTracker.nutritionService.save(nutrition: nutrition, extra: nil, completionHandler: completionHandler)
+    func getSleep(completionHandler: @escaping (AsyncCallResult<Sleep>) -> Void) throws {
+        try healthTracker.sleep.getSleep(completionHandler: completionHandler)
     }
 }
