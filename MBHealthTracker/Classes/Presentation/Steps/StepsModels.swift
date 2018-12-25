@@ -9,11 +9,11 @@ import Foundation
 
 public struct Steps {
     
-    public struct StepsItem {
+    public struct Item {
         
         public let count: Double!
     }
     
     // can get one item from hour or mutliple from timeIntervals
-    public let items: [StepsItem]!
+    public let items: [Item]!
 }

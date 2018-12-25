@@ -18,8 +18,7 @@ public enum HeartRateType {
     
     case all(TimeInterval: Int?)
     
-    // TODO: Add custom think more into it
-    //case between(start: TimeInterval, end: TimeInterval)
+    case betweenTimePref(start: Date, end: Date)
 }
 
 public protocol HeartRateServiceProtocol {

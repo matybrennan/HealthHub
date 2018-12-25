@@ -9,23 +9,23 @@ import Foundation
 
 public struct HeartRate {
     
-    public struct HeartRateItem {
+    public struct Item {
         let max: Double!
         let min: Double!
         let average: Double!
     }
     
     // Computed from timeIntervals and if One item
-    let items: [HeartRateItem]!
+    let items: [Item]!
 }
 
 extension HeartRate {
     
-    public var first: HeartRateItem {
+    public var first: Item {
         return items.first!
     }
     
-    public var last: HeartRateItem {
+    public var last: Item {
         return items.last!
     }
     

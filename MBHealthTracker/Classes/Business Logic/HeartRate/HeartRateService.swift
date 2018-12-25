@@ -44,7 +44,7 @@ extension HeartRateService: HeartRateServiceProtocol {
                     return
                 }
                 let hr = quantitySample.quantity.doubleValue(for: HKUnit(from: Unit.heartRateCountMin))
-                let item = HeartRate.HeartRateItem(max: hr, min: hr, average: hr)
+                let item = HeartRate.Item(max: hr, min: hr, average: hr)
                 let vm = HeartRate(items: [item])
                 completionHandler(.success(vm))
             })
@@ -96,6 +96,19 @@ extension HeartRateService: HeartRateServiceProtocol {
                 query, collection, error in
                 self.configure(query: query, collection: collection, error: error, completionHandler: completionHandler)
             }
+            
+        case let .betweenTimePref(startDate, endDate):
+            
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([.minute], from: startDate, to: endDate)
+            
+            let pred = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
+            query = HKStatisticsCollectionQuery(quantityType: heartRate, quantitySamplePredicate: pred, options: [.discreteAverage, .discreteMax, .discreteMin], anchorDate: startDate, intervalComponents: components)
+            
+            (query as! HKStatisticsCollectionQuery).initialResultsHandler = {
+                query, collection, error in
+                self.configure(query: query, collection: collection, error: error, completionHandler: completionHandler)
+            }
         }
         
         healthStore.execute(query)
@@ -117,7 +130,7 @@ private extension HeartRateService {
         }
         
         let items = quantitySamples.map {
-            HeartRate.HeartRateItem(max: $0.maximumQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)),
+            HeartRate.Item(max: $0.maximumQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)),
                                       min: $0.minimumQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)),
                                       average: $0.averageQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)))
         }

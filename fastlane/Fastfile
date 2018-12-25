@@ -2,8 +2,9 @@ default_platform(:ios)
 podspec_name = "MBHealthTracker.podspec"
 
 platform :ios do
+    
     desc "Releases a new version automatically"
-    lane :release
+    lane :release do
      pod_lib_lint
      version = version_bump_podspec(path: podspec_name)
      git_add(path: podspec_name)
@@ -11,4 +12,7 @@ platform :ios do
      add_git_tag(tag: "#{version}")
      push_to_git_remote
      pod_push
+    end
+
+
   end

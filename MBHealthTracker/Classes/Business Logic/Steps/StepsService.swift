@@ -121,7 +121,7 @@ private extension StepsService {
         }
         
         let items = quantitySamples.map {
-            Steps.StepsItem(count: $0.sumQuantity()?.doubleValue(for: HKUnit(from: StepsConfig.stepsCount)))
+            Steps.Item(count: $0.sumQuantity()?.doubleValue(for: HKUnit(from: StepsConfig.stepsCount)))
         }
         
         let vm = Steps(items: items)
