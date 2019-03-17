@@ -15,7 +15,7 @@ protocol ViewInteractorProtocol {
     func configurePermissions()
     func getActivEenergy(completionHandler: @escaping (MBAsyncCallResult<ActiveEnergy>) -> Void) throws
     func runTest()
-    func getWorkouts(completionHandler: @escaping (MBAsyncCallResult<Workout>) -> Void) throws
+    func getWorkouts(completionHandler: @escaping (MBAsyncCallResult<MBWorkout>) -> Void) throws
     func saveWorkout(completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws
     func saveSleep(completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws
     func getSleep(completionHandler: @escaping (MBAsyncCallResult<Sleep>) -> Void) throws

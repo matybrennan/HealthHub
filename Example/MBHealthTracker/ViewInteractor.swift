@@ -47,12 +47,12 @@ extension ViewInteractor: ViewInteractorProtocol {
         }
     }
     
-    func getWorkouts(completionHandler: @escaping (MBAsyncCallResult<Workout>) -> Void) throws {
+    func getWorkouts(completionHandler: @escaping (MBAsyncCallResult<MBWorkout>) -> Void) throws {
         try healthTracker.workout.getWorkouts(fromWorkoutType: .all, completionHandler: completionHandler)
     }
     
     func saveWorkout(completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws {
-        let item = Workout.Item.init(duration: 10, energyBurned: nil, distance: nil, startDate: Date.init(timeIntervalSinceNow: -100), endDate: Date())
+        let item = MBWorkout.Item.init(duration: 10, energyBurned: nil, distance: nil, startDate: Date.init(timeIntervalSinceNow: -100), endDate: Date())
         try healthTracker.workout.saveWorkout(workout: item, extra: nil, completionHandler: completionHandler)
     }
     

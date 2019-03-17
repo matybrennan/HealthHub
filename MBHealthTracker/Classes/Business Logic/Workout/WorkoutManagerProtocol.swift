@@ -10,12 +10,12 @@ import HealthKit
 
 public protocol WorkoutManagerWriteProtocol {
     
-    func saveWorkout(workout: Workout.Item, extra: [String: Any]?, completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws
+    func saveWorkout(workout: MBWorkout.Item, extra: [String: Any]?, completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws
 }
 
 public protocol WorkoutManagerReadProtocol {
     
-    func getWorkouts(fromWorkoutType type: WorkoutType, completionHandler: @escaping (MBAsyncCallResult<Workout>) -> Void) throws
+    func getWorkouts(fromWorkoutType type: WorkoutType, completionHandler: @escaping (MBAsyncCallResult<MBWorkout>) -> Void) throws
 }
 
 public typealias WorkoutManagerProtocol = WorkoutManagerWriteProtocol &  WorkoutManagerReadProtocol

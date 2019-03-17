@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-public struct Workout {
+public struct MBWorkout {
     
     public struct Item {
         
@@ -28,7 +28,7 @@ public struct Workout {
     
 }
 
-extension Workout.Item {
+extension MBWorkout.Item {
     
     public init(duration: Double, energyBurned: Double?, distance: Double?, startDate: Date, endDate: Date, activityType: HKWorkoutActivityType) {
         self.duration = duration
