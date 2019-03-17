@@ -2,10 +2,12 @@
 # * http://www.objc.io/issue-6/travis-ci.html
 # * https://github.com/supermarin/xcpretty#usage
 
-osx_image: xcode10.1
 language: swift
-script:
-- set -o pipefail
+osx_image: xcode10.1
+env:
+  matrix:
+    - TEST_SDK=iphonesimulator12.1 OS=12.1 NAME='iPhone XR'
+    - TEST_SDK=iphonesimulator12.1 OS=12.1 NAME='iPhone 8'
 
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+script:
+  - set -o pipefail && xcodebuild test -enableCodeCoverage YES -project MBHealthTracker.xcodeproj -scheme MBHealthTracker -sdk $TEST_SDK -destination "platform=iOS Simulator,OS=$OS,name=$NAME" ONLY_ACTIVE_ARCH=YES
