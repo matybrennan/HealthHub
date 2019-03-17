@@ -32,6 +32,11 @@ class ViewController: UIViewController {
         interactor.configurePermissions()
         //interactor.runTest()
         
+        
+        try? interactor.saveWorkout { (result) in
+            
+        }
+        
         print("---------------------------------")
         
         do {

@@ -16,10 +16,20 @@ public struct HeartRate {
     }
     
     // Computed from timeIntervals and if One item
-    let items: [Item]!
+    public let items: [Item]!
 }
 
 extension HeartRate {
+    
+    public var total: Double {
+        return items.reduce(0.0, { (res, item) -> Double in
+            return res + item.average
+        })
+    }
+    
+    public var average: Double {
+        return items.isEmpty ? 0.0 : total / Double(count)
+    }
     
     public var first: Item {
         return items.first!

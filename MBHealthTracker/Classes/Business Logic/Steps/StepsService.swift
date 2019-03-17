@@ -28,7 +28,7 @@ extension StepsService: StepsServiceProtocol {
         var query: HKQuery!
         
         switch type {
-        
+            
         // Get the sum of the last hour of steps
         case .lastHour:
             
@@ -62,10 +62,10 @@ extension StepsService: StepsServiceProtocol {
             
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [unowned self]
                 query, collection, error in
-
+                
                 self.configure(query: query, collectionStats: collection, error: error, completionHandler: completionHandler)
             }
-        
+            
         // Get the sum of the steps from week and state the timeInterval you want to recevie batches of steps count defaults to each day
         case let .thisWeek(timeInterval):
             
@@ -91,11 +91,10 @@ extension StepsService: StepsServiceProtocol {
             // create predicate for timePref
             let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: [])
             
-            // set timeInterval for grabbing data batches (in mins)
-            var component = DateComponents()
-            component.hour = timeInterval
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([.second, .minute], from: start, to: end)
             
-            query = HKStatisticsCollectionQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: start, intervalComponents: component)
+            query = HKStatisticsCollectionQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: start, intervalComponents: components)
             
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [unowned self]
                 query, collection, error in

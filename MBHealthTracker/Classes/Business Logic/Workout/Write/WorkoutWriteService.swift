@@ -21,8 +21,15 @@ extension WorkoutWriteService: WorkoutWriteServiceProtocol {
         try checkSharingAuthorizationStatus(for: HKWorkoutType.workoutType())
         try isDataStoreAvailable()
         
-        let energyBurned = HKQuantity(unit: HKUnit.calorie(), doubleValue: workout.energyBurned)
-        let distance = HKQuantity(unit: HKUnit.meter(), doubleValue: workout.energyBurned)
+        var energyBurned: HKQuantity?
+        if let energy = workout.energyBurned {
+            energyBurned = HKQuantity(unit: HKUnit.calorie(), doubleValue: energy)
+        }
+        var distance: HKQuantity?
+        if let dist = workout.energyBurned {
+            distance = HKQuantity(unit: HKUnit.meter(), doubleValue: dist)
+        }
+        
         let workoutObj = HKWorkout(activityType: workout.activityType, start: workout.startDate, end: workout.endDate, duration: workout.duration, totalEnergyBurned: energyBurned, totalDistance: distance, device: HKDevice.local(), metadata: extra)
         
         healthStore.save(workoutObj) { (status, error) in
