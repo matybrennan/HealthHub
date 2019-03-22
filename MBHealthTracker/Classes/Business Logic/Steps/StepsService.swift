@@ -92,7 +92,7 @@ extension StepsService: StepsServiceProtocol {
             let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: [])
             
             let calendar = Calendar.current
-            let components = calendar.dateComponents([.second, .minute], from: start, to: end)
+            let components = calendar.dateComponents([.second, .minute, .hour], from: start, to: end)
             
             query = HKStatisticsCollectionQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: start, intervalComponents: components)
             

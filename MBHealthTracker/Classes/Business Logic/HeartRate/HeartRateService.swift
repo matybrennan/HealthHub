@@ -100,7 +100,7 @@ extension HeartRateService: HeartRateServiceProtocol {
         case let .betweenTimePref(startDate, endDate):
             
             let calendar = Calendar.current
-            let components = calendar.dateComponents([.second, .minute], from: startDate, to: endDate)
+            let components = calendar.dateComponents([.second, .minute, .hour], from: startDate, to: endDate)
             
             let pred = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
             query = HKStatisticsCollectionQuery(quantityType: heartRate, quantitySamplePredicate: pred, options: [.discreteAverage, .discreteMax, .discreteMin], anchorDate: startDate, intervalComponents: components)
