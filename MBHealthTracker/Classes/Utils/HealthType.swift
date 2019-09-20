@@ -20,11 +20,13 @@ public typealias SharableReadableType = SharableType & ReadableType
 
 /// Has both read and sharing capabilities
 public enum MBObjectType: SharableType, ReadableType {
-
+    
     case stepCount
     case heartRate
     case workout
     case activeEnergy
+    case weight
+    case bodyFatPercentage
     
     /// Nutrition
     
@@ -84,6 +86,8 @@ public enum MBObjectType: SharableType, ReadableType {
         case .heartRate: return HKQuantityType.quantityType(forIdentifier: .heartRate)!
         case .workout: return HKWorkoutType.workoutType()
         case .activeEnergy: return HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
+        case .weight: return HKQuantityType.quantityType(forIdentifier: .bodyMass)!
+        case .bodyFatPercentage: return HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!
         
             
         /// Nutrition
@@ -151,6 +155,8 @@ public enum MBObjectType: SharableType, ReadableType {
         case .heartRate: return HKQuantityType.quantityType(forIdentifier: .heartRate)!
         case .workout: return HKWorkoutType.workoutType()
         case .activeEnergy: return HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
+        case .weight: return HKQuantityType.quantityType(forIdentifier: .bodyMass)!
+        case .bodyFatPercentage: return HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!
         
         /// Nutrition
             
@@ -215,12 +221,16 @@ public enum MBObjectType: SharableType, ReadableType {
 /// Just has read capabilities
 public enum MBReadType: ReadableType {
     
+    // Characteristics
     case dob
+    case gender
     
     public var readable: HKObjectType {
         switch self {
         case .dob:
             return HKCharacteristicType.characteristicType(forIdentifier: .dateOfBirth)!
+        case .gender:
+            return HKCharacteristicType.characteristicType(forIdentifier: .biologicalSex)!
         }
     }
 }

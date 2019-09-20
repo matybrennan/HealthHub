@@ -22,6 +22,9 @@
 		2E193AD520B6C23C002D0D59 /* NutritionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E193AD420B6C23C002D0D59 /* NutritionService.swift */; };
 		2E193AD720B6C244002D0D59 /* NutritionServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E193AD620B6C244002D0D59 /* NutritionServiceProtocol.swift */; };
 		2E193ADA20B6CC36002D0D59 /* NutritionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E193AD920B6CC36002D0D59 /* NutritionModels.swift */; };
+		2E52D76123350B8700451B0D /* BodyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D76023350B8700451B0D /* BodyService.swift */; };
+		2E52D76323350B9700451B0D /* BodyServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D76223350B9700451B0D /* BodyServiceProtocol.swift */; };
+		2E52D76623350BF300451B0D /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D76523350BF300451B0D /* Body.swift */; };
 		2E5F4A0C20380C4500947553 /* StepsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A0B20380C4500947553 /* StepsService.swift */; };
 		2E5F4A0E20380C5000947553 /* StepsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A0D20380C5000947553 /* StepsServiceProtocol.swift */; };
 		2E5F4A1120380D4500947553 /* StepsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A1020380D4500947553 /* StepsModels.swift */; };
@@ -89,6 +92,9 @@
 		2E193AD620B6C244002D0D59 /* NutritionServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionServiceProtocol.swift; sourceTree = "<group>"; };
 		2E193AD920B6CC36002D0D59 /* NutritionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionModels.swift; sourceTree = "<group>"; };
 		2E3FECD1B22F4ECA9F5B470E27038BD6 /* Pods-MBHealthTracker_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MBHealthTracker_Example-dummy.m"; sourceTree = "<group>"; };
+		2E52D76023350B8700451B0D /* BodyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyService.swift; sourceTree = "<group>"; };
+		2E52D76223350B9700451B0D /* BodyServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyServiceProtocol.swift; sourceTree = "<group>"; };
+		2E52D76523350BF300451B0D /* Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
 		2E5F4A0B20380C4500947553 /* StepsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsService.swift; sourceTree = "<group>"; };
 		2E5F4A0D20380C5000947553 /* StepsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsServiceProtocol.swift; sourceTree = "<group>"; };
 		2E5F4A1020380D4500947553 /* StepsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsModels.swift; sourceTree = "<group>"; };
@@ -218,6 +224,23 @@
 			path = Nutrition;
 			sourceTree = "<group>";
 		};
+		2E52D75F23350B7400451B0D /* Body */ = {
+			isa = PBXGroup;
+			children = (
+				2E52D76023350B8700451B0D /* BodyService.swift */,
+				2E52D76223350B9700451B0D /* BodyServiceProtocol.swift */,
+			);
+			path = Body;
+			sourceTree = "<group>";
+		};
+		2E52D76423350BEA00451B0D /* Body */ = {
+			isa = PBXGroup;
+			children = (
+				2E52D76523350BF300451B0D /* Body.swift */,
+			);
+			path = Body;
+			sourceTree = "<group>";
+		};
 		2E5F4A0A20380C2D00947553 /* Steps */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,6 +345,7 @@
 		6B099F10D01AEF156A3F4C80D3D96862 /* Business Logic */ = {
 			isa = PBXGroup;
 			children = (
+				2E52D75F23350B7400451B0D /* Body */,
 				2EA2897221B21A68002F6F7D /* Sleep */,
 				2E0B615321AD21A500827FBD /* ActiveEnergy */,
 				2E193AD320B6C21F002D0D59 /* Nutrition */,
@@ -348,6 +372,7 @@
 		81A77F2D867212F9CCA1A1C2E956B20B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				2E52D76423350BEA00451B0D /* Body */,
 				2EA2897721B21C13002F6F7D /* Sleep */,
 				2E0B615021AD20F200827FBD /* ActiveEnergy */,
 				2E193AD820B6CC29002D0D59 /* Nutrition */,
@@ -678,8 +703,10 @@
 				2E5F4A1F203ABB3300947553 /* WorkoutReadService.swift in Sources */,
 				5638330ADBC437778CA6012B273D62F3 /* ConfigurationServiceProtocol.swift in Sources */,
 				2E5F4A1320383D7300947553 /* Date+Extension.swift in Sources */,
+				2E52D76623350BF300451B0D /* Body.swift in Sources */,
 				2EA2897621B21A84002F6F7D /* SleepServiceProtocol.swift in Sources */,
 				2E5F4A23203ABBC400947553 /* WorkoutWriteService.swift in Sources */,
+				2E52D76123350B8700451B0D /* BodyService.swift in Sources */,
 				2E5F4A1B2039986E00947553 /* WorkoutModels.swift in Sources */,
 				C0CE875520A0329B38CBCA9E589122E3 /* HealthParser.swift in Sources */,
 				2E051EA7208DDB04004DAD9F /* HealthType.swift in Sources */,
@@ -687,6 +714,7 @@
 				221B64E20B6BEBD15FAA52AEE03406C6 /* HeartRateModels.swift in Sources */,
 				2E0B615721AD21C200827FBD /* ActiveEnergyServiceProtocol.swift in Sources */,
 				3C51D2DBA2E2AFEE7068E5A0985E3CAE /* HeartRateService.swift in Sources */,
+				2E52D76323350B9700451B0D /* BodyServiceProtocol.swift in Sources */,
 				2EF55717207B5E6400FDC284 /* NSPredicate+Extension.swift in Sources */,
 				5AFBECA8E2E3A501864C6BE5F424F607 /* HeartRateServiceProtocol.swift in Sources */,
 				2EA2897421B21A76002F6F7D /* SleepService.swift in Sources */,
