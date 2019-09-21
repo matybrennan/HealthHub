@@ -8,10 +8,10 @@
 import Foundation
 
 public struct BodyWeight {
-    let kg: Double
-    let lbs: Double
+    public let kg: Double
+    public let lbs: Double
 }
 
 public struct BodyFatPercentage {
-    //
+    public let value: Double
 }

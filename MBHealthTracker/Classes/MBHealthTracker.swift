@@ -51,6 +51,10 @@ open class MBHealthTracker {
     lazy var sleepService: SleepServiceProtocol = {
         return SleepService()
     }()
+    
+    lazy var bodyService: BodyServiceProtocol = {
+        return BodyService()
+    }()
 }
 
 extension MBHealthTracker: MBHealthTrackerProtocol {
@@ -94,4 +98,7 @@ extension MBHealthTracker: MBHealthTrackerProtocol {
         return sleepService
     }
     
+    public var body: BodyServiceProtocol {
+        return bodyService
+    }
 }

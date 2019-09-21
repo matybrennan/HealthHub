@@ -8,13 +8,13 @@
 import Foundation
 import HealthKit
 
-class BodyService {
+public class BodyService {
     //
 }
 
 extension BodyService: BodyServiceProtocol {
     
-    func bodyWeight(completionHandler: @escaping (MBAsyncCallResult<BodyWeight>) -> Void) throws {
+    public func bodyWeight(completionHandler: @escaping (MBAsyncCallResult<BodyWeight>) -> Void) throws {
         
         // Confirm that the type and device works
         let bodyWeight = try MBHealthParser.unbox(quantityIdentifier: .bodyMass)
@@ -43,7 +43,31 @@ extension BodyService: BodyServiceProtocol {
         healthStore.execute(query)
     }
     
-    func bodyFatPercentage(completionHandler: @escaping (MBAsyncCallResult<BodyFatPercentage>) -> Void) throws {
-        //
+    public func bodyFatPercentage(completionHandler: @escaping (MBAsyncCallResult<BodyFatPercentage>) -> Void) throws {
+        
+        // Confirm that the type and device works
+        let bodyFatPercentage = try MBHealthParser.unbox(quantityIdentifier: .bodyFatPercentage)
+        try isDataStoreAvailable()
+        
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
+        
+        let query = HKSampleQuery(sampleType: bodyFatPercentage, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor]) { (query, results, error) in
+            
+            guard error == nil else {
+                completionHandler(.failed(error!))
+                return
+            }
+            
+            guard let result = results?.first as? HKQuantitySample  else {
+                completionHandler(.failed(MBAsyncParsingError.unableToParse("ActiveEnergy log")))
+                return
+            }
+            
+            let value = result.quantity.doubleValue(for: HKUnit.percent()) * 100
+            let bodyFatPercentage = BodyFatPercentage(value: value)
+            completionHandler(.success(bodyFatPercentage))
+        }
+        
+        healthStore.execute(query)
     }
 }

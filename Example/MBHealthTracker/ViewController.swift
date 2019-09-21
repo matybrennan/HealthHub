@@ -19,6 +19,7 @@ protocol ViewInteractorProtocol {
     func saveWorkout(completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws
     func saveSleep(completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws
     func getSleep(completionHandler: @escaping (MBAsyncCallResult<Sleep>) -> Void) throws
+    func getPercentage()
 }
 
 class ViewController: UIViewController {
@@ -32,7 +33,7 @@ class ViewController: UIViewController {
         interactor.configurePermissions()
         //interactor.runTest()
         
-        
+        interactor.getPercentage()
         try? interactor.saveWorkout { (result) in
             
         }

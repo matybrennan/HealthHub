@@ -25,4 +25,6 @@ public protocol MBHealthTrackerProtocol {
     var activeEnergy: ActiveEnergyServiceProtocol { get }
     
     var sleep: SleepServiceProtocol { get }
+    
+    var body: BodyServiceProtocol { get }
 }

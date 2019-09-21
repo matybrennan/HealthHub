@@ -25,6 +25,12 @@ extension ViewInteractor: ViewInteractorProtocol {
         try healthTracker.activeEnergy.getActiveEnergy(from: .today, completionHandler: completionHandler)
     }
     
+    func getPercentage() {
+        try! healthTracker.body.bodyFatPercentage(completionHandler: { (result) in
+            //
+        })
+    }
+    
     
     func getHeartRate(completionHandler: @escaping (MBAsyncCallResult<HeartRate>) -> Void) throws {
         try healthTracker.heartRate.getHeartRate(fromHeartRateType: .all(TimeInterval: nil), completionHandler: completionHandler)
