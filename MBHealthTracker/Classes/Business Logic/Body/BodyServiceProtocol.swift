@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol BodyServiceProtocol {
+public protocol BodyServiceProtocol: AnyObject {
     func bodyWeight(completionHandler: @escaping (MBAsyncCallResult<BodyWeight>) -> Void) throws
     func bodyFatPercentage(completionHandler: @escaping (MBAsyncCallResult<BodyFatPercentage>) -> Void) throws
 }

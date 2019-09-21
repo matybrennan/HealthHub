@@ -9,7 +9,8 @@ import Foundation
 import HealthKit
 
 public class BodyService {
-    //
+    
+    public init() { }
 }
 
 extension BodyService: BodyServiceProtocol {
