@@ -15,3 +15,13 @@ public struct BodyWeight {
 public struct BodyFatPercentage {
     public let value: Double
 }
+
+public struct BodyMassIndex {
+    public let value: Double
+}
+
+public struct WaistCircumference {
+    public let inches: Double
+    public let cm: Double 
+}
+
