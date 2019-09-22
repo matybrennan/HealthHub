@@ -29,6 +29,8 @@ public enum MBObjectType: SharableType, ReadableType {
     
     /// Body
     case bodyMass
+    case leanBodyMass
+    case height
     case bodyMassIndex
     case bodyFatPercentage
     case waistCircumference
@@ -95,6 +97,8 @@ public enum MBObjectType: SharableType, ReadableType {
         
         /// Body
         case .bodyMass: return HKQuantityType.quantityType(forIdentifier: .bodyMass)!
+        case .leanBodyMass: return HKQuantityType.quantityType(forIdentifier: .leanBodyMass)!
+        case .height: return HKQuantityType.quantityType(forIdentifier: .height)!
         case .bodyMassIndex: return HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)!
         case .bodyFatPercentage: return HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!
         case .waistCircumference: if #available(iOS 11.0, *) {
@@ -171,6 +175,8 @@ public enum MBObjectType: SharableType, ReadableType {
         
         /// Body
         case .bodyMass: return HKQuantityType.quantityType(forIdentifier: .bodyMass)!
+        case .leanBodyMass: return HKQuantityType.quantityType(forIdentifier: .leanBodyMass)!
+        case .height: return HKQuantityType.quantityType(forIdentifier: .height)!
         case .bodyMassIndex: return HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)!
         case .bodyFatPercentage: return HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!
         case .waistCircumference: if #available(iOS 11.0, *) {

@@ -26,7 +26,7 @@ extension ViewInteractor: ViewInteractorProtocol {
     }
     
     func getPercentage() {
-        try! healthTracker.body.bodyWaistCircumference(completionHandler: { (result) in
+        try! healthTracker.body.bodyHeight(completionHandler: { (result) in
             //
         })
     }
@@ -40,7 +40,7 @@ extension ViewInteractor: ViewInteractorProtocol {
         healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.heartRate, MBObjectType.stepCount, MBObjectType.workout, MBObjectType.water, MBObjectType.sleep, MBObjectType.workout]
         
         
-        ,toRead: [MBObjectType.heartRate, MBObjectType.stepCount, MBObjectType.workout, MBObjectType.iron, MBObjectType.activeEnergy, MBObjectType.energyConsumed, MBObjectType.carbohydrates, MBObjectType.fiber, MBObjectType.sugar, MBObjectType.fatTotal, MBObjectType.fatMono, MBObjectType.fatPoly, MBObjectType.fatSaturated, MBObjectType.cholesterol, MBObjectType.protein, MBObjectType.vitaminA, MBObjectType.thiamin, MBObjectType.riboflavin, MBObjectType.niacin, MBObjectType.pathothenicAcid, MBObjectType.vitaminB6, MBObjectType.biotin, MBObjectType.vitaminB12, MBObjectType.vitaminC, MBObjectType.vitaminD, MBObjectType.vitaminE, MBObjectType.vitaminK, MBObjectType.folate, MBObjectType.water, MBObjectType.caffeine, MBObjectType.sleep, MBObjectType.bodyMass, MBObjectType.bodyFatPercentage, MBReadType.dob, MBReadType.gender, MBObjectType.bodyMassIndex, MBObjectType.waistCircumference]) { _ in }
+        ,toRead: [MBObjectType.heartRate, MBObjectType.stepCount, MBObjectType.workout, MBObjectType.iron, MBObjectType.activeEnergy, MBObjectType.energyConsumed, MBObjectType.carbohydrates, MBObjectType.fiber, MBObjectType.sugar, MBObjectType.fatTotal, MBObjectType.fatMono, MBObjectType.fatPoly, MBObjectType.fatSaturated, MBObjectType.cholesterol, MBObjectType.protein, MBObjectType.vitaminA, MBObjectType.thiamin, MBObjectType.riboflavin, MBObjectType.niacin, MBObjectType.pathothenicAcid, MBObjectType.vitaminB6, MBObjectType.biotin, MBObjectType.vitaminB12, MBObjectType.vitaminC, MBObjectType.vitaminD, MBObjectType.vitaminE, MBObjectType.vitaminK, MBObjectType.folate, MBObjectType.water, MBObjectType.caffeine, MBObjectType.sleep, MBObjectType.bodyMass, MBObjectType.bodyFatPercentage, MBReadType.dob, MBReadType.gender, MBObjectType.bodyMassIndex, MBObjectType.waistCircumference, MBObjectType.leanBodyMass, MBObjectType.height]) { _ in }
     }
     
     func runTest() {

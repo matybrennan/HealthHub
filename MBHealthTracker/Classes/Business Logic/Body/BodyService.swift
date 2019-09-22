@@ -100,6 +100,35 @@ extension BodyService: BodyServiceProtocol {
         healthStore.execute(query)
     }
     
+    public func bodyLeanBodyMass(completionHandler: @escaping (MBAsyncCallResult<LeanBodyMass>) -> Void) throws {
+        
+        // Confirm that the type and device works
+        let leanBodyMass = try MBHealthParser.unbox(quantityIdentifier: .leanBodyMass)
+        try isDataStoreAvailable()
+        
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
+        
+        let query = HKSampleQuery(sampleType: leanBodyMass, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor]) { (query, results, error) in
+            
+            guard error == nil else {
+                completionHandler(.failed(error!))
+                return
+            }
+            
+            guard let result = results?.first as? HKQuantitySample  else {
+                completionHandler(.failed(MBAsyncParsingError.unableToParse("leanBodyMass")))
+                return
+            }
+            
+            let leanBodyMassKg = result.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo))
+            let leanBodyMasslbs = result.quantity.doubleValue(for: HKUnit.pound())
+            let leanBodyMass = LeanBodyMass(kg: leanBodyMassKg, lbs: leanBodyMasslbs)
+            completionHandler(.success(leanBodyMass))
+        }
+        
+        healthStore.execute(query)
+    }
+    
     public func bodyWaistCircumference(completionHandler: @escaping (MBAsyncCallResult<WaistCircumference>) -> Void) throws {
         
         // Confirm that the type and device works
@@ -125,10 +154,39 @@ extension BodyService: BodyServiceProtocol {
                 return
             }
             
-            let inches = result.quantity.doubleValue(for: HKUnit.init(from: .inch))
-            let cm = result.quantity.doubleValue(for: HKUnit.init(from: .centimeter))
+            let inches = Int(result.quantity.doubleValue(for: HKUnit.init(from: .inch)))
+            let cm = Int(result.quantity.doubleValue(for: HKUnit.init(from: .centimeter)))
             let waistCircumference = WaistCircumference(inches: inches, cm: cm)
             completionHandler(.success(waistCircumference))
+        }
+        
+        healthStore.execute(query)
+    }
+    
+    public func bodyHeight(completionHandler: @escaping (MBAsyncCallResult<BodyHeight>) -> Void) throws {
+        
+        // Confirm that the type and device works
+        let height = try MBHealthParser.unbox(quantityIdentifier: .height)
+        try isDataStoreAvailable()
+        
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
+        
+        let query = HKSampleQuery(sampleType: height, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor]) { (query, results, error) in
+            
+            guard error == nil else {
+                completionHandler(.failed(error!))
+                return
+            }
+            
+            guard let result = results?.first as? HKQuantitySample  else {
+                completionHandler(.failed(MBAsyncParsingError.unableToParse("height")))
+                return
+            }
+            
+            let inches = Int(result.quantity.doubleValue(for: HKUnit.init(from: .inch)))
+            let cm = Int(result.quantity.doubleValue(for: HKUnit.init(from: .centimeter)))
+            let bodyHeight = BodyHeight(inches: inches, cm: cm)
+            completionHandler(.success(bodyHeight))
         }
         
         healthStore.execute(query)
