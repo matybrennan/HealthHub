@@ -47,6 +47,7 @@ let configuration = tracker.configuration
 #### Configuration 
 - requestingAuthorization
 - presenting healthKit app
+
 ```var configuration: ConfigurationServiceProtocol```
 
 #### Sleep
