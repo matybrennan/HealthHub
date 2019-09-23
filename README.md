@@ -38,15 +38,59 @@ Add below code to your info.plist
 
 The main driver that contains all the business logic is ```MBHealthTracker``` which can be injected into your services with  ```MBHealthTrackerProtocol```
 
-The ```MBHealthTracker``` contains many services around the HealthKit data.
+The ```MBHealthTracker``` contains all the services below
+``` 
+let tracker = MBHealthTracker()
+let configuration = tracker.configuration
+```
 
-#### Configuration
-<p>This contains logic around</p>
+#### Configuration 
 - requestingAuthorization
 - presenting healthKit app
+```var configuration: ConfigurationServiceProtocol```
 
 #### Sleep
+- getting sleep
+- saving sleep item
 
+#### EnergyUse
+Split into sections to gather data based on timeIntervals
+- today, thisWeek, betweenTime
+
+#### Characteristics
+- biologicalSex
+- bloodType
+- dateOfBirth
+- skinType
+- isWheelChairUser
+
+#### HeartRate
+Split into sections to gather data based on timeIntervals
+- today, thisWeek, all
+    
+#### Steps
+Split into sections to gather data based on timeIntervals
+- last hour, today, thisWeek, betweenTime
+
+#### Body
+- bodyMassIndex
+- bodyFatPercentage
+- leanBodyMass
+- height
+- waistCircumference
+
+#### Nutrition
+- macronutrients
+- minerals
+- ultratrace minerals
+- vitamins
+- hydration
+- caffeine
+
+#### Workouts
+- saveWorkoutItem
+- getWorkouts
+    - today, thisWeek, all
 
 ## Contact
 
