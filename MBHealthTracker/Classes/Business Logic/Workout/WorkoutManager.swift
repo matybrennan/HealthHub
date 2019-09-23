@@ -13,7 +13,7 @@ public class WorkoutManager {
     private let workoutReadService: WorkoutReadServiceProtocol
     private let workoutWriteService: WorkoutWriteServiceProtocol
     
-    init(readService: WorkoutReadServiceProtocol, writeService: WorkoutWriteServiceProtocol) {
+    public init(readService: WorkoutReadServiceProtocol, writeService: WorkoutWriteServiceProtocol) {
         workoutReadService = readService
         workoutWriteService = writeService
     }

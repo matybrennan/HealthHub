@@ -13,6 +13,8 @@ public class HeartRateService {
     struct Unit {
         static let heartRateCountMin = "count/min"
     }
+    
+    public init() { }
 }
 
 extension HeartRateService: HeartRateServiceProtocol {

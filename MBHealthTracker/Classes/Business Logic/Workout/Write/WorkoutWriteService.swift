@@ -10,7 +10,7 @@ import HealthKit
 
 public class WorkoutWriteService {
     
-    //
+    public init() { }
     
 }
 

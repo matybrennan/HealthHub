@@ -12,6 +12,8 @@ import HealthKit
 public class ConfigurationService {
     
     static let appleHealthAppURL = "x-apple-health://"
+    
+    public init() { }
 }
 
 extension ConfigurationService: ConfigurationServiceProtocol {

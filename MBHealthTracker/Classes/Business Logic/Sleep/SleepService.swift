@@ -10,7 +10,7 @@ import HealthKit
 
 public class SleepService {
     
-    //
+    public init() { }
 }
 
 // MARK: - SleepServiceProtocol

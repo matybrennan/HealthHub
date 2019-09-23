@@ -15,6 +15,7 @@ public class StepsService {
         static let stepsCount = "count"
     }
     
+    public init() { }
 }
 
 extension StepsService: StepsServiceProtocol {

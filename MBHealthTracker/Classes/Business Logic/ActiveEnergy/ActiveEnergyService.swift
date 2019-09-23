@@ -8,9 +8,9 @@
 import Foundation
 import HealthKit
 
-class ActiveEnergyService {
+public class ActiveEnergyService {
     
-    //
+    public init() { }
 }
 
 // MARK: - ActiveEnergyServiceProtocol

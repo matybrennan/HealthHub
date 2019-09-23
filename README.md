@@ -44,6 +44,14 @@ let tracker = MBHealthTracker()
 let configuration = tracker.configuration
 ```
 
+Alternatively is you just need a single service you could just inject the protocol needed
+
+```
+let configuration = ConfigurationService()
+MyService -> init(configuration: ConfigurationServiceProtocol)
+let myService = MyService(configuration: configuration)
+```
+
 #### Configuration 
 - requestingAuthorization
 - presenting healthKit app
@@ -54,9 +62,13 @@ let configuration = tracker.configuration
 - getting sleep
 - saving sleep item
 
+```var sleep: SleepServiceProtocol```
+
 #### EnergyUse
 Split into sections to gather data based on timeIntervals
 - today, thisWeek, betweenTime
+
+```var activeEnergy: ActiveEnergyServiceProtocol```
 
 #### Characteristics
 - biologicalSex
@@ -65,13 +77,19 @@ Split into sections to gather data based on timeIntervals
 - skinType
 - isWheelChairUser
 
+```var characteristics: CharacteristicServiceProtocol```
+
 #### HeartRate
 Split into sections to gather data based on timeIntervals
 - today, thisWeek, all
+
+```var heartRate: HeartRateServiceProtocol```
     
 #### Steps
 Split into sections to gather data based on timeIntervals
 - last hour, today, thisWeek, betweenTime
+
+```var steps: StepsServiceProtocol```
 
 #### Body
 - bodyMassIndex
@@ -79,6 +97,8 @@ Split into sections to gather data based on timeIntervals
 - leanBodyMass
 - height
 - waistCircumference
+
+```var body: BodyServiceProtocol```
 
 #### Nutrition
 - macronutrients
@@ -88,10 +108,14 @@ Split into sections to gather data based on timeIntervals
 - hydration
 - caffeine
 
+```var nutritionService: NutritionServiceProtocol```
+
 #### Workouts
 - saveWorkoutItem
 - getWorkouts
     - today, thisWeek, all
+    
+```var workout: WorkoutManagerProtocol```
 
 ## Contact
 

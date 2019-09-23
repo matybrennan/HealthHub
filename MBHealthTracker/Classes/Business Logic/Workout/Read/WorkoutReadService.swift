@@ -14,6 +14,8 @@ public class WorkoutReadService {
         static let workoutEnergy = HKUnit.calorie()
         static let workoutDistance = HKUnit.meter()
     }
+    
+    public init() { }
 }
 
 extension WorkoutReadService: WorkoutReadServiceProtocol {

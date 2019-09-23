@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let controller = ViewController()
         let tracker = MBHealthTracker()
-        let configuration = tracker.configuration
         let interactor = ViewInteractor(healthTracker: tracker)
         controller.interactor = interactor
         
