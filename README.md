@@ -41,7 +41,7 @@ The main driver that contains all the business logic is ```MBHealthTracker``` wh
 The ```MBHealthTracker``` contains many services around the HealthKit data.
 
 #### Configuration
-<p>This contains logic around</>p 
+<p>This contains logic around</p>
 - requestingAuthorization
 - presenting healthKit app
 
