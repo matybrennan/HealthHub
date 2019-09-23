@@ -25,8 +25,15 @@ public enum MBObjectType: SharableType, ReadableType {
     case heartRate
     case workout
     case activeEnergy
-    case weight
+    
+    
+    /// Body
+    case bodyMass
+    case leanBodyMass
+    case height
+    case bodyMassIndex
     case bodyFatPercentage
+    case waistCircumference
     
     /// Nutrition
     
@@ -86,9 +93,19 @@ public enum MBObjectType: SharableType, ReadableType {
         case .heartRate: return HKQuantityType.quantityType(forIdentifier: .heartRate)!
         case .workout: return HKWorkoutType.workoutType()
         case .activeEnergy: return HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
-        case .weight: return HKQuantityType.quantityType(forIdentifier: .bodyMass)!
-        case .bodyFatPercentage: return HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!
         
+        
+        /// Body
+        case .bodyMass: return HKQuantityType.quantityType(forIdentifier: .bodyMass)!
+        case .leanBodyMass: return HKQuantityType.quantityType(forIdentifier: .leanBodyMass)!
+        case .height: return HKQuantityType.quantityType(forIdentifier: .height)!
+        case .bodyMassIndex: return HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)!
+        case .bodyFatPercentage: return HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!
+        case .waistCircumference: if #available(iOS 11.0, *) {
+            return HKQuantityType.quantityType(forIdentifier: .waistCircumference)!
+        } else {
+            return HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!
+        }  
             
         /// Nutrition
             
@@ -155,8 +172,18 @@ public enum MBObjectType: SharableType, ReadableType {
         case .heartRate: return HKQuantityType.quantityType(forIdentifier: .heartRate)!
         case .workout: return HKWorkoutType.workoutType()
         case .activeEnergy: return HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
-        case .weight: return HKQuantityType.quantityType(forIdentifier: .bodyMass)!
+        
+        /// Body
+        case .bodyMass: return HKQuantityType.quantityType(forIdentifier: .bodyMass)!
+        case .leanBodyMass: return HKQuantityType.quantityType(forIdentifier: .leanBodyMass)!
+        case .height: return HKQuantityType.quantityType(forIdentifier: .height)!
+        case .bodyMassIndex: return HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)!
         case .bodyFatPercentage: return HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!
+        case .waistCircumference: if #available(iOS 11.0, *) {
+            return HKQuantityType.quantityType(forIdentifier: .waistCircumference)!
+        } else {
+            return HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!
+        }
         
         /// Nutrition
             
