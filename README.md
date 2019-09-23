@@ -127,7 +127,7 @@ Interested in contributing to MBHealthTracker? Branch off and create a PR
 
 Add your app to the list of apps using this library and make a pull request.
 
-- [Formacar](https://itunes.apple.com/us/developer/mathew-brennan/id1044170265)
+- [FitnessKit](https://apps.apple.com/us/app/gym-log-custom-workout-plan/id1445516231)
 
 ## License
 
