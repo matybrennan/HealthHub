@@ -25,6 +25,9 @@
 		2E52D76123350B8700451B0D /* BodyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D76023350B8700451B0D /* BodyService.swift */; };
 		2E52D76323350B9700451B0D /* BodyServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D76223350B9700451B0D /* BodyServiceProtocol.swift */; };
 		2E52D76623350BF300451B0D /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D76523350BF300451B0D /* Body.swift */; };
+		2E52D7972339B1FF00451B0D /* MindfulnessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D7962339B1FF00451B0D /* MindfulnessService.swift */; };
+		2E52D7992339B22700451B0D /* MindfulnessServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D7982339B22700451B0D /* MindfulnessServiceProtocol.swift */; };
+		2E52D79C2339B29600451B0D /* Mindful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D79B2339B29600451B0D /* Mindful.swift */; };
 		2E5F4A0C20380C4500947553 /* StepsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A0B20380C4500947553 /* StepsService.swift */; };
 		2E5F4A0E20380C5000947553 /* StepsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A0D20380C5000947553 /* StepsServiceProtocol.swift */; };
 		2E5F4A1120380D4500947553 /* StepsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A1020380D4500947553 /* StepsModels.swift */; };
@@ -95,6 +98,9 @@
 		2E52D76023350B8700451B0D /* BodyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyService.swift; sourceTree = "<group>"; };
 		2E52D76223350B9700451B0D /* BodyServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyServiceProtocol.swift; sourceTree = "<group>"; };
 		2E52D76523350BF300451B0D /* Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
+		2E52D7962339B1FF00451B0D /* MindfulnessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindfulnessService.swift; sourceTree = "<group>"; };
+		2E52D7982339B22700451B0D /* MindfulnessServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindfulnessServiceProtocol.swift; sourceTree = "<group>"; };
+		2E52D79B2339B29600451B0D /* Mindful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mindful.swift; sourceTree = "<group>"; };
 		2E5F4A0B20380C4500947553 /* StepsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsService.swift; sourceTree = "<group>"; };
 		2E5F4A0D20380C5000947553 /* StepsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsServiceProtocol.swift; sourceTree = "<group>"; };
 		2E5F4A1020380D4500947553 /* StepsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsModels.swift; sourceTree = "<group>"; };
@@ -241,6 +247,23 @@
 			path = Body;
 			sourceTree = "<group>";
 		};
+		2E52D7952339B1E000451B0D /* Mindfulness */ = {
+			isa = PBXGroup;
+			children = (
+				2E52D7962339B1FF00451B0D /* MindfulnessService.swift */,
+				2E52D7982339B22700451B0D /* MindfulnessServiceProtocol.swift */,
+			);
+			path = Mindfulness;
+			sourceTree = "<group>";
+		};
+		2E52D79A2339B28700451B0D /* Mindful */ = {
+			isa = PBXGroup;
+			children = (
+				2E52D79B2339B29600451B0D /* Mindful.swift */,
+			);
+			path = Mindful;
+			sourceTree = "<group>";
+		};
 		2E5F4A0A20380C2D00947553 /* Steps */ = {
 			isa = PBXGroup;
 			children = (
@@ -345,6 +368,7 @@
 		6B099F10D01AEF156A3F4C80D3D96862 /* Business Logic */ = {
 			isa = PBXGroup;
 			children = (
+				2E52D7952339B1E000451B0D /* Mindfulness */,
 				2E52D75F23350B7400451B0D /* Body */,
 				2EA2897221B21A68002F6F7D /* Sleep */,
 				2E0B615321AD21A500827FBD /* ActiveEnergy */,
@@ -372,6 +396,7 @@
 		81A77F2D867212F9CCA1A1C2E956B20B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				2E52D79A2339B28700451B0D /* Mindful */,
 				2E52D76423350BEA00451B0D /* Body */,
 				2EA2897721B21C13002F6F7D /* Sleep */,
 				2E0B615021AD20F200827FBD /* ActiveEnergy */,
@@ -695,6 +720,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B9B9E0C58C3635DF278A129DD45483D /* ConfigurationService.swift in Sources */,
+				2E52D7972339B1FF00451B0D /* MindfulnessService.swift in Sources */,
 				2E5F4A182038437A00947553 /* WorkoutManagerProtocol.swift in Sources */,
 				2E5F4A0E20380C5000947553 /* StepsServiceProtocol.swift in Sources */,
 				2E5F4A0C20380C4500947553 /* StepsService.swift in Sources */,
@@ -710,6 +736,7 @@
 				2E5F4A1B2039986E00947553 /* WorkoutModels.swift in Sources */,
 				C0CE875520A0329B38CBCA9E589122E3 /* HealthParser.swift in Sources */,
 				2E051EA7208DDB04004DAD9F /* HealthType.swift in Sources */,
+				2E52D79C2339B29600451B0D /* Mindful.swift in Sources */,
 				2E193AD520B6C23C002D0D59 /* NutritionService.swift in Sources */,
 				221B64E20B6BEBD15FAA52AEE03406C6 /* HeartRateModels.swift in Sources */,
 				2E0B615721AD21C200827FBD /* ActiveEnergyServiceProtocol.swift in Sources */,
@@ -729,6 +756,7 @@
 				2E5F4A21203ABB4500947553 /* WorkoutReadServiceProtocol.swift in Sources */,
 				2E0B615221AD210800827FBD /* ActiveEnergyModels.swift in Sources */,
 				AC5DA2EFE6E2E00FFEB9BA728CDFFD65 /* NetworkResult.swift in Sources */,
+				2E52D7992339B22700451B0D /* MindfulnessServiceProtocol.swift in Sources */,
 				2E193AD220B5854E002D0D59 /* CharacteristicServiceProtocol.swift in Sources */,
 				2E193ADA20B6CC36002D0D59 /* NutritionModels.swift in Sources */,
 				2E5F4A25203ABBD000947553 /* WorkoutWriteServiceProtocol.swift in Sources */,

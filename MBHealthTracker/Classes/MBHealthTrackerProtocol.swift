@@ -27,4 +27,6 @@ public protocol MBHealthTrackerProtocol {
     var sleep: SleepServiceProtocol { get }
     
     var body: BodyServiceProtocol { get }
+    
+    var mindful: MindfulnessServiceProtocol { get }
 }

@@ -14,7 +14,12 @@ public struct Sleep {
         public let style: MBSleepStyle
         public let startDate: Date
         public let endDate: Date
-        public let type: HKCategoryType
+        
+        public init(style: MBSleepStyle, startDate: Date, endDate: Date) {
+            self.style = style
+            self.startDate = startDate
+            self.endDate = endDate
+        }
     }
     
     public let items: [Info]
@@ -22,11 +27,10 @@ public struct Sleep {
 
 extension Sleep.Info {
     
-    public init(style: MBSleepStyle, startDate: Date, type: HKCategoryType) {
+    public init(style: MBSleepStyle, startDate: Date) {
         self.style = style
         self.startDate = startDate
         self.endDate = Date()
-        self.type = type
     }
 }
 

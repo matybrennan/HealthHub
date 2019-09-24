@@ -26,7 +26,8 @@ extension ViewInteractor: ViewInteractorProtocol {
     }
     
     func getPercentage() {
-        try! healthTracker.body.bodyHeight(completionHandler: { (result) in
+        let mindful = Mindful.Info(value: 0, startDate: Date(timeInterval: -100, since: Date()), endDate: Date())
+        try! healthTracker.mindful.save(mindful: mindful, extra: nil, completionHandler: { (result) in
             //
         })
     }
@@ -37,10 +38,10 @@ extension ViewInteractor: ViewInteractorProtocol {
     }
     
     func configurePermissions() {
-        healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.heartRate, MBObjectType.stepCount, MBObjectType.workout, MBObjectType.water, MBObjectType.sleep, MBObjectType.workout]
+        healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.heartRate, MBObjectType.stepCount, MBObjectType.workout, MBObjectType.water, MBObjectType.sleep, MBObjectType.workout, MBObjectType.mindful]
         
         
-        ,toRead: [MBObjectType.heartRate, MBObjectType.stepCount, MBObjectType.workout, MBObjectType.iron, MBObjectType.activeEnergy, MBObjectType.energyConsumed, MBObjectType.carbohydrates, MBObjectType.fiber, MBObjectType.sugar, MBObjectType.fatTotal, MBObjectType.fatMono, MBObjectType.fatPoly, MBObjectType.fatSaturated, MBObjectType.cholesterol, MBObjectType.protein, MBObjectType.vitaminA, MBObjectType.thiamin, MBObjectType.riboflavin, MBObjectType.niacin, MBObjectType.pathothenicAcid, MBObjectType.vitaminB6, MBObjectType.biotin, MBObjectType.vitaminB12, MBObjectType.vitaminC, MBObjectType.vitaminD, MBObjectType.vitaminE, MBObjectType.vitaminK, MBObjectType.folate, MBObjectType.water, MBObjectType.caffeine, MBObjectType.sleep, MBObjectType.bodyMass, MBObjectType.bodyFatPercentage, MBReadType.dob, MBReadType.gender, MBObjectType.bodyMassIndex, MBObjectType.waistCircumference, MBObjectType.leanBodyMass, MBObjectType.height]) { _ in }
+        ,toRead: [MBObjectType.heartRate, MBObjectType.stepCount, MBObjectType.workout, MBObjectType.iron, MBObjectType.activeEnergy, MBObjectType.energyConsumed, MBObjectType.carbohydrates, MBObjectType.fiber, MBObjectType.sugar, MBObjectType.fatTotal, MBObjectType.fatMono, MBObjectType.fatPoly, MBObjectType.fatSaturated, MBObjectType.cholesterol, MBObjectType.protein, MBObjectType.vitaminA, MBObjectType.thiamin, MBObjectType.riboflavin, MBObjectType.niacin, MBObjectType.pathothenicAcid, MBObjectType.vitaminB6, MBObjectType.biotin, MBObjectType.vitaminB12, MBObjectType.vitaminC, MBObjectType.vitaminD, MBObjectType.vitaminE, MBObjectType.vitaminK, MBObjectType.folate, MBObjectType.water, MBObjectType.caffeine, MBObjectType.sleep, MBObjectType.bodyMass, MBObjectType.bodyFatPercentage, MBReadType.dob, MBReadType.gender, MBObjectType.bodyMassIndex, MBObjectType.waistCircumference, MBObjectType.leanBodyMass, MBObjectType.height, MBObjectType.mindful]) { _ in }
     }
     
     func runTest() {
@@ -63,7 +64,7 @@ extension ViewInteractor: ViewInteractorProtocol {
     }
     
     func saveSleep(completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws {
-        let sleepInfo = Sleep.Info.init(style: MBSleepStyle.awake, startDate: Date(), type: MBObjectType.sleep.sharable as! HKCategoryType)
+        let sleepInfo = Sleep.Info.init(style: MBSleepStyle.awake, startDate: Date())
         try healthTracker.sleep.save(sleep: sleepInfo, extra: nil, completionHandler: completionHandler)
     }
     

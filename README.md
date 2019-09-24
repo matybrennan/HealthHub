@@ -92,6 +92,7 @@ Split into sections to gather data based on timeIntervals
 ```var steps: StepsServiceProtocol```
 
 #### Body
+- bodyMass
 - bodyMassIndex
 - bodyFatPercentage
 - leanBodyMass

@@ -87,6 +87,9 @@ public enum MBObjectType: SharableType, ReadableType {
     /// Sleep
     case sleep
     
+    /// Mindful
+    case mindful
+    
     public var sharable: HKSampleType {
         switch self {
         case .stepCount: return HKQuantityType.quantityType(forIdentifier: .stepCount)!
@@ -163,6 +166,8 @@ public enum MBObjectType: SharableType, ReadableType {
         /// Sleep
         case .sleep: return HKCategoryType.categoryType(forIdentifier: .sleepAnalysis)!
             
+        /// Mindful
+        case .mindful: return HKCategoryType.categoryType(forIdentifier: .mindfulSession)!
         }
     }
     
@@ -241,6 +246,8 @@ public enum MBObjectType: SharableType, ReadableType {
         /// Sleep
         case .sleep: return HKCategoryType.categoryType(forIdentifier: .sleepAnalysis)!
             
+        /// Mindful
+        case .mindful: return HKCategoryType.categoryType(forIdentifier: .mindfulSession)!
         }
     }
 }

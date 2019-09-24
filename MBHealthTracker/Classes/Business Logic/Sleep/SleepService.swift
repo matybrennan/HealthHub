@@ -38,7 +38,7 @@ extension SleepService: SleepServiceProtocol {
                 
                 let style = MBSleepStyle(rawValue: item.value) ?? MBSleepStyle.awake
                 
-                return Sleep.Info(style: style, startDate: item.startDate, endDate: item.endDate, type: sleepType as! HKCategoryType)
+                return Sleep.Info(style: style, startDate: item.startDate, endDate: item.endDate)
             }
             
             let vm = Sleep(items: items)
@@ -51,10 +51,10 @@ extension SleepService: SleepServiceProtocol {
     
     public func save(sleep: Sleep.Info, extra: [String : Any]?, completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws {
         
-        try checkSharingAuthorizationStatus(for: sleep.type)
+        try checkSharingAuthorizationStatus(for: MBObjectType.sleep.sharable)
         try isDataStoreAvailable()
         
-        let sampleObj = HKCategorySample(type: sleep.type, value: sleep.style.rawValue, start: sleep.startDate, end: sleep.endDate, metadata: extra)
+        let sampleObj = HKCategorySample(type: MBObjectType.sleep.sharable as! HKCategoryType, value: sleep.style.rawValue, start: sleep.startDate, end: sleep.endDate, metadata: extra)
         
         healthStore.save(sampleObj) { (status, error) in
             if let error = error {
