@@ -64,6 +64,12 @@ let myService = MyService(configuration: configuration)
 
 ```var sleep: SleepServiceProtocol```
 
+#### Mindfulness
+- getting mindful sessions
+- saving mindful item
+
+```var mindful: MindfulnessServiceProtocol```
+
 #### EnergyUse
 Split into sections to gather data based on timeIntervals
 - today, thisWeek, betweenTime
