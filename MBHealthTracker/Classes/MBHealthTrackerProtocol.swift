@@ -29,4 +29,6 @@ public protocol MBHealthTrackerProtocol {
     var body: BodyServiceProtocol { get }
     
     var mindful: MindfulnessServiceProtocol { get }
+    
+    var reproductive: ReproductiveServiceProtocol { get }
 }

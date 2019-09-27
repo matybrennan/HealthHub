@@ -59,6 +59,10 @@ open class MBHealthTracker {
     lazy var mindfulService: MindfulnessServiceProtocol = {
         return MindfulnessService()
     }()
+    
+    lazy var reproductiveService: ReproductiveServiceProtocol = {
+        ReproductiveService()
+    }()
 }
 
 extension MBHealthTracker: MBHealthTrackerProtocol {
@@ -108,5 +112,9 @@ extension MBHealthTracker: MBHealthTrackerProtocol {
     
     public var mindful: MindfulnessServiceProtocol {
         return mindfulService
+    }
+    
+    public var reproductive: ReproductiveServiceProtocol {
+        return reproductiveService
     }
 }

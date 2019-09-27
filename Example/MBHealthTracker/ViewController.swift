@@ -9,19 +9,6 @@
 import UIKit
 import MBHealthTracker
 
-protocol ViewInteractorProtocol {
-    
-    func getHeartRate(completionHandler: @escaping (MBAsyncCallResult<HeartRate>) -> Void) throws
-    func configurePermissions()
-    func getActivEenergy(completionHandler: @escaping (MBAsyncCallResult<ActiveEnergy>) -> Void) throws
-    func runTest()
-    func getWorkouts(completionHandler: @escaping (MBAsyncCallResult<MBWorkout>) -> Void) throws
-    func saveWorkout(completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws
-    func saveSleep(completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws
-    func getSleep(completionHandler: @escaping (MBAsyncCallResult<Sleep>) -> Void) throws
-    func getPercentage()
-}
-
 class ViewController: UIViewController {
 
     var interactor: ViewInteractorProtocol!
@@ -31,29 +18,9 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         
         interactor.configurePermissions()
-        //interactor.runTest()
-        
-        interactor.getPercentage()
-        try? interactor.saveWorkout { (result) in
-            
-        }
         
         print("---------------------------------")
-        
-        do {
-            try interactor.getSleep(completionHandler: { result in
-                switch result {
-                case let .success(model):
-                    print("Success: \(model)")
-                case let .failed(error):
-                    print("Error: \(error.localizedDescription) for sleep value")
-                }
-            })
-        } catch {
-            print("catch error: \(error.localizedDescription)")
-        }
-        
-        
+        interactor.runTest()
         print("---------------------------------")
     }
 }

@@ -17,6 +17,9 @@
 		2E0B615521AD21B800827FBD /* ActiveEnergyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0B615421AD21B800827FBD /* ActiveEnergyService.swift */; };
 		2E0B615721AD21C200827FBD /* ActiveEnergyServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0B615621AD21C200827FBD /* ActiveEnergyServiceProtocol.swift */; };
 		2E15F1E7203475E300F6AB56 /* MBHealthTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F9B503FF53D0B3DBA417C7991F2040 /* MBHealthTracker.framework */; };
+		2E17102B233E3F9600450364 /* ReproductiveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E17102A233E3F9600450364 /* ReproductiveService.swift */; };
+		2E17102D233E3FAF00450364 /* ReproductiveServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E17102C233E3FAF00450364 /* ReproductiveServiceProtocol.swift */; };
+		2E171030233E414E00450364 /* Reproductive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E17102F233E414E00450364 /* Reproductive.swift */; };
 		2E193AD020B58531002D0D59 /* CharacteristicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E193ACF20B58531002D0D59 /* CharacteristicService.swift */; };
 		2E193AD220B5854E002D0D59 /* CharacteristicServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E193AD120B5854E002D0D59 /* CharacteristicServiceProtocol.swift */; };
 		2E193AD520B6C23C002D0D59 /* NutritionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E193AD420B6C23C002D0D59 /* NutritionService.swift */; };
@@ -89,6 +92,9 @@
 		2E0B615421AD21B800827FBD /* ActiveEnergyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveEnergyService.swift; sourceTree = "<group>"; };
 		2E0B615621AD21C200827FBD /* ActiveEnergyServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveEnergyServiceProtocol.swift; sourceTree = "<group>"; };
 		2E15F1E2203475E300F6AB56 /* MBHealthTrackerPodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MBHealthTrackerPodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E17102A233E3F9600450364 /* ReproductiveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReproductiveService.swift; sourceTree = "<group>"; };
+		2E17102C233E3FAF00450364 /* ReproductiveServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReproductiveServiceProtocol.swift; sourceTree = "<group>"; };
+		2E17102F233E414E00450364 /* Reproductive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reproductive.swift; sourceTree = "<group>"; };
 		2E193ACF20B58531002D0D59 /* CharacteristicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicService.swift; sourceTree = "<group>"; };
 		2E193AD120B5854E002D0D59 /* CharacteristicServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicServiceProtocol.swift; sourceTree = "<group>"; };
 		2E193AD420B6C23C002D0D59 /* NutritionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionService.swift; sourceTree = "<group>"; };
@@ -202,6 +208,23 @@
 				2E0B615621AD21C200827FBD /* ActiveEnergyServiceProtocol.swift */,
 			);
 			path = ActiveEnergy;
+			sourceTree = "<group>";
+		};
+		2E171029233E3F8800450364 /* Reproductive */ = {
+			isa = PBXGroup;
+			children = (
+				2E17102A233E3F9600450364 /* ReproductiveService.swift */,
+				2E17102C233E3FAF00450364 /* ReproductiveServiceProtocol.swift */,
+			);
+			path = Reproductive;
+			sourceTree = "<group>";
+		};
+		2E17102E233E413E00450364 /* Reproductive */ = {
+			isa = PBXGroup;
+			children = (
+				2E17102F233E414E00450364 /* Reproductive.swift */,
+			);
+			path = Reproductive;
 			sourceTree = "<group>";
 		};
 		2E193ACE20B58509002D0D59 /* Characteristics */ = {
@@ -368,6 +391,7 @@
 		6B099F10D01AEF156A3F4C80D3D96862 /* Business Logic */ = {
 			isa = PBXGroup;
 			children = (
+				2E171029233E3F8800450364 /* Reproductive */,
 				2E52D7952339B1E000451B0D /* Mindfulness */,
 				2E52D75F23350B7400451B0D /* Body */,
 				2EA2897221B21A68002F6F7D /* Sleep */,
@@ -396,6 +420,7 @@
 		81A77F2D867212F9CCA1A1C2E956B20B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				2E17102E233E413E00450364 /* Reproductive */,
 				2E52D79A2339B28700451B0D /* Mindful */,
 				2E52D76423350BEA00451B0D /* Body */,
 				2EA2897721B21C13002F6F7D /* Sleep */,
@@ -730,6 +755,7 @@
 				5638330ADBC437778CA6012B273D62F3 /* ConfigurationServiceProtocol.swift in Sources */,
 				2E5F4A1320383D7300947553 /* Date+Extension.swift in Sources */,
 				2E52D76623350BF300451B0D /* Body.swift in Sources */,
+				2E17102B233E3F9600450364 /* ReproductiveService.swift in Sources */,
 				2EA2897621B21A84002F6F7D /* SleepServiceProtocol.swift in Sources */,
 				2E5F4A23203ABBC400947553 /* WorkoutWriteService.swift in Sources */,
 				2E52D76123350B8700451B0D /* BodyService.swift in Sources */,
@@ -739,6 +765,7 @@
 				2E52D79C2339B29600451B0D /* Mindful.swift in Sources */,
 				2E193AD520B6C23C002D0D59 /* NutritionService.swift in Sources */,
 				221B64E20B6BEBD15FAA52AEE03406C6 /* HeartRateModels.swift in Sources */,
+				2E171030233E414E00450364 /* Reproductive.swift in Sources */,
 				2E0B615721AD21C200827FBD /* ActiveEnergyServiceProtocol.swift in Sources */,
 				3C51D2DBA2E2AFEE7068E5A0985E3CAE /* HeartRateService.swift in Sources */,
 				2E52D76323350B9700451B0D /* BodyServiceProtocol.swift in Sources */,
@@ -747,6 +774,7 @@
 				2EA2897421B21A76002F6F7D /* SleepService.swift in Sources */,
 				2E193AD020B58531002D0D59 /* CharacteristicService.swift in Sources */,
 				32EF6E789DAEEB361DCDBA37F8610070 /* Helpers.swift in Sources */,
+				2E17102D233E3FAF00450364 /* ReproductiveServiceProtocol.swift in Sources */,
 				2E5F4A162038436D00947553 /* WorkoutManager.swift in Sources */,
 				A2D56789BB66A50E5E3DD31A711052E1 /* MBHealthTracker-dummy.m in Sources */,
 				0FB01B3701B32589C4566742DE5FA1F3 /* MBHealthTracker.swift in Sources */,
