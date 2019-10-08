@@ -16,7 +16,7 @@ public class ReproductiveService {
 // MARK: - ReproductiveServiceProtocol
 extension ReproductiveService: ReproductiveServiceProtocol {
     
-    // Basal body temp, cervical mucus quality, mentruation, ovulation, sexual activity, spotting
+    // Basal body temp, cervical mucus quality, menstrualFlow, ovulation, sexual activity, spotting
     
     public func basalBodyTemperature(completionHandler: @escaping (MBAsyncCallResult<BasalBodyTemperature>) -> Void) throws {
         

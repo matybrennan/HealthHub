@@ -25,3 +25,24 @@ public struct BasalBodyTemperature {
     
     public let items: [Info]
 }
+
+public struct CervicalMucusQuality {
+    public init() { }
+}
+
+public struct MenstrualFlow {
+    public init() { }
+}
+
+public struct Ovulation {
+    public init() { }
+}
+
+public struct SexualActivity {
+    public init() { }
+}
+
+public struct Spotting {
+    public init() { }
+}
+
