@@ -8,21 +8,17 @@
 import Foundation
 import HealthKit
 
-public protocol MBHealthTrackerProtocol {
+public protocol MBHealthTrackerProtocol: AnyObject {
     
     var configuration: ConfigurationServiceProtocol { get }
     
+    var activityManager: ActivityManagerProtocol { get }
+    
     var heartRate: HeartRateServiceProtocol { get }
-    
-    var steps: StepsServiceProtocol { get }
-    
-    var workout: WorkoutManagerProtocol { get }
     
     var characteristics: CharacteristicServiceProtocol { get }
     
     var nutritionService: NutritionServiceProtocol { get }
-    
-    var activeEnergy: ActiveEnergyServiceProtocol { get }
     
     var sleep: SleepServiceProtocol { get }
     

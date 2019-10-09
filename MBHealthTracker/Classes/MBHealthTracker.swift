@@ -12,55 +12,39 @@ open class MBHealthTracker {
     
     public init() { }
     
-    lazy var privateConfiguration: ConfigurationServiceProtocol = {
+    private lazy var privateConfiguration: ConfigurationServiceProtocol = {
         return ConfigurationService()
     }()
     
-    lazy var privateHeartRate: HeartRateServiceProtocol = {
+    private lazy var privateActivityManager: ActivityManagerProtocol = {
+        return ActivityManager()
+    }()
+    
+    private lazy var privateHeartRate: HeartRateServiceProtocol = {
         return HeartRateService()
     }()
     
-    lazy var privateSteps: StepsServiceProtocol = {
-        return StepsService()
-    }()
-    
-    lazy var privateWorkoutReadService: WorkoutReadServiceProtocol = {
-        return WorkoutReadService()
-    }()
-    
-    lazy var privateWorkoutWriteService: WorkoutWriteServiceProtocol = {
-        return WorkoutWriteService()
-    }()
-    
-    lazy var privateWorkout: WorkoutManagerProtocol = {
-        return WorkoutManager(readService: self.privateWorkoutReadService, writeService: self.privateWorkoutWriteService)
-    }()
-    
-    lazy var privateCharacteristicsService: CharacteristicServiceProtocol = {
+    private lazy var privateCharacteristicsService: CharacteristicServiceProtocol = {
         return CharacteristicService()
     }()
     
-    lazy var privateNutritionService: NutritionServiceProtocol = {
+    private lazy var privateNutritionService: NutritionServiceProtocol = {
         return NutritionService()
     }()
     
-    lazy var activeEnergyService: ActiveEnergyServiceProtocol = {
-        return ActiveEnergyService()
-    }()
-    
-    lazy var sleepService: SleepServiceProtocol = {
+    private lazy var privateSleepService: SleepServiceProtocol = {
         return SleepService()
     }()
     
-    lazy var bodyService: BodyServiceProtocol = {
+    private lazy var privateBodyService: BodyServiceProtocol = {
         return BodyService()
     }()
     
-    lazy var mindfulService: MindfulnessServiceProtocol = {
+    private lazy var privateMindfulService: MindfulnessServiceProtocol = {
         return MindfulnessService()
     }()
     
-    lazy var reproductiveService: ReproductiveServiceProtocol = {
+    private lazy var privateReproductiveService: ReproductiveServiceProtocol = {
         ReproductiveService()
     }()
 }
@@ -72,19 +56,13 @@ extension MBHealthTracker: MBHealthTrackerProtocol {
         return privateConfiguration
     }
     
+    public var activityManager: ActivityManagerProtocol {
+        return privateActivityManager
+    }
+    
     /// handles gathering logic from healthKit regarding heartRate details
     public var heartRate: HeartRateServiceProtocol {
         return privateHeartRate
-    }
-    
-    /// handles gathering logic from healthKit regarding stepCount details
-    public var steps: StepsServiceProtocol {
-        return privateSteps
-    }
-    
-    /// handles gathering logic from healthKit regarding workouts
-    public var workout: WorkoutManagerProtocol {
-        return privateWorkout
     }
     
     /// handles gathering personal information about user
@@ -97,24 +75,19 @@ extension MBHealthTracker: MBHealthTrackerProtocol {
         return privateNutritionService
     }
     
-    /// handles gathering logic about active energy burned from healthstore
-    public var activeEnergy: ActiveEnergyServiceProtocol {
-        return activeEnergyService
-    }
-    
     public var sleep: SleepServiceProtocol {
-        return sleepService
+        return privateSleepService
     }
     
     public var body: BodyServiceProtocol {
-        return bodyService
+        return privateBodyService
     }
     
     public var mindful: MindfulnessServiceProtocol {
-        return mindfulService
+        return privateMindfulService
     }
     
     public var reproductive: ReproductiveServiceProtocol {
-        return reproductiveService
+        return privateReproductiveService
     }
 }

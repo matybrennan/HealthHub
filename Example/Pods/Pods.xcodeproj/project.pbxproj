@@ -31,6 +31,8 @@
 		2E52D7972339B1FF00451B0D /* MindfulnessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D7962339B1FF00451B0D /* MindfulnessService.swift */; };
 		2E52D7992339B22700451B0D /* MindfulnessServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D7982339B22700451B0D /* MindfulnessServiceProtocol.swift */; };
 		2E52D79C2339B29600451B0D /* Mindful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D79B2339B29600451B0D /* Mindful.swift */; };
+		2E5892F4234DB26900BAD72D /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5892F3234DB26900BAD72D /* ActivityManager.swift */; };
+		2E5892F6234DB28100BAD72D /* ActivityManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5892F5234DB28100BAD72D /* ActivityManagerProtocol.swift */; };
 		2E5F4A0C20380C4500947553 /* StepsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A0B20380C4500947553 /* StepsService.swift */; };
 		2E5F4A0E20380C5000947553 /* StepsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A0D20380C5000947553 /* StepsServiceProtocol.swift */; };
 		2E5F4A1120380D4500947553 /* StepsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A1020380D4500947553 /* StepsModels.swift */; };
@@ -107,6 +109,8 @@
 		2E52D7962339B1FF00451B0D /* MindfulnessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindfulnessService.swift; sourceTree = "<group>"; };
 		2E52D7982339B22700451B0D /* MindfulnessServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindfulnessServiceProtocol.swift; sourceTree = "<group>"; };
 		2E52D79B2339B29600451B0D /* Mindful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mindful.swift; sourceTree = "<group>"; };
+		2E5892F3234DB26900BAD72D /* ActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
+		2E5892F5234DB28100BAD72D /* ActivityManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityManagerProtocol.swift; sourceTree = "<group>"; };
 		2E5F4A0B20380C4500947553 /* StepsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsService.swift; sourceTree = "<group>"; };
 		2E5F4A0D20380C5000947553 /* StepsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsServiceProtocol.swift; sourceTree = "<group>"; };
 		2E5F4A1020380D4500947553 /* StepsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsModels.swift; sourceTree = "<group>"; };
@@ -287,6 +291,18 @@
 			path = Mindful;
 			sourceTree = "<group>";
 		};
+		2E5892F2234DB1F800BAD72D /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				2E5892F3234DB26900BAD72D /* ActivityManager.swift */,
+				2E5892F5234DB28100BAD72D /* ActivityManagerProtocol.swift */,
+				2E0B615321AD21A500827FBD /* ActiveEnergy */,
+				2E5F4A142038435800947553 /* Workout */,
+				2E5F4A0A20380C2D00947553 /* Steps */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
 		2E5F4A0A20380C2D00947553 /* Steps */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,16 +407,14 @@
 		6B099F10D01AEF156A3F4C80D3D96862 /* Business Logic */ = {
 			isa = PBXGroup;
 			children = (
+				B08A9A7F951F239CD026F9C0BE0B1F5F /* Configuration */,
+				2E5892F2234DB1F800BAD72D /* Activity */,
 				2E171029233E3F8800450364 /* Reproductive */,
 				2E52D7952339B1E000451B0D /* Mindfulness */,
 				2E52D75F23350B7400451B0D /* Body */,
 				2EA2897221B21A68002F6F7D /* Sleep */,
-				2E0B615321AD21A500827FBD /* ActiveEnergy */,
 				2E193AD320B6C21F002D0D59 /* Nutrition */,
 				2E193ACE20B58509002D0D59 /* Characteristics */,
-				2E5F4A142038435800947553 /* Workout */,
-				2E5F4A0A20380C2D00947553 /* Steps */,
-				B08A9A7F951F239CD026F9C0BE0B1F5F /* Configuration */,
 				B9DA7E3F122F7D85DD9FD81C6BB8F151 /* HeartRate */,
 			);
 			path = "Business Logic";
@@ -750,6 +764,7 @@
 				2E5F4A0E20380C5000947553 /* StepsServiceProtocol.swift in Sources */,
 				2E5F4A0C20380C4500947553 /* StepsService.swift in Sources */,
 				2E193AD720B6C244002D0D59 /* NutritionServiceProtocol.swift in Sources */,
+				2E5892F6234DB28100BAD72D /* ActivityManagerProtocol.swift in Sources */,
 				2E5F4A1120380D4500947553 /* StepsModels.swift in Sources */,
 				2E5F4A1F203ABB3300947553 /* WorkoutReadService.swift in Sources */,
 				5638330ADBC437778CA6012B273D62F3 /* ConfigurationServiceProtocol.swift in Sources */,
@@ -764,6 +779,7 @@
 				2E051EA7208DDB04004DAD9F /* HealthType.swift in Sources */,
 				2E52D79C2339B29600451B0D /* Mindful.swift in Sources */,
 				2E193AD520B6C23C002D0D59 /* NutritionService.swift in Sources */,
+				2E5892F4234DB26900BAD72D /* ActivityManager.swift in Sources */,
 				221B64E20B6BEBD15FAA52AEE03406C6 /* HeartRateModels.swift in Sources */,
 				2E171030233E414E00450364 /* Reproductive.swift in Sources */,
 				2E0B615721AD21C200827FBD /* ActiveEnergyServiceProtocol.swift in Sources */,

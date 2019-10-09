@@ -35,7 +35,7 @@ extension ViewInteractor: ViewInteractorProtocol {
     
     func runTest() {
         do {
-            try healthTracker.reproductive.spotting(completionHandler: { (result) in
+            try healthTracker.activityManager.activeEnergy.getActiveEnergy(from: .today, completionHandler: { (result) in
                 //
             })
         } catch {

@@ -52,31 +52,25 @@ MyService -> init(configuration: ConfigurationServiceProtocol)
 let myService = MyService(configuration: configuration)
 ```
 
-#### Configuration 
+### Configuration 
 - requestingAuthorization
 - presenting healthKit app
 
 ```var configuration: ConfigurationServiceProtocol```
 
-#### Sleep
+### Sleep
 - getting sleep
 - saving sleep item
 
 ```var sleep: SleepServiceProtocol```
 
-#### Mindfulness
+### Mindfulness
 - getting mindful sessions
 - saving mindful item
 
 ```var mindful: MindfulnessServiceProtocol```
 
-#### EnergyUse
-Split into sections to gather data based on timeIntervals
-- today, thisWeek, betweenTime
-
-```var activeEnergy: ActiveEnergyServiceProtocol```
-
-#### Characteristics
+### Characteristics
 - biologicalSex
 - bloodType
 - dateOfBirth
@@ -84,12 +78,24 @@ Split into sections to gather data based on timeIntervals
 - isWheelChairUser
 
 ```var characteristics: CharacteristicServiceProtocol```
-
-#### HeartRate
+    
+### ActivityManager
+The ```ActivityManager``` contains all the services below and can be injected into your services with  ```ActivityManagerProtocol``` if you just need this service
+``` 
+let activityManager = ActivityManager()
+let activeEnergy = activityManager.activeEnergy
+```
+or using MBHealthTracker
+``` 
+let tracker = MBHealthTracker()
+let activeEnergy = tracker.activityManager.activeEnergy
+```
+    
+#### ActiveEnergy
 Split into sections to gather data based on timeIntervals
-- today, thisWeek, all
+- today, thisWeek, betweenTime
 
-```var heartRate: HeartRateServiceProtocol```
+```var activeEnergy: ActiveEnergyServiceProtocol```
     
 #### Steps
 Split into sections to gather data based on timeIntervals
@@ -97,7 +103,14 @@ Split into sections to gather data based on timeIntervals
 
 ```var steps: StepsServiceProtocol```
 
-#### Body
+#### Workouts
+- saveWorkoutItem
+- getWorkouts
+- today, thisWeek, all
+
+```var workout: WorkoutManagerProtocol```
+
+### Body
 - bodyMass
 - bodyMassIndex
 - bodyFatPercentage
@@ -107,7 +120,7 @@ Split into sections to gather data based on timeIntervals
 
 ```var body: BodyServiceProtocol```
 
-#### Nutrition
+### Nutrition
 - macronutrients
 - minerals
 - ultratrace minerals
@@ -117,12 +130,11 @@ Split into sections to gather data based on timeIntervals
 
 ```var nutritionService: NutritionServiceProtocol```
 
-#### Workouts
-- saveWorkoutItem
-- getWorkouts
-    - today, thisWeek, all
-    
-```var workout: WorkoutManagerProtocol```
+### HeartRate
+Split into sections to gather data based on timeIntervals
+- today, thisWeek, all
+
+```var heartRate: HeartRateServiceProtocol```
 
 ## Contact
 
