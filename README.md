@@ -136,6 +136,16 @@ Split into sections to gather data based on timeIntervals
 
 ```var heartRate: HeartRateServiceProtocol```
 
+### Reproductive health
+- basalBodyTemperature
+- cervicalMucusQuality
+- menstrualFlow
+- ovulation
+- sexualActivity
+- spotting
+
+```var reproductive: ReproductiveServiceProtocol```
+
 ## Contact
 
 Have a question or an issue about MBHealthTracker? Create an [issue](https://github.com/matybrennan/MBHealthTracker/issues/new)!
