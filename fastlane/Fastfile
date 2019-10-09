@@ -14,5 +14,8 @@ platform :ios do
      pod_push(allow_warnings: true)
     end
 
+lane :push_version do
+     pod_push(allow_warnings: true)
+end
 
   end
