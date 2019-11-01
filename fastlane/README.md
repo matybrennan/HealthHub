@@ -21,6 +21,11 @@ or alternatively using `brew cask install fastlane`
 fastlane ios release
 ```
 Releases a new version automatically
+### ios push_version
+```
+fastlane ios push_version
+```
+
 
 ----
 
