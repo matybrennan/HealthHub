@@ -79,6 +79,7 @@ let myService = MyService(configuration: configuration)
 
 ```var characteristics: CharacteristicServiceProtocol```
     
+------------------------------------------------------------------------
 ### ActivityManager
 The ```ActivityManager``` contains all the services below and can be injected into your services with  ```ActivityManagerProtocol``` if you just need this service
 ``` 
@@ -109,6 +110,8 @@ Split into sections to gather data based on timeIntervals
 - today, thisWeek, all
 
 ```var workout: WorkoutManagerProtocol```
+
+------------------------------------------------------------------------
 
 ### Body
 - bodyMass
