@@ -30,13 +30,13 @@ extension ViewInteractor: ViewInteractorProtocol {
     func configurePermissions() {
         healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.water, MBObjectType.sleep, MBObjectType.workout, MBObjectType.mindful]
         
-        ,toRead: [MBReadType.gender, MBObjectType.bodyMassIndex, MBObjectType.waistCircumference, MBObjectType.leanBodyMass, MBObjectType.height, MBObjectType.mindful, MBObjectType.cervicalMucusQuality, MBObjectType.basalBodyTemperature, MBObjectType.menstruation, MBObjectType.ovulationTestResult, MBObjectType.sexualActivity, MBObjectType.spotting]) { _ in }
+        ,toRead: [MBReadType.gender, MBObjectType.bodyMassIndex, MBObjectType.bloodPressureSystolic, MBObjectType.bloodPressureDiastolic, MBObjectType.respiratoryRate, MBObjectType.bodyTemperature]) { _ in }
     }
     
     func runTest() {
         do {
-            try healthTracker.activityManager.activeEnergy.getActiveEnergy(from: .today, completionHandler: { (result) in
-                //
+            try healthTracker.vitalsService.bodyTemperature(completionHandler: { (result) in
+                print(result)
             })
         } catch {
             print("Unable to get: \(error.localizedDescription)")

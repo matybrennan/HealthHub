@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import HealthKit
 
 public protocol MBHealthTrackerProtocol: AnyObject {
     
@@ -27,4 +26,6 @@ public protocol MBHealthTrackerProtocol: AnyObject {
     var mindful: MindfulnessServiceProtocol { get }
     
     var reproductive: ReproductiveServiceProtocol { get }
+    
+    var vitals: VitalsServiceProtocol { get }
 }

@@ -47,6 +47,9 @@
 		2EA2897421B21A76002F6F7D /* SleepService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2897321B21A76002F6F7D /* SleepService.swift */; };
 		2EA2897621B21A84002F6F7D /* SleepServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2897521B21A84002F6F7D /* SleepServiceProtocol.swift */; };
 		2EA2897921B21C1B002F6F7D /* Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2897821B21C1B002F6F7D /* Sleep.swift */; };
+		2EB36250239E60C20047899C /* VitalsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3624F239E60C20047899C /* VitalsService.swift */; };
+		2EB36252239E60F60047899C /* VitalsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB36251239E60F60047899C /* VitalsServiceProtocol.swift */; };
+		2EB36255239E616F0047899C /* Vitals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB36254239E616F0047899C /* Vitals.swift */; };
 		2EF55717207B5E6400FDC284 /* NSPredicate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF55716207B5E6400FDC284 /* NSPredicate+Extension.swift */; };
 		32EF6E789DAEEB361DCDBA37F8610070 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1316C446F58FFDB96D80E986A05584 /* Helpers.swift */; };
 		34E525AB192CB1BAF9930DEC1235C311 /* MBHealthTrackerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262CEAE77CE117CCE1466B1F120E666 /* MBHealthTrackerProtocol.swift */; };
@@ -125,6 +128,9 @@
 		2EA2897321B21A76002F6F7D /* SleepService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepService.swift; sourceTree = "<group>"; };
 		2EA2897521B21A84002F6F7D /* SleepServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepServiceProtocol.swift; sourceTree = "<group>"; };
 		2EA2897821B21C1B002F6F7D /* Sleep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sleep.swift; sourceTree = "<group>"; };
+		2EB3624F239E60C20047899C /* VitalsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitalsService.swift; sourceTree = "<group>"; };
+		2EB36251239E60F60047899C /* VitalsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitalsServiceProtocol.swift; sourceTree = "<group>"; };
+		2EB36254239E616F0047899C /* Vitals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vitals.swift; sourceTree = "<group>"; };
 		2EF55716207B5E6400FDC284 /* NSPredicate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPredicate+Extension.swift"; sourceTree = "<group>"; };
 		39F9B503FF53D0B3DBA417C7991F2040 /* MBHealthTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBHealthTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8E123C47AB09FF3F2A72198069950F /* Pods-MBHealthTracker_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MBHealthTracker_Tests.modulemap"; sourceTree = "<group>"; };
@@ -383,6 +389,23 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		2EB3624E239E60AC0047899C /* Vitals */ = {
+			isa = PBXGroup;
+			children = (
+				2EB3624F239E60C20047899C /* VitalsService.swift */,
+				2EB36251239E60F60047899C /* VitalsServiceProtocol.swift */,
+			);
+			path = Vitals;
+			sourceTree = "<group>";
+		};
+		2EB36253239E612A0047899C /* Vitals */ = {
+			isa = PBXGroup;
+			children = (
+				2EB36254239E616F0047899C /* Vitals.swift */,
+			);
+			path = Vitals;
+			sourceTree = "<group>";
+		};
 		4F8A88231C493E60FB25422F000B05CA /* MBHealthTracker */ = {
 			isa = PBXGroup;
 			children = (
@@ -407,6 +430,7 @@
 		6B099F10D01AEF156A3F4C80D3D96862 /* Business Logic */ = {
 			isa = PBXGroup;
 			children = (
+				2EB3624E239E60AC0047899C /* Vitals */,
 				B08A9A7F951F239CD026F9C0BE0B1F5F /* Configuration */,
 				2E5892F2234DB1F800BAD72D /* Activity */,
 				2E171029233E3F8800450364 /* Reproductive */,
@@ -434,6 +458,7 @@
 		81A77F2D867212F9CCA1A1C2E956B20B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				2EB36253239E612A0047899C /* Vitals */,
 				2E17102E233E413E00450364 /* Reproductive */,
 				2E52D79A2339B28700451B0D /* Mindful */,
 				2E52D76423350BEA00451B0D /* Body */,
@@ -777,6 +802,7 @@
 				2E5F4A1B2039986E00947553 /* WorkoutModels.swift in Sources */,
 				C0CE875520A0329B38CBCA9E589122E3 /* HealthParser.swift in Sources */,
 				2E051EA7208DDB04004DAD9F /* HealthType.swift in Sources */,
+				2EB36250239E60C20047899C /* VitalsService.swift in Sources */,
 				2E52D79C2339B29600451B0D /* Mindful.swift in Sources */,
 				2E193AD520B6C23C002D0D59 /* NutritionService.swift in Sources */,
 				2E5892F4234DB26900BAD72D /* ActivityManager.swift in Sources */,
@@ -784,7 +810,9 @@
 				2E171030233E414E00450364 /* Reproductive.swift in Sources */,
 				2E0B615721AD21C200827FBD /* ActiveEnergyServiceProtocol.swift in Sources */,
 				3C51D2DBA2E2AFEE7068E5A0985E3CAE /* HeartRateService.swift in Sources */,
+				2EB36255239E616F0047899C /* Vitals.swift in Sources */,
 				2E52D76323350B9700451B0D /* BodyServiceProtocol.swift in Sources */,
+				2EB36252239E60F60047899C /* VitalsServiceProtocol.swift in Sources */,
 				2EF55717207B5E6400FDC284 /* NSPredicate+Extension.swift in Sources */,
 				5AFBECA8E2E3A501864C6BE5F424F607 /* HeartRateServiceProtocol.swift in Sources */,
 				2EA2897421B21A76002F6F7D /* SleepService.swift in Sources */,

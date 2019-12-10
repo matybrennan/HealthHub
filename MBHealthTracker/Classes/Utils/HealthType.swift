@@ -98,6 +98,12 @@ public enum MBObjectType: SharableType, ReadableType {
     case sexualActivity
     case spotting
     
+    /// Vitals
+    case bloodPressureSystolic
+    case bloodPressureDiastolic
+    case respiratoryRate
+    case bodyTemperature
+    
     public var sharable: HKSampleType {
         switch self {
         case .stepCount: return HKQuantityType.quantityType(forIdentifier: .stepCount)!
@@ -184,6 +190,12 @@ public enum MBObjectType: SharableType, ReadableType {
         case .ovulationTestResult: return HKQuantityType.categoryType(forIdentifier: .ovulationTestResult)!
         case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
         case .spotting: return HKQuantityType.categoryType(forIdentifier: .intermenstrualBleeding)!
+            
+        /// Vitals
+        case .bloodPressureSystolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureSystolic)!
+        case .bloodPressureDiastolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureDiastolic)!
+        case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
+        case .bodyTemperature: return HKSampleType.quantityType(forIdentifier: .bodyTemperature)!
         }
     }
     
@@ -272,6 +284,12 @@ public enum MBObjectType: SharableType, ReadableType {
         case .ovulationTestResult: return HKQuantityType.categoryType(forIdentifier: .ovulationTestResult)!
         case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
         case .spotting: return HKQuantityType.categoryType(forIdentifier: .intermenstrualBleeding)!
+            
+        /// Vitals
+        case .bloodPressureSystolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureSystolic)!
+        case .bloodPressureDiastolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureDiastolic)!
+        case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
+        case .bodyTemperature: return HKSampleType.quantityType(forIdentifier: .bodyTemperature)!
         }
     }
 }

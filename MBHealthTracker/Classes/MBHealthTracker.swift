@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import HealthKit
 
 open class MBHealthTracker {
     
@@ -46,6 +45,10 @@ open class MBHealthTracker {
     
     private lazy var privateReproductiveService: ReproductiveServiceProtocol = {
         ReproductiveService()
+    }()
+    
+    public lazy var privateVitalsService: VitalsServiceProtocol = {
+        VitalsService()
     }()
 }
 
@@ -89,5 +92,9 @@ extension MBHealthTracker: MBHealthTrackerProtocol {
     
     public var reproductive: ReproductiveServiceProtocol {
         return privateReproductiveService
+    }
+    
+    public var vitals: VitalsServiceProtocol {
+        return privateVitalsService
     }
 }

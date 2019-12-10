@@ -149,6 +149,13 @@ Split into sections to gather data based on timeIntervals
 
 ```var reproductive: ReproductiveServiceProtocol```
 
+### Vitals
+- bloodPressure
+- respiratoryRate
+- bodyTemperature
+
+```var vitals: VitalsServiceProtocol```
+
 ## Contact
 
 Have a question or an issue about MBHealthTracker? Create an [issue](https://github.com/matybrennan/MBHealthTracker/issues/new)!

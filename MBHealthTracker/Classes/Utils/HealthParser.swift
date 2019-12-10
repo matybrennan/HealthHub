@@ -34,4 +34,11 @@ open class MBHealthParser {
         }
         return result
     }
+    
+    static func unbox(correlationIdentifier: HKCorrelationTypeIdentifier) throws -> HKCorrelationType {
+        guard let result = HKCategoryType.correlationType(forIdentifier: correlationIdentifier) else {
+            throw MBHealthParserError.unableToAccess(correlationIdentifier.rawValue)
+        }
+        return result
+    }
 }
