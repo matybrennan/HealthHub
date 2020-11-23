@@ -7,7 +7,7 @@
 
 import Foundation
 import HealthKit
-
+import UIKit
 
 public class ConfigurationService {
     
