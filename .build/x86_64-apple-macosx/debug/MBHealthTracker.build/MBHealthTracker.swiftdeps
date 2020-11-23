@@ -1,0 +1,22 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "MBHealthTracker"
+provides-nominal:
+- "15MBHealthTrackerAAV"
+provides-member:
+- ["15MBHealthTrackerAAV", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "MBHealthTracker"
+- "StringLiteralType"
+depends-member:
+- ["15MBHealthTrackerAAV", "init"]
+- ["15MBHealthTrackerAAV", "text"]
+- ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+depends-nominal:
+- "15MBHealthTrackerAAV"
+- "s34_ExpressibleByBuiltinStringLiteralP"
+depends-dynamic-lookup:
+depends-external:
+- "/Users/matybrennan/Documents/personal/MBHealthTracker/.build/x86_64-apple-macosx/debug/MBHealthTracker.build/module.modulemap"
+interface-hash: "287fa380993cba89194a81bd4fc5d6a3"

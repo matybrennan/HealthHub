@@ -34,12 +34,6 @@ extension ViewInteractor: ViewInteractorProtocol {
     }
     
     func runTest() {
-        do {
-            try healthTracker.vitalsService.bodyTemperature(completionHandler: { (result) in
-                print(result)
-            })
-        } catch {
-            print("Unable to get: \(error.localizedDescription)")
-        }
+        //
     }
 }

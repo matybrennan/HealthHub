@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/matybrennan/Documents/personal/MBHealthTracker/.build/x86_64-apple-macosx/debug/MBHealthTracker.build/master.swiftdeps"
+  },
+  "/Users/matybrennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/MBHealthTracker.swift": {
+    "dependencies": "/Users/matybrennan/Documents/personal/MBHealthTracker/.build/x86_64-apple-macosx/debug/MBHealthTracker.build/MBHealthTracker.d",
+    "object": "/Users/matybrennan/Documents/personal/MBHealthTracker/.build/x86_64-apple-macosx/debug/MBHealthTracker.build/MBHealthTracker.swift.o",
+    "swiftmodule": "/Users/matybrennan/Documents/personal/MBHealthTracker/.build/x86_64-apple-macosx/debug/MBHealthTracker.build/MBHealthTracker~partial.swiftmodule",
+    "swift-dependencies": "/Users/matybrennan/Documents/personal/MBHealthTracker/.build/x86_64-apple-macosx/debug/MBHealthTracker.build/MBHealthTracker.swiftdeps"
+  }
+}

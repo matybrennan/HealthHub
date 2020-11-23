@@ -1,0 +1,4 @@
+module MBHealthTracker {
+    header "/Users/matybrennan/Documents/personal/MBHealthTracker/.build/x86_64-apple-macosx/debug/MBHealthTracker.build/MBHealthTracker-Swift.h"
+    requires objc
+}
