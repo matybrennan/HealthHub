@@ -115,12 +115,12 @@
 		4D67B33902236BEC7A5663AA15936B40 /* Vitals.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Vitals.swift; sourceTree = "<group>"; };
 		4E20DAEB1C479E73779A2044E0FA6F11 /* NetworkResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		571B2DED2889A8C3FA9C87E60C39A3F6 /* WorkoutReadServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WorkoutReadServiceProtocol.swift; sourceTree = "<group>"; };
-		57BE51626F9B8889041009D8FE00957F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		57BE51626F9B8889041009D8FE00957F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5F6F80DA5DA512941AF2514D04109745 /* Pods-MBHealthTracker_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MBHealthTracker_Tests-umbrella.h"; sourceTree = "<group>"; };
 		68890D7B9BCE11BAAD85702043829949 /* NutritionService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NutritionService.swift; sourceTree = "<group>"; };
-		690B6E825F579442ABE16D71CAC5A89A /* Pods_MBHealthTracker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MBHealthTracker_Example.framework; path = "Pods-MBHealthTracker_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		690B6E825F579442ABE16D71CAC5A89A /* Pods_MBHealthTracker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBHealthTracker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70C61DA44D6C401F5BEED4FAE721D2D5 /* Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		7128A7DB9D375FA81B785E1EAE8F1BD1 /* MBHealthTracker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = MBHealthTracker.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		7128A7DB9D375FA81B785E1EAE8F1BD1 /* MBHealthTracker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = MBHealthTracker.podspec; sourceTree = "<group>"; tabWidth = 2; };
 		72FDC49715C6B7A1439FF00380566F45 /* Pods-MBHealthTracker_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MBHealthTracker_Example-umbrella.h"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		736DB95A7A318FCB9B0A8E6CEBCA96EF /* BodyService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BodyService.swift; sourceTree = "<group>"; };
@@ -129,11 +129,11 @@
 		80F81745E2F0C715EF6DC71A5DAE8703 /* NutritionServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NutritionServiceProtocol.swift; sourceTree = "<group>"; };
 		81F8FCA24AF87BEA76C7DD433BBC6FA6 /* HealthType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HealthType.swift; sourceTree = "<group>"; };
 		8D5EF5A71B62555AE0EF74869D303CEC /* MindfulnessService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MindfulnessService.swift; sourceTree = "<group>"; };
-		8FF14689D18E98F96371B3E284CA9308 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		8FF14689D18E98F96371B3E284CA9308 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		9459990799092B00AC71BC70C54CF6F6 /* WorkoutManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 		952EA90E44AA9489C7264DFC76F26F17 /* ConfigurationService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConfigurationService.swift; sourceTree = "<group>"; };
 		97BEB5DB692ED6D6DBE119D5144B9507 /* WorkoutWriteServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WorkoutWriteServiceProtocol.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DE9503D1A44E533613BC41FFCBCB4F5 /* HealthParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HealthParser.swift; sourceTree = "<group>"; };
 		9FA4C9A8A5998EEC80D43D87DE692477 /* MBHealthTracker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MBHealthTracker.swift; path = Sources/MBHealthTracker/Classes/MBHealthTracker.swift; sourceTree = "<group>"; };
 		A0D0BABD60551C898886DFF1F4ED3919 /* VitalsService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VitalsService.swift; sourceTree = "<group>"; };
@@ -158,12 +158,12 @@
 		D64F2B2B10F724EB38A1140593FE1C53 /* HeartRateService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeartRateService.swift; sourceTree = "<group>"; };
 		D9967769BDB60869BD34DECCE80569A6 /* MindfulnessServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MindfulnessServiceProtocol.swift; sourceTree = "<group>"; };
 		DAEC64152544C9C552E23858E46EAFA8 /* ConfigurationServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConfigurationServiceProtocol.swift; sourceTree = "<group>"; };
-		DD1C22772BD7365408C6FA9BD59EC937 /* MBHealthTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MBHealthTracker.framework; path = MBHealthTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD1C22772BD7365408C6FA9BD59EC937 /* MBHealthTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBHealthTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E603956886014ADF458F89F972C2529A /* CharacteristicService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CharacteristicService.swift; sourceTree = "<group>"; };
 		E81A74F9ED93AB6D9A415E0D2FD2A1A7 /* Pods-MBHealthTracker_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MBHealthTracker_Tests.modulemap"; sourceTree = "<group>"; };
 		ED0D36760FD9E07F6B8A0190DAB7B75C /* MBHealthTracker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBHealthTracker-prefix.pch"; sourceTree = "<group>"; };
 		F26B361ABC1AA58C3D6A8E89EBE8C485 /* MBHealthTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBHealthTracker.release.xcconfig; sourceTree = "<group>"; };
-		F32A8E9D54978CABA10158F04893C729 /* Pods_MBHealthTracker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MBHealthTracker_Tests.framework; path = "Pods-MBHealthTracker_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F32A8E9D54978CABA10158F04893C729 /* Pods_MBHealthTracker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBHealthTracker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,7 +209,6 @@
 				68890D7B9BCE11BAAD85702043829949 /* NutritionService.swift */,
 				80F81745E2F0C715EF6DC71A5DAE8703 /* NutritionServiceProtocol.swift */,
 			);
-			name = Nutrition;
 			path = Nutrition;
 			sourceTree = "<group>";
 		};
@@ -245,7 +244,6 @@
 			children = (
 				4227C6B7C7F733ECE7396BD6CE083200 /* StepsModels.swift */,
 			);
-			name = Steps;
 			path = Steps;
 			sourceTree = "<group>";
 		};
@@ -257,7 +255,6 @@
 				85BD6E7FD7F3944F5B5B1AA25059179A /* Read */,
 				53B8C707311E5C48BAB8FB28A7F7C40E /* Write */,
 			);
-			name = Workout;
 			path = Workout;
 			sourceTree = "<group>";
 		};
@@ -267,7 +264,6 @@
 				D64F2B2B10F724EB38A1140593FE1C53 /* HeartRateService.swift */,
 				43A22F4FE54AD2F4668E8B6ADB98D1CF /* HeartRateServiceProtocol.swift */,
 			);
-			name = HeartRate;
 			path = HeartRate;
 			sourceTree = "<group>";
 		};
@@ -276,7 +272,6 @@
 			children = (
 				BD73AD26BE565DE87C19558C7BB99E25 /* Body.swift */,
 			);
-			name = Body;
 			path = Body;
 			sourceTree = "<group>";
 		};
@@ -295,7 +290,6 @@
 			children = (
 				4D67B33902236BEC7A5663AA15936B40 /* Vitals.swift */,
 			);
-			name = Vitals;
 			path = Vitals;
 			sourceTree = "<group>";
 		};
@@ -320,7 +314,6 @@
 				382CFD2C829CACDA75E51F43B01F0492 /* WorkoutWriteService.swift */,
 				97BEB5DB692ED6D6DBE119D5144B9507 /* WorkoutWriteServiceProtocol.swift */,
 			);
-			name = Write;
 			path = Write;
 			sourceTree = "<group>";
 		};
@@ -330,7 +323,6 @@
 				AB95836E1A3501ED457BC113063E2928 /* ReproductiveService.swift */,
 				B4720F5F6406A782F7DFC31ED5D1B30D /* ReproductiveServiceProtocol.swift */,
 			);
-			name = Reproductive;
 			path = Reproductive;
 			sourceTree = "<group>";
 		};
@@ -339,7 +331,6 @@
 			children = (
 				1BA8D24F39C1BF930A49BA539A3DFCFC /* HeartRateModels.swift */,
 			);
-			name = HeartRate;
 			path = HeartRate;
 			sourceTree = "<group>";
 		};
@@ -372,7 +363,6 @@
 			children = (
 				379B6544E78F37487E121B3DB1621A8C /* WorkoutModels.swift */,
 			);
-			name = Workout;
 			path = Workout;
 			sourceTree = "<group>";
 		};
@@ -382,7 +372,6 @@
 				736DB95A7A318FCB9B0A8E6CEBCA96EF /* BodyService.swift */,
 				12BF93A1ED1B8937C10E9EDD7C546D0A /* BodyServiceProtocol.swift */,
 			);
-			name = Body;
 			path = Body;
 			sourceTree = "<group>";
 		};
@@ -395,7 +384,6 @@
 				B5A9E0494B7E1B34688A6A69E48EA31C /* Steps */,
 				27DF71A58513D3FF6DC88485062CA885 /* Workout */,
 			);
-			name = Activity;
 			path = Activity;
 			sourceTree = "<group>";
 		};
@@ -453,7 +441,6 @@
 				A0D0BABD60551C898886DFF1F4ED3919 /* VitalsService.swift */,
 				04AEF7EB905B5813EFCAE9BAE85D5818 /* VitalsServiceProtocol.swift */,
 			);
-			name = Vitals;
 			path = Vitals;
 			sourceTree = "<group>";
 		};
@@ -463,7 +450,6 @@
 				412C403613A260E9D4C937BCCAA48F18 /* WorkoutReadService.swift */,
 				571B2DED2889A8C3FA9C87E60C39A3F6 /* WorkoutReadServiceProtocol.swift */,
 			);
-			name = Read;
 			path = Read;
 			sourceTree = "<group>";
 		};
@@ -472,7 +458,6 @@
 			children = (
 				D35E9B293A733C6C2D6317FA2542C64F /* ActiveEnergyModels.swift */,
 			);
-			name = ActiveEnergy;
 			path = ActiveEnergy;
 			sourceTree = "<group>";
 		};
@@ -500,7 +485,6 @@
 				A7C7C23C49B7F1D8A8A27629E6BA3B9F /* ActiveEnergyService.swift */,
 				B3BCDFEA75B6F942DD92223F4F5A463D /* ActiveEnergyServiceProtocol.swift */,
 			);
-			name = ActiveEnergy;
 			path = ActiveEnergy;
 			sourceTree = "<group>";
 		};
@@ -509,7 +493,6 @@
 			children = (
 				B450F646F6211FC0A6B9314EF539116E /* Sleep.swift */,
 			);
-			name = Sleep;
 			path = Sleep;
 			sourceTree = "<group>";
 		};
@@ -518,7 +501,6 @@
 			children = (
 				AF7E8EEF457D8EDEB61C7BBE296ACFCB /* Reproductive.swift */,
 			);
-			name = Reproductive;
 			path = Reproductive;
 			sourceTree = "<group>";
 		};
@@ -528,7 +510,6 @@
 				C2054A7A992742A6C0E26911D6279BA0 /* StepsService.swift */,
 				BB818EC24167F046238ABC2943B11C1B /* StepsServiceProtocol.swift */,
 			);
-			name = Steps;
 			path = Steps;
 			sourceTree = "<group>";
 		};
@@ -538,7 +519,6 @@
 				12034765368B3822F30BAFA8DC20A6D3 /* SleepService.swift */,
 				7F986FC88500BA1B11F04BA3B7DBB50F /* SleepServiceProtocol.swift */,
 			);
-			name = Sleep;
 			path = Sleep;
 			sourceTree = "<group>";
 		};
@@ -563,7 +543,6 @@
 			children = (
 				2103BE86524762E2FFBBA3A81B4F18DA /* Mindful.swift */,
 			);
-			name = Mindful;
 			path = Mindful;
 			sourceTree = "<group>";
 		};
@@ -592,7 +571,6 @@
 				8D5EF5A71B62555AE0EF74869D303CEC /* MindfulnessService.swift */,
 				D9967769BDB60869BD34DECCE80569A6 /* MindfulnessServiceProtocol.swift */,
 			);
-			name = Mindfulness;
 			path = Mindfulness;
 			sourceTree = "<group>";
 		};
@@ -602,7 +580,6 @@
 				952EA90E44AA9489C7264DFC76F26F17 /* ConfigurationService.swift */,
 				DAEC64152544C9C552E23858E46EAFA8 /* ConfigurationServiceProtocol.swift */,
 			);
-			name = Configuration;
 			path = Configuration;
 			sourceTree = "<group>";
 		};
@@ -612,7 +589,6 @@
 				E603956886014ADF458F89F972C2529A /* CharacteristicService.swift */,
 				061427292B3B0A9C43CCCBEC2D2240A3 /* CharacteristicServiceProtocol.swift */,
 			);
-			name = Characteristics;
 			path = Characteristics;
 			sourceTree = "<group>";
 		};
@@ -621,7 +597,6 @@
 			children = (
 				0602B48FCFEBDA1D8D2F3663B784ACFE /* NutritionModels.swift */,
 			);
-			name = Nutrition;
 			path = Nutrition;
 			sourceTree = "<group>";
 		};
@@ -1011,8 +986,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
