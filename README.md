@@ -21,6 +21,12 @@ it, simply add the following line to your Podfile:
 pod 'MBHealthTracker'
 ```
 
+MBHealthTracker is available through Swift Package Manager, either via Xcode or in Package.swift:
+
+```ruby
+.package(url: "https://github.com/matybrennan/MBHealthTracker", from: "0.0.19"),
+```
+
 ## Getting Started
 
 ### Configuration for HealthKit
