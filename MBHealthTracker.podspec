@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MBHealthTracker'
-  s.version          = '0.0.19'
+  s.version          = '1.0.0'
   s.summary          = 'MBHealthTracker is used for healthData'
 
 # This description is used to generate tags and improve search results.

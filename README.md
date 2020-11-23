@@ -24,7 +24,7 @@ pod 'MBHealthTracker'
 MBHealthTracker is available through Swift Package Manager, either via Xcode or in Package.swift:
 
 ```ruby
-.package(url: "https://github.com/matybrennan/MBHealthTracker", from: "0.0.19"),
+.package(url: "https://github.com/matybrennan/MBHealthTracker", from: "1.0.0"),
 ```
 
 ## Getting Started
