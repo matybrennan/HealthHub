@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9CEB4EA65B5EDA0FDF431BF3D11C5186"
+               BlueprintIdentifier = "B3D7B71DC4F05CF74ACC550F41F70331"
                BuildableName = "MBHealthTracker.framework"
                BlueprintName = "MBHealthTracker"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -27,6 +27,15 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "B3D7B71DC4F05CF74ACC550F41F70331"
+            BuildableName = "MBHealthTracker.framework"
+            BlueprintName = "MBHealthTracker"
+            ReferencedContainer = "container:Pods.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -39,17 +48,6 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9CEB4EA65B5EDA0FDF431BF3D11C5186"
-            BuildableName = "MBHealthTracker.framework"
-            BlueprintName = "MBHealthTracker"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -64,14 +62,12 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9CEB4EA65B5EDA0FDF431BF3D11C5186"
+            BlueprintIdentifier = "B3D7B71DC4F05CF74ACC550F41F70331"
             BuildableName = "MBHealthTracker.framework"
             BlueprintName = "MBHealthTracker"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -82,7 +78,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9CEB4EA65B5EDA0FDF431BF3D11C5186"
+            BlueprintIdentifier = "B3D7B71DC4F05CF74ACC550F41F70331"
             BuildableName = "MBHealthTracker.framework"
             BlueprintName = "MBHealthTracker"
             ReferencedContainer = "container:Pods.xcodeproj">

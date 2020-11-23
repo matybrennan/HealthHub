@@ -7,702 +7,700 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B4E758C752269E55CE59935028E902C /* Pods-MBHealthTracker_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E3FECD1B22F4ECA9F5B470E27038BD6 /* Pods-MBHealthTracker_Example-dummy.m */; };
-		0FB01B3701B32589C4566742DE5FA1F3 /* MBHealthTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9E7C84C1470F6B2087DB6169380676 /* MBHealthTracker.swift */; };
-		1120311ED17A97B8C12648FEAD74331C /* Pods-MBHealthTracker_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 20D938457BC81921D7343C3E790B76AB /* Pods-MBHealthTracker_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		221B64E20B6BEBD15FAA52AEE03406C6 /* HeartRateModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678CE407956F67AB9A55D8E211426EE /* HeartRateModels.swift */; };
-		2A32BBD3B6791FF3D283B613A240DEAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		2E051EA7208DDB04004DAD9F /* HealthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E051EA6208DDB04004DAD9F /* HealthType.swift */; };
-		2E0B615221AD210800827FBD /* ActiveEnergyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0B615121AD210800827FBD /* ActiveEnergyModels.swift */; };
-		2E0B615521AD21B800827FBD /* ActiveEnergyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0B615421AD21B800827FBD /* ActiveEnergyService.swift */; };
-		2E0B615721AD21C200827FBD /* ActiveEnergyServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0B615621AD21C200827FBD /* ActiveEnergyServiceProtocol.swift */; };
-		2E15F1E7203475E300F6AB56 /* MBHealthTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F9B503FF53D0B3DBA417C7991F2040 /* MBHealthTracker.framework */; };
-		2E17102B233E3F9600450364 /* ReproductiveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E17102A233E3F9600450364 /* ReproductiveService.swift */; };
-		2E17102D233E3FAF00450364 /* ReproductiveServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E17102C233E3FAF00450364 /* ReproductiveServiceProtocol.swift */; };
-		2E171030233E414E00450364 /* Reproductive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E17102F233E414E00450364 /* Reproductive.swift */; };
-		2E193AD020B58531002D0D59 /* CharacteristicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E193ACF20B58531002D0D59 /* CharacteristicService.swift */; };
-		2E193AD220B5854E002D0D59 /* CharacteristicServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E193AD120B5854E002D0D59 /* CharacteristicServiceProtocol.swift */; };
-		2E193AD520B6C23C002D0D59 /* NutritionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E193AD420B6C23C002D0D59 /* NutritionService.swift */; };
-		2E193AD720B6C244002D0D59 /* NutritionServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E193AD620B6C244002D0D59 /* NutritionServiceProtocol.swift */; };
-		2E193ADA20B6CC36002D0D59 /* NutritionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E193AD920B6CC36002D0D59 /* NutritionModels.swift */; };
-		2E52D76123350B8700451B0D /* BodyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D76023350B8700451B0D /* BodyService.swift */; };
-		2E52D76323350B9700451B0D /* BodyServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D76223350B9700451B0D /* BodyServiceProtocol.swift */; };
-		2E52D76623350BF300451B0D /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D76523350BF300451B0D /* Body.swift */; };
-		2E52D7972339B1FF00451B0D /* MindfulnessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D7962339B1FF00451B0D /* MindfulnessService.swift */; };
-		2E52D7992339B22700451B0D /* MindfulnessServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D7982339B22700451B0D /* MindfulnessServiceProtocol.swift */; };
-		2E52D79C2339B29600451B0D /* Mindful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D79B2339B29600451B0D /* Mindful.swift */; };
-		2E5892F4234DB26900BAD72D /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5892F3234DB26900BAD72D /* ActivityManager.swift */; };
-		2E5892F6234DB28100BAD72D /* ActivityManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5892F5234DB28100BAD72D /* ActivityManagerProtocol.swift */; };
-		2E5F4A0C20380C4500947553 /* StepsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A0B20380C4500947553 /* StepsService.swift */; };
-		2E5F4A0E20380C5000947553 /* StepsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A0D20380C5000947553 /* StepsServiceProtocol.swift */; };
-		2E5F4A1120380D4500947553 /* StepsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A1020380D4500947553 /* StepsModels.swift */; };
-		2E5F4A1320383D7300947553 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A1220383D7300947553 /* Date+Extension.swift */; };
-		2E5F4A162038436D00947553 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A152038436D00947553 /* WorkoutManager.swift */; };
-		2E5F4A182038437A00947553 /* WorkoutManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A172038437A00947553 /* WorkoutManagerProtocol.swift */; };
-		2E5F4A1B2039986E00947553 /* WorkoutModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A1A2039986E00947553 /* WorkoutModels.swift */; };
-		2E5F4A1F203ABB3300947553 /* WorkoutReadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A1E203ABB3300947553 /* WorkoutReadService.swift */; };
-		2E5F4A21203ABB4500947553 /* WorkoutReadServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A20203ABB4500947553 /* WorkoutReadServiceProtocol.swift */; };
-		2E5F4A23203ABBC400947553 /* WorkoutWriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A22203ABBC400947553 /* WorkoutWriteService.swift */; };
-		2E5F4A25203ABBD000947553 /* WorkoutWriteServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A24203ABBD000947553 /* WorkoutWriteServiceProtocol.swift */; };
-		2EA2897421B21A76002F6F7D /* SleepService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2897321B21A76002F6F7D /* SleepService.swift */; };
-		2EA2897621B21A84002F6F7D /* SleepServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2897521B21A84002F6F7D /* SleepServiceProtocol.swift */; };
-		2EA2897921B21C1B002F6F7D /* Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2897821B21C1B002F6F7D /* Sleep.swift */; };
-		2EB36250239E60C20047899C /* VitalsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3624F239E60C20047899C /* VitalsService.swift */; };
-		2EB36252239E60F60047899C /* VitalsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB36251239E60F60047899C /* VitalsServiceProtocol.swift */; };
-		2EB36255239E616F0047899C /* Vitals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB36254239E616F0047899C /* Vitals.swift */; };
-		2EF55717207B5E6400FDC284 /* NSPredicate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF55716207B5E6400FDC284 /* NSPredicate+Extension.swift */; };
-		32EF6E789DAEEB361DCDBA37F8610070 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1316C446F58FFDB96D80E986A05584 /* Helpers.swift */; };
-		34E525AB192CB1BAF9930DEC1235C311 /* MBHealthTrackerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262CEAE77CE117CCE1466B1F120E666 /* MBHealthTrackerProtocol.swift */; };
-		3A2EFDAB6031DC0D37D0E643F789B413 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		3C51D2DBA2E2AFEE7068E5A0985E3CAE /* HeartRateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F833C7BEB3498FE235D58FED33156774 /* HeartRateService.swift */; };
-		5638330ADBC437778CA6012B273D62F3 /* ConfigurationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B7DC89DCC380940E356645FA06986F /* ConfigurationServiceProtocol.swift */; };
-		5AFBECA8E2E3A501864C6BE5F424F607 /* HeartRateServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53E37C87A5D8AE2F0C90D3E1C6CAC39 /* HeartRateServiceProtocol.swift */; };
-		5FBAA815F3251679C8FFAF1D7034B8BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		6B9B9E0C58C3635DF278A129DD45483D /* ConfigurationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C781AAD510067510A30F68003D13FC /* ConfigurationService.swift */; };
-		A2D56789BB66A50E5E3DD31A711052E1 /* MBHealthTracker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 568469EF1BB5814B51E40B1EDBC43A66 /* MBHealthTracker-dummy.m */; };
-		A3F3C4B33789E62EBE4CD3FCBED9392B /* Pods-MBHealthTracker_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E8B97F675F3807DFF450BF12D676B7 /* Pods-MBHealthTracker_Tests-dummy.m */; };
-		AC5DA2EFE6E2E00FFEB9BA728CDFFD65 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72BAF3E5B5E8189A5D90945BD093612 /* NetworkResult.swift */; };
-		C0CE875520A0329B38CBCA9E589122E3 /* HealthParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84A2155271EE1740CC102A2E708D9AD /* HealthParser.swift */; };
-		F4075620C11619811B27A37A0F9A50F9 /* Pods-MBHealthTracker_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0955C253086602693D6F1D74C4D99C11 /* Pods-MBHealthTracker_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F814A9BBB16CABDACBD99D577F6C9AD8 /* MBHealthTracker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 78C41E110C18B496248852FA2548F20F /* MBHealthTracker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		088799813404B4FFBAAAA61097CB7DDB /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459990799092B00AC71BC70C54CF6F6 /* WorkoutManager.swift */; };
+		0A71FCBA88A5494B696248D6BAD7DDAA /* SleepServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F986FC88500BA1B11F04BA3B7DBB50F /* SleepServiceProtocol.swift */; };
+		19428525486FA63E58766E1C7069BF61 /* WorkoutWriteServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BEB5DB692ED6D6DBE119D5144B9507 /* WorkoutWriteServiceProtocol.swift */; };
+		1BB7F82FBDC74516605A06CC8A86D8E4 /* ActiveEnergyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35E9B293A733C6C2D6317FA2542C64F /* ActiveEnergyModels.swift */; };
+		2713911A0205CD57CC9EC349D92AB90E /* ActiveEnergyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C7C23C49B7F1D8A8A27629E6BA3B9F /* ActiveEnergyService.swift */; };
+		27B6ED3F85D33EE839634FCB67418E1E /* Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = B450F646F6211FC0A6B9314EF539116E /* Sleep.swift */; };
+		2FC7F1B23E57041E40314A0F480E134A /* WorkoutModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B6544E78F37487E121B3DB1621A8C /* WorkoutModels.swift */; };
+		38F49094186D9186157F246D6751434A /* Vitals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D67B33902236BEC7A5663AA15936B40 /* Vitals.swift */; };
+		3901A55A845DC2F4C43A748BBC1EA08E /* HeartRateServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A22F4FE54AD2F4668E8B6ADB98D1CF /* HeartRateServiceProtocol.swift */; };
+		393F1E2CC66729C70486317FA1FD77AA /* Pods-MBHealthTracker_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 72FDC49715C6B7A1439FF00380566F45 /* Pods-MBHealthTracker_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3DCE6AFCAFB3373ED20DEF0E992F727C /* ActivityManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD55CF29B7AA4FBBA5182261D5BBDF9 /* ActivityManagerProtocol.swift */; };
+		3F47CBAD4B248CEBB34204013499FFEF /* MindfulnessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EF5A71B62555AE0EF74869D303CEC /* MindfulnessService.swift */; };
+		504CE63B69C3FFD3D41E02F67DB44379 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A3D75EFAF5514995D5281783436DE4 /* ActivityManager.swift */; };
+		541B901174D4242F5EF71A76019B1C23 /* WorkoutManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAB84B1E75F47C9AC84D5EE6551B276 /* WorkoutManagerProtocol.swift */; };
+		5734005E42F942EDD7B3B710E75B58F9 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E20DAEB1C479E73779A2044E0FA6F11 /* NetworkResult.swift */; };
+		5993782DE95567BEC871C27C96FB66ED /* StepsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C6B7C7F733ECE7396BD6CE083200 /* StepsModels.swift */; };
+		5CC40BA303044D0D663EDFEC3ED39C0E /* HeartRateModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA8D24F39C1BF930A49BA539A3DFCFC /* HeartRateModels.swift */; };
+		5D0603D9D695C3B81EF0AED345FEB973 /* NutritionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602B48FCFEBDA1D8D2F3663B784ACFE /* NutritionModels.swift */; };
+		5E0D6EC15654DB63B3FE23FE6BAF7D69 /* Reproductive.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7E8EEF457D8EDEB61C7BBE296ACFCB /* Reproductive.swift */; };
+		5E2A7A5EAF447A5E65E2A1D225C9133A /* VitalsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D0BABD60551C898886DFF1F4ED3919 /* VitalsService.swift */; };
+		64C3ADB5B3EACA271C8D0DBF6D2050DE /* MindfulnessServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9967769BDB60869BD34DECCE80569A6 /* MindfulnessServiceProtocol.swift */; };
+		678B95C63CBD7433958BE59D03DD2073 /* MBHealthTracker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D669FC0ED029B5978EAE0806BABFC /* MBHealthTracker-dummy.m */; };
+		6860F9000704C932428DCB94E64B00D5 /* MBHealthTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4C9A8A5998EEC80D43D87DE692477 /* MBHealthTracker.swift */; };
+		6B200D7A2C682FE6A72B0A7778724671 /* ConfigurationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEC64152544C9C552E23858E46EAFA8 /* ConfigurationServiceProtocol.swift */; };
+		76CE40DA29E15CF2DB6973FDCF5EEEC8 /* WorkoutWriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382CFD2C829CACDA75E51F43B01F0492 /* WorkoutWriteService.swift */; };
+		7AB302F4BDB6B485D5733A21834143CE /* Mindful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2103BE86524762E2FFBBA3A81B4F18DA /* Mindful.swift */; };
+		7AFDFF0F8379FD7E9D179B831D25FEC6 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD73AD26BE565DE87C19558C7BB99E25 /* Body.swift */; };
+		7EC022862F096DEEBE5E52A88DC8523B /* ActiveEnergyServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BCDFEA75B6F942DD92223F4F5A463D /* ActiveEnergyServiceProtocol.swift */; };
+		834FED15D1EB84B45E8B862C935BEC02 /* HealthParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE9503D1A44E533613BC41FFCBCB4F5 /* HealthParser.swift */; };
+		87CC24F2AA759A56041EFD034B2A555B /* HealthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F8FCA24AF87BEA76C7DD433BBC6FA6 /* HealthType.swift */; };
+		8DD5064A26F59A3CB4C401232984AAB9 /* HeartRateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64F2B2B10F724EB38A1140593FE1C53 /* HeartRateService.swift */; };
+		8EDDA8A329B96B6939D2F2B6C61AF88C /* MBHealthTrackerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38448CB5110C2345F3555F4E202BA8B2 /* MBHealthTrackerProtocol.swift */; };
+		976AB1143ACE84292B3289C65095EF0A /* MBHealthTracker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C08AC1A5B12E186F74C8BF5EB609FBD /* MBHealthTracker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A0541CA6F02D89E4791A591D30E3B04 /* WorkoutReadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412C403613A260E9D4C937BCCAA48F18 /* WorkoutReadService.swift */; };
+		9A21B7E67C05CEDFAFF5464254E2A34A /* CharacteristicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E603956886014ADF458F89F972C2529A /* CharacteristicService.swift */; };
+		9B1AFA073ACB595998B77535A5BAE77A /* VitalsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AEF7EB905B5813EFCAE9BAE85D5818 /* VitalsServiceProtocol.swift */; };
+		A636F94A32C5E815073450ED8BED5712 /* NutritionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68890D7B9BCE11BAAD85702043829949 /* NutritionService.swift */; };
+		AE37406806152C5EADCA26D42A00C7CD /* WorkoutReadServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571B2DED2889A8C3FA9C87E60C39A3F6 /* WorkoutReadServiceProtocol.swift */; };
+		B3887CFDBBEF41D7CF3FAE603E278AF7 /* ReproductiveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB95836E1A3501ED457BC113063E2928 /* ReproductiveService.swift */; };
+		B516848F57F09EAE18E9EA1FBB8C3172 /* Pods-MBHealthTracker_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F6F80DA5DA512941AF2514D04109745 /* Pods-MBHealthTracker_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BA559C718FA9634AA31DCF2CE98845EF /* Pods-MBHealthTracker_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D3EFD5E32735526A0E9BE13B72B8C5 /* Pods-MBHealthTracker_Tests-dummy.m */; };
+		BC3BDB893CE5E6C5F681A227A281AF27 /* SleepService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12034765368B3822F30BAFA8DC20A6D3 /* SleepService.swift */; };
+		BDA351341965C9B8B11A8F88C6D5BFB6 /* CharacteristicServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061427292B3B0A9C43CCCBEC2D2240A3 /* CharacteristicServiceProtocol.swift */; };
+		C07194589999B408395D704163AB6AF6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		C2F16152DA8106A6A273354FD2A454FA /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEEC04722B353D49A868EB78A2F43DD /* Date+Extension.swift */; };
+		C30B9C21726122A5CBCE0D9705E984E0 /* NSPredicate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD729A130C7CE3B458F742697E166B2F /* NSPredicate+Extension.swift */; };
+		CA4529E179F51D8D34CD4D03F42C13C8 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C61DA44D6C401F5BEED4FAE721D2D5 /* Helpers.swift */; };
+		D1EA5D456F8B79FD0BE1F750C8932283 /* Pods-MBHealthTracker_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3EBE1BA57E5656DDA028F02CC8827E /* Pods-MBHealthTracker_Example-dummy.m */; };
+		D7B652B5C153C81CCE564B5AF44E879E /* NutritionServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F81745E2F0C715EF6DC71A5DAE8703 /* NutritionServiceProtocol.swift */; };
+		DDCCE912D0CA866DD8F5BCA5DEBE4481 /* StepsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2054A7A992742A6C0E26911D6279BA0 /* StepsService.swift */; };
+		E2F9C609F53CFCBBAC601F131EB92FD7 /* StepsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB818EC24167F046238ABC2943B11C1B /* StepsServiceProtocol.swift */; };
+		E79B9427193D31FC905CCA48F9098625 /* ReproductiveServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4720F5F6406A782F7DFC31ED5D1B30D /* ReproductiveServiceProtocol.swift */; };
+		ECB1922CB914BF2E79A72AAE9D71781E /* BodyServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BF93A1ED1B8937C10E9EDD7C546D0A /* BodyServiceProtocol.swift */; };
+		F04A79C4019C09BDAB6A3215BB9A6529 /* ConfigurationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952EA90E44AA9489C7264DFC76F26F17 /* ConfigurationService.swift */; };
+		F0CF702F242416071D9D23E003F013CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		F2A4FE2A3D5656F0DF909247FD682A66 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		F652DAB22A845375A3CEC005ECB0AAB5 /* BodyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736DB95A7A318FCB9B0A8E6CEBCA96EF /* BodyService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2E15F1E8203475E300F6AB56 /* PBXContainerItemProxy */ = {
+		67F78677C9725B03D6F871BE7AEC5E8D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9CEB4EA65B5EDA0FDF431BF3D11C5186;
-			remoteInfo = MBHealthTracker;
+			remoteGlobalIDString = 5944C6635D4E88BF1FBD5343900590BF;
+			remoteInfo = "Pods-MBHealthTracker_Example";
 		};
-		E0E0E017ACC9271ADD6F82ADB0A62933 /* PBXContainerItemProxy */ = {
+		F99C5E0126095010B323EA8C982CEF0C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9CEB4EA65B5EDA0FDF431BF3D11C5186;
+			remoteGlobalIDString = B3D7B71DC4F05CF74ACC550F41F70331;
 			remoteInfo = MBHealthTracker;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0600C422887DD6CC724C7C7A8975FAA7 /* Pods-MBHealthTracker_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MBHealthTracker_Example-resources.sh"; sourceTree = "<group>"; };
-		0603FFBBC5BB5CE45ED9825C103BD589 /* Pods-MBHealthTracker_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MBHealthTracker_Example.modulemap"; sourceTree = "<group>"; };
-		0955C253086602693D6F1D74C4D99C11 /* Pods-MBHealthTracker_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MBHealthTracker_Example-umbrella.h"; sourceTree = "<group>"; };
-		15859048EDC3AA44ECCB02C09D63C315 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1C9E7C84C1470F6B2087DB6169380676 /* MBHealthTracker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MBHealthTracker.swift; sourceTree = "<group>"; };
-		1F1F81234C79BF0766E8285D119F9AEC /* Pods-MBHealthTracker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MBHealthTracker_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		20D938457BC81921D7343C3E790B76AB /* Pods-MBHealthTracker_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MBHealthTracker_Tests-umbrella.h"; sourceTree = "<group>"; };
-		2E051EA6208DDB04004DAD9F /* HealthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthType.swift; sourceTree = "<group>"; };
-		2E0B615121AD210800827FBD /* ActiveEnergyModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveEnergyModels.swift; sourceTree = "<group>"; };
-		2E0B615421AD21B800827FBD /* ActiveEnergyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveEnergyService.swift; sourceTree = "<group>"; };
-		2E0B615621AD21C200827FBD /* ActiveEnergyServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveEnergyServiceProtocol.swift; sourceTree = "<group>"; };
-		2E15F1E2203475E300F6AB56 /* MBHealthTrackerPodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MBHealthTrackerPodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2E17102A233E3F9600450364 /* ReproductiveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReproductiveService.swift; sourceTree = "<group>"; };
-		2E17102C233E3FAF00450364 /* ReproductiveServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReproductiveServiceProtocol.swift; sourceTree = "<group>"; };
-		2E17102F233E414E00450364 /* Reproductive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reproductive.swift; sourceTree = "<group>"; };
-		2E193ACF20B58531002D0D59 /* CharacteristicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicService.swift; sourceTree = "<group>"; };
-		2E193AD120B5854E002D0D59 /* CharacteristicServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicServiceProtocol.swift; sourceTree = "<group>"; };
-		2E193AD420B6C23C002D0D59 /* NutritionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionService.swift; sourceTree = "<group>"; };
-		2E193AD620B6C244002D0D59 /* NutritionServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionServiceProtocol.swift; sourceTree = "<group>"; };
-		2E193AD920B6CC36002D0D59 /* NutritionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionModels.swift; sourceTree = "<group>"; };
-		2E3FECD1B22F4ECA9F5B470E27038BD6 /* Pods-MBHealthTracker_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MBHealthTracker_Example-dummy.m"; sourceTree = "<group>"; };
-		2E52D76023350B8700451B0D /* BodyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyService.swift; sourceTree = "<group>"; };
-		2E52D76223350B9700451B0D /* BodyServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyServiceProtocol.swift; sourceTree = "<group>"; };
-		2E52D76523350BF300451B0D /* Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
-		2E52D7962339B1FF00451B0D /* MindfulnessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindfulnessService.swift; sourceTree = "<group>"; };
-		2E52D7982339B22700451B0D /* MindfulnessServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindfulnessServiceProtocol.swift; sourceTree = "<group>"; };
-		2E52D79B2339B29600451B0D /* Mindful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mindful.swift; sourceTree = "<group>"; };
-		2E5892F3234DB26900BAD72D /* ActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
-		2E5892F5234DB28100BAD72D /* ActivityManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityManagerProtocol.swift; sourceTree = "<group>"; };
-		2E5F4A0B20380C4500947553 /* StepsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsService.swift; sourceTree = "<group>"; };
-		2E5F4A0D20380C5000947553 /* StepsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsServiceProtocol.swift; sourceTree = "<group>"; };
-		2E5F4A1020380D4500947553 /* StepsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsModels.swift; sourceTree = "<group>"; };
-		2E5F4A1220383D7300947553 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
-		2E5F4A152038436D00947553 /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
-		2E5F4A172038437A00947553 /* WorkoutManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManagerProtocol.swift; sourceTree = "<group>"; };
-		2E5F4A1A2039986E00947553 /* WorkoutModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutModels.swift; sourceTree = "<group>"; };
-		2E5F4A1E203ABB3300947553 /* WorkoutReadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutReadService.swift; sourceTree = "<group>"; };
-		2E5F4A20203ABB4500947553 /* WorkoutReadServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutReadServiceProtocol.swift; sourceTree = "<group>"; };
-		2E5F4A22203ABBC400947553 /* WorkoutWriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutWriteService.swift; sourceTree = "<group>"; };
-		2E5F4A24203ABBD000947553 /* WorkoutWriteServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutWriteServiceProtocol.swift; sourceTree = "<group>"; };
-		2EA2897321B21A76002F6F7D /* SleepService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepService.swift; sourceTree = "<group>"; };
-		2EA2897521B21A84002F6F7D /* SleepServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepServiceProtocol.swift; sourceTree = "<group>"; };
-		2EA2897821B21C1B002F6F7D /* Sleep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sleep.swift; sourceTree = "<group>"; };
-		2EB3624F239E60C20047899C /* VitalsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitalsService.swift; sourceTree = "<group>"; };
-		2EB36251239E60F60047899C /* VitalsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitalsServiceProtocol.swift; sourceTree = "<group>"; };
-		2EB36254239E616F0047899C /* Vitals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vitals.swift; sourceTree = "<group>"; };
-		2EF55716207B5E6400FDC284 /* NSPredicate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPredicate+Extension.swift"; sourceTree = "<group>"; };
-		39F9B503FF53D0B3DBA417C7991F2040 /* MBHealthTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBHealthTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E8E123C47AB09FF3F2A72198069950F /* Pods-MBHealthTracker_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MBHealthTracker_Tests.modulemap"; sourceTree = "<group>"; };
-		476550078FAED367104F42C0E918B344 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4A54224503413D803E3AA2DF94B1CB00 /* Pods_MBHealthTracker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBHealthTracker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F09F785D1A97A1D92D303EF31D917E5 /* Pods-MBHealthTracker_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MBHealthTracker_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		568469EF1BB5814B51E40B1EDBC43A66 /* MBHealthTracker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MBHealthTracker-dummy.m"; sourceTree = "<group>"; };
-		6262CEAE77CE117CCE1466B1F120E666 /* MBHealthTrackerProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MBHealthTrackerProtocol.swift; sourceTree = "<group>"; };
-		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		6FB5826242CF2889E2173DE7A8B361A2 /* Pods-MBHealthTracker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MBHealthTracker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		74C781AAD510067510A30F68003D13FC /* ConfigurationService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConfigurationService.swift; sourceTree = "<group>"; };
-		7678CE407956F67AB9A55D8E211426EE /* HeartRateModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeartRateModels.swift; sourceTree = "<group>"; };
-		78C41E110C18B496248852FA2548F20F /* MBHealthTracker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBHealthTracker-umbrella.h"; sourceTree = "<group>"; };
-		8B1316C446F58FFDB96D80E986A05584 /* Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		92E8B97F675F3807DFF450BF12D676B7 /* Pods-MBHealthTracker_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MBHealthTracker_Tests-dummy.m"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A4A5F782F70C90C27226B9A75BE897F9 /* Pods-MBHealthTracker_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MBHealthTracker_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		A7CC5AF166D1BE329BB27B3E4726AC81 /* Pods-MBHealthTracker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MBHealthTracker_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		AA84B43F8633B19037E1794EE6E6163B /* Pods-MBHealthTracker_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MBHealthTracker_Example-frameworks.sh"; sourceTree = "<group>"; };
-		B7B7DC89DCC380940E356645FA06986F /* ConfigurationServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConfigurationServiceProtocol.swift; sourceTree = "<group>"; };
-		BD030F5DD3DBB950A05B026467CF1C1A /* Pods-MBHealthTracker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MBHealthTracker_Example.release.xcconfig"; sourceTree = "<group>"; };
-		C2AF78A5FA10ED219EC156D688A0F2D1 /* MBHealthTracker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBHealthTracker.xcconfig; sourceTree = "<group>"; };
-		C72BAF3E5B5E8189A5D90945BD093612 /* NetworkResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
-		C77FFE3AF9703C72FCBED29242719B72 /* Pods-MBHealthTracker_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MBHealthTracker_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		D0183D4AD4BD02B509E2B31F42AD7C3F /* Pods_MBHealthTracker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBHealthTracker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D53E37C87A5D8AE2F0C90D3E1C6CAC39 /* HeartRateServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeartRateServiceProtocol.swift; sourceTree = "<group>"; };
-		D75C023102B0E0195CD6268EF177B485 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E547D772727D4038E48A5516D004C1E5 /* Pods-MBHealthTracker_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MBHealthTracker_Tests-resources.sh"; sourceTree = "<group>"; };
-		E96453BB44E786F4F3BFB2824096E864 /* Pods-MBHealthTracker_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MBHealthTracker_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		EDBD8745D2486B5B78DD0C1740233F46 /* Pods-MBHealthTracker_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MBHealthTracker_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F5BEB2FD084684ED2A6A1B732C4ED8A2 /* MBHealthTracker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MBHealthTracker.modulemap; sourceTree = "<group>"; };
-		F65B5EA4EE8F0AEEC85CDB74C10DC1B4 /* MBHealthTracker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBHealthTracker-prefix.pch"; sourceTree = "<group>"; };
-		F833C7BEB3498FE235D58FED33156774 /* HeartRateService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeartRateService.swift; sourceTree = "<group>"; };
-		F84A2155271EE1740CC102A2E708D9AD /* HealthParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HealthParser.swift; sourceTree = "<group>"; };
+		045455EFE26A409EE73210611D76E409 /* Pods-MBHealthTracker_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MBHealthTracker_Tests-Info.plist"; sourceTree = "<group>"; };
+		04557FEA7E2262541AD87A046FD9C4C0 /* Pods-MBHealthTracker_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MBHealthTracker_Example.modulemap"; sourceTree = "<group>"; };
+		04AEF7EB905B5813EFCAE9BAE85D5818 /* VitalsServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VitalsServiceProtocol.swift; sourceTree = "<group>"; };
+		0602B48FCFEBDA1D8D2F3663B784ACFE /* NutritionModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NutritionModels.swift; sourceTree = "<group>"; };
+		061427292B3B0A9C43CCCBEC2D2240A3 /* CharacteristicServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CharacteristicServiceProtocol.swift; sourceTree = "<group>"; };
+		09814E737C643D99AA29AE2368A908F6 /* Pods-MBHealthTracker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MBHealthTracker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		12034765368B3822F30BAFA8DC20A6D3 /* SleepService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SleepService.swift; sourceTree = "<group>"; };
+		12BF93A1ED1B8937C10E9EDD7C546D0A /* BodyServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BodyServiceProtocol.swift; sourceTree = "<group>"; };
+		181FB1C70F8B043945FD39483E33D4AA /* Pods-MBHealthTracker_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MBHealthTracker_Example-frameworks.sh"; sourceTree = "<group>"; };
+		1A203E35E926C7D4D8EF16A474E56196 /* MBHealthTracker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MBHealthTracker-Info.plist"; sourceTree = "<group>"; };
+		1BA8D24F39C1BF930A49BA539A3DFCFC /* HeartRateModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeartRateModels.swift; sourceTree = "<group>"; };
+		1C10B259C1220F0BCE0F1BB170E28123 /* Pods-MBHealthTracker_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MBHealthTracker_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		2103BE86524762E2FFBBA3A81B4F18DA /* Mindful.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Mindful.swift; sourceTree = "<group>"; };
+		2FDAB20EE1B2E93D944A4E0FC4CC59D2 /* Pods-MBHealthTracker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MBHealthTracker_Example.release.xcconfig"; sourceTree = "<group>"; };
+		379B6544E78F37487E121B3DB1621A8C /* WorkoutModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WorkoutModels.swift; sourceTree = "<group>"; };
+		37DB157688A028CA3D145CDF6FAE3D04 /* MBHealthTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBHealthTracker.debug.xcconfig; sourceTree = "<group>"; };
+		382CFD2C829CACDA75E51F43B01F0492 /* WorkoutWriteService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WorkoutWriteService.swift; sourceTree = "<group>"; };
+		38448CB5110C2345F3555F4E202BA8B2 /* MBHealthTrackerProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MBHealthTrackerProtocol.swift; path = Sources/MBHealthTracker/Classes/MBHealthTrackerProtocol.swift; sourceTree = "<group>"; };
+		3A3EBE1BA57E5656DDA028F02CC8827E /* Pods-MBHealthTracker_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MBHealthTracker_Example-dummy.m"; sourceTree = "<group>"; };
+		3AAB84B1E75F47C9AC84D5EE6551B276 /* WorkoutManagerProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WorkoutManagerProtocol.swift; sourceTree = "<group>"; };
+		3ABB9303E8C64D55D6B5A64A9738F25C /* MBHealthTracker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MBHealthTracker.modulemap; sourceTree = "<group>"; };
+		3C4D669FC0ED029B5978EAE0806BABFC /* MBHealthTracker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MBHealthTracker-dummy.m"; sourceTree = "<group>"; };
+		3E7ECA291B4987325D1763FA494B7453 /* Pods-MBHealthTracker_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MBHealthTracker_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		412C403613A260E9D4C937BCCAA48F18 /* WorkoutReadService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WorkoutReadService.swift; sourceTree = "<group>"; };
+		4227C6B7C7F733ECE7396BD6CE083200 /* StepsModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StepsModels.swift; sourceTree = "<group>"; };
+		43A22F4FE54AD2F4668E8B6ADB98D1CF /* HeartRateServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeartRateServiceProtocol.swift; sourceTree = "<group>"; };
+		4C08AC1A5B12E186F74C8BF5EB609FBD /* MBHealthTracker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBHealthTracker-umbrella.h"; sourceTree = "<group>"; };
+		4CEEC04722B353D49A868EB78A2F43DD /* Date+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		4D67B33902236BEC7A5663AA15936B40 /* Vitals.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Vitals.swift; sourceTree = "<group>"; };
+		4E20DAEB1C479E73779A2044E0FA6F11 /* NetworkResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
+		571B2DED2889A8C3FA9C87E60C39A3F6 /* WorkoutReadServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WorkoutReadServiceProtocol.swift; sourceTree = "<group>"; };
+		57BE51626F9B8889041009D8FE00957F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		5F6F80DA5DA512941AF2514D04109745 /* Pods-MBHealthTracker_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MBHealthTracker_Tests-umbrella.h"; sourceTree = "<group>"; };
+		68890D7B9BCE11BAAD85702043829949 /* NutritionService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NutritionService.swift; sourceTree = "<group>"; };
+		690B6E825F579442ABE16D71CAC5A89A /* Pods_MBHealthTracker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MBHealthTracker_Example.framework; path = "Pods-MBHealthTracker_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		70C61DA44D6C401F5BEED4FAE721D2D5 /* Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		7128A7DB9D375FA81B785E1EAE8F1BD1 /* MBHealthTracker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = MBHealthTracker.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		72FDC49715C6B7A1439FF00380566F45 /* Pods-MBHealthTracker_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MBHealthTracker_Example-umbrella.h"; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		736DB95A7A318FCB9B0A8E6CEBCA96EF /* BodyService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BodyService.swift; sourceTree = "<group>"; };
+		7BD55CF29B7AA4FBBA5182261D5BBDF9 /* ActivityManagerProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActivityManagerProtocol.swift; sourceTree = "<group>"; };
+		7F986FC88500BA1B11F04BA3B7DBB50F /* SleepServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SleepServiceProtocol.swift; sourceTree = "<group>"; };
+		80F81745E2F0C715EF6DC71A5DAE8703 /* NutritionServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NutritionServiceProtocol.swift; sourceTree = "<group>"; };
+		81F8FCA24AF87BEA76C7DD433BBC6FA6 /* HealthType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HealthType.swift; sourceTree = "<group>"; };
+		8D5EF5A71B62555AE0EF74869D303CEC /* MindfulnessService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MindfulnessService.swift; sourceTree = "<group>"; };
+		8FF14689D18E98F96371B3E284CA9308 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		9459990799092B00AC71BC70C54CF6F6 /* WorkoutManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
+		952EA90E44AA9489C7264DFC76F26F17 /* ConfigurationService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConfigurationService.swift; sourceTree = "<group>"; };
+		97BEB5DB692ED6D6DBE119D5144B9507 /* WorkoutWriteServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WorkoutWriteServiceProtocol.swift; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9DE9503D1A44E533613BC41FFCBCB4F5 /* HealthParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HealthParser.swift; sourceTree = "<group>"; };
+		9FA4C9A8A5998EEC80D43D87DE692477 /* MBHealthTracker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MBHealthTracker.swift; path = Sources/MBHealthTracker/Classes/MBHealthTracker.swift; sourceTree = "<group>"; };
+		A0D0BABD60551C898886DFF1F4ED3919 /* VitalsService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VitalsService.swift; sourceTree = "<group>"; };
+		A3A3D75EFAF5514995D5281783436DE4 /* ActivityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
+		A7C7C23C49B7F1D8A8A27629E6BA3B9F /* ActiveEnergyService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActiveEnergyService.swift; sourceTree = "<group>"; };
+		AB95836E1A3501ED457BC113063E2928 /* ReproductiveService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReproductiveService.swift; sourceTree = "<group>"; };
+		AD729A130C7CE3B458F742697E166B2F /* NSPredicate+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSPredicate+Extension.swift"; sourceTree = "<group>"; };
+		AF7E8EEF457D8EDEB61C7BBE296ACFCB /* Reproductive.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Reproductive.swift; sourceTree = "<group>"; };
+		B1281730E4A4EEE15D9DA56F07BA34B7 /* Pods-MBHealthTracker_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MBHealthTracker_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		B3BCDFEA75B6F942DD92223F4F5A463D /* ActiveEnergyServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActiveEnergyServiceProtocol.swift; sourceTree = "<group>"; };
+		B450F646F6211FC0A6B9314EF539116E /* Sleep.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Sleep.swift; sourceTree = "<group>"; };
+		B4720F5F6406A782F7DFC31ED5D1B30D /* ReproductiveServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReproductiveServiceProtocol.swift; sourceTree = "<group>"; };
+		BB818EC24167F046238ABC2943B11C1B /* StepsServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StepsServiceProtocol.swift; sourceTree = "<group>"; };
+		BD73AD26BE565DE87C19558C7BB99E25 /* Body.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
+		C1F7675696FCFE0BF358AA8F4D7E2AC9 /* Pods-MBHealthTracker_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MBHealthTracker_Example-Info.plist"; sourceTree = "<group>"; };
+		C2054A7A992742A6C0E26911D6279BA0 /* StepsService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StepsService.swift; sourceTree = "<group>"; };
+		C238F96191CA1B524D60F1D0D211E59E /* Pods-MBHealthTracker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MBHealthTracker_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		C24192B23C6FF9739E7FB6D7E5BEBCAD /* Pods-MBHealthTracker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MBHealthTracker_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		D35E9B293A733C6C2D6317FA2542C64F /* ActiveEnergyModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActiveEnergyModels.swift; sourceTree = "<group>"; };
+		D3D3EFD5E32735526A0E9BE13B72B8C5 /* Pods-MBHealthTracker_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MBHealthTracker_Tests-dummy.m"; sourceTree = "<group>"; };
+		D64AA77DD08E65CC3CF2E2424DB2D75C /* Pods-MBHealthTracker_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MBHealthTracker_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		D64F2B2B10F724EB38A1140593FE1C53 /* HeartRateService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeartRateService.swift; sourceTree = "<group>"; };
+		D9967769BDB60869BD34DECCE80569A6 /* MindfulnessServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MindfulnessServiceProtocol.swift; sourceTree = "<group>"; };
+		DAEC64152544C9C552E23858E46EAFA8 /* ConfigurationServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConfigurationServiceProtocol.swift; sourceTree = "<group>"; };
+		DD1C22772BD7365408C6FA9BD59EC937 /* MBHealthTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MBHealthTracker.framework; path = MBHealthTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E603956886014ADF458F89F972C2529A /* CharacteristicService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CharacteristicService.swift; sourceTree = "<group>"; };
+		E81A74F9ED93AB6D9A415E0D2FD2A1A7 /* Pods-MBHealthTracker_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MBHealthTracker_Tests.modulemap"; sourceTree = "<group>"; };
+		ED0D36760FD9E07F6B8A0190DAB7B75C /* MBHealthTracker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBHealthTracker-prefix.pch"; sourceTree = "<group>"; };
+		F26B361ABC1AA58C3D6A8E89EBE8C485 /* MBHealthTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBHealthTracker.release.xcconfig; sourceTree = "<group>"; };
+		F32A8E9D54978CABA10158F04893C729 /* Pods_MBHealthTracker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MBHealthTracker_Tests.framework; path = "Pods-MBHealthTracker_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2E15F1DF203475E300F6AB56 /* Frameworks */ = {
+		0D555A005679F4F2CBF0A66FBC6C7A3C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E15F1E7203475E300F6AB56 /* MBHealthTracker.framework in Frameworks */,
+				F2A4FE2A3D5656F0DF909247FD682A66 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		58038D94AC0175525BE1DF08C89C8B01 /* Frameworks */ = {
+		17499D6698FB579DF5428C262DF62188 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FBAA815F3251679C8FFAF1D7034B8BC /* Foundation.framework in Frameworks */,
+				F0CF702F242416071D9D23E003F013CB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		88419B06013420C3C582071FD962E1C8 /* Frameworks */ = {
+		E18965DBF352A1D314E6CBCC0B055FCB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A2EFDAB6031DC0D37D0E643F789B413 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B722AEDB776C0029AF5EF1DB76BE5FB8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2A32BBD3B6791FF3D283B613A240DEAA /* Foundation.framework in Frameworks */,
+				C07194589999B408395D704163AB6AF6 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2E0B615021AD20F200827FBD /* ActiveEnergy */ = {
+		052582B5219BD79C2367A1176BFA169F /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				2E0B615121AD210800827FBD /* ActiveEnergyModels.swift */,
-			);
-			path = ActiveEnergy;
-			sourceTree = "<group>";
-		};
-		2E0B615321AD21A500827FBD /* ActiveEnergy */ = {
-			isa = PBXGroup;
-			children = (
-				2E0B615421AD21B800827FBD /* ActiveEnergyService.swift */,
-				2E0B615621AD21C200827FBD /* ActiveEnergyServiceProtocol.swift */,
-			);
-			path = ActiveEnergy;
-			sourceTree = "<group>";
-		};
-		2E171029233E3F8800450364 /* Reproductive */ = {
-			isa = PBXGroup;
-			children = (
-				2E17102A233E3F9600450364 /* ReproductiveService.swift */,
-				2E17102C233E3FAF00450364 /* ReproductiveServiceProtocol.swift */,
-			);
-			path = Reproductive;
-			sourceTree = "<group>";
-		};
-		2E17102E233E413E00450364 /* Reproductive */ = {
-			isa = PBXGroup;
-			children = (
-				2E17102F233E414E00450364 /* Reproductive.swift */,
-			);
-			path = Reproductive;
-			sourceTree = "<group>";
-		};
-		2E193ACE20B58509002D0D59 /* Characteristics */ = {
-			isa = PBXGroup;
-			children = (
-				2E193ACF20B58531002D0D59 /* CharacteristicService.swift */,
-				2E193AD120B5854E002D0D59 /* CharacteristicServiceProtocol.swift */,
-			);
-			path = Characteristics;
-			sourceTree = "<group>";
-		};
-		2E193AD320B6C21F002D0D59 /* Nutrition */ = {
-			isa = PBXGroup;
-			children = (
-				2E193AD420B6C23C002D0D59 /* NutritionService.swift */,
-				2E193AD620B6C244002D0D59 /* NutritionServiceProtocol.swift */,
-			);
-			path = Nutrition;
-			sourceTree = "<group>";
-		};
-		2E193AD820B6CC29002D0D59 /* Nutrition */ = {
-			isa = PBXGroup;
-			children = (
-				2E193AD920B6CC36002D0D59 /* NutritionModels.swift */,
-			);
-			path = Nutrition;
-			sourceTree = "<group>";
-		};
-		2E52D75F23350B7400451B0D /* Body */ = {
-			isa = PBXGroup;
-			children = (
-				2E52D76023350B8700451B0D /* BodyService.swift */,
-				2E52D76223350B9700451B0D /* BodyServiceProtocol.swift */,
-			);
-			path = Body;
-			sourceTree = "<group>";
-		};
-		2E52D76423350BEA00451B0D /* Body */ = {
-			isa = PBXGroup;
-			children = (
-				2E52D76523350BF300451B0D /* Body.swift */,
-			);
-			path = Body;
-			sourceTree = "<group>";
-		};
-		2E52D7952339B1E000451B0D /* Mindfulness */ = {
-			isa = PBXGroup;
-			children = (
-				2E52D7962339B1FF00451B0D /* MindfulnessService.swift */,
-				2E52D7982339B22700451B0D /* MindfulnessServiceProtocol.swift */,
-			);
-			path = Mindfulness;
-			sourceTree = "<group>";
-		};
-		2E52D79A2339B28700451B0D /* Mindful */ = {
-			isa = PBXGroup;
-			children = (
-				2E52D79B2339B29600451B0D /* Mindful.swift */,
-			);
-			path = Mindful;
-			sourceTree = "<group>";
-		};
-		2E5892F2234DB1F800BAD72D /* Activity */ = {
-			isa = PBXGroup;
-			children = (
-				2E5892F3234DB26900BAD72D /* ActivityManager.swift */,
-				2E5892F5234DB28100BAD72D /* ActivityManagerProtocol.swift */,
-				2E0B615321AD21A500827FBD /* ActiveEnergy */,
-				2E5F4A142038435800947553 /* Workout */,
-				2E5F4A0A20380C2D00947553 /* Steps */,
-			);
-			path = Activity;
-			sourceTree = "<group>";
-		};
-		2E5F4A0A20380C2D00947553 /* Steps */ = {
-			isa = PBXGroup;
-			children = (
-				2E5F4A0B20380C4500947553 /* StepsService.swift */,
-				2E5F4A0D20380C5000947553 /* StepsServiceProtocol.swift */,
-			);
-			path = Steps;
-			sourceTree = "<group>";
-		};
-		2E5F4A0F20380D3400947553 /* Steps */ = {
-			isa = PBXGroup;
-			children = (
-				2E5F4A1020380D4500947553 /* StepsModels.swift */,
-			);
-			path = Steps;
-			sourceTree = "<group>";
-		};
-		2E5F4A142038435800947553 /* Workout */ = {
-			isa = PBXGroup;
-			children = (
-				2E5F4A1D203ABAF000947553 /* Write */,
-				2E5F4A1C203ABAEA00947553 /* Read */,
-				2E5F4A152038436D00947553 /* WorkoutManager.swift */,
-				2E5F4A172038437A00947553 /* WorkoutManagerProtocol.swift */,
-			);
-			path = Workout;
-			sourceTree = "<group>";
-		};
-		2E5F4A192039985900947553 /* Workout */ = {
-			isa = PBXGroup;
-			children = (
-				2E5F4A1A2039986E00947553 /* WorkoutModels.swift */,
-			);
-			path = Workout;
-			sourceTree = "<group>";
-		};
-		2E5F4A1C203ABAEA00947553 /* Read */ = {
-			isa = PBXGroup;
-			children = (
-				2E5F4A1E203ABB3300947553 /* WorkoutReadService.swift */,
-				2E5F4A20203ABB4500947553 /* WorkoutReadServiceProtocol.swift */,
-			);
-			path = Read;
-			sourceTree = "<group>";
-		};
-		2E5F4A1D203ABAF000947553 /* Write */ = {
-			isa = PBXGroup;
-			children = (
-				2E5F4A22203ABBC400947553 /* WorkoutWriteService.swift */,
-				2E5F4A24203ABBD000947553 /* WorkoutWriteServiceProtocol.swift */,
-			);
-			path = Write;
-			sourceTree = "<group>";
-		};
-		2EA2897221B21A68002F6F7D /* Sleep */ = {
-			isa = PBXGroup;
-			children = (
-				2EA2897321B21A76002F6F7D /* SleepService.swift */,
-				2EA2897521B21A84002F6F7D /* SleepServiceProtocol.swift */,
-			);
-			path = Sleep;
-			sourceTree = "<group>";
-		};
-		2EA2897721B21C13002F6F7D /* Sleep */ = {
-			isa = PBXGroup;
-			children = (
-				2EA2897821B21C1B002F6F7D /* Sleep.swift */,
-			);
-			path = Sleep;
-			sourceTree = "<group>";
-		};
-		2EA2897A21B4E4FA002F6F7D /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				2E5F4A1220383D7300947553 /* Date+Extension.swift */,
-				2EF55716207B5E6400FDC284 /* NSPredicate+Extension.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		2EB3624E239E60AC0047899C /* Vitals */ = {
-			isa = PBXGroup;
-			children = (
-				2EB3624F239E60C20047899C /* VitalsService.swift */,
-				2EB36251239E60F60047899C /* VitalsServiceProtocol.swift */,
-			);
-			path = Vitals;
-			sourceTree = "<group>";
-		};
-		2EB36253239E612A0047899C /* Vitals */ = {
-			isa = PBXGroup;
-			children = (
-				2EB36254239E616F0047899C /* Vitals.swift */,
-			);
-			path = Vitals;
-			sourceTree = "<group>";
-		};
-		4F8A88231C493E60FB25422F000B05CA /* MBHealthTracker */ = {
-			isa = PBXGroup;
-			children = (
-				9C4CF069099F3B35E3887B64D6DF7F69 /* MBHealthTracker */,
-				E08D3862079593DE177DF4D0F737142D /* Support Files */,
-			);
-			name = MBHealthTracker;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		5865A13AF65EFB3E034B2A22E911D4EF /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				F84A2155271EE1740CC102A2E708D9AD /* HealthParser.swift */,
-				8B1316C446F58FFDB96D80E986A05584 /* Helpers.swift */,
-				C72BAF3E5B5E8189A5D90945BD093612 /* NetworkResult.swift */,
-				2E051EA6208DDB04004DAD9F /* HealthType.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		6B099F10D01AEF156A3F4C80D3D96862 /* Business Logic */ = {
-			isa = PBXGroup;
-			children = (
-				2EB3624E239E60AC0047899C /* Vitals */,
-				B08A9A7F951F239CD026F9C0BE0B1F5F /* Configuration */,
-				2E5892F2234DB1F800BAD72D /* Activity */,
-				2E171029233E3F8800450364 /* Reproductive */,
-				2E52D7952339B1E000451B0D /* Mindfulness */,
-				2E52D75F23350B7400451B0D /* Body */,
-				2EA2897221B21A68002F6F7D /* Sleep */,
-				2E193AD320B6C21F002D0D59 /* Nutrition */,
-				2E193ACE20B58509002D0D59 /* Characteristics */,
-				B9DA7E3F122F7D85DD9FD81C6BB8F151 /* HeartRate */,
-			);
-			path = "Business Logic";
-			sourceTree = "<group>";
-		};
-		7DB346D0F39D3F0E887471402A8071AB = {
-			isa = PBXGroup;
-			children = (
-				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				9A6E46E7EC391716BCF9BCF990EA693C /* Development Pods */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				D6D1D280AB503DFD172CC516CAD50302 /* Products */,
-				D67CD4D49271BC3F82A2570F326AD11B /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		81A77F2D867212F9CCA1A1C2E956B20B /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				2EB36253239E612A0047899C /* Vitals */,
-				2E17102E233E413E00450364 /* Reproductive */,
-				2E52D79A2339B28700451B0D /* Mindful */,
-				2E52D76423350BEA00451B0D /* Body */,
-				2EA2897721B21C13002F6F7D /* Sleep */,
-				2E0B615021AD20F200827FBD /* ActiveEnergy */,
-				2E193AD820B6CC29002D0D59 /* Nutrition */,
-				2E5F4A192039985900947553 /* Workout */,
-				2E5F4A0F20380D3400947553 /* Steps */,
-				9CF7277310EE87D8B1684D64FAAE3150 /* HeartRate */,
-			);
-			path = Presentation;
-			sourceTree = "<group>";
-		};
-		9A6E46E7EC391716BCF9BCF990EA693C /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				4F8A88231C493E60FB25422F000B05CA /* MBHealthTracker */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		9C4CF069099F3B35E3887B64D6DF7F69 /* MBHealthTracker */ = {
-			isa = PBXGroup;
-			children = (
-				DEC34080D763228C3DF01095B0AB0F4D /* Classes */,
-			);
-			path = MBHealthTracker;
-			sourceTree = "<group>";
-		};
-		9CF7277310EE87D8B1684D64FAAE3150 /* HeartRate */ = {
-			isa = PBXGroup;
-			children = (
-				7678CE407956F67AB9A55D8E211426EE /* HeartRateModels.swift */,
-			);
-			path = HeartRate;
-			sourceTree = "<group>";
-		};
-		B08A9A7F951F239CD026F9C0BE0B1F5F /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				74C781AAD510067510A30F68003D13FC /* ConfigurationService.swift */,
-				B7B7DC89DCC380940E356645FA06986F /* ConfigurationServiceProtocol.swift */,
-			);
-			path = Configuration;
-			sourceTree = "<group>";
-		};
-		B9DA7E3F122F7D85DD9FD81C6BB8F151 /* HeartRate */ = {
-			isa = PBXGroup;
-			children = (
-				F833C7BEB3498FE235D58FED33156774 /* HeartRateService.swift */,
-				D53E37C87A5D8AE2F0C90D3E1C6CAC39 /* HeartRateServiceProtocol.swift */,
-			);
-			path = HeartRate;
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		D67CD4D49271BC3F82A2570F326AD11B /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				FFE9AEAF1517C9DBA0A6C6F3E05A3868 /* Pods-MBHealthTracker_Example */,
-				FD8B2F32D1D46D5C4A6E044AFDA23266 /* Pods-MBHealthTracker_Tests */,
+				0D71E573503EEAD5E20133A29049A1FC /* Pods-MBHealthTracker_Example */,
+				5E8EA6D99E883B2EEA3D69EC5B552927 /* Pods-MBHealthTracker_Tests */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		D6D1D280AB503DFD172CC516CAD50302 /* Products */ = {
+		084FC45BBA5CC6A84C61D0BD4127B658 /* Nutrition */ = {
 			isa = PBXGroup;
 			children = (
-				39F9B503FF53D0B3DBA417C7991F2040 /* MBHealthTracker.framework */,
-				D0183D4AD4BD02B509E2B31F42AD7C3F /* Pods_MBHealthTracker_Example.framework */,
-				4A54224503413D803E3AA2DF94B1CB00 /* Pods_MBHealthTracker_Tests.framework */,
-				2E15F1E2203475E300F6AB56 /* MBHealthTrackerPodTests.xctest */,
+				68890D7B9BCE11BAAD85702043829949 /* NutritionService.swift */,
+				80F81745E2F0C715EF6DC71A5DAE8703 /* NutritionServiceProtocol.swift */,
 			);
-			name = Products;
+			name = Nutrition;
+			path = Nutrition;
 			sourceTree = "<group>";
 		};
-		DEC34080D763228C3DF01095B0AB0F4D /* Classes */ = {
+		0D71E573503EEAD5E20133A29049A1FC /* Pods-MBHealthTracker_Example */ = {
 			isa = PBXGroup;
 			children = (
-				1C9E7C84C1470F6B2087DB6169380676 /* MBHealthTracker.swift */,
-				6262CEAE77CE117CCE1466B1F120E666 /* MBHealthTrackerProtocol.swift */,
-				6B099F10D01AEF156A3F4C80D3D96862 /* Business Logic */,
-				81A77F2D867212F9CCA1A1C2E956B20B /* Presentation */,
-				5865A13AF65EFB3E034B2A22E911D4EF /* Utils */,
-				2EA2897A21B4E4FA002F6F7D /* Extensions */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		E08D3862079593DE177DF4D0F737142D /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				15859048EDC3AA44ECCB02C09D63C315 /* Info.plist */,
-				F5BEB2FD084684ED2A6A1B732C4ED8A2 /* MBHealthTracker.modulemap */,
-				C2AF78A5FA10ED219EC156D688A0F2D1 /* MBHealthTracker.xcconfig */,
-				568469EF1BB5814B51E40B1EDBC43A66 /* MBHealthTracker-dummy.m */,
-				F65B5EA4EE8F0AEEC85CDB74C10DC1B4 /* MBHealthTracker-prefix.pch */,
-				78C41E110C18B496248852FA2548F20F /* MBHealthTracker-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/MBHealthTracker";
-			sourceTree = "<group>";
-		};
-		FD8B2F32D1D46D5C4A6E044AFDA23266 /* Pods-MBHealthTracker_Tests */ = {
-			isa = PBXGroup;
-			children = (
-				476550078FAED367104F42C0E918B344 /* Info.plist */,
-				3E8E123C47AB09FF3F2A72198069950F /* Pods-MBHealthTracker_Tests.modulemap */,
-				EDBD8745D2486B5B78DD0C1740233F46 /* Pods-MBHealthTracker_Tests-acknowledgements.markdown */,
-				E96453BB44E786F4F3BFB2824096E864 /* Pods-MBHealthTracker_Tests-acknowledgements.plist */,
-				92E8B97F675F3807DFF450BF12D676B7 /* Pods-MBHealthTracker_Tests-dummy.m */,
-				4F09F785D1A97A1D92D303EF31D917E5 /* Pods-MBHealthTracker_Tests-frameworks.sh */,
-				E547D772727D4038E48A5516D004C1E5 /* Pods-MBHealthTracker_Tests-resources.sh */,
-				20D938457BC81921D7343C3E790B76AB /* Pods-MBHealthTracker_Tests-umbrella.h */,
-				6FB5826242CF2889E2173DE7A8B361A2 /* Pods-MBHealthTracker_Tests.debug.xcconfig */,
-				A7CC5AF166D1BE329BB27B3E4726AC81 /* Pods-MBHealthTracker_Tests.release.xcconfig */,
-			);
-			name = "Pods-MBHealthTracker_Tests";
-			path = "Target Support Files/Pods-MBHealthTracker_Tests";
-			sourceTree = "<group>";
-		};
-		FFE9AEAF1517C9DBA0A6C6F3E05A3868 /* Pods-MBHealthTracker_Example */ = {
-			isa = PBXGroup;
-			children = (
-				D75C023102B0E0195CD6268EF177B485 /* Info.plist */,
-				0603FFBBC5BB5CE45ED9825C103BD589 /* Pods-MBHealthTracker_Example.modulemap */,
-				A4A5F782F70C90C27226B9A75BE897F9 /* Pods-MBHealthTracker_Example-acknowledgements.markdown */,
-				C77FFE3AF9703C72FCBED29242719B72 /* Pods-MBHealthTracker_Example-acknowledgements.plist */,
-				2E3FECD1B22F4ECA9F5B470E27038BD6 /* Pods-MBHealthTracker_Example-dummy.m */,
-				AA84B43F8633B19037E1794EE6E6163B /* Pods-MBHealthTracker_Example-frameworks.sh */,
-				0600C422887DD6CC724C7C7A8975FAA7 /* Pods-MBHealthTracker_Example-resources.sh */,
-				0955C253086602693D6F1D74C4D99C11 /* Pods-MBHealthTracker_Example-umbrella.h */,
-				1F1F81234C79BF0766E8285D119F9AEC /* Pods-MBHealthTracker_Example.debug.xcconfig */,
-				BD030F5DD3DBB950A05B026467CF1C1A /* Pods-MBHealthTracker_Example.release.xcconfig */,
+				04557FEA7E2262541AD87A046FD9C4C0 /* Pods-MBHealthTracker_Example.modulemap */,
+				D64AA77DD08E65CC3CF2E2424DB2D75C /* Pods-MBHealthTracker_Example-acknowledgements.markdown */,
+				1C10B259C1220F0BCE0F1BB170E28123 /* Pods-MBHealthTracker_Example-acknowledgements.plist */,
+				3A3EBE1BA57E5656DDA028F02CC8827E /* Pods-MBHealthTracker_Example-dummy.m */,
+				181FB1C70F8B043945FD39483E33D4AA /* Pods-MBHealthTracker_Example-frameworks.sh */,
+				C1F7675696FCFE0BF358AA8F4D7E2AC9 /* Pods-MBHealthTracker_Example-Info.plist */,
+				72FDC49715C6B7A1439FF00380566F45 /* Pods-MBHealthTracker_Example-umbrella.h */,
+				C238F96191CA1B524D60F1D0D211E59E /* Pods-MBHealthTracker_Example.debug.xcconfig */,
+				2FDAB20EE1B2E93D944A4E0FC4CC59D2 /* Pods-MBHealthTracker_Example.release.xcconfig */,
 			);
 			name = "Pods-MBHealthTracker_Example";
 			path = "Target Support Files/Pods-MBHealthTracker_Example";
 			sourceTree = "<group>";
 		};
+		114C8DC9965BF9007BDB2DA7B8785701 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				8FF14689D18E98F96371B3E284CA9308 /* LICENSE */,
+				7128A7DB9D375FA81B785E1EAE8F1BD1 /* MBHealthTracker.podspec */,
+				57BE51626F9B8889041009D8FE00957F /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		1F0546FF4C4B1AFEE55AB0B3B54C09E7 /* Steps */ = {
+			isa = PBXGroup;
+			children = (
+				4227C6B7C7F733ECE7396BD6CE083200 /* StepsModels.swift */,
+			);
+			name = Steps;
+			path = Steps;
+			sourceTree = "<group>";
+		};
+		27DF71A58513D3FF6DC88485062CA885 /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+				9459990799092B00AC71BC70C54CF6F6 /* WorkoutManager.swift */,
+				3AAB84B1E75F47C9AC84D5EE6551B276 /* WorkoutManagerProtocol.swift */,
+				85BD6E7FD7F3944F5B5B1AA25059179A /* Read */,
+				53B8C707311E5C48BAB8FB28A7F7C40E /* Write */,
+			);
+			name = Workout;
+			path = Workout;
+			sourceTree = "<group>";
+		};
+		29CA50CEE6EEC27E9194F47A6D988795 /* HeartRate */ = {
+			isa = PBXGroup;
+			children = (
+				D64F2B2B10F724EB38A1140593FE1C53 /* HeartRateService.swift */,
+				43A22F4FE54AD2F4668E8B6ADB98D1CF /* HeartRateServiceProtocol.swift */,
+			);
+			name = HeartRate;
+			path = HeartRate;
+			sourceTree = "<group>";
+		};
+		2D80ABF3C9FF8A6D85BF8D1F7BC2028A /* Body */ = {
+			isa = PBXGroup;
+			children = (
+				BD73AD26BE565DE87C19558C7BB99E25 /* Body.swift */,
+			);
+			name = Body;
+			path = Body;
+			sourceTree = "<group>";
+		};
+		39206934886945EB505F3279C99ADE83 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4CEEC04722B353D49A868EB78A2F43DD /* Date+Extension.swift */,
+				AD729A130C7CE3B458F742697E166B2F /* NSPredicate+Extension.swift */,
+			);
+			name = Extensions;
+			path = Sources/MBHealthTracker/Classes/Extensions;
+			sourceTree = "<group>";
+		};
+		4A81BDAD6C0D41239AD7B296C8B7A895 /* Vitals */ = {
+			isa = PBXGroup;
+			children = (
+				4D67B33902236BEC7A5663AA15936B40 /* Vitals.swift */,
+			);
+			name = Vitals;
+			path = Vitals;
+			sourceTree = "<group>";
+		};
+		51750DF3DD294FA9A8AF5D04C9626F08 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3ABB9303E8C64D55D6B5A64A9738F25C /* MBHealthTracker.modulemap */,
+				3C4D669FC0ED029B5978EAE0806BABFC /* MBHealthTracker-dummy.m */,
+				1A203E35E926C7D4D8EF16A474E56196 /* MBHealthTracker-Info.plist */,
+				ED0D36760FD9E07F6B8A0190DAB7B75C /* MBHealthTracker-prefix.pch */,
+				4C08AC1A5B12E186F74C8BF5EB609FBD /* MBHealthTracker-umbrella.h */,
+				37DB157688A028CA3D145CDF6FAE3D04 /* MBHealthTracker.debug.xcconfig */,
+				F26B361ABC1AA58C3D6A8E89EBE8C485 /* MBHealthTracker.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/MBHealthTracker";
+			sourceTree = "<group>";
+		};
+		53B8C707311E5C48BAB8FB28A7F7C40E /* Write */ = {
+			isa = PBXGroup;
+			children = (
+				382CFD2C829CACDA75E51F43B01F0492 /* WorkoutWriteService.swift */,
+				97BEB5DB692ED6D6DBE119D5144B9507 /* WorkoutWriteServiceProtocol.swift */,
+			);
+			name = Write;
+			path = Write;
+			sourceTree = "<group>";
+		};
+		56C5625981F9B8F1668F2C93ABCDD25F /* Reproductive */ = {
+			isa = PBXGroup;
+			children = (
+				AB95836E1A3501ED457BC113063E2928 /* ReproductiveService.swift */,
+				B4720F5F6406A782F7DFC31ED5D1B30D /* ReproductiveServiceProtocol.swift */,
+			);
+			name = Reproductive;
+			path = Reproductive;
+			sourceTree = "<group>";
+		};
+		571ACD8FA94B7BBD53A6F4870009FE9C /* HeartRate */ = {
+			isa = PBXGroup;
+			children = (
+				1BA8D24F39C1BF930A49BA539A3DFCFC /* HeartRateModels.swift */,
+			);
+			name = HeartRate;
+			path = HeartRate;
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		5E8EA6D99E883B2EEA3D69EC5B552927 /* Pods-MBHealthTracker_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				E81A74F9ED93AB6D9A415E0D2FD2A1A7 /* Pods-MBHealthTracker_Tests.modulemap */,
+				3E7ECA291B4987325D1763FA494B7453 /* Pods-MBHealthTracker_Tests-acknowledgements.markdown */,
+				B1281730E4A4EEE15D9DA56F07BA34B7 /* Pods-MBHealthTracker_Tests-acknowledgements.plist */,
+				D3D3EFD5E32735526A0E9BE13B72B8C5 /* Pods-MBHealthTracker_Tests-dummy.m */,
+				045455EFE26A409EE73210611D76E409 /* Pods-MBHealthTracker_Tests-Info.plist */,
+				5F6F80DA5DA512941AF2514D04109745 /* Pods-MBHealthTracker_Tests-umbrella.h */,
+				09814E737C643D99AA29AE2368A908F6 /* Pods-MBHealthTracker_Tests.debug.xcconfig */,
+				C24192B23C6FF9739E7FB6D7E5BEBCAD /* Pods-MBHealthTracker_Tests.release.xcconfig */,
+			);
+			name = "Pods-MBHealthTracker_Tests";
+			path = "Target Support Files/Pods-MBHealthTracker_Tests";
+			sourceTree = "<group>";
+		};
+		62F9E4882054DBB4F4D7E43DB8F1AF9F /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+				379B6544E78F37487E121B3DB1621A8C /* WorkoutModels.swift */,
+			);
+			name = Workout;
+			path = Workout;
+			sourceTree = "<group>";
+		};
+		66C54DCB32B962DB8A96386EAFF293AC /* Body */ = {
+			isa = PBXGroup;
+			children = (
+				736DB95A7A318FCB9B0A8E6CEBCA96EF /* BodyService.swift */,
+				12BF93A1ED1B8937C10E9EDD7C546D0A /* BodyServiceProtocol.swift */,
+			);
+			name = Body;
+			path = Body;
+			sourceTree = "<group>";
+		};
+		6BE4AD2629195E667A8EFEBA1A60318B /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				A3A3D75EFAF5514995D5281783436DE4 /* ActivityManager.swift */,
+				7BD55CF29B7AA4FBBA5182261D5BBDF9 /* ActivityManagerProtocol.swift */,
+				9DFB1E1DA7FB2F7D31CA2826512F658B /* ActiveEnergy */,
+				B5A9E0494B7E1B34688A6A69E48EA31C /* Steps */,
+				27DF71A58513D3FF6DC88485062CA885 /* Workout */,
+			);
+			name = Activity;
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		6DB1F95A56755754A5F29F75BC804D5D /* Business Logic */ = {
+			isa = PBXGroup;
+			children = (
+				6BE4AD2629195E667A8EFEBA1A60318B /* Activity */,
+				66C54DCB32B962DB8A96386EAFF293AC /* Body */,
+				FD377B4929E7919624865511F51C6426 /* Characteristics */,
+				E985E941B230E0C757432AB6ECBA60B8 /* Configuration */,
+				29CA50CEE6EEC27E9194F47A6D988795 /* HeartRate */,
+				E03D84A212B50EE0E23AD21B0EA59197 /* Mindfulness */,
+				084FC45BBA5CC6A84C61D0BD4127B658 /* Nutrition */,
+				56C5625981F9B8F1668F2C93ABCDD25F /* Reproductive */,
+				B6F41904BA17640DEE01C98793D399E4 /* Sleep */,
+				838FCD435F5953F0F199C626C54FD102 /* Vitals */,
+			);
+			name = "Business Logic";
+			path = "Sources/MBHealthTracker/Classes/Business Logic";
+			sourceTree = "<group>";
+		};
+		76F98196BAD15C629A721FB57BCB3164 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C2104A3556C03534DD8043A41DF812C1 /* MBHealthTracker */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		77B46E10B64E9C97466E4F0E09635BB1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DD1C22772BD7365408C6FA9BD59EC937 /* MBHealthTracker.framework */,
+				690B6E825F579442ABE16D71CAC5A89A /* Pods_MBHealthTracker_Example.framework */,
+				F32A8E9D54978CABA10158F04893C729 /* Pods_MBHealthTracker_Tests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		806BBDB25168605499D47A17BE10A4DB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9DE9503D1A44E533613BC41FFCBCB4F5 /* HealthParser.swift */,
+				81F8FCA24AF87BEA76C7DD433BBC6FA6 /* HealthType.swift */,
+				70C61DA44D6C401F5BEED4FAE721D2D5 /* Helpers.swift */,
+				4E20DAEB1C479E73779A2044E0FA6F11 /* NetworkResult.swift */,
+			);
+			name = Utils;
+			path = Sources/MBHealthTracker/Classes/Utils;
+			sourceTree = "<group>";
+		};
+		838FCD435F5953F0F199C626C54FD102 /* Vitals */ = {
+			isa = PBXGroup;
+			children = (
+				A0D0BABD60551C898886DFF1F4ED3919 /* VitalsService.swift */,
+				04AEF7EB905B5813EFCAE9BAE85D5818 /* VitalsServiceProtocol.swift */,
+			);
+			name = Vitals;
+			path = Vitals;
+			sourceTree = "<group>";
+		};
+		85BD6E7FD7F3944F5B5B1AA25059179A /* Read */ = {
+			isa = PBXGroup;
+			children = (
+				412C403613A260E9D4C937BCCAA48F18 /* WorkoutReadService.swift */,
+				571B2DED2889A8C3FA9C87E60C39A3F6 /* WorkoutReadServiceProtocol.swift */,
+			);
+			name = Read;
+			path = Read;
+			sourceTree = "<group>";
+		};
+		899F1A5FC33EC6301124770754DD2E68 /* ActiveEnergy */ = {
+			isa = PBXGroup;
+			children = (
+				D35E9B293A733C6C2D6317FA2542C64F /* ActiveEnergyModels.swift */,
+			);
+			name = ActiveEnergy;
+			path = ActiveEnergy;
+			sourceTree = "<group>";
+		};
+		98CE7B9DF5E66AE33963BF306CF73384 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				899F1A5FC33EC6301124770754DD2E68 /* ActiveEnergy */,
+				2D80ABF3C9FF8A6D85BF8D1F7BC2028A /* Body */,
+				571ACD8FA94B7BBD53A6F4870009FE9C /* HeartRate */,
+				C4D2BDDDDEC8658AB4F08E314D279413 /* Mindful */,
+				FF9EFF4410532A76F96F9CFA6F68EE3D /* Nutrition */,
+				A1B96DC3A25C164E831575D05700D3B9 /* Reproductive */,
+				9FC2D462093C4F7E482122D675EE967A /* Sleep */,
+				1F0546FF4C4B1AFEE55AB0B3B54C09E7 /* Steps */,
+				4A81BDAD6C0D41239AD7B296C8B7A895 /* Vitals */,
+				62F9E4882054DBB4F4D7E43DB8F1AF9F /* Workout */,
+			);
+			name = Presentation;
+			path = Sources/MBHealthTracker/Classes/Presentation;
+			sourceTree = "<group>";
+		};
+		9DFB1E1DA7FB2F7D31CA2826512F658B /* ActiveEnergy */ = {
+			isa = PBXGroup;
+			children = (
+				A7C7C23C49B7F1D8A8A27629E6BA3B9F /* ActiveEnergyService.swift */,
+				B3BCDFEA75B6F942DD92223F4F5A463D /* ActiveEnergyServiceProtocol.swift */,
+			);
+			name = ActiveEnergy;
+			path = ActiveEnergy;
+			sourceTree = "<group>";
+		};
+		9FC2D462093C4F7E482122D675EE967A /* Sleep */ = {
+			isa = PBXGroup;
+			children = (
+				B450F646F6211FC0A6B9314EF539116E /* Sleep.swift */,
+			);
+			name = Sleep;
+			path = Sleep;
+			sourceTree = "<group>";
+		};
+		A1B96DC3A25C164E831575D05700D3B9 /* Reproductive */ = {
+			isa = PBXGroup;
+			children = (
+				AF7E8EEF457D8EDEB61C7BBE296ACFCB /* Reproductive.swift */,
+			);
+			name = Reproductive;
+			path = Reproductive;
+			sourceTree = "<group>";
+		};
+		B5A9E0494B7E1B34688A6A69E48EA31C /* Steps */ = {
+			isa = PBXGroup;
+			children = (
+				C2054A7A992742A6C0E26911D6279BA0 /* StepsService.swift */,
+				BB818EC24167F046238ABC2943B11C1B /* StepsServiceProtocol.swift */,
+			);
+			name = Steps;
+			path = Steps;
+			sourceTree = "<group>";
+		};
+		B6F41904BA17640DEE01C98793D399E4 /* Sleep */ = {
+			isa = PBXGroup;
+			children = (
+				12034765368B3822F30BAFA8DC20A6D3 /* SleepService.swift */,
+				7F986FC88500BA1B11F04BA3B7DBB50F /* SleepServiceProtocol.swift */,
+			);
+			name = Sleep;
+			path = Sleep;
+			sourceTree = "<group>";
+		};
+		C2104A3556C03534DD8043A41DF812C1 /* MBHealthTracker */ = {
+			isa = PBXGroup;
+			children = (
+				9FA4C9A8A5998EEC80D43D87DE692477 /* MBHealthTracker.swift */,
+				38448CB5110C2345F3555F4E202BA8B2 /* MBHealthTrackerProtocol.swift */,
+				6DB1F95A56755754A5F29F75BC804D5D /* Business Logic */,
+				39206934886945EB505F3279C99ADE83 /* Extensions */,
+				114C8DC9965BF9007BDB2DA7B8785701 /* Pod */,
+				98CE7B9DF5E66AE33963BF306CF73384 /* Presentation */,
+				51750DF3DD294FA9A8AF5D04C9626F08 /* Support Files */,
+				806BBDB25168605499D47A17BE10A4DB /* Utils */,
+			);
+			name = MBHealthTracker;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		C4D2BDDDDEC8658AB4F08E314D279413 /* Mindful */ = {
+			isa = PBXGroup;
+			children = (
+				2103BE86524762E2FFBBA3A81B4F18DA /* Mindful.swift */,
+			);
+			name = Mindful;
+			path = Mindful;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				76F98196BAD15C629A721FB57BCB3164 /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				77B46E10B64E9C97466E4F0E09635BB1 /* Products */,
+				052582B5219BD79C2367A1176BFA169F /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E03D84A212B50EE0E23AD21B0EA59197 /* Mindfulness */ = {
+			isa = PBXGroup;
+			children = (
+				8D5EF5A71B62555AE0EF74869D303CEC /* MindfulnessService.swift */,
+				D9967769BDB60869BD34DECCE80569A6 /* MindfulnessServiceProtocol.swift */,
+			);
+			name = Mindfulness;
+			path = Mindfulness;
+			sourceTree = "<group>";
+		};
+		E985E941B230E0C757432AB6ECBA60B8 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				952EA90E44AA9489C7264DFC76F26F17 /* ConfigurationService.swift */,
+				DAEC64152544C9C552E23858E46EAFA8 /* ConfigurationServiceProtocol.swift */,
+			);
+			name = Configuration;
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		FD377B4929E7919624865511F51C6426 /* Characteristics */ = {
+			isa = PBXGroup;
+			children = (
+				E603956886014ADF458F89F972C2529A /* CharacteristicService.swift */,
+				061427292B3B0A9C43CCCBEC2D2240A3 /* CharacteristicServiceProtocol.swift */,
+			);
+			name = Characteristics;
+			path = Characteristics;
+			sourceTree = "<group>";
+		};
+		FF9EFF4410532A76F96F9CFA6F68EE3D /* Nutrition */ = {
+			isa = PBXGroup;
+			children = (
+				0602B48FCFEBDA1D8D2F3663B784ACFE /* NutritionModels.swift */,
+			);
+			name = Nutrition;
+			path = Nutrition;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		398E234975C4E82988E8F0792DBCDB6D /* Headers */ = {
+		6721FD438D55486E8601A31D438F9C85 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1120311ED17A97B8C12648FEAD74331C /* Pods-MBHealthTracker_Tests-umbrella.h in Headers */,
+				B516848F57F09EAE18E9EA1FBB8C3172 /* Pods-MBHealthTracker_Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B9D031AE7C8F61C7F6C0A7A0BCA87725 /* Headers */ = {
+		98A831B2B86F07F9ED7F4930F4BBF2A8 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F814A9BBB16CABDACBD99D577F6C9AD8 /* MBHealthTracker-umbrella.h in Headers */,
+				393F1E2CC66729C70486317FA1FD77AA /* Pods-MBHealthTracker_Example-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F095C91153E62E8F5486C408BF1582D1 /* Headers */ = {
+		A188B45A95A80CA2B5B551659E0A1D06 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4075620C11619811B27A37A0F9A50F9 /* Pods-MBHealthTracker_Example-umbrella.h in Headers */,
+				976AB1143ACE84292B3289C65095EF0A /* MBHealthTracker-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2E15F1E1203475E300F6AB56 /* MBHealthTrackerPodTests */ = {
+		4092CE5917263756ECCA179050A981B0 /* Pods-MBHealthTracker_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2E15F1EA203475E300F6AB56 /* Build configuration list for PBXNativeTarget "MBHealthTrackerPodTests" */;
+			buildConfigurationList = B7D50A544D676D99E1244088129428AB /* Build configuration list for PBXNativeTarget "Pods-MBHealthTracker_Tests" */;
 			buildPhases = (
-				2E15F1DE203475E300F6AB56 /* Sources */,
-				2E15F1DF203475E300F6AB56 /* Frameworks */,
-				2E15F1E0203475E300F6AB56 /* Resources */,
+				6721FD438D55486E8601A31D438F9C85 /* Headers */,
+				0552CB23701F68B1E8727B763B9BB195 /* Sources */,
+				17499D6698FB579DF5428C262DF62188 /* Frameworks */,
+				19D2C64419FEC38C2DF3A67C5E93546F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2E15F1E9203475E300F6AB56 /* PBXTargetDependency */,
-			);
-			name = MBHealthTrackerPodTests;
-			productName = MBHealthTrackerPodTests;
-			productReference = 2E15F1E2203475E300F6AB56 /* MBHealthTrackerPodTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		6D675B2485703062EF8D3001C70D95D4 /* Pods-MBHealthTracker_Example */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0D0DE25E318F48582B435C8C304A2C35 /* Build configuration list for PBXNativeTarget "Pods-MBHealthTracker_Example" */;
-			buildPhases = (
-				DED704BD44637A0C9AF9626DB6D27D0D /* Sources */,
-				88419B06013420C3C582071FD962E1C8 /* Frameworks */,
-				F095C91153E62E8F5486C408BF1582D1 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				51864537D05C77EA21882497CC1E3773 /* PBXTargetDependency */,
-			);
-			name = "Pods-MBHealthTracker_Example";
-			productName = "Pods-MBHealthTracker_Example";
-			productReference = D0183D4AD4BD02B509E2B31F42AD7C3F /* Pods_MBHealthTracker_Example.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		6F50505B2EC442CDA820BA8D16993378 /* Pods-MBHealthTracker_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C78B040954080E89C6844936BDC0BD1B /* Build configuration list for PBXNativeTarget "Pods-MBHealthTracker_Tests" */;
-			buildPhases = (
-				0BFA4F24086AF8EF3CD7EAAFC236C57E /* Sources */,
-				58038D94AC0175525BE1DF08C89C8B01 /* Frameworks */,
-				398E234975C4E82988E8F0792DBCDB6D /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
+				5216B08BC5D9CE686A456EB879CE1DEB /* PBXTargetDependency */,
 			);
 			name = "Pods-MBHealthTracker_Tests";
 			productName = "Pods-MBHealthTracker_Tests";
-			productReference = 4A54224503413D803E3AA2DF94B1CB00 /* Pods_MBHealthTracker_Tests.framework */;
+			productReference = F32A8E9D54978CABA10158F04893C729 /* Pods_MBHealthTracker_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		9CEB4EA65B5EDA0FDF431BF3D11C5186 /* MBHealthTracker */ = {
+		5944C6635D4E88BF1FBD5343900590BF /* Pods-MBHealthTracker_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 21CE974C5036D81D7751D61F16AAE0D1 /* Build configuration list for PBXNativeTarget "MBHealthTracker" */;
+			buildConfigurationList = F8D1D7CD5E167164BCEF58E47DD3A7F0 /* Build configuration list for PBXNativeTarget "Pods-MBHealthTracker_Example" */;
 			buildPhases = (
-				BAA53C41D4797B115AE630A5501456E2 /* Sources */,
-				B722AEDB776C0029AF5EF1DB76BE5FB8 /* Frameworks */,
-				B9D031AE7C8F61C7F6C0A7A0BCA87725 /* Headers */,
+				98A831B2B86F07F9ED7F4930F4BBF2A8 /* Headers */,
+				3224E43496C49CA2B4379EF9B5156E3E /* Sources */,
+				0D555A005679F4F2CBF0A66FBC6C7A3C /* Frameworks */,
+				F37001F3488F5CBA6F10334E34BCBD63 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3E6515B44F6D8ACE8B322D3E035BBDB3 /* PBXTargetDependency */,
+			);
+			name = "Pods-MBHealthTracker_Example";
+			productName = "Pods-MBHealthTracker_Example";
+			productReference = 690B6E825F579442ABE16D71CAC5A89A /* Pods_MBHealthTracker_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B3D7B71DC4F05CF74ACC550F41F70331 /* MBHealthTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DA6915B3D9BD4A9A2B0EE32762B2BF7 /* Build configuration list for PBXNativeTarget "MBHealthTracker" */;
+			buildPhases = (
+				A188B45A95A80CA2B5B551659E0A1D06 /* Headers */,
+				1BC1C25B5F466726931E563F19497FEB /* Sources */,
+				E18965DBF352A1D314E6CBCC0B055FCB /* Frameworks */,
+				11E0BC9E1F9C694060236556688D2AE5 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -710,29 +708,19 @@
 			);
 			name = MBHealthTracker;
 			productName = MBHealthTracker;
-			productReference = 39F9B503FF53D0B3DBA417C7991F2040 /* MBHealthTracker.framework */;
+			productReference = DD1C22772BD7365408C6FA9BD59EC937 /* MBHealthTracker.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 1020;
-				TargetAttributes = {
-					2E15F1E1203475E300F6AB56 = {
-						CreatedOnToolsVersion = 9.0;
-						DevelopmentTeam = W29334NPH8;
-						ProvisioningStyle = Automatic;
-					};
-					9CEB4EA65B5EDA0FDF431BF3D11C5186 = {
-						LastSwiftMigration = 1020;
-					};
-				};
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
 			};
-			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -740,21 +728,34 @@
 				en,
 				Base,
 			);
-			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = D6D1D280AB503DFD172CC516CAD50302 /* Products */;
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 77B46E10B64E9C97466E4F0E09635BB1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9CEB4EA65B5EDA0FDF431BF3D11C5186 /* MBHealthTracker */,
-				6D675B2485703062EF8D3001C70D95D4 /* Pods-MBHealthTracker_Example */,
-				6F50505B2EC442CDA820BA8D16993378 /* Pods-MBHealthTracker_Tests */,
-				2E15F1E1203475E300F6AB56 /* MBHealthTrackerPodTests */,
+				B3D7B71DC4F05CF74ACC550F41F70331 /* MBHealthTracker */,
+				5944C6635D4E88BF1FBD5343900590BF /* Pods-MBHealthTracker_Example */,
+				4092CE5917263756ECCA179050A981B0 /* Pods-MBHealthTracker_Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2E15F1E0203475E300F6AB56 /* Resources */ = {
+		11E0BC9E1F9C694060236556688D2AE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19D2C64419FEC38C2DF3A67C5E93546F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F37001F3488F5CBA6F10334E34BCBD63 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -764,119 +765,215 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0BFA4F24086AF8EF3CD7EAAFC236C57E /* Sources */ = {
+		0552CB23701F68B1E8727B763B9BB195 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3F3C4B33789E62EBE4CD3FCBED9392B /* Pods-MBHealthTracker_Tests-dummy.m in Sources */,
+				BA559C718FA9634AA31DCF2CE98845EF /* Pods-MBHealthTracker_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2E15F1DE203475E300F6AB56 /* Sources */ = {
+		1BC1C25B5F466726931E563F19497FEB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BB7F82FBDC74516605A06CC8A86D8E4 /* ActiveEnergyModels.swift in Sources */,
+				2713911A0205CD57CC9EC349D92AB90E /* ActiveEnergyService.swift in Sources */,
+				7EC022862F096DEEBE5E52A88DC8523B /* ActiveEnergyServiceProtocol.swift in Sources */,
+				504CE63B69C3FFD3D41E02F67DB44379 /* ActivityManager.swift in Sources */,
+				3DCE6AFCAFB3373ED20DEF0E992F727C /* ActivityManagerProtocol.swift in Sources */,
+				7AFDFF0F8379FD7E9D179B831D25FEC6 /* Body.swift in Sources */,
+				F652DAB22A845375A3CEC005ECB0AAB5 /* BodyService.swift in Sources */,
+				ECB1922CB914BF2E79A72AAE9D71781E /* BodyServiceProtocol.swift in Sources */,
+				9A21B7E67C05CEDFAFF5464254E2A34A /* CharacteristicService.swift in Sources */,
+				BDA351341965C9B8B11A8F88C6D5BFB6 /* CharacteristicServiceProtocol.swift in Sources */,
+				F04A79C4019C09BDAB6A3215BB9A6529 /* ConfigurationService.swift in Sources */,
+				6B200D7A2C682FE6A72B0A7778724671 /* ConfigurationServiceProtocol.swift in Sources */,
+				C2F16152DA8106A6A273354FD2A454FA /* Date+Extension.swift in Sources */,
+				834FED15D1EB84B45E8B862C935BEC02 /* HealthParser.swift in Sources */,
+				87CC24F2AA759A56041EFD034B2A555B /* HealthType.swift in Sources */,
+				5CC40BA303044D0D663EDFEC3ED39C0E /* HeartRateModels.swift in Sources */,
+				8DD5064A26F59A3CB4C401232984AAB9 /* HeartRateService.swift in Sources */,
+				3901A55A845DC2F4C43A748BBC1EA08E /* HeartRateServiceProtocol.swift in Sources */,
+				CA4529E179F51D8D34CD4D03F42C13C8 /* Helpers.swift in Sources */,
+				678B95C63CBD7433958BE59D03DD2073 /* MBHealthTracker-dummy.m in Sources */,
+				6860F9000704C932428DCB94E64B00D5 /* MBHealthTracker.swift in Sources */,
+				8EDDA8A329B96B6939D2F2B6C61AF88C /* MBHealthTrackerProtocol.swift in Sources */,
+				7AB302F4BDB6B485D5733A21834143CE /* Mindful.swift in Sources */,
+				3F47CBAD4B248CEBB34204013499FFEF /* MindfulnessService.swift in Sources */,
+				64C3ADB5B3EACA271C8D0DBF6D2050DE /* MindfulnessServiceProtocol.swift in Sources */,
+				5734005E42F942EDD7B3B710E75B58F9 /* NetworkResult.swift in Sources */,
+				C30B9C21726122A5CBCE0D9705E984E0 /* NSPredicate+Extension.swift in Sources */,
+				5D0603D9D695C3B81EF0AED345FEB973 /* NutritionModels.swift in Sources */,
+				A636F94A32C5E815073450ED8BED5712 /* NutritionService.swift in Sources */,
+				D7B652B5C153C81CCE564B5AF44E879E /* NutritionServiceProtocol.swift in Sources */,
+				5E0D6EC15654DB63B3FE23FE6BAF7D69 /* Reproductive.swift in Sources */,
+				B3887CFDBBEF41D7CF3FAE603E278AF7 /* ReproductiveService.swift in Sources */,
+				E79B9427193D31FC905CCA48F9098625 /* ReproductiveServiceProtocol.swift in Sources */,
+				27B6ED3F85D33EE839634FCB67418E1E /* Sleep.swift in Sources */,
+				BC3BDB893CE5E6C5F681A227A281AF27 /* SleepService.swift in Sources */,
+				0A71FCBA88A5494B696248D6BAD7DDAA /* SleepServiceProtocol.swift in Sources */,
+				5993782DE95567BEC871C27C96FB66ED /* StepsModels.swift in Sources */,
+				DDCCE912D0CA866DD8F5BCA5DEBE4481 /* StepsService.swift in Sources */,
+				E2F9C609F53CFCBBAC601F131EB92FD7 /* StepsServiceProtocol.swift in Sources */,
+				38F49094186D9186157F246D6751434A /* Vitals.swift in Sources */,
+				5E2A7A5EAF447A5E65E2A1D225C9133A /* VitalsService.swift in Sources */,
+				9B1AFA073ACB595998B77535A5BAE77A /* VitalsServiceProtocol.swift in Sources */,
+				088799813404B4FFBAAAA61097CB7DDB /* WorkoutManager.swift in Sources */,
+				541B901174D4242F5EF71A76019B1C23 /* WorkoutManagerProtocol.swift in Sources */,
+				2FC7F1B23E57041E40314A0F480E134A /* WorkoutModels.swift in Sources */,
+				9A0541CA6F02D89E4791A591D30E3B04 /* WorkoutReadService.swift in Sources */,
+				AE37406806152C5EADCA26D42A00C7CD /* WorkoutReadServiceProtocol.swift in Sources */,
+				76CE40DA29E15CF2DB6973FDCF5EEEC8 /* WorkoutWriteService.swift in Sources */,
+				19428525486FA63E58766E1C7069BF61 /* WorkoutWriteServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BAA53C41D4797B115AE630A5501456E2 /* Sources */ = {
+		3224E43496C49CA2B4379EF9B5156E3E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B9B9E0C58C3635DF278A129DD45483D /* ConfigurationService.swift in Sources */,
-				2E52D7972339B1FF00451B0D /* MindfulnessService.swift in Sources */,
-				2E5F4A182038437A00947553 /* WorkoutManagerProtocol.swift in Sources */,
-				2E5F4A0E20380C5000947553 /* StepsServiceProtocol.swift in Sources */,
-				2E5F4A0C20380C4500947553 /* StepsService.swift in Sources */,
-				2E193AD720B6C244002D0D59 /* NutritionServiceProtocol.swift in Sources */,
-				2E5892F6234DB28100BAD72D /* ActivityManagerProtocol.swift in Sources */,
-				2E5F4A1120380D4500947553 /* StepsModels.swift in Sources */,
-				2E5F4A1F203ABB3300947553 /* WorkoutReadService.swift in Sources */,
-				5638330ADBC437778CA6012B273D62F3 /* ConfigurationServiceProtocol.swift in Sources */,
-				2E5F4A1320383D7300947553 /* Date+Extension.swift in Sources */,
-				2E52D76623350BF300451B0D /* Body.swift in Sources */,
-				2E17102B233E3F9600450364 /* ReproductiveService.swift in Sources */,
-				2EA2897621B21A84002F6F7D /* SleepServiceProtocol.swift in Sources */,
-				2E5F4A23203ABBC400947553 /* WorkoutWriteService.swift in Sources */,
-				2E52D76123350B8700451B0D /* BodyService.swift in Sources */,
-				2E5F4A1B2039986E00947553 /* WorkoutModels.swift in Sources */,
-				C0CE875520A0329B38CBCA9E589122E3 /* HealthParser.swift in Sources */,
-				2E051EA7208DDB04004DAD9F /* HealthType.swift in Sources */,
-				2EB36250239E60C20047899C /* VitalsService.swift in Sources */,
-				2E52D79C2339B29600451B0D /* Mindful.swift in Sources */,
-				2E193AD520B6C23C002D0D59 /* NutritionService.swift in Sources */,
-				2E5892F4234DB26900BAD72D /* ActivityManager.swift in Sources */,
-				221B64E20B6BEBD15FAA52AEE03406C6 /* HeartRateModels.swift in Sources */,
-				2E171030233E414E00450364 /* Reproductive.swift in Sources */,
-				2E0B615721AD21C200827FBD /* ActiveEnergyServiceProtocol.swift in Sources */,
-				3C51D2DBA2E2AFEE7068E5A0985E3CAE /* HeartRateService.swift in Sources */,
-				2EB36255239E616F0047899C /* Vitals.swift in Sources */,
-				2E52D76323350B9700451B0D /* BodyServiceProtocol.swift in Sources */,
-				2EB36252239E60F60047899C /* VitalsServiceProtocol.swift in Sources */,
-				2EF55717207B5E6400FDC284 /* NSPredicate+Extension.swift in Sources */,
-				5AFBECA8E2E3A501864C6BE5F424F607 /* HeartRateServiceProtocol.swift in Sources */,
-				2EA2897421B21A76002F6F7D /* SleepService.swift in Sources */,
-				2E193AD020B58531002D0D59 /* CharacteristicService.swift in Sources */,
-				32EF6E789DAEEB361DCDBA37F8610070 /* Helpers.swift in Sources */,
-				2E17102D233E3FAF00450364 /* ReproductiveServiceProtocol.swift in Sources */,
-				2E5F4A162038436D00947553 /* WorkoutManager.swift in Sources */,
-				A2D56789BB66A50E5E3DD31A711052E1 /* MBHealthTracker-dummy.m in Sources */,
-				0FB01B3701B32589C4566742DE5FA1F3 /* MBHealthTracker.swift in Sources */,
-				2EA2897921B21C1B002F6F7D /* Sleep.swift in Sources */,
-				34E525AB192CB1BAF9930DEC1235C311 /* MBHealthTrackerProtocol.swift in Sources */,
-				2E0B615521AD21B800827FBD /* ActiveEnergyService.swift in Sources */,
-				2E5F4A21203ABB4500947553 /* WorkoutReadServiceProtocol.swift in Sources */,
-				2E0B615221AD210800827FBD /* ActiveEnergyModels.swift in Sources */,
-				AC5DA2EFE6E2E00FFEB9BA728CDFFD65 /* NetworkResult.swift in Sources */,
-				2E52D7992339B22700451B0D /* MindfulnessServiceProtocol.swift in Sources */,
-				2E193AD220B5854E002D0D59 /* CharacteristicServiceProtocol.swift in Sources */,
-				2E193ADA20B6CC36002D0D59 /* NutritionModels.swift in Sources */,
-				2E5F4A25203ABBD000947553 /* WorkoutWriteServiceProtocol.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DED704BD44637A0C9AF9626DB6D27D0D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0B4E758C752269E55CE59935028E902C /* Pods-MBHealthTracker_Example-dummy.m in Sources */,
+				D1EA5D456F8B79FD0BE1F750C8932283 /* Pods-MBHealthTracker_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2E15F1E9203475E300F6AB56 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9CEB4EA65B5EDA0FDF431BF3D11C5186 /* MBHealthTracker */;
-			targetProxy = 2E15F1E8203475E300F6AB56 /* PBXContainerItemProxy */;
-		};
-		51864537D05C77EA21882497CC1E3773 /* PBXTargetDependency */ = {
+		3E6515B44F6D8ACE8B322D3E035BBDB3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MBHealthTracker;
-			target = 9CEB4EA65B5EDA0FDF431BF3D11C5186 /* MBHealthTracker */;
-			targetProxy = E0E0E017ACC9271ADD6F82ADB0A62933 /* PBXContainerItemProxy */;
+			target = B3D7B71DC4F05CF74ACC550F41F70331 /* MBHealthTracker */;
+			targetProxy = F99C5E0126095010B323EA8C982CEF0C /* PBXContainerItemProxy */;
+		};
+		5216B08BC5D9CE686A456EB879CE1DEB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-MBHealthTracker_Example";
+			target = 5944C6635D4E88BF1FBD5343900590BF /* Pods-MBHealthTracker_Example */;
+			targetProxy = 67F78677C9725B03D6F871BE7AEC5E8D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		157AF0CD5E5AB2A2E74D3B8ECD865185 /* Release */ = {
+		007C8968B054AEB12F4A96E3D5FD602B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F26B361ABC1AA58C3D6A8E89EBE8C485 /* MBHealthTracker.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MBHealthTracker/MBHealthTracker-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MBHealthTracker/MBHealthTracker-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MBHealthTracker/MBHealthTracker.modulemap";
+				PRODUCT_MODULE_NAME = MBHealthTracker;
+				PRODUCT_NAME = MBHealthTracker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		31A3D6387BD73B79EF169DD78BF0125C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C238F96191CA1B524D60F1D0D211E59E /* Pods-MBHealthTracker_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-MBHealthTracker_Example/Pods-MBHealthTracker_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MBHealthTracker_Example/Pods-MBHealthTracker_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		72661316CFFA220F676138AF7D365750 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C24192B23C6FF9739E7FB6D7E5BEBCAD /* Pods-MBHealthTracker_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-MBHealthTracker_Tests/Pods-MBHealthTracker_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MBHealthTracker_Tests/Pods-MBHealthTracker_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		903A0004D3E6651EFD5D2E16214D101B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
@@ -885,350 +982,91 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_RELEASE=1",
 					"$(inherited)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		26A812E4C549C8C1FB7DD39119BBD267 /* Release */ = {
+		98C342053E9066379EA8995E80872642 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C2AF78A5FA10ED219EC156D688A0F2D1 /* MBHealthTracker.xcconfig */;
+			baseConfigurationReference = 37DB157688A028CA3D145CDF6FAE3D04 /* MBHealthTracker.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/MBHealthTracker/MBHealthTracker-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MBHealthTracker/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/MBHealthTracker/MBHealthTracker-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/MBHealthTracker/MBHealthTracker.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_MODULE_NAME = MBHealthTracker;
 				PRODUCT_NAME = MBHealthTracker;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		2E15F1EB203475E300F6AB56 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = W29334NPH8;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = MBHealthTrackerPodTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ulife.MBHealthTrackerPodTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		2E15F1EC203475E300F6AB56 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = W29334NPH8;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = MBHealthTrackerPodTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ulife.MBHealthTrackerPodTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		3948C482FA8457CD7557B6031C22B12D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD030F5DD3DBB950A05B026467CF1C1A /* Pods-MBHealthTracker_Example.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-MBHealthTracker_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-MBHealthTracker_Example/Pods-MBHealthTracker_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_MBHealthTracker_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		5F80A8A8FD39F549FA0A874C9F0D6C33 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A7CC5AF166D1BE329BB27B3E4726AC81 /* Pods-MBHealthTracker_Tests.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-MBHealthTracker_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-MBHealthTracker_Tests/Pods-MBHealthTracker_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_MBHealthTracker_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		788B0D42F0990A193C32BB6D030E4284 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C2AF78A5FA10ED219EC156D688A0F2D1 /* MBHealthTracker.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/MBHealthTracker/MBHealthTracker-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MBHealthTracker/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/MBHealthTracker/MBHealthTracker.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = MBHealthTracker;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		7F09B306FAA7CED5DDA268BEB469BCCE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F1F81234C79BF0766E8285D119F9AEC /* Pods-MBHealthTracker_Example.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-MBHealthTracker_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-MBHealthTracker_Example/Pods-MBHealthTracker_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_MBHealthTracker_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		D677305BA07564D966A4958653AD0AF5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6FB5826242CF2889E2173DE7A8B361A2 /* Pods-MBHealthTracker_Tests.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-MBHealthTracker_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-MBHealthTracker_Tests/Pods-MBHealthTracker_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_MBHealthTracker_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		D7B1487F48E36BAD2CEF0AFCA4908B67 /* Debug */ = {
+		B4EFE046ACF8F37157F6E322C7FCFC28 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
@@ -1237,17 +1075,19 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1256,70 +1096,134 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		C12B12FFBA1AC6558DAB313403C93030 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2FDAB20EE1B2E93D944A4E0FC4CC59D2 /* Pods-MBHealthTracker_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-MBHealthTracker_Example/Pods-MBHealthTracker_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MBHealthTracker_Example/Pods-MBHealthTracker_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D328C352542E9DFA1C35C5EAB779B95E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09814E737C643D99AA29AE2368A908F6 /* Pods-MBHealthTracker_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-MBHealthTracker_Tests/Pods-MBHealthTracker_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MBHealthTracker_Tests/Pods-MBHealthTracker_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0D0DE25E318F48582B435C8C304A2C35 /* Build configuration list for PBXNativeTarget "Pods-MBHealthTracker_Example" */ = {
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7F09B306FAA7CED5DDA268BEB469BCCE /* Debug */,
-				3948C482FA8457CD7557B6031C22B12D /* Release */,
+				B4EFE046ACF8F37157F6E322C7FCFC28 /* Debug */,
+				903A0004D3E6651EFD5D2E16214D101B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		21CE974C5036D81D7751D61F16AAE0D1 /* Build configuration list for PBXNativeTarget "MBHealthTracker" */ = {
+		9DA6915B3D9BD4A9A2B0EE32762B2BF7 /* Build configuration list for PBXNativeTarget "MBHealthTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				788B0D42F0990A193C32BB6D030E4284 /* Debug */,
-				26A812E4C549C8C1FB7DD39119BBD267 /* Release */,
+				98C342053E9066379EA8995E80872642 /* Debug */,
+				007C8968B054AEB12F4A96E3D5FD602B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+		B7D50A544D676D99E1244088129428AB /* Build configuration list for PBXNativeTarget "Pods-MBHealthTracker_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D7B1487F48E36BAD2CEF0AFCA4908B67 /* Debug */,
-				157AF0CD5E5AB2A2E74D3B8ECD865185 /* Release */,
+				D328C352542E9DFA1C35C5EAB779B95E /* Debug */,
+				72661316CFFA220F676138AF7D365750 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2E15F1EA203475E300F6AB56 /* Build configuration list for PBXNativeTarget "MBHealthTrackerPodTests" */ = {
+		F8D1D7CD5E167164BCEF58E47DD3A7F0 /* Build configuration list for PBXNativeTarget "Pods-MBHealthTracker_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2E15F1EB203475E300F6AB56 /* Debug */,
-				2E15F1EC203475E300F6AB56 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C78B040954080E89C6844936BDC0BD1B /* Build configuration list for PBXNativeTarget "Pods-MBHealthTracker_Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D677305BA07564D966A4958653AD0AF5 /* Debug */,
-				5F80A8A8FD39F549FA0A874C9F0D6C33 /* Release */,
+				31A3D6387BD73B79EF169DD78BF0125C /* Debug */,
+				C12B12FFBA1AC6558DAB313403C93030 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 }
