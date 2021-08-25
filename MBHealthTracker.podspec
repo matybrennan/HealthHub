@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MBHealthTracker'
-  s.version          = '1.0.5'
+  s.version          = '1.0.6'
   s.summary          = 'MBHealthTracker is used for healthData'
 
 # This description is used to generate tags and improve search results.
@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/matybrennan/MBHealthTracker.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '12.0'
+  s.ios.deployment_target = '13.0'
 
   s.swift_versions = ['5.0']
   s.source_files = 'Sources/MBHealthTracker/Classes/**/*'

@@ -9,14 +9,11 @@ import Foundation
 import HealthKit
 import UIKit
 
-public class ConfigurationService {
+public class ConfigurationService: ConfigurationServiceProtocol {
     
     static let appleHealthAppURL = "x-apple-health://"
     
     public init() { }
-}
-
-extension ConfigurationService: ConfigurationServiceProtocol {
     
     public func requestAuthorization(toShare share: [SharableType], toRead read: [ReadableType], completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) {
         
