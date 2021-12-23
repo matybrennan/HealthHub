@@ -103,6 +103,8 @@ public enum MBObjectType: SharableType, ReadableType {
     case bloodPressureDiastolic
     case respiratoryRate
     case bodyTemperature
+    case bloodGlucose
+    case bloodOxygen
     
     public var sharable: HKSampleType {
         switch self {
@@ -196,6 +198,8 @@ public enum MBObjectType: SharableType, ReadableType {
         case .bloodPressureDiastolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureDiastolic)!
         case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
         case .bodyTemperature: return HKSampleType.quantityType(forIdentifier: .bodyTemperature)!
+        case .bloodGlucose: return HKSampleType.quantityType(forIdentifier: .bloodGlucose)!
+        case .bloodOxygen: return HKSampleType.quantityType(forIdentifier: .oxygenSaturation)!
         }
     }
     
@@ -290,6 +294,8 @@ public enum MBObjectType: SharableType, ReadableType {
         case .bloodPressureDiastolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureDiastolic)!
         case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
         case .bodyTemperature: return HKSampleType.quantityType(forIdentifier: .bodyTemperature)!
+        case .bloodGlucose: return HKSampleType.quantityType(forIdentifier: .bloodGlucose)!
+        case .bloodOxygen: return HKSampleType.quantityType(forIdentifier: .oxygenSaturation)!
         }
     }
 }

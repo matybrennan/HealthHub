@@ -7,21 +7,16 @@
 //
 
 import UIKit
-import MBHealthTracker
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
 
     var interactor: ViewInteractorProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        
+        view.backgroundColor = .systemBackground
         interactor.configurePermissions()
-        
-        print("---------------------------------")
         interactor.runTest()
-        print("---------------------------------")
     }
 }
 

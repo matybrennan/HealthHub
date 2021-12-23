@@ -159,6 +159,8 @@ Split into sections to gather data based on timeIntervals
 - bloodPressure
 - respiratoryRate
 - bodyTemperature
+- bloodGlucose
+- bloodOxygen
 
 ```var vitals: VitalsServiceProtocol```
 

@@ -8,14 +8,13 @@
 
 import Foundation
 import MBHealthTracker
-import HealthKit
 
 protocol ViewInteractorProtocol {
     func configurePermissions()
     func runTest()
 }
 
-class ViewInteractor {
+final class ViewInteractor {
     
     private let healthTracker: MBHealthTrackerProtocol
     
@@ -30,7 +29,7 @@ extension ViewInteractor: ViewInteractorProtocol {
     func configurePermissions() {
         healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.water, MBObjectType.sleep, MBObjectType.workout, MBObjectType.mindful]
         
-        ,toRead: [MBReadType.gender, MBObjectType.bodyMassIndex, MBObjectType.bloodPressureSystolic, MBObjectType.bloodPressureDiastolic, MBObjectType.respiratoryRate, MBObjectType.bodyTemperature]) { _ in }
+        ,toRead: [MBReadType.gender, MBObjectType.bodyMassIndex, MBObjectType.bloodPressureSystolic, MBObjectType.bloodPressureDiastolic, MBObjectType.respiratoryRate, MBObjectType.bloodOxygen]) { _ in }
     }
     
     func runTest() {

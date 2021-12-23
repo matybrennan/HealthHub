@@ -115,5 +115,67 @@ extension VitalsService: VitalsServiceProtocol {
         
         healthStore.execute(query)
     }
+    
+    public func bloodGlucose(completionHandler: @escaping (MBAsyncCallResult<BloodGlucose>) -> Void) throws {
+        
+        // Confirm that the type and device works
+        let bloodGlucoseType = try MBHealthParser.unbox(quantityIdentifier: .bloodGlucose)
+        try isDataStoreAvailable()
+        
+        let query = HKSampleQuery(sampleType: bloodGlucoseType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
+            
+            guard error == nil else {
+                completionHandler(.failed(error!))
+                return
+            }
+            
+            guard let quantitySamples = samples as? [HKQuantitySample] else {
+                completionHandler(.failed(MBAsyncParsingError.unableToParse("bloodGlucoseType log")))
+                return
+            }
+            
+            let items = quantitySamples.map { item -> BloodGlucose.Item in
+                let glucoseLevel = item.quantity.doubleValue(for: HKUnit(from: "mg/dL"))
+                let mealtimeInt = item.metadata?[HKMetadataKeyBloodGlucoseMealTime] as? Int ?? 0
+                let mealTime = BloodGlucose.Item.MealTime(rawValue: mealtimeInt) ?? .unspecified
+                return BloodGlucose.Item(date: item.startDate, bloodGlucose: glucoseLevel, mealTime: mealTime)
+            }
+            
+            let model = BloodGlucose(items: items)
+            completionHandler(.success(model))
+        })
+        
+        healthStore.execute(query)
+    }
+    
+    public func bloodOxygen(completionHandler: @escaping (MBAsyncCallResult<BloodOxygen>) -> Void) throws {
+        
+        // Confirm that the type and device works
+        let bloodOxygenType = try MBHealthParser.unbox(quantityIdentifier: .oxygenSaturation)
+        try isDataStoreAvailable()
+        
+        let query = HKSampleQuery(sampleType: bloodOxygenType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
+            
+            guard error == nil else {
+                completionHandler(.failed(error!))
+                return
+            }
+            
+            guard let quantitySamples = samples as? [HKQuantitySample] else {
+                completionHandler(.failed(MBAsyncParsingError.unableToParse("bloodOxygenType log")))
+                return
+            }
+            
+            let items = quantitySamples.map { item -> BloodOxygen.Item in
+                let percentage = item.quantity.doubleValue(for: .percent())
+                return BloodOxygen.Item(date: item.startDate, oxygenSaturationPercentage: percentage)
+            }
+            
+            let model = BloodOxygen(items: items)
+            completionHandler(.success(model))
+        })
+        
+        healthStore.execute(query)
+    }
 }
 

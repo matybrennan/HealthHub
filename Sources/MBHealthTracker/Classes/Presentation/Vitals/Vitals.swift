@@ -65,3 +65,43 @@ public struct BodyTemperature {
     
     public let items: [Info]
 }
+
+public struct BloodGlucose {
+    
+    public struct Item {
+        
+        public enum MealTime: Int {
+            case unspecified
+            case beforeMeal
+            case afterMeal
+        }
+        
+        public let date: Date
+        public let bloodGlucose: Double
+        public let mealTime: MealTime
+        
+        public init(date: Date, bloodGlucose: Double, mealTime: MealTime) {
+            self.date = date
+            self.bloodGlucose = bloodGlucose
+            self.mealTime = mealTime
+        }
+    }
+    
+    public let items: [Item]
+}
+
+public struct BloodOxygen {
+    
+    public struct Item {
+        
+        public let date: Date
+        public let oxygenSaturationPercentage: Double
+        
+        public init(date: Date, oxygenSaturationPercentage: Double) {
+            self.date = date
+            self.oxygenSaturationPercentage = oxygenSaturationPercentage
+        }
+    }
+    
+    public let items: [Item]
+}
