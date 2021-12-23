@@ -25,7 +25,7 @@ public protocol MBHealthTrackerProtocol: AnyObject {
     
     var mindful: MindfulnessServiceProtocol { get }
     
-    var reproductive: ReproductiveServiceProtocol { get }
+    var cycleTracking: CycleTrackingProtocol { get }
     
     var vitals: VitalsServiceProtocol { get }
 }

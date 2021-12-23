@@ -1,5 +1,5 @@
 //
-//  ReproductiveService.swift
+//  CycleTracking.swift
 //  MBHealthTracker
 //
 //  Created by matybrennan on 27/9/19.
@@ -8,15 +8,13 @@
 import Foundation
 import HealthKit
 
-public class ReproductiveService {
+public class CycleTracking {
     
     public init() { }
 }
 
-// MARK: - ReproductiveServiceProtocol
-extension ReproductiveService: ReproductiveServiceProtocol {
-    
-    // Basal body temp, cervical mucus quality, menstrualFlow, ovulation, sexual activity, spotting
+// MARK: - CycleTrackingProtocol
+extension CycleTracking: CycleTrackingProtocol {
     
     public func basalBodyTemperature(completionHandler: @escaping (MBAsyncCallResult<BasalBodyTemperature>) -> Void) throws {
         

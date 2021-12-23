@@ -1,5 +1,5 @@
 //
-//  ReproductiveServiceProtocol.swift
+//  CycleTrackingProtocol.swift
 //  MBHealthTracker
 //
 //  Created by matybrennan on 27/9/19.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol ReproductiveServiceProtocol: AnyObject {
+public protocol CycleTrackingProtocol: AnyObject {
     
     func basalBodyTemperature(completionHandler: @escaping (MBAsyncCallResult<BasalBodyTemperature>) -> Void) throws
     func cervicalMucusQuality(completionHandler: @escaping (MBAsyncCallResult<CervicalMucusQuality>) -> Void) throws

@@ -145,7 +145,7 @@ Split into sections to gather data based on timeIntervals
 
 ```var heartRate: HeartRateServiceProtocol```
 
-### Reproductive health
+### Cycle Tracking
 - basalBodyTemperature
 - cervicalMucusQuality
 - menstrualFlow
@@ -153,7 +153,7 @@ Split into sections to gather data based on timeIntervals
 - sexualActivity
 - spotting
 
-```var reproductive: ReproductiveServiceProtocol```
+```var cycleTracking: CycleTrackingServiceProtocol```
 
 ### Vitals
 - bloodPressure
