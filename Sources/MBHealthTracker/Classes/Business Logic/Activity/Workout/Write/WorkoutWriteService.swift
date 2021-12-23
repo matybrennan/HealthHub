@@ -23,7 +23,7 @@ extension WorkoutWriteService: WorkoutWriteServiceProtocol {
         
         var energyBurned: HKQuantity?
         if let energy = workout.energyBurned {
-            energyBurned = HKQuantity(unit: HKUnit.calorie(), doubleValue: energy)
+            energyBurned = HKQuantity(unit: HKUnit.smallCalorie(), doubleValue: energy)
         }
         var distance: HKQuantity?
         if let dist = workout.energyBurned {

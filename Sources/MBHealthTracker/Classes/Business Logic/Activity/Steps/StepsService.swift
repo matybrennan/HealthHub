@@ -87,7 +87,7 @@ extension StepsService: StepsServiceProtocol {
             
             
         // Get the steps from within a time preference and select timeInterval batches that want from time period
-        case let .betweenTimePref(start, end, timeInterval):
+        case let .betweenTimePref(start, end, _):
             
             // create predicate for timePref
             let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: [])

@@ -42,5 +42,7 @@ public func checkSharingAuthorizationStatus(for type: HKObjectType) throws {
         throw AuthorizationStatusError.sharingDenied(type.identifier)
     case .sharingAuthorized:
         print("Success status for: \(type.identifier)")
+    @unknown default:
+        print("Unknown/New status for: \(type.identifier)")
     }
 }

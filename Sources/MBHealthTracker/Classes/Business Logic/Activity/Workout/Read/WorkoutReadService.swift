@@ -11,7 +11,7 @@ import HealthKit
 public class WorkoutReadService {
     
     struct Unit {
-        static let workoutEnergy = HKUnit.calorie()
+        static let workoutEnergy = HKUnit.smallCalorie()
         static let workoutDistance = HKUnit.meter()
     }
     

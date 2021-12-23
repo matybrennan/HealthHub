@@ -1,5 +1,5 @@
 PODS:
-  - MBHealthTracker (0.0.19)
+  - MBHealthTracker (1.1.0)
 
 DEPENDENCIES:
   - MBHealthTracker (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MBHealthTracker: bb1935aae976f1e34b745fb92de5b24fcc76b581
+  MBHealthTracker: 6d682c6bbcedcb3ca7ee86323028e811d455453c
 
 PODFILE CHECKSUM: 6faa55685b6862c3016e8368375dd2966367c75d
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.11.2

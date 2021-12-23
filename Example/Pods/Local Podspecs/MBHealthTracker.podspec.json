@@ -1,6 +1,6 @@
 {
   "name": "MBHealthTracker",
-  "version": "0.0.19",
+  "version": "1.1.0",
   "summary": "MBHealthTracker is used for healthData",
   "description": "Framework that simplifies the use of apples HealthKit",
   "homepage": "https://github.com/matybrennan/MBHealthTracker",
@@ -13,10 +13,10 @@
   },
   "source": {
     "git": "https://github.com/matybrennan/MBHealthTracker.git",
-    "tag": "0.0.19"
+    "tag": "1.1.0"
   },
   "platforms": {
-    "ios": "12.0"
+    "ios": "14.0"
   },
   "swift_versions": [
     "5.0"
