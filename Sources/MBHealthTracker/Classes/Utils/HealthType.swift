@@ -26,8 +26,7 @@ public enum MBObjectType: SharableType, ReadableType {
     case workout
     case activeEnergy
     
-    
-    /// Body
+    // Body
     case bodyMass
     case leanBodyMass
     case height
@@ -35,8 +34,7 @@ public enum MBObjectType: SharableType, ReadableType {
     case bodyFatPercentage
     case waistCircumference
     
-    /// Nutrition
-    
+    // Nutrition
     /// Macronutrients
     case energyConsumed
     case carbohydrates
@@ -84,13 +82,15 @@ public enum MBObjectType: SharableType, ReadableType {
     case caffeine
     
     
-    /// Sleep
+    // Sleep
     case sleep
     
-    /// Mindful
+    // Mindful
     case mindful
     
-    /// Reproductive
+    // Cycle tracking
+    case abdominalCramps
+    case acne
     case basalBodyTemperature
     case cervicalMucusQuality
     case menstruation
@@ -98,7 +98,7 @@ public enum MBObjectType: SharableType, ReadableType {
     case sexualActivity
     case spotting
     
-    /// Vitals
+    // Vitals
     case bloodPressureSystolic
     case bloodPressureDiastolic
     case respiratoryRate
@@ -113,8 +113,7 @@ public enum MBObjectType: SharableType, ReadableType {
         case .workout: return HKWorkoutType.workoutType()
         case .activeEnergy: return HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
         
-        
-        /// Body
+        // Body
         case .bodyMass: return HKQuantityType.quantityType(forIdentifier: .bodyMass)!
         case .leanBodyMass: return HKQuantityType.quantityType(forIdentifier: .leanBodyMass)!
         case .height: return HKQuantityType.quantityType(forIdentifier: .height)!
@@ -126,8 +125,7 @@ public enum MBObjectType: SharableType, ReadableType {
             return HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!
         }  
             
-        /// Nutrition
-            
+        // Nutrition
         /// Macronutrients
         case .energyConsumed: return HKQuantityType.quantityType(forIdentifier: .dietaryEnergyConsumed)!
         case .carbohydrates: return HKQuantityType.quantityType(forIdentifier: .dietaryCarbohydrates)!
@@ -139,7 +137,6 @@ public enum MBObjectType: SharableType, ReadableType {
         case .fatSaturated: return HKQuantityType.quantityType(forIdentifier: .dietaryFatSaturated)!
         case .cholesterol: return HKQuantityType.quantityType(forIdentifier: .dietaryCholesterol)!
         case .protein: return HKQuantityType.quantityType(forIdentifier: .dietaryProtein)!
-            
         /// Vitamins
         case .vitaminA: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminA)!
         case .thiamin: return HKQuantityType.quantityType(forIdentifier: .dietaryThiamin)!
@@ -154,7 +151,6 @@ public enum MBObjectType: SharableType, ReadableType {
         case .vitaminE: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminE)!
         case .vitaminK: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminK)!
         case .folate: return HKQuantityType.quantityType(forIdentifier: .dietaryFolate)!
-            
         /// Minerals
         case .calcium: return HKQuantityType.quantityType(forIdentifier: .dietaryCalcium)!
         case .chloride: return HKQuantityType.quantityType(forIdentifier: .dietaryChloride)!
@@ -164,7 +160,6 @@ public enum MBObjectType: SharableType, ReadableType {
         case .potassium: return HKQuantityType.quantityType(forIdentifier: .dietaryPotassium)!
         case .sodium: return HKQuantityType.quantityType(forIdentifier: .dietarySodium)!
         case .zinc: return HKQuantityType.quantityType(forIdentifier: .dietaryZinc)!
-        
         /// Ultratrace Minerals
         case .chromium: return HKQuantityType.quantityType(forIdentifier: .dietaryChromium)!
         case .copper: return HKQuantityType.quantityType(forIdentifier: .dietaryCopper)!
@@ -172,20 +167,20 @@ public enum MBObjectType: SharableType, ReadableType {
         case .manganese: return HKQuantityType.quantityType(forIdentifier: .dietaryManganese)!
         case .molybdenum: return HKQuantityType.quantityType(forIdentifier: .dietaryMolybdenum)!
         case .selenium: return HKQuantityType.quantityType(forIdentifier: .dietarySelenium)!
-            
         /// Hydration
         case .water: return HKQuantityType.quantityType(forIdentifier: .dietaryWater)!
-            
         /// Caffeine
         case .caffeine: return HKQuantityType.quantityType(forIdentifier: .dietaryCaffeine)!
             
-        /// Sleep
+        // Sleep
         case .sleep: return HKCategoryType.categoryType(forIdentifier: .sleepAnalysis)!
             
-        /// Mindful
+        // Mindful
         case .mindful: return HKCategoryType.categoryType(forIdentifier: .mindfulSession)!
             
-        /// Reproductive
+        // Cycle tracking
+        case .abdominalCramps: return HKQuantityType.categoryType(forIdentifier: .abdominalCramps)!
+        case .acne: return HKQuantityType.categoryType(forIdentifier: .acne)!
         case .basalBodyTemperature: return HKQuantityType.quantityType(forIdentifier: .basalBodyTemperature)!
         case .cervicalMucusQuality: return HKQuantityType.categoryType(forIdentifier: .cervicalMucusQuality)!
         case .menstruation: return HKQuantityType.categoryType(forIdentifier: .menstrualFlow)!
@@ -193,7 +188,7 @@ public enum MBObjectType: SharableType, ReadableType {
         case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
         case .spotting: return HKQuantityType.categoryType(forIdentifier: .intermenstrualBleeding)!
             
-        /// Vitals
+        // Vitals
         case .bloodPressureSystolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureSystolic)!
         case .bloodPressureDiastolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureDiastolic)!
         case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
@@ -210,7 +205,7 @@ public enum MBObjectType: SharableType, ReadableType {
         case .workout: return HKWorkoutType.workoutType()
         case .activeEnergy: return HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
         
-        /// Body
+        // Body
         case .bodyMass: return HKQuantityType.quantityType(forIdentifier: .bodyMass)!
         case .leanBodyMass: return HKQuantityType.quantityType(forIdentifier: .leanBodyMass)!
         case .height: return HKQuantityType.quantityType(forIdentifier: .height)!
@@ -222,8 +217,7 @@ public enum MBObjectType: SharableType, ReadableType {
             return HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!
         }
         
-        /// Nutrition
-            
+        // Nutrition
         /// Macronutrients
         case .energyConsumed: return HKQuantityType.quantityType(forIdentifier: .dietaryEnergyConsumed)!
         case .carbohydrates: return HKQuantityType.quantityType(forIdentifier: .dietaryCarbohydrates)!
@@ -235,7 +229,6 @@ public enum MBObjectType: SharableType, ReadableType {
         case .fatSaturated: return HKQuantityType.quantityType(forIdentifier: .dietaryFatSaturated)!
         case .cholesterol: return HKQuantityType.quantityType(forIdentifier: .dietaryCholesterol)!
         case .protein: return HKQuantityType.quantityType(forIdentifier: .dietaryProtein)!
-            
         /// Vitamins
         case .vitaminA: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminA)!
         case .thiamin: return HKQuantityType.quantityType(forIdentifier: .dietaryThiamin)!
@@ -250,7 +243,6 @@ public enum MBObjectType: SharableType, ReadableType {
         case .vitaminE: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminE)!
         case .vitaminK: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminK)!
         case .folate: return HKQuantityType.quantityType(forIdentifier: .dietaryFolate)!
-            
         /// Minerals
         case .calcium: return HKQuantityType.quantityType(forIdentifier: .dietaryCalcium)!
         case .chloride: return HKQuantityType.quantityType(forIdentifier: .dietaryChloride)!
@@ -260,7 +252,6 @@ public enum MBObjectType: SharableType, ReadableType {
         case .potassium: return HKQuantityType.quantityType(forIdentifier: .dietaryPotassium)!
         case .sodium: return HKQuantityType.quantityType(forIdentifier: .dietarySodium)!
         case .zinc: return HKQuantityType.quantityType(forIdentifier: .dietaryZinc)!
-            
         /// Ultratrace Minerals
         case .chromium: return HKQuantityType.quantityType(forIdentifier: .dietaryChromium)!
         case .copper: return HKQuantityType.quantityType(forIdentifier: .dietaryCopper)!
@@ -268,20 +259,20 @@ public enum MBObjectType: SharableType, ReadableType {
         case .manganese: return HKQuantityType.quantityType(forIdentifier: .dietaryManganese)!
         case .molybdenum: return HKQuantityType.quantityType(forIdentifier: .dietaryMolybdenum)!
         case .selenium: return HKQuantityType.quantityType(forIdentifier: .dietarySelenium)!
-        
         /// Hydration
         case .water: return HKQuantityType.quantityType(forIdentifier: .dietaryWater)!
-            
         /// Caffeine
         case .caffeine: return HKQuantityType.quantityType(forIdentifier: .dietaryCaffeine)!
             
-        /// Sleep
+        // Sleep
         case .sleep: return HKCategoryType.categoryType(forIdentifier: .sleepAnalysis)!
             
-        /// Mindful
+        // Mindful
         case .mindful: return HKCategoryType.categoryType(forIdentifier: .mindfulSession)!
             
-        /// Reproductive
+        // Cycle tracking
+        case .abdominalCramps: return HKQuantityType.categoryType(forIdentifier: .abdominalCramps)!
+        case .acne: return HKQuantityType.categoryType(forIdentifier: .acne)!
         case .basalBodyTemperature: return HKQuantityType.quantityType(forIdentifier: .basalBodyTemperature)!
         case .cervicalMucusQuality: return HKQuantityType.categoryType(forIdentifier: .cervicalMucusQuality)!
         case .menstruation: return HKQuantityType.categoryType(forIdentifier: .menstrualFlow)!
@@ -289,7 +280,7 @@ public enum MBObjectType: SharableType, ReadableType {
         case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
         case .spotting: return HKQuantityType.categoryType(forIdentifier: .intermenstrualBleeding)!
             
-        /// Vitals
+        // Vitals
         case .bloodPressureSystolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureSystolic)!
         case .bloodPressureDiastolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureDiastolic)!
         case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!

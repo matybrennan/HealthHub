@@ -9,6 +9,8 @@ import Foundation
 
 public protocol CycleTrackingProtocol: AnyObject {
     
+    func abdominalCramps(completionHandler: @escaping (MBAsyncCallResult<AbdominalCramp>) -> Void) throws
+    func acne(completionHandler: @escaping (MBAsyncCallResult<Acne>) -> Void) throws
     func basalBodyTemperature(completionHandler: @escaping (MBAsyncCallResult<BasalBodyTemperature>) -> Void) throws
     func cervicalMucusQuality(completionHandler: @escaping (MBAsyncCallResult<CervicalMucusQuality>) -> Void) throws
     func menstrualFlow(completionHandler: @escaping (MBAsyncCallResult<MenstrualFlow>) -> Void) throws

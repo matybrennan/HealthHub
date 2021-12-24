@@ -7,6 +7,78 @@
 
 import Foundation
 
+public struct AbdominalCramp {
+    
+    public struct Item {
+        
+        public enum AbdominalCrampType: Int {
+            case present = 0
+            case notPresent
+            case mild
+            case moderate
+            case severe
+            
+            public var name: String {
+                switch self {
+                case .present: return "Present"
+                case .notPresent: return "Not Present"
+                case .mild: return "Mild"
+                case .moderate: return "Moderate"
+                case .severe: return "Severe"
+                }
+            }
+        }
+        
+        public let type: AbdominalCrampType
+        public let startDate: Date
+        public let endDate: Date
+        
+        public init(type: AbdominalCrampType, startDate: Date, endDate: Date) {
+            self.type = type
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+    }
+    
+    public let items: [Item]
+}
+
+public struct Acne {
+    
+    public struct Item {
+        
+        public enum AcneType: Int {
+            case present = 0
+            case notPresent
+            case mild
+            case moderate
+            case severe
+            
+            public var name: String {
+                switch self {
+                case .present: return "Present"
+                case .notPresent: return "Not Present"
+                case .mild: return "Mild"
+                case .moderate: return "Moderate"
+                case .severe: return "Severe"
+                }
+            }
+        }
+        
+        public let type: AcneType
+        public let startDate: Date
+        public let endDate: Date
+        
+        public init(type: AcneType, startDate: Date, endDate: Date) {
+            self.type = type
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+    }
+    
+    public let items: [Item]
+}
+
 public struct BasalBodyTemperature {
     
     public struct Info {
@@ -67,19 +139,19 @@ public struct MenstrualFlow {
     public struct Info {
         
         public enum FlowType: Int {
-            case unspecified = 1
+            case none = 0
+            case unspecified
             case light
             case medium
             case heavy
-            case none
             
             public var name: String {
                 switch self {
-                case .unspecified: return "Flow (Unspecified)"
+                case .none: return "No Flow"
+                case .unspecified: return "Unspecified Flow"
                 case .light: return "Light"
                 case .medium: return "Medium"
                 case .heavy: return "Heavy"
-                case .none: return "None"
                 }
             }
         }
