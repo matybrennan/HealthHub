@@ -29,10 +29,12 @@ extension ViewInteractor: ViewInteractorProtocol {
     func configurePermissions() {
         healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.water, MBObjectType.sleep, MBObjectType.workout, MBObjectType.mindful]
         
-        ,toRead: [MBReadType.gender, MBObjectType.bodyMassIndex, MBObjectType.bloodPressureSystolic, MBObjectType.bloodPressureDiastolic, MBObjectType.respiratoryRate, MBObjectType.bloodOxygen]) { _ in }
+        ,toRead: [MBReadType.gender, MBObjectType.basalBodyTemperature, MBObjectType.cervicalMucusQuality, MBObjectType.menstruation, MBObjectType.ovulationTestResult, MBObjectType.spotting, MBObjectType.sexualActivity]) { _ in }
     }
     
     func runTest() {
-        //
+        try? healthTracker.cycleTracking.basalBodyTemperature { res in
+            print(res)
+        }
     }
 }
