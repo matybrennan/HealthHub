@@ -158,6 +158,9 @@ Split into sections to gather data based on timeIntervals
 - diarrhea
 - drySkin
 - fatigue
+- hairLoss
+- headache
+- hotFlashes
 - basalBodyTemperature
 - cervicalMucusQuality
 - menstrualFlow

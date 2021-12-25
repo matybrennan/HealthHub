@@ -22,6 +22,9 @@ public protocol CycleTrackingProtocol: AnyObject {
     func diarrhea(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws
     func drySkin(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws
     func fatigue(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws
+    func hairLoss(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws
+    func headache(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws
+    func hotFlashes(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws
     func menstrualFlow(handler: @escaping (MBAsyncCallResult<MenstrualFlow>) -> Void) throws
     func ovulation(handler: @escaping (MBAsyncCallResult<Ovulation>) -> Void) throws
     func sexualActivity(handler: @escaping (MBAsyncCallResult<SexualActivity>) -> Void) throws

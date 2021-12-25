@@ -181,6 +181,18 @@ extension CycleTracking: CycleTrackingProtocol {
         try fetchGenericCycleResult(categoryIdentifier: .fatigue, handler: handler)
     }
     
+    public func hairLoss(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .hairLoss, handler: handler)
+    }
+    
+    public func headache(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .headache, handler: handler)
+    }
+    
+    public func hotFlashes(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .hotFlashes, handler: handler)
+    }
+    
     public func menstrualFlow(handler: @escaping (MBAsyncCallResult<MenstrualFlow>) -> Void) throws {
         
         // Confirm that the type and device works
