@@ -88,22 +88,6 @@ extension CycleTracking: CycleTrackingProtocol {
             healthStore.execute(query)
     }
     
-    public func bladderIncontinence(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
-        try fetchGenericCycleResult(categoryIdentifier: .bladderIncontinence, handler: handler)
-    }
-    
-    public func bloating(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
-        try fetchGenericCycleResult(categoryIdentifier: .bloating, handler: handler)
-    }
-    
-    public func breastPain(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
-        try fetchGenericCycleResult(categoryIdentifier: .breastPain, handler: handler)
-    }
-    
-    public func chills(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
-        try fetchGenericCycleResult(categoryIdentifier: .chills, handler: handler)
-    }
-    
     public func basalBodyTemperature(handler: @escaping (MBAsyncCallResult<BasalBodyTemperature>) -> Void) throws {
         
         // Confirm that the type and device works
@@ -135,6 +119,18 @@ extension CycleTracking: CycleTrackingProtocol {
         healthStore.execute(query)
     }
     
+    public func bladderIncontinence(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .bladderIncontinence, handler: handler)
+    }
+    
+    public func bloating(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .bloating, handler: handler)
+    }
+    
+    public func breastPain(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .breastPain, handler: handler)
+    }
+    
     public func cervicalMucusQuality(handler: @escaping (MBAsyncCallResult<CervicalMucusQuality>) -> Void) throws {
         
         // Confirm that the type and device works
@@ -163,6 +159,26 @@ extension CycleTracking: CycleTrackingProtocol {
         })
         
         healthStore.execute(query)
+    }
+    
+    public func chills(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .chills, handler: handler)
+    }
+    
+    public func constipation(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .constipation, handler: handler)
+    }
+    
+    public func diarrhea(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .diarrhea, handler: handler)
+    }
+    
+    public func drySkin(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .drySkin, handler: handler)
+    }
+    
+    public func fatigue(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .fatigue, handler: handler)
     }
     
     public func menstrualFlow(handler: @escaping (MBAsyncCallResult<MenstrualFlow>) -> Void) throws {
