@@ -8,10 +8,13 @@
 import Foundation
 
 public protocol BodyServiceProtocol: AnyObject {
-    func bodyWeight(completionHandler: @escaping (MBAsyncCallResult<BodyWeight>) -> Void) throws
+    
+    func basalBodyTemperature(handler: @escaping (MBAsyncCallResult<BasalBodyTemperature>) -> Void) throws
     func bodyFatPercentage(completionHandler: @escaping (MBAsyncCallResult<BodyFatPercentage>) -> Void) throws
     func bodyMassIndex(completionHandler: @escaping (MBAsyncCallResult<BodyMassIndex>) -> Void) throws
-    func bodyLeanBodyMass(completionHandler: @escaping (MBAsyncCallResult<LeanBodyMass>) -> Void) throws
-    func bodyHeight(completionHandler: @escaping (MBAsyncCallResult<BodyHeight>) -> Void) throws
-    func bodyWaistCircumference(completionHandler: @escaping (MBAsyncCallResult<WaistCircumference>) -> Void) throws
+    func bodyTemperature(handler: @escaping (MBAsyncCallResult<BodyTemperature>) -> Void) throws
+    func height(completionHandler: @escaping (MBAsyncCallResult<BodyHeight>) -> Void) throws
+    func leanBodyMass(completionHandler: @escaping (MBAsyncCallResult<LeanBodyMass>) -> Void) throws
+    func waistCircumference(completionHandler: @escaping (MBAsyncCallResult<WaistCircumference>) -> Void) throws
+    func weight(completionHandler: @escaping (MBAsyncCallResult<BodyWeight>) -> Void) throws
 }

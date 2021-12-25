@@ -32,6 +32,8 @@ public enum MBObjectType: SharableType, ReadableType {
     case height
     case bodyMassIndex
     case bodyFatPercentage
+    case bodyTemperature
+    case basalBodyTemperature
     case waistCircumference
     
     // Nutrition
@@ -104,7 +106,6 @@ public enum MBObjectType: SharableType, ReadableType {
     case hairLoss
     case headache
     case hotFlashes
-    case basalBodyTemperature
     case cervicalMucusQuality
     case menstruation
     case ovulationTestResult
@@ -115,7 +116,6 @@ public enum MBObjectType: SharableType, ReadableType {
     case bloodPressureSystolic
     case bloodPressureDiastolic
     case respiratoryRate
-    case bodyTemperature
     case bloodGlucose
     case bloodOxygen
     
@@ -127,16 +127,14 @@ public enum MBObjectType: SharableType, ReadableType {
         case .activeEnergy: return HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
         
         // Body
+        case .basalBodyTemperature: return HKQuantityType.quantityType(forIdentifier: .basalBodyTemperature)!
+        case .bodyTemperature: return HKQuantityType.quantityType(forIdentifier: .bodyTemperature)!
         case .bodyMass: return HKQuantityType.quantityType(forIdentifier: .bodyMass)!
         case .leanBodyMass: return HKQuantityType.quantityType(forIdentifier: .leanBodyMass)!
         case .height: return HKQuantityType.quantityType(forIdentifier: .height)!
         case .bodyMassIndex: return HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)!
         case .bodyFatPercentage: return HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!
-        case .waistCircumference: if #available(iOS 11.0, *) {
-            return HKQuantityType.quantityType(forIdentifier: .waistCircumference)!
-        } else {
-            return HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!
-        }  
+        case .waistCircumference: return HKQuantityType.quantityType(forIdentifier: .waistCircumference)!
             
         // Nutrition
         /// Macronutrients
@@ -195,7 +193,6 @@ public enum MBObjectType: SharableType, ReadableType {
         case .abdominalCramps: return HKQuantityType.categoryType(forIdentifier: .abdominalCramps)!
         case .acne: return HKQuantityType.categoryType(forIdentifier: .acne)!
         case .appetiteChanges: return HKQuantityType.categoryType(forIdentifier: .appetiteChanges)!
-        case .basalBodyTemperature: return HKQuantityType.quantityType(forIdentifier: .basalBodyTemperature)!
         case .bladderIncontinence: return HKQuantityType.categoryType(forIdentifier: .bladderIncontinence)!
         case .bloating: return HKQuantityType.categoryType(forIdentifier: .bloating)!
         case .breastPain: return HKQuantityType.categoryType(forIdentifier: .breastPain)!
@@ -219,7 +216,6 @@ public enum MBObjectType: SharableType, ReadableType {
         case .bloodPressureSystolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureSystolic)!
         case .bloodPressureDiastolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureDiastolic)!
         case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
-        case .bodyTemperature: return HKSampleType.quantityType(forIdentifier: .bodyTemperature)!
         case .bloodGlucose: return HKSampleType.quantityType(forIdentifier: .bloodGlucose)!
         case .bloodOxygen: return HKSampleType.quantityType(forIdentifier: .oxygenSaturation)!
         }
@@ -233,16 +229,14 @@ public enum MBObjectType: SharableType, ReadableType {
         case .activeEnergy: return HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
         
         // Body
+        case .basalBodyTemperature: return HKQuantityType.quantityType(forIdentifier: .basalBodyTemperature)!
+        case .bodyTemperature: return HKQuantityType.quantityType(forIdentifier: .bodyTemperature)!
         case .bodyMass: return HKQuantityType.quantityType(forIdentifier: .bodyMass)!
         case .leanBodyMass: return HKQuantityType.quantityType(forIdentifier: .leanBodyMass)!
         case .height: return HKQuantityType.quantityType(forIdentifier: .height)!
         case .bodyMassIndex: return HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)!
         case .bodyFatPercentage: return HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!
-        case .waistCircumference: if #available(iOS 11.0, *) {
-            return HKQuantityType.quantityType(forIdentifier: .waistCircumference)!
-        } else {
-            return HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!
-        }
+        case .waistCircumference: return HKQuantityType.quantityType(forIdentifier: .waistCircumference)!
         
         // Nutrition
         /// Macronutrients
@@ -301,7 +295,6 @@ public enum MBObjectType: SharableType, ReadableType {
         case .abdominalCramps: return HKQuantityType.categoryType(forIdentifier: .abdominalCramps)!
         case .acne: return HKQuantityType.categoryType(forIdentifier: .acne)!
         case .appetiteChanges: return HKQuantityType.categoryType(forIdentifier: .appetiteChanges)!
-        case .basalBodyTemperature: return HKQuantityType.quantityType(forIdentifier: .basalBodyTemperature)!
         case .bladderIncontinence: return HKQuantityType.categoryType(forIdentifier: .bladderIncontinence)!
         case .bloating: return HKQuantityType.categoryType(forIdentifier: .bloating)!
         case .breastPain: return HKQuantityType.categoryType(forIdentifier: .breastPain)!
@@ -324,7 +317,6 @@ public enum MBObjectType: SharableType, ReadableType {
         case .bloodPressureSystolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureSystolic)!
         case .bloodPressureDiastolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureDiastolic)!
         case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
-        case .bodyTemperature: return HKSampleType.quantityType(forIdentifier: .bodyTemperature)!
         case .bloodGlucose: return HKSampleType.quantityType(forIdentifier: .bloodGlucose)!
         case .bloodOxygen: return HKSampleType.quantityType(forIdentifier: .oxygenSaturation)!
         }

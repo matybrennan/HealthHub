@@ -121,6 +121,8 @@ Split into sections to gather data based on timeIntervals
 ------------------------------------------------------------------------
 
 ### Body
+- basalBodyTemperature
+- bodyTemperature
 - bodyMass
 - bodyMassIndex
 - bodyFatPercentage
@@ -153,6 +155,7 @@ Split into sections to gather data based on timeIntervals
 - bladderIncontinence
 - bloating
 - breastPain
+- cervicalMucusQuality
 - chills
 - constipation
 - diarrhea
@@ -161,8 +164,6 @@ Split into sections to gather data based on timeIntervals
 - hairLoss
 - headache
 - hotFlashes
-- basalBodyTemperature
-- cervicalMucusQuality
 - menstrualFlow
 - ovulation
 - sexualActivity
@@ -173,7 +174,6 @@ Split into sections to gather data based on timeIntervals
 ### Vitals
 - bloodPressure
 - respiratoryRate
-- bodyTemperature
 - bloodGlucose
 - bloodOxygen
 

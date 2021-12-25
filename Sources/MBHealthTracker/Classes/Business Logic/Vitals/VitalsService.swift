@@ -84,38 +84,6 @@ extension VitalsService: VitalsServiceProtocol {
         healthStore.execute(query)
     }
     
-    public func bodyTemperature(completionHandler: @escaping (MBAsyncCallResult<BodyTemperature>) -> Void) throws {
-        
-        // Confirm that the type and device works
-        let bodyTemperatureType = try MBHealthParser.unbox(quantityIdentifier: .bodyTemperature)
-        try isDataStoreAvailable()
-        
-        let query = HKSampleQuery(sampleType: bodyTemperatureType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
-            
-            guard error == nil else {
-                completionHandler(.failed(error!))
-                return
-            }
-            
-            guard let quantitySamples = samples as? [HKQuantitySample] else {
-                completionHandler(.failed(MBAsyncParsingError.unableToParse("bodyTemperature log")))
-                return
-            }
-            
-            let items = quantitySamples.map { item -> BodyTemperature.Info in
-                let celsius = item.quantity.doubleValue(for: .degreeCelsius())
-                let fahrenheit = item.quantity.doubleValue(for: .degreeFahrenheit())
-                
-                return BodyTemperature.Info(celsius: celsius, fahrenheit: fahrenheit, startDate: item.startDate, endDate: item.endDate)
-            }
-            
-            let model = BodyTemperature(items: items)
-            completionHandler(.success(model))
-        })
-        
-        healthStore.execute(query)
-    }
-    
     public func bloodGlucose(completionHandler: @escaping (MBAsyncCallResult<BloodGlucose>) -> Void) throws {
         
         // Confirm that the type and device works

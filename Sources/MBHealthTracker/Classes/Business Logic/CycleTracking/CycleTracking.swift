@@ -88,37 +88,6 @@ extension CycleTracking: CycleTrackingProtocol {
             healthStore.execute(query)
     }
     
-    public func basalBodyTemperature(handler: @escaping (MBAsyncCallResult<BasalBodyTemperature>) -> Void) throws {
-        
-        // Confirm that the type and device works
-        let basalBodyTempType = try MBHealthParser.unbox(quantityIdentifier: .basalBodyTemperature)
-        try isDataStoreAvailable()
-        
-        let query = HKSampleQuery(sampleType: basalBodyTempType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
-            
-            guard error == nil else {
-                handler(.failed(error!))
-                return
-            }
-            
-            guard let quantitySamples = samples as? [HKQuantitySample] else {
-                handler(.failed(MBAsyncParsingError.unableToParse("BasalBodyTemperature log")))
-                return
-            }
-            
-            let items = quantitySamples.map { item -> BasalBodyTemperature.Info in
-                let celsius = item.quantity.doubleValue(for: .degreeCelsius())
-                let fahrenheit = item.quantity.doubleValue(for: .degreeFahrenheit())
-                return BasalBodyTemperature.Info(celsius: celsius, fahrenheit: fahrenheit, startDate: item.startDate, endDate: item.endDate)
-            }
-            
-            let model = BasalBodyTemperature(items: items)
-            handler(.success(model))
-        })
-        
-        healthStore.execute(query)
-    }
-    
     public func bladderIncontinence(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
         try fetchGenericCycleResult(categoryIdentifier: .bladderIncontinence, handler: handler)
     }
