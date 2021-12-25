@@ -91,6 +91,11 @@ public enum MBObjectType: SharableType, ReadableType {
     // Cycle tracking
     case abdominalCramps
     case acne
+    case appetiteChanges
+    case bladderIncontinence
+    case bloating
+    case breastPain
+    case chills
     case basalBodyTemperature
     case cervicalMucusQuality
     case menstruation
@@ -181,6 +186,11 @@ public enum MBObjectType: SharableType, ReadableType {
         // Cycle tracking
         case .abdominalCramps: return HKQuantityType.categoryType(forIdentifier: .abdominalCramps)!
         case .acne: return HKQuantityType.categoryType(forIdentifier: .acne)!
+        case .appetiteChanges: return HKQuantityType.categoryType(forIdentifier: .appetiteChanges)!
+        case .bladderIncontinence: return HKQuantityType.categoryType(forIdentifier: .bladderIncontinence)!
+        case .bloating: return HKQuantityType.categoryType(forIdentifier: .bloating)!
+        case .breastPain: return HKQuantityType.categoryType(forIdentifier: .breastPain)!
+        case .chills: return HKQuantityType.categoryType(forIdentifier: .chills)!
         case .basalBodyTemperature: return HKQuantityType.quantityType(forIdentifier: .basalBodyTemperature)!
         case .cervicalMucusQuality: return HKQuantityType.categoryType(forIdentifier: .cervicalMucusQuality)!
         case .menstruation: return HKQuantityType.categoryType(forIdentifier: .menstrualFlow)!
@@ -273,6 +283,11 @@ public enum MBObjectType: SharableType, ReadableType {
         // Cycle tracking
         case .abdominalCramps: return HKQuantityType.categoryType(forIdentifier: .abdominalCramps)!
         case .acne: return HKQuantityType.categoryType(forIdentifier: .acne)!
+        case .appetiteChanges: return HKQuantityType.categoryType(forIdentifier: .appetiteChanges)!
+        case .bladderIncontinence: return HKQuantityType.categoryType(forIdentifier: .bladderIncontinence)!
+        case .bloating: return HKQuantityType.categoryType(forIdentifier: .bloating)!
+        case .breastPain: return HKQuantityType.categoryType(forIdentifier: .breastPain)!
+        case .chills: return HKQuantityType.categoryType(forIdentifier: .chills)!
         case .basalBodyTemperature: return HKQuantityType.quantityType(forIdentifier: .basalBodyTemperature)!
         case .cervicalMucusQuality: return HKQuantityType.categoryType(forIdentifier: .cervicalMucusQuality)!
         case .menstruation: return HKQuantityType.categoryType(forIdentifier: .menstrualFlow)!

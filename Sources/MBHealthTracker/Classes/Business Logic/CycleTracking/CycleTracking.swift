@@ -13,70 +13,98 @@ public class CycleTracking {
     public init() { }
 }
 
+// MARK: - Private methods
+private extension CycleTracking {
+    
+    func fetchGenericCycleResult(categoryIdentifier: HKCategoryTypeIdentifier, handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        
+        // Confirm that the type and device works
+        let type = try MBHealthParser.unbox(categoryIdentifier: categoryIdentifier)
+        try isDataStoreAvailable()
+        
+        let query = HKSampleQuery(sampleType: type, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
+            
+            guard error == nil else {
+                handler(.failed(error!))
+                return
+            }
+            
+            guard let quantitySamples = samples as? [HKCategorySample] else {
+                handler(.failed(MBAsyncParsingError.unableToParse("\(type.identifier) log")))
+                return
+            }
+            
+            let items = quantitySamples.map { item -> GenericCycleTrackingModel.Item in
+                let style = GenericCycleTrackingModel.Item.Style(rawValue: item.value) ?? .notPresent
+                return GenericCycleTrackingModel.Item(style: style, startDate: item.startDate, endDate: item.endDate)
+            }
+            
+            let model = GenericCycleTrackingModel(items: items)
+            handler(.success(model))
+        })
+        
+        healthStore.execute(query)
+    }
+}
+
 // MARK: - CycleTrackingProtocol
 extension CycleTracking: CycleTrackingProtocol {
     
-    public func abdominalCramps(completionHandler: @escaping (MBAsyncCallResult<AbdominalCramp>) -> Void) throws {
-        
-        // Confirm that the type and device works
-        let abdominalCrampsType = try MBHealthParser.unbox(categoryIdentifier: .abdominalCramps)
-        try isDataStoreAvailable()
-        
-        let query = HKSampleQuery(sampleType: abdominalCrampsType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
-            
-            guard error == nil else {
-                completionHandler(.failed(error!))
-                return
-            }
-            
-            guard let quantitySamples = samples as? [HKCategorySample] else {
-                completionHandler(.failed(MBAsyncParsingError.unableToParse("abdominalCramps log")))
-                return
-            }
-            
-            let items = quantitySamples.map { item -> AbdominalCramp.Item in
-                let type = AbdominalCramp.Item.AbdominalCrampType(rawValue: item.value) ?? .notPresent
-                return AbdominalCramp.Item(type: type, startDate: item.startDate, endDate: item.endDate)
-            }
-            
-            let model = AbdominalCramp(items: items)
-            completionHandler(.success(model))
-        })
-        
-        healthStore.execute(query)
+    public func abdominalCramps(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .abdominalCramps, handler: handler)
     }
     
-    public func acne(completionHandler: @escaping (MBAsyncCallResult<Acne>) -> Void) throws {
-        
-        // Confirm that the type and device works
-        let acneType = try MBHealthParser.unbox(categoryIdentifier: .acne)
-        try isDataStoreAvailable()
-        
-        let query = HKSampleQuery(sampleType: acneType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
-            
-            guard error == nil else {
-                completionHandler(.failed(error!))
-                return
-            }
-            
-            guard let quantitySamples = samples as? [HKCategorySample] else {
-                completionHandler(.failed(MBAsyncParsingError.unableToParse("acne log")))
-                return
-            }
-            
-            let items = quantitySamples.map { item -> Acne.Item in
-                let type = Acne.Item.AcneType(rawValue: item.value) ?? .notPresent
-                return Acne.Item(type: type, startDate: item.startDate, endDate: item.endDate)
-            }
-            
-            let model = Acne(items: items)
-            completionHandler(.success(model))
-        })
-        
-        healthStore.execute(query)
+    public func acne(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .acne, handler: handler)
     }
     
-    public func basalBodyTemperature(completionHandler: @escaping (MBAsyncCallResult<BasalBodyTemperature>) -> Void) throws {
+    public func appetiteChanges(handler: @escaping (MBAsyncCallResult<AppetiteChanges>) -> Void) throws {
+            
+            // Confirm that the type and device works
+            let appetiteChangesType = try MBHealthParser.unbox(categoryIdentifier: .appetiteChanges)
+            try isDataStoreAvailable()
+            
+            let query = HKSampleQuery(sampleType: appetiteChangesType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
+                
+                guard error == nil else {
+                    handler(.failed(error!))
+                    return
+                }
+                
+                guard let quantitySamples = samples as? [HKCategorySample] else {
+                    handler(.failed(MBAsyncParsingError.unableToParse("appetiteChanges log")))
+                    return
+                }
+                
+                let items = quantitySamples.map { item -> AppetiteChanges.Item in
+                    let type = AppetiteChanges.Item.AppetiteChangesType(rawValue: item.value) ?? .noChange
+                    return AppetiteChanges.Item(type: type, startDate: item.startDate, endDate: item.endDate)
+                }
+                
+                let model = AppetiteChanges(items: items)
+                handler(.success(model))
+            })
+            
+            healthStore.execute(query)
+    }
+    
+    public func bladderIncontinence(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .bladderIncontinence, handler: handler)
+    }
+    
+    public func bloating(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .bloating, handler: handler)
+    }
+    
+    public func breastPain(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .breastPain, handler: handler)
+    }
+    
+    public func chills(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .chills, handler: handler)
+    }
+    
+    public func basalBodyTemperature(handler: @escaping (MBAsyncCallResult<BasalBodyTemperature>) -> Void) throws {
         
         // Confirm that the type and device works
         let basalBodyTempType = try MBHealthParser.unbox(quantityIdentifier: .basalBodyTemperature)
@@ -85,12 +113,12 @@ extension CycleTracking: CycleTrackingProtocol {
         let query = HKSampleQuery(sampleType: basalBodyTempType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
             guard error == nil else {
-                completionHandler(.failed(error!))
+                handler(.failed(error!))
                 return
             }
             
             guard let quantitySamples = samples as? [HKQuantitySample] else {
-                completionHandler(.failed(MBAsyncParsingError.unableToParse("BasalBodyTemperature log")))
+                handler(.failed(MBAsyncParsingError.unableToParse("BasalBodyTemperature log")))
                 return
             }
             
@@ -101,13 +129,13 @@ extension CycleTracking: CycleTrackingProtocol {
             }
             
             let model = BasalBodyTemperature(items: items)
-            completionHandler(.success(model))
+            handler(.success(model))
         })
         
         healthStore.execute(query)
     }
     
-    public func cervicalMucusQuality(completionHandler: @escaping (MBAsyncCallResult<CervicalMucusQuality>) -> Void) throws {
+    public func cervicalMucusQuality(handler: @escaping (MBAsyncCallResult<CervicalMucusQuality>) -> Void) throws {
         
         // Confirm that the type and device works
         let cervicalMucusQualityType = try MBHealthParser.unbox(categoryIdentifier: .cervicalMucusQuality)
@@ -116,12 +144,12 @@ extension CycleTracking: CycleTrackingProtocol {
         let query = HKSampleQuery(sampleType: cervicalMucusQualityType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
             guard error == nil else {
-                completionHandler(.failed(error!))
+                handler(.failed(error!))
                 return
             }
             
             guard let categorySamples = samples as? [HKCategorySample] else {
-                completionHandler(.failed(MBAsyncParsingError.unableToParse("cervicalMucusQualityType log")))
+                handler(.failed(MBAsyncParsingError.unableToParse("cervicalMucusQualityType log")))
                 return
             }
             
@@ -131,13 +159,13 @@ extension CycleTracking: CycleTrackingProtocol {
             }
             
             let model = CervicalMucusQuality(items: items)
-            completionHandler(.success(model))
+            handler(.success(model))
         })
         
         healthStore.execute(query)
     }
     
-    public func menstrualFlow(completionHandler: @escaping (MBAsyncCallResult<MenstrualFlow>) -> Void) throws {
+    public func menstrualFlow(handler: @escaping (MBAsyncCallResult<MenstrualFlow>) -> Void) throws {
         
         // Confirm that the type and device works
         let menstrualFlowType = try MBHealthParser.unbox(categoryIdentifier: .menstrualFlow)
@@ -146,12 +174,12 @@ extension CycleTracking: CycleTrackingProtocol {
         let query = HKSampleQuery(sampleType: menstrualFlowType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
             guard error == nil else {
-                completionHandler(.failed(error!))
+                handler(.failed(error!))
                 return
             }
             
             guard let categorySamples = samples as? [HKCategorySample] else {
-                completionHandler(.failed(MBAsyncParsingError.unableToParse("menstrualFlowType log")))
+                handler(.failed(MBAsyncParsingError.unableToParse("menstrualFlowType log")))
                 return
             }
             
@@ -164,13 +192,13 @@ extension CycleTracking: CycleTrackingProtocol {
             }
             
             let model = MenstrualFlow(items: items)
-            completionHandler(.success(model))
+            handler(.success(model))
         })
         
         healthStore.execute(query)
     }
     
-    public func ovulation(completionHandler: @escaping (MBAsyncCallResult<Ovulation>) -> Void) throws {
+    public func ovulation(handler: @escaping (MBAsyncCallResult<Ovulation>) -> Void) throws {
         
         // Confirm that the type and device works
         let ovulationType = try MBHealthParser.unbox(categoryIdentifier: .ovulationTestResult)
@@ -179,12 +207,12 @@ extension CycleTracking: CycleTrackingProtocol {
         let query = HKSampleQuery(sampleType: ovulationType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
             guard error == nil else {
-                completionHandler(.failed(error!))
+                handler(.failed(error!))
                 return
             }
             
             guard let categorySamples = samples as? [HKCategorySample] else {
-                completionHandler(.failed(MBAsyncParsingError.unableToParse("ovulationType log")))
+                handler(.failed(MBAsyncParsingError.unableToParse("ovulationType log")))
                 return
             }
             
@@ -195,13 +223,13 @@ extension CycleTracking: CycleTrackingProtocol {
             }
             
             let model = Ovulation(items: items)
-            completionHandler(.success(model))
+            handler(.success(model))
         })
         
         healthStore.execute(query)
     }
     
-    public func sexualActivity(completionHandler: @escaping (MBAsyncCallResult<SexualActivity>) -> Void) throws {
+    public func sexualActivity(handler: @escaping (MBAsyncCallResult<SexualActivity>) -> Void) throws {
         
         // Confirm that the type and device works
         let sexualActivityType = try MBHealthParser.unbox(categoryIdentifier: .sexualActivity)
@@ -210,12 +238,12 @@ extension CycleTracking: CycleTrackingProtocol {
         let query = HKSampleQuery(sampleType: sexualActivityType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
             guard error == nil else {
-                completionHandler(.failed(error!))
+                handler(.failed(error!))
                 return
             }
             
             guard let categorySamples = samples as? [HKCategorySample] else {
-                completionHandler(.failed(MBAsyncParsingError.unableToParse("sexualActivityType log")))
+                handler(.failed(MBAsyncParsingError.unableToParse("sexualActivityType log")))
                 return
             }
             
@@ -227,13 +255,13 @@ extension CycleTracking: CycleTrackingProtocol {
             }
             
             let model = SexualActivity(items: items)
-            completionHandler(.success(model))
+            handler(.success(model))
         })
         
         healthStore.execute(query)
     }
     
-    public func spotting(completionHandler: @escaping (MBAsyncCallResult<Spotting>) -> Void) throws {
+    public func spotting(handler: @escaping (MBAsyncCallResult<Spotting>) -> Void) throws {
         
         // Confirm that the type and device works
         let spottingType = try MBHealthParser.unbox(categoryIdentifier: .intermenstrualBleeding)
@@ -242,12 +270,12 @@ extension CycleTracking: CycleTrackingProtocol {
         let query = HKSampleQuery(sampleType: spottingType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
             guard error == nil else {
-                completionHandler(.failed(error!))
+                handler(.failed(error!))
                 return
             }
             
             guard let categorySamples = samples as? [HKCategorySample] else {
-                completionHandler(.failed(MBAsyncParsingError.unableToParse("spottingType log")))
+                handler(.failed(MBAsyncParsingError.unableToParse("spottingType log")))
                 return
             }
             
@@ -256,7 +284,7 @@ extension CycleTracking: CycleTrackingProtocol {
             }
             
             let model = Spotting(items: items)
-            completionHandler(.success(model))
+            handler(.success(model))
         })
         
         healthStore.execute(query)

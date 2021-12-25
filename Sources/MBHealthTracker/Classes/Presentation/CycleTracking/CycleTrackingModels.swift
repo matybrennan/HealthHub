@@ -7,11 +7,11 @@
 
 import Foundation
 
-public struct AbdominalCramp {
+public struct GenericCycleTrackingModel {
     
     public struct Item {
         
-        public enum AbdominalCrampType: Int {
+        public enum Style: Int {
             case present = 0
             case notPresent
             case mild
@@ -29,12 +29,12 @@ public struct AbdominalCramp {
             }
         }
         
-        public let type: AbdominalCrampType
+        public let style: Style
         public let startDate: Date
         public let endDate: Date
         
-        public init(type: AbdominalCrampType, startDate: Date, endDate: Date) {
-            self.type = type
+        public init(style: Style, startDate: Date, endDate: Date) {
+            self.style = style
             self.startDate = startDate
             self.endDate = endDate
         }
@@ -43,33 +43,31 @@ public struct AbdominalCramp {
     public let items: [Item]
 }
 
-public struct Acne {
+public struct AppetiteChanges {
     
     public struct Item {
         
-        public enum AcneType: Int {
+        public enum AppetiteChangesType: Int {
             case present = 0
-            case notPresent
-            case mild
-            case moderate
-            case severe
+            case noChange
+            case decreased
+            case increased
             
             public var name: String {
                 switch self {
                 case .present: return "Present"
-                case .notPresent: return "Not Present"
-                case .mild: return "Mild"
-                case .moderate: return "Moderate"
-                case .severe: return "Severe"
+                case .noChange: return "No Change"
+                case .decreased: return "Decreased"
+                case .increased: return "Increased"
                 }
             }
         }
         
-        public let type: AcneType
+        public let type: AppetiteChangesType
         public let startDate: Date
         public let endDate: Date
         
-        public init(type: AcneType, startDate: Date, endDate: Date) {
+        public init(type: AppetiteChangesType, startDate: Date, endDate: Date) {
             self.type = type
             self.startDate = startDate
             self.endDate = endDate

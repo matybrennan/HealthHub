@@ -146,6 +146,13 @@ Split into sections to gather data based on timeIntervals
 ```var heartRate: HeartRateServiceProtocol```
 
 ### Cycle Tracking
+- abdominalCramps
+- acne        
+- appetiteChanges
+- bladderIncontinence
+- bloating
+- breastPain
+- chills
 - basalBodyTemperature
 - cervicalMucusQuality
 - menstrualFlow
