@@ -122,13 +122,13 @@ Split into sections to gather data based on timeIntervals
 
 ### Body
 - basalBodyTemperature
-- bodyTemperature
-- bodyMass
-- bodyMassIndex
 - bodyFatPercentage
-- leanBodyMass
+- bodyMassIndex
+- bodyTemperature
 - height
+- leanBodyMass
 - waistCircumference
+- weight
 
 ```var body: BodyServiceProtocol```
 
