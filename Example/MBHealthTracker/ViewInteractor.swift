@@ -27,9 +27,8 @@ final class ViewInteractor {
 extension ViewInteractor: ViewInteractorProtocol {
     
     func configurePermissions() {
-        healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.water, MBObjectType.sleep, MBObjectType.workout, MBObjectType.mindful]
-        
-        ,toRead: [MBReadType.gender, MBObjectType.headache, MBObjectType.hairLoss, MBObjectType.hotFlashes, MBObjectType.bladderIncontinence, MBObjectType.fatigue, MBObjectType.diarrhea]) { _ in }
+        healthTracker.configuration.requestAuthorization(toShare: []
+                                                        ,toRead: [MBReadType.gender, MBObjectType.headache, MBObjectType.hairLoss, MBObjectType.hotFlashes, MBObjectType.bladderIncontinence, MBObjectType.fatigue, MBObjectType.diarrhea]) { _ in }
     }
     
     func runTest() {
