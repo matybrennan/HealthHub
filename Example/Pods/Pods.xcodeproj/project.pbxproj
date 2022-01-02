@@ -114,13 +114,13 @@
 		4CEEC04722B353D49A868EB78A2F43DD /* Date+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		4D53565EF8D3FCD3AE88D4D8A378EAD8 /* ActiveEnergyModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActiveEnergyModels.swift; sourceTree = "<group>"; };
 		4E20DAEB1C479E73779A2044E0FA6F11 /* NetworkResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
-		57BE51626F9B8889041009D8FE00957F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		57BE51626F9B8889041009D8FE00957F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		59C776939B4EA90CA354FDC84660ED3C /* SleepServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SleepServiceProtocol.swift; sourceTree = "<group>"; };
 		5F6F80DA5DA512941AF2514D04109745 /* Pods-MBHealthTracker_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MBHealthTracker_Tests-umbrella.h"; sourceTree = "<group>"; };
 		690B6E825F579442ABE16D71CAC5A89A /* Pods-MBHealthTracker_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-MBHealthTracker_Example"; path = Pods_MBHealthTracker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		695ACA090B8E38134EFD3596C27E8B37 /* StepsModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StepsModels.swift; sourceTree = "<group>"; };
 		70C61DA44D6C401F5BEED4FAE721D2D5 /* Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		7128A7DB9D375FA81B785E1EAE8F1BD1 /* MBHealthTracker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = MBHealthTracker.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		7128A7DB9D375FA81B785E1EAE8F1BD1 /* MBHealthTracker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = MBHealthTracker.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		72FDC49715C6B7A1439FF00380566F45 /* Pods-MBHealthTracker_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MBHealthTracker_Example-umbrella.h"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		76D5BAF2E7D09E6BA566CFEC38E7CCFA /* MindfulnessService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MindfulnessService.swift; sourceTree = "<group>"; };
@@ -129,12 +129,12 @@
 		7CF5A9F644800B42A9272768ADE53E47 /* SleepService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SleepService.swift; sourceTree = "<group>"; };
 		7F34240103AADD080E7C6E93CC359034 /* CharacteristicServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CharacteristicServiceProtocol.swift; sourceTree = "<group>"; };
 		81F8FCA24AF87BEA76C7DD433BBC6FA6 /* HealthType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HealthType.swift; sourceTree = "<group>"; };
-		8FF14689D18E98F96371B3E284CA9308 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		8FF14689D18E98F96371B3E284CA9308 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		927A38E9059136665835A99B3FF44712 /* BodyService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BodyService.swift; sourceTree = "<group>"; };
 		947A742868A3154CE2449C820ECC7778 /* WorkoutReadServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WorkoutReadServiceProtocol.swift; sourceTree = "<group>"; };
 		952D25A864A3E0243BF11AF398ADC93C /* StepsService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StepsService.swift; sourceTree = "<group>"; };
 		96BD7551029B3E17C2674A1D4DEBD732 /* StepsServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StepsServiceProtocol.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DE9503D1A44E533613BC41FFCBCB4F5 /* HealthParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HealthParser.swift; sourceTree = "<group>"; };
 		9FA4C9A8A5998EEC80D43D87DE692477 /* MBHealthTracker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MBHealthTracker.swift; path = Sources/MBHealthTracker/Classes/MBHealthTracker.swift; sourceTree = "<group>"; };
 		A04C316C0D94D196FCD57AF93FD2E8D7 /* VitalsService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VitalsService.swift; sourceTree = "<group>"; };
@@ -154,7 +154,7 @@
 		D5E09EC5864C649DAF740EE1C492314B /* NutritionModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NutritionModels.swift; sourceTree = "<group>"; };
 		D64AA77DD08E65CC3CF2E2424DB2D75C /* Pods-MBHealthTracker_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MBHealthTracker_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		DB28FEC8B24D4914A4BDB8AD5BAADC80 /* NutritionServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NutritionServiceProtocol.swift; sourceTree = "<group>"; };
-		DD1C22772BD7365408C6FA9BD59EC937 /* MBHealthTracker */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MBHealthTracker; path = MBHealthTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD1C22772BD7365408C6FA9BD59EC937 /* MBHealthTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBHealthTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1FA16C559B38D7A679986D70727264A /* NutritionService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NutritionService.swift; sourceTree = "<group>"; };
 		E45A0C47861C0B250E41144FF4B7B488 /* WorkoutReadService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WorkoutReadService.swift; sourceTree = "<group>"; };
 		E81A74F9ED93AB6D9A415E0D2FD2A1A7 /* Pods-MBHealthTracker_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MBHealthTracker_Tests.modulemap"; sourceTree = "<group>"; };
@@ -203,7 +203,6 @@
 				723C9724BA385D1D1B09870A713E6DB5 /* Steps */,
 				43CD191E3E5D887A927885752BB2854F /* Workout */,
 			);
-			name = Activity;
 			path = Activity;
 			sourceTree = "<group>";
 		};
@@ -213,7 +212,6 @@
 				A9DF1CE3D70218F48F5DA18661248B73 /* ActiveEnergyService.swift */,
 				08F037523F3C03300DACCC178B5B9BF2 /* ActiveEnergyServiceProtocol.swift */,
 			);
-			name = ActiveEnergy;
 			path = ActiveEnergy;
 			sourceTree = "<group>";
 		};
@@ -232,7 +230,6 @@
 				FFA288FA6FBD9424B1951F2F2C8EAEF9 /* WorkoutWriteService.swift */,
 				381CEFF503E92305E6E9B17F59910E95 /* WorkoutWriteServiceProtocol.swift */,
 			);
-			name = Write;
 			path = Write;
 			sourceTree = "<group>";
 		};
@@ -258,7 +255,6 @@
 			children = (
 				3A71D0E77A94AB9F5A614EFE05C75BDA /* Vitals.swift */,
 			);
-			name = Vitals;
 			path = Vitals;
 			sourceTree = "<group>";
 		};
@@ -277,7 +273,6 @@
 			children = (
 				C19E811CCE5AAFF0A96098227BC9E722 /* WorkoutModels.swift */,
 			);
-			name = Workout;
 			path = Workout;
 			sourceTree = "<group>";
 		};
@@ -287,7 +282,6 @@
 				76D5BAF2E7D09E6BA566CFEC38E7CCFA /* MindfulnessService.swift */,
 				2C0B7DE5504DF40881606AADE1391445 /* MindfulnessServiceProtocol.swift */,
 			);
-			name = Mindfulness;
 			path = Mindfulness;
 			sourceTree = "<group>";
 		};
@@ -297,7 +291,6 @@
 				A04C316C0D94D196FCD57AF93FD2E8D7 /* VitalsService.swift */,
 				7C57D34D0270661BCB6D61246A45D988 /* VitalsServiceProtocol.swift */,
 			);
-			name = Vitals;
 			path = Vitals;
 			sourceTree = "<group>";
 		};
@@ -306,7 +299,6 @@
 			children = (
 				7B7385E17224C85F146040B212C79B2E /* Sleep.swift */,
 			);
-			name = Sleep;
 			path = Sleep;
 			sourceTree = "<group>";
 		};
@@ -326,7 +318,6 @@
 				E1FA16C559B38D7A679986D70727264A /* NutritionService.swift */,
 				DB28FEC8B24D4914A4BDB8AD5BAADC80 /* NutritionServiceProtocol.swift */,
 			);
-			name = Nutrition;
 			path = Nutrition;
 			sourceTree = "<group>";
 		};
@@ -336,14 +327,13 @@
 				E45A0C47861C0B250E41144FF4B7B488 /* WorkoutReadService.swift */,
 				947A742868A3154CE2449C820ECC7778 /* WorkoutReadServiceProtocol.swift */,
 			);
-			name = Read;
 			path = Read;
 			sourceTree = "<group>";
 		};
 		41509651BCE69B8899C4C61F03480C11 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DD1C22772BD7365408C6FA9BD59EC937 /* MBHealthTracker */,
+				DD1C22772BD7365408C6FA9BD59EC937 /* MBHealthTracker.framework */,
 				690B6E825F579442ABE16D71CAC5A89A /* Pods-MBHealthTracker_Example */,
 				F32A8E9D54978CABA10158F04893C729 /* Pods-MBHealthTracker_Tests */,
 			);
@@ -356,7 +346,6 @@
 				AD828CF08349812B2D89BBC965900AC1 /* CycleTracking.swift */,
 				2D5B34E49344D84A76F78A6E84F0E69B /* CycleTrackingServiceProtocol.swift */,
 			);
-			name = CycleTracking;
 			path = CycleTracking;
 			sourceTree = "<group>";
 		};
@@ -368,7 +357,6 @@
 				40FBF4941D9D7FCFD3ED1D701E07DB45 /* Read */,
 				0CED702777865C7FEFEDDDBCD434A9B9 /* Write */,
 			);
-			name = Workout;
 			path = Workout;
 			sourceTree = "<group>";
 		};
@@ -400,7 +388,6 @@
 			children = (
 				49062ED02981AD7CC9005198834227E4 /* CycleTrackingModels.swift */,
 			);
-			name = CycleTracking;
 			path = CycleTracking;
 			sourceTree = "<group>";
 		};
@@ -426,7 +413,6 @@
 				927A38E9059136665835A99B3FF44712 /* BodyService.swift */,
 				451C1FB646CDB71EC6FEABFB403E3D1F /* BodyServiceProtocol.swift */,
 			);
-			name = Body;
 			path = Body;
 			sourceTree = "<group>";
 		};
@@ -436,7 +422,6 @@
 				952D25A864A3E0243BF11AF398ADC93C /* StepsService.swift */,
 				96BD7551029B3E17C2674A1D4DEBD732 /* StepsServiceProtocol.swift */,
 			);
-			name = Steps;
 			path = Steps;
 			sourceTree = "<group>";
 		};
@@ -454,7 +439,6 @@
 				1C53995D72876028EC736206B36C83EC /* ConfigurationService.swift */,
 				0852E6583C56C7F7D4343C5AEB922B38 /* ConfigurationServiceProtocol.swift */,
 			);
-			name = Configuration;
 			path = Configuration;
 			sourceTree = "<group>";
 		};
@@ -476,7 +460,6 @@
 				EF3B9D48B03FDDEB9632AF5B3AEB7109 /* CharacteristicService.swift */,
 				7F34240103AADD080E7C6E93CC359034 /* CharacteristicServiceProtocol.swift */,
 			);
-			name = Characteristics;
 			path = Characteristics;
 			sourceTree = "<group>";
 		};
@@ -503,7 +486,6 @@
 			children = (
 				695ACA090B8E38134EFD3596C27E8B37 /* StepsModels.swift */,
 			);
-			name = Steps;
 			path = Steps;
 			sourceTree = "<group>";
 		};
@@ -528,7 +510,6 @@
 			children = (
 				3510C82B2CFD8F3461473DE0E3C917A8 /* HeartRateModels.swift */,
 			);
-			name = HeartRate;
 			path = HeartRate;
 			sourceTree = "<group>";
 		};
@@ -575,7 +556,6 @@
 				7CF5A9F644800B42A9272768ADE53E47 /* SleepService.swift */,
 				59C776939B4EA90CA354FDC84660ED3C /* SleepServiceProtocol.swift */,
 			);
-			name = Sleep;
 			path = Sleep;
 			sourceTree = "<group>";
 		};
@@ -584,7 +564,6 @@
 			children = (
 				CA262DA6A504BF61DD2AC731B7573C2E /* Body.swift */,
 			);
-			name = Body;
 			path = Body;
 			sourceTree = "<group>";
 		};
@@ -593,7 +572,6 @@
 			children = (
 				03C52F0FF81EDAC4E99E6F6A9953ED52 /* Mindful.swift */,
 			);
-			name = Mindful;
 			path = Mindful;
 			sourceTree = "<group>";
 		};
@@ -602,7 +580,6 @@
 			children = (
 				4D53565EF8D3FCD3AE88D4D8A378EAD8 /* ActiveEnergyModels.swift */,
 			);
-			name = ActiveEnergy;
 			path = ActiveEnergy;
 			sourceTree = "<group>";
 		};
@@ -611,7 +588,6 @@
 			children = (
 				D5E09EC5864C649DAF740EE1C492314B /* NutritionModels.swift */,
 			);
-			name = Nutrition;
 			path = Nutrition;
 			sourceTree = "<group>";
 		};
@@ -621,7 +597,6 @@
 				BB8393474E3647D7C0B774D2398C814A /* HeartRateService.swift */,
 				16026CA13945050EC27356C9683CA023 /* HeartRateServiceProtocol.swift */,
 			);
-			name = HeartRate;
 			path = HeartRate;
 			sourceTree = "<group>";
 		};
@@ -708,7 +683,7 @@
 			);
 			name = MBHealthTracker;
 			productName = MBHealthTracker;
-			productReference = DD1C22772BD7365408C6FA9BD59EC937 /* MBHealthTracker */;
+			productReference = DD1C22772BD7365408C6FA9BD59EC937 /* MBHealthTracker.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -1080,8 +1055,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -1106,6 +1080,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 1.1.1;
 				MODULEMAP_FILE = "Target Support Files/MBHealthTracker/MBHealthTracker.modulemap";
 				PRODUCT_MODULE_NAME = MBHealthTracker;
 				PRODUCT_NAME = MBHealthTracker;
@@ -1172,6 +1147,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 1.1.1;
 				MODULEMAP_FILE = "Target Support Files/MBHealthTracker/MBHealthTracker.modulemap";
 				PRODUCT_MODULE_NAME = MBHealthTracker;
 				PRODUCT_NAME = MBHealthTracker;
