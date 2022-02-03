@@ -1080,7 +1080,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.0;
 				MODULEMAP_FILE = "Target Support Files/MBHealthTracker/MBHealthTracker.modulemap";
 				PRODUCT_MODULE_NAME = MBHealthTracker;
 				PRODUCT_NAME = MBHealthTracker;
@@ -1147,7 +1147,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.0;
 				MODULEMAP_FILE = "Target Support Files/MBHealthTracker/MBHealthTracker.modulemap";
 				PRODUCT_MODULE_NAME = MBHealthTracker;
 				PRODUCT_NAME = MBHealthTracker;
