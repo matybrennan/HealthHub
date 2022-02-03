@@ -174,6 +174,8 @@ Split into sections to gather data based on timeIntervals
 ### Respiratory
 - respiratoryRate
 
+```var respiratory: RespiratoryServiceProtocol```
+
 ### Vitals
 - bloodPressure
 - bloodGlucose
