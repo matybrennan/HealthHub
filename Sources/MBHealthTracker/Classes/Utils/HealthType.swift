@@ -27,14 +27,15 @@ public enum MBObjectType: SharableType, ReadableType {
     case activeEnergy
     
     // Body
-    case bodyMass
-    case leanBodyMass
-    case height
+    case basalBodyTemperature
     case bodyMassIndex
     case bodyFatPercentage
     case bodyTemperature
-    case basalBodyTemperature
+    case electrodermalActivity
+    case height
+    case leanBodyMass
     case waistCircumference
+    case weight
     
     // Nutrition
     /// Macronutrients
@@ -112,10 +113,12 @@ public enum MBObjectType: SharableType, ReadableType {
     case sexualActivity
     case spotting
     
+    // Respiratory
+    case respiratoryRate
+    
     // Vitals
     case bloodPressureSystolic
     case bloodPressureDiastolic
-    case respiratoryRate
     case bloodGlucose
     case bloodOxygen
     
@@ -129,11 +132,12 @@ public enum MBObjectType: SharableType, ReadableType {
         // Body
         case .basalBodyTemperature: return HKQuantityType.quantityType(forIdentifier: .basalBodyTemperature)!
         case .bodyTemperature: return HKQuantityType.quantityType(forIdentifier: .bodyTemperature)!
-        case .bodyMass: return HKQuantityType.quantityType(forIdentifier: .bodyMass)!
-        case .leanBodyMass: return HKQuantityType.quantityType(forIdentifier: .leanBodyMass)!
-        case .height: return HKQuantityType.quantityType(forIdentifier: .height)!
+        case .weight: return HKQuantityType.quantityType(forIdentifier: .bodyMass)!
         case .bodyMassIndex: return HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)!
         case .bodyFatPercentage: return HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!
+        case .electrodermalActivity: return HKQuantityType.quantityType(forIdentifier: .electrodermalActivity)!
+        case .height: return HKQuantityType.quantityType(forIdentifier: .height)!
+        case .leanBodyMass: return HKQuantityType.quantityType(forIdentifier: .leanBodyMass)!
         case .waistCircumference: return HKQuantityType.quantityType(forIdentifier: .waistCircumference)!
             
         // Nutrition
@@ -212,10 +216,12 @@ public enum MBObjectType: SharableType, ReadableType {
         case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
         case .spotting: return HKQuantityType.categoryType(forIdentifier: .intermenstrualBleeding)!
             
+        // Respiratory
+        case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
+            
         // Vitals
         case .bloodPressureSystolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureSystolic)!
         case .bloodPressureDiastolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureDiastolic)!
-        case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
         case .bloodGlucose: return HKSampleType.quantityType(forIdentifier: .bloodGlucose)!
         case .bloodOxygen: return HKSampleType.quantityType(forIdentifier: .oxygenSaturation)!
         }
@@ -231,7 +237,8 @@ public enum MBObjectType: SharableType, ReadableType {
         // Body
         case .basalBodyTemperature: return HKQuantityType.quantityType(forIdentifier: .basalBodyTemperature)!
         case .bodyTemperature: return HKQuantityType.quantityType(forIdentifier: .bodyTemperature)!
-        case .bodyMass: return HKQuantityType.quantityType(forIdentifier: .bodyMass)!
+        case .weight: return HKQuantityType.quantityType(forIdentifier: .bodyMass)!
+        case .electrodermalActivity: return HKQuantityType.quantityType(forIdentifier: .electrodermalActivity)!
         case .leanBodyMass: return HKQuantityType.quantityType(forIdentifier: .leanBodyMass)!
         case .height: return HKQuantityType.quantityType(forIdentifier: .height)!
         case .bodyMassIndex: return HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)!
@@ -290,7 +297,7 @@ public enum MBObjectType: SharableType, ReadableType {
             
         // Mindful
         case .mindful: return HKCategoryType.categoryType(forIdentifier: .mindfulSession)!
-            
+        
         // Cycle tracking
         case .abdominalCramps: return HKQuantityType.categoryType(forIdentifier: .abdominalCramps)!
         case .acne: return HKQuantityType.categoryType(forIdentifier: .acne)!
@@ -313,10 +320,12 @@ public enum MBObjectType: SharableType, ReadableType {
         case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
         case .spotting: return HKQuantityType.categoryType(forIdentifier: .intermenstrualBleeding)!
             
+        // Respiratory
+        case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
+        
         // Vitals
         case .bloodPressureSystolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureSystolic)!
         case .bloodPressureDiastolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureDiastolic)!
-        case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
         case .bloodGlucose: return HKSampleType.quantityType(forIdentifier: .bloodGlucose)!
         case .bloodOxygen: return HKSampleType.quantityType(forIdentifier: .oxygenSaturation)!
         }

@@ -29,28 +29,39 @@ public struct BasalBodyTemperature {
 public struct BodyWeight {
     public let kg: Double
     public let lbs: Double
+    public let date: Date
 }
 
 public struct LeanBodyMass {
     public let kg: Double
     public let lbs: Double
+    public let date: Date
 }
 
 public struct BodyHeight {
     public let inches: Int
     public let cm: Int
+    public let date: Date
 }
 
 public struct BodyFatPercentage {
     public let value: Double
+    public let date: Date
 }
 
 public struct BodyMassIndex {
     public let value: Double
+    public let date: Date
 }
 
 public struct WaistCircumference {
     public let inches: Int
     public let cm: Int
+    public let date: Date
+}
+
+public struct ElectrodermalActivity {
+    public let value: Double
+    public let date: Date
 }
 

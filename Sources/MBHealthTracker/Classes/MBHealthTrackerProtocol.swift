@@ -13,11 +13,11 @@ public protocol MBHealthTrackerProtocol: AnyObject {
     
     var activityManager: ActivityManagerProtocol { get }
     
-    var heartRate: HeartRateServiceProtocol { get }
+    var heart: HeartServiceProtocol { get }
     
     var characteristics: CharacteristicServiceProtocol { get }
     
-    var nutritionService: NutritionServiceProtocol { get }
+    var nutrition: NutritionServiceProtocol { get }
     
     var sleep: SleepServiceProtocol { get }
     
@@ -26,6 +26,8 @@ public protocol MBHealthTrackerProtocol: AnyObject {
     var mindful: MindfulnessServiceProtocol { get }
     
     var cycleTracking: CycleTrackingProtocol { get }
+    
+    var respiratory: RespiratoryServiceProtocol { get }
     
     var vitals: VitalsServiceProtocol { get }
 }

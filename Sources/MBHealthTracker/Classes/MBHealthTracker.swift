@@ -12,39 +12,43 @@ open class MBHealthTracker {
     public init() { }
     
     private lazy var privateConfiguration: ConfigurationServiceProtocol = {
-        return ConfigurationService()
+        ConfigurationService()
     }()
     
     private lazy var privateActivityManager: ActivityManagerProtocol = {
-        return ActivityManager()
+        ActivityManager()
     }()
     
-    private lazy var privateHeartRate: HeartRateServiceProtocol = {
-        return HeartRateService()
+    private lazy var privateHeart: HeartServiceProtocol = {
+        HeartService()
     }()
     
     private lazy var privateCharacteristicsService: CharacteristicServiceProtocol = {
-        return CharacteristicService()
+        CharacteristicService()
     }()
     
     private lazy var privateNutritionService: NutritionServiceProtocol = {
-        return NutritionService()
+        NutritionService()
     }()
     
     private lazy var privateSleepService: SleepServiceProtocol = {
-        return SleepService()
+        SleepService()
     }()
     
     private lazy var privateBodyService: BodyServiceProtocol = {
-        return BodyService()
+        BodyService()
     }()
     
     private lazy var privateMindfulService: MindfulnessServiceProtocol = {
-        return MindfulnessService()
+        MindfulnessService()
     }()
     
     private lazy var privateCycleTrackingService: CycleTrackingProtocol = {
         CycleTracking()
+    }()
+    
+    public lazy var privateRespiratoryService: RespiratoryServiceProtocol = {
+        RespiratoryService()
     }()
     
     public lazy var privateVitalsService: VitalsServiceProtocol = {
@@ -54,47 +58,47 @@ open class MBHealthTracker {
 
 extension MBHealthTracker: MBHealthTrackerProtocol {
     
-    /// Handles logic for permissions, navigation to health app
     public var configuration: ConfigurationServiceProtocol {
-        return privateConfiguration
+        privateConfiguration
     }
     
     public var activityManager: ActivityManagerProtocol {
-        return privateActivityManager
+        privateActivityManager
     }
     
-    /// handles gathering logic from healthKit regarding heartRate details
-    public var heartRate: HeartRateServiceProtocol {
-        return privateHeartRate
+    public var heart: HeartServiceProtocol {
+        privateHeart
     }
     
-    /// handles gathering personal information about user
     public var characteristics: CharacteristicServiceProtocol {
-        return privateCharacteristicsService
+        privateCharacteristicsService
     }
     
-    /// handles gathering logic about any nutrition info from healthstore
-    public var nutritionService: NutritionServiceProtocol {
-        return privateNutritionService
+    public var nutrition: NutritionServiceProtocol {
+        privateNutritionService
     }
     
     public var sleep: SleepServiceProtocol {
-        return privateSleepService
+        privateSleepService
     }
     
     public var body: BodyServiceProtocol {
-        return privateBodyService
+        privateBodyService
     }
     
     public var mindful: MindfulnessServiceProtocol {
-        return privateMindfulService
+        privateMindfulService
     }
     
     public var cycleTracking: CycleTrackingProtocol {
-        return privateCycleTrackingService
+        privateCycleTrackingService
+    }
+    
+    public var respiratory: RespiratoryServiceProtocol {
+        privateRespiratoryService
     }
     
     public var vitals: VitalsServiceProtocol {
-        return privateVitalsService
+        privateVitalsService
     }
 }

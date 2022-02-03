@@ -28,11 +28,11 @@ extension ViewInteractor: ViewInteractorProtocol {
     
     func configurePermissions() {
         healthTracker.configuration.requestAuthorization(toShare: []
-                                                        ,toRead: [MBReadType.gender, MBObjectType.headache, MBObjectType.hairLoss, MBObjectType.hotFlashes, MBObjectType.bladderIncontinence, MBObjectType.fatigue, MBObjectType.diarrhea]) { _ in }
+                                                        ,toRead: [MBReadType.gender, MBObjectType.headache, MBObjectType.hairLoss, MBObjectType.hotFlashes, MBObjectType.electrodermalActivity, MBObjectType.fatigue, MBObjectType.diarrhea]) { _ in }
     }
     
     func runTest() {
-        try? healthTracker.cycleTracking.headache(handler: { res in
+        try? healthTracker.body.electrodermalActivity(completionHandler: { res in
             print(res)
         })
     }

@@ -126,6 +126,7 @@ Split into sections to gather data based on timeIntervals
 - bodyMassIndex
 - bodyTemperature
 - height
+- electrodermalActivity
 - leanBodyMass
 - waistCircumference
 - weight
@@ -142,11 +143,10 @@ Split into sections to gather data based on timeIntervals
 
 ```var nutritionService: NutritionServiceProtocol```
 
-### HeartRate
-Split into sections to gather data based on timeIntervals
-- today, thisWeek, all
+### Heart
+- heartRate (timeIntervals -> current, today, thisWeek, all, between times)
 
-```var heartRate: HeartRateServiceProtocol```
+```var heart: HeartServiceProtocol```
 
 ### Cycle Tracking
 - abdominalCramps
@@ -171,9 +171,11 @@ Split into sections to gather data based on timeIntervals
 
 ```var cycleTracking: CycleTrackingServiceProtocol```
 
+### Respiratory
+- respiratoryRate
+
 ### Vitals
 - bloodPressure
-- respiratoryRate
 - bloodGlucose
 - bloodOxygen
 

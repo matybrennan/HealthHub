@@ -16,9 +16,11 @@
 		11D198D2ACE143CD7C16F8A1C0BC0146 /* CharacteristicServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F34240103AADD080E7C6E93CC359034 /* CharacteristicServiceProtocol.swift */; };
 		1D2B838150117B9E24B89B5B6C1CC9A9 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EAEC0F93BEC426E8ED2A9B61884BC2 /* ActivityManager.swift */; };
 		24CE4CEB70DD717B294CA8DB7B3FDED0 /* ActivityManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CB1647EA351D31A7B04D2C083D48EE /* ActivityManagerProtocol.swift */; };
+		2E33B41627AC9B3D00D5462B /* RespiratoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E33B41527AC9B3D00D5462B /* RespiratoryService.swift */; };
+		2E33B41827AC9B6600D5462B /* RespiratoryServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E33B41727AC9B6600D5462B /* RespiratoryServiceProtocol.swift */; };
 		3092DB8C60495380AAB7CCDDB8DB919C /* WorkoutWriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA288FA6FBD9424B1951F2F2C8EAEF9 /* WorkoutWriteService.swift */; };
 		350453106ECC04ED90F1E37A3B092F45 /* NutritionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA16C559B38D7A679986D70727264A /* NutritionService.swift */; };
-		3AE4FED1692272845CC6B8EB51F400DE /* HeartRateServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16026CA13945050EC27356C9683CA023 /* HeartRateServiceProtocol.swift */; };
+		3AE4FED1692272845CC6B8EB51F400DE /* HeartServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16026CA13945050EC27356C9683CA023 /* HeartServiceProtocol.swift */; };
 		3B21912F61023C107DE8FA5BCF056DEB /* ActiveEnergyServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F037523F3C03300DACCC178B5B9BF2 /* ActiveEnergyServiceProtocol.swift */; };
 		3F1AEB4B4F319C0B175624385A16939D /* NutritionServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB28FEC8B24D4914A4BDB8AD5BAADC80 /* NutritionServiceProtocol.swift */; };
 		4C77589AF6AF416246C58DAA722A75EA /* Pods-MBHealthTracker_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D3EFD5E32735526A0E9BE13B72B8C5 /* Pods-MBHealthTracker_Tests-dummy.m */; };
@@ -57,7 +59,7 @@
 		CA699E1C6AB39FE6A609D6E30F9DE21D /* SleepService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF5A9F644800B42A9272768ADE53E47 /* SleepService.swift */; };
 		CA999346F0C36CD6B241450DDBD03FD9 /* MBHealthTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4C9A8A5998EEC80D43D87DE692477 /* MBHealthTracker.swift */; };
 		CEBAD9168CE3E2C501594FA8B9F3BC6E /* Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7385E17224C85F146040B212C79B2E /* Sleep.swift */; };
-		D058EE7863ED20A64F14263F1096DFA9 /* HeartRateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8393474E3647D7C0B774D2398C814A /* HeartRateService.swift */; };
+		D058EE7863ED20A64F14263F1096DFA9 /* HeartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8393474E3647D7C0B774D2398C814A /* HeartService.swift */; };
 		D7D1E06F3CB61B2F78CF3CA62B28E7E6 /* CycleTrackingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49062ED02981AD7CC9005198834227E4 /* CycleTrackingModels.swift */; };
 		DF475C260790BADA77537FFDCC32DC50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		E29C5EC861833375EA419E24C9834534 /* MBHealthTrackerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38448CB5110C2345F3555F4E202BA8B2 /* MBHealthTrackerProtocol.swift */; };
@@ -91,13 +93,15 @@
 		08F037523F3C03300DACCC178B5B9BF2 /* ActiveEnergyServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActiveEnergyServiceProtocol.swift; sourceTree = "<group>"; };
 		09814E737C643D99AA29AE2368A908F6 /* Pods-MBHealthTracker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MBHealthTracker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		09EBD0DC31F750EB2E916E7750F8BDE7 /* WorkoutManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
-		16026CA13945050EC27356C9683CA023 /* HeartRateServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeartRateServiceProtocol.swift; sourceTree = "<group>"; };
+		16026CA13945050EC27356C9683CA023 /* HeartServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeartServiceProtocol.swift; sourceTree = "<group>"; };
 		181FB1C70F8B043945FD39483E33D4AA /* Pods-MBHealthTracker_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MBHealthTracker_Example-frameworks.sh"; sourceTree = "<group>"; };
 		1A203E35E926C7D4D8EF16A474E56196 /* MBHealthTracker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MBHealthTracker-Info.plist"; sourceTree = "<group>"; };
 		1C10B259C1220F0BCE0F1BB170E28123 /* Pods-MBHealthTracker_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MBHealthTracker_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		1C53995D72876028EC736206B36C83EC /* ConfigurationService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConfigurationService.swift; sourceTree = "<group>"; };
 		2C0B7DE5504DF40881606AADE1391445 /* MindfulnessServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MindfulnessServiceProtocol.swift; sourceTree = "<group>"; };
 		2D5B34E49344D84A76F78A6E84F0E69B /* CycleTrackingServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CycleTrackingServiceProtocol.swift; sourceTree = "<group>"; };
+		2E33B41527AC9B3D00D5462B /* RespiratoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespiratoryService.swift; sourceTree = "<group>"; };
+		2E33B41727AC9B6600D5462B /* RespiratoryServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespiratoryServiceProtocol.swift; sourceTree = "<group>"; };
 		2FDAB20EE1B2E93D944A4E0FC4CC59D2 /* Pods-MBHealthTracker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MBHealthTracker_Example.release.xcconfig"; sourceTree = "<group>"; };
 		3510C82B2CFD8F3461473DE0E3C917A8 /* HeartRateModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeartRateModels.swift; sourceTree = "<group>"; };
 		37DB157688A028CA3D145CDF6FAE3D04 /* MBHealthTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBHealthTracker.debug.xcconfig; sourceTree = "<group>"; };
@@ -143,7 +147,7 @@
 		AD828CF08349812B2D89BBC965900AC1 /* CycleTracking.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CycleTracking.swift; sourceTree = "<group>"; };
 		AF554AFCDCC1C0EA6D7492E34B1C8A24 /* WorkoutManagerProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WorkoutManagerProtocol.swift; sourceTree = "<group>"; };
 		B1281730E4A4EEE15D9DA56F07BA34B7 /* Pods-MBHealthTracker_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MBHealthTracker_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		BB8393474E3647D7C0B774D2398C814A /* HeartRateService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeartRateService.swift; sourceTree = "<group>"; };
+		BB8393474E3647D7C0B774D2398C814A /* HeartService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeartService.swift; sourceTree = "<group>"; };
 		C19E811CCE5AAFF0A96098227BC9E722 /* WorkoutModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WorkoutModels.swift; sourceTree = "<group>"; };
 		C1F7675696FCFE0BF358AA8F4D7E2AC9 /* Pods-MBHealthTracker_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MBHealthTracker_Example-Info.plist"; sourceTree = "<group>"; };
 		C238F96191CA1B524D60F1D0D211E59E /* Pods-MBHealthTracker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MBHealthTracker_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -292,6 +296,15 @@
 				7C57D34D0270661BCB6D61246A45D988 /* VitalsServiceProtocol.swift */,
 			);
 			path = Vitals;
+			sourceTree = "<group>";
+		};
+		2E33B41427AC9B2B00D5462B /* Respiratory */ = {
+			isa = PBXGroup;
+			children = (
+				2E33B41527AC9B3D00D5462B /* RespiratoryService.swift */,
+				2E33B41727AC9B6600D5462B /* RespiratoryServiceProtocol.swift */,
+			);
+			path = Respiratory;
 			sourceTree = "<group>";
 		};
 		38A53FC7B78D2BE6BCDB8244F3BBD21A /* Sleep */ = {
@@ -535,12 +548,13 @@
 		DBD1CC1B1F323B8F86F74A486C125411 /* Business Logic */ = {
 			isa = PBXGroup;
 			children = (
+				2E33B41427AC9B2B00D5462B /* Respiratory */,
 				002780488402758E692D4F05F081C72C /* Activity */,
 				642D17488DB89F561183CA8EED891750 /* Body */,
 				8F8AB62D6E3BC2D6AFC5A84D8DB07D5B /* Characteristics */,
 				79E329275BE50631FBC7561F06638B06 /* Configuration */,
 				434F8B5FE802AE69251F8183CB353282 /* CycleTracking */,
-				F902B876CFFA7717E435979C3E0E29B3 /* HeartRate */,
+				F902B876CFFA7717E435979C3E0E29B3 /* Heart */,
 				27E59230ADE98D9137403D50EE742514 /* Mindfulness */,
 				3E772505F7686E708B1E162727B0CC10 /* Nutrition */,
 				E3916A5CF89BD96EE2E3E971C173436D /* Sleep */,
@@ -591,13 +605,13 @@
 			path = Nutrition;
 			sourceTree = "<group>";
 		};
-		F902B876CFFA7717E435979C3E0E29B3 /* HeartRate */ = {
+		F902B876CFFA7717E435979C3E0E29B3 /* Heart */ = {
 			isa = PBXGroup;
 			children = (
-				BB8393474E3647D7C0B774D2398C814A /* HeartRateService.swift */,
-				16026CA13945050EC27356C9683CA023 /* HeartRateServiceProtocol.swift */,
+				BB8393474E3647D7C0B774D2398C814A /* HeartService.swift */,
+				16026CA13945050EC27356C9683CA023 /* HeartServiceProtocol.swift */,
 			);
-			path = HeartRate;
+			path = Heart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -756,6 +770,7 @@
 				11D198D2ACE143CD7C16F8A1C0BC0146 /* CharacteristicServiceProtocol.swift in Sources */,
 				985A6B69CF4E7B0796FDE3877AB0BB47 /* ConfigurationService.swift in Sources */,
 				09E7B09CBC9DE062C5BDC145A04E4D6D /* ConfigurationServiceProtocol.swift in Sources */,
+				2E33B41627AC9B3D00D5462B /* RespiratoryService.swift in Sources */,
 				5CA61118E91243E5F69312776B68878C /* CycleTracking.swift in Sources */,
 				D7D1E06F3CB61B2F78CF3CA62B28E7E6 /* CycleTrackingModels.swift in Sources */,
 				B77AE78421F05EAD2E2E774FB5270E11 /* CycleTrackingServiceProtocol.swift in Sources */,
@@ -763,8 +778,8 @@
 				B12D7778F7CC99457B1E678CEFC5076C /* HealthParser.swift in Sources */,
 				7AC846FB991839C79D9339381DCA2009 /* HealthType.swift in Sources */,
 				96DEFF40675BC344534676B0B37EACFE /* HeartRateModels.swift in Sources */,
-				D058EE7863ED20A64F14263F1096DFA9 /* HeartRateService.swift in Sources */,
-				3AE4FED1692272845CC6B8EB51F400DE /* HeartRateServiceProtocol.swift in Sources */,
+				D058EE7863ED20A64F14263F1096DFA9 /* HeartService.swift in Sources */,
+				3AE4FED1692272845CC6B8EB51F400DE /* HeartServiceProtocol.swift in Sources */,
 				ED94FA9E4215B018FB6A843BFB4181EE /* Helpers.swift in Sources */,
 				CA999346F0C36CD6B241450DDBD03FD9 /* MBHealthTracker.swift in Sources */,
 				A23071C563FAF0D784645C344CA03D3E /* MBHealthTracker-dummy.m in Sources */,
@@ -783,6 +798,7 @@
 				4EC18D56072FEC4DFE97AA110876EC20 /* StepsModels.swift in Sources */,
 				9758B55947163658EA4D2502839C5B7D /* StepsService.swift in Sources */,
 				797626AECCD3CAA6AF8B1C479216BF35 /* StepsServiceProtocol.swift in Sources */,
+				2E33B41827AC9B6600D5462B /* RespiratoryServiceProtocol.swift in Sources */,
 				0FD606AA8C45F7FA84C205CD66817CA0 /* Vitals.swift in Sources */,
 				9AEF3BDB22FC86453E237FA7839442A0 /* VitalsService.swift in Sources */,
 				4D73DDE9E9700925B1F50492FD86E91F /* VitalsServiceProtocol.swift in Sources */,

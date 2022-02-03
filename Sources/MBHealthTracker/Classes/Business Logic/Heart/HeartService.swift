@@ -1,5 +1,5 @@
 //
-//  HeartRateService.swift
+//  HeartService.swift
 //  Pods-TestPod_Example
 //
 //  Created by Maty Brennan on 2/7/18.
@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-public class HeartRateService {
+public class HeartService {
     
     struct Unit {
         static let heartRateCountMin = "count/min"
@@ -17,9 +17,9 @@ public class HeartRateService {
     public init() { }
 }
 
-extension HeartRateService: HeartRateServiceProtocol {
+extension HeartService: HeartServiceProtocol {
     
-    public func getHeartRate(fromHeartRateType type: HeartRateType, completionHandler: @escaping (MBAsyncCallResult<HeartRate>) -> Void) throws {
+    public func heartRate(fromHeartRateType type: HeartRateType, completionHandler: @escaping (MBAsyncCallResult<HeartRate>) -> Void) throws {
         
         // Confirm that the type and device works
         let heartRate = try MBHealthParser.unbox(quantityIdentifier: .heartRate)
@@ -118,7 +118,7 @@ extension HeartRateService: HeartRateServiceProtocol {
     
 }
 
-private extension HeartRateService {
+private extension HeartService {
     
     func configure(query: HKStatisticsCollectionQuery, collection: HKStatisticsCollection?, error: Error?, completionHandler: @escaping (MBAsyncCallResult<HeartRate>) -> Void) {
         guard error == nil else {

@@ -67,7 +67,7 @@ extension BodyService: BodyServiceProtocol {
             }
             
             let value = result.quantity.doubleValue(for: HKUnit.percent()) * 100
-            let bodyFatPercentage = BodyFatPercentage(value: value)
+            let bodyFatPercentage = BodyFatPercentage(value: value, date: result.endDate)
             completionHandler(.success(bodyFatPercentage))
         }
         
@@ -95,7 +95,7 @@ extension BodyService: BodyServiceProtocol {
             }
             
             let value = result.quantity.doubleValue(for: HKUnit.count())
-            let bodyMassIndex = BodyMassIndex(value: value)
+            let bodyMassIndex = BodyMassIndex(value: value, date: result.endDate)
             completionHandler(.success(bodyMassIndex))
         }
         
@@ -160,7 +160,7 @@ extension BodyService: BodyServiceProtocol {
             
             let inches = Int(result.quantity.doubleValue(for: HKUnit.init(from: .inch)))
             let cm = Int(result.quantity.doubleValue(for: HKUnit.init(from: .centimeter)))
-            let bodyHeight = BodyHeight(inches: inches, cm: cm)
+            let bodyHeight = BodyHeight(inches: inches, cm: cm, date: result.endDate)
             completionHandler(.success(bodyHeight))
         }
         
@@ -189,7 +189,7 @@ extension BodyService: BodyServiceProtocol {
             
             let leanBodyMassKg = result.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo))
             let leanBodyMasslbs = result.quantity.doubleValue(for: HKUnit.pound())
-            let leanBodyMass = LeanBodyMass(kg: leanBodyMassKg, lbs: leanBodyMasslbs)
+            let leanBodyMass = LeanBodyMass(kg: leanBodyMassKg, lbs: leanBodyMasslbs, date: result.endDate)
             completionHandler(.success(leanBodyMass))
         }
         
@@ -218,7 +218,7 @@ extension BodyService: BodyServiceProtocol {
             
             let inches = Int(result.quantity.doubleValue(for: HKUnit.init(from: .inch)))
             let cm = Int(result.quantity.doubleValue(for: HKUnit.init(from: .centimeter)))
-            let waistCircumference = WaistCircumference(inches: inches, cm: cm)
+            let waistCircumference = WaistCircumference(inches: inches, cm: cm, date: result.endDate)
             completionHandler(.success(waistCircumference))
         }
         
@@ -247,8 +247,36 @@ extension BodyService: BodyServiceProtocol {
             
             let bodyMassKg = result.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo))
             let bodyMasslbs = result.quantity.doubleValue(for: HKUnit.pound())
-            let bodyWeight = BodyWeight(kg: bodyMassKg, lbs: bodyMasslbs)
+            let bodyWeight = BodyWeight(kg: bodyMassKg, lbs: bodyMasslbs, date: result.endDate)
             completionHandler(.success(bodyWeight))
+        }
+        
+        healthStore.execute(query)
+    }
+    
+    public func electrodermalActivity(completionHandler: @escaping (MBAsyncCallResult<ElectrodermalActivity>) -> Void) throws {
+        
+        // Confirm that the type and device works
+        let type = try MBHealthParser.unbox(quantityIdentifier: .electrodermalActivity)
+        try isDataStoreAvailable()
+        
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
+        
+        let query = HKSampleQuery(sampleType: type, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor]) { (query, results, error) in
+            
+            guard error == nil else {
+                completionHandler(.failed(error!))
+                return
+            }
+            
+            guard let result = results?.first as? HKQuantitySample  else {
+                completionHandler(.failed(MBAsyncParsingError.unableToParse("\(type.identifier)")))
+                return
+            }
+            
+            let value = result.quantity.doubleValue(for: HKUnit.siemenUnit(with: .micro))
+            let electrodermalActivity = ElectrodermalActivity(value: value, date: result.endDate)
+            completionHandler(.success(electrodermalActivity))
         }
         
         healthStore.execute(query)

@@ -17,4 +17,6 @@ public protocol BodyServiceProtocol: AnyObject {
     func leanBodyMass(completionHandler: @escaping (MBAsyncCallResult<LeanBodyMass>) -> Void) throws
     func waistCircumference(completionHandler: @escaping (MBAsyncCallResult<WaistCircumference>) -> Void) throws
     func weight(completionHandler: @escaping (MBAsyncCallResult<BodyWeight>) -> Void) throws
+    func electrodermalActivity(completionHandler: @escaping (MBAsyncCallResult<ElectrodermalActivity>) -> Void) throws
+    
 }

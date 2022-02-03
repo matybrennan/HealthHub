@@ -1,5 +1,5 @@
 //
-//  HeartRateServiceProtocol.swift
+//  HeartServiceProtocol.swift
 //  Pods-TestPod_Example
 //
 //  Created by Maty Brennan on 2/7/18.
@@ -21,7 +21,7 @@ public enum HeartRateType {
     case betweenTimePref(start: Date, end: Date)
 }
 
-public protocol HeartRateServiceProtocol {
+public protocol HeartServiceProtocol {
     
-    func getHeartRate(fromHeartRateType type: HeartRateType, completionHandler: @escaping (MBAsyncCallResult<HeartRate>) -> Void) throws
+    func heartRate(fromHeartRateType type: HeartRateType, completionHandler: @escaping (MBAsyncCallResult<HeartRate>) -> Void) throws
 }
