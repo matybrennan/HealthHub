@@ -116,11 +116,14 @@ public enum MBObjectType: SharableType, ReadableType {
     case nausea
     case nightSweats
     case ovulationTestResult
-    
-    
-    
+    case pelvicPain
+    //case pregnancy // no values needed for now
+    //case pregancyTestResult iOS15
+    //case progesteroneTestResult iOS15
     case sexualActivity
+    case sleepChanges
     case spotting
+    case vaginalDryness
     
     // Respiratory
     case respiratoryRate
@@ -227,10 +230,13 @@ public enum MBObjectType: SharableType, ReadableType {
         case .nausea: return HKQuantityType.categoryType(forIdentifier: .nausea)!
         case .nightSweats: return HKQuantityType.categoryType(forIdentifier: .nightSweats)!
         case .ovulationTestResult: return HKQuantityType.categoryType(forIdentifier: .ovulationTestResult)!
-            
-            
+        case .pelvicPain: return HKQuantityType.categoryType(forIdentifier: .pelvicPain)!
+        //case .pregancyTestResult: return HKQuantityType.categoryType(forIdentifier: .pregnancyTestResult)!
+        //case .progesteroneTestResult: return HKQuantityType.categoryType(forIdentifier: .progesteroneTestResult)!
         case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
+        case .sleepChanges: return HKQuantityType.categoryType(forIdentifier: .sleepChanges)!
         case .spotting: return HKQuantityType.categoryType(forIdentifier: .intermenstrualBleeding)!
+        case .vaginalDryness: return HKQuantityType.categoryType(forIdentifier: .vaginalDryness)!
             
         // Respiratory
         case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
@@ -339,11 +345,14 @@ public enum MBObjectType: SharableType, ReadableType {
         case .nausea: return HKQuantityType.categoryType(forIdentifier: .nausea)!
         case .nightSweats: return HKQuantityType.categoryType(forIdentifier: .nightSweats)!
         case .ovulationTestResult: return HKQuantityType.categoryType(forIdentifier: .ovulationTestResult)!
-            
-        
+        case .pelvicPain: return HKQuantityType.categoryType(forIdentifier: .pelvicPain)!
+        //case .pregancyTestResult: return HKQuantityType.categoryType(forIdentifier: .pregnancyTestResult)!
+        //case .progesteroneTestResult: return HKQuantityType.categoryType(forIdentifier: .progesteroneTestResult)!
         case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
+        case .sleepChanges: return HKQuantityType.categoryType(forIdentifier: .sleepChanges)!
         case .spotting: return HKQuantityType.categoryType(forIdentifier: .intermenstrualBleeding)!
-            
+        case .vaginalDryness: return HKQuantityType.categoryType(forIdentifier: .vaginalDryness)!
+        
         // Respiratory
         case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
         

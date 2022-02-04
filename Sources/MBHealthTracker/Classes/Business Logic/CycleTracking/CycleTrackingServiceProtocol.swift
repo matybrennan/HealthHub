@@ -30,8 +30,10 @@ public protocol CycleTrackingProtocol: AnyObject {
     func moodChanges(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws
     func nausea(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws
     func nightSweats(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws
-    func ovulation(handler: @escaping (MBAsyncCallResult<Ovulation>) -> Void) throws // UPDATE
-    
+    func ovulation(handler: @escaping (MBAsyncCallResult<Ovulation>) -> Void) throws
+    func pelvicPain(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws
     func sexualActivity(handler: @escaping (MBAsyncCallResult<SexualActivity>) -> Void) throws
+    func sleepChanges(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws
     func spotting(handler: @escaping (MBAsyncCallResult<Spotting>) -> Void) throws
+    func vaginalDryness(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws
 }

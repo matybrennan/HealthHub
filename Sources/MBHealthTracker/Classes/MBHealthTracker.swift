@@ -47,6 +47,10 @@ open class MBHealthTracker {
         CycleTracking()
     }()
     
+    private lazy var privateSymptomsService: SymptomsServiceProtocol = {
+        SymptomsService()
+    }()
+    
     public lazy var privateRespiratoryService: RespiratoryServiceProtocol = {
         RespiratoryService()
     }()
@@ -92,6 +96,10 @@ extension MBHealthTracker: MBHealthTrackerProtocol {
     
     public var cycleTracking: CycleTrackingProtocol {
         privateCycleTrackingService
+    }
+    
+    public var symptoms: SymptomsService {
+        privateSymptomsService
     }
     
     public var respiratory: RespiratoryServiceProtocol {

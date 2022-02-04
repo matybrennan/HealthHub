@@ -214,7 +214,6 @@ extension CycleTracking: CycleTrackingProtocol {
         try fetchGenericCycleResult(categoryIdentifier: .nightSweats, handler: handler)
     }
     
-    // TODO: Update this with better model returning
     public func ovulation(handler: @escaping (MBAsyncCallResult<Ovulation>) -> Void) throws {
         
         // Confirm that the type and device works
@@ -245,8 +244,9 @@ extension CycleTracking: CycleTrackingProtocol {
         healthStore.execute(query)
     }
     
-    
-    
+    public func pelvicPain(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .pelvicPain, handler: handler)
+    }
     
     public func sexualActivity(handler: @escaping (MBAsyncCallResult<SexualActivity>) -> Void) throws {
         
@@ -280,6 +280,10 @@ extension CycleTracking: CycleTrackingProtocol {
         healthStore.execute(query)
     }
     
+    public func sleepChanges(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .sleepChanges, handler: handler)
+    }
+    
     public func spotting(handler: @escaping (MBAsyncCallResult<Spotting>) -> Void) throws {
         
         // Confirm that the type and device works
@@ -307,5 +311,9 @@ extension CycleTracking: CycleTrackingProtocol {
         })
         
         healthStore.execute(query)
+    }
+    
+    public func vaginalDryness(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .vaginalDryness, handler: handler)
     }
 }

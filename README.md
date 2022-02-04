@@ -164,12 +164,24 @@ Split into sections to gather data based on timeIntervals
 - hairLoss
 - headache
 - hotFlashes
+- lowerBackPain
+- memoryLapse
 - menstrualFlow
+- moodChanges
+- nausea
+- nightSweats
 - ovulation
+- pelvicPain
 - sexualActivity
+- sleepChanges
 - spotting
+- vaginalDryness
 
 ```var cycleTracking: CycleTrackingServiceProtocol```
+
+### Symptoms
+
+```var symptoms: SymptomsServiceProtocol```
 
 ### Respiratory
 - respiratoryRate
