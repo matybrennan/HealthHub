@@ -27,7 +27,7 @@ public protocol MBHealthTrackerProtocol: AnyObject {
     
     var cycleTracking: CycleTrackingProtocol { get }
     
-    var symptoms: SymptomsService { get }
+    var symptoms: SymptomsServiceProtocol { get }
     
     var respiratory: RespiratoryServiceProtocol { get }
     

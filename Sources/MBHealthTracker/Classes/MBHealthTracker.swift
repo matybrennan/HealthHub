@@ -98,7 +98,7 @@ extension MBHealthTracker: MBHealthTrackerProtocol {
         privateCycleTrackingService
     }
     
-    public var symptoms: SymptomsService {
+    public var symptoms: SymptomsServiceProtocol {
         privateSymptomsService
     }
     
