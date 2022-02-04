@@ -93,7 +93,6 @@ extension HeartService: HeartServiceProtocol {
             // create query
             query = HKStatisticsCollectionQuery(quantityType: heartRate, quantitySamplePredicate: nil, options: [.discreteAverage, .discreteMax, .discreteMin], anchorDate: Date().startOfDay, intervalComponents: component)
             
-            
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = {
                 query, collection, error in
                 self.configure(query: query, collection: collection, error: error, completionHandler: completionHandler)

@@ -98,6 +98,7 @@ public enum MBObjectType: SharableType, ReadableType {
     case bladderIncontinence
     case bloating
     case breastPain
+    case cervicalMucusQuality
     case chills
     case constipation
     //case contraceptives // no values needed for now
@@ -107,9 +108,17 @@ public enum MBObjectType: SharableType, ReadableType {
     case hairLoss
     case headache
     case hotFlashes
-    case cervicalMucusQuality
+    //case lactation // no values needed for now
+    case lowerBackPain
+    case memoryLapse
     case menstruation
+    case moodChanges
+    case nausea
+    case nightSweats
     case ovulationTestResult
+    
+    
+    
     case sexualActivity
     case spotting
     
@@ -210,9 +219,16 @@ public enum MBObjectType: SharableType, ReadableType {
         case .hairLoss: return HKQuantityType.categoryType(forIdentifier: .hairLoss)!
         case .headache: return HKQuantityType.categoryType(forIdentifier: .headache)!
         case .hotFlashes: return HKQuantityType.categoryType(forIdentifier: .hotFlashes)!
-        
+        //case .lactation: return HKQuantityType.categoryType(forIdentifier: .lactation)!
+        case .lowerBackPain: return HKQuantityType.categoryType(forIdentifier: .lowerBackPain)!
+        case .memoryLapse: return HKQuantityType.categoryType(forIdentifier: .memoryLapse)!
         case .menstruation: return HKQuantityType.categoryType(forIdentifier: .menstrualFlow)!
+        case .moodChanges: return HKQuantityType.categoryType(forIdentifier: .moodChanges)!
+        case .nausea: return HKQuantityType.categoryType(forIdentifier: .nausea)!
+        case .nightSweats: return HKQuantityType.categoryType(forIdentifier: .nightSweats)!
         case .ovulationTestResult: return HKQuantityType.categoryType(forIdentifier: .ovulationTestResult)!
+            
+            
         case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
         case .spotting: return HKQuantityType.categoryType(forIdentifier: .intermenstrualBleeding)!
             
@@ -315,8 +331,16 @@ public enum MBObjectType: SharableType, ReadableType {
         case .hairLoss: return HKQuantityType.categoryType(forIdentifier: .hairLoss)!
         case .headache: return HKQuantityType.categoryType(forIdentifier: .headache)!
         case .hotFlashes: return HKQuantityType.categoryType(forIdentifier: .hotFlashes)!
+        //case .lactation: return HKQuantityType.categoryType(forIdentifier: .lactation)!
+        case .lowerBackPain: return HKQuantityType.categoryType(forIdentifier: .lowerBackPain)!
+        case .memoryLapse: return HKQuantityType.categoryType(forIdentifier: .memoryLapse)!
         case .menstruation: return HKQuantityType.categoryType(forIdentifier: .menstrualFlow)!
+        case .moodChanges: return HKQuantityType.categoryType(forIdentifier: .moodChanges)!
+        case .nausea: return HKQuantityType.categoryType(forIdentifier: .nausea)!
+        case .nightSweats: return HKQuantityType.categoryType(forIdentifier: .nightSweats)!
         case .ovulationTestResult: return HKQuantityType.categoryType(forIdentifier: .ovulationTestResult)!
+            
+        
         case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
         case .spotting: return HKQuantityType.categoryType(forIdentifier: .intermenstrualBleeding)!
             

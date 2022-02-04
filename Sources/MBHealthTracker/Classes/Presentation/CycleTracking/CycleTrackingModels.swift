@@ -118,19 +118,19 @@ public struct MenstrualFlow {
     public struct Info {
         
         public enum FlowType: Int {
-            case none = 0
-            case unspecified
+            case unspecified = 1
             case light
             case medium
             case heavy
+            case none
             
             public var name: String {
                 switch self {
-                case .none: return "No Flow"
                 case .unspecified: return "Unspecified Flow"
                 case .light: return "Light"
                 case .medium: return "Medium"
                 case .heavy: return "Heavy"
+                case .none: return "No Flow"
                 }
             }
         }
@@ -159,12 +159,14 @@ public struct Ovulation {
             case negative = 1
             case positive
             case indetermined
+            case high
             
             public var name: String {
                 switch self {
                 case .negative: return "Negative"
                 case .positive: return "Positive"
                 case .indetermined: return "Indetermined"
+                case .high: return "High"
                 }
             }
         }

@@ -162,6 +162,14 @@ extension CycleTracking: CycleTrackingProtocol {
         try fetchGenericCycleResult(categoryIdentifier: .hotFlashes, handler: handler)
     }
     
+    public func lowerBackPain(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .lowerBackPain, handler: handler)
+    }
+    
+    public func memoryLapse(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .memoryLapse, handler: handler)
+    }
+    
     public func menstrualFlow(handler: @escaping (MBAsyncCallResult<MenstrualFlow>) -> Void) throws {
         
         // Confirm that the type and device works
@@ -181,7 +189,6 @@ extension CycleTracking: CycleTrackingProtocol {
             }
             
             let items = categorySamples.map { item -> MenstrualFlow.Info in
-                
                 let type: MenstrualFlow.Info.FlowType = MenstrualFlow.Info.FlowType(rawValue: item.value) ?? .unspecified
                 let cycleStartInt = item.metadata?[HKMetadataKeyMenstrualCycleStart] as? Int ?? 0
                 let isStartOfCylce = (cycleStartInt == 0) ? false : true
@@ -195,6 +202,19 @@ extension CycleTracking: CycleTrackingProtocol {
         healthStore.execute(query)
     }
     
+    public func moodChanges(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .moodChanges, handler: handler)
+    }
+    
+    public func nausea(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .nausea, handler: handler)
+    }
+    
+    public func nightSweats(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+        try fetchGenericCycleResult(categoryIdentifier: .nightSweats, handler: handler)
+    }
+    
+    // TODO: Update this with better model returning
     public func ovulation(handler: @escaping (MBAsyncCallResult<Ovulation>) -> Void) throws {
         
         // Confirm that the type and device works
@@ -214,7 +234,6 @@ extension CycleTracking: CycleTrackingProtocol {
             }
             
             let items = categorySamples.map { item -> Ovulation.Info in
-                
                 let type: Ovulation.Info.ResultType = Ovulation.Info.ResultType(rawValue: item.value) ?? .indetermined
                 return Ovulation.Info(type: type, startDate: item.startDate, endDate: item.endDate)
             }
@@ -225,6 +244,9 @@ extension CycleTracking: CycleTrackingProtocol {
         
         healthStore.execute(query)
     }
+    
+    
+    
     
     public func sexualActivity(handler: @escaping (MBAsyncCallResult<SexualActivity>) -> Void) throws {
         
