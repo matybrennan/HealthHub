@@ -16,6 +16,7 @@
 		11D198D2ACE143CD7C16F8A1C0BC0146 /* CharacteristicServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F34240103AADD080E7C6E93CC359034 /* CharacteristicServiceProtocol.swift */; };
 		1D2B838150117B9E24B89B5B6C1CC9A9 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EAEC0F93BEC426E8ED2A9B61884BC2 /* ActivityManager.swift */; };
 		24CE4CEB70DD717B294CA8DB7B3FDED0 /* ActivityManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CB1647EA351D31A7B04D2C083D48EE /* ActivityManagerProtocol.swift */; };
+		2E2C645B27D85E9C003EDEA3 /* SymptomsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2C645A27D85E9C003EDEA3 /* SymptomsModels.swift */; };
 		2E33B41627AC9B3D00D5462B /* RespiratoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E33B41527AC9B3D00D5462B /* RespiratoryService.swift */; };
 		2E33B41827AC9B6600D5462B /* RespiratoryServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E33B41727AC9B6600D5462B /* RespiratoryServiceProtocol.swift */; };
 		2E33B41B27ACE28300D5462B /* SymptomsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E33B41A27ACE28300D5462B /* SymptomsService.swift */; };
@@ -102,6 +103,7 @@
 		1C53995D72876028EC736206B36C83EC /* ConfigurationService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConfigurationService.swift; sourceTree = "<group>"; };
 		2C0B7DE5504DF40881606AADE1391445 /* MindfulnessServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MindfulnessServiceProtocol.swift; sourceTree = "<group>"; };
 		2D5B34E49344D84A76F78A6E84F0E69B /* CycleTrackingServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CycleTrackingServiceProtocol.swift; sourceTree = "<group>"; };
+		2E2C645A27D85E9C003EDEA3 /* SymptomsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsModels.swift; sourceTree = "<group>"; };
 		2E33B41527AC9B3D00D5462B /* RespiratoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespiratoryService.swift; sourceTree = "<group>"; };
 		2E33B41727AC9B6600D5462B /* RespiratoryServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespiratoryServiceProtocol.swift; sourceTree = "<group>"; };
 		2E33B41A27ACE28300D5462B /* SymptomsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsService.swift; sourceTree = "<group>"; };
@@ -302,6 +304,14 @@
 			path = Vitals;
 			sourceTree = "<group>";
 		};
+		2E2C645927D85E69003EDEA3 /* Symptoms */ = {
+			isa = PBXGroup;
+			children = (
+				2E2C645A27D85E9C003EDEA3 /* SymptomsModels.swift */,
+			);
+			path = Symptoms;
+			sourceTree = "<group>";
+		};
 		2E33B41427AC9B2B00D5462B /* Respiratory */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,6 +502,7 @@
 		991D9E622F4ACA4BD4384EB92C8F372F /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				2E2C645927D85E69003EDEA3 /* Symptoms */,
 				EC3ABBD117ADD116CB70DC29D2085033 /* ActiveEnergy */,
 				E48AE6710532B130836C86F41DBD1D67 /* Body */,
 				5D2CF6C6F06B243476211E96BB6A9FED /* CycleTracking */,
@@ -785,6 +796,7 @@
 				985A6B69CF4E7B0796FDE3877AB0BB47 /* ConfigurationService.swift in Sources */,
 				09E7B09CBC9DE062C5BDC145A04E4D6D /* ConfigurationServiceProtocol.swift in Sources */,
 				2E33B41627AC9B3D00D5462B /* RespiratoryService.swift in Sources */,
+				2E2C645B27D85E9C003EDEA3 /* SymptomsModels.swift in Sources */,
 				5CA61118E91243E5F69312776B68878C /* CycleTracking.swift in Sources */,
 				D7D1E06F3CB61B2F78CF3CA62B28E7E6 /* CycleTrackingModels.swift in Sources */,
 				B77AE78421F05EAD2E2E774FB5270E11 /* CycleTrackingServiceProtocol.swift in Sources */,

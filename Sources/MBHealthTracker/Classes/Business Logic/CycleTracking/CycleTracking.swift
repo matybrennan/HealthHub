@@ -16,7 +16,7 @@ public class CycleTracking {
 // MARK: - Private methods
 private extension CycleTracking {
     
-    func fetchGenericCycleResult(categoryIdentifier: HKCategoryTypeIdentifier, handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+    func fetchGenericCycleResult(categoryIdentifier: HKCategoryTypeIdentifier, handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
         
         // Confirm that the type and device works
         let type = try MBHealthParser.unbox(categoryIdentifier: categoryIdentifier)
@@ -34,12 +34,12 @@ private extension CycleTracking {
                 return
             }
             
-            let items = quantitySamples.map { item -> GenericCycleTrackingModel.Item in
-                let style = GenericCycleTrackingModel.Item.Style(rawValue: item.value) ?? .notPresent
-                return GenericCycleTrackingModel.Item(style: style, startDate: item.startDate, endDate: item.endDate)
+            let items = quantitySamples.map { item -> GenericSymptomModel.Item in
+                let style = GenericSymptomModel.Item.Style(rawValue: item.value) ?? .notPresent
+                return GenericSymptomModel.Item(style: style, startDate: item.startDate, endDate: item.endDate)
             }
             
-            let model = GenericCycleTrackingModel(items: items)
+            let model = GenericSymptomModel(items: items)
             handler(.success(model))
         })
         
@@ -50,15 +50,15 @@ private extension CycleTracking {
 // MARK: - CycleTrackingProtocol
 extension CycleTracking: CycleTrackingProtocol {
     
-    public func abdominalCramps(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+    public func abdominalCramps(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
         try fetchGenericCycleResult(categoryIdentifier: .abdominalCramps, handler: handler)
     }
     
-    public func bloating(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+    public func bloating(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
         try fetchGenericCycleResult(categoryIdentifier: .bloating, handler: handler)
     }
     
-    public func breastPain(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+    public func breastPain(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
         try fetchGenericCycleResult(categoryIdentifier: .breastPain, handler: handler)
     }
     
@@ -125,7 +125,7 @@ extension CycleTracking: CycleTrackingProtocol {
         healthStore.execute(query)
     }
     
-    public func moodChanges(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+    public func moodChanges(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
         try fetchGenericCycleResult(categoryIdentifier: .moodChanges, handler: handler)
     }
     
@@ -220,7 +220,7 @@ extension CycleTracking: CycleTrackingProtocol {
         healthStore.execute(query)
     }
     
-    public func vaginalDryness(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
+    public func vaginalDryness(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
         try fetchGenericCycleResult(categoryIdentifier: .vaginalDryness, handler: handler)
     }
 }
