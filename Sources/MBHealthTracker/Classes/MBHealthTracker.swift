@@ -58,6 +58,10 @@ open class MBHealthTracker {
     public lazy var privateVitalsService: VitalsServiceProtocol = {
         VitalsService()
     }()
+    
+    public lazy var privateOtherDataService: OtherDataServiceProtocol = {
+        OtherDataService()
+    }()
 }
 
 extension MBHealthTracker: MBHealthTrackerProtocol {
@@ -108,5 +112,9 @@ extension MBHealthTracker: MBHealthTrackerProtocol {
     
     public var vitals: VitalsServiceProtocol {
         privateVitalsService
+    }
+    
+    public var otherData: OtherDataServiceProtocol {
+        privateOtherDataService
     }
 }

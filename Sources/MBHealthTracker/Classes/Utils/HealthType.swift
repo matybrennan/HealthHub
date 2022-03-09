@@ -152,6 +152,9 @@ public enum MBObjectType: SharableType, ReadableType {
     case bloodGlucose
     case bloodOxygen
     
+    // Other Data
+    case alcoholConsumption
+    
     public var sharable: HKSampleType {
         switch self {
         case .stepCount: return HKQuantityType.quantityType(forIdentifier: .stepCount)!
@@ -282,6 +285,9 @@ public enum MBObjectType: SharableType, ReadableType {
         case .bloodPressureDiastolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureDiastolic)!
         case .bloodGlucose: return HKSampleType.quantityType(forIdentifier: .bloodGlucose)!
         case .bloodOxygen: return HKSampleType.quantityType(forIdentifier: .oxygenSaturation)!
+            
+        // Other Data
+        case .alcoholConsumption: return HKSampleType.quantityType(forIdentifier: .numberOfAlcoholicBeverages)!
         }
     }
     
@@ -415,6 +421,9 @@ public enum MBObjectType: SharableType, ReadableType {
         case .bloodPressureDiastolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureDiastolic)!
         case .bloodGlucose: return HKSampleType.quantityType(forIdentifier: .bloodGlucose)!
         case .bloodOxygen: return HKSampleType.quantityType(forIdentifier: .oxygenSaturation)!
+            
+        // Other Data
+        case .alcoholConsumption: return HKSampleType.quantityType(forIdentifier: .numberOfAlcoholicBeverages)!    
         }
     }
 }

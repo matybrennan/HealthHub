@@ -16,7 +16,7 @@
 
 MBHealthTracker is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
-Requires iOS 14.3 and above
+Requires iOS 15.0 and above
 
 ```ruby
 pod 'MBHealthTracker'
@@ -209,6 +209,11 @@ Split into sections to gather data based on timeIntervals
 - bloodOxygen
 
 ```var vitals: VitalsServiceProtocol```
+
+### Other Data
+- alcoholConsumption
+
+```var otherData: OtherDataServiceProtocol```
 
 ## Contact
 

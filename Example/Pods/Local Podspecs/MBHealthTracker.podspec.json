@@ -1,6 +1,6 @@
 {
   "name": "MBHealthTracker",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "summary": "MBHealthTracker is used for healthData",
   "description": "Framework that simplifies the use of apples HealthKit",
   "homepage": "https://github.com/matybrennan/MBHealthTracker",
@@ -13,17 +13,17 @@
   },
   "source": {
     "git": "https://github.com/matybrennan/MBHealthTracker.git",
-    "tag": "1.1.0"
+    "tag": "1.2.0"
   },
   "platforms": {
-    "ios": "14.3"
+    "ios": "15.0"
   },
   "swift_versions": [
-    "5.0"
+    "5.5"
   ],
   "source_files": "Sources/MBHealthTracker/Classes/**/*",
   "pod_target_xcconfig": {
-    "SWIFT_VERSION": "5.0"
+    "SWIFT_VERSION": "5.5"
   },
-  "swift_version": "5.0"
+  "swift_version": "5.5"
 }
