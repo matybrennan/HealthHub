@@ -54,44 +54,6 @@ extension CycleTracking: CycleTrackingProtocol {
         try fetchGenericCycleResult(categoryIdentifier: .abdominalCramps, handler: handler)
     }
     
-    public func acne(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
-        try fetchGenericCycleResult(categoryIdentifier: .acne, handler: handler)
-    }
-    
-    public func appetiteChanges(handler: @escaping (MBAsyncCallResult<AppetiteChanges>) -> Void) throws {
-            
-            // Confirm that the type and device works
-            let appetiteChangesType = try MBHealthParser.unbox(categoryIdentifier: .appetiteChanges)
-            try isDataStoreAvailable()
-            
-            let query = HKSampleQuery(sampleType: appetiteChangesType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
-                
-                guard error == nil else {
-                    handler(.failed(error!))
-                    return
-                }
-                
-                guard let quantitySamples = samples as? [HKCategorySample] else {
-                    handler(.failed(MBAsyncParsingError.unableToParse("appetiteChanges log")))
-                    return
-                }
-                
-                let items = quantitySamples.map { item -> AppetiteChanges.Item in
-                    let type = AppetiteChanges.Item.AppetiteChangesType(rawValue: item.value) ?? .noChange
-                    return AppetiteChanges.Item(type: type, startDate: item.startDate, endDate: item.endDate)
-                }
-                
-                let model = AppetiteChanges(items: items)
-                handler(.success(model))
-            })
-            
-            healthStore.execute(query)
-    }
-    
-    public func bladderIncontinence(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
-        try fetchGenericCycleResult(categoryIdentifier: .bladderIncontinence, handler: handler)
-    }
-    
     public func bloating(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
         try fetchGenericCycleResult(categoryIdentifier: .bloating, handler: handler)
     }
@@ -130,45 +92,6 @@ extension CycleTracking: CycleTrackingProtocol {
         healthStore.execute(query)
     }
     
-    public func chills(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
-        try fetchGenericCycleResult(categoryIdentifier: .chills, handler: handler)
-    }
-    
-    public func constipation(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
-        try fetchGenericCycleResult(categoryIdentifier: .constipation, handler: handler)
-    }
-    
-    public func diarrhea(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
-        try fetchGenericCycleResult(categoryIdentifier: .diarrhea, handler: handler)
-    }
-    
-    public func drySkin(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
-        try fetchGenericCycleResult(categoryIdentifier: .drySkin, handler: handler)
-    }
-    
-    public func fatigue(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
-        try fetchGenericCycleResult(categoryIdentifier: .fatigue, handler: handler)
-    }
-    
-    public func hairLoss(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
-        try fetchGenericCycleResult(categoryIdentifier: .hairLoss, handler: handler)
-    }
-    
-    public func headache(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
-        try fetchGenericCycleResult(categoryIdentifier: .headache, handler: handler)
-    }
-    
-    public func hotFlashes(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
-        try fetchGenericCycleResult(categoryIdentifier: .hotFlashes, handler: handler)
-    }
-    
-    public func lowerBackPain(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
-        try fetchGenericCycleResult(categoryIdentifier: .lowerBackPain, handler: handler)
-    }
-    
-    public func memoryLapse(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
-        try fetchGenericCycleResult(categoryIdentifier: .memoryLapse, handler: handler)
-    }
     
     public func menstrualFlow(handler: @escaping (MBAsyncCallResult<MenstrualFlow>) -> Void) throws {
         
@@ -206,14 +129,6 @@ extension CycleTracking: CycleTrackingProtocol {
         try fetchGenericCycleResult(categoryIdentifier: .moodChanges, handler: handler)
     }
     
-    public func nausea(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
-        try fetchGenericCycleResult(categoryIdentifier: .nausea, handler: handler)
-    }
-    
-    public func nightSweats(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
-        try fetchGenericCycleResult(categoryIdentifier: .nightSweats, handler: handler)
-    }
-    
     public func ovulation(handler: @escaping (MBAsyncCallResult<Ovulation>) -> Void) throws {
         
         // Confirm that the type and device works
@@ -242,10 +157,6 @@ extension CycleTracking: CycleTrackingProtocol {
         })
         
         healthStore.execute(query)
-    }
-    
-    public func pelvicPain(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
-        try fetchGenericCycleResult(categoryIdentifier: .pelvicPain, handler: handler)
     }
     
     public func sexualActivity(handler: @escaping (MBAsyncCallResult<SexualActivity>) -> Void) throws {
@@ -278,10 +189,6 @@ extension CycleTracking: CycleTrackingProtocol {
         })
         
         healthStore.execute(query)
-    }
-    
-    public func sleepChanges(handler: @escaping (MBAsyncCallResult<GenericCycleTrackingModel>) -> Void) throws {
-        try fetchGenericCycleResult(categoryIdentifier: .sleepChanges, handler: handler)
     }
     
     public func spotting(handler: @escaping (MBAsyncCallResult<Spotting>) -> Void) throws {

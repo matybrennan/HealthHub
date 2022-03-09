@@ -150,36 +150,51 @@ Split into sections to gather data based on timeIntervals
 
 ### Cycle Tracking
 - abdominalCramps
-- acne        
-- appetiteChanges
-- bladderIncontinence
 - bloating
 - breastPain
 - cervicalMucusQuality
-- chills
-- constipation
-- diarrhea
-- drySkin
-- fatigue
-- hairLoss
-- headache
-- hotFlashes
-- lowerBackPain
-- memoryLapse
 - menstrualFlow
 - moodChanges
-- nausea
-- nightSweats
 - ovulation
-- pelvicPain
 - sexualActivity
-- sleepChanges
 - spotting
 - vaginalDryness
 
 ```var cycleTracking: CycleTrackingServiceProtocol```
 
 ### Symptoms
+- acne        
+- appetiteChanges
+- bladderIncontinence
+- bodyAndMuscleAche
+- chestTightnessOrPain
+- chills
+- congestion
+- constipation
+- coughing
+- diarrhea
+- drySkin
+- fainting
+- fatigue
+- fever
+- hairLoss
+- headache
+- hotFlushes
+- loss of smell
+- loss of taste
+- lowerBackPain
+- memoryLapse
+- nausea
+- nightSweats
+- pelvicPain
+- rapidPoundingOrFlutteringHeartbeat
+- runnyNose
+- shortnessOfBreath
+- skippedHeartbeat
+- sleepChanges
+- soreThroat
+- vomiting
+- wheezing
 
 ```var symptoms: SymptomsServiceProtocol```
 

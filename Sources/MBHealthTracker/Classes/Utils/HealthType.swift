@@ -93,37 +93,55 @@ public enum MBObjectType: SharableType, ReadableType {
     
     // Cycle tracking
     case abdominalCramps
-    case acne
-    case appetiteChanges
-    case bladderIncontinence
     case bloating
     case breastPain
     case cervicalMucusQuality
-    case chills
-    case constipation
     //case contraceptives // no values needed for now
-    case diarrhea
-    case drySkin
-    case fatigue
-    case hairLoss
-    case headache
-    case hotFlashes
     //case lactation // no values needed for now
-    case lowerBackPain
-    case memoryLapse
     case menstruation
     case moodChanges
-    case nausea
-    case nightSweats
     case ovulationTestResult
-    case pelvicPain
     //case pregnancy // no values needed for now
     //case pregancyTestResult iOS15
     //case progesteroneTestResult iOS15
     case sexualActivity
-    case sleepChanges
     case spotting
     case vaginalDryness
+    
+    // Symptoms
+    case acne
+    case appetiteChanges
+    case bladderIncontinence
+    case bodyAndAchePain
+    case chills
+    case chestTightnessOrPain
+    case constipation
+    case coughing
+    case diarrhea
+    case dizziness
+    case drySkin
+    case fainting
+    case fatigue
+    case fever
+    case hairLoss
+    case headache
+    case heartBurn
+    case hotFlushes
+    case lossOfSmell
+    case lossOfTaste
+    case lowerBackPain
+    case memoryLapse
+    case nausea
+    case nightSweats
+    case pelvicPain
+    case rapidPoundingOrFlutteringHeartbeat
+    case runnyNose
+    case shortnessOfBreath
+    case skippedHeartbeat
+    case sleepChanges
+    case soreThroat
+    case vomiting
+    case wheezing
     
     // Respiratory
     case respiratoryRate
@@ -207,36 +225,54 @@ public enum MBObjectType: SharableType, ReadableType {
             
         // Cycle tracking
         case .abdominalCramps: return HKQuantityType.categoryType(forIdentifier: .abdominalCramps)!
-        case .acne: return HKQuantityType.categoryType(forIdentifier: .acne)!
-        case .appetiteChanges: return HKQuantityType.categoryType(forIdentifier: .appetiteChanges)!
-        case .bladderIncontinence: return HKQuantityType.categoryType(forIdentifier: .bladderIncontinence)!
         case .bloating: return HKQuantityType.categoryType(forIdentifier: .bloating)!
         case .breastPain: return HKQuantityType.categoryType(forIdentifier: .breastPain)!
         case .cervicalMucusQuality: return HKQuantityType.categoryType(forIdentifier: .cervicalMucusQuality)!
-        case .chills: return HKQuantityType.categoryType(forIdentifier: .chills)!
-        case .constipation: return HKQuantityType.categoryType(forIdentifier: .constipation)!
         //case .contraceptives: return HKQuantityType.categoryType(forIdentifier: .contraceptive)!
-        case .diarrhea: return HKQuantityType.categoryType(forIdentifier: .diarrhea)!
-        case .drySkin: return HKQuantityType.categoryType(forIdentifier: .drySkin)!
-        case .fatigue: return HKQuantityType.categoryType(forIdentifier: .fatigue)!
-        case .hairLoss: return HKQuantityType.categoryType(forIdentifier: .hairLoss)!
-        case .headache: return HKQuantityType.categoryType(forIdentifier: .headache)!
-        case .hotFlashes: return HKQuantityType.categoryType(forIdentifier: .hotFlashes)!
         //case .lactation: return HKQuantityType.categoryType(forIdentifier: .lactation)!
-        case .lowerBackPain: return HKQuantityType.categoryType(forIdentifier: .lowerBackPain)!
-        case .memoryLapse: return HKQuantityType.categoryType(forIdentifier: .memoryLapse)!
         case .menstruation: return HKQuantityType.categoryType(forIdentifier: .menstrualFlow)!
         case .moodChanges: return HKQuantityType.categoryType(forIdentifier: .moodChanges)!
-        case .nausea: return HKQuantityType.categoryType(forIdentifier: .nausea)!
-        case .nightSweats: return HKQuantityType.categoryType(forIdentifier: .nightSweats)!
         case .ovulationTestResult: return HKQuantityType.categoryType(forIdentifier: .ovulationTestResult)!
-        case .pelvicPain: return HKQuantityType.categoryType(forIdentifier: .pelvicPain)!
         //case .pregancyTestResult: return HKQuantityType.categoryType(forIdentifier: .pregnancyTestResult)!
         //case .progesteroneTestResult: return HKQuantityType.categoryType(forIdentifier: .progesteroneTestResult)!
         case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
-        case .sleepChanges: return HKQuantityType.categoryType(forIdentifier: .sleepChanges)!
         case .spotting: return HKQuantityType.categoryType(forIdentifier: .intermenstrualBleeding)!
         case .vaginalDryness: return HKQuantityType.categoryType(forIdentifier: .vaginalDryness)!
+           
+        // Symptoms
+        case .acne: return HKQuantityType.categoryType(forIdentifier: .acne)!
+        case .appetiteChanges: return HKQuantityType.categoryType(forIdentifier: .appetiteChanges)!
+        case .bladderIncontinence: return HKQuantityType.categoryType(forIdentifier: .bladderIncontinence)!
+        case .bodyAndAchePain: return HKQuantityType.categoryType(forIdentifier: .generalizedBodyAche)!
+        case .chills: return HKQuantityType.categoryType(forIdentifier: .chills)!
+        case .chestTightnessOrPain: return HKQuantityType.categoryType(forIdentifier: .chestTightnessOrPain)!
+        case .constipation: return HKQuantityType.categoryType(forIdentifier: .constipation)!
+        case .coughing: return HKQuantityType.categoryType(forIdentifier: .coughing)!
+        case .diarrhea: return HKQuantityType.categoryType(forIdentifier: .diarrhea)!
+        case .dizziness: return HKQuantityType.categoryType(forIdentifier: .dizziness)!
+        case .drySkin: return HKQuantityType.categoryType(forIdentifier: .drySkin)!
+        case .fatigue: return HKQuantityType.categoryType(forIdentifier: .fatigue)!
+        case .fainting: return HKQuantityType.categoryType(forIdentifier: .fainting)!
+        case .fever: return HKQuantityType.categoryType(forIdentifier: .fever)!
+        case .hairLoss: return HKQuantityType.categoryType(forIdentifier: .hairLoss)!
+        case .headache: return HKQuantityType.categoryType(forIdentifier: .headache)!
+        case .heartBurn: return HKQuantityType.categoryType(forIdentifier: .heartburn)!
+        case .hotFlushes: return HKQuantityType.categoryType(forIdentifier: .hotFlashes)!
+        case .lossOfSmell: return HKQuantityType.categoryType(forIdentifier: .lossOfSmell)!
+        case .lossOfTaste: return HKQuantityType.categoryType(forIdentifier: .lossOfTaste)!
+        case .lowerBackPain: return HKQuantityType.categoryType(forIdentifier: .lowerBackPain)!
+        case .memoryLapse: return HKQuantityType.categoryType(forIdentifier: .memoryLapse)!
+        case .nausea: return HKQuantityType.categoryType(forIdentifier: .nausea)!
+        case .nightSweats: return HKQuantityType.categoryType(forIdentifier: .nightSweats)!
+        case .pelvicPain: return HKQuantityType.categoryType(forIdentifier: .pelvicPain)!
+        case .rapidPoundingOrFlutteringHeartbeat: return HKQuantityType.categoryType(forIdentifier: .rapidPoundingOrFlutteringHeartbeat)!
+        case .runnyNose: return HKQuantityType.categoryType(forIdentifier: .runnyNose)!
+        case .shortnessOfBreath: return HKQuantityType.categoryType(forIdentifier: .shortnessOfBreath)!
+        case .skippedHeartbeat: return HKQuantityType.categoryType(forIdentifier: .skippedHeartbeat)!
+        case .sleepChanges: return HKQuantityType.categoryType(forIdentifier: .sleepChanges)!
+        case .soreThroat: return HKQuantityType.categoryType(forIdentifier: .soreThroat)!
+        case .vomiting: return HKQuantityType.categoryType(forIdentifier: .vomiting)!
+        case .wheezing: return HKQuantityType.categoryType(forIdentifier: .wheezing)!
             
         // Respiratory
         case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
@@ -322,36 +358,54 @@ public enum MBObjectType: SharableType, ReadableType {
         
         // Cycle tracking
         case .abdominalCramps: return HKQuantityType.categoryType(forIdentifier: .abdominalCramps)!
-        case .acne: return HKQuantityType.categoryType(forIdentifier: .acne)!
-        case .appetiteChanges: return HKQuantityType.categoryType(forIdentifier: .appetiteChanges)!
-        case .bladderIncontinence: return HKQuantityType.categoryType(forIdentifier: .bladderIncontinence)!
         case .bloating: return HKQuantityType.categoryType(forIdentifier: .bloating)!
         case .breastPain: return HKQuantityType.categoryType(forIdentifier: .breastPain)!
-        case .chills: return HKQuantityType.categoryType(forIdentifier: .chills)!
         case .cervicalMucusQuality: return HKQuantityType.categoryType(forIdentifier: .cervicalMucusQuality)!
-        case .constipation: return HKQuantityType.categoryType(forIdentifier: .constipation)!
         //case .contraceptives: return HKQuantityType.categoryType(forIdentifier: .contraceptive)!
-        case .diarrhea: return HKQuantityType.categoryType(forIdentifier: .diarrhea)!
-        case .drySkin: return HKQuantityType.categoryType(forIdentifier: .drySkin)!
-        case .fatigue: return HKQuantityType.categoryType(forIdentifier: .fatigue)!
-        case .hairLoss: return HKQuantityType.categoryType(forIdentifier: .hairLoss)!
-        case .headache: return HKQuantityType.categoryType(forIdentifier: .headache)!
-        case .hotFlashes: return HKQuantityType.categoryType(forIdentifier: .hotFlashes)!
         //case .lactation: return HKQuantityType.categoryType(forIdentifier: .lactation)!
-        case .lowerBackPain: return HKQuantityType.categoryType(forIdentifier: .lowerBackPain)!
-        case .memoryLapse: return HKQuantityType.categoryType(forIdentifier: .memoryLapse)!
         case .menstruation: return HKQuantityType.categoryType(forIdentifier: .menstrualFlow)!
         case .moodChanges: return HKQuantityType.categoryType(forIdentifier: .moodChanges)!
-        case .nausea: return HKQuantityType.categoryType(forIdentifier: .nausea)!
-        case .nightSweats: return HKQuantityType.categoryType(forIdentifier: .nightSweats)!
         case .ovulationTestResult: return HKQuantityType.categoryType(forIdentifier: .ovulationTestResult)!
-        case .pelvicPain: return HKQuantityType.categoryType(forIdentifier: .pelvicPain)!
         //case .pregancyTestResult: return HKQuantityType.categoryType(forIdentifier: .pregnancyTestResult)!
         //case .progesteroneTestResult: return HKQuantityType.categoryType(forIdentifier: .progesteroneTestResult)!
         case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
-        case .sleepChanges: return HKQuantityType.categoryType(forIdentifier: .sleepChanges)!
         case .spotting: return HKQuantityType.categoryType(forIdentifier: .intermenstrualBleeding)!
         case .vaginalDryness: return HKQuantityType.categoryType(forIdentifier: .vaginalDryness)!
+        
+        // Symptoms
+        case .acne: return HKQuantityType.categoryType(forIdentifier: .acne)!
+        case .appetiteChanges: return HKQuantityType.categoryType(forIdentifier: .appetiteChanges)!
+        case .bladderIncontinence: return HKQuantityType.categoryType(forIdentifier: .bladderIncontinence)!
+        case .bodyAndAchePain: return HKQuantityType.categoryType(forIdentifier: .generalizedBodyAche)!
+        case .chills: return HKQuantityType.categoryType(forIdentifier: .chills)!
+        case .chestTightnessOrPain: return HKQuantityType.categoryType(forIdentifier: .chestTightnessOrPain)!
+        case .constipation: return HKQuantityType.categoryType(forIdentifier: .constipation)!
+        case .coughing: return HKQuantityType.categoryType(forIdentifier: .coughing)!
+        case .diarrhea: return HKQuantityType.categoryType(forIdentifier: .diarrhea)!
+        case .dizziness: return HKQuantityType.categoryType(forIdentifier: .dizziness)!
+        case .drySkin: return HKQuantityType.categoryType(forIdentifier: .drySkin)!
+        case .fatigue: return HKQuantityType.categoryType(forIdentifier: .fatigue)!
+        case .fainting: return HKQuantityType.categoryType(forIdentifier: .fainting)!
+        case .fever: return HKQuantityType.categoryType(forIdentifier: .fever)!
+        case .hairLoss: return HKQuantityType.categoryType(forIdentifier: .hairLoss)!
+        case .headache: return HKQuantityType.categoryType(forIdentifier: .headache)!
+        case .heartBurn: return HKQuantityType.categoryType(forIdentifier: .heartburn)!
+        case .hotFlushes: return HKQuantityType.categoryType(forIdentifier: .hotFlashes)!
+        case .lossOfSmell: return HKQuantityType.categoryType(forIdentifier: .lossOfSmell)!
+        case .lossOfTaste: return HKQuantityType.categoryType(forIdentifier: .lossOfTaste)!
+        case .lowerBackPain: return HKQuantityType.categoryType(forIdentifier: .lowerBackPain)!
+        case .memoryLapse: return HKQuantityType.categoryType(forIdentifier: .memoryLapse)!
+        case .nausea: return HKQuantityType.categoryType(forIdentifier: .nausea)!
+        case .nightSweats: return HKQuantityType.categoryType(forIdentifier: .nightSweats)!
+        case .pelvicPain: return HKQuantityType.categoryType(forIdentifier: .pelvicPain)!
+        case .rapidPoundingOrFlutteringHeartbeat: return HKQuantityType.categoryType(forIdentifier: .rapidPoundingOrFlutteringHeartbeat)!
+        case .runnyNose: return HKQuantityType.categoryType(forIdentifier: .runnyNose)!
+        case .shortnessOfBreath: return HKQuantityType.categoryType(forIdentifier: .shortnessOfBreath)!
+        case .skippedHeartbeat: return HKQuantityType.categoryType(forIdentifier: .skippedHeartbeat)!
+        case .sleepChanges: return HKQuantityType.categoryType(forIdentifier: .sleepChanges)!
+        case .soreThroat: return HKQuantityType.categoryType(forIdentifier: .soreThroat)!
+        case .vomiting: return HKQuantityType.categoryType(forIdentifier: .vomiting)!
+        case .wheezing: return HKQuantityType.categoryType(forIdentifier: .wheezing)!
         
         // Respiratory
         case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
