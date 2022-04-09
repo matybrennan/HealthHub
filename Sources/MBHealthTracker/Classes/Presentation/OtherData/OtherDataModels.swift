@@ -16,3 +16,13 @@ public struct AlcoholConsumption {
     
     public let items: [Item]
 }
+
+public struct AlcoholContent {
+    
+    public struct Item {
+        public let percentage: Double
+        public let date: Date
+    }
+    
+    public let items: [Item]
+}

@@ -28,13 +28,13 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '15.0'
 
-  s.swift_versions = ['5.5']
+  s.swift_versions = ['5.6']
   s.source_files = 'Sources/MBHealthTracker/Classes/**/*'
   
   # s.resource_bundles = {
   #   'MBHealthTracker' => ['Sources/MBHealthTracker/Assets/*.png']
   # }
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '5.5' }
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '5.6' }
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'

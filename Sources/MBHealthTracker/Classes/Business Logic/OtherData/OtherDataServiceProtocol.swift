@@ -10,4 +10,5 @@ import Foundation
 public protocol OtherDataServiceProtocol: AnyObject {
     
     func alcoholConsumption(handler: @escaping (MBAsyncCallResult<AlcoholConsumption>) -> Void) throws
+    func alcoholContent(handler: @escaping (MBAsyncCallResult<AlcoholContent>) -> Void) throws
 }

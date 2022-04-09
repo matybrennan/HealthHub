@@ -44,4 +44,32 @@ extension OtherDataService: OtherDataServiceProtocol {
         
         healthStore.execute(query)
     }
+    
+    public func alcoholContent(handler: @escaping (MBAsyncCallResult<AlcoholContent>) -> Void) throws {
+        let alcoholContentType = try MBHealthParser.unbox(quantityIdentifier: .bloodAlcoholContent)
+        try isDataStoreAvailable()
+        
+        let query = HKSampleQuery(sampleType: alcoholContentType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
+            
+            guard error == nil else {
+                handler(.failed(error!))
+                return
+            }
+            
+            guard let quantitySamples = samples as? [HKQuantitySample] else {
+                handler(.failed(MBAsyncParsingError.unableToParse("alcoholConsumption log")))
+                return
+            }
+            
+            let items = quantitySamples.map { item -> AlcoholContent.Item in
+                let percentage = item.quantity.doubleValue(for: .percent()) * 100
+                return AlcoholContent.Item(percentage: percentage, date: item.startDate)
+            }
+            
+            let model = AlcoholContent(items: items)
+            handler(.success(model))
+        })
+        
+        healthStore.execute(query)
+    }
 }

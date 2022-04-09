@@ -20,6 +20,7 @@ public class ConfigurationService: ConfigurationServiceProtocol {
         let shareTypes = MBHealthType.shareTypes(share)
         let readTypes = MBHealthType.readTypes(read)
         
+        
         healthStore.requestAuthorization(toShare: shareTypes, read: readTypes) { (status, error) in
             if let error = error {
                 completionHandler(.failed(error))

@@ -212,6 +212,7 @@ Split into sections to gather data based on timeIntervals
 
 ### Other Data
 - alcoholConsumption
+- alcoholContent
 
 ```var otherData: OtherDataServiceProtocol```
 
