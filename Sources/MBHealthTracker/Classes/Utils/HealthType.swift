@@ -155,6 +155,7 @@ public enum MBObjectType: SharableType, ReadableType {
     // Other Data
     case alcoholConsumption
     case alcoholContent
+    case handWashing
     
     public var sharable: HKSampleType {
         switch self {
@@ -290,6 +291,7 @@ public enum MBObjectType: SharableType, ReadableType {
         // Other Data
         case .alcoholConsumption: return HKSampleType.quantityType(forIdentifier: .numberOfAlcoholicBeverages)!
         case .alcoholContent: return HKSampleType.quantityType(forIdentifier: .bloodAlcoholContent)!
+        case .handWashing: return HKSampleType.categoryType(forIdentifier: .handwashingEvent)!
         }
     }
     
@@ -427,6 +429,7 @@ public enum MBObjectType: SharableType, ReadableType {
         // Other Data
         case .alcoholConsumption: return HKSampleType.quantityType(forIdentifier: .numberOfAlcoholicBeverages)!
         case .alcoholContent: return HKSampleType.quantityType(forIdentifier: .bloodAlcoholContent)!
+        case .handWashing: return HKSampleType.categoryType(forIdentifier: .handwashingEvent)!
         }
     }
 }

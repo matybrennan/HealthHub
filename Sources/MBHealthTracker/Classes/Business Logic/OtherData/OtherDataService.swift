@@ -57,7 +57,7 @@ extension OtherDataService: OtherDataServiceProtocol {
             }
             
             guard let quantitySamples = samples as? [HKQuantitySample] else {
-                handler(.failed(MBAsyncParsingError.unableToParse("alcoholConsumption log")))
+                handler(.failed(MBAsyncParsingError.unableToParse("alcoholContent log")))
                 return
             }
             
@@ -67,6 +67,35 @@ extension OtherDataService: OtherDataServiceProtocol {
             }
             
             let model = AlcoholContent(items: items)
+            handler(.success(model))
+        })
+        
+        healthStore.execute(query)
+    }
+    
+    public func handWashing(handler: @escaping (MBAsyncCallResult<HandWashing>) -> Void) throws {
+        let handWashingType = try MBHealthParser.unbox(categoryIdentifier: .handwashingEvent)
+        try isDataStoreAvailable()
+        
+        let query = HKSampleQuery(sampleType: handWashingType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
+            
+            guard error == nil else {
+                handler(.failed(error!))
+                return
+            }
+            
+            guard let categorySamples = samples as? [HKCategorySample] else {
+                handler(.failed(MBAsyncParsingError.unableToParse("\(handWashingType.identifier) log")))
+                return
+            }
+            
+            let items = categorySamples.map { item -> HandWashing.Item in
+                let diffComponents = Calendar.current.dateComponents([.second], from: item.startDate, to: item.endDate)
+                let duration = diffComponents.second ?? 0
+                return HandWashing.Item(duration: duration, date: item.startDate)
+            }
+            
+            let model = HandWashing(items: items)
             handler(.success(model))
         })
         

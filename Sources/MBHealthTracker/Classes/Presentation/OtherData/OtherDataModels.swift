@@ -26,3 +26,13 @@ public struct AlcoholContent {
     
     public let items: [Item]
 }
+
+public struct HandWashing {
+    
+    public struct Item {
+        public let duration: Int
+        public let date: Date
+    }
+    
+    public let items: [Item]
+}
