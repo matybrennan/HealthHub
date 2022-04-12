@@ -101,4 +101,94 @@ extension OtherDataService: OtherDataServiceProtocol {
         
         healthStore.execute(query)
     }
+    
+    public func inhalerUsage(handler: @escaping (MBAsyncCallResult<InhalerUsage>) -> Void) throws {
+        
+        let inhalerUsageType = try MBHealthParser.unbox(quantityIdentifier: .inhalerUsage)
+        try isDataStoreAvailable()
+        
+        let query = HKSampleQuery(sampleType: inhalerUsageType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
+            
+            guard error == nil else {
+                handler(.failed(error!))
+                return
+            }
+            
+            guard let quantitySamples = samples as? [HKQuantitySample] else {
+                handler(.failed(MBAsyncParsingError.unableToParse("inhalerUsageType log")))
+                return
+            }
+            
+            let items = quantitySamples.map { item -> InhalerUsage.Item in
+                let value = Int(item.quantity.doubleValue(for: HKUnit.count()))
+                return InhalerUsage.Item(value: value, date: item.startDate)
+            }
+            
+            let model = InhalerUsage(items: items)
+            handler(.success(model))
+        })
+        
+        healthStore.execute(query)
+    }
+    
+    public func insulinDelivery(handler: @escaping (MBAsyncCallResult<InsulinDelivery>) -> Void) throws {
+        
+        let insulinDeliveryType = try MBHealthParser.unbox(quantityIdentifier: .insulinDelivery)
+        try isDataStoreAvailable()
+        
+        let query = HKSampleQuery(sampleType: insulinDeliveryType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
+            
+            guard error == nil else {
+                handler(.failed(error!))
+                return
+            }
+            
+            guard let quantitySamples = samples as? [HKQuantitySample] else {
+                handler(.failed(MBAsyncParsingError.unableToParse("insulinDelivery log")))
+                return
+            }
+            
+            let items = quantitySamples.map { item -> InsulinDelivery.Item in
+                let value = item.quantity.doubleValue(for: HKUnit(from: "IU"))
+                let purposeInt = item.metadata?[HKMetadataKeyInsulinDeliveryReason] as? Int ?? 1
+                let purpose = InsulinDelivery.Item.Purpose(rawValue: purposeInt)!
+                
+                return InsulinDelivery.Item(value: value, purpose: purpose, startDate: item.startDate, endDate: item.endDate)
+            }
+            
+            let model = InsulinDelivery(items: items)
+            handler(.success(model))
+        })
+        
+        healthStore.execute(query)
+    }
+    
+    public func numberOfTimesFallen(handler: @escaping (MBAsyncCallResult<NumberOfTimesFallen>) -> Void) throws {
+        
+        let numberOfTimesFallenType = try MBHealthParser.unbox(quantityIdentifier: .numberOfTimesFallen)
+        try isDataStoreAvailable()
+        
+        let query = HKSampleQuery(sampleType: numberOfTimesFallenType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
+            
+            guard error == nil else {
+                handler(.failed(error!))
+                return
+            }
+            
+            guard let quantitySamples = samples as? [HKQuantitySample] else {
+                handler(.failed(MBAsyncParsingError.unableToParse("numberOfTimesFallenType log")))
+                return
+            }
+            
+            let items = quantitySamples.map { item -> NumberOfTimesFallen.Item in
+                let value = Int(item.quantity.doubleValue(for: HKUnit.count()))
+                return NumberOfTimesFallen.Item(value: value, date: item.startDate)
+            }
+            
+            let model = NumberOfTimesFallen(items: items)
+            handler(.success(model))
+        })
+        
+        healthStore.execute(query)
+    }
 }

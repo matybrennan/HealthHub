@@ -36,3 +36,42 @@ public struct HandWashing {
     
     public let items: [Item]
 }
+
+public struct InhalerUsage {
+    
+    public struct Item {
+        public let value: Int
+        public let date: Date
+    }
+    
+    public let items: [Item]
+}
+
+public struct InsulinDelivery {
+    
+    public struct Item {
+        
+        public enum Purpose: Int {
+            case basal = 1
+            case bolus
+        }
+        
+        public let value: Double
+        public let purpose: Purpose
+        public let startDate: Date
+        public let endDate: Date
+    }
+    
+    public let items: [Item]
+}
+
+public struct NumberOfTimesFallen {
+    
+    public struct Item {
+        public let value: Int
+        public let date: Date
+    }
+    
+    public let items: [Item]
+}
+

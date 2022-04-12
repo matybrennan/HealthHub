@@ -156,6 +156,9 @@ public enum MBObjectType: SharableType, ReadableType {
     case alcoholConsumption
     case alcoholContent
     case handWashing
+    case inhalerUsage
+    case insulinDelivery
+    case numberOfTimesFallen
     
     public var sharable: HKSampleType {
         switch self {
@@ -292,6 +295,9 @@ public enum MBObjectType: SharableType, ReadableType {
         case .alcoholConsumption: return HKSampleType.quantityType(forIdentifier: .numberOfAlcoholicBeverages)!
         case .alcoholContent: return HKSampleType.quantityType(forIdentifier: .bloodAlcoholContent)!
         case .handWashing: return HKSampleType.categoryType(forIdentifier: .handwashingEvent)!
+        case .inhalerUsage: return HKSampleType.quantityType(forIdentifier: .inhalerUsage)!
+        case .insulinDelivery: return HKSampleType.quantityType(forIdentifier: .insulinDelivery)!
+        case .numberOfTimesFallen: return HKSampleType.quantityType(forIdentifier: .numberOfTimesFallen)!
         }
     }
     
@@ -430,6 +436,9 @@ public enum MBObjectType: SharableType, ReadableType {
         case .alcoholConsumption: return HKSampleType.quantityType(forIdentifier: .numberOfAlcoholicBeverages)!
         case .alcoholContent: return HKSampleType.quantityType(forIdentifier: .bloodAlcoholContent)!
         case .handWashing: return HKSampleType.categoryType(forIdentifier: .handwashingEvent)!
+        case .inhalerUsage: return HKSampleType.quantityType(forIdentifier: .inhalerUsage)!
+        case .insulinDelivery: return HKSampleType.quantityType(forIdentifier: .insulinDelivery)!
+        case .numberOfTimesFallen: return HKSampleType.quantityType(forIdentifier: .numberOfTimesFallen)!
         }
     }
 }
