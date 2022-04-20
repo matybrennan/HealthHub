@@ -217,6 +217,8 @@ Split into sections to gather data based on timeIntervals
 - inhalerUsage
 - insulinDelivery
 - numberOfTimesFallen
+- toothBrushing
+- uvExposure
 
 ```var otherData: OtherDataServiceProtocol```
 

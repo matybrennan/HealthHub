@@ -159,6 +159,8 @@ public enum MBObjectType: SharableType, ReadableType {
     case inhalerUsage
     case insulinDelivery
     case numberOfTimesFallen
+    case toothBrushing
+    case uvExposure
     
     public var sharable: HKSampleType {
         switch self {
@@ -298,6 +300,8 @@ public enum MBObjectType: SharableType, ReadableType {
         case .inhalerUsage: return HKSampleType.quantityType(forIdentifier: .inhalerUsage)!
         case .insulinDelivery: return HKSampleType.quantityType(forIdentifier: .insulinDelivery)!
         case .numberOfTimesFallen: return HKSampleType.quantityType(forIdentifier: .numberOfTimesFallen)!
+        case .toothBrushing: return HKSampleType.categoryType(forIdentifier: .toothbrushingEvent)!
+        case .uvExposure: return HKQuantityType.quantityType(forIdentifier: .uvExposure)!
         }
     }
     
@@ -439,6 +443,8 @@ public enum MBObjectType: SharableType, ReadableType {
         case .inhalerUsage: return HKSampleType.quantityType(forIdentifier: .inhalerUsage)!
         case .insulinDelivery: return HKSampleType.quantityType(forIdentifier: .insulinDelivery)!
         case .numberOfTimesFallen: return HKSampleType.quantityType(forIdentifier: .numberOfTimesFallen)!
+        case .toothBrushing: return HKSampleType.categoryType(forIdentifier: .toothbrushingEvent)!
+        case .uvExposure: return HKQuantityType.quantityType(forIdentifier: .uvExposure)!
         }
     }
 }

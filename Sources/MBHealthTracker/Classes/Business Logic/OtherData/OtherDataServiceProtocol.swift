@@ -15,5 +15,6 @@ public protocol OtherDataServiceProtocol: AnyObject {
     func inhalerUsage(handler: @escaping (MBAsyncCallResult<InhalerUsage>) -> Void) throws
     func insulinDelivery(handler: @escaping (MBAsyncCallResult<InsulinDelivery>) -> Void) throws
     func numberOfTimesFallen(handler: @escaping (MBAsyncCallResult<NumberOfTimesFallen>) -> Void) throws
-    
+    func toothBrushing(handler: @escaping (MBAsyncCallResult<ToothBrushing>) -> Void) throws
+    func uvExposure(handler: @escaping (MBAsyncCallResult<UVExposure>) -> Void) throws
 }

@@ -90,8 +90,7 @@ extension OtherDataService: OtherDataServiceProtocol {
             }
             
             let items = categorySamples.map { item -> HandWashing.Item in
-                let diffComponents = Calendar.current.dateComponents([.second], from: item.startDate, to: item.endDate)
-                let duration = diffComponents.second ?? 0
+                let duration = Int(item.endDate.timeIntervalSince(item.startDate))
                 return HandWashing.Item(duration: duration, date: item.startDate)
             }
             
@@ -186,6 +185,64 @@ extension OtherDataService: OtherDataServiceProtocol {
             }
             
             let model = NumberOfTimesFallen(items: items)
+            handler(.success(model))
+        })
+        
+        healthStore.execute(query)
+    }
+    
+    public func toothBrushing(handler: @escaping (MBAsyncCallResult<ToothBrushing>) -> Void) throws {
+        
+        let toothBrushingType = try MBHealthParser.unbox(categoryIdentifier: .toothbrushingEvent)
+        try isDataStoreAvailable()
+        
+        let query = HKSampleQuery(sampleType: toothBrushingType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
+            
+            guard error == nil else {
+                handler(.failed(error!))
+                return
+            }
+            
+            guard let quantitySamples = samples as? [HKCategorySample] else {
+                handler(.failed(MBAsyncParsingError.unableToParse("toothBrushingType log")))
+                return
+            }
+            
+            let items = quantitySamples.map { item -> ToothBrushing.Item in
+                let duration = Int(item.endDate.timeIntervalSince(item.startDate))
+                return ToothBrushing.Item(durationSeconds: duration, date: item.startDate)
+            }
+            
+            let model = ToothBrushing(items: items)
+            handler(.success(model))
+        })
+        
+        healthStore.execute(query)
+    }
+    
+    public func uvExposure(handler: @escaping (MBAsyncCallResult<UVExposure>) -> Void) throws {
+        
+        let uvExposureType = try MBHealthParser.unbox(quantityIdentifier: .uvExposure)
+        try isDataStoreAvailable()
+        
+        let query = HKSampleQuery(sampleType: uvExposureType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
+            
+            guard error == nil else {
+                handler(.failed(error!))
+                return
+            }
+            
+            guard let quantitySamples = samples as? [HKQuantitySample] else {
+                handler(.failed(MBAsyncParsingError.unableToParse("uvExposureType log")))
+                return
+            }
+            
+            let items = quantitySamples.map { item -> UVExposure.Item in
+                let value = Int(item.quantity.doubleValue(for: HKUnit.count()))
+                return UVExposure.Item(value: value, startDate: item.startDate, endDate: item.endDate)
+            }
+            
+            let model = UVExposure(items: items)
             handler(.success(model))
         })
         

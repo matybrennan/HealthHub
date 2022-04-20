@@ -75,3 +75,25 @@ public struct NumberOfTimesFallen {
     public let items: [Item]
 }
 
+public struct ToothBrushing {
+    
+    public struct Item {
+        public let durationSeconds: Int
+        public let date: Date
+    }
+    
+    public let items: [Item]
+}
+
+public struct UVExposure {
+    
+    public struct Item {
+        public let value: Int
+        public let startDate: Date
+        public let endDate: Date
+    }
+    
+    public let items: [Item]
+}
+
+
