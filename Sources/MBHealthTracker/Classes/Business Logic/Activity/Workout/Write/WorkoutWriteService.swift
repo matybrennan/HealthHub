@@ -18,7 +18,8 @@ extension WorkoutWriteService: WorkoutWriteServiceProtocol {
     
     public func saveWorkout(workout: MBWorkout.Item, extra: [String : Any]?, completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws {
         
-        let _ = try MBHealthParser.workoutTypeAndCheckIfAvailable()
+        let workoutType = try MBHealthParser.workoutTypeAndCheckIfAvailable()
+        try MBHealthParser.checkSharingAuthorizationStatus(for: workoutType)
         
         var energyBurned: HKQuantity?
         if let energy = workout.energyBurned {

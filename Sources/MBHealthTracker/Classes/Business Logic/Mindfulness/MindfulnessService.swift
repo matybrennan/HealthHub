@@ -32,6 +32,7 @@ extension MindfulnessService: MindfulnessServiceProtocol {
     
     public func save(mindful: Mindful.Info, extra: [String : Any]?) async throws {
         let mindfulType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .mindfulSession)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: mindfulType)
         let sampleObj = HKCategorySample(type: mindfulType, value: mindful.value, start: mindful.startDate, end: mindful.endDate, metadata: extra)
         try await healthStore.save(sampleObj)
     }

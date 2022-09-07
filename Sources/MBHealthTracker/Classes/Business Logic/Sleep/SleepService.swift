@@ -16,50 +16,25 @@ public class SleepService {
 // MARK: - SleepServiceProtocol
 extension SleepService: SleepServiceProtocol {
     
-    public func getSleep(completionHandler: @escaping (MBAsyncCallResult<Sleep>) -> Void) throws {
+    public func sleep() async throws -> Sleep {
         
         // Confirm that the type and device works
         let sleepType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .sleepAnalysis)
-        
-        let query = HKSampleQuery(sampleType: sleepType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { (query, samples, error) in
-            
-            guard error == nil else {
-                completionHandler(.failed(error!))
-                return
-            }
-            
-            guard let categorySamples = samples as? [HKCategorySample] else {
-                completionHandler(.failed(MBAsyncParsingError.unableToParse("Unable to parse sleep")))
-                return
-            }
-            
-            let items = categorySamples.map { item -> Sleep.Info in
-                
-                let style = MBSleepStyle(rawValue: item.value) ?? MBSleepStyle.awake
-                
-                return Sleep.Info(style: style, startDate: item.startDate, endDate: item.endDate)
-            }
-            
-            let vm = Sleep(items: items)
-            
-            completionHandler(MBAsyncCallResult.success(vm))
+        let descriptorQuery = HKSampleQueryDescriptor(predicates: [.categorySample(type: sleepType)], sortDescriptors: [])
+        let samples = try await descriptorQuery.result(for: healthStore)
+        let items = samples.map { item -> Sleep.Info in
+            let style = MBSleepStyle(rawValue: item.value) ?? MBSleepStyle.awake
+            return Sleep.Info(style: style, startDate: item.startDate, endDate: item.endDate)
         }
         
-        healthStore.execute(query)
+        let vm = Sleep(items: items)
+        return vm
     }
     
-    public func save(sleep: Sleep.Info, extra: [String : Any]?, completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws {
-        
+    public func save(sleep: Sleep.Info, extra: [String : Any]?) async throws {
         let sleepType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .sleepAnalysis)
-        
+        try MBHealthParser.checkSharingAuthorizationStatus(for: sleepType)
         let sampleObj = HKCategorySample(type: sleepType, value: sleep.style.rawValue, start: sleep.startDate, end: sleep.endDate, metadata: extra)
-        
-        healthStore.save(sampleObj) { (status, error) in
-            if let error = error {
-                completionHandler(.failed(error))
-            } else {
-                completionHandler(.success(status))
-            }
-        }
+        try await healthStore.save(sampleObj)
     }
 }

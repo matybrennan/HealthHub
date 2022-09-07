@@ -28,15 +28,15 @@ extension ViewInteractor: ViewInteractorProtocol {
     
     func configurePermissions() {
         healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.respiratoryRate]
-                                                        ,toRead: [MBObjectType.respiratoryRate]) { _ in }
+                                                        ,toRead: [MBObjectType.sleepAnalysis]) { _ in }
     }
     
     func runTest() {
         
         Task {
             do {
-                let respiratoryRate = try await healthTracker.respiratory.respiratoryRate()
-                print("respiratoryRate: \(respiratoryRate)")
+                let sleep = try await healthTracker.sleep.sleep()
+                print("sleep: \(sleep)")
                 let bodyMassIndex = try await healthTracker.body.bodyMassIndex()
                 print("bodyMassIndex: \(bodyMassIndex)")
                 let res = try await healthTracker.body.basalBodyTemperature()

@@ -14,7 +14,6 @@ open class MBHealthParser {
         guard let result = HKQuantityType.quantityType(forIdentifier: quantityIdentifier) else {
             throw AuthorizationStatusError.unableToAccess(quantityIdentifier.rawValue)
         }
-        try checkSharingAuthorizationStatus(for: result)
         try isDataStoreAvailable()
         return result
     }
@@ -23,7 +22,6 @@ open class MBHealthParser {
         guard let result = HKCharacteristicType.characteristicType(forIdentifier: characterIdentifier) else {
             throw AuthorizationStatusError.unableToAccess(characterIdentifier.rawValue)
         }
-        try checkSharingAuthorizationStatus(for: result)
         try isDataStoreAvailable()
         return result
     }
@@ -32,7 +30,6 @@ open class MBHealthParser {
         guard let result = HKCategoryType.categoryType(forIdentifier: categoryIdentifier) else {
             throw AuthorizationStatusError.unableToAccess(categoryIdentifier.rawValue)
         }
-        try checkSharingAuthorizationStatus(for: result)
         try isDataStoreAvailable()
         return result
     }
@@ -41,14 +38,12 @@ open class MBHealthParser {
         guard let result = HKCategoryType.correlationType(forIdentifier: correlationIdentifier) else {
             throw AuthorizationStatusError.unableToAccess(correlationIdentifier.rawValue)
         }
-        try checkSharingAuthorizationStatus(for: result)
         try isDataStoreAvailable()
         return result
     }
     
     public static func workoutTypeAndCheckIfAvailable() throws -> HKWorkoutType {
         let workout = HKWorkoutType.workoutType()
-        try checkSharingAuthorizationStatus(for: workout)
         try isDataStoreAvailable()
         return workout
     }
