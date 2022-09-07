@@ -17,12 +17,14 @@ public enum AuthorizationStatusError: LocalizedError {
     case notDetermined(String)
     case sharingDenied(String)
     case healthDataNotAvailable
+    case unableToAccess(String)
     
     public var errorDescription: String? {
         switch self {
-        case let .notDetermined(type): return "The status for \(type) has not been allowed in health settings for sharing"
+        case let .notDetermined(type): return "The status for \(type) has not been allowed in health settings"
         case let .sharingDenied(type): return "The status for \(type) has sharing denied in health settings for sharing"
         case .healthDataNotAvailable: return "Health data is not available to use on this device"
+        case let .unableToAccess(type): return "The status for \(type) cannot be accessed. Please check health kit settings for permissions"
         }
     }
 }
@@ -30,19 +32,5 @@ public enum AuthorizationStatusError: LocalizedError {
 public func isDataStoreAvailable() throws {
     if !HKHealthStore.isHealthDataAvailable() {
         throw AuthorizationStatusError.healthDataNotAvailable
-    }
-}
-
-public func checkSharingAuthorizationStatus(for type: HKObjectType) throws {
-    
-    switch healthStore.authorizationStatus(for: type) {
-    case .notDetermined:
-        throw AuthorizationStatusError.notDetermined(type.identifier)
-    case .sharingDenied:
-        throw AuthorizationStatusError.sharingDenied(type.identifier)
-    case .sharingAuthorized:
-        print("Success status for: \(type.identifier)")
-    @unknown default:
-        print("Unknown/New status for: \(type.identifier)")
     }
 }

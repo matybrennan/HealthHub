@@ -22,8 +22,7 @@ extension HeartService: HeartServiceProtocol {
     public func heartRate(fromHeartRateType type: HeartRateType, completionHandler: @escaping (MBAsyncCallResult<HeartRate>) -> Void) throws {
         
         // Confirm that the type and device works
-        let heartRate = try MBHealthParser.unbox(quantityIdentifier: .heartRate)
-        try isDataStoreAvailable()
+        let heartRate = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .heartRate)
         
         var query: HKQuery!
         

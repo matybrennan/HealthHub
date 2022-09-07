@@ -9,5 +9,5 @@ import Foundation
 
 public protocol RespiratoryServiceProtocol: AnyObject {
     
-    func respiratoryRate(completionHandler: @escaping (MBAsyncCallResult<RespiratoryRate>) -> Void) throws
+    func respiratoryRate() async throws -> RespiratoryRate
 }

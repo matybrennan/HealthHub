@@ -15,49 +15,24 @@ public class MindfulnessService {
 
 extension MindfulnessService: MindfulnessServiceProtocol {
     
-    public func getMindfulActivity(completionHandler: @escaping (MBAsyncCallResult<Mindful>) -> Void) throws {
+    public func mindfulActivity() async throws -> Mindful {
         
         // Confirm that the type and device works
-        let mindfulType = try MBHealthParser.unbox(categoryIdentifier: .mindfulSession)
-        try isDataStoreAvailable()
+        let mindfulType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .mindfulSession)
+        let descriptorQuery = HKSampleQueryDescriptor(predicates: [.categorySample(type: mindfulType)], sortDescriptors: [])
+        let samples = try await descriptorQuery.result(for: healthStore)
         
-        let query = HKSampleQuery(sampleType: mindfulType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { (query, samples, error) in
-            
-            guard error == nil else {
-                completionHandler(.failed(error!))
-                return
-            }
-            
-            guard let categorySamples = samples as? [HKCategorySample] else {
-                completionHandler(.failed(MBAsyncParsingError.unableToParse("Unable to parse mindful")))
-                return
-            }
-            
-            let items = categorySamples.map { item -> Mindful.Info in
-                return Mindful.Info(value: item.value, startDate: item.startDate, endDate: item.endDate)
-            }
-            
-            let vm = Mindful(items: items)
-            
-            completionHandler(MBAsyncCallResult.success(vm))
+        let items = samples.map { item -> Mindful.Info in
+            return Mindful.Info(value: item.value, startDate: item.startDate, endDate: item.endDate)
         }
         
-        healthStore.execute(query)
+        let vm = Mindful(items: items)
+        return vm
     }
     
-    public func save(mindful: Mindful.Info, extra: [String : Any]?, completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws {
-        
-        try checkSharingAuthorizationStatus(for: MBObjectType.mindful.sharable)
-        try isDataStoreAvailable()
-        
-        let sampleObj = HKCategorySample(type: MBObjectType.mindful.sharable as! HKCategoryType, value: mindful.value, start: mindful.startDate, end: mindful.endDate, metadata: extra)
-        
-        healthStore.save(sampleObj) { (status, error) in
-            if let error = error {
-                completionHandler(.failed(error))
-            } else {
-                completionHandler(.success(status))
-            }
-        }
+    public func save(mindful: Mindful.Info, extra: [String : Any]?) async throws {
+        let mindfulType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .mindfulSession)
+        let sampleObj = HKCategorySample(type: mindfulType, value: mindful.value, start: mindful.startDate, end: mindful.endDate, metadata: extra)
+        try await healthStore.save(sampleObj)
     }
 }

@@ -23,8 +23,7 @@ extension WorkoutReadService: WorkoutReadServiceProtocol {
     public func getWorkouts(fromWorkoutType type: WorkoutType, completionHandler: @escaping (MBAsyncCallResult<MBWorkout>) -> Void) throws {
         
         // Confirm that the type and device works
-        let workout = HKWorkoutType.workoutType()
-        try isDataStoreAvailable()
+        let workout = try MBHealthParser.workoutTypeAndCheckIfAvailable()
         
         var pred: NSPredicate?
         

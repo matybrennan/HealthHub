@@ -8,37 +8,63 @@
 import Foundation
 import HealthKit
 
-public enum MBHealthParserError: Error {
-    case unableToAccess(String)
-}
-
 open class MBHealthParser {
     
-    static func unbox(quantityIdentifier: HKQuantityTypeIdentifier) throws -> HKQuantityType {
+    public static func unboxAndCheckIfAvailable(quantityIdentifier: HKQuantityTypeIdentifier) throws -> HKQuantityType {
         guard let result = HKQuantityType.quantityType(forIdentifier: quantityIdentifier) else {
-            throw MBHealthParserError.unableToAccess(quantityIdentifier.rawValue)
+            throw AuthorizationStatusError.unableToAccess(quantityIdentifier.rawValue)
         }
+        try checkSharingAuthorizationStatus(for: result)
+        try isDataStoreAvailable()
         return result
     }
     
-    static func unbox(characterIdentifier: HKCharacteristicTypeIdentifier) throws -> HKCharacteristicType {
+    public static func unboxAndCheckIfAvailable(characterIdentifier: HKCharacteristicTypeIdentifier) throws -> HKCharacteristicType {
         guard let result = HKCharacteristicType.characteristicType(forIdentifier: characterIdentifier) else {
-            throw MBHealthParserError.unableToAccess(characterIdentifier.rawValue)
+            throw AuthorizationStatusError.unableToAccess(characterIdentifier.rawValue)
         }
+        try checkSharingAuthorizationStatus(for: result)
+        try isDataStoreAvailable()
         return result
     }
     
-    static func unbox(categoryIdentifier: HKCategoryTypeIdentifier) throws -> HKCategoryType {
+    public static func unboxAndCheckIfAvailable(categoryIdentifier: HKCategoryTypeIdentifier) throws -> HKCategoryType {
         guard let result = HKCategoryType.categoryType(forIdentifier: categoryIdentifier) else {
-            throw MBHealthParserError.unableToAccess(categoryIdentifier.rawValue)
+            throw AuthorizationStatusError.unableToAccess(categoryIdentifier.rawValue)
         }
+        try checkSharingAuthorizationStatus(for: result)
+        try isDataStoreAvailable()
         return result
     }
     
-    static func unbox(correlationIdentifier: HKCorrelationTypeIdentifier) throws -> HKCorrelationType {
+    public static func unboxAndCheckIfAvailable(correlationIdentifier: HKCorrelationTypeIdentifier) throws -> HKCorrelationType {
         guard let result = HKCategoryType.correlationType(forIdentifier: correlationIdentifier) else {
-            throw MBHealthParserError.unableToAccess(correlationIdentifier.rawValue)
+            throw AuthorizationStatusError.unableToAccess(correlationIdentifier.rawValue)
         }
+        try checkSharingAuthorizationStatus(for: result)
+        try isDataStoreAvailable()
         return result
+    }
+    
+    public static func workoutTypeAndCheckIfAvailable() throws -> HKWorkoutType {
+        let workout = HKWorkoutType.workoutType()
+        try checkSharingAuthorizationStatus(for: workout)
+        try isDataStoreAvailable()
+        return workout
+    }
+    
+    // Shareable content checker
+    public static func checkSharingAuthorizationStatus(for type: HKObjectType) throws {
+        
+        switch healthStore.authorizationStatus(for: type) {
+        case .notDetermined:
+            throw AuthorizationStatusError.notDetermined(type.identifier)
+        case .sharingDenied:
+            throw AuthorizationStatusError.sharingDenied(type.identifier)
+        case .sharingAuthorized:
+            print("Success status for: \(type.identifier)")
+        @unknown default:
+            print("Unknown/New status for: \(type.identifier)")
+        }
     }
 }

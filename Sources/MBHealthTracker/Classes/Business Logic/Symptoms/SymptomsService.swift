@@ -19,8 +19,7 @@ private extension SymptomsService {
     func fetchGenericSymptomResult(categoryIdentifier: HKCategoryTypeIdentifier, handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
         
         // Confirm that the type and device works
-        let type = try MBHealthParser.unbox(categoryIdentifier: categoryIdentifier)
-        try isDataStoreAvailable()
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: categoryIdentifier)
         
         let query = HKSampleQuery(sampleType: type, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
@@ -57,8 +56,7 @@ extension SymptomsService: SymptomsServiceProtocol {
     public func appetiteChanges(handler: @escaping (MBAsyncCallResult<AppetiteChanges>) -> Void) throws {
             
             // Confirm that the type and device works
-            let appetiteChangesType = try MBHealthParser.unbox(categoryIdentifier: .appetiteChanges)
-            try isDataStoreAvailable()
+            let appetiteChangesType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .appetiteChanges)
             
             let query = HKSampleQuery(sampleType: appetiteChangesType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
                 

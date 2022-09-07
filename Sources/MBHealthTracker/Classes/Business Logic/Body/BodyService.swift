@@ -15,42 +15,27 @@ public class BodyService {
 
 extension BodyService: BodyServiceProtocol {
     
-    public func basalBodyTemperature(handler: @escaping (MBAsyncCallResult<BasalBodyTemperature>) -> Void) throws {
+    public func basalBodyTemperature() async throws -> BasalBodyTemperature {
         
         // Confirm that the type and device works
-        let basalBodyTempType = try MBHealthParser.unbox(quantityIdentifier: .basalBodyTemperature)
-        try isDataStoreAvailable()
+        let basalBodyTempType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .basalBodyTemperature)
         
-        let query = HKSampleQuery(sampleType: basalBodyTempType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
-            
-            guard error == nil else {
-                handler(.failed(error!))
-                return
-            }
-            
-            guard let quantitySamples = samples as? [HKQuantitySample] else {
-                handler(.failed(MBAsyncParsingError.unableToParse("BasalBodyTemperature log")))
-                return
-            }
-            
-            let items = quantitySamples.map { item -> BasalBodyTemperature.Info in
-                let celsius = item.quantity.doubleValue(for: .degreeCelsius())
-                let fahrenheit = item.quantity.doubleValue(for: .degreeFahrenheit())
-                return BasalBodyTemperature.Info(celsius: celsius, fahrenheit: fahrenheit, startDate: item.startDate, endDate: item.endDate)
-            }
-            
-            let model = BasalBodyTemperature(items: items)
-            handler(.success(model))
-        })
+        let queryDescriptor = HKSampleQueryDescriptor(predicates: [.quantitySample(type: basalBodyTempType)], sortDescriptors: [])
+        let samples = try await queryDescriptor.result(for: healthStore)
+        let items = samples.map { item -> BasalBodyTemperature.Info in
+            let celsius = item.quantity.doubleValue(for: .degreeCelsius())
+            let fahrenheit = item.quantity.doubleValue(for: .degreeFahrenheit())
+            return BasalBodyTemperature.Info(celsius: celsius, fahrenheit: fahrenheit, startDate: item.startDate, endDate: item.endDate)
+        }
         
-        healthStore.execute(query)
+        let model = BasalBodyTemperature(items: items)
+        return model
     }
     
     public func bodyFatPercentage(completionHandler: @escaping (MBAsyncCallResult<BodyFatPercentage>) -> Void) throws {
         
         // Confirm that the type and device works
-        let bodyFatPercentage = try MBHealthParser.unbox(quantityIdentifier: .bodyFatPercentage)
-        try isDataStoreAvailable()
+        let bodyFatPercentage = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyFatPercentage)
         
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
         
@@ -74,39 +59,29 @@ extension BodyService: BodyServiceProtocol {
         healthStore.execute(query)
     }
     
-    public func bodyMassIndex(completionHandler: @escaping (MBAsyncCallResult<BodyMassIndex>) -> Void) throws {
+    public func bodyMassIndex() async throws -> BodyMassIndex {
         
         // Confirm that the type and device works
-        let bodyMassIndex = try MBHealthParser.unbox(quantityIdentifier: .bodyMassIndex)
-        try isDataStoreAvailable()
+        let bodyMassIndexType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyMassIndex)
         
-        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
+        let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
         
-        let query = HKSampleQuery(sampleType: bodyMassIndex, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor]) { (query, results, error) in
-            
-            guard error == nil else {
-                completionHandler(.failed(error!))
-                return
-            }
-            
-            guard let result = results?.first as? HKQuantitySample  else {
-                completionHandler(.failed(MBAsyncParsingError.unableToParse("bodyMassIndex")))
-                return
-            }
-            
-            let value = result.quantity.doubleValue(for: HKUnit.count())
-            let bodyMassIndex = BodyMassIndex(value: value, date: result.endDate)
-            completionHandler(.success(bodyMassIndex))
+        let queryDescriptor = HKSampleQueryDescriptor(predicates: [.quantitySample(type: bodyMassIndexType)], sortDescriptors: [sortDescriptor])
+        let samples = try await queryDescriptor.result(for: healthStore)
+        
+        guard let result = samples.first else {
+            throw MBAsyncParsingError.unableToParse("bodyMassIndex")
         }
         
-        healthStore.execute(query)
+        let value = result.quantity.doubleValue(for: HKUnit.count())
+        let bodyMassIndex = BodyMassIndex(value: value, date: result.endDate)
+        return bodyMassIndex
     }
     
     public func bodyTemperature(handler: @escaping (MBAsyncCallResult<BodyTemperature>) -> Void) throws {
         
         // Confirm that the type and device works
-        let bodyTemperatureType = try MBHealthParser.unbox(quantityIdentifier: .bodyTemperature)
-        try isDataStoreAvailable()
+        let bodyTemperatureType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyTemperature)
         
         let query = HKSampleQuery(sampleType: bodyTemperatureType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
@@ -141,8 +116,7 @@ extension BodyService: BodyServiceProtocol {
     public func height(completionHandler: @escaping (MBAsyncCallResult<BodyHeight>) -> Void) throws {
         
         // Confirm that the type and device works
-        let height = try MBHealthParser.unbox(quantityIdentifier: .height)
-        try isDataStoreAvailable()
+        let height = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .height)
         
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
         
@@ -170,8 +144,7 @@ extension BodyService: BodyServiceProtocol {
     public func leanBodyMass(completionHandler: @escaping (MBAsyncCallResult<LeanBodyMass>) -> Void) throws {
         
         // Confirm that the type and device works
-        let leanBodyMass = try MBHealthParser.unbox(quantityIdentifier: .leanBodyMass)
-        try isDataStoreAvailable()
+        let leanBodyMass = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .leanBodyMass)
         
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
         
@@ -199,8 +172,7 @@ extension BodyService: BodyServiceProtocol {
     public func waistCircumference(completionHandler: @escaping (MBAsyncCallResult<WaistCircumference>) -> Void) throws {
         
         // Confirm that the type and device works
-        let waistCircumference = try MBHealthParser.unbox(quantityIdentifier: .waistCircumference)
-        try isDataStoreAvailable()
+        let waistCircumference = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .waistCircumference)
         
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
         
@@ -228,8 +200,7 @@ extension BodyService: BodyServiceProtocol {
     public func weight(completionHandler: @escaping (MBAsyncCallResult<BodyWeight>) -> Void) throws {
         
         // Confirm that the type and device works
-        let bodyWeight = try MBHealthParser.unbox(quantityIdentifier: .bodyMass)
-        try isDataStoreAvailable()
+        let bodyWeight = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyMass)
         
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
         
@@ -257,8 +228,7 @@ extension BodyService: BodyServiceProtocol {
     public func electrodermalActivity(completionHandler: @escaping (MBAsyncCallResult<ElectrodermalActivity>) -> Void) throws {
         
         // Confirm that the type and device works
-        let type = try MBHealthParser.unbox(quantityIdentifier: .electrodermalActivity)
-        try isDataStoreAvailable()
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .electrodermalActivity)
         
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
         

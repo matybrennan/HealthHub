@@ -86,7 +86,7 @@ public enum MBObjectType: SharableType, ReadableType {
     
     
     // Sleep
-    case sleep
+    case sleepAnalysis
     
     // Mindful
     case mindful
@@ -228,7 +228,7 @@ public enum MBObjectType: SharableType, ReadableType {
         case .caffeine: return HKQuantityType.quantityType(forIdentifier: .dietaryCaffeine)!
             
         // Sleep
-        case .sleep: return HKCategoryType.categoryType(forIdentifier: .sleepAnalysis)!
+        case .sleepAnalysis: return HKCategoryType.categoryType(forIdentifier: .sleepAnalysis)!
             
         // Mindful
         case .mindful: return HKCategoryType.categoryType(forIdentifier: .mindfulSession)!
@@ -371,7 +371,7 @@ public enum MBObjectType: SharableType, ReadableType {
         case .caffeine: return HKQuantityType.quantityType(forIdentifier: .dietaryCaffeine)!
             
         // Sleep
-        case .sleep: return HKCategoryType.categoryType(forIdentifier: .sleepAnalysis)!
+        case .sleepAnalysis: return HKCategoryType.categoryType(forIdentifier: .sleepAnalysis)!
             
         // Mindful
         case .mindful: return HKCategoryType.categoryType(forIdentifier: .mindfulSession)!

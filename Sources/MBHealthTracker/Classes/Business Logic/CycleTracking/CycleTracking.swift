@@ -19,8 +19,7 @@ private extension CycleTracking {
     func fetchGenericCycleResult(categoryIdentifier: HKCategoryTypeIdentifier, handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
         
         // Confirm that the type and device works
-        let type = try MBHealthParser.unbox(categoryIdentifier: categoryIdentifier)
-        try isDataStoreAvailable()
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: categoryIdentifier)
         
         let query = HKSampleQuery(sampleType: type, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
@@ -65,8 +64,7 @@ extension CycleTracking: CycleTrackingProtocol {
     public func cervicalMucusQuality(handler: @escaping (MBAsyncCallResult<CervicalMucusQuality>) -> Void) throws {
         
         // Confirm that the type and device works
-        let cervicalMucusQualityType = try MBHealthParser.unbox(categoryIdentifier: .cervicalMucusQuality)
-        try isDataStoreAvailable()
+        let cervicalMucusQualityType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .cervicalMucusQuality)
         
         let query = HKSampleQuery(sampleType: cervicalMucusQualityType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
@@ -96,8 +94,7 @@ extension CycleTracking: CycleTrackingProtocol {
     public func menstrualFlow(handler: @escaping (MBAsyncCallResult<MenstrualFlow>) -> Void) throws {
         
         // Confirm that the type and device works
-        let menstrualFlowType = try MBHealthParser.unbox(categoryIdentifier: .menstrualFlow)
-        try isDataStoreAvailable()
+        let menstrualFlowType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .menstrualFlow)
         
         let query = HKSampleQuery(sampleType: menstrualFlowType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
@@ -132,8 +129,7 @@ extension CycleTracking: CycleTrackingProtocol {
     public func ovulation(handler: @escaping (MBAsyncCallResult<Ovulation>) -> Void) throws {
         
         // Confirm that the type and device works
-        let ovulationType = try MBHealthParser.unbox(categoryIdentifier: .ovulationTestResult)
-        try isDataStoreAvailable()
+        let ovulationType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .ovulationTestResult)
         
         let query = HKSampleQuery(sampleType: ovulationType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
@@ -162,8 +158,7 @@ extension CycleTracking: CycleTrackingProtocol {
     public func sexualActivity(handler: @escaping (MBAsyncCallResult<SexualActivity>) -> Void) throws {
         
         // Confirm that the type and device works
-        let sexualActivityType = try MBHealthParser.unbox(categoryIdentifier: .sexualActivity)
-        try isDataStoreAvailable()
+        let sexualActivityType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .sexualActivity)
         
         let query = HKSampleQuery(sampleType: sexualActivityType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
@@ -194,8 +189,7 @@ extension CycleTracking: CycleTrackingProtocol {
     public func spotting(handler: @escaping (MBAsyncCallResult<Spotting>) -> Void) throws {
         
         // Confirm that the type and device works
-        let spottingType = try MBHealthParser.unbox(categoryIdentifier: .intermenstrualBleeding)
-        try isDataStoreAvailable()
+        let spottingType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .intermenstrualBleeding)
         
         let query = HKSampleQuery(sampleType: spottingType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             

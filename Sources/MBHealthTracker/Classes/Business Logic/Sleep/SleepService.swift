@@ -19,8 +19,7 @@ extension SleepService: SleepServiceProtocol {
     public func getSleep(completionHandler: @escaping (MBAsyncCallResult<Sleep>) -> Void) throws {
         
         // Confirm that the type and device works
-        try isDataStoreAvailable()
-        let sleepType = MBObjectType.sleep.readable as! HKSampleType
+        let sleepType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .sleepAnalysis)
         
         let query = HKSampleQuery(sampleType: sleepType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { (query, samples, error) in
             
@@ -51,10 +50,9 @@ extension SleepService: SleepServiceProtocol {
     
     public func save(sleep: Sleep.Info, extra: [String : Any]?, completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws {
         
-        try checkSharingAuthorizationStatus(for: MBObjectType.sleep.sharable)
-        try isDataStoreAvailable()
+        let sleepType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .sleepAnalysis)
         
-        let sampleObj = HKCategorySample(type: MBObjectType.sleep.sharable as! HKCategoryType, value: sleep.style.rawValue, start: sleep.startDate, end: sleep.endDate, metadata: extra)
+        let sampleObj = HKCategorySample(type: sleepType, value: sleep.style.rawValue, start: sleep.startDate, end: sleep.endDate, metadata: extra)
         
         healthStore.save(sampleObj) { (status, error) in
             if let error = error {

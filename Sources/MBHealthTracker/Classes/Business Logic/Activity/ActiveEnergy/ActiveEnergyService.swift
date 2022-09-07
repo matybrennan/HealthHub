@@ -19,8 +19,7 @@ extension ActiveEnergyService: ActiveEnergyServiceProtocol {
     public func getActiveEnergy(from type: ActiveEnergyType, completionHandler: @escaping (MBAsyncCallResult<ActiveEnergy>) -> Void) throws {
         
         // Confirm that the type and device works
-        let activeEnergyType = try MBHealthParser.unbox(quantityIdentifier: .activeEnergyBurned)
-        try isDataStoreAvailable()
+        let activeEnergyType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .activeEnergyBurned)
         
         var pred: NSPredicate
         

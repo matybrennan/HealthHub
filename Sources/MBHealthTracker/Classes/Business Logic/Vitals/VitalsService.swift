@@ -19,8 +19,7 @@ extension VitalsService: VitalsServiceProtocol {
     public func bloodGlucose(completionHandler: @escaping (MBAsyncCallResult<BloodGlucose>) -> Void) throws {
         
         // Confirm that the type and device works
-        let bloodGlucoseType = try MBHealthParser.unbox(quantityIdentifier: .bloodGlucose)
-        try isDataStoreAvailable()
+        let bloodGlucoseType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bloodGlucose)
         
         let query = HKSampleQuery(sampleType: bloodGlucoseType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
@@ -51,10 +50,9 @@ extension VitalsService: VitalsServiceProtocol {
     public func bloodPressure(completionHandler: @escaping (MBAsyncCallResult<BloodPressure>) -> Void) throws {
         
         // Confirm that the type and device works
-        let bloodPressureSystolicType = try MBHealthParser.unbox(quantityIdentifier: .bloodPressureSystolic)
-        let bloodPressureDiastolicType = try MBHealthParser.unbox(quantityIdentifier: .bloodPressureDiastolic)
-        let bloodPressureType = try MBHealthParser.unbox(correlationIdentifier: .bloodPressure)
-        try isDataStoreAvailable()
+        let bloodPressureSystolicType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bloodPressureSystolic)
+        let bloodPressureDiastolicType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bloodPressureDiastolic)
+        let bloodPressureType = try MBHealthParser.unboxAndCheckIfAvailable(correlationIdentifier: .bloodPressure)
         
         let query = HKSampleQuery(sampleType: bloodPressureType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
@@ -88,8 +86,7 @@ extension VitalsService: VitalsServiceProtocol {
     public func bloodOxygen(completionHandler: @escaping (MBAsyncCallResult<BloodOxygen>) -> Void) throws {
         
         // Confirm that the type and device works
-        let bloodOxygenType = try MBHealthParser.unbox(quantityIdentifier: .oxygenSaturation)
-        try isDataStoreAvailable()
+        let bloodOxygenType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .oxygenSaturation)
         
         let query = HKSampleQuery(sampleType: bloodOxygenType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             

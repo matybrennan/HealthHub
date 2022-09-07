@@ -27,13 +27,23 @@ final class ViewInteractor {
 extension ViewInteractor: ViewInteractorProtocol {
     
     func configurePermissions() {
-        healthTracker.configuration.requestAuthorization(toShare: []
-                                                        ,toRead: [MBObjectType.toothBrushing, MBObjectType.uvExposure]) { _ in }
+        healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.respiratoryRate]
+                                                        ,toRead: [MBObjectType.respiratoryRate]) { _ in }
     }
     
     func runTest() {
-        try? healthTracker.otherData.uvExposure(handler: { res in
-            print(res)
-        })
+        
+        Task {
+            do {
+                let respiratoryRate = try await healthTracker.respiratory.respiratoryRate()
+                print("respiratoryRate: \(respiratoryRate)")
+                let bodyMassIndex = try await healthTracker.body.bodyMassIndex()
+                print("bodyMassIndex: \(bodyMassIndex)")
+                let res = try await healthTracker.body.basalBodyTemperature()
+                print("res: \(res)")
+            } catch {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
     }
 }

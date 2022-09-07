@@ -23,8 +23,7 @@ extension StepsService: StepsServiceProtocol {
     public func getSteps(fromStepsType type: StepsType, completionHandler: @escaping (MBAsyncCallResult<Steps>) -> Void) throws {
         
         // Confirm that the type and device works
-        let stepCountType = try MBHealthParser.unbox(quantityIdentifier: .stepCount)
-        try isDataStoreAvailable()
+        let stepCountType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .stepCount)
         
         var query: HKQuery!
         

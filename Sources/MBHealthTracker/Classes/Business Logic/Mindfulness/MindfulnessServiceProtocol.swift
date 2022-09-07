@@ -9,6 +9,6 @@ import Foundation
 
 public protocol MindfulnessServiceProtocol: AnyObject {
     
-    func getMindfulActivity(completionHandler: @escaping (MBAsyncCallResult<Mindful>) -> Void) throws
-    func save(mindful: Mindful.Info, extra: [String : Any]?, completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws
+    func mindfulActivity() async throws -> Mindful
+    func save(mindful: Mindful.Info, extra: [String : Any]?) async throws
 }

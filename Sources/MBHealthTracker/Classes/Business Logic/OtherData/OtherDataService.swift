@@ -18,8 +18,7 @@ extension OtherDataService: OtherDataServiceProtocol {
     
     public func alcoholConsumption(handler: @escaping (MBAsyncCallResult<AlcoholConsumption>) -> Void) throws {
         // Confirm that the type and device works
-        let alcoholConsumptionType = try MBHealthParser.unbox(quantityIdentifier: .numberOfAlcoholicBeverages)
-        try isDataStoreAvailable()
+        let alcoholConsumptionType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .numberOfAlcoholicBeverages)
         
         let query = HKSampleQuery(sampleType: alcoholConsumptionType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
@@ -46,8 +45,7 @@ extension OtherDataService: OtherDataServiceProtocol {
     }
     
     public func alcoholContent(handler: @escaping (MBAsyncCallResult<AlcoholContent>) -> Void) throws {
-        let alcoholContentType = try MBHealthParser.unbox(quantityIdentifier: .bloodAlcoholContent)
-        try isDataStoreAvailable()
+        let alcoholContentType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bloodAlcoholContent)
         
         let query = HKSampleQuery(sampleType: alcoholContentType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
@@ -74,8 +72,7 @@ extension OtherDataService: OtherDataServiceProtocol {
     }
     
     public func handWashing(handler: @escaping (MBAsyncCallResult<HandWashing>) -> Void) throws {
-        let handWashingType = try MBHealthParser.unbox(categoryIdentifier: .handwashingEvent)
-        try isDataStoreAvailable()
+        let handWashingType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .handwashingEvent)
         
         let query = HKSampleQuery(sampleType: handWashingType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
@@ -103,8 +100,7 @@ extension OtherDataService: OtherDataServiceProtocol {
     
     public func inhalerUsage(handler: @escaping (MBAsyncCallResult<InhalerUsage>) -> Void) throws {
         
-        let inhalerUsageType = try MBHealthParser.unbox(quantityIdentifier: .inhalerUsage)
-        try isDataStoreAvailable()
+        let inhalerUsageType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .inhalerUsage)
         
         let query = HKSampleQuery(sampleType: inhalerUsageType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
@@ -132,8 +128,7 @@ extension OtherDataService: OtherDataServiceProtocol {
     
     public func insulinDelivery(handler: @escaping (MBAsyncCallResult<InsulinDelivery>) -> Void) throws {
         
-        let insulinDeliveryType = try MBHealthParser.unbox(quantityIdentifier: .insulinDelivery)
-        try isDataStoreAvailable()
+        let insulinDeliveryType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .insulinDelivery)
         
         let query = HKSampleQuery(sampleType: insulinDeliveryType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
@@ -164,8 +159,7 @@ extension OtherDataService: OtherDataServiceProtocol {
     
     public func numberOfTimesFallen(handler: @escaping (MBAsyncCallResult<NumberOfTimesFallen>) -> Void) throws {
         
-        let numberOfTimesFallenType = try MBHealthParser.unbox(quantityIdentifier: .numberOfTimesFallen)
-        try isDataStoreAvailable()
+        let numberOfTimesFallenType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .numberOfTimesFallen)
         
         let query = HKSampleQuery(sampleType: numberOfTimesFallenType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
@@ -193,8 +187,7 @@ extension OtherDataService: OtherDataServiceProtocol {
     
     public func toothBrushing(handler: @escaping (MBAsyncCallResult<ToothBrushing>) -> Void) throws {
         
-        let toothBrushingType = try MBHealthParser.unbox(categoryIdentifier: .toothbrushingEvent)
-        try isDataStoreAvailable()
+        let toothBrushingType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .toothbrushingEvent)
         
         let query = HKSampleQuery(sampleType: toothBrushingType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             
@@ -222,8 +215,7 @@ extension OtherDataService: OtherDataServiceProtocol {
     
     public func uvExposure(handler: @escaping (MBAsyncCallResult<UVExposure>) -> Void) throws {
         
-        let uvExposureType = try MBHealthParser.unbox(quantityIdentifier: .uvExposure)
-        try isDataStoreAvailable()
+        let uvExposureType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .uvExposure)
         
         let query = HKSampleQuery(sampleType: uvExposureType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
             

@@ -19,7 +19,7 @@ extension NutritionService: NutritionServiceProtocol {
     public func getNutrition(fromType type: NutritionType, completionHandler: @escaping (MBAsyncCallResult<Nutrition>) -> Void) throws {
         
         // Confirm that the type and device works
-        try isDataStoreAvailable()
+        let _ = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: HKQuantityTypeIdentifier(rawValue: type.value.identifier))
         let unitToUse = getNutritionUnitMeasure(from: type)
         
         let query = HKSampleQuery(sampleType: type.value, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { (query, samples, error) in
@@ -48,11 +48,10 @@ extension NutritionService: NutritionServiceProtocol {
     
     public func save(nutrition: Nutrition.Info, extra: [String : Any]?, completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws {
         
-        try checkSharingAuthorizationStatus(for: nutrition.type)
-        try isDataStoreAvailable()
+        let nutritionType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: HKQuantityTypeIdentifier(rawValue: nutrition.type.identifier))
         
         let quantity = HKQuantity(unit: HKUnit(from: nutrition.unit), doubleValue: nutrition.value)
-        let nutritionObj = HKQuantitySample.init(type: nutrition.type, quantity: quantity, start: nutrition.startDate, end: nutrition.endDate, metadata: extra)
+        let nutritionObj = HKQuantitySample.init(type: nutritionType, quantity: quantity, start: nutrition.startDate, end: nutrition.endDate, metadata: extra)
         
         healthStore.save(nutritionObj) { (status, error) in
             if let error = error {

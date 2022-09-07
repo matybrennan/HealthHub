@@ -12,11 +12,15 @@ final class ViewController: UIViewController {
 
     var interactor: ViewInteractorProtocol!
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        interactor.configurePermissions()
+        interactor.runTest()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        interactor.configurePermissions()
-        interactor.runTest()
     }
 }
 

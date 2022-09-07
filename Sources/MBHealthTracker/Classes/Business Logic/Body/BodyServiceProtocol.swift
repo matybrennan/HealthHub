@@ -9,9 +9,9 @@ import Foundation
 
 public protocol BodyServiceProtocol: AnyObject {
     
-    func basalBodyTemperature(handler: @escaping (MBAsyncCallResult<BasalBodyTemperature>) -> Void) throws
+    func basalBodyTemperature() async throws -> BasalBodyTemperature
     func bodyFatPercentage(completionHandler: @escaping (MBAsyncCallResult<BodyFatPercentage>) -> Void) throws
-    func bodyMassIndex(completionHandler: @escaping (MBAsyncCallResult<BodyMassIndex>) -> Void) throws
+    func bodyMassIndex() async throws -> BodyMassIndex
     func bodyTemperature(handler: @escaping (MBAsyncCallResult<BodyTemperature>) -> Void) throws
     func height(completionHandler: @escaping (MBAsyncCallResult<BodyHeight>) -> Void) throws
     func leanBodyMass(completionHandler: @escaping (MBAsyncCallResult<LeanBodyMass>) -> Void) throws
