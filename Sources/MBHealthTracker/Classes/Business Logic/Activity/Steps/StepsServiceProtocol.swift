@@ -28,5 +28,5 @@ public enum StepsType {
 
 public protocol StepsServiceProtocol {
     
-    func getSteps(fromStepsType type: StepsType, completionHandler: @escaping (MBAsyncCallResult<Steps>) -> Void) throws
+    func steps(fromStepsType type: StepsType, completionHandler: @escaping (MBAsyncCallResult<Steps>) -> Void) throws
 }

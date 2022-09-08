@@ -66,13 +66,13 @@ let myService = MyService(configuration: configuration)
 ```var configuration: ConfigurationServiceProtocol```
 
 ### Sleep
-- getting sleep
+- sleep
 - saving sleep item
 
 ```var sleep: SleepServiceProtocol```
 
 ### Mindfulness
-- getting mindful sessions
+- mindful sessions
 - saving mindful item
 
 ```var mindful: MindfulnessServiceProtocol```
@@ -113,7 +113,7 @@ Split into sections to gather data based on timeIntervals
 
 #### Workouts
 - saveWorkoutItem
-- getWorkouts
+- workouts
 - today, thisWeek, all
 
 ```var workout: WorkoutManagerProtocol```

@@ -37,16 +37,16 @@ extension ActivityManager: ActivityManagerProtocol {
     
     /// handles gathering logic about active energy burned from healthstore
     public var activeEnergy: ActiveEnergyServiceProtocol {
-        return activeEnergyService
+        activeEnergyService
     }
     
     /// handles gathering logic from healthKit regarding stepCount details
     public var steps: StepsServiceProtocol {
-        return privateSteps
+        privateSteps
     }
     
     /// handles gathering logic from healthKit regarding workouts
     public var workout: WorkoutManagerProtocol {
-        return privateWorkout
+        privateWorkout
     }
 }

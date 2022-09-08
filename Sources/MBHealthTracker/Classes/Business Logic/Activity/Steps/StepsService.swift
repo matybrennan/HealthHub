@@ -20,7 +20,7 @@ public class StepsService {
 
 extension StepsService: StepsServiceProtocol {
     
-    public func getSteps(fromStepsType type: StepsType, completionHandler: @escaping (MBAsyncCallResult<Steps>) -> Void) throws {
+    public func steps(fromStepsType type: StepsType, completionHandler: @escaping (MBAsyncCallResult<Steps>) -> Void) throws {
         
         // Confirm that the type and device works
         let stepCountType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .stepCount)

@@ -18,12 +18,13 @@ public class WorkoutReadService {
     public init() { }
 }
 
+// MARK: - FetchWorkoutSample
+extension WorkoutReadService: FetchWorkoutSample { }
+
+// MARK: - WorkoutReadServiceProtocol
 extension WorkoutReadService: WorkoutReadServiceProtocol {
     
-    public func getWorkouts(fromWorkoutType type: WorkoutType, completionHandler: @escaping (MBAsyncCallResult<MBWorkout>) -> Void) throws {
-        
-        // Confirm that the type and device works
-        let workout = try MBHealthParser.workoutTypeAndCheckIfAvailable()
+    public func workouts(fromWorkoutType type: WorkoutType) async throws -> MBWorkout {
         
         var pred: NSPredicate?
         
@@ -35,32 +36,12 @@ extension WorkoutReadService: WorkoutReadServiceProtocol {
         case .all:
             pred = nil
         }
-        
-        let query = HKSampleQuery(sampleType: workout, predicate: pred, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (query, samples, error) in
-            self.configure(query: query, samples: samples, error: error, completionHandler: completionHandler)
-        })
-        
-        healthStore.execute(query)
-    }
-}
-
-private extension WorkoutReadService {
-    
-    func configure(query: HKSampleQuery, samples: [HKSample]?, error: Error?, completionHandler: @escaping (MBAsyncCallResult<MBWorkout>) -> Void) {
-        
-        guard error == nil else {
-            completionHandler(.failed(error!))
-            return
+        let samples = try await fetchWorkoutSamples(workoutIdentifier: .workoutType(), predicate: pred, sortDescriptors: [], limit: nil)
+        let workoutItems = samples.map {
+            MBWorkout.Item(duration: $0.duration, energyBurned: $0.totalEnergyBurned?.doubleValue(for: Unit.workoutEnergy) ?? 0, distance: $0.totalDistance?.doubleValue(for: Unit.workoutDistance) ?? 0, startDate: $0.startDate, endDate: $0.endDate, activityType: $0.workoutActivityType)
         }
-        
-        guard let workoutSamples = samples as? [HKWorkout] else {
-            completionHandler(.failed(MBAsyncParsingError.unableToParse("Workout log")))
-            return
-        }
-        
-        let workoutItems = workoutSamples.map { MBWorkout.Item(duration: $0.duration, energyBurned: $0.totalEnergyBurned?.doubleValue(for: Unit.workoutEnergy) ?? 0, distance: $0.totalDistance?.doubleValue(for: Unit.workoutDistance) ?? 0, startDate: $0.startDate, endDate: $0.endDate, activityType: $0.workoutActivityType)  }
         
         let workout = MBWorkout(items: workoutItems)
-        completionHandler(.success(workout))
+        return workout
     }
 }

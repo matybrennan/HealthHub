@@ -13,16 +13,14 @@ public class RespiratoryService {
     public init() { }
 }
 
+// MARK: - FetchQuantitySample
+extension RespiratoryService: FetchQuantitySample { }
+
 // MARK: - RespiratoryServiceProtocol
 extension RespiratoryService: RespiratoryServiceProtocol {
     
     public func respiratoryRate() async throws -> RespiratoryRate {
-        
-        // Confirm that the type and device works
-        let respiratoryRateType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .respiratoryRate)
-        
-        let descriptorQuery = HKSampleQueryDescriptor(predicates: [.quantitySample(type: respiratoryRateType)], sortDescriptors: [])
-        let samples = try await descriptorQuery.result(for: healthStore)
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .respiratoryRate)
         let items = samples.map { item -> RespiratoryRate.Info in
             let value = item.quantity.doubleValue(for: HKUnit(from: "count/min"))
             return RespiratoryRate.Info(value: value, startDate: item.startDate, endDate: item.endDate)

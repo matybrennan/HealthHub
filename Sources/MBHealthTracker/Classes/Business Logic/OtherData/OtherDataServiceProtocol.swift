@@ -9,12 +9,12 @@ import Foundation
 
 public protocol OtherDataServiceProtocol: AnyObject {
     
-    func alcoholConsumption(handler: @escaping (MBAsyncCallResult<AlcoholConsumption>) -> Void) throws
-    func alcoholContent(handler: @escaping (MBAsyncCallResult<AlcoholContent>) -> Void) throws
-    func handWashing(handler: @escaping (MBAsyncCallResult<HandWashing>) -> Void) throws
-    func inhalerUsage(handler: @escaping (MBAsyncCallResult<InhalerUsage>) -> Void) throws
-    func insulinDelivery(handler: @escaping (MBAsyncCallResult<InsulinDelivery>) -> Void) throws
-    func numberOfTimesFallen(handler: @escaping (MBAsyncCallResult<NumberOfTimesFallen>) -> Void) throws
-    func toothBrushing(handler: @escaping (MBAsyncCallResult<ToothBrushing>) -> Void) throws
-    func uvExposure(handler: @escaping (MBAsyncCallResult<UVExposure>) -> Void) throws
+    func alcoholConsumption() async throws -> AlcoholConsumption
+    func alcoholContent() async throws -> AlcoholContent
+    func handWashing() async throws -> HandWashing
+    func inhalerUsage() async throws -> InhalerUsage
+    func insulinDelivery() async throws -> InsulinDelivery
+    func numberOfTimesFallen() async throws -> NumberOfTimesFallen
+    func toothBrushing() async throws -> ToothBrushing
+    func uvExposure() async throws -> UVExposure
 }

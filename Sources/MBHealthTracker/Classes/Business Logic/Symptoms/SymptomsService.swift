@@ -13,197 +13,164 @@ public class SymptomsService {
     public init() { }
 }
 
+// MARK: - FetchQuantitySample
+extension SymptomsService: FetchCategorySample { }
+
 // MARK: - Private methods
 private extension SymptomsService {
     
-    func fetchGenericSymptomResult(categoryIdentifier: HKCategoryTypeIdentifier, handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
+    func fetchGenericSymptomResult(categoryIdentifier: HKCategoryTypeIdentifier) async throws -> GenericSymptomModel {
+        let samples = try await fetchCategorySamples(categoryIdentifier: categoryIdentifier)
+        let items = samples.map { item -> GenericSymptomModel.Item in
+            let style = GenericSymptomModel.Item.Style(rawValue: item.value) ?? .notPresent
+            return GenericSymptomModel.Item(style: style, startDate: item.startDate, endDate: item.endDate)
+        }
         
-        // Confirm that the type and device works
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: categoryIdentifier)
-        
-        let query = HKSampleQuery(sampleType: type, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
-            
-            guard error == nil else {
-                handler(.failed(error!))
-                return
-            }
-            
-            guard let quantitySamples = samples as? [HKCategorySample] else {
-                handler(.failed(MBAsyncParsingError.unableToParse("\(type.identifier) log")))
-                return
-            }
-            
-            let items = quantitySamples.map { item -> GenericSymptomModel.Item in
-                let style = GenericSymptomModel.Item.Style(rawValue: item.value) ?? .notPresent
-                return GenericSymptomModel.Item(style: style, startDate: item.startDate, endDate: item.endDate)
-            }
-            
-            let model = GenericSymptomModel(items: items)
-            handler(.success(model))
-        })
-        
-        healthStore.execute(query)
+        let model = GenericSymptomModel(items: items)
+        return model
     }
 }
 
 // MARK: - SymptomsServiceProtocol
 extension SymptomsService: SymptomsServiceProtocol {
     
-    public func acne(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .acne, handler: handler)
+    public func acne() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .acne)
     }
     
-    public func appetiteChanges(handler: @escaping (MBAsyncCallResult<AppetiteChanges>) -> Void) throws {
-            
-            // Confirm that the type and device works
-            let appetiteChangesType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .appetiteChanges)
-            
-            let query = HKSampleQuery(sampleType: appetiteChangesType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
-                
-                guard error == nil else {
-                    handler(.failed(error!))
-                    return
-                }
-                
-                guard let quantitySamples = samples as? [HKCategorySample] else {
-                    handler(.failed(MBAsyncParsingError.unableToParse("appetiteChanges log")))
-                    return
-                }
-                
-                let items = quantitySamples.map { item -> AppetiteChanges.Item in
-                    let type = AppetiteChanges.Item.AppetiteChangesType(rawValue: item.value) ?? .noChange
-                    return AppetiteChanges.Item(type: type, startDate: item.startDate, endDate: item.endDate)
-                }
-                
-                let model = AppetiteChanges(items: items)
-                handler(.success(model))
-            })
-            
-            healthStore.execute(query)
+    public func appetiteChanges() async throws -> AppetiteChanges {
+        let samples = try await fetchCategorySamples(categoryIdentifier: .appetiteChanges)
+        let items = samples.map { item -> AppetiteChanges.Item in
+            let type = AppetiteChanges.Item.AppetiteChangesType(rawValue: item.value) ?? .noChange
+            return AppetiteChanges.Item(type: type, startDate: item.startDate, endDate: item.endDate)
+        }
+        
+        let model = AppetiteChanges(items: items)
+        return model
     }
     
-    public func bladderIncontinence(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .bladderIncontinence, handler: handler)
+    public func bladderIncontinence() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .bladderIncontinence)
     }
     
-    public func bodyAndMuscleAche(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .generalizedBodyAche, handler: handler)
+    public func bodyAndMuscleAche() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .generalizedBodyAche)
     }
     
-    public func chestTightnessOrPain(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .chestTightnessOrPain, handler: handler)
+    public func chestTightnessOrPain() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .chestTightnessOrPain)
     }
     
-    public func chills(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .chills, handler: handler)
+    public func chills() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .chills)
     }
     
-    public func congestion(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .sinusCongestion, handler: handler)
+    public func congestion() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .sinusCongestion)
     }
     
-    public func constipation(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .constipation, handler: handler)
+    public func constipation() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .constipation)
     }
     
-    public func coughing(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .coughing, handler: handler)
+    public func coughing() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .coughing)
     }
     
-    public func diarrhea(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .diarrhea, handler: handler)
+    public func diarrhea() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .diarrhea)
     }
     
-    public func drySkin(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .drySkin, handler: handler)
+    public func drySkin() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .drySkin)
     }
     
-    public func fainting(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .fainting, handler: handler)
+    public func fainting() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .fainting)
     }
     
-    public func fatigue(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .fatigue, handler: handler)
+    public func fatigue() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .fatigue)
     }
     
-    public func fever(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .fever, handler: handler)
+    public func fever() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .fever)
     }
     
-    public func hairLoss(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .hairLoss, handler: handler)
+    public func hairLoss() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .hairLoss)
     }
     
-    public func headache(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .headache, handler: handler)
+    public func headache() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .headache)
     }
     
-    public func heartBurn(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .heartburn, handler: handler)
+    public func heartBurn() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .heartburn)
     }
     
-    public func hotFlushes(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .hotFlashes, handler: handler)
+    public func hotFlushes() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .hotFlashes)
     }
     
-    public func lossOfSmell(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .lossOfSmell, handler: handler)
+    public func lossOfSmell() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .lossOfSmell)
     }
     
-    public func lossOfTaste(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .lossOfTaste, handler: handler)
+    public func lossOfTaste() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .lossOfTaste)
     }
     
-    public func lowerBackPain(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .lowerBackPain, handler: handler)
+    public func lowerBackPain() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .lowerBackPain)
     }
     
-    public func memoryLapse(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .memoryLapse, handler: handler)
+    public func memoryLapse() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .memoryLapse)
     }
     
-    public func nausea(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .nausea, handler: handler)
+    public func nausea() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .nausea)
     }
     
-    public func nightSweats(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .nightSweats, handler: handler)
+    public func nightSweats() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .nightSweats)
     }
     
-    public func pelvicPain(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .pelvicPain, handler: handler)
+    public func pelvicPain() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .pelvicPain)
     }
     
-    public func rapidPoundingOrFlutteringHeartbeat(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .rapidPoundingOrFlutteringHeartbeat, handler: handler)
+    public func rapidPoundingOrFlutteringHeartbeat() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .rapidPoundingOrFlutteringHeartbeat)
     }
     
-    public func runnyNose(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .runnyNose, handler: handler)
+    public func runnyNose() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .runnyNose)
     }
     
-    public func shortnessOfBreath(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .shortnessOfBreath, handler: handler)
+    public func shortnessOfBreath() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .shortnessOfBreath)
     }
     
-    public func skippedHeartbeat(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .skippedHeartbeat, handler: handler)
+    public func skippedHeartbeat() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .skippedHeartbeat)
     }
     
-    public func sleepChanges(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .sleepChanges, handler: handler)
+    public func sleepChanges() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .sleepChanges)
     }
     
-    public func soreThroat(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .soreThroat, handler: handler)
+    public func soreThroat() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .soreThroat)
     }
     
-    public func vomiting(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .vomiting, handler: handler)
+    public func vomiting() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .vomiting)
     }
     
-    public func wheezing(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws {
-        try fetchGenericSymptomResult(categoryIdentifier: .wheezing, handler: handler)
+    public func wheezing() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .wheezing)
     }
 }
 

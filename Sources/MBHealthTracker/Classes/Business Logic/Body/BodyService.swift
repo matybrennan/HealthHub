@@ -13,23 +13,15 @@ public class BodyService {
     public init() { }
 }
 
-// MARK: Private methods
-private extension BodyService {
-    
-    func fetchBodyQuantitySamples(quantityIdentifier: HKQuantityTypeIdentifier, sortDescriptors: [SortDescriptor<HKQuantitySample>] = [], limit: Int? = nil) async throws -> [HKQuantitySample] {
-        let quantityType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: quantityIdentifier)
-        let queryDescriptor = HKSampleQueryDescriptor(predicates: [.quantitySample(type: quantityType)], sortDescriptors: sortDescriptors, limit: limit)
-        let samples = try await queryDescriptor.result(for: healthStore)
-        return samples
-    }
-}
+// MARK: - FetchQuantitySample
+extension BodyService: FetchQuantitySample { }
 
 // MARK: - BodyServiceProtocol
 extension BodyService: BodyServiceProtocol {
     
     public func basalBodyTemperature() async throws -> BasalBodyTemperature {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchBodyQuantitySamples(quantityIdentifier: .basalBodyTemperature, sortDescriptors: [sortDescriptor])
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .basalBodyTemperature, sortDescriptors: [sortDescriptor])
         
         let items = samples.map { item -> BasalBodyTemperature.Item in
             let celsius = item.quantity.doubleValue(for: .degreeCelsius())
@@ -43,7 +35,7 @@ extension BodyService: BodyServiceProtocol {
     
     public func bodyFatPercentage() async throws -> BodyFatPercentage {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchBodyQuantitySamples(quantityIdentifier: .bodyFatPercentage, sortDescriptors: [sortDescriptor])
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .bodyFatPercentage, sortDescriptors: [sortDescriptor])
         
         let items = samples.map { item -> BodyFatPercentage.Item in
             let value = item.quantity.doubleValue(for: HKUnit.percent()) * 100
@@ -56,7 +48,7 @@ extension BodyService: BodyServiceProtocol {
     
     public func bodyMassIndex() async throws -> BodyMassIndex {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchBodyQuantitySamples(quantityIdentifier: .bodyMassIndex, sortDescriptors: [sortDescriptor])
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .bodyMassIndex, sortDescriptors: [sortDescriptor])
         
         let items = samples.map { item -> BodyMassIndex.Item in
             let value = item.quantity.doubleValue(for: HKUnit.count())
@@ -69,7 +61,7 @@ extension BodyService: BodyServiceProtocol {
     
     public func bodyTemperature() async throws -> BodyTemperature {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchBodyQuantitySamples(quantityIdentifier: .bodyTemperature, sortDescriptors: [sortDescriptor])
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .bodyTemperature, sortDescriptors: [sortDescriptor])
         
         let items = samples.map { item -> BodyTemperature.Item in
             let celsius = item.quantity.doubleValue(for: .degreeCelsius())
@@ -83,7 +75,7 @@ extension BodyService: BodyServiceProtocol {
     
     public func height() async throws -> BodyHeight {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchBodyQuantitySamples(quantityIdentifier: .height, sortDescriptors: [sortDescriptor])
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .height, sortDescriptors: [sortDescriptor])
         
         let items = samples.map { item -> BodyHeight.Item in
             let inches = Int(item.quantity.doubleValue(for: HKUnit.init(from: .inch)))
@@ -97,7 +89,7 @@ extension BodyService: BodyServiceProtocol {
     
     public func leanBodyMass() async throws -> LeanBodyMass {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchBodyQuantitySamples(quantityIdentifier: .leanBodyMass, sortDescriptors: [sortDescriptor])
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .leanBodyMass, sortDescriptors: [sortDescriptor])
         
         let items = samples.map { item -> LeanBodyMass.Item in
             let leanBodyMassKg = item.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo))
@@ -111,7 +103,7 @@ extension BodyService: BodyServiceProtocol {
     
     public func waistCircumference() async throws -> WaistCircumference {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchBodyQuantitySamples(quantityIdentifier: .waistCircumference, sortDescriptors: [sortDescriptor])
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .waistCircumference, sortDescriptors: [sortDescriptor])
         
         let items = samples.map { item -> WaistCircumference.Item in
             let inches = Int(item.quantity.doubleValue(for: HKUnit.init(from: .inch)))
@@ -125,7 +117,7 @@ extension BodyService: BodyServiceProtocol {
     
     public func weight() async throws -> BodyWeight {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchBodyQuantitySamples(quantityIdentifier: .bodyMass, sortDescriptors: [sortDescriptor])
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .bodyMass, sortDescriptors: [sortDescriptor])
         
         let items = samples.map { item -> BodyWeight.Item in
             let bodyMassKg = item.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo))
@@ -139,7 +131,7 @@ extension BodyService: BodyServiceProtocol {
     
     public func electrodermalActivity() async throws -> ElectrodermalActivity {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchBodyQuantitySamples(quantityIdentifier: .electrodermalActivity, sortDescriptors: [sortDescriptor])
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .electrodermalActivity, sortDescriptors: [sortDescriptor])
         
         let items = samples.map { item -> ElectrodermalActivity.Item in
             let value = item.quantity.doubleValue(for: HKUnit.siemenUnit(with: .micro))

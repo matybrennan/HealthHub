@@ -13,16 +13,15 @@ public class ActiveEnergyService {
     public init() { }
 }
 
+// MARK: - FetchQuantitySample
+extension ActiveEnergyService: FetchQuantitySample { }
+
+
 // MARK: - ActiveEnergyServiceProtocol
 extension ActiveEnergyService: ActiveEnergyServiceProtocol {
     
-    public func getActiveEnergy(from type: ActiveEnergyType, completionHandler: @escaping (MBAsyncCallResult<ActiveEnergy>) -> Void) throws {
-        
-        // Confirm that the type and device works
-        let activeEnergyType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .activeEnergyBurned)
-        
+    public func activeEnergy(from type: ActiveEnergyType) async throws -> ActiveEnergy {
         var pred: NSPredicate
-        
         switch type {
         case .today:
             pred = try NSPredicate.today()
@@ -32,35 +31,12 @@ extension ActiveEnergyService: ActiveEnergyServiceProtocol {
             pred = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
         }
         
-        let query = HKSampleQuery(sampleType: activeEnergyType, predicate: pred, limit: HKObjectQueryNoLimit, sortDescriptors: nil, resultsHandler: { (sampleQuery, samples, error) in
-            
-            self.configure(query: sampleQuery, samples: samples, error: error, completionHandler: completionHandler)
-        })
-        
-        healthStore.execute(query)
-    }
-}
-
-// MARK: - Private methods
-private extension ActiveEnergyService {
-    
-    func configure(query: HKSampleQuery, samples: [HKSample]?, error: Error?, completionHandler: @escaping (MBAsyncCallResult<ActiveEnergy>) -> Void) {
-        
-        guard error == nil else {
-            completionHandler(.failed(error!))
-            return
-        }
-        
-        guard let quantitySamples = samples as? [HKQuantitySample] else {
-            completionHandler(.failed(MBAsyncParsingError.unableToParse("ActiveEnergy log")))
-            return
-        }
-        
-        let calories = quantitySamples.reduce(Double(), { (result, sample) -> Double in
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .activeEnergyBurned, predicate: pred, sortDescriptors: [], limit: nil)
+        let calories = samples.reduce(Double(), { (result, sample) -> Double in
             return result + sample.quantity.doubleValue(for: HKUnit.kilocalorie())
         })
         
-        let viewModel = ActiveEnergy(calories: calories)
-        completionHandler(.success(viewModel))
+        let model = ActiveEnergy(calories: calories)
+        return model
     }
 }

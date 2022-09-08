@@ -13,17 +13,16 @@ public class MindfulnessService {
     public init() { }
 }
 
+// MARK: - FetchQuantitySample
+extension MindfulnessService: FetchCategorySample { }
+
+// MARK: - MindfulnessServiceProtocol
 extension MindfulnessService: MindfulnessServiceProtocol {
     
     public func mindfulActivity() async throws -> Mindful {
-        
-        // Confirm that the type and device works
-        let mindfulType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .mindfulSession)
-        let descriptorQuery = HKSampleQueryDescriptor(predicates: [.categorySample(type: mindfulType)], sortDescriptors: [])
-        let samples = try await descriptorQuery.result(for: healthStore)
-        
+        let samples = try await fetchCategorySamples(categoryIdentifier: .mindfulSession)
         let items = samples.map { item -> Mindful.Info in
-            return Mindful.Info(value: item.value, startDate: item.startDate, endDate: item.endDate)
+            Mindful.Info(value: item.value, startDate: item.startDate, endDate: item.endDate)
         }
         
         let vm = Mindful(items: items)

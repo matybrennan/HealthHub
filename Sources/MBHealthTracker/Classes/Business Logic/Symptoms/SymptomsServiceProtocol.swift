@@ -9,37 +9,37 @@ import Foundation
 
 public protocol SymptomsServiceProtocol: AnyObject {
     
-    func acne(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func appetiteChanges(handler: @escaping (MBAsyncCallResult<AppetiteChanges>) -> Void) throws
-    func bladderIncontinence(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func bodyAndMuscleAche(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func chestTightnessOrPain(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func chills(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func congestion(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func constipation(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func coughing(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func diarrhea(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func drySkin(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func fainting(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func fatigue(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func fever(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func hairLoss(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func headache(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func heartBurn(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func hotFlushes(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func lossOfSmell(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func lossOfTaste(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func lowerBackPain(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func memoryLapse(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func nausea(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func nightSweats(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func pelvicPain(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func rapidPoundingOrFlutteringHeartbeat(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func runnyNose(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func shortnessOfBreath(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func skippedHeartbeat(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func sleepChanges(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func soreThroat(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func vomiting(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func wheezing(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
+    func acne() async throws -> GenericSymptomModel
+    func appetiteChanges() async throws -> AppetiteChanges
+    func bladderIncontinence() async throws -> GenericSymptomModel
+    func bodyAndMuscleAche() async throws -> GenericSymptomModel
+    func chestTightnessOrPain() async throws -> GenericSymptomModel
+    func chills() async throws -> GenericSymptomModel
+    func congestion() async throws -> GenericSymptomModel
+    func constipation() async throws -> GenericSymptomModel
+    func coughing() async throws -> GenericSymptomModel
+    func diarrhea() async throws -> GenericSymptomModel
+    func drySkin() async throws -> GenericSymptomModel
+    func fainting() async throws -> GenericSymptomModel
+    func fatigue() async throws -> GenericSymptomModel
+    func fever() async throws -> GenericSymptomModel
+    func hairLoss() async throws -> GenericSymptomModel
+    func headache() async throws -> GenericSymptomModel
+    func heartBurn() async throws -> GenericSymptomModel
+    func hotFlushes() async throws -> GenericSymptomModel
+    func lossOfSmell() async throws -> GenericSymptomModel
+    func lossOfTaste() async throws -> GenericSymptomModel
+    func lowerBackPain() async throws -> GenericSymptomModel
+    func memoryLapse() async throws -> GenericSymptomModel
+    func nausea() async throws -> GenericSymptomModel
+    func nightSweats() async throws -> GenericSymptomModel
+    func pelvicPain() async throws -> GenericSymptomModel
+    func rapidPoundingOrFlutteringHeartbeat() async throws -> GenericSymptomModel
+    func runnyNose() async throws -> GenericSymptomModel
+    func shortnessOfBreath() async throws -> GenericSymptomModel
+    func skippedHeartbeat() async throws -> GenericSymptomModel
+    func sleepChanges() async throws -> GenericSymptomModel
+    func soreThroat() async throws -> GenericSymptomModel
+    func vomiting() async throws -> GenericSymptomModel
+    func wheezing() async throws -> GenericSymptomModel
 }

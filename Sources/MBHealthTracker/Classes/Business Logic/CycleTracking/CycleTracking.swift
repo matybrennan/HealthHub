@@ -13,15 +13,11 @@ public class CycleTracking {
     public init() { }
 }
 
+// MARK: - FetchCategorySample
+extension CycleTracking: FetchCategorySample { }
+
 // MARK: - Private methods
 private extension CycleTracking {
-    
-    func fetchCategorySamples(categoryIdentifier: HKCategoryTypeIdentifier, sortDescriptors: [SortDescriptor<HKCategorySample>] = [], limit: Int? = nil) async throws -> [HKCategorySample] {
-        let categoryType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: categoryIdentifier)
-        let queryDescriptor = HKSampleQueryDescriptor(predicates: [.categorySample(type: categoryType)], sortDescriptors: sortDescriptors, limit: limit)
-        let samples = try await queryDescriptor.result(for: healthStore)
-        return samples
-    }
     
     func fetchGenericCycleResult(categoryIdentifier: HKCategoryTypeIdentifier) async throws -> GenericSymptomModel {
         let samples = try await fetchCategorySamples(categoryIdentifier: categoryIdentifier)

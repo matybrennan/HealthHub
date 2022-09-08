@@ -16,7 +16,7 @@ public class WorkoutWriteService {
 
 extension WorkoutWriteService: WorkoutWriteServiceProtocol {
     
-    public func saveWorkout(workout: MBWorkout.Item, extra: [String : Any]?, completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws {
+    public func saveWorkout(workout: MBWorkout.Item, extra: [String: Any]?) async throws {
         
         let workoutType = try MBHealthParser.workoutTypeAndCheckIfAvailable()
         try MBHealthParser.checkSharingAuthorizationStatus(for: workoutType)
@@ -32,12 +32,6 @@ extension WorkoutWriteService: WorkoutWriteServiceProtocol {
         
         let workoutObj = HKWorkout(activityType: workout.activityType, start: workout.startDate, end: workout.endDate, duration: workout.duration, totalEnergyBurned: energyBurned, totalDistance: distance, device: HKDevice.local(), metadata: extra)
         
-        healthStore.save(workoutObj) { (status, error) in
-            if let error = error {
-                completionHandler(.failed(error))
-            } else {
-                completionHandler(.success(status))
-            }
-        }
+        try await healthStore.save(workoutObj)
     }
 }

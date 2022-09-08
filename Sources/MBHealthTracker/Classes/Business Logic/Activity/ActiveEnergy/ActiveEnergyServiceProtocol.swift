@@ -15,5 +15,5 @@ public enum ActiveEnergyType {
 
 public protocol ActiveEnergyServiceProtocol: AnyObject {
     
-    func getActiveEnergy(from type: ActiveEnergyType, completionHandler: @escaping (MBAsyncCallResult<ActiveEnergy>) -> Void) throws
+    func activeEnergy(from type: ActiveEnergyType) async throws -> ActiveEnergy
 }

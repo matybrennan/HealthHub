@@ -9,8 +9,8 @@ import Foundation
 
 public protocol VitalsServiceProtocol: AnyObject {
     
-    func bloodGlucose(completionHandler: @escaping (MBAsyncCallResult<BloodGlucose>) -> Void) throws
-    func bloodPressure(completionHandler: @escaping (MBAsyncCallResult<BloodPressure>) -> Void) throws
-    func bloodOxygen(completionHandler: @escaping (MBAsyncCallResult<BloodOxygen>) -> Void) throws
+    func bloodGlucose() async throws -> BloodGlucose
+    func bloodPressure() async throws -> BloodPressure
+    func bloodOxygen() async throws -> BloodOxygen
 }
 
