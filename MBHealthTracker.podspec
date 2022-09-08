@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/matybrennan/MBHealthTracker.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '15.0'
+  s.ios.deployment_target = '15.4'
 
   s.swift_versions = ['5.6']
   s.source_files = 'Sources/MBHealthTracker/Classes/**/*'
