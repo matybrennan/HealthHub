@@ -18,7 +18,7 @@ private extension BodyService {
     
     func fetchBodyQuantitySamples(quantityIdentifier: HKQuantityTypeIdentifier, sortDescriptors: [SortDescriptor<HKQuantitySample>] = [], limit: Int? = nil) async throws -> [HKQuantitySample] {
         let quantityType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: quantityIdentifier)
-        let queryDescriptor = HKSampleQueryDescriptor(predicates: [.quantitySample(type: quantityType)], sortDescriptors: sortDescriptors)
+        let queryDescriptor = HKSampleQueryDescriptor(predicates: [.quantitySample(type: quantityType)], sortDescriptors: sortDescriptors, limit: limit)
         let samples = try await queryDescriptor.result(for: healthStore)
         return samples
     }

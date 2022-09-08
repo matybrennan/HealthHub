@@ -9,14 +9,14 @@ import Foundation
 
 public protocol CycleTrackingProtocol: AnyObject {
     
-    func abdominalCramps(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func bloating(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func breastPain(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func cervicalMucusQuality(handler: @escaping (MBAsyncCallResult<CervicalMucusQuality>) -> Void) throws
-    func menstrualFlow(handler: @escaping (MBAsyncCallResult<MenstrualFlow>) -> Void) throws
-    func moodChanges(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
-    func ovulation(handler: @escaping (MBAsyncCallResult<Ovulation>) -> Void) throws
-    func sexualActivity(handler: @escaping (MBAsyncCallResult<SexualActivity>) -> Void) throws
-    func spotting(handler: @escaping (MBAsyncCallResult<Spotting>) -> Void) throws
-    func vaginalDryness(handler: @escaping (MBAsyncCallResult<GenericSymptomModel>) -> Void) throws
+    func abdominalCramps() async throws -> GenericSymptomModel
+    func bloating() async throws -> GenericSymptomModel
+    func breastPain() async throws -> GenericSymptomModel
+    func cervicalMucusQuality() async throws -> CervicalMucusQuality
+    func menstrualFlow() async throws -> MenstrualFlow
+    func moodChanges() async throws -> GenericSymptomModel
+    func ovulation() async throws -> Ovulation
+    func sexualActivity() async throws -> SexualActivity
+    func spotting() async throws -> Spotting
+    func vaginalDryness() async throws -> GenericSymptomModel
 }
