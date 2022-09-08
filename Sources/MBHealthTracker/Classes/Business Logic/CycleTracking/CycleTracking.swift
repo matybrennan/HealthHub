@@ -48,9 +48,9 @@ extension CycleTracking: CycleTrackingProtocol {
     
     public func cervicalMucusQuality() async throws -> CervicalMucusQuality {
         let samples = try await fetchCategorySamples(categoryIdentifier: .cervicalMucusQuality)
-        let items = samples.map { item -> CervicalMucusQuality.Info in
-            let type: CervicalMucusQuality.Info.MucusType = CervicalMucusQuality.Info.MucusType(rawValue: item.value) ?? .dry
-            return CervicalMucusQuality.Info(type: type, startDate: item.startDate, endDate: item.endDate)
+        let items = samples.map { item -> CervicalMucusQuality.Item in
+            let type: CervicalMucusQuality.Item.MucusType = CervicalMucusQuality.Item.MucusType(rawValue: item.value) ?? .dry
+            return CervicalMucusQuality.Item(type: type, startDate: item.startDate, endDate: item.endDate)
         }
         
         let model = CervicalMucusQuality(items: items)
@@ -59,11 +59,11 @@ extension CycleTracking: CycleTrackingProtocol {
     
     public func menstrualFlow() async throws -> MenstrualFlow {
         let samples = try await fetchCategorySamples(categoryIdentifier: .menstrualFlow)
-        let items = samples.map { item -> MenstrualFlow.Info in
-            let type: MenstrualFlow.Info.FlowType = MenstrualFlow.Info.FlowType(rawValue: item.value) ?? .unspecified
+        let items = samples.map { item -> MenstrualFlow.Item in
+            let type: MenstrualFlow.Item.FlowType = MenstrualFlow.Item.FlowType(rawValue: item.value) ?? .unspecified
             let cycleStartInt = item.metadata?[HKMetadataKeyMenstrualCycleStart] as? Int ?? 0
             let isStartOfCylce = (cycleStartInt == 0) ? false : true
-            return MenstrualFlow.Info(type: type, isStartOfCycle: isStartOfCylce, startDate: item.startDate, endDate: item.endDate)
+            return MenstrualFlow.Item(type: type, isStartOfCycle: isStartOfCylce, startDate: item.startDate, endDate: item.endDate)
         }
         
         let model = MenstrualFlow(items: items)
@@ -76,21 +76,43 @@ extension CycleTracking: CycleTrackingProtocol {
     
     public func ovulation() async throws -> Ovulation {
         let samples = try await fetchCategorySamples(categoryIdentifier: .ovulationTestResult)
-        let items = samples.map { item -> Ovulation.Info in
-            let type: Ovulation.Info.ResultType = Ovulation.Info.ResultType(rawValue: item.value) ?? .indetermined
-            return Ovulation.Info(type: type, startDate: item.startDate, endDate: item.endDate)
+        let items = samples.map { item -> Ovulation.Item in
+            let type: CycleResultType = CycleResultType(rawValue: item.value) ?? .indetermined
+            return Ovulation.Item(type: type, startDate: item.startDate, endDate: item.endDate)
         }
         
         let model = Ovulation(items: items)
         return model
     }
     
+    public func pregnancyTestResult() async throws -> PregnancyTestResult {
+        let samples = try await fetchCategorySamples(categoryIdentifier: .pregnancyTestResult)
+        let items = samples.map { item -> PregnancyTestResult.Item in
+            let type: CycleResultType = CycleResultType(rawValue: item.value) ?? .indetermined
+            return PregnancyTestResult.Item(type: type, date: item.endDate)
+        }
+        
+        let model = PregnancyTestResult(items: items)
+        return model
+    }
+    
+    public func progesteroneTestResult() async throws -> ProgesteroneTestResult {
+        let samples = try await fetchCategorySamples(categoryIdentifier: .progesteroneTestResult)
+        let items = samples.map { item -> ProgesteroneTestResult.Item in
+            let type: CycleResultType = CycleResultType(rawValue: item.value) ?? .indetermined
+            return ProgesteroneTestResult.Item(type: type, date: item.endDate)
+        }
+        
+        let model = ProgesteroneTestResult(items: items)
+        return model
+    }
+    
     public func sexualActivity() async throws -> SexualActivity {
         let samples = try await fetchCategorySamples(categoryIdentifier: .sexualActivity)
-        let items = samples.map { item -> SexualActivity.Info in
+        let items = samples.map { item -> SexualActivity.Item in
             let styleInt = item.metadata?[HKMetadataKeySexualActivityProtectionUsed] as? Int ?? -1
-            let type: SexualActivity.Info.StyleType = SexualActivity.Info.StyleType(rawValue: styleInt) ?? .unspecified
-            return SexualActivity.Info(type: type, startDate: item.startDate, endDate: item.endDate)
+            let type: SexualActivity.Item.StyleType = SexualActivity.Item.StyleType(rawValue: styleInt) ?? .unspecified
+            return SexualActivity.Item(type: type, startDate: item.startDate, endDate: item.endDate)
         }
         
         let model = SexualActivity(items: items)
@@ -99,8 +121,8 @@ extension CycleTracking: CycleTrackingProtocol {
     
     public func spotting() async throws -> Spotting {
         let samples = try await fetchCategorySamples(categoryIdentifier: .intermenstrualBleeding)
-        let items = samples.map { item -> Spotting.Info in
-            return Spotting.Info(startDate: item.startDate, endDate: item.endDate)
+        let items = samples.map { item -> Spotting.Item in
+            return Spotting.Item(startDate: item.startDate, endDate: item.endDate)
         }
         
         let model = Spotting(items: items)

@@ -30,23 +30,6 @@ public struct BloodPressure {
     public let items: [Info]    
 }
 
-public struct RespiratoryRate {
-    
-    public struct Info {
-        public let value: Double // counts per min
-        public let startDate: Date
-        public let endDate: Date
-        
-        public init(value: Double, startDate: Date, endDate: Date) {
-            self.value = value
-            self.startDate = startDate
-            self.endDate = endDate
-        }
-    }
-    
-    public let items: [Info]
-}
-
 public struct BodyTemperature {
     
     public struct Item {

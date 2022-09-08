@@ -9,5 +9,8 @@ import Foundation
 
 public protocol RespiratoryServiceProtocol: AnyObject {
     
+    func forcedExpiratoryVolume() async throws -> ForcedExpiratoryVolume
+    func forcedVitalCapacity() async throws -> ForcedVitalCapacity
+    func peakExpiratoryFlowRate() async throws -> PeakExpiratoryFlowRate
     func respiratoryRate() async throws -> RespiratoryRate
 }

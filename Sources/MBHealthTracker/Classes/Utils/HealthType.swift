@@ -102,8 +102,8 @@ public enum MBObjectType: SharableType, ReadableType {
     case moodChanges
     case ovulationTestResult
     //case pregnancy // no values needed for now
-    //case pregancyTestResult iOS15
-    //case progesteroneTestResult iOS15
+    case pregancyTestResult
+    case progesteroneTestResult
     case sexualActivity
     case spotting
     case vaginalDryness
@@ -145,6 +145,9 @@ public enum MBObjectType: SharableType, ReadableType {
     
     // Respiratory
     case respiratoryRate
+    case forcedRespiratoryVolume
+    case forcedVitalCapacity
+    case peakExpiratoryFlowRate
     
     // Vitals
     case bloodPressureSystolic
@@ -243,8 +246,8 @@ public enum MBObjectType: SharableType, ReadableType {
         case .menstruation: return HKQuantityType.categoryType(forIdentifier: .menstrualFlow)!
         case .moodChanges: return HKQuantityType.categoryType(forIdentifier: .moodChanges)!
         case .ovulationTestResult: return HKQuantityType.categoryType(forIdentifier: .ovulationTestResult)!
-        //case .pregancyTestResult: return HKQuantityType.categoryType(forIdentifier: .pregnancyTestResult)!
-        //case .progesteroneTestResult: return HKQuantityType.categoryType(forIdentifier: .progesteroneTestResult)!
+        case .pregancyTestResult: return HKQuantityType.categoryType(forIdentifier: .pregnancyTestResult)!
+        case .progesteroneTestResult: return HKQuantityType.categoryType(forIdentifier: .progesteroneTestResult)!
         case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
         case .spotting: return HKQuantityType.categoryType(forIdentifier: .intermenstrualBleeding)!
         case .vaginalDryness: return HKQuantityType.categoryType(forIdentifier: .vaginalDryness)!
@@ -286,6 +289,9 @@ public enum MBObjectType: SharableType, ReadableType {
             
         // Respiratory
         case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
+        case .forcedRespiratoryVolume: return HKSampleType.quantityType(forIdentifier: .forcedExpiratoryVolume1)!
+        case .forcedVitalCapacity: return HKSampleType.quantityType(forIdentifier: .forcedVitalCapacity)!
+        case .peakExpiratoryFlowRate: return HKSampleType.quantityType(forIdentifier: .peakExpiratoryFlowRate)!
             
         // Vitals
         case .bloodPressureSystolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureSystolic)!
@@ -386,8 +392,8 @@ public enum MBObjectType: SharableType, ReadableType {
         case .menstruation: return HKQuantityType.categoryType(forIdentifier: .menstrualFlow)!
         case .moodChanges: return HKQuantityType.categoryType(forIdentifier: .moodChanges)!
         case .ovulationTestResult: return HKQuantityType.categoryType(forIdentifier: .ovulationTestResult)!
-        //case .pregancyTestResult: return HKQuantityType.categoryType(forIdentifier: .pregnancyTestResult)!
-        //case .progesteroneTestResult: return HKQuantityType.categoryType(forIdentifier: .progesteroneTestResult)!
+        case .pregancyTestResult: return HKQuantityType.categoryType(forIdentifier: .pregnancyTestResult)!
+        case .progesteroneTestResult: return HKQuantityType.categoryType(forIdentifier: .progesteroneTestResult)!
         case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
         case .spotting: return HKQuantityType.categoryType(forIdentifier: .intermenstrualBleeding)!
         case .vaginalDryness: return HKQuantityType.categoryType(forIdentifier: .vaginalDryness)!
@@ -429,6 +435,9 @@ public enum MBObjectType: SharableType, ReadableType {
         
         // Respiratory
         case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
+        case .forcedRespiratoryVolume: return HKSampleType.quantityType(forIdentifier: .forcedExpiratoryVolume1)!
+        case .forcedVitalCapacity: return HKSampleType.quantityType(forIdentifier: .forcedVitalCapacity)!
+        case .peakExpiratoryFlowRate: return HKSampleType.quantityType(forIdentifier: .peakExpiratoryFlowRate)!
         
         // Vitals
         case .bloodPressureSystolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureSystolic)!

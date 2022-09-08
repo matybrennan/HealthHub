@@ -28,7 +28,7 @@ extension ViewInteractor: ViewInteractorProtocol {
     
     func configurePermissions() {
         Task {
-            try await healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.carbohydrates], toRead: [MBObjectType.carbohydrates])
+            try await healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.carbohydrates], toRead: [MBObjectType.pregancyTestResult, MBObjectType.progesteroneTestResult])
         }
     }
     
@@ -36,12 +36,10 @@ extension ViewInteractor: ViewInteractorProtocol {
         
         Task {
             do {
-                
-                let caffeine = try await healthTracker.nutrition.nutrition(type: .carbohydrates)
-                print("caffeine but really carbs: \(caffeine)")
-                
-                let item = Nutrition.Info(value: 50, unit: NutritionType.carbohydrates.unitMeasure.unitStr, date: Date(), type: NutritionType.carbohydrates.quantityType)
-                try await healthTracker.nutrition.save(nutrition: item, extra: nil)
+                let progesteroneTestResult = try await healthTracker.cycleTracking.progesteroneTestResult()
+                print("res1: \(progesteroneTestResult)")
+                let pregnancyTestResult = try await healthTracker.cycleTracking.pregnancyTestResult()
+                print("res2: \(pregnancyTestResult)")
             } catch {
                 print("Error: \(error.localizedDescription)")
             }

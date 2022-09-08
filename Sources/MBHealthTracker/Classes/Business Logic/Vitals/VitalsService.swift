@@ -51,7 +51,7 @@ extension VitalsService: VitalsServiceProtocol {
     }
     
     public func bloodOxygen() async throws -> BloodOxygen {
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .bloodGlucose)
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .oxygenSaturation)
         let items = samples.map { item -> BloodOxygen.Item in
             let percentage = item.quantity.doubleValue(for: .percent())
             return BloodOxygen.Item(date: item.startDate, oxygenSaturationPercentage: percentage)

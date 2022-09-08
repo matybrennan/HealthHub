@@ -16,6 +16,8 @@ public protocol CycleTrackingProtocol: AnyObject {
     func menstrualFlow() async throws -> MenstrualFlow
     func moodChanges() async throws -> GenericSymptomModel
     func ovulation() async throws -> Ovulation
+    func pregnancyTestResult() async throws -> PregnancyTestResult
+    func progesteroneTestResult() async throws -> ProgesteroneTestResult
     func sexualActivity() async throws -> SexualActivity
     func spotting() async throws -> Spotting
     func vaginalDryness() async throws -> GenericSymptomModel

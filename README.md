@@ -25,7 +25,7 @@ pod 'MBHealthTracker'
 MBHealthTracker is available through Swift Package Manager, either via Xcode or in Package.swift:
 
 ```ruby
-.package(url: "https://github.com/matybrennan/MBHealthTracker", from: "2.0.1"),
+.package(url: "https://github.com/matybrennan/MBHealthTracker", from: "2.1.0"),
 ```
 
 ## Getting Started
@@ -156,6 +156,8 @@ Split into sections to gather data based on timeIntervals
 - menstrualFlow
 - moodChanges
 - ovulation
+- pregnancyTestResult
+- progesteroneTestResult
 - sexualActivity
 - spotting
 - vaginalDryness
@@ -200,6 +202,9 @@ Split into sections to gather data based on timeIntervals
 
 ### Respiratory
 - respiratoryRate
+- forcedExpiratoryVolume
+- forcedVitalCapacity
+- peakExpiratoryFlowRate
 
 ```var respiratory: RespiratoryServiceProtocol```
 
