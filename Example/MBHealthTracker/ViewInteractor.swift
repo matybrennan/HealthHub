@@ -18,7 +18,7 @@ final class ViewInteractor {
     
     private let healthTracker: MBHealthTrackerProtocol
     
-    init(healthTracker: MBHealthTrackerProtocol) {
+    init(healthTracker: MBHealthTrackerProtocol = MBHealthTracker()) {
         self.healthTracker = healthTracker
     }
 }
@@ -27,20 +27,21 @@ final class ViewInteractor {
 extension ViewInteractor: ViewInteractorProtocol {
     
     func configurePermissions() {
-        healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.respiratoryRate]
-                                                        ,toRead: [MBObjectType.sleepAnalysis]) { _ in }
+        Task {
+            try await healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.carbohydrates], toRead: [MBObjectType.carbohydrates])
+        }
     }
     
     func runTest() {
         
         Task {
             do {
-                let sleep = try await healthTracker.sleep.sleep()
-                print("sleep: \(sleep)")
-                let bodyMassIndex = try await healthTracker.body.bodyMassIndex()
-                print("bodyMassIndex: \(bodyMassIndex)")
-                let res = try await healthTracker.body.basalBodyTemperature()
-                print("res: \(res)")
+                
+                let caffeine = try await healthTracker.nutrition.nutrition(type: .carbohydrates)
+                print("caffeine but really carbs: \(caffeine)")
+                
+                let item = Nutrition.Info(value: 50, unit: NutritionType.carbohydrates.unitMeasure.unitStr, date: Date(), type: NutritionType.carbohydrates.quantityType)
+                try await healthTracker.nutrition.save(nutrition: item, extra: nil)
             } catch {
                 print("Error: \(error.localizedDescription)")
             }

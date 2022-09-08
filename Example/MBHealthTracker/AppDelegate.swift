@@ -17,8 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         let controller = ViewController()
-        let tracker = MBHealthTracker()
-        let interactor = ViewInteractor(healthTracker: tracker)
+        let interactor = ViewInteractor()
         controller.interactor = interactor
         
         window = UIWindow(frame: UIScreen.main.bounds)

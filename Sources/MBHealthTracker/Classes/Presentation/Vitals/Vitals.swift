@@ -49,7 +49,7 @@ public struct RespiratoryRate {
 
 public struct BodyTemperature {
     
-    public struct Info {
+    public struct Item {
         public let celsius: Double
         public let fahrenheit: Double
         public let startDate: Date
@@ -63,7 +63,7 @@ public struct BodyTemperature {
         }
     }
     
-    public let items: [Info]
+    public let items: [Item]
 }
 
 public struct BloodGlucose {

@@ -11,7 +11,6 @@ import HealthKit
 public class CharacteristicService {
     
     public init() { }
-    
 }
 
 // MARK: - CharacteristicServiceProtocol

@@ -479,12 +479,12 @@ public enum MBShareType: SharableType {
 
 public struct MBHealthType {
     
-    static func shareTypes(_ types: [SharableType]) -> Set<HKSampleType>? {
+    static func shareTypes(_ types: [SharableType]) -> Set<HKSampleType> {
         let res = types.map { $0.sharable }
         return Set(res)
     }
     
-    static func readTypes(_ types: [ReadableType]) -> Set<HKObjectType>? {
+    static func readTypes(_ types: [ReadableType]) -> Set<HKObjectType> {
         let res = types.map { $0.readable }
         return Set(res)
     }

@@ -15,19 +15,10 @@ public class ConfigurationService: ConfigurationServiceProtocol {
     
     public init() { }
     
-    public func requestAuthorization(toShare share: [SharableType], toRead read: [ReadableType], completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) {
-        
+    public func requestAuthorization(toShare share: [SharableType], toRead read: [ReadableType]) async throws {
         let shareTypes = MBHealthType.shareTypes(share)
         let readTypes = MBHealthType.readTypes(read)
-        
-        
-        healthStore.requestAuthorization(toShare: shareTypes, read: readTypes) { (status, error) in
-            if let error = error {
-                completionHandler(.failed(error))
-            } else {
-                completionHandler(.success(status))
-            }
-        }
+        try await healthStore.requestAuthorization(toShare: shareTypes, read: readTypes)
     }
     
     public func navigateToHealthSettings() {

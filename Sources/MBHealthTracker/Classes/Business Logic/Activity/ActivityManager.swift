@@ -12,23 +12,23 @@ open class ActivityManager {
     public init() { }
     
     lazy var activeEnergyService: ActiveEnergyServiceProtocol = {
-        return ActiveEnergyService()
+        ActiveEnergyService()
     }()
     
     lazy var privateSteps: StepsServiceProtocol = {
-        return StepsService()
+        StepsService()
     }()
     
     private lazy var privateWorkoutReadService: WorkoutReadServiceProtocol = {
-        return WorkoutReadService()
+        WorkoutReadService()
     }()
     
     private lazy var privateWorkoutWriteService: WorkoutWriteServiceProtocol = {
-        return WorkoutWriteService()
+        WorkoutWriteService()
     }()
     
     lazy var privateWorkout: WorkoutManagerProtocol = {
-        return WorkoutManager(readService: self.privateWorkoutReadService, writeService: self.privateWorkoutWriteService)
+        WorkoutManager(readService: self.privateWorkoutReadService, writeService: self.privateWorkoutWriteService)
     }()
 }
 

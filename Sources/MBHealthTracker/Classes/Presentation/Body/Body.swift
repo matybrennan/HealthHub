@@ -9,59 +9,92 @@ import Foundation
 
 public struct BasalBodyTemperature {
     
-    public struct Info {
+    public struct Item {
         public let celsius: Double
         public let fahrenheit: Double
-        public let startDate: Date
-        public let endDate: Date
+        public let date: Date
         
-        public init(celsius: Double, fahrenheit: Double, startDate: Date, endDate: Date) {
+        public init(celsius: Double, fahrenheit: Double, date: Date) {
             self.celsius = celsius
             self.fahrenheit = fahrenheit
-            self.startDate = startDate
-            self.endDate = endDate
+            self.date = date
         }
     }
     
-    public let items: [Info]
+    public let items: [Item]
 }
 
 public struct BodyWeight {
-    public let kg: Double
-    public let lbs: Double
-    public let date: Date
+    
+    public struct Item {
+        public let kg: Double
+        public let lbs: Double
+        public let date: Date
+    }
+    
+    public let items: [Item]
 }
 
 public struct LeanBodyMass {
-    public let kg: Double
-    public let lbs: Double
-    public let date: Date
+    
+    public struct Item {
+        public let kg: Double
+        public let lbs: Double
+        public let date: Date
+    }
+    
+    public let items: [Item]
 }
 
 public struct BodyHeight {
-    public let inches: Int
-    public let cm: Int
-    public let date: Date
+    
+    public struct Item {
+        public let inches: Int
+        public let cm: Int
+        public let date: Date
+    }
+    
+    public let items: [Item]
 }
 
 public struct BodyFatPercentage {
-    public let value: Double
-    public let date: Date
+    
+    public struct Item {
+        public let value: Double
+        public let date: Date
+    }
+    
+    public let items: [Item]
 }
 
 public struct BodyMassIndex {
-    public let value: Double
-    public let date: Date
+    
+    public struct Item {
+        public let value: Double
+        public let date: Date
+    }
+    
+    public let items: [Item]
 }
 
 public struct WaistCircumference {
-    public let inches: Int
-    public let cm: Int
-    public let date: Date
+    
+    public struct Item {
+        public let inches: Int
+        public let cm: Int
+        public let date: Date
+    }
+    
+    public let items: [Item]
 }
 
 public struct ElectrodermalActivity {
-    public let value: Double
-    public let date: Date
+    
+    public struct Item {
+        public let value: Double
+        public let date: Date
+    }
+    
+    public let items: [Item]
 }
 

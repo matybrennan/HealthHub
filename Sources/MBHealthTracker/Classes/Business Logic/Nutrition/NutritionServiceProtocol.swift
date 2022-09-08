@@ -8,6 +8,11 @@
 import Foundation
 import HealthKit
 
+public protocol NutritionServiceProtocol {
+    func nutrition(type: NutritionType) async throws -> Nutrition
+    func save(nutrition: Nutrition.Info, extra: [String : Any]?) async throws
+}
+
 /*
  - https://developer.apple.com/documentation/healthkit/health_data_types/nutrition_type_identifiers
  - reference link for types
@@ -66,7 +71,69 @@ public enum NutritionType {
     /// Caffeine
     case caffeine
     
-    var value: HKQuantityType {
+    public var unitMeasure: (unit: HKUnit, unitStr: String) {
+        
+        var unitTuple: (HKUnit, String)!
+        
+        switch self {
+           
+        // Macronutrients
+        case .energyConsumed: unitTuple = (HKUnit.kilocalorie(), "kcal")
+        case .carbohydrates: unitTuple = (HKUnit.gram(), "g")
+        case .fiber: unitTuple = (HKUnit.gram(), "g")
+        case .sugar: unitTuple = (HKUnit.gram(), "g")
+        case .fatTotal: unitTuple = (HKUnit.gram(), "g")
+        case .fatMono: unitTuple = (HKUnit.gram(), "g")
+        case .fatPoly: unitTuple = (HKUnit.gram(), "g")
+        case .fatSaturated: unitTuple = (HKUnit.gram(), "g")
+        case .cholesterol: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
+        case .protein: unitTuple = (HKUnit.gram(), "g")
+        
+        /// Vitamins
+        case .vitaminA: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.micro), "mcg")
+        case .thiamin: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
+        case .riboflavin: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
+        case .niacin: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
+        case .pathothenicAcid: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
+        case .vitaminB6: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
+        case .biotin: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.micro), "mcg")
+        case .vitaminB12: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.micro), "mcg")
+        case .vitaminC: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
+        case .vitaminD: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.micro), "mcg")
+        case .vitaminE: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
+        case .vitaminK: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.micro), "mcg")
+        case .folate: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.micro), "mcg")
+        
+        /// Minerals
+        case .calcium: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
+        case .chloride: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
+        case .iron: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
+        case .magnesium: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
+        case .phosphorus: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
+        case .potassium: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
+        case .sodium: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
+        case .zinc: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
+            
+            
+        /// Ultratrace Minerals
+        case .chromium: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.micro), "mcg")
+        case .copper: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
+        case .iodine: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.micro), "mcg")
+        case .manganese: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
+        case .molybdenum: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.micro), "mcg")
+        case .selenium: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.micro), "mcg")
+            
+        /// Hydration
+        case .water: unitTuple = (HKUnit.literUnit(with: HKMetricPrefix.milli), "mL")
+            
+        /// Caffeine
+        case .caffeine: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
+        }
+        
+        return unitTuple
+    }
+    
+    public var quantityType: HKQuantityType {
         switch self {
         
         /// Macronutrients
@@ -122,10 +189,4 @@ public enum NutritionType {
             
         }
     }
-}
-
-public protocol NutritionServiceProtocol {
-    
-    func getNutrition(fromType type: NutritionType, completionHandler: @escaping (MBAsyncCallResult<Nutrition>) -> Void) throws
-    func save(nutrition: Nutrition.Info, extra: [String : Any]?, completionHandler: @escaping (MBAsyncCallResult<Bool>) -> Void) throws
 }

@@ -13,22 +13,16 @@ public struct Nutrition {
     public struct Info {
         public let value: Double
         public let unit: String
-        public let startDate: Date
-        public let endDate: Date
+        public let date: Date
         public let type: HKQuantityType
+        
+        public init(value: Double, unit: String, date: Date, type: HKQuantityType) {
+            self.value = value
+            self.unit = unit
+            self.date = date
+            self.type = type
+        }
     }
     
     public let items: [Info]
-}
-
-extension Nutrition.Info {
-    
-    public init(value: Double, unit: String, startDate: Date, type: HKQuantityType) {
-        self.value = value
-        self.unit = unit
-        self.startDate = startDate
-        self.endDate = Date()
-        self.type = type
-    }
-    
 }
