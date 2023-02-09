@@ -16,7 +16,7 @@
 
 MBHealthTracker is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
-Requires iOS 15.4 and above
+Requires iOS 16.0 and above
 
 ```ruby
 pod 'MBHealthTracker'
@@ -25,7 +25,7 @@ pod 'MBHealthTracker'
 MBHealthTracker is available through Swift Package Manager, either via Xcode or in Package.swift:
 
 ```ruby
-.package(url: "https://github.com/matybrennan/MBHealthTracker", from: "2.1.0"),
+.package(url: "https://github.com/matybrennan/MBHealthTracker", from: "2.2.0"),
 ```
 
 ## Getting Started

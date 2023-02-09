@@ -22,7 +22,7 @@ extension CharacteristicService: CharacteristicServiceProtocol {
         }
         
         switch sexCase {
-        case 0: return "Not Set"
+        case 0: return nil
         case 1: return "Female"
         case 2: return "Male"
         default: return "Other"
@@ -35,7 +35,7 @@ extension CharacteristicService: CharacteristicServiceProtocol {
         }
         
         switch bloodType {
-        case 0: return "Not Set"
+        case 0: return nil
         case 1: return "aPositive"
         case 2: return "aNegative"
         case 3: return "bPositive"
@@ -58,7 +58,7 @@ extension CharacteristicService: CharacteristicServiceProtocol {
         }
         
         switch skin {
-        case 0: return "Not Set"
+        case 0: return nil
         case 1: return "Pale white skin, blue/green eyes, blond/red hair"
         case 2: return "Fair skin, blue eyes"
         case 3: return "Darker white skin"

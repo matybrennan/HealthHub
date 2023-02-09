@@ -11,57 +11,19 @@ open class MBHealthTracker {
     
     public init() { }
     
-    private lazy var privateConfiguration: ConfigurationServiceProtocol = {
-        ConfigurationService()
-    }()
-    
-    private lazy var privateActivityManager: ActivityManagerProtocol = {
-        ActivityManager()
-    }()
-    
-    private lazy var privateHeart: HeartServiceProtocol = {
-        HeartService()
-    }()
-    
-    private lazy var privateCharacteristicsService: CharacteristicServiceProtocol = {
-        CharacteristicService()
-    }()
-    
-    private lazy var privateNutritionService: NutritionServiceProtocol = {
-        NutritionService()
-    }()
-    
-    private lazy var privateSleepService: SleepServiceProtocol = {
-        SleepService()
-    }()
-    
-    private lazy var privateBodyService: BodyServiceProtocol = {
-        BodyService()
-    }()
-    
-    private lazy var privateMindfulService: MindfulnessServiceProtocol = {
-        MindfulnessService()
-    }()
-    
-    private lazy var privateCycleTrackingService: CycleTrackingProtocol = {
-        CycleTracking()
-    }()
-    
-    private lazy var privateSymptomsService: SymptomsServiceProtocol = {
-        SymptomsService()
-    }()
-    
-    public lazy var privateRespiratoryService: RespiratoryServiceProtocol = {
-        RespiratoryService()
-    }()
-    
-    public lazy var privateVitalsService: VitalsServiceProtocol = {
-        VitalsService()
-    }()
-    
-    public lazy var privateOtherDataService: OtherDataServiceProtocol = {
-        OtherDataService()
-    }()
+    private lazy var privateConfiguration = ConfigurationService()
+    private lazy var privateActivityManager = ActivityManager()
+    private lazy var privateHeart = HeartService()
+    private lazy var privateCharacteristicsService = CharacteristicService()
+    private lazy var privateNutritionService = NutritionService()
+    private lazy var privateSleepService = SleepService()
+    private lazy var privateBodyService = BodyService()
+    private lazy var privateMindfulService = MindfulnessService()
+    private lazy var privateCycleTrackingService = CycleTracking()
+    private lazy var privateSymptomsService = SymptomsService()
+    private lazy var privateRespiratoryService = RespiratoryService()
+    private lazy var privateVitalsService = VitalsService()
+    private lazy var privateOtherDataService = OtherDataService()
 }
 
 extension MBHealthTracker: MBHealthTrackerProtocol {
