@@ -74,6 +74,12 @@
 		EA2A3217F1E8B892A3C0B475CF02770D /* BodyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648FB74FF004EC68328DA896801A0D0 /* BodyService.swift */; };
 		EA3F71E53648D81FA214C314E244B39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		F04EE11EED84FC93F948846B013EF86C /* VitalsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF94FC68178E3C827032CB5DFB77300 /* VitalsServiceProtocol.swift */; };
+		F15F630A2994A80A000390CA /* SeuxalActivityCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15F63092994A80A000390CA /* SeuxalActivityCase.swift */; };
+		F15F630C2994AC06000390CA /* RespiratoryRateCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15F630B2994AC06000390CA /* RespiratoryRateCase.swift */; };
+		F15F630E2994ACA7000390CA /* BodyTemperatureCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15F630D2994ACA7000390CA /* BodyTemperatureCase.swift */; };
+		F15F63102994AE0A000390CA /* MenstruationCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15F630F2994AE0A000390CA /* MenstruationCase.swift */; };
+		F15F63122994AEBC000390CA /* AbdominalCrampsCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15F63112994AEBC000390CA /* AbdominalCrampsCase.swift */; };
+		F15F63152994B044000390CA /* MBHealthHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15F63142994B044000390CA /* MBHealthHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +186,12 @@
 		E969DFA6279876B8509ADE01AFBBBBE5 /* Mindful.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Mindful.swift; sourceTree = "<group>"; };
 		EE47F1F149FDD7C1CA70E7466F0878F5 /* SymptomsModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SymptomsModels.swift; sourceTree = "<group>"; };
 		EEF94FC68178E3C827032CB5DFB77300 /* VitalsServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VitalsServiceProtocol.swift; sourceTree = "<group>"; };
+		F15F63092994A80A000390CA /* SeuxalActivityCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeuxalActivityCase.swift; sourceTree = "<group>"; };
+		F15F630B2994AC06000390CA /* RespiratoryRateCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespiratoryRateCase.swift; sourceTree = "<group>"; };
+		F15F630D2994ACA7000390CA /* BodyTemperatureCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyTemperatureCase.swift; sourceTree = "<group>"; };
+		F15F630F2994AE0A000390CA /* MenstruationCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenstruationCase.swift; sourceTree = "<group>"; };
+		F15F63112994AEBC000390CA /* AbdominalCrampsCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbdominalCrampsCase.swift; sourceTree = "<group>"; };
+		F15F63142994B044000390CA /* MBHealthHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBHealthHandler.swift; sourceTree = "<group>"; };
 		F29E267AE335A1B4A06B08DDEC034D78 /* NetworkResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		F32A8E9D54978CABA10158F04893C729 /* Pods-MBHealthTracker_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-MBHealthTracker_Tests"; path = Pods_MBHealthTracker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F334379E47E866CB46C6FF30D782919E /* MBHealthTracker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBHealthTracker-prefix.pch"; sourceTree = "<group>"; };
@@ -344,6 +356,8 @@
 		3DF3D91F77B0CD743FC6705ECFCC11C3 /* Business Logic */ = {
 			isa = PBXGroup;
 			children = (
+				F15F63132994B018000390CA /* Handlers */,
+				F15F63082994A770000390CA /* Common */,
 				E4ECA1349C55EF7C079B2D9468B828B9 /* Activity */,
 				312D38B576E4FA8B3267626B38195FBF /* Body */,
 				80027AF8592AB5823D7FEA0223008229 /* Characteristics */,
@@ -653,6 +667,26 @@
 			path = Sources/MBHealthTracker/Classes/Presentation;
 			sourceTree = "<group>";
 		};
+		F15F63082994A770000390CA /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F15F63092994A80A000390CA /* SeuxalActivityCase.swift */,
+				F15F630B2994AC06000390CA /* RespiratoryRateCase.swift */,
+				F15F630D2994ACA7000390CA /* BodyTemperatureCase.swift */,
+				F15F630F2994AE0A000390CA /* MenstruationCase.swift */,
+				F15F63112994AEBC000390CA /* AbdominalCrampsCase.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		F15F63132994B018000390CA /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				F15F63142994B044000390CA /* MBHealthHandler.swift */,
+			);
+			path = Handlers;
+			sourceTree = "<group>";
+		};
 		F2174B200A7B2CE5B5CA729F4A330554 /* OtherData */ = {
 			isa = PBXGroup;
 			children = (
@@ -822,6 +856,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F15F630E2994ACA7000390CA /* BodyTemperatureCase.swift in Sources */,
 				52DD00807B963E2E4480354F7B3BDFEF /* ActiveEnergyModels.swift in Sources */,
 				16133219D93C4C4D8422456287EC6F18 /* ActiveEnergyService.swift in Sources */,
 				1DB2D43B4DE709C85B3DD10BAFDAD127 /* ActiveEnergyServiceProtocol.swift in Sources */,
@@ -850,6 +885,7 @@
 				53C7E80C0CE09F88DB55C4B5EBF7B760 /* MBHealthTrackerProtocol.swift in Sources */,
 				2E4B878E28C97F4100354CB0 /* FetchingSample.swift in Sources */,
 				2272D8480295BB0BB19B191167421028 /* Mindful.swift in Sources */,
+				F15F63122994AEBC000390CA /* AbdominalCrampsCase.swift in Sources */,
 				32BE9461E17DB31B072A80E9435ED7DF /* MindfulnessService.swift in Sources */,
 				1CC500E0A31905C7E9A16BB4C524F92D /* MindfulnessServiceProtocol.swift in Sources */,
 				B62DD06545116B4EBEAA79C5E580B1AA /* NetworkResult.swift in Sources */,
@@ -860,13 +896,17 @@
 				DDD7B26AF6971A83B38E0AD44C0F390F /* OtherDataModels.swift in Sources */,
 				AAEC6D5BB7C5A74F3FD14101A9B9394C /* OtherDataService.swift in Sources */,
 				212D22F02902028B18FC74F6A821FF48 /* OtherDataServiceProtocol.swift in Sources */,
+				F15F630A2994A80A000390CA /* SeuxalActivityCase.swift in Sources */,
 				36E3175CA32ECB6A3182DDA920CFF9BF /* RespiratoryService.swift in Sources */,
 				D929B6777304B93434690165FFE9014B /* RespiratoryServiceProtocol.swift in Sources */,
 				96B7D00EFE20D6380AF64C8DE0F0F8DE /* Sleep.swift in Sources */,
 				956E557BC8CCFBB9699605F485BB721C /* SleepService.swift in Sources */,
 				9052AC1B1B225C511CE8039EAAC8B92A /* SleepServiceProtocol.swift in Sources */,
+				F15F630C2994AC06000390CA /* RespiratoryRateCase.swift in Sources */,
+				F15F63152994B044000390CA /* MBHealthHandler.swift in Sources */,
 				A49FEFF404D3A3258B8936EF5EE8A87F /* StepsModels.swift in Sources */,
 				215DF36C97E8777AA308FC09C84F9740 /* StepsService.swift in Sources */,
+				F15F63102994AE0A000390CA /* MenstruationCase.swift in Sources */,
 				60E7EB34762AE47398512664B8D0E7A2 /* StepsServiceProtocol.swift in Sources */,
 				D24BF71A9AA2CE7BED9BA646DE4C3357 /* SymptomsModels.swift in Sources */,
 				537CED3B8F992EF54AA42D3EDBA305F9 /* SymptomsService.swift in Sources */,

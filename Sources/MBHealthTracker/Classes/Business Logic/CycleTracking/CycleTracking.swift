@@ -14,7 +14,7 @@ public class CycleTracking {
 }
 
 // MARK: - FetchCategorySample
-extension CycleTracking: FetchCategorySample { }
+extension CycleTracking: FetchCategorySample, SexualActivityCase, MenstruationCase, AbdominalCrampsCase { }
 
 // MARK: - Private methods
 private extension CycleTracking {
@@ -35,7 +35,7 @@ private extension CycleTracking {
 extension CycleTracking: CycleTrackingProtocol {
     
     public func abdominalCramps() async throws -> GenericSymptomModel {
-        try await fetchGenericCycleResult(categoryIdentifier: .abdominalCramps)
+        try await baseAbdominalCramps()
     }
     
     public func bloating() async throws -> GenericSymptomModel {
@@ -57,17 +57,8 @@ extension CycleTracking: CycleTrackingProtocol {
         return model
     }
     
-    public func menstrualFlow() async throws -> MenstrualFlow {
-        let samples = try await fetchCategorySamples(categoryIdentifier: .menstrualFlow)
-        let items = samples.map { item -> MenstrualFlow.Item in
-            let type: MenstrualFlow.Item.FlowType = MenstrualFlow.Item.FlowType(rawValue: item.value) ?? .unspecified
-            let cycleStartInt = item.metadata?[HKMetadataKeyMenstrualCycleStart] as? Int ?? 0
-            let isStartOfCylce = (cycleStartInt == 0) ? false : true
-            return MenstrualFlow.Item(type: type, isStartOfCycle: isStartOfCylce, startDate: item.startDate, endDate: item.endDate)
-        }
-        
-        let model = MenstrualFlow(items: items)
-        return model
+    public func menstruation() async throws -> Menstruation {
+        try await baseMenstruation()
     }
     
     public func moodChanges() async throws -> GenericSymptomModel {
@@ -108,15 +99,7 @@ extension CycleTracking: CycleTrackingProtocol {
     }
     
     public func sexualActivity() async throws -> SexualActivity {
-        let samples = try await fetchCategorySamples(categoryIdentifier: .sexualActivity)
-        let items = samples.map { item -> SexualActivity.Item in
-            let styleInt = item.metadata?[HKMetadataKeySexualActivityProtectionUsed] as? Int ?? -1
-            let type: SexualActivity.Item.StyleType = SexualActivity.Item.StyleType(rawValue: styleInt) ?? .unspecified
-            return SexualActivity.Item(type: type, startDate: item.startDate, endDate: item.endDate)
-        }
-        
-        let model = SexualActivity(items: items)
-        return model
+        try await baseSexualActivity()
     }
     
     public func spotting() async throws -> Spotting {

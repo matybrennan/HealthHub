@@ -65,6 +65,15 @@ let myService = MyService(configuration: configuration)
 
 ```var configuration: ConfigurationServiceProtocol```
 
+### Handlers - These can only be accessed directly from ```MBHealthTracker```
+```
+let tracker = MBHealthTracker()
+tracker.mbHealthHandler.state = .idle
+tracker.mbHealthHandler.$state.sink { state in ... }
+```
+mbHealthHandler = MBHealthHandler()
+```
+
 ### Sleep
 - sleep
 - saving sleep item
@@ -153,7 +162,7 @@ Split into sections to gather data based on timeIntervals
 - bloating
 - breastPain
 - cervicalMucusQuality
-- menstrualFlow
+- menstruation
 - moodChanges
 - ovulation
 - pregnancyTestResult
@@ -165,6 +174,7 @@ Split into sections to gather data based on timeIntervals
 ```var cycleTracking: CycleTrackingServiceProtocol```
 
 ### Symptoms
+- abdominalCramps
 - acne        
 - appetiteChanges
 - bladderIncontinence
@@ -212,6 +222,9 @@ Split into sections to gather data based on timeIntervals
 - bloodPressure
 - bloodGlucose
 - bloodOxygen
+- bodyTemperature
+- menstruation
+- respiratoryRate
 
 ```var vitals: VitalsServiceProtocol```
 
@@ -222,8 +235,10 @@ Split into sections to gather data based on timeIntervals
 - inhalerUsage
 - insulinDelivery
 - numberOfTimesFallen
+- sexualActivity
 - toothBrushing
 - uvExposure
+- waterTemperature
 
 ```var otherData: OtherDataServiceProtocol```
 

@@ -8,6 +8,7 @@
 
 import Foundation
 import MBHealthTracker
+import Combine
 
 protocol ViewInteractorProtocol {
     func configurePermissions()
@@ -16,10 +17,20 @@ protocol ViewInteractorProtocol {
 
 final class ViewInteractor {
     
-    private let healthTracker: MBHealthTrackerProtocol
+    private let healthTracker: MBHealthTracker
+    private var cancellables = [AnyCancellable]()
     
-    init(healthTracker: MBHealthTrackerProtocol = MBHealthTracker()) {
+    init(healthTracker: MBHealthTracker = MBHealthTracker()) {
         self.healthTracker = healthTracker
+        
+        healthTracker.mbHealthHandler.$state.sink { state in
+            switch state {
+            case .idle:
+                print("idle")
+            case .hasRequestedHealthKitInfo(let value):
+                print("value: \(value)")
+            }
+        }.store(in: &cancellables)
     }
 }
 

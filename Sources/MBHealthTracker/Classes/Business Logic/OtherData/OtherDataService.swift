@@ -14,7 +14,7 @@ public class OtherDataService {
 }
 
 // MARK: - FetchQuantitySample & FetchCategorySample
-extension OtherDataService: FetchQuantitySample, FetchCategorySample { }
+extension OtherDataService: FetchQuantitySample, FetchCategorySample, SexualActivityCase { }
 
 // MARK: OtherDataServiceProtocol
 extension OtherDataService: OtherDataServiceProtocol {
@@ -87,6 +87,10 @@ extension OtherDataService: OtherDataServiceProtocol {
         return model
     }
     
+    public func sexualActivity() async throws -> SexualActivity {
+        try await baseSexualActivity()
+    }
+    
     public func toothBrushing() async throws -> ToothBrushing {
         let samples = try await fetchCategorySamples(categoryIdentifier: .toothbrushingEvent)
         let items = samples.map { item -> ToothBrushing.Item in
@@ -106,6 +110,19 @@ extension OtherDataService: OtherDataServiceProtocol {
         }
         
         let model = UVExposure(items: items)
+        return model
+    }
+    
+    public func waterTemperature() async throws -> WaterTemperature {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .waterTemperature)
+        
+        let items = samples.map { item -> WaterTemperature.Item in
+            let celsius = item.quantity.doubleValue(for: .degreeCelsius())
+            let fahrenheit = item.quantity.doubleValue(for: .degreeFahrenheit())
+            return WaterTemperature.Item(celsius: celsius, fahrenheit: fahrenheit, date: item.endDate)
+        }
+        
+        let model = WaterTemperature(items: items)
         return model
     }
 }

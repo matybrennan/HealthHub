@@ -14,7 +14,7 @@ public class SymptomsService {
 }
 
 // MARK: - FetchQuantitySample
-extension SymptomsService: FetchCategorySample { }
+extension SymptomsService: FetchCategorySample, AbdominalCrampsCase { }
 
 // MARK: - Private methods
 private extension SymptomsService {
@@ -33,6 +33,10 @@ private extension SymptomsService {
 
 // MARK: - SymptomsServiceProtocol
 extension SymptomsService: SymptomsServiceProtocol {
+    
+    public func abdominalCramps() async throws -> GenericSymptomModel {
+        try await baseAbdominalCramps()
+    }
     
     public func acne() async throws -> GenericSymptomModel {
         try await fetchGenericSymptomResult(categoryIdentifier: .acne)

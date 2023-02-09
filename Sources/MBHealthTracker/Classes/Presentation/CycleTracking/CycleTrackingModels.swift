@@ -43,7 +43,7 @@ public struct CervicalMucusQuality {
     public let items: [Item]
 }
 
-public struct MenstrualFlow {
+public struct Menstruation {
     
     public struct Item {
         

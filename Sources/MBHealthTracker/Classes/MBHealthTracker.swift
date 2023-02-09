@@ -9,9 +9,11 @@ import Foundation
 
 open class MBHealthTracker {
     
+    public lazy var mbHealthHandler = MBHealthHandler()
+    
     public init() { }
     
-    private lazy var privateConfiguration = ConfigurationService()
+    private lazy var privateConfiguration = ConfigurationService(handler: mbHealthHandler)
     private lazy var privateActivityManager = ActivityManager()
     private lazy var privateHeart = HeartService()
     private lazy var privateCharacteristicsService = CharacteristicService()

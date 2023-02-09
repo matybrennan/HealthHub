@@ -13,7 +13,7 @@ public protocol CycleTrackingProtocol: AnyObject {
     func bloating() async throws -> GenericSymptomModel
     func breastPain() async throws -> GenericSymptomModel
     func cervicalMucusQuality() async throws -> CervicalMucusQuality
-    func menstrualFlow() async throws -> MenstrualFlow
+    func menstruation() async throws -> Menstruation
     func moodChanges() async throws -> GenericSymptomModel
     func ovulation() async throws -> Ovulation
     func pregnancyTestResult() async throws -> PregnancyTestResult

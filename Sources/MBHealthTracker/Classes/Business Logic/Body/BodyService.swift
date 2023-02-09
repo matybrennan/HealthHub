@@ -13,8 +13,8 @@ public class BodyService {
     public init() { }
 }
 
-// MARK: - FetchQuantitySample
-extension BodyService: FetchQuantitySample { }
+// MARK: - FetchQuantitySample & BodyTemperatureCase
+extension BodyService: FetchQuantitySample, BodyTemperatureCase { }
 
 // MARK: - BodyServiceProtocol
 extension BodyService: BodyServiceProtocol {
@@ -60,17 +60,7 @@ extension BodyService: BodyServiceProtocol {
     }
     
     public func bodyTemperature() async throws -> BodyTemperature {
-        let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .bodyTemperature, sortDescriptors: [sortDescriptor])
-        
-        let items = samples.map { item -> BodyTemperature.Item in
-            let celsius = item.quantity.doubleValue(for: .degreeCelsius())
-            let fahrenheit = item.quantity.doubleValue(for: .degreeFahrenheit())
-            return BodyTemperature.Item(celsius: celsius, fahrenheit: fahrenheit, startDate: item.startDate, endDate: item.endDate)
-        }
-        
-        let model = BodyTemperature(items: items)
-        return model
+        try await baseBodyTemperature()
     }
     
     public func height() async throws -> BodyHeight {

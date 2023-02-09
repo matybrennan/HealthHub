@@ -9,6 +9,7 @@ import Foundation
 
 public protocol SymptomsServiceProtocol: AnyObject {
     
+    func abdominalCramps() async throws -> GenericSymptomModel
     func acne() async throws -> GenericSymptomModel
     func appetiteChanges() async throws -> AppetiteChanges
     func bladderIncontinence() async throws -> GenericSymptomModel

@@ -21,6 +21,9 @@ public typealias SharableReadableType = SharableType & ReadableType
 /// Has both read and sharing capabilities
 public enum MBObjectType: SharableType, ReadableType {
     
+    // Duplicates
+    case sexualActivity // cycle, other
+    
     case stepCount
     case heartRate
     case workout
@@ -104,7 +107,6 @@ public enum MBObjectType: SharableType, ReadableType {
     //case pregnancy // no values needed for now
     case pregancyTestResult
     case progesteroneTestResult
-    case sexualActivity
     case spotting
     case vaginalDryness
     
@@ -164,9 +166,14 @@ public enum MBObjectType: SharableType, ReadableType {
     case numberOfTimesFallen
     case toothBrushing
     case uvExposure
+    case waterTemperature
     
     public var sharable: HKSampleType {
         switch self {
+            
+        // Common
+        case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
+            
         case .stepCount: return HKQuantityType.quantityType(forIdentifier: .stepCount)!
         case .heartRate: return HKQuantityType.quantityType(forIdentifier: .heartRate)!
         case .workout: return HKWorkoutType.workoutType()
@@ -248,7 +255,6 @@ public enum MBObjectType: SharableType, ReadableType {
         case .ovulationTestResult: return HKQuantityType.categoryType(forIdentifier: .ovulationTestResult)!
         case .pregancyTestResult: return HKQuantityType.categoryType(forIdentifier: .pregnancyTestResult)!
         case .progesteroneTestResult: return HKQuantityType.categoryType(forIdentifier: .progesteroneTestResult)!
-        case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
         case .spotting: return HKQuantityType.categoryType(forIdentifier: .intermenstrualBleeding)!
         case .vaginalDryness: return HKQuantityType.categoryType(forIdentifier: .vaginalDryness)!
            
@@ -308,11 +314,16 @@ public enum MBObjectType: SharableType, ReadableType {
         case .numberOfTimesFallen: return HKSampleType.quantityType(forIdentifier: .numberOfTimesFallen)!
         case .toothBrushing: return HKSampleType.categoryType(forIdentifier: .toothbrushingEvent)!
         case .uvExposure: return HKQuantityType.quantityType(forIdentifier: .uvExposure)!
+        case .waterTemperature: return HKQuantityType.quantityType(forIdentifier: .waterTemperature)!
         }
     }
     
     public var readable: HKObjectType {
         switch self {
+            
+        // Common
+        case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
+            
         case .stepCount: return HKQuantityType.quantityType(forIdentifier: .stepCount)!
         case .heartRate: return HKQuantityType.quantityType(forIdentifier: .heartRate)!
         case .workout: return HKWorkoutType.workoutType()
@@ -394,7 +405,6 @@ public enum MBObjectType: SharableType, ReadableType {
         case .ovulationTestResult: return HKQuantityType.categoryType(forIdentifier: .ovulationTestResult)!
         case .pregancyTestResult: return HKQuantityType.categoryType(forIdentifier: .pregnancyTestResult)!
         case .progesteroneTestResult: return HKQuantityType.categoryType(forIdentifier: .progesteroneTestResult)!
-        case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
         case .spotting: return HKQuantityType.categoryType(forIdentifier: .intermenstrualBleeding)!
         case .vaginalDryness: return HKQuantityType.categoryType(forIdentifier: .vaginalDryness)!
         
@@ -454,6 +464,7 @@ public enum MBObjectType: SharableType, ReadableType {
         case .numberOfTimesFallen: return HKSampleType.quantityType(forIdentifier: .numberOfTimesFallen)!
         case .toothBrushing: return HKSampleType.categoryType(forIdentifier: .toothbrushingEvent)!
         case .uvExposure: return HKQuantityType.quantityType(forIdentifier: .uvExposure)!
+        case .waterTemperature: return HKQuantityType.quantityType(forIdentifier: .waterTemperature)!
         }
     }
 }

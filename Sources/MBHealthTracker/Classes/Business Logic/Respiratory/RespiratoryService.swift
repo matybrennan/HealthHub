@@ -14,7 +14,7 @@ public class RespiratoryService {
 }
 
 // MARK: - FetchQuantitySample
-extension RespiratoryService: FetchQuantitySample { }
+extension RespiratoryService: FetchQuantitySample, RespiratoryRateCase { }
 
 // MARK: - RespiratoryServiceProtocol
 extension RespiratoryService: RespiratoryServiceProtocol {
@@ -53,13 +53,6 @@ extension RespiratoryService: RespiratoryServiceProtocol {
     }
     
     public func respiratoryRate() async throws -> RespiratoryRate {
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .respiratoryRate)
-        let items = samples.map { item -> RespiratoryRate.Item in
-            let value = item.quantity.doubleValue(for: HKUnit(from: "count/min"))
-            return RespiratoryRate.Item(value: value, startDate: item.startDate, endDate: item.endDate)
-        }
-        
-        let model = RespiratoryRate(items: items)
-        return model
+        try await baseRespiratoryRate()
     }
 }

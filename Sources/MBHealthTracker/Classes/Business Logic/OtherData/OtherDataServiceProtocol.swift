@@ -15,6 +15,8 @@ public protocol OtherDataServiceProtocol: AnyObject {
     func inhalerUsage() async throws -> InhalerUsage
     func insulinDelivery() async throws -> InsulinDelivery
     func numberOfTimesFallen() async throws -> NumberOfTimesFallen
+    func sexualActivity() async throws -> SexualActivity
     func toothBrushing() async throws -> ToothBrushing
     func uvExposure() async throws -> UVExposure
+    func waterTemperature() async throws -> WaterTemperature
 }

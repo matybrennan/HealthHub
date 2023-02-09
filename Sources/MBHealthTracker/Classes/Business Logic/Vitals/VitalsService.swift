@@ -14,7 +14,7 @@ public class VitalsService {
 }
 
 // MARK: - FetchQuantitySample & FetchCorrelationSample
-extension VitalsService: FetchQuantitySample, FetchCorrelationSample { }
+extension VitalsService: FetchQuantitySample, FetchCorrelationSample, RespiratoryRateCase, BodyTemperatureCase, MenstruationCase { }
 
 // MARK: - VitalsServiceProtocol
 extension VitalsService: VitalsServiceProtocol {
@@ -59,6 +59,18 @@ extension VitalsService: VitalsServiceProtocol {
         
         let model = BloodOxygen(items: items)
         return model
+    }
+    
+    public func bodyTemperature() async throws -> BodyTemperature {
+        try await baseBodyTemperature()
+    }
+    
+    public func menstruation() async throws -> Menstruation {
+        try await baseMenstruation()
+    }
+    
+    public func respiratoryRate() async throws -> RespiratoryRate {
+        try await baseRespiratoryRate()
     }
 }
 
