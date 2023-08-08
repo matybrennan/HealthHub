@@ -14,7 +14,7 @@ public class OtherDataService {
 }
 
 // MARK: - FetchQuantitySample & FetchCategorySample
-extension OtherDataService: FetchQuantitySample, FetchCategorySample, SexualActivityCase, BloodGlucoseCase { }
+extension OtherDataService: FetchQuantitySample, FetchCategorySample, SexualActivityCase, BloodGlucoseCase, InhalerUsageCase { }
 
 // MARK: OtherDataServiceProtocol
 extension OtherDataService: OtherDataServiceProtocol {
@@ -57,14 +57,7 @@ extension OtherDataService: OtherDataServiceProtocol {
     }
     
     public func inhalerUsage() async throws -> InhalerUsage {
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .inhalerUsage)
-        let items = samples.map { item -> InhalerUsage.Item in
-            let value = Int(item.quantity.doubleValue(for: HKUnit.count()))
-            return InhalerUsage.Item(value: value, date: item.startDate)
-        }
-        
-        let model = InhalerUsage(items: items)
-        return model
+        try await baseInhalerUsage()
     }
     
     public func insulinDelivery() async throws -> InsulinDelivery {

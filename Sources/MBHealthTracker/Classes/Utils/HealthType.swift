@@ -23,6 +23,13 @@ public enum MBObjectType: SharableType, ReadableType {
     
     // Duplicates
     case sexualActivity // cycle, other
+    case respiratoryRate
+    case bodyTemperature
+    case menstruation
+    case abdominalCramps
+    case bloodGlucose
+    case bloodOxygen
+    case inhalerUsage
     
     case stepCount
     case heartRate
@@ -33,7 +40,6 @@ public enum MBObjectType: SharableType, ReadableType {
     case basalBodyTemperature
     case bodyMassIndex
     case bodyFatPercentage
-    case bodyTemperature
     case electrodermalActivity
     case height
     case leanBodyMass
@@ -97,13 +103,11 @@ public enum MBObjectType: SharableType, ReadableType {
     case mindful
     
     // Cycle tracking
-    case abdominalCramps
     case bloating
     case breastPain
     case cervicalMucusQuality
     //case contraceptives // no values needed for now
     //case lactation // no values needed for now
-    case menstruation
     case moodChanges
     case ovulationTestResult
     //case pregnancy // no values needed for now
@@ -148,7 +152,6 @@ public enum MBObjectType: SharableType, ReadableType {
     case wheezing
     
     // Respiratory
-    case respiratoryRate
     case forcedRespiratoryVolume
     case forcedVitalCapacity
     case peakExpiratoryFlowRate
@@ -156,14 +159,11 @@ public enum MBObjectType: SharableType, ReadableType {
     // Vitals
     case bloodPressureSystolic
     case bloodPressureDiastolic
-    case bloodGlucose
-    case bloodOxygen
     
     // Other Data
     case alcoholConsumption
     case alcoholContent
     case handWashing
-    case inhalerUsage
     case insulinDelivery
     case numberOfTimesFallen
     case toothBrushing
@@ -175,6 +175,13 @@ public enum MBObjectType: SharableType, ReadableType {
             
         // Common
         case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
+        case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
+        case .bodyTemperature: return HKQuantityType.quantityType(forIdentifier: .bodyTemperature)!
+        case .menstruation: return HKQuantityType.categoryType(forIdentifier: .menstrualFlow)!
+        case .abdominalCramps: return HKQuantityType.categoryType(forIdentifier: .abdominalCramps)!
+        case .bloodGlucose: return HKSampleType.quantityType(forIdentifier: .bloodGlucose)!
+        case .bloodOxygen: return HKSampleType.quantityType(forIdentifier: .oxygenSaturation)!
+        case .inhalerUsage: return HKSampleType.quantityType(forIdentifier: .inhalerUsage)!
             
         case .stepCount: return HKQuantityType.quantityType(forIdentifier: .stepCount)!
         case .heartRate: return HKQuantityType.quantityType(forIdentifier: .heartRate)!
@@ -183,7 +190,6 @@ public enum MBObjectType: SharableType, ReadableType {
         
         // Body
         case .basalBodyTemperature: return HKQuantityType.quantityType(forIdentifier: .basalBodyTemperature)!
-        case .bodyTemperature: return HKQuantityType.quantityType(forIdentifier: .bodyTemperature)!
         case .weight: return HKQuantityType.quantityType(forIdentifier: .bodyMass)!
         case .bodyMassIndex: return HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)!
         case .bodyFatPercentage: return HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!
@@ -247,13 +253,11 @@ public enum MBObjectType: SharableType, ReadableType {
         case .mindful: return HKCategoryType.categoryType(forIdentifier: .mindfulSession)!
             
         // Cycle tracking
-        case .abdominalCramps: return HKQuantityType.categoryType(forIdentifier: .abdominalCramps)!
         case .bloating: return HKQuantityType.categoryType(forIdentifier: .bloating)!
         case .breastPain: return HKQuantityType.categoryType(forIdentifier: .breastPain)!
         case .cervicalMucusQuality: return HKQuantityType.categoryType(forIdentifier: .cervicalMucusQuality)!
         //case .contraceptives: return HKQuantityType.categoryType(forIdentifier: .contraceptive)!
         //case .lactation: return HKQuantityType.categoryType(forIdentifier: .lactation)!
-        case .menstruation: return HKQuantityType.categoryType(forIdentifier: .menstrualFlow)!
         case .moodChanges: return HKQuantityType.categoryType(forIdentifier: .moodChanges)!
         case .ovulationTestResult: return HKQuantityType.categoryType(forIdentifier: .ovulationTestResult)!
         case .pregancyTestResult: return HKQuantityType.categoryType(forIdentifier: .pregnancyTestResult)!
@@ -297,7 +301,6 @@ public enum MBObjectType: SharableType, ReadableType {
         case .wheezing: return HKQuantityType.categoryType(forIdentifier: .wheezing)!
             
         // Respiratory
-        case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
         case .forcedRespiratoryVolume: return HKSampleType.quantityType(forIdentifier: .forcedExpiratoryVolume1)!
         case .forcedVitalCapacity: return HKSampleType.quantityType(forIdentifier: .forcedVitalCapacity)!
         case .peakExpiratoryFlowRate: return HKSampleType.quantityType(forIdentifier: .peakExpiratoryFlowRate)!
@@ -305,14 +308,11 @@ public enum MBObjectType: SharableType, ReadableType {
         // Vitals
         case .bloodPressureSystolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureSystolic)!
         case .bloodPressureDiastolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureDiastolic)!
-        case .bloodGlucose: return HKSampleType.quantityType(forIdentifier: .bloodGlucose)!
-        case .bloodOxygen: return HKSampleType.quantityType(forIdentifier: .oxygenSaturation)!
             
         // Other Data
         case .alcoholConsumption: return HKSampleType.quantityType(forIdentifier: .numberOfAlcoholicBeverages)!
         case .alcoholContent: return HKSampleType.quantityType(forIdentifier: .bloodAlcoholContent)!
         case .handWashing: return HKSampleType.categoryType(forIdentifier: .handwashingEvent)!
-        case .inhalerUsage: return HKSampleType.quantityType(forIdentifier: .inhalerUsage)!
         case .insulinDelivery: return HKSampleType.quantityType(forIdentifier: .insulinDelivery)!
         case .numberOfTimesFallen: return HKSampleType.quantityType(forIdentifier: .numberOfTimesFallen)!
         case .toothBrushing: return HKSampleType.categoryType(forIdentifier: .toothbrushingEvent)!
@@ -326,6 +326,13 @@ public enum MBObjectType: SharableType, ReadableType {
             
         // Common
         case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
+        case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
+        case .bodyTemperature: return HKQuantityType.quantityType(forIdentifier: .bodyTemperature)!
+        case .menstruation: return HKQuantityType.categoryType(forIdentifier: .menstrualFlow)!
+        case .abdominalCramps: return HKQuantityType.categoryType(forIdentifier: .abdominalCramps)!
+        case .bloodGlucose: return HKSampleType.quantityType(forIdentifier: .bloodGlucose)!
+        case .bloodOxygen: return HKSampleType.quantityType(forIdentifier: .oxygenSaturation)!
+        case .inhalerUsage: return HKSampleType.quantityType(forIdentifier: .inhalerUsage)!
             
         case .stepCount: return HKQuantityType.quantityType(forIdentifier: .stepCount)!
         case .heartRate: return HKQuantityType.quantityType(forIdentifier: .heartRate)!
@@ -334,7 +341,6 @@ public enum MBObjectType: SharableType, ReadableType {
         
         // Body
         case .basalBodyTemperature: return HKQuantityType.quantityType(forIdentifier: .basalBodyTemperature)!
-        case .bodyTemperature: return HKQuantityType.quantityType(forIdentifier: .bodyTemperature)!
         case .weight: return HKQuantityType.quantityType(forIdentifier: .bodyMass)!
         case .electrodermalActivity: return HKQuantityType.quantityType(forIdentifier: .electrodermalActivity)!
         case .leanBodyMass: return HKQuantityType.quantityType(forIdentifier: .leanBodyMass)!
@@ -398,13 +404,11 @@ public enum MBObjectType: SharableType, ReadableType {
         case .mindful: return HKCategoryType.categoryType(forIdentifier: .mindfulSession)!
         
         // Cycle tracking
-        case .abdominalCramps: return HKQuantityType.categoryType(forIdentifier: .abdominalCramps)!
         case .bloating: return HKQuantityType.categoryType(forIdentifier: .bloating)!
         case .breastPain: return HKQuantityType.categoryType(forIdentifier: .breastPain)!
         case .cervicalMucusQuality: return HKQuantityType.categoryType(forIdentifier: .cervicalMucusQuality)!
         //case .contraceptives: return HKQuantityType.categoryType(forIdentifier: .contraceptive)!
         //case .lactation: return HKQuantityType.categoryType(forIdentifier: .lactation)!
-        case .menstruation: return HKQuantityType.categoryType(forIdentifier: .menstrualFlow)!
         case .moodChanges: return HKQuantityType.categoryType(forIdentifier: .moodChanges)!
         case .ovulationTestResult: return HKQuantityType.categoryType(forIdentifier: .ovulationTestResult)!
         case .pregancyTestResult: return HKQuantityType.categoryType(forIdentifier: .pregnancyTestResult)!
@@ -448,7 +452,6 @@ public enum MBObjectType: SharableType, ReadableType {
         case .wheezing: return HKQuantityType.categoryType(forIdentifier: .wheezing)!
         
         // Respiratory
-        case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
         case .forcedRespiratoryVolume: return HKSampleType.quantityType(forIdentifier: .forcedExpiratoryVolume1)!
         case .forcedVitalCapacity: return HKSampleType.quantityType(forIdentifier: .forcedVitalCapacity)!
         case .peakExpiratoryFlowRate: return HKSampleType.quantityType(forIdentifier: .peakExpiratoryFlowRate)!
@@ -456,14 +459,11 @@ public enum MBObjectType: SharableType, ReadableType {
         // Vitals
         case .bloodPressureSystolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureSystolic)!
         case .bloodPressureDiastolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureDiastolic)!
-        case .bloodGlucose: return HKSampleType.quantityType(forIdentifier: .bloodGlucose)!
-        case .bloodOxygen: return HKSampleType.quantityType(forIdentifier: .oxygenSaturation)!
             
         // Other Data
         case .alcoholConsumption: return HKSampleType.quantityType(forIdentifier: .numberOfAlcoholicBeverages)!
         case .alcoholContent: return HKSampleType.quantityType(forIdentifier: .bloodAlcoholContent)!
         case .handWashing: return HKSampleType.categoryType(forIdentifier: .handwashingEvent)!
-        case .inhalerUsage: return HKSampleType.quantityType(forIdentifier: .inhalerUsage)!
         case .insulinDelivery: return HKSampleType.quantityType(forIdentifier: .insulinDelivery)!
         case .numberOfTimesFallen: return HKSampleType.quantityType(forIdentifier: .numberOfTimesFallen)!
         case .toothBrushing: return HKSampleType.categoryType(forIdentifier: .toothbrushingEvent)!

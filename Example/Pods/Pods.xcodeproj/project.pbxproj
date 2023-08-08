@@ -81,6 +81,8 @@
 		F15F63122994AEBC000390CA /* AbdominalCrampsCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15F63112994AEBC000390CA /* AbdominalCrampsCase.swift */; };
 		F15F63152994B044000390CA /* MBHealthHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15F63142994B044000390CA /* MBHealthHandler.swift */; };
 		F168EE852A82400F00FFDA00 /* BloodGlucoseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168EE842A82400F00FFDA00 /* BloodGlucoseCase.swift */; };
+		F168EE872A8241F500FFDA00 /* BloodOxygenCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168EE862A8241F500FFDA00 /* BloodOxygenCase.swift */; };
+		F168EE892A82427700FFDA00 /* InhalerUsageCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168EE882A82427700FFDA00 /* InhalerUsageCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +196,8 @@
 		F15F63112994AEBC000390CA /* AbdominalCrampsCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbdominalCrampsCase.swift; sourceTree = "<group>"; };
 		F15F63142994B044000390CA /* MBHealthHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBHealthHandler.swift; sourceTree = "<group>"; };
 		F168EE842A82400F00FFDA00 /* BloodGlucoseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodGlucoseCase.swift; sourceTree = "<group>"; };
+		F168EE862A8241F500FFDA00 /* BloodOxygenCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodOxygenCase.swift; sourceTree = "<group>"; };
+		F168EE882A82427700FFDA00 /* InhalerUsageCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InhalerUsageCase.swift; sourceTree = "<group>"; };
 		F29E267AE335A1B4A06B08DDEC034D78 /* NetworkResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		F32A8E9D54978CABA10158F04893C729 /* Pods-MBHealthTracker_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-MBHealthTracker_Tests"; path = Pods_MBHealthTracker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F334379E47E866CB46C6FF30D782919E /* MBHealthTracker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBHealthTracker-prefix.pch"; sourceTree = "<group>"; };
@@ -678,6 +682,8 @@
 				F15F630F2994AE0A000390CA /* MenstruationCase.swift */,
 				F15F63112994AEBC000390CA /* AbdominalCrampsCase.swift */,
 				F168EE842A82400F00FFDA00 /* BloodGlucoseCase.swift */,
+				F168EE862A8241F500FFDA00 /* BloodOxygenCase.swift */,
+				F168EE882A82427700FFDA00 /* InhalerUsageCase.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -880,6 +886,7 @@
 				2EA95E2098AD529A08A31F20EB0B988B /* Date+Extension.swift in Sources */,
 				715D3D82AD92F977C7557DFE3510E44D /* HealthParser.swift in Sources */,
 				4797CFB769BD387D4D37153AF6DAABEB /* HealthType.swift in Sources */,
+				F168EE892A82427700FFDA00 /* InhalerUsageCase.swift in Sources */,
 				04C032DB07680522BB986C70714ADC0D /* HeartRateModels.swift in Sources */,
 				2DD0B7940FF2FF23FD54780C9A31D295 /* HeartService.swift in Sources */,
 				9FC2F21E50AD32E2F193C0286090625A /* HeartServiceProtocol.swift in Sources */,
@@ -898,6 +905,7 @@
 				D0ACE9FDC9FFF9FFC9383B79F7C28111 /* NutritionService.swift in Sources */,
 				B94CEF58ADDBF601D92BE07F038B9F44 /* NutritionServiceProtocol.swift in Sources */,
 				DDD7B26AF6971A83B38E0AD44C0F390F /* OtherDataModels.swift in Sources */,
+				F168EE872A8241F500FFDA00 /* BloodOxygenCase.swift in Sources */,
 				AAEC6D5BB7C5A74F3FD14101A9B9394C /* OtherDataService.swift in Sources */,
 				212D22F02902028B18FC74F6A821FF48 /* OtherDataServiceProtocol.swift in Sources */,
 				F15F630A2994A80A000390CA /* SeuxalActivityCase.swift in Sources */,

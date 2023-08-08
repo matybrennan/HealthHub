@@ -14,7 +14,7 @@ public class VitalsService {
 }
 
 // MARK: - FetchQuantitySample & FetchCorrelationSample
-extension VitalsService: FetchQuantitySample, FetchCorrelationSample, RespiratoryRateCase, BodyTemperatureCase, MenstruationCase, BloodGlucoseCase { }
+extension VitalsService: FetchQuantitySample, FetchCorrelationSample, RespiratoryRateCase, BodyTemperatureCase, MenstruationCase, BloodGlucoseCase, BloodOxygenCase { }
 
 // MARK: - VitalsServiceProtocol
 extension VitalsService: VitalsServiceProtocol {
@@ -42,14 +42,7 @@ extension VitalsService: VitalsServiceProtocol {
     }
     
     public func bloodOxygen() async throws -> BloodOxygen {
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .oxygenSaturation)
-        let items = samples.map { item -> BloodOxygen.Item in
-            let percentage = item.quantity.doubleValue(for: .percent())
-            return BloodOxygen.Item(date: item.startDate, oxygenSaturationPercentage: percentage)
-        }
-        
-        let model = BloodOxygen(items: items)
-        return model
+        try await baseBloodOxygen()
     }
     
     public func bodyTemperature() async throws -> BodyTemperature {

@@ -14,10 +14,14 @@ public class RespiratoryService {
 }
 
 // MARK: - FetchQuantitySample
-extension RespiratoryService: FetchQuantitySample, RespiratoryRateCase { }
+extension RespiratoryService: FetchQuantitySample, RespiratoryRateCase, BloodOxygenCase, InhalerUsageCase { }
 
 // MARK: - RespiratoryServiceProtocol
 extension RespiratoryService: RespiratoryServiceProtocol {
+
+    public func bloodOxygen() async throws -> BloodOxygen {
+        try await baseBloodOxygen()
+    }
     
     public func forcedExpiratoryVolume() async throws -> ForcedExpiratoryVolume {
         let samples = try await fetchQuantitySamples(quantityIdentifier: .forcedExpiratoryVolume1)
@@ -39,6 +43,10 @@ extension RespiratoryService: RespiratoryServiceProtocol {
         
         let model = ForcedVitalCapacity(items: items)
         return model
+    }
+
+    public func inhalerUsage() async throws -> InhalerUsage {
+        try await baseInhalerUsage()
     }
     
     public func peakExpiratoryFlowRate() async throws -> PeakExpiratoryFlowRate {

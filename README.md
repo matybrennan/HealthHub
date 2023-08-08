@@ -219,10 +219,12 @@ Split into sections to gather data based on timeIntervals
 ```var symptoms: SymptomsServiceProtocol```
 
 ### Respiratory
-- respiratoryRate
+- bloodOxygen
 - forcedExpiratoryVolume
 - forcedVitalCapacity
+- inhalerUsage
 - peakExpiratoryFlowRate
+- respiratoryRate
 
 ```var respiratory: RespiratoryServiceProtocol```
 
