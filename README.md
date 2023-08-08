@@ -46,6 +46,10 @@ The main driver that contains all the business logic is ```MBHealthTracker``` wh
 
 The ```MBHealthTracker``` contains all the services below
 ``` 
+@StateObject private var healthTracker = MBHealthTracker()
+
+or 
+
 let tracker = MBHealthTracker()
 let configuration = tracker.configuration
 ```
