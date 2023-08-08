@@ -73,7 +73,6 @@ let myService = MyService(configuration: configuration)
 let tracker = MBHealthTracker()
 tracker.mbHealthHandler.state = .idle
 tracker.mbHealthHandler.$state.sink { state in ... }
-```
 mbHealthHandler = MBHealthHandler()
 ```
 
