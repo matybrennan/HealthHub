@@ -139,6 +139,7 @@ Split into sections to gather data based on timeIntervals
 - leanBodyMass
 - waistCircumference
 - weight
+- wristTemperature
 
 ```var body: BodyServiceProtocol```
 

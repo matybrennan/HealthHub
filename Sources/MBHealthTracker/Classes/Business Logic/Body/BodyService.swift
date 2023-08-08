@@ -62,6 +62,19 @@ extension BodyService: BodyServiceProtocol {
     public func bodyTemperature() async throws -> BodyTemperature {
         try await baseBodyTemperature()
     }
+
+    public func electrodermalActivity() async throws -> ElectrodermalActivity {
+        let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .electrodermalActivity, sortDescriptors: [sortDescriptor])
+
+        let items = samples.map { item -> ElectrodermalActivity.Item in
+            let value = item.quantity.doubleValue(for: HKUnit.siemenUnit(with: .micro))
+            return ElectrodermalActivity.Item(value: value, date: item.endDate)
+        }
+
+        let electrodermalActivity = ElectrodermalActivity(items: items)
+        return electrodermalActivity
+    }
     
     public func height() async throws -> BodyHeight {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
@@ -118,17 +131,18 @@ extension BodyService: BodyServiceProtocol {
         let bodyWeight = BodyWeight(items: items)
         return bodyWeight
     }
-    
-    public func electrodermalActivity() async throws -> ElectrodermalActivity {
+
+    public func wristTemperature() async throws -> WristTemperature {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .electrodermalActivity, sortDescriptors: [sortDescriptor])
-        
-        let items = samples.map { item -> ElectrodermalActivity.Item in
-            let value = item.quantity.doubleValue(for: HKUnit.siemenUnit(with: .micro))
-            return ElectrodermalActivity.Item(value: value, date: item.endDate)
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .appleSleepingWristTemperature, sortDescriptors: [sortDescriptor])
+
+        let items = samples.map { item -> WristTemperature.Item in
+            let celsius = item.quantity.doubleValue(for: .degreeCelsius())
+            let fahrenheit = item.quantity.doubleValue(for: .degreeFahrenheit())
+            return WristTemperature.Item(celsius: celsius, fahrenheit: fahrenheit, date: item.endDate)
         }
-        
-        let electrodermalActivity = ElectrodermalActivity(items: items)
-        return electrodermalActivity
+
+        let model = WristTemperature(items: items)
+        return model
     }
 }

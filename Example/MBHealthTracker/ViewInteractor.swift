@@ -39,7 +39,7 @@ extension ViewInteractor: ViewInteractorProtocol {
     
     func configurePermissions() {
         Task {
-            try await healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.carbohydrates], toRead: [MBObjectType.pregancyTestResult, MBObjectType.progesteroneTestResult])
+            try await healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.carbohydrates, MBObjectType.wristTemperature], toRead: [MBObjectType.pregancyTestResult, MBObjectType.wristTemperature])
         }
     }
     

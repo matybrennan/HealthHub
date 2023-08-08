@@ -98,3 +98,19 @@ public struct ElectrodermalActivity {
     public let items: [Item]
 }
 
+public struct WristTemperature {
+
+    public struct Item {
+        public let celsius: Double
+        public let fahrenheit: Double
+        public let date: Date
+
+        public init(celsius: Double, fahrenheit: Double, date: Date) {
+            self.celsius = celsius
+            self.fahrenheit = fahrenheit
+            self.date = date
+        }
+    }
+
+    public let items: [Item]
+}

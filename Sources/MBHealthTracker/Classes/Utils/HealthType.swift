@@ -39,6 +39,7 @@ public enum MBObjectType: SharableType, ReadableType {
     case leanBodyMass
     case waistCircumference
     case weight
+    case wristTemperature
     
     // Nutrition
     /// Macronutrients
@@ -189,6 +190,7 @@ public enum MBObjectType: SharableType, ReadableType {
         case .height: return HKQuantityType.quantityType(forIdentifier: .height)!
         case .leanBodyMass: return HKQuantityType.quantityType(forIdentifier: .leanBodyMass)!
         case .waistCircumference: return HKQuantityType.quantityType(forIdentifier: .waistCircumference)!
+        case .wristTemperature: return HKQuantityType.quantityType(forIdentifier: .appleSleepingWristTemperature)!
             
         // Nutrition
         /// Macronutrients
@@ -339,6 +341,7 @@ public enum MBObjectType: SharableType, ReadableType {
         case .bodyMassIndex: return HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)!
         case .bodyFatPercentage: return HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!
         case .waistCircumference: return HKQuantityType.quantityType(forIdentifier: .waistCircumference)!
+        case .wristTemperature: return HKQuantityType.quantityType(forIdentifier: .appleSleepingWristTemperature)!
         
         // Nutrition
         /// Macronutrients
