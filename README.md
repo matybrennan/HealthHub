@@ -1,18 +1,8 @@
 # MBHealthTracker
 
 [![Version](https://img.shields.io/cocoapods/v/MBHealthTracker.svg?style=flat)](http://cocoapods.org/pods/MBHealthTracker)
-[![Tag](https://img.shields.io/cocoapods/v/MBHealthTracker.svg?style=flat)](http://cocoapods.org/pods/MBHealthTracker)
 [![License](https://img.shields.io/cocoapods/l/MBHealthTracker.svg?style=flat)](http://cocoapods.org/pods/MBHealthTracker)
 [![Platform](https://img.shields.io/cocoapods/p/MBHealthTracker.svg?style=flat)](http://cocoapods.org/pods/MBHealthTracker)
-
-
-<p align="center">
-<a href="https://github.com/onevcat/Kingfisher/actions?query=workflow%3Abuild"><img src="https://github.com/onevcat/kingfisher/workflows/build/badge.svg?branch=master"></a>
-<a href="https://swiftpackageindex.com/onevcat/Kingfisher/master/documentation/kingfisher"><img src="https://img.shields.io/badge/Swift-Doc-DE5C43.svg?style=flat"></a>
-<a href="https://cocoapods.org/pods/Kingfisher"><img src="https://img.shields.io/github/v/tag/onevcat/Kingfisher.svg?color=blue&include_prereleases=&sort=semver"></a>
-<a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SPM-supported-DE5C43.svg?style=flat"></a>
-<a href="https://raw.githubusercontent.com/onevcat/Kingfisher/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-black"></a>
-</p>
 
 ## Goals
 
