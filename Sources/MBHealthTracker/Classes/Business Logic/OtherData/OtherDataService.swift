@@ -14,7 +14,7 @@ public class OtherDataService {
 }
 
 // MARK: - FetchQuantitySample & FetchCategorySample
-extension OtherDataService: FetchQuantitySample, FetchCategorySample, SexualActivityCase { }
+extension OtherDataService: FetchQuantitySample, FetchCategorySample, SexualActivityCase, BloodGlucoseCase { }
 
 // MARK: OtherDataServiceProtocol
 extension OtherDataService: OtherDataServiceProtocol {
@@ -39,6 +39,10 @@ extension OtherDataService: OtherDataServiceProtocol {
         
         let model = AlcoholContent(items: items)
         return model
+    }
+
+    public func bloodGlucose() async throws -> BloodGlucose {
+        try await baseBloodGlucose()
     }
     
     public func handWashing() async throws -> HandWashing {

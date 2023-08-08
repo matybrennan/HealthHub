@@ -27,7 +27,7 @@
 		36E3175CA32ECB6A3182DDA920CFF9BF /* RespiratoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8875CE10FD02EEDF8310C4673FA8035 /* RespiratoryService.swift */; };
 		3E87D51C8CD6C5279AE170F6025A4362 /* ConfigurationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52328528214B71168B5800D063FD1824 /* ConfigurationService.swift */; };
 		3EE9A7633F0685B8F090476DBA2E00DA /* CycleTrackingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2161C462641E91EDCFC3334EDC567594 /* CycleTrackingModels.swift */; };
-		427B792DFBC047C2F4ACBF0983FC3939 /* BodyServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457EAD63605FA5454926EC3EAC27656B /* BodyServiceProtocol.swift */; };
+		427B792DFBC047C2F4ACBF0983FC3939 /* BodyMeasurementsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457EAD63605FA5454926EC3EAC27656B /* BodyMeasurementsServiceProtocol.swift */; };
 		43E7549B122A4B484510F20F95FDBF72 /* CycleTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD953DF0AA5D46D9C737A761B182125 /* CycleTracking.swift */; };
 		4797CFB769BD387D4D37153AF6DAABEB /* HealthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556CFDAD3DB7E41B47DEE64246CC0D37 /* HealthType.swift */; };
 		4C77589AF6AF416246C58DAA722A75EA /* Pods-MBHealthTracker_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D3EFD5E32735526A0E9BE13B72B8C5 /* Pods-MBHealthTracker_Tests-dummy.m */; };
@@ -71,7 +71,7 @@
 		DDD7B26AF6971A83B38E0AD44C0F390F /* OtherDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C37804AF908124571D1598FDB2D0E6 /* OtherDataModels.swift */; };
 		DF475C260790BADA77537FFDCC32DC50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		E8C80DA37E8E15A9BA30492A68C9B29A /* WorkoutModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB367C5D942A7F0238A3735179E486DB /* WorkoutModels.swift */; };
-		EA2A3217F1E8B892A3C0B475CF02770D /* BodyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648FB74FF004EC68328DA896801A0D0 /* BodyService.swift */; };
+		EA2A3217F1E8B892A3C0B475CF02770D /* BodyMeasurementsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648FB74FF004EC68328DA896801A0D0 /* BodyMeasurementsService.swift */; };
 		EA3F71E53648D81FA214C314E244B39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		F04EE11EED84FC93F948846B013EF86C /* VitalsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF94FC68178E3C827032CB5DFB77300 /* VitalsServiceProtocol.swift */; };
 		F15F630A2994A80A000390CA /* SeuxalActivityCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15F63092994A80A000390CA /* SeuxalActivityCase.swift */; };
@@ -80,6 +80,7 @@
 		F15F63102994AE0A000390CA /* MenstruationCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15F630F2994AE0A000390CA /* MenstruationCase.swift */; };
 		F15F63122994AEBC000390CA /* AbdominalCrampsCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15F63112994AEBC000390CA /* AbdominalCrampsCase.swift */; };
 		F15F63152994B044000390CA /* MBHealthHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15F63142994B044000390CA /* MBHealthHandler.swift */; };
+		F168EE852A82400F00FFDA00 /* BloodGlucoseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168EE842A82400F00FFDA00 /* BloodGlucoseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,8 +126,8 @@
 		3A3EBE1BA57E5656DDA028F02CC8827E /* Pods-MBHealthTracker_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MBHealthTracker_Example-dummy.m"; sourceTree = "<group>"; };
 		3E7ECA291B4987325D1763FA494B7453 /* Pods-MBHealthTracker_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MBHealthTracker_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		4456FBE12BDFB1EB3AA4032FE1CFFDFC /* ActiveEnergyService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActiveEnergyService.swift; sourceTree = "<group>"; };
-		457EAD63605FA5454926EC3EAC27656B /* BodyServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BodyServiceProtocol.swift; sourceTree = "<group>"; };
-		4648FB74FF004EC68328DA896801A0D0 /* BodyService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BodyService.swift; sourceTree = "<group>"; };
+		457EAD63605FA5454926EC3EAC27656B /* BodyMeasurementsServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BodyMeasurementsServiceProtocol.swift; sourceTree = "<group>"; };
+		4648FB74FF004EC68328DA896801A0D0 /* BodyMeasurementsService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BodyMeasurementsService.swift; sourceTree = "<group>"; };
 		4EBC6FCC97089DEED30E67B5DCED2A7E /* WorkoutManagerProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WorkoutManagerProtocol.swift; sourceTree = "<group>"; };
 		51D503F66286E807EB1C35944F88BCFE /* MBHealthTracker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = MBHealthTracker.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		52328528214B71168B5800D063FD1824 /* ConfigurationService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConfigurationService.swift; sourceTree = "<group>"; };
@@ -192,6 +193,7 @@
 		F15F630F2994AE0A000390CA /* MenstruationCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenstruationCase.swift; sourceTree = "<group>"; };
 		F15F63112994AEBC000390CA /* AbdominalCrampsCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbdominalCrampsCase.swift; sourceTree = "<group>"; };
 		F15F63142994B044000390CA /* MBHealthHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBHealthHandler.swift; sourceTree = "<group>"; };
+		F168EE842A82400F00FFDA00 /* BloodGlucoseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodGlucoseCase.swift; sourceTree = "<group>"; };
 		F29E267AE335A1B4A06B08DDEC034D78 /* NetworkResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		F32A8E9D54978CABA10158F04893C729 /* Pods-MBHealthTracker_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-MBHealthTracker_Tests"; path = Pods_MBHealthTracker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F334379E47E866CB46C6FF30D782919E /* MBHealthTracker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBHealthTracker-prefix.pch"; sourceTree = "<group>"; };
@@ -324,8 +326,8 @@
 		312D38B576E4FA8B3267626B38195FBF /* Body */ = {
 			isa = PBXGroup;
 			children = (
-				4648FB74FF004EC68328DA896801A0D0 /* BodyService.swift */,
-				457EAD63605FA5454926EC3EAC27656B /* BodyServiceProtocol.swift */,
+				4648FB74FF004EC68328DA896801A0D0 /* BodyMeasurementsService.swift */,
+				457EAD63605FA5454926EC3EAC27656B /* BodyMeasurementsServiceProtocol.swift */,
 			);
 			path = Body;
 			sourceTree = "<group>";
@@ -675,6 +677,7 @@
 				F15F630D2994ACA7000390CA /* BodyTemperatureCase.swift */,
 				F15F630F2994AE0A000390CA /* MenstruationCase.swift */,
 				F15F63112994AEBC000390CA /* AbdominalCrampsCase.swift */,
+				F168EE842A82400F00FFDA00 /* BloodGlucoseCase.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -863,14 +866,15 @@
 				4D1D989E9A34B675BF63097952F2C2B6 /* ActivityManager.swift in Sources */,
 				AA00039119DA4F3CA62E476E70C7B26D /* ActivityManagerProtocol.swift in Sources */,
 				1674F368815EEA9CDBA57F5FF9FF33FF /* Body.swift in Sources */,
-				EA2A3217F1E8B892A3C0B475CF02770D /* BodyService.swift in Sources */,
-				427B792DFBC047C2F4ACBF0983FC3939 /* BodyServiceProtocol.swift in Sources */,
+				EA2A3217F1E8B892A3C0B475CF02770D /* BodyMeasurementsService.swift in Sources */,
+				427B792DFBC047C2F4ACBF0983FC3939 /* BodyMeasurementsServiceProtocol.swift in Sources */,
 				6FF538FE5D33CB55E83F5AC79C491002 /* CharacteristicService.swift in Sources */,
 				2E4B879128C9C46B00354CB0 /* RespiratoryModels.swift in Sources */,
 				51B237BCA06294B99FA10CA9708E3895 /* CharacteristicServiceProtocol.swift in Sources */,
 				3E87D51C8CD6C5279AE170F6025A4362 /* ConfigurationService.swift in Sources */,
 				50CC81924CFA7CE901510DD5D9304CD6 /* ConfigurationServiceProtocol.swift in Sources */,
 				43E7549B122A4B484510F20F95FDBF72 /* CycleTracking.swift in Sources */,
+				F168EE852A82400F00FFDA00 /* BloodGlucoseCase.swift in Sources */,
 				3EE9A7633F0685B8F090476DBA2E00DA /* CycleTrackingModels.swift in Sources */,
 				C8B980141A39992832635DB46E9DA3AF /* CycleTrackingServiceProtocol.swift in Sources */,
 				2EA95E2098AD529A08A31F20EB0B988B /* Date+Extension.swift in Sources */,

@@ -21,7 +21,7 @@ public protocol MBHealthTrackerProtocol: AnyObject {
     
     var sleep: SleepServiceProtocol { get }
     
-    var body: BodyServiceProtocol { get }
+    var bodyMeasurements: BodyMeasurementsServiceProtocol { get }
     
     var mindful: MindfulnessServiceProtocol { get }
     

@@ -131,19 +131,19 @@ Split into sections to gather data based on timeIntervals
 
 ------------------------------------------------------------------------
 
-### Body
+### Body Measurements
 - basalBodyTemperature
 - bodyFatPercentage
 - bodyMassIndex
 - bodyTemperature
-- height
 - electrodermalActivity
+- height
 - leanBodyMass
 - waistCircumference
 - weight
 - wristTemperature
 
-```var body: BodyServiceProtocol```
+```var bodyMeasurements: BodyMeasurementsServiceProtocol```
 
 ### Nutrition
 - macronutrients
@@ -181,13 +181,16 @@ Split into sections to gather data based on timeIntervals
 - acne        
 - appetiteChanges
 - bladderIncontinence
+- bloating
 - bodyAndMuscleAche
+- breastPain
 - chestTightnessOrPain
 - chills
 - congestion
 - constipation
 - coughing
 - diarrhea
+- dizziness
 - drySkin
 - fainting
 - fatigue
@@ -199,6 +202,7 @@ Split into sections to gather data based on timeIntervals
 - loss of taste
 - lowerBackPain
 - memoryLapse
+- moodChanges
 - nausea
 - nightSweats
 - pelvicPain
@@ -208,6 +212,7 @@ Split into sections to gather data based on timeIntervals
 - skippedHeartbeat
 - sleepChanges
 - soreThroat
+- vaginalDryness
 - vomiting
 - wheezing
 
@@ -222,9 +227,9 @@ Split into sections to gather data based on timeIntervals
 ```var respiratory: RespiratoryServiceProtocol```
 
 ### Vitals
-- bloodPressure
 - bloodGlucose
 - bloodOxygen
+- bloodPressure
 - bodyTemperature
 - menstruation
 - respiratoryRate
@@ -234,6 +239,7 @@ Split into sections to gather data based on timeIntervals
 ### Other Data
 - alcoholConsumption
 - alcoholContent
+- bloodGlucose
 - handWashing
 - inhalerUsage
 - insulinDelivery

@@ -1,5 +1,5 @@
 //
-//  BodyService.swift
+//  BodyMeasurementsService.swift
 //  MBHealthTracker
 //
 //  Created by matybrennan on 20/9/19.
@@ -8,16 +8,16 @@
 import Foundation
 import HealthKit
 
-public class BodyService {
+public class BodyMeasurementsService {
     
     public init() { }
 }
 
 // MARK: - FetchQuantitySample & BodyTemperatureCase
-extension BodyService: FetchQuantitySample, BodyTemperatureCase { }
+extension BodyMeasurementsService: FetchQuantitySample, BodyTemperatureCase { }
 
 // MARK: - BodyServiceProtocol
-extension BodyService: BodyServiceProtocol {
+extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
     
     public func basalBodyTemperature() async throws -> BasalBodyTemperature {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)

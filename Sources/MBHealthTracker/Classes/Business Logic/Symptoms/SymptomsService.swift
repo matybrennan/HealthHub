@@ -56,9 +56,17 @@ extension SymptomsService: SymptomsServiceProtocol {
     public func bladderIncontinence() async throws -> GenericSymptomModel {
         try await fetchGenericSymptomResult(categoryIdentifier: .bladderIncontinence)
     }
+
+    public func bloating() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .bloating)
+    }
     
     public func bodyAndMuscleAche() async throws -> GenericSymptomModel {
         try await fetchGenericSymptomResult(categoryIdentifier: .generalizedBodyAche)
+    }
+
+    public func breastPain() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .breastPain)
     }
     
     public func chestTightnessOrPain() async throws -> GenericSymptomModel {
@@ -83,6 +91,10 @@ extension SymptomsService: SymptomsServiceProtocol {
     
     public func diarrhea() async throws -> GenericSymptomModel {
         try await fetchGenericSymptomResult(categoryIdentifier: .diarrhea)
+    }
+
+    public func dizziness() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .dizziness)
     }
     
     public func drySkin() async throws -> GenericSymptomModel {
@@ -132,6 +144,10 @@ extension SymptomsService: SymptomsServiceProtocol {
     public func memoryLapse() async throws -> GenericSymptomModel {
         try await fetchGenericSymptomResult(categoryIdentifier: .memoryLapse)
     }
+
+    public func moodChanges() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .moodChanges)
+    }
     
     public func nausea() async throws -> GenericSymptomModel {
         try await fetchGenericSymptomResult(categoryIdentifier: .nausea)
@@ -167,6 +183,10 @@ extension SymptomsService: SymptomsServiceProtocol {
     
     public func soreThroat() async throws -> GenericSymptomModel {
         try await fetchGenericSymptomResult(categoryIdentifier: .soreThroat)
+    }
+
+    public func vaginalDryness() async throws -> GenericSymptomModel {
+        try await fetchGenericSymptomResult(categoryIdentifier: .vaginalDryness)
     }
     
     public func vomiting() async throws -> GenericSymptomModel {

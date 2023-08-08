@@ -10,12 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @StateObject private var store: Store
-
-    init() {
-        let myStore = Store()
-        self._store = StateObject(wrappedValue: myStore)
-    }
+    @StateObject private var store = Store()
 
     var body: some View {
         Text("Content View")

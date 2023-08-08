@@ -14,22 +14,13 @@ public class VitalsService {
 }
 
 // MARK: - FetchQuantitySample & FetchCorrelationSample
-extension VitalsService: FetchQuantitySample, FetchCorrelationSample, RespiratoryRateCase, BodyTemperatureCase, MenstruationCase { }
+extension VitalsService: FetchQuantitySample, FetchCorrelationSample, RespiratoryRateCase, BodyTemperatureCase, MenstruationCase, BloodGlucoseCase { }
 
 // MARK: - VitalsServiceProtocol
 extension VitalsService: VitalsServiceProtocol {
     
     public func bloodGlucose() async throws -> BloodGlucose {
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .bloodGlucose)
-        let items = samples.map { item -> BloodGlucose.Item in
-            let glucoseLevel = item.quantity.doubleValue(for: HKUnit(from: "mg/dL"))
-            let mealtimeInt = item.metadata?[HKMetadataKeyBloodGlucoseMealTime] as? Int ?? 0
-            let mealTime = BloodGlucose.Item.MealTime(rawValue: mealtimeInt) ?? .unspecified
-            return BloodGlucose.Item(date: item.startDate, bloodGlucose: glucoseLevel, mealTime: mealTime)
-        }
-        
-        let model = BloodGlucose(items: items)
-        return model
+        try await baseBloodGlucose()
     }
     
     public func bloodPressure() async throws -> BloodPressure {

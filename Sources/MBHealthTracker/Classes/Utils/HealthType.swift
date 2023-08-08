@@ -37,6 +37,7 @@ public enum MBObjectType: SharableType, ReadableType {
     case electrodermalActivity
     case height
     case leanBodyMass
+    //case visionPrescription // Probably dont need
     case waistCircumference
     case weight
     case wristTemperature

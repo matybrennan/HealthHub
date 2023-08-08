@@ -1,5 +1,5 @@
 //
-//  BodyServiceProtocol.swift
+//  BodyMeasurementsServiceProtocol.swift
 //  MBHealthTracker
 //
 //  Created by matybrennan on 20/9/19.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol BodyServiceProtocol: AnyObject {
+public protocol BodyMeasurementsServiceProtocol: AnyObject {
     
     func basalBodyTemperature() async throws -> BasalBodyTemperature
     func bodyFatPercentage() async throws -> BodyFatPercentage
