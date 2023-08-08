@@ -7,16 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E5F4A052037B02400947553 /* ViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A042037B02400947553 /* ViewInteractor.swift */; };
+		2E5F4A052037B02400947553 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5F4A042037B02400947553 /* Store.swift */; };
 		2E5F4A082037B3E700947553 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5F4A072037B3E700947553 /* HealthKit.framework */; };
-		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
-		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		C4500FCA86B43CE7AB8119DC /* Pods_MBHealthTracker_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78244801AAD4580441A6FCEC /* Pods_MBHealthTracker_Tests.framework */; };
 		DE6CB50C4D9EA18716965EA4 /* Pods_MBHealthTracker_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E561F1AAEECB94D8EE86D112 /* Pods_MBHealthTracker_Example.framework */; };
+		F168EE812A822BDC00FFDA00 /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168EE802A822BDC00FFDA00 /* MainApp.swift */; };
+		F168EE832A822C2000FFDA00 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168EE822A822C2000FFDA00 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,14 +33,11 @@
 		1C11631471DD576709D8827C /* Pods-MBHealthTracker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBHealthTracker_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MBHealthTracker_Tests/Pods-MBHealthTracker_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		28AE631557300FFC4C5B58B4 /* Pods-MBHealthTracker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBHealthTracker_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MBHealthTracker_Example/Pods-MBHealthTracker_Example.release.xcconfig"; sourceTree = "<group>"; };
 		28E44660807AACCE4A6F0ED8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		2E5F4A042037B02400947553 /* ViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInteractor.swift; sourceTree = "<group>"; };
+		2E5F4A042037B02400947553 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		2E5F4A072037B3E700947553 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		2E5F4A092037B3E700947553 /* MBHealthTracker_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MBHealthTracker_Example.entitlements; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* MBHealthTracker_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBHealthTracker_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* MBHealthTracker_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MBHealthTracker_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +48,8 @@
 		AAD62AA7E2CE76FE279EE95A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		E561F1AAEECB94D8EE86D112 /* Pods_MBHealthTracker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBHealthTracker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E806BD090C8C17AD126A4C7E /* Pods-MBHealthTracker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBHealthTracker_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MBHealthTracker_Tests/Pods-MBHealthTracker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		F168EE802A822BDC00FFDA00 /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
+		F168EE822A822C2000FFDA00 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,8 +86,8 @@
 		2E5F4A062037B03500947553 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				2E5F4A042037B02400947553 /* ViewInteractor.swift */,
+				F168EE822A822C2000FFDA00 /* ContentView.swift */,
+				2E5F4A042037B02400947553 /* Store.swift */,
 			);
 			name = Presentation;
 			sourceTree = "<group>";
@@ -119,9 +117,8 @@
 		607FACD21AFB9204008FA782 /* Example for MBHealthTracker */ = {
 			isa = PBXGroup;
 			children = (
+				F168EE7F2A822BD300FFDA00 /* App */,
 				2E5F4A062037B03500947553 /* Presentation */,
-				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for MBHealthTracker";
@@ -174,6 +171,14 @@
 				1C11631471DD576709D8827C /* Pods-MBHealthTracker_Tests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F168EE7F2A822BD300FFDA00 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F168EE802A822BDC00FFDA00 /* MainApp.swift */,
+			);
+			name = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,7 +274,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
@@ -346,9 +350,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
-				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				2E5F4A052037B02400947553 /* ViewInteractor.swift in Sources */,
+				F168EE812A822BDC00FFDA00 /* MainApp.swift in Sources */,
+				F168EE832A822C2000FFDA00 /* ContentView.swift in Sources */,
+				2E5F4A052037B02400947553 /* Store.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,14 +375,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		607FACD91AFB9204008FA782 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				607FACDA1AFB9204008FA782 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		607FACDE1AFB9204008FA782 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

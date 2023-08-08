@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import Combine
 
-open class MBHealthTracker {
+open class MBHealthTracker: ObservableObject {
     
     public lazy var mbHealthHandler = MBHealthHandler()
     
