@@ -24,7 +24,6 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'matybrennan' => 'matybrennan@gmail.com' }
   s.source           = { :git => 'https://github.com/matybrennan/MBHealthTracker.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '16.0'
 
@@ -34,8 +33,7 @@ Pod::Spec.new do |s|
   # s.resource_bundles = {
   #   'MBHealthTracker' => ['Sources/MBHealthTracker/Assets/*.png']
   # }
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '5.6' }
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '5.9' }
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
