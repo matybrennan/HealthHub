@@ -533,7 +533,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/matybrennan/MBHealthTracker/";
 			requirement = {
-				branch = release/2.3.0;
+				branch = release/2.4.0;
 				kind = branch;
 			};
 		};
