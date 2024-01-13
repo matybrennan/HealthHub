@@ -1,6 +1,0 @@
-framework module Pods_MBHealthTracker_Example {
-  umbrella header "Pods-MBHealthTracker_Example-umbrella.h"
-
-  export *
-  module * { export * }
-}

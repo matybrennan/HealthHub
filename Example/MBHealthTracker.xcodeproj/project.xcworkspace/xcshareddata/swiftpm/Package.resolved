@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "mbhealthtracker",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/matybrennan/MBHealthTracker/",
+      "state" : {
+        "revision" : "a337c856fc69a21eb921075f9d9db42c7fa44c66",
+        "version" : "2.2.0"
+      }
+    }
+  ],
+  "version" : 2
+}

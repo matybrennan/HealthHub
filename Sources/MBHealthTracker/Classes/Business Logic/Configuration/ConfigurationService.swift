@@ -28,6 +28,8 @@ open class ConfigurationService: ConfigurationServiceProtocol {
     }
     
     public func navigateToHealthSettings() {
+        #if canImport(UIKit)
         UIApplication.shared.open(URL(string: ConfigurationService.appleHealthAppURL)!, options: [:], completionHandler: nil)
+        #endif
     }
 }

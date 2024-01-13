@@ -26,6 +26,6 @@ let package = Package(
         .testTarget(
             name: "MBHealthTrackerTests",
             dependencies: ["MBHealthTracker"],
-            path: "Sources"),
+            path: "Tests/UnitTests"),
     ]
 )
