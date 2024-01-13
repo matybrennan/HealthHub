@@ -1,0 +1,1014 @@
+{
+  "builtTestProducts" : [
+    {
+      "binaryPath" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTrackerPackageTests.xctest/Contents/MacOS/MBHealthTrackerPackageTests",
+      "productName" : "MBHealthTrackerPackageTests"
+    }
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.MBHealthTracker-release.module" : {
+      "executable" : "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "importPath" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/ActiveEnergy/ActiveEnergyService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/ActiveEnergy/ActiveEnergyServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/ActivityManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/ActivityManagerProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Steps/StepsService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Steps/StepsServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Workout/Read/WorkoutReadService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Workout/Read/WorkoutReadServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Workout/WorkoutManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Workout/WorkoutManagerProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Workout/Write/WorkoutWriteService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Workout/Write/WorkoutWriteServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Body/BodyMeasurementsService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Body/BodyMeasurementsServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Characteristics/CharacteristicService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Characteristics/CharacteristicServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/AbdominalCrampsCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/BloodGlucoseCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/BloodOxygenCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/BodyTemperatureCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/InhalerUsageCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/MenstruationCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/RespiratoryRateCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/SeuxalActivityCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Configuration/ConfigurationService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Configuration/ConfigurationServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/CycleTracking/CycleTracking.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/CycleTracking/CycleTrackingServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Handlers/MBHealthHandler.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Heart/HeartService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Heart/HeartServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Mindfulness/MindfulnessService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Mindfulness/MindfulnessServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Nutrition/NutritionService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Nutrition/NutritionServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/OtherData/OtherDataService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/OtherData/OtherDataServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Respiratory/RespiratoryService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Respiratory/RespiratoryServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Sleep/SleepService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Sleep/SleepServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Symptoms/SymptomsService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Symptoms/SymptomsServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Vitals/VitalsService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Vitals/VitalsServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Extensions/Date+Extension.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Extensions/NSPredicate+Extension.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/MBHealthTracker.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/MBHealthTrackerProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/ActiveEnergy/ActiveEnergyModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Body/Body.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/CycleTracking/CycleTrackingModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/HeartRate/HeartRateModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Mindful/Mindful.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Nutrition/NutritionModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/OtherData/OtherDataModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Respiratory/RespiratoryModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Sleep/Sleep.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Steps/StepsModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Symptoms/SymptomsModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Vitals/Vitals.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Workout/WorkoutModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Utils/FetchingSample.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Utils/HealthParser.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Utils/HealthType.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Utils/Helpers.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Utils/NetworkResult.swift"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "MBHealthTracker",
+      "moduleOutputPath" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.swiftmodule",
+      "objects" : [
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/ActiveEnergy/ActiveEnergyService.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/ActiveEnergy/ActiveEnergyServiceProtocol.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/ActivityManager.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/ActivityManagerProtocol.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/Steps/StepsService.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/Steps/StepsServiceProtocol.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/Workout/Read/WorkoutReadService.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/Workout/Read/WorkoutReadServiceProtocol.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/Workout/WorkoutManager.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/Workout/WorkoutManagerProtocol.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/Workout/Write/WorkoutWriteService.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/Workout/Write/WorkoutWriteServiceProtocol.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Body/BodyMeasurementsService.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Body/BodyMeasurementsServiceProtocol.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Characteristics/CharacteristicService.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Characteristics/CharacteristicServiceProtocol.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Common/AbdominalCrampsCase.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Common/BloodGlucoseCase.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Common/BloodOxygenCase.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Common/BodyTemperatureCase.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Common/InhalerUsageCase.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Common/MenstruationCase.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Common/RespiratoryRateCase.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Common/SeuxalActivityCase.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Configuration/ConfigurationService.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Configuration/ConfigurationServiceProtocol.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/CycleTracking/CycleTracking.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/CycleTracking/CycleTrackingServiceProtocol.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Handlers/MBHealthHandler.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Heart/HeartService.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Heart/HeartServiceProtocol.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Mindfulness/MindfulnessService.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Mindfulness/MindfulnessServiceProtocol.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Nutrition/NutritionService.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Nutrition/NutritionServiceProtocol.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/OtherData/OtherDataService.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/OtherData/OtherDataServiceProtocol.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Respiratory/RespiratoryService.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Respiratory/RespiratoryServiceProtocol.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Sleep/SleepService.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Sleep/SleepServiceProtocol.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Symptoms/SymptomsService.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Symptoms/SymptomsServiceProtocol.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Vitals/VitalsService.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Vitals/VitalsServiceProtocol.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Extensions/Date+Extension.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Extensions/NSPredicate+Extension.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/MBHealthTracker.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/MBHealthTrackerProtocol.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/ActiveEnergy/ActiveEnergyModels.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/Body/Body.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/CycleTracking/CycleTrackingModels.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/HeartRate/HeartRateModels.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/Mindful/Mindful.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/Nutrition/NutritionModels.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/OtherData/OtherDataModels.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/Respiratory/RespiratoryModels.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/Sleep/Sleep.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/Steps/StepsModels.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/Symptoms/SymptomsModels.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/Vitals/Vitals.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/Workout/WorkoutModels.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Utils/FetchingSample.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Utils/HealthParser.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Utils/HealthType.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Utils/Helpers.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Utils/NetworkResult.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx10.13",
+        "-swift-version",
+        "5",
+        "-O",
+        "-g",
+        "-j10",
+        "-DSWIFT_PACKAGE",
+        "-module-cache-path",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker-Swift.h",
+        "-color-diagnostics",
+        "-sdk",
+        "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk",
+        "-F",
+        "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-fPIC"
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/ActiveEnergy/ActiveEnergyService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/ActiveEnergy/ActiveEnergyServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/ActivityManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/ActivityManagerProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/Steps/StepsService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/Steps/StepsServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/Workout/Read/WorkoutReadService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/Workout/Read/WorkoutReadServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/Workout/WorkoutManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/Workout/WorkoutManagerProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/Workout/Write/WorkoutWriteService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Activity/Workout/Write/WorkoutWriteServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Body/BodyMeasurementsService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Body/BodyMeasurementsServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Characteristics/CharacteristicService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Characteristics/CharacteristicServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Common/AbdominalCrampsCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Common/BloodGlucoseCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Common/BloodOxygenCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Common/BodyTemperatureCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Common/InhalerUsageCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Common/MenstruationCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Common/RespiratoryRateCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Common/SeuxalActivityCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Configuration/ConfigurationService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Configuration/ConfigurationServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/CycleTracking/CycleTracking.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/CycleTracking/CycleTrackingServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Handlers/MBHealthHandler.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Heart/HeartService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Heart/HeartServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Mindfulness/MindfulnessService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Mindfulness/MindfulnessServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Nutrition/NutritionService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Nutrition/NutritionServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/OtherData/OtherDataService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/OtherData/OtherDataServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Respiratory/RespiratoryService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Respiratory/RespiratoryServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Sleep/SleepService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Sleep/SleepServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Symptoms/SymptomsService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Symptoms/SymptomsServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Vitals/VitalsService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Business Logic/Vitals/VitalsServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Extensions/Date+Extension.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Extensions/NSPredicate+Extension.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/MBHealthTracker.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/MBHealthTrackerProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/ActiveEnergy/ActiveEnergyModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/Body/Body.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/CycleTracking/CycleTrackingModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/HeartRate/HeartRateModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/Mindful/Mindful.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/Nutrition/NutritionModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/OtherData/OtherDataModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/Respiratory/RespiratoryModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/Sleep/Sleep.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/Steps/StepsModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/Symptoms/SymptomsModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/Vitals/Vitals.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Presentation/Workout/WorkoutModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Utils/FetchingSample.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Utils/HealthParser.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Utils/HealthType.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Utils/Helpers.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker/Classes/Utils/NetworkResult.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.swiftmodule"
+        }
+      ],
+      "sources" : [
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/ActiveEnergy/ActiveEnergyService.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/ActiveEnergy/ActiveEnergyServiceProtocol.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/ActivityManager.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/ActivityManagerProtocol.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Steps/StepsService.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Steps/StepsServiceProtocol.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Workout/Read/WorkoutReadService.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Workout/Read/WorkoutReadServiceProtocol.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Workout/WorkoutManager.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Workout/WorkoutManagerProtocol.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Workout/Write/WorkoutWriteService.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Workout/Write/WorkoutWriteServiceProtocol.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Body/BodyMeasurementsService.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Body/BodyMeasurementsServiceProtocol.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Characteristics/CharacteristicService.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Characteristics/CharacteristicServiceProtocol.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/AbdominalCrampsCase.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/BloodGlucoseCase.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/BloodOxygenCase.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/BodyTemperatureCase.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/InhalerUsageCase.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/MenstruationCase.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/RespiratoryRateCase.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/SeuxalActivityCase.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Configuration/ConfigurationService.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Configuration/ConfigurationServiceProtocol.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/CycleTracking/CycleTracking.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/CycleTracking/CycleTrackingServiceProtocol.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Handlers/MBHealthHandler.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Heart/HeartService.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Heart/HeartServiceProtocol.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Mindfulness/MindfulnessService.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Mindfulness/MindfulnessServiceProtocol.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Nutrition/NutritionService.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Nutrition/NutritionServiceProtocol.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/OtherData/OtherDataService.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/OtherData/OtherDataServiceProtocol.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Respiratory/RespiratoryService.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Respiratory/RespiratoryServiceProtocol.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Sleep/SleepService.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Sleep/SleepServiceProtocol.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Symptoms/SymptomsService.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Symptoms/SymptomsServiceProtocol.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Vitals/VitalsService.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Vitals/VitalsServiceProtocol.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Extensions/Date+Extension.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Extensions/NSPredicate+Extension.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/MBHealthTracker.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/MBHealthTrackerProtocol.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/ActiveEnergy/ActiveEnergyModels.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Body/Body.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/CycleTracking/CycleTrackingModels.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/HeartRate/HeartRateModels.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Mindful/Mindful.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Nutrition/NutritionModels.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/OtherData/OtherDataModels.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Respiratory/RespiratoryModels.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Sleep/Sleep.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Steps/StepsModels.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Symptoms/SymptomsModels.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Vitals/Vitals.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Workout/WorkoutModels.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Utils/FetchingSample.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Utils/HealthParser.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Utils/HealthType.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Utils/Helpers.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Utils/NetworkResult.swift"
+      ],
+      "tempsPath" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build",
+      "wholeModuleOptimization" : true
+    },
+    "C.MBHealthTrackerTests-release.module" : {
+      "executable" : "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "importPath" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Tests/UnitTests/MBHealthTrackerTests/MBHealthTrackerTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/Tests/UnitTests/MBHealthTrackerTests/XCTestManifests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.swiftmodule"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "MBHealthTrackerTests",
+      "moduleOutputPath" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTrackerTests.swiftmodule",
+      "objects" : [
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTrackerTests.build/MBHealthTrackerTests/MBHealthTrackerTests.swift.o",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTrackerTests.build/MBHealthTrackerTests/XCTestManifests.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx13.0",
+        "-swift-version",
+        "5",
+        "-index-store-path",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/index/store",
+        "-O",
+        "-enable-testing",
+        "-g",
+        "-j10",
+        "-DSWIFT_PACKAGE",
+        "-module-cache-path",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-color-diagnostics",
+        "-sdk",
+        "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk",
+        "-F",
+        "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-fPIC"
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTrackerTests.build/MBHealthTrackerTests/MBHealthTrackerTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTrackerTests.build/MBHealthTrackerTests/XCTestManifests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTrackerTests.swiftmodule"
+        }
+      ],
+      "sources" : [
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Tests/UnitTests/MBHealthTrackerTests/MBHealthTrackerTests.swift",
+        "/Users/maty.brennan/Documents/personal/MBHealthTracker/Tests/UnitTests/MBHealthTrackerTests/XCTestManifests.swift"
+      ],
+      "tempsPath" : "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTrackerTests.build",
+      "wholeModuleOptimization" : true
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "MBHealthTracker" : [
+      "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "MBHealthTracker",
+      "-whole-module-optimization",
+      "-num-threads",
+      "10",
+      "-c",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/ActiveEnergy/ActiveEnergyService.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/ActiveEnergy/ActiveEnergyServiceProtocol.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/ActivityManager.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/ActivityManagerProtocol.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Steps/StepsService.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Steps/StepsServiceProtocol.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Workout/Read/WorkoutReadService.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Workout/Read/WorkoutReadServiceProtocol.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Workout/WorkoutManager.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Workout/WorkoutManagerProtocol.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Workout/Write/WorkoutWriteService.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Activity/Workout/Write/WorkoutWriteServiceProtocol.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Body/BodyMeasurementsService.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Body/BodyMeasurementsServiceProtocol.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Characteristics/CharacteristicService.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Characteristics/CharacteristicServiceProtocol.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/AbdominalCrampsCase.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/BloodGlucoseCase.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/BloodOxygenCase.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/BodyTemperatureCase.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/InhalerUsageCase.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/MenstruationCase.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/RespiratoryRateCase.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Common/SeuxalActivityCase.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Configuration/ConfigurationService.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Configuration/ConfigurationServiceProtocol.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/CycleTracking/CycleTracking.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/CycleTracking/CycleTrackingServiceProtocol.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Handlers/MBHealthHandler.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Heart/HeartService.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Heart/HeartServiceProtocol.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Mindfulness/MindfulnessService.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Mindfulness/MindfulnessServiceProtocol.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Nutrition/NutritionService.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Nutrition/NutritionServiceProtocol.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/OtherData/OtherDataService.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/OtherData/OtherDataServiceProtocol.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Respiratory/RespiratoryService.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Respiratory/RespiratoryServiceProtocol.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Sleep/SleepService.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Sleep/SleepServiceProtocol.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Symptoms/SymptomsService.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Symptoms/SymptomsServiceProtocol.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Vitals/VitalsService.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Business Logic/Vitals/VitalsServiceProtocol.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Extensions/Date+Extension.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Extensions/NSPredicate+Extension.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/MBHealthTracker.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/MBHealthTrackerProtocol.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/ActiveEnergy/ActiveEnergyModels.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Body/Body.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/CycleTracking/CycleTrackingModels.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/HeartRate/HeartRateModels.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Mindful/Mindful.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Nutrition/NutritionModels.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/OtherData/OtherDataModels.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Respiratory/RespiratoryModels.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Sleep/Sleep.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Steps/StepsModels.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Symptoms/SymptomsModels.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Vitals/Vitals.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Presentation/Workout/WorkoutModels.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Utils/FetchingSample.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Utils/HealthParser.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Utils/HealthType.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Utils/Helpers.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Sources/MBHealthTracker/Classes/Utils/NetworkResult.swift",
+      "-I",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release",
+      "-target",
+      "arm64-apple-macosx10.13",
+      "-swift-version",
+      "5",
+      "-O",
+      "-g",
+      "-j10",
+      "-DSWIFT_PACKAGE",
+      "-module-cache-path",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/MBHealthTracker.build/MBHealthTracker-Swift.h",
+      "-color-diagnostics",
+      "-sdk",
+      "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk",
+      "-F",
+      "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-I",
+      "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-fPIC",
+      "-driver-use-frontend-path",
+      "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ],
+    "MBHealthTrackerTests" : [
+      "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "MBHealthTrackerTests",
+      "-whole-module-optimization",
+      "-num-threads",
+      "10",
+      "-c",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Tests/UnitTests/MBHealthTrackerTests/MBHealthTrackerTests.swift",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/Tests/UnitTests/MBHealthTrackerTests/XCTestManifests.swift",
+      "-I",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release",
+      "-target",
+      "arm64-apple-macosx13.0",
+      "-swift-version",
+      "5",
+      "-index-store-path",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/index/store",
+      "-O",
+      "-enable-testing",
+      "-g",
+      "-j10",
+      "-DSWIFT_PACKAGE",
+      "-module-cache-path",
+      "/Users/maty.brennan/Documents/personal/MBHealthTracker/.build/arm64-apple-macosx/release/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-color-diagnostics",
+      "-sdk",
+      "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk",
+      "-F",
+      "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-I",
+      "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-fPIC",
+      "-driver-use-frontend-path",
+      "/Users/maty.brennan/Downloads/Xcode15.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "MBHealthTracker" : [
+
+    ],
+    "MBHealthTrackerTests" : [
+      "MBHealthTracker"
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+
+  }
+}
