@@ -30,7 +30,7 @@ extension OtherDataService: OtherDataServiceProtocol {
         return model
     }
     
-    public func alcoholContent() async throws -> AlcoholContent {
+    public func bloodAlcoholContent() async throws -> AlcoholContent {
         let samples = try await fetchQuantitySamples(quantityIdentifier: .bloodAlcoholContent)
         let items = samples.map { item -> AlcoholContent.Item in
             let percentage = item.quantity.doubleValue(for: .percent()) * 100
@@ -98,7 +98,17 @@ extension OtherDataService: OtherDataServiceProtocol {
         let model = ToothBrushing(items: items)
         return model
     }
-    
+
+    public func timeInDaylight() async throws -> TimeInDaylight {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .timeInDaylight)
+        let items = samples.map { item -> TimeInDaylight.Item in
+            TimeInDaylight.Item(startDate: item.startDate, endDate: item.endDate)
+        }
+
+        let model = TimeInDaylight(items: items)
+        return model
+    }
+
     public func uvExposure() async throws -> UVExposure {
         let samples = try await fetchQuantitySamples(quantityIdentifier: .uvExposure)
         let items = samples.map { item -> UVExposure.Item in

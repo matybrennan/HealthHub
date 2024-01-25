@@ -167,6 +167,7 @@ public enum MBObjectType: SharableType, ReadableType {
     case insulinDelivery
     case numberOfTimesFallen
     case toothBrushing
+    case timeInDaylight
     case uvExposure
     case waterTemperature
     
@@ -316,6 +317,7 @@ public enum MBObjectType: SharableType, ReadableType {
         case .insulinDelivery: return HKSampleType.quantityType(forIdentifier: .insulinDelivery)!
         case .numberOfTimesFallen: return HKSampleType.quantityType(forIdentifier: .numberOfTimesFallen)!
         case .toothBrushing: return HKSampleType.categoryType(forIdentifier: .toothbrushingEvent)!
+        case .timeInDaylight: return HKQuantityType.quantityType(forIdentifier: .timeInDaylight)!
         case .uvExposure: return HKQuantityType.quantityType(forIdentifier: .uvExposure)!
         case .waterTemperature: return HKQuantityType.quantityType(forIdentifier: .waterTemperature)!
         }
@@ -467,6 +469,7 @@ public enum MBObjectType: SharableType, ReadableType {
         case .insulinDelivery: return HKSampleType.quantityType(forIdentifier: .insulinDelivery)!
         case .numberOfTimesFallen: return HKSampleType.quantityType(forIdentifier: .numberOfTimesFallen)!
         case .toothBrushing: return HKSampleType.categoryType(forIdentifier: .toothbrushingEvent)!
+        case .timeInDaylight: return HKQuantityType.quantityType(forIdentifier: .timeInDaylight)!
         case .uvExposure: return HKQuantityType.quantityType(forIdentifier: .uvExposure)!
         case .waterTemperature: return HKQuantityType.quantityType(forIdentifier: .waterTemperature)!
         }

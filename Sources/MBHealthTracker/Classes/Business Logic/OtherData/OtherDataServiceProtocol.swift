@@ -10,7 +10,7 @@ import Foundation
 public protocol OtherDataServiceProtocol: AnyObject {
     
     func alcoholConsumption() async throws -> AlcoholConsumption
-    func alcoholContent() async throws -> AlcoholContent
+    func bloodAlcoholContent() async throws -> AlcoholContent
     func bloodGlucose() async throws -> BloodGlucose
     func handWashing() async throws -> HandWashing
     func inhalerUsage() async throws -> InhalerUsage
@@ -18,6 +18,7 @@ public protocol OtherDataServiceProtocol: AnyObject {
     func numberOfTimesFallen() async throws -> NumberOfTimesFallen
     func sexualActivity() async throws -> SexualActivity
     func toothBrushing() async throws -> ToothBrushing
+    func timeInDaylight() async throws -> TimeInDaylight
     func uvExposure() async throws -> UVExposure
     func waterTemperature() async throws -> WaterTemperature
 }

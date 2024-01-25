@@ -96,6 +96,16 @@ public struct UVExposure {
     public let items: [Item]
 }
 
+public struct TimeInDaylight {
+
+    public struct Item {
+        public let startDate: Date
+        public let endDate: Date
+    }
+
+    public let items: [Item]
+}
+
 public struct WaterTemperature {
     
     public struct Item {
