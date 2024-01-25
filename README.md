@@ -14,6 +14,7 @@
 ## Installation
 
 MBHealthTracker is available through Swift Package Manager, either via Xcode or in Package.swift:
+Requires iOS17 and above
 
 ```ruby
 .package(url: "https://github.com/matybrennan/MBHealthTracker", from: "2.4.0"),
@@ -217,6 +218,7 @@ Split into sections to gather data based on timeIntervals
 - inhalerUsage
 - peakExpiratoryFlowRate
 - respiratoryRate
+- sixMinuteWalk
 
 ```var respiratory: RespiratoryServiceProtocol```
 

@@ -34,10 +34,9 @@ final class Store: ObservableObject {
 
     func runTest() async {
         do {
-            let progesteroneTestResult = try await healthTracker.cycleTracking.progesteroneTestResult()
-            print("res1: \(progesteroneTestResult)")
-            let pregnancyTestResult = try await healthTracker.cycleTracking.pregnancyTestResult()
-            print("res2: \(pregnancyTestResult)")
+            let bodyFatPercentage = try await healthTracker.bodyMeasurements.bodyFatPercentage()
+            print("bodyFatPercentage: \(bodyFatPercentage)")
+            print("json: \(bodyFatPercentage.json)")
         } catch {
             print("Error: \(error.localizedDescription)")
         }

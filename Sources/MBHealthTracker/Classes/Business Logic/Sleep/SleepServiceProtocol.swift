@@ -7,16 +7,6 @@
 
 import Foundation
 
-public enum MBSleepStyle: Int {
-    
-    case inBed
-    case asleep
-    case awake
-    case rem
-    case core
-    case deep
-}
-
 public protocol SleepServiceProtocol {
     
     func sleep() async throws -> Sleep

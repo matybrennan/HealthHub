@@ -155,7 +155,8 @@ public enum MBObjectType: SharableType, ReadableType {
     case forcedRespiratoryVolume
     case forcedVitalCapacity
     case peakExpiratoryFlowRate
-    
+    case sixMinuteWalk
+
     // Vitals
     case bloodPressureSystolic
     case bloodPressureDiastolic
@@ -305,7 +306,8 @@ public enum MBObjectType: SharableType, ReadableType {
         case .forcedRespiratoryVolume: return HKSampleType.quantityType(forIdentifier: .forcedExpiratoryVolume1)!
         case .forcedVitalCapacity: return HKSampleType.quantityType(forIdentifier: .forcedVitalCapacity)!
         case .peakExpiratoryFlowRate: return HKSampleType.quantityType(forIdentifier: .peakExpiratoryFlowRate)!
-            
+        case .sixMinuteWalk: return HKSampleType.quantityType(forIdentifier: .sixMinuteWalkTestDistance)!
+
         // Vitals
         case .bloodPressureSystolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureSystolic)!
         case .bloodPressureDiastolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureDiastolic)!
@@ -457,7 +459,8 @@ public enum MBObjectType: SharableType, ReadableType {
         case .forcedRespiratoryVolume: return HKSampleType.quantityType(forIdentifier: .forcedExpiratoryVolume1)!
         case .forcedVitalCapacity: return HKSampleType.quantityType(forIdentifier: .forcedVitalCapacity)!
         case .peakExpiratoryFlowRate: return HKSampleType.quantityType(forIdentifier: .peakExpiratoryFlowRate)!
-        
+        case .sixMinuteWalk: return HKSampleType.quantityType(forIdentifier: .sixMinuteWalkTestDistance)!
+
         // Vitals
         case .bloodPressureSystolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureSystolic)!
         case .bloodPressureDiastolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureDiastolic)!

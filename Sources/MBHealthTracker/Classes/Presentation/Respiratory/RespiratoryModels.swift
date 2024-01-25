@@ -68,3 +68,20 @@ public struct PeakExpiratoryFlowRate {
     
     public let items: [Item]
 }
+
+public struct SixMinuteWalk {
+
+    public struct Item {
+        public let distance: Double // mtrs
+        public let startDate: Date
+        public let endDate: Date
+
+        public init(distance: Double, startDate: Date, endDate: Date) {
+            self.distance = distance
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+    }
+
+    public let items: [Item]
+}

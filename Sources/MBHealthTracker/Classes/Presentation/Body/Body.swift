@@ -57,14 +57,19 @@ public struct BodyHeight {
     public let items: [Item]
 }
 
-public struct BodyFatPercentage {
-    
-    public struct Item {
+public struct BodyFatPercentage: Codable {
+
+    public struct Item: Codable {
         public let value: Double
         public let date: Date
     }
     
     public let items: [Item]
+
+    public var json: [String: Any] {
+        let data = try! JSONEncoder().encode(items)
+        return try! JSONSerialization.jsonObject(with: data) as! [String : Any]
+    }
 }
 
 public struct BodyMassIndex {

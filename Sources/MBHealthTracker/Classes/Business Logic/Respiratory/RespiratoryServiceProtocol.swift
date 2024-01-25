@@ -15,4 +15,5 @@ public protocol RespiratoryServiceProtocol: AnyObject {
     func inhalerUsage() async throws -> InhalerUsage
     func peakExpiratoryFlowRate() async throws -> PeakExpiratoryFlowRate
     func respiratoryRate() async throws -> RespiratoryRate
+    func sixMinuteWalk()  async throws -> SixMinuteWalk
 }

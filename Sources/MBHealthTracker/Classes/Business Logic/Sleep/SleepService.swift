@@ -22,7 +22,7 @@ extension SleepService: SleepServiceProtocol {
     public func sleep() async throws -> Sleep {
         let samples = try await fetchCategorySamples(categoryIdentifier: .sleepAnalysis)
         let items = samples.map { item -> Sleep.Info in
-            let style = MBSleepStyle(rawValue: item.value) ?? MBSleepStyle.awake
+            let style = Sleep.Info.Style(rawValue: item.value) ?? Sleep.Info.Style.awake
             return Sleep.Info(style: style, startDate: item.startDate, endDate: item.endDate)
         }
         
