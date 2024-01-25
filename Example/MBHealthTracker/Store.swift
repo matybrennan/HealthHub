@@ -29,7 +29,7 @@ final class Store: ObservableObject {
     }
 
     func configurePermissions() async {
-        try? await healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.carbohydrates], toRead: [MBObjectType.progesteroneTestResult])
+        try? await healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.bodyFatPercentage], toRead: [MBObjectType.progesteroneTestResult])
     }
 
     func runTest() async {
