@@ -71,9 +71,9 @@ public struct BodyFatPercentage: Codable {
     
     public let items: [Item]
 
-    public var json: [String: Any] {
+    public var json: [[String: Any]] {
         let data = try! JSONEncoder().encode(items)
-        return try! JSONSerialization.jsonObject(with: data) as! [String : Any]
+        return try! JSONSerialization.jsonObject(with: data) as! [[String : Any]]
     }
 }
 
