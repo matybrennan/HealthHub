@@ -36,7 +36,6 @@ final class Store: ObservableObject {
         do {
             let bodyFatPercentage = try await healthTracker.bodyMeasurements.bodyFatPercentage()
             print("bodyFatPercentage: \(bodyFatPercentage)")
-            print("json: \(bodyFatPercentage.json)")
         } catch {
             print("Error: \(error.localizedDescription)")
         }
