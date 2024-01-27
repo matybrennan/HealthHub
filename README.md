@@ -10,11 +10,12 @@
 ## Installation
 
 MBHealthTracker is available through Swift Package Manager, either via Xcode or in Package.swift:
-Package version "2.4.0" and above requires iOS17 and above in project
 
 ```ruby
 .package(url: "https://github.com/matybrennan/MBHealthTracker", from: "2.4.0"),
 ```
+
+Package version "2.4.0" and above requires iOS17 and above in project
 
 ## Getting Started
 
