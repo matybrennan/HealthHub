@@ -19,6 +19,4 @@ public protocol BodyMeasurementsServiceProtocol: AnyObject {
     func waistCircumference() async throws -> WaistCircumference
     func weight() async throws -> BodyWeight
     func wristTemperature() async throws -> WristTemperature
-
-    
 }

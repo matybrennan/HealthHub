@@ -7,9 +7,9 @@
 
 import Foundation
 
-public struct BasalBodyTemperature: Codable {
+public struct BasalBodyTemperature {
 
-    public struct Item: Codable {
+    public struct Item {
         public let celsius: Double
         public let fahrenheit: Double
         public let date: Date
@@ -22,11 +22,6 @@ public struct BasalBodyTemperature: Codable {
     }
     
     public let items: [Item]
-
-    public var json: [String: Any] {
-        let data = try! JSONEncoder().encode(items)
-        return try! JSONSerialization.jsonObject(with: data) as! [String : Any]
-    }
 }
 
 public struct BodyWeight {
@@ -62,19 +57,14 @@ public struct BodyHeight {
     public let items: [Item]
 }
 
-public struct BodyFatPercentage: Codable {
+public struct BodyFatPercentage {
 
-    public struct Item: Codable {
+    public struct Item {
         public let value: Double
         public let date: Date
     }
     
     public let items: [Item]
-
-    public var json: [[String: Any]] {
-        let data = try! JSONEncoder().encode(items)
-        return try! JSONSerialization.jsonObject(with: data) as! [[String : Any]]
-    }
 }
 
 public struct BodyMassIndex {
