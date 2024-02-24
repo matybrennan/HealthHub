@@ -135,6 +135,13 @@ Split into sections to gather data based on timeIntervals
 
 ```var bodyMeasurements: BodyMeasurementsServiceProtocol```
 
+### Mobility
+- doubleSupportTime
+- groundContactTime
+- runningStrideLength
+
+```var mobilityService: MobilityServiceProtocol```
+
 ### Nutrition
 - macronutrients
 - minerals

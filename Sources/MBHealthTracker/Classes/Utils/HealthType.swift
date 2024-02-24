@@ -48,6 +48,11 @@ public enum MBObjectType: SharableType, ReadableType {
     case weight
     case wristTemperature
     
+    // Mobility
+    case doubleSupportTime
+    case groundContactTime
+    case runningStrideLength
+
     // Nutrition
     /// Macronutrients
     case energyConsumed
@@ -200,7 +205,13 @@ public enum MBObjectType: SharableType, ReadableType {
         case .leanBodyMass: return HKQuantityType.quantityType(forIdentifier: .leanBodyMass)!
         case .waistCircumference: return HKQuantityType.quantityType(forIdentifier: .waistCircumference)!
         case .wristTemperature: return HKQuantityType.quantityType(forIdentifier: .appleSleepingWristTemperature)!
-            
+
+        // Mobility
+        case .doubleSupportTime: return HKQuantityType.quantityType(forIdentifier: .walkingDoubleSupportPercentage)!
+        case .groundContactTime: return HKQuantityType.quantityType(forIdentifier: .runningGroundContactTime)!
+        case .runningStrideLength: return HKQuantityType.quantityType(forIdentifier: .runningStrideLength)!
+
+
         // Nutrition
         /// Macronutrients
         case .energyConsumed: return HKQuantityType.quantityType(forIdentifier: .dietaryEnergyConsumed)!
@@ -354,6 +365,11 @@ public enum MBObjectType: SharableType, ReadableType {
         case .waistCircumference: return HKQuantityType.quantityType(forIdentifier: .waistCircumference)!
         case .wristTemperature: return HKQuantityType.quantityType(forIdentifier: .appleSleepingWristTemperature)!
         
+        // Mobility
+        case .doubleSupportTime: return HKQuantityType.quantityType(forIdentifier: .walkingDoubleSupportPercentage)!
+        case .groundContactTime: return HKQuantityType.quantityType(forIdentifier: .runningGroundContactTime)!
+        case .runningStrideLength: return HKQuantityType.quantityType(forIdentifier: .runningStrideLength)!
+
         // Nutrition
         /// Macronutrients
         case .energyConsumed: return HKQuantityType.quantityType(forIdentifier: .dietaryEnergyConsumed)!
