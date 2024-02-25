@@ -14,10 +14,7 @@ public class MobilityService {
 }
 
 // MARK: - FetchQuantitySample
-extension MobilityService: FetchQuantitySample { }
-
-// MARK: - FetchCategorySample
-extension MobilityService: FetchCategorySample { }
+extension MobilityService: FetchQuantitySample, FetchCategorySample, SixMinuteWalkCase { }
 
 // MARK: - MobilityServiceProtocol
 extension MobilityService: MobilityServiceProtocol {
@@ -65,6 +62,34 @@ extension MobilityService: MobilityServiceProtocol {
         }
 
         let vm = RunningStrideLength(items: items)
+        return vm
+    }
+
+    public func sixMinuteWalk() async throws -> SixMinuteWalk {
+        try await baseSixMinuteWalk()
+    }
+
+    public func stairSpeedDown() async throws -> StairSpeedDown {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .runningStrideLength)
+        let items = samples.map { item -> StairSpeedDown.Item in
+            let speedUnit = HKUnit.meter().unitDivided(by: HKUnit.second())
+            let velocity = item.quantity.doubleValue(for: speedUnit)
+            return StairSpeedDown.Item(velocity: velocity, date: item.endDate)
+        }
+
+        let vm = StairSpeedDown(items: items)
+        return vm
+    }
+
+    public func stairSpeedUp() async throws -> StairSpeedUp {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .runningStrideLength)
+        let items = samples.map { item -> StairSpeedUp.Item in
+            let speedUnit = HKUnit.meter().unitDivided(by: HKUnit.second())
+            let velocity = item.quantity.doubleValue(for: speedUnit)
+            return StairSpeedUp.Item(velocity: velocity, date: item.endDate)
+        }
+
+        let vm = StairSpeedUp(items: items)
         return vm
     }
 }

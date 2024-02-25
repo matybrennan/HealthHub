@@ -53,6 +53,8 @@ public enum MBObjectType: SharableType, ReadableType {
     case doubleSupportTime
     case groundContactTime
     case runningStrideLength
+    case stairSpeedDown
+    case stairSpeedUp
 
     // Nutrition
     /// Macronutrients
@@ -212,6 +214,8 @@ public enum MBObjectType: SharableType, ReadableType {
         case .doubleSupportTime: return HKQuantityType(.walkingDoubleSupportPercentage)
         case .groundContactTime: return HKQuantityType(.runningGroundContactTime)
         case .runningStrideLength: return HKQuantityType(.runningStrideLength)
+        case .stairSpeedDown: return HKQuantityType(.stairDescentSpeed)
+        case .stairSpeedUp: return HKQuantityType(.stairAscentSpeed)
 
         // Nutrition
         /// Macronutrients
@@ -371,6 +375,8 @@ public enum MBObjectType: SharableType, ReadableType {
         case .doubleSupportTime: return HKQuantityType(.walkingDoubleSupportPercentage)
         case .groundContactTime: return HKQuantityType(.runningGroundContactTime)
         case .runningStrideLength: return HKQuantityType(.runningStrideLength)
+        case .stairSpeedDown: return HKQuantityType(.stairDescentSpeed)
+        case .stairSpeedUp: return HKQuantityType(.stairAscentSpeed)
 
         // Nutrition
         /// Macronutrients

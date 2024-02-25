@@ -30,7 +30,7 @@ public struct DoubleSupportTime {
 public struct GroundContactTime {
 
     public struct Item {
-        public let duration: Double //ms
+        public let duration: Double // ms
         public let date: Date
     }
 
@@ -40,7 +40,27 @@ public struct GroundContactTime {
 public struct RunningStrideLength {
 
     public struct Item {
-        public let distance: Double //m
+        public let distance: Double // m
+        public let date: Date
+    }
+
+    public let items: [Item]
+}
+
+public struct StairSpeedDown {
+
+    public struct Item {
+        public let velocity: Double // m/s
+        public let date: Date
+    }
+
+    public let items: [Item]
+}
+
+public struct StairSpeedUp {
+
+    public struct Item {
+        public let velocity: Double // m/s
         public let date: Date
     }
 

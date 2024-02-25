@@ -13,4 +13,7 @@ public protocol MobilityServiceProtocol: AnyObject {
     func doubleSupportTime() async throws -> DoubleSupportTime
     func groundContactTime() async throws -> GroundContactTime
     func runningStrideLength() async throws -> RunningStrideLength
+    func sixMinuteWalk() async throws -> SixMinuteWalk
+    func stairSpeedDown() async throws -> StairSpeedDown
+    func stairSpeedUp() async throws -> StairSpeedUp
 }

@@ -140,6 +140,9 @@ Split into sections to gather data based on timeIntervals
 - doubleSupportTime
 - groundContactTime
 - runningStrideLength
+- sixMinuteWalk
+- stairSpeedDown
+- stairSpeedUp
 
 ```var mobility: MobilityServiceProtocol```
 
