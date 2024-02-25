@@ -22,14 +22,14 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
 
     // Duplicates
     case sexualActivity // cycle, other
-    case respiratoryRate
-    case bodyTemperature
-    case menstruation
-    case abdominalCramps
-    case bloodGlucose
-    case bloodOxygen
-    case inhalerUsage
-    case sixMinuteWalk // mobility and respiratory
+    case respiratoryRate // respiratory, vitals
+    case bodyTemperature // body, vitals
+    case menstruation // cycle, vitals
+    case abdominalCramps // cycle, symptoms
+    case bloodGlucose // vitals, other
+    case bloodOxygen // respiratory, vitals
+    case inhalerUsage // respiratory, other
+    case sixMinuteWalk // mobility, respiratory
 
     // Heart
     case stepCount
@@ -232,19 +232,19 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
         case .cholesterol: return HKQuantityType(.dietaryCholesterol)
         case .protein: return HKQuantityType(.dietaryProtein)
         /// Vitamins
-        case .vitaminA: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminA)!
-        case .thiamin: return HKQuantityType.quantityType(forIdentifier: .dietaryThiamin)!
-        case .riboflavin: return HKQuantityType.quantityType(forIdentifier: .dietaryRiboflavin)!
-        case .niacin: return HKQuantityType.quantityType(forIdentifier: .dietaryNiacin)!
-        case .pathothenicAcid: return HKQuantityType.quantityType(forIdentifier: .dietaryPantothenicAcid)!
-        case .vitaminB6: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminB6)!
-        case .biotin: return HKQuantityType.quantityType(forIdentifier: .dietaryBiotin)!
-        case .vitaminB12: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminB12)!
-        case .vitaminC: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminC)!
-        case .vitaminD: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminD)!
-        case .vitaminE: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminE)!
-        case .vitaminK: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminK)!
-        case .folate: return HKQuantityType.quantityType(forIdentifier: .dietaryFolate)!
+        case .vitaminA: return HKQuantityType(.dietaryVitaminA)
+        case .thiamin: return HKQuantityType(.dietaryThiamin)
+        case .riboflavin: return HKQuantityType(.dietaryRiboflavin)
+        case .niacin: return HKQuantityType(.dietaryNiacin)
+        case .pathothenicAcid: return HKQuantityType(.dietaryPantothenicAcid)
+        case .vitaminB6: return HKQuantityType(.dietaryVitaminB6)
+        case .biotin: return HKQuantityType(.dietaryBiotin)
+        case .vitaminB12: return HKQuantityType(.dietaryEnergyConsumed)
+        case .vitaminC: return HKQuantityType(.dietaryVitaminB12)
+        case .vitaminD: return HKQuantityType(.dietaryVitaminD)
+        case .vitaminE: return HKQuantityType(.dietaryVitaminE)
+        case .vitaminK: return HKQuantityType(.dietaryVitaminK)
+        case .folate: return HKQuantityType(.dietaryFolate)
         /// Minerals
         case .calcium: return HKQuantityType.quantityType(forIdentifier: .dietaryCalcium)!
         case .chloride: return HKQuantityType.quantityType(forIdentifier: .dietaryChloride)!
@@ -394,19 +394,19 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
         case .cholesterol: return HKQuantityType(.dietaryCholesterol)
         case .protein: return HKQuantityType(.dietaryProtein)
         /// Vitamins
-        case .vitaminA: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminA)!
-        case .thiamin: return HKQuantityType.quantityType(forIdentifier: .dietaryThiamin)!
-        case .riboflavin: return HKQuantityType.quantityType(forIdentifier: .dietaryRiboflavin)!
-        case .niacin: return HKQuantityType.quantityType(forIdentifier: .dietaryNiacin)!
-        case .pathothenicAcid: return HKQuantityType.quantityType(forIdentifier: .dietaryPantothenicAcid)!
-        case .vitaminB6: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminB6)!
-        case .biotin: return HKQuantityType.quantityType(forIdentifier: .dietaryBiotin)!
-        case .vitaminB12: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminB12)!
-        case .vitaminC: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminC)!
-        case .vitaminD: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminD)!
-        case .vitaminE: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminE)!
-        case .vitaminK: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminK)!
-        case .folate: return HKQuantityType.quantityType(forIdentifier: .dietaryFolate)!
+        case .vitaminA: return HKQuantityType(.dietaryVitaminA)
+        case .thiamin: return HKQuantityType(.dietaryThiamin)
+        case .riboflavin: return HKQuantityType(.dietaryRiboflavin)
+        case .niacin: return HKQuantityType(.dietaryNiacin)
+        case .pathothenicAcid: return HKQuantityType(.dietaryPantothenicAcid)
+        case .vitaminB6: return HKQuantityType(.dietaryVitaminB6)
+        case .biotin: return HKQuantityType(.dietaryBiotin)
+        case .vitaminB12: return HKQuantityType(.dietaryEnergyConsumed)
+        case .vitaminC: return HKQuantityType(.dietaryVitaminB12)
+        case .vitaminD: return HKQuantityType(.dietaryVitaminD)
+        case .vitaminE: return HKQuantityType(.dietaryVitaminE)
+        case .vitaminK: return HKQuantityType(.dietaryVitaminK)
+        case .folate: return HKQuantityType(.dietaryFolate)
         /// Minerals
         case .calcium: return HKQuantityType.quantityType(forIdentifier: .dietaryCalcium)!
         case .chloride: return HKQuantityType.quantityType(forIdentifier: .dietaryChloride)!
