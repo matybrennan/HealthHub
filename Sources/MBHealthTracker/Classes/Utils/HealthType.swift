@@ -18,9 +18,8 @@ public protocol ReadableType {
 
 public typealias SharableReadableType = SharableType & ReadableType
 
-/// Has both read and sharing capabilities
-public enum MBObjectType: SharableType, ReadableType, CaseIterable {
-    
+public enum MBObjectType: SharableReadableType, CaseIterable {
+
     // Duplicates
     case sexualActivity // cycle, other
     case respiratoryRate
@@ -222,16 +221,16 @@ public enum MBObjectType: SharableType, ReadableType, CaseIterable {
 
         // Nutrition
         /// Macronutrients
-        case .energyConsumed: return HKQuantityType.quantityType(forIdentifier: .dietaryEnergyConsumed)!
-        case .carbohydrates: return HKQuantityType.quantityType(forIdentifier: .dietaryCarbohydrates)!
-        case .fiber: return HKQuantityType.quantityType(forIdentifier: .dietaryFiber)!
-        case .sugar: return HKQuantityType.quantityType(forIdentifier: .dietarySugar)!
-        case .fatTotal: return HKQuantityType.quantityType(forIdentifier: .dietaryFatTotal)!
-        case .fatMono: return HKQuantityType.quantityType(forIdentifier: .dietaryFatMonounsaturated)!
-        case .fatPoly: return HKQuantityType.quantityType(forIdentifier: .dietaryFatPolyunsaturated)!
-        case .fatSaturated: return HKQuantityType.quantityType(forIdentifier: .dietaryFatSaturated)!
-        case .cholesterol: return HKQuantityType.quantityType(forIdentifier: .dietaryCholesterol)!
-        case .protein: return HKQuantityType.quantityType(forIdentifier: .dietaryProtein)!
+        case .energyConsumed: return HKQuantityType(.dietaryEnergyConsumed)
+        case .carbohydrates: return HKQuantityType(.dietaryCarbohydrates)
+        case .fiber: return HKQuantityType(.dietaryFiber)
+        case .sugar: return HKQuantityType(.dietarySugar)
+        case .fatTotal: return HKQuantityType(.dietaryFatTotal)
+        case .fatMono: return HKQuantityType(.dietaryFatMonounsaturated)
+        case .fatPoly: return HKQuantityType(.dietaryFatPolyunsaturated)
+        case .fatSaturated: return HKQuantityType(.dietaryFatSaturated)
+        case .cholesterol: return HKQuantityType(.dietaryCholesterol)
+        case .protein: return HKQuantityType(.dietaryProtein)
         /// Vitamins
         case .vitaminA: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminA)!
         case .thiamin: return HKQuantityType.quantityType(forIdentifier: .dietaryThiamin)!
@@ -384,16 +383,16 @@ public enum MBObjectType: SharableType, ReadableType, CaseIterable {
 
         // Nutrition
         /// Macronutrients
-        case .energyConsumed: return HKQuantityType.quantityType(forIdentifier: .dietaryEnergyConsumed)!
-        case .carbohydrates: return HKQuantityType.quantityType(forIdentifier: .dietaryCarbohydrates)!
-        case .fiber: return HKQuantityType.quantityType(forIdentifier: .dietaryFiber)!
-        case .sugar: return HKQuantityType.quantityType(forIdentifier: .dietarySugar)!
-        case .fatTotal: return HKQuantityType.quantityType(forIdentifier: .dietaryFatTotal)!
-        case .fatMono: return HKQuantityType.quantityType(forIdentifier: .dietaryFatMonounsaturated)!
-        case .fatPoly: return HKQuantityType.quantityType(forIdentifier: .dietaryFatPolyunsaturated)!
-        case .fatSaturated: return HKQuantityType.quantityType(forIdentifier: .dietaryFatSaturated)!
-        case .cholesterol: return HKQuantityType.quantityType(forIdentifier: .dietaryCholesterol)!
-        case .protein: return HKQuantityType.quantityType(forIdentifier: .dietaryProtein)!
+        case .energyConsumed: return HKQuantityType(.dietaryEnergyConsumed)
+        case .carbohydrates: return HKQuantityType(.dietaryCarbohydrates)
+        case .fiber: return HKQuantityType(.dietaryFiber)
+        case .sugar: return HKQuantityType(.dietarySugar)
+        case .fatTotal: return HKQuantityType(.dietaryFatTotal)
+        case .fatMono: return HKQuantityType(.dietaryFatMonounsaturated)
+        case .fatPoly: return HKQuantityType(.dietaryFatPolyunsaturated)
+        case .fatSaturated: return HKQuantityType(.dietaryFatSaturated)
+        case .cholesterol: return HKQuantityType(.dietaryCholesterol)
+        case .protein: return HKQuantityType(.dietaryProtein)
         /// Vitamins
         case .vitaminA: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminA)!
         case .thiamin: return HKQuantityType.quantityType(forIdentifier: .dietaryThiamin)!
