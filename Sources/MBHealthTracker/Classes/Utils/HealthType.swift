@@ -30,7 +30,9 @@ public enum MBObjectType: SharableType, ReadableType {
     case bloodGlucose
     case bloodOxygen
     case inhalerUsage
-    
+    case sixMinuteWalk // mobility and respiratory
+
+    // Heart
     case stepCount
     case heartRate
     case workout
@@ -163,7 +165,6 @@ public enum MBObjectType: SharableType, ReadableType {
     case forcedRespiratoryVolume
     case forcedVitalCapacity
     case peakExpiratoryFlowRate
-    case sixMinuteWalk
 
     // Vitals
     case bloodPressureSystolic
@@ -184,30 +185,32 @@ public enum MBObjectType: SharableType, ReadableType {
         switch self {
             
         // Common
-        case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
-        case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
-        case .bodyTemperature: return HKQuantityType.quantityType(forIdentifier: .bodyTemperature)!
-        case .menstruation: return HKQuantityType.categoryType(forIdentifier: .menstrualFlow)!
-        case .abdominalCramps: return HKQuantityType.categoryType(forIdentifier: .abdominalCramps)!
-        case .bloodGlucose: return HKSampleType.quantityType(forIdentifier: .bloodGlucose)!
-        case .bloodOxygen: return HKSampleType.quantityType(forIdentifier: .oxygenSaturation)!
-        case .inhalerUsage: return HKSampleType.quantityType(forIdentifier: .inhalerUsage)!
-            
-        case .stepCount: return HKQuantityType.quantityType(forIdentifier: .stepCount)!
-        case .heartRate: return HKQuantityType.quantityType(forIdentifier: .heartRate)!
+        case .sexualActivity: return HKCategoryType(.sexualActivity)
+        case .respiratoryRate: return HKQuantityType(.respiratoryRate)
+        case .bodyTemperature: return HKQuantityType(.bodyTemperature)
+        case .menstruation: return HKCategoryType(.menstrualFlow)
+        case .abdominalCramps: return HKCategoryType(.abdominalCramps)
+        case .bloodGlucose: return HKQuantityType(.bloodGlucose)
+        case .bloodOxygen: return HKQuantityType(.oxygenSaturation)
+        case .inhalerUsage: return HKQuantityType(.inhalerUsage)
+        case .sixMinuteWalk: return HKQuantityType(.sixMinuteWalkTestDistance)
+
+        // Heart
+        case .stepCount: return HKQuantityType(.stepCount)
+        case .heartRate: return HKQuantityType(.heartRate)
         case .workout: return HKWorkoutType.workoutType()
-        case .activeEnergy: return HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
-        
+        case .activeEnergy: return HKQuantityType(.activeEnergyBurned)
+
         // Body
-        case .basalBodyTemperature: return HKQuantityType.quantityType(forIdentifier: .basalBodyTemperature)!
-        case .weight: return HKQuantityType.quantityType(forIdentifier: .bodyMass)!
-        case .bodyMassIndex: return HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)!
-        case .bodyFatPercentage: return HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!
-        case .electrodermalActivity: return HKQuantityType.quantityType(forIdentifier: .electrodermalActivity)!
-        case .height: return HKQuantityType.quantityType(forIdentifier: .height)!
-        case .leanBodyMass: return HKQuantityType.quantityType(forIdentifier: .leanBodyMass)!
-        case .waistCircumference: return HKQuantityType.quantityType(forIdentifier: .waistCircumference)!
-        case .wristTemperature: return HKQuantityType.quantityType(forIdentifier: .appleSleepingWristTemperature)!
+        case .basalBodyTemperature: return HKQuantityType(.basalBodyTemperature)
+        case .weight: return HKQuantityType(.bodyMass)
+        case .electrodermalActivity: return HKQuantityType(.electrodermalActivity)
+        case .leanBodyMass: return HKQuantityType(.leanBodyMass)
+        case .height: return HKQuantityType(.height)
+        case .bodyMassIndex: return HKQuantityType(.bodyMassIndex)
+        case .bodyFatPercentage: return HKQuantityType(.bodyFatPercentage)
+        case .waistCircumference: return HKQuantityType(.waistCircumference)
+        case .wristTemperature: return HKQuantityType(.appleSleepingWristTemperature)
 
         // Mobility
         case .cardioFitness: return HKCategoryType(.lowCardioFitnessEvent)
@@ -322,7 +325,6 @@ public enum MBObjectType: SharableType, ReadableType {
         case .forcedRespiratoryVolume: return HKSampleType.quantityType(forIdentifier: .forcedExpiratoryVolume1)!
         case .forcedVitalCapacity: return HKSampleType.quantityType(forIdentifier: .forcedVitalCapacity)!
         case .peakExpiratoryFlowRate: return HKSampleType.quantityType(forIdentifier: .peakExpiratoryFlowRate)!
-        case .sixMinuteWalk: return HKSampleType.quantityType(forIdentifier: .sixMinuteWalkTestDistance)!
 
         // Vitals
         case .bloodPressureSystolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureSystolic)!
@@ -345,31 +347,33 @@ public enum MBObjectType: SharableType, ReadableType {
         switch self {
             
         // Common
-        case .sexualActivity: return HKQuantityType.categoryType(forIdentifier: .sexualActivity)!
-        case .respiratoryRate: return HKSampleType.quantityType(forIdentifier: .respiratoryRate)!
-        case .bodyTemperature: return HKQuantityType.quantityType(forIdentifier: .bodyTemperature)!
-        case .menstruation: return HKQuantityType.categoryType(forIdentifier: .menstrualFlow)!
-        case .abdominalCramps: return HKQuantityType.categoryType(forIdentifier: .abdominalCramps)!
-        case .bloodGlucose: return HKSampleType.quantityType(forIdentifier: .bloodGlucose)!
-        case .bloodOxygen: return HKSampleType.quantityType(forIdentifier: .oxygenSaturation)!
-        case .inhalerUsage: return HKSampleType.quantityType(forIdentifier: .inhalerUsage)!
-            
-        case .stepCount: return HKQuantityType.quantityType(forIdentifier: .stepCount)!
-        case .heartRate: return HKQuantityType.quantityType(forIdentifier: .heartRate)!
+        case .sexualActivity: return HKCategoryType(.sexualActivity)
+        case .respiratoryRate: return HKQuantityType(.respiratoryRate)
+        case .bodyTemperature: return HKQuantityType(.bodyTemperature)
+        case .menstruation: return HKCategoryType(.menstrualFlow)
+        case .abdominalCramps: return HKCategoryType(.abdominalCramps)
+        case .bloodGlucose: return HKQuantityType(.bloodGlucose)
+        case .bloodOxygen: return HKQuantityType(.oxygenSaturation)
+        case .inhalerUsage: return HKQuantityType(.inhalerUsage)
+        case .sixMinuteWalk: return HKQuantityType(.sixMinuteWalkTestDistance)
+
+        // Heart
+        case .stepCount: return HKQuantityType(.stepCount)
+        case .heartRate: return HKQuantityType(.heartRate)
         case .workout: return HKWorkoutType.workoutType()
-        case .activeEnergy: return HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
-        
+        case .activeEnergy: return HKQuantityType(.activeEnergyBurned)
+
         // Body
-        case .basalBodyTemperature: return HKQuantityType.quantityType(forIdentifier: .basalBodyTemperature)!
-        case .weight: return HKQuantityType.quantityType(forIdentifier: .bodyMass)!
-        case .electrodermalActivity: return HKQuantityType.quantityType(forIdentifier: .electrodermalActivity)!
-        case .leanBodyMass: return HKQuantityType.quantityType(forIdentifier: .leanBodyMass)!
-        case .height: return HKQuantityType.quantityType(forIdentifier: .height)!
-        case .bodyMassIndex: return HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)!
-        case .bodyFatPercentage: return HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!
-        case .waistCircumference: return HKQuantityType.quantityType(forIdentifier: .waistCircumference)!
-        case .wristTemperature: return HKQuantityType.quantityType(forIdentifier: .appleSleepingWristTemperature)!
-        
+        case .basalBodyTemperature: return HKQuantityType(.basalBodyTemperature)
+        case .weight: return HKQuantityType(.bodyMass)
+        case .electrodermalActivity: return HKQuantityType(.electrodermalActivity)
+        case .leanBodyMass: return HKQuantityType(.leanBodyMass)
+        case .height: return HKQuantityType(.height)
+        case .bodyMassIndex: return HKQuantityType(.bodyMassIndex)
+        case .bodyFatPercentage: return HKQuantityType(.bodyFatPercentage)
+        case .waistCircumference: return HKQuantityType(.waistCircumference)
+        case .wristTemperature: return HKQuantityType(.appleSleepingWristTemperature)
+
         // Mobility
         case .cardioFitness: return HKCategoryType(.lowCardioFitnessEvent)
         case .doubleSupportTime: return HKQuantityType(.walkingDoubleSupportPercentage)
@@ -483,7 +487,6 @@ public enum MBObjectType: SharableType, ReadableType {
         case .forcedRespiratoryVolume: return HKSampleType.quantityType(forIdentifier: .forcedExpiratoryVolume1)!
         case .forcedVitalCapacity: return HKSampleType.quantityType(forIdentifier: .forcedVitalCapacity)!
         case .peakExpiratoryFlowRate: return HKSampleType.quantityType(forIdentifier: .peakExpiratoryFlowRate)!
-        case .sixMinuteWalk: return HKSampleType.quantityType(forIdentifier: .sixMinuteWalkTestDistance)!
 
         // Vitals
         case .bloodPressureSystolic: return HKSampleType.quantityType(forIdentifier: .bloodPressureSystolic)!
