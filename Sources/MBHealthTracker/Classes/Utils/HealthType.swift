@@ -210,7 +210,7 @@ public enum MBObjectType: SharableType, ReadableType, CaseIterable {
         case .bodyMassIndex: return HKQuantityType(.bodyMassIndex)
         case .bodyFatPercentage: return HKQuantityType(.bodyFatPercentage)
         case .waistCircumference: return HKQuantityType(.waistCircumference)
-        case .wristTemperature: return HKQuantityType(.appleSleepingWristTemperature)
+        case .wristTemperature: return nil
 
         // Mobility
         case .cardioFitness: return nil
