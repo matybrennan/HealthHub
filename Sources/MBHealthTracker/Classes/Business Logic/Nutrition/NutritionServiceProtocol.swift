@@ -137,55 +137,55 @@ public enum NutritionType {
         switch self {
         
         /// Macronutrients
-        case .energyConsumed: return HKQuantityType.quantityType(forIdentifier: .dietaryEnergyConsumed)!
-        case .carbohydrates: return HKQuantityType.quantityType(forIdentifier: .dietaryCarbohydrates)!
-        case .fiber: return HKQuantityType.quantityType(forIdentifier: .dietaryFiber)!
-        case .sugar: return HKQuantityType.quantityType(forIdentifier: .dietarySugar)!
-        case .fatTotal: return HKQuantityType.quantityType(forIdentifier: .dietaryFatTotal)!
-        case .fatMono: return HKQuantityType.quantityType(forIdentifier: .dietaryFatMonounsaturated)!
-        case .fatPoly: return HKQuantityType.quantityType(forIdentifier: .dietaryFatPolyunsaturated)!
-        case .fatSaturated: return HKQuantityType.quantityType(forIdentifier: .dietaryFatSaturated)!
-        case .cholesterol: return HKQuantityType.quantityType(forIdentifier: .dietaryCholesterol)!
-        case .protein: return HKQuantityType.quantityType(forIdentifier: .dietaryProtein)!
+        case .energyConsumed: return HKQuantityType(.dietaryEnergyConsumed)
+        case .carbohydrates: return HKQuantityType(.dietaryCarbohydrates)
+        case .fiber: return HKQuantityType(.dietaryFiber)
+        case .sugar: return HKQuantityType(.dietarySugar)
+        case .fatTotal: return HKQuantityType(.dietaryFatTotal)
+        case .fatMono: return HKQuantityType(.dietaryFatMonounsaturated)
+        case .fatPoly: return HKQuantityType(.dietaryFatPolyunsaturated)
+        case .fatSaturated: return HKQuantityType(.dietaryFatSaturated)
+        case .cholesterol: return HKQuantityType(.dietaryCholesterol)
+        case .protein: return HKQuantityType(.dietaryProtein)
         
         /// Vitamins
-        case .vitaminA: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminA)!
-        case .thiamin: return HKQuantityType.quantityType(forIdentifier: .dietaryThiamin)!
-        case .riboflavin: return HKQuantityType.quantityType(forIdentifier: .dietaryRiboflavin)!
-        case .niacin: return HKQuantityType.quantityType(forIdentifier: .dietaryNiacin)!
-        case .pathothenicAcid: return HKQuantityType.quantityType(forIdentifier: .dietaryPantothenicAcid)!
-        case .vitaminB6: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminB6)!
-        case .biotin: return HKQuantityType.quantityType(forIdentifier: .dietaryBiotin)!
-        case .vitaminB12: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminB12)!
-        case .vitaminC: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminC)!
-        case .vitaminD: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminD)!
-        case .vitaminE: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminE)!
-        case .vitaminK: return HKQuantityType.quantityType(forIdentifier: .dietaryVitaminK)!
-        case .folate: return HKQuantityType.quantityType(forIdentifier: .dietaryFolate)!
-        
+        case .vitaminA: return HKQuantityType(.dietaryVitaminA)
+        case .thiamin: return HKQuantityType(.dietaryThiamin)
+        case .riboflavin: return HKQuantityType(.dietaryRiboflavin)
+        case .niacin: return HKQuantityType(.dietaryNiacin)
+        case .pathothenicAcid: return HKQuantityType(.dietaryPantothenicAcid)
+        case .vitaminB6: return HKQuantityType(.dietaryVitaminB6)
+        case .biotin: return HKQuantityType(.dietaryBiotin)
+        case .vitaminB12: return HKQuantityType(.dietaryVitaminB12)
+        case .vitaminC: return HKQuantityType(.dietaryVitaminC)
+        case .vitaminD: return HKQuantityType(.dietaryVitaminD)
+        case .vitaminE: return HKQuantityType(.dietaryVitaminE)
+        case .vitaminK: return HKQuantityType(.dietaryVitaminK)
+        case .folate: return HKQuantityType(.dietaryFolate)
+
         /// Minerals
-        case .calcium: return HKQuantityType.quantityType(forIdentifier: .dietaryCalcium)!
-        case .chloride: return HKQuantityType.quantityType(forIdentifier: .dietaryChloride)!
-        case .iron: return HKQuantityType.quantityType(forIdentifier: .dietaryIron)!
-        case .magnesium: return HKQuantityType.quantityType(forIdentifier: .dietaryMagnesium)!
-        case .phosphorus: return HKQuantityType.quantityType(forIdentifier: .dietaryPhosphorus)!
-        case .potassium: return HKQuantityType.quantityType(forIdentifier: .dietaryPotassium)!
-        case .sodium: return HKQuantityType.quantityType(forIdentifier: .dietarySodium)!
-        case .zinc: return HKQuantityType.quantityType(forIdentifier: .dietaryZinc)!
-        
+        case .calcium: return HKQuantityType(.dietaryCalcium)
+        case .chloride: return HKQuantityType(.dietaryChloride)
+        case .iron: return HKQuantityType(.dietaryIron)
+        case .magnesium: return HKQuantityType(.dietaryMagnesium)
+        case .phosphorus: return HKQuantityType(.dietaryPhosphorus)
+        case .potassium: return HKQuantityType(.dietaryPotassium)
+        case .sodium: return HKQuantityType(.dietarySodium)
+        case .zinc: return HKQuantityType(.dietaryZinc)
+
         /// Ultratrace Minerals
-        case .chromium: return HKQuantityType.quantityType(forIdentifier: .dietaryChromium)!
-        case .copper: return HKQuantityType.quantityType(forIdentifier: .dietaryCopper)!
-        case .iodine: return HKQuantityType.quantityType(forIdentifier: .dietaryIodine)!
-        case .manganese: return HKQuantityType.quantityType(forIdentifier: .dietaryManganese)!
-        case .molybdenum: return HKQuantityType.quantityType(forIdentifier: .dietaryMolybdenum)!
-        case .selenium: return HKQuantityType.quantityType(forIdentifier: .dietarySelenium)!
-           
+        case .chromium: return HKQuantityType(.dietaryChromium)
+        case .copper: return HKQuantityType(.dietaryCopper)
+        case .iodine: return HKQuantityType(.dietaryIodine)
+        case .manganese: return HKQuantityType(.dietaryManganese)
+        case .molybdenum: return HKQuantityType(.dietaryMolybdenum)
+        case .selenium: return HKQuantityType(.dietarySelenium)
+
         /// Hydration
-        case .water: return HKQuantityType.quantityType(forIdentifier: .dietaryWater)!
-            
+        case .water: return HKQuantityType(.dietaryWater)
+
         /// Caffeine
-        case .caffeine: return HKQuantityType.quantityType(forIdentifier: .dietaryCaffeine)!
+        case .caffeine: return HKQuantityType(.dietaryCaffeine)
             
         }
     }

@@ -11,33 +11,25 @@ import HealthKit
 open class MBHealthParser {
     
     public static func unboxAndCheckIfAvailable(quantityIdentifier: HKQuantityTypeIdentifier) throws -> HKQuantityType {
-        guard let result = HKQuantityType.quantityType(forIdentifier: quantityIdentifier) else {
-            throw AuthorizationStatusError.unableToAccess(quantityIdentifier.rawValue)
-        }
+        let result = HKQuantityType(quantityIdentifier)
         try isDataStoreAvailable()
         return result
     }
     
     public static func unboxAndCheckIfAvailable(characterIdentifier: HKCharacteristicTypeIdentifier) throws -> HKCharacteristicType {
-        guard let result = HKCharacteristicType.characteristicType(forIdentifier: characterIdentifier) else {
-            throw AuthorizationStatusError.unableToAccess(characterIdentifier.rawValue)
-        }
+        let result = HKCharacteristicType(characterIdentifier)
         try isDataStoreAvailable()
         return result
     }
     
     public static func unboxAndCheckIfAvailable(categoryIdentifier: HKCategoryTypeIdentifier) throws -> HKCategoryType {
-        guard let result = HKCategoryType.categoryType(forIdentifier: categoryIdentifier) else {
-            throw AuthorizationStatusError.unableToAccess(categoryIdentifier.rawValue)
-        }
+        let result = HKCategoryType(categoryIdentifier)
         try isDataStoreAvailable()
         return result
     }
     
     public static func unboxAndCheckIfAvailable(correlationIdentifier: HKCorrelationTypeIdentifier) throws -> HKCorrelationType {
-        guard let result = HKCategoryType.correlationType(forIdentifier: correlationIdentifier) else {
-            throw AuthorizationStatusError.unableToAccess(correlationIdentifier.rawValue)
-        }
+        let result = HKCorrelationType(correlationIdentifier)
         try isDataStoreAvailable()
         return result
     }
