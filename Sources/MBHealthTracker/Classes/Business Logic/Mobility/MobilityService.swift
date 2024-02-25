@@ -70,7 +70,7 @@ extension MobilityService: MobilityServiceProtocol {
     }
 
     public func stairSpeedDown() async throws -> StairSpeedDown {
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .runningStrideLength)
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .stairDescentSpeed)
         let items = samples.map { item -> StairSpeedDown.Item in
             let speedUnit = HKUnit.meter().unitDivided(by: HKUnit.second())
             let velocity = item.quantity.doubleValue(for: speedUnit)
@@ -82,7 +82,7 @@ extension MobilityService: MobilityServiceProtocol {
     }
 
     public func stairSpeedUp() async throws -> StairSpeedUp {
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .runningStrideLength)
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .stairAscentSpeed)
         let items = samples.map { item -> StairSpeedUp.Item in
             let speedUnit = HKUnit.meter().unitDivided(by: HKUnit.second())
             let velocity = item.quantity.doubleValue(for: speedUnit)

@@ -29,13 +29,15 @@ final class Store: ObservableObject {
     }
 
     func configurePermissions() async {
-        try? await healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.bodyFatPercentage], toRead: [MBObjectType.])
+        try? await healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.stairSpeedUp, MBObjectType.stairSpeedDown], toRead: [MBObjectType.stairSpeedUp, MBObjectType.stairSpeedDown])
     }
 
     func runTest() async {
         do {
-            let bodyFatPercentage = try await healthTracker.mobility.cardioFitness()
-            print("bodyFatPercentage: \(bodyFatPercentage)")
+            let up = try await healthTracker.mobility.stairSpeedUp()
+            let down = try await healthTracker.mobility.stairSpeedDown()
+            print("up: \(up)")
+            print("down: \(down)")
         } catch {
             print("Error: \(error.localizedDescription)")
         }
