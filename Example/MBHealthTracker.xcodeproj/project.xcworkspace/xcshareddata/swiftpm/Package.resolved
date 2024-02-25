@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/matybrennan/MBHealthTracker/",
       "state" : {
-        "branch" : "release/2.4.0",
-        "revision" : "4082634dfadfe9661e598286ddf05824665d25d3"
+        "branch" : "release/2.5.0",
+        "revision" : "0dbe32bd4cb1f21822bd2bf63852b7b00063db6f"
       }
     }
   ],

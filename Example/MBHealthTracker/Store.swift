@@ -29,12 +29,12 @@ final class Store: ObservableObject {
     }
 
     func configurePermissions() async {
-        try? await healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.bodyFatPercentage], toRead: [MBObjectType.bodyFatPercentage])
+        try? await healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.bodyFatPercentage], toRead: [MBObjectType.cardioFitness])
     }
 
     func runTest() async {
         do {
-            let bodyFatPercentage = try await healthTracker.bodyMeasurements.bodyFatPercentage()
+            let bodyFatPercentage = try await healthTracker.
             print("bodyFatPercentage: \(bodyFatPercentage)")
         } catch {
             print("Error: \(error.localizedDescription)")

@@ -17,6 +17,8 @@ public protocol MBHealthTrackerProtocol: AnyObject {
     
     var characteristics: CharacteristicServiceProtocol { get }
     
+    var mobility: MobilityServiceProtocol { get }
+
     var nutrition: NutritionServiceProtocol { get }
     
     var sleep: SleepServiceProtocol { get }

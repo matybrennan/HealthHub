@@ -141,7 +141,7 @@ Split into sections to gather data based on timeIntervals
 - groundContactTime
 - runningStrideLength
 
-```var mobilityService: MobilityServiceProtocol```
+```var mobility: MobilityServiceProtocol```
 
 ### Nutrition
 - macronutrients
@@ -151,7 +151,7 @@ Split into sections to gather data based on timeIntervals
 - hydration
 - caffeine
 
-```var nutritionService: NutritionServiceProtocol```
+```var nutrition: NutritionServiceProtocol```
 
 ### Heart
 - heartRate (timeIntervals -> current, today, thisWeek, all, between times)
