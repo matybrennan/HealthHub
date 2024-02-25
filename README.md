@@ -143,6 +143,11 @@ Split into sections to gather data based on timeIntervals
 - sixMinuteWalk
 - stairSpeedDown
 - stairSpeedUp
+- verticalOscillation
+- walkingAsymmetry
+- walkingSpeed
+- walkingSteadiness
+- walkingStepLength
 
 ```var mobility: MobilityServiceProtocol```
 

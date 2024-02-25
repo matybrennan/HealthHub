@@ -56,6 +56,11 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
     case runningStrideLength
     case stairSpeedDown
     case stairSpeedUp
+    case verticalOscillation
+    case walkingAsymmetry
+    case walkingSpeed
+    case walkingSteadiness
+    case walkingStepLength
 
     // Nutrition
     /// Macronutrients
@@ -218,6 +223,11 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
         case .runningStrideLength: return HKQuantityType(.runningStrideLength)
         case .stairSpeedDown: return HKQuantityType(.stairDescentSpeed)
         case .stairSpeedUp: return HKQuantityType(.stairAscentSpeed)
+        case .verticalOscillation: return HKQuantityType(.runningVerticalOscillation)
+        case .walkingAsymmetry: return HKQuantityType(.walkingAsymmetryPercentage)
+        case .walkingSpeed: return HKQuantityType(.walkingSpeed)
+        case .walkingSteadiness: return HKQuantityType(.appleWalkingSteadiness)
+        case .walkingStepLength: return HKQuantityType(.walkingStepLength)
 
         // Nutrition
         /// Macronutrients
@@ -380,6 +390,11 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
         case .runningStrideLength: return HKQuantityType(.runningStrideLength)
         case .stairSpeedDown: return HKQuantityType(.stairDescentSpeed)
         case .stairSpeedUp: return HKQuantityType(.stairAscentSpeed)
+        case .verticalOscillation: return HKQuantityType(.runningVerticalOscillation)
+        case .walkingAsymmetry: return HKQuantityType(.walkingAsymmetryPercentage)
+        case .walkingSpeed: return HKQuantityType(.walkingSpeed)
+        case .walkingSteadiness: return HKQuantityType(.appleWalkingSteadiness)
+        case .walkingStepLength: return HKQuantityType(.walkingStepLength)
 
         // Nutrition
         /// Macronutrients

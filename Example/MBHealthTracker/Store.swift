@@ -34,7 +34,7 @@ final class Store: ObservableObject {
 
     func runTest() async {
         do {
-            let up = try await healthTracker.mobility.stairSpeedUp()
+            let up = try await healthTracker.mobility.cardioFitness()
             let down = try await healthTracker.mobility.stairSpeedDown()
             print("up: \(up)")
             print("down: \(down)")

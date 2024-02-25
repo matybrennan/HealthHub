@@ -19,6 +19,7 @@ extension MobilityService: FetchQuantitySample, FetchCategorySample, SixMinuteWa
 // MARK: - MobilityServiceProtocol
 extension MobilityService: MobilityServiceProtocol {
 
+    // FIXME: Not working fetching nothing
     public func cardioFitness() async throws -> CardioFitness {
         let samples = try await fetchCategorySamples(categoryIdentifier: .lowCardioFitnessEvent)
         let items = samples.map { item -> CardioFitness.Item in
@@ -90,6 +91,62 @@ extension MobilityService: MobilityServiceProtocol {
         }
 
         let vm = StairSpeedUp(items: items)
+        return vm
+    }
+
+    public func verticalOscillation() async throws -> VerticalOscillation {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .stairAscentSpeed)
+        let items = samples.map { item -> VerticalOscillation.Item in
+            let distanceCM = item.quantity.doubleValue(for: HKUnit.meterUnit(with: .centi))
+            return VerticalOscillation.Item(distance: distanceCM, date: item.endDate)
+        }
+
+        let vm = VerticalOscillation(items: items)
+        return vm
+    }
+
+    public func walkingAsymmetry() async throws -> WalkingAsymmetry {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .walkingDoubleSupportPercentage)
+        let items = samples.map { item -> WalkingAsymmetry.Item in
+            let percentage = item.quantity.doubleValue(for: .percent())
+            return WalkingAsymmetry.Item(percentage: percentage, date: item.endDate)
+        }
+
+        let vm = WalkingAsymmetry(items: items)
+        return vm
+    }
+
+    public func walkingSpeed() async throws -> WalkingSpeed {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .stairDescentSpeed)
+        let items = samples.map { item -> WalkingSpeed.Item in
+            let speedUnit = HKUnit.meterUnit(with: .kilo).unitDivided(by: HKUnit.hour())
+            let velocity = item.quantity.doubleValue(for: speedUnit)
+            return WalkingSpeed.Item(velocity: velocity, date: item.endDate)
+        }
+
+        let vm = WalkingSpeed(items: items)
+        return vm
+    }
+
+    public func walkingSteadiness() async throws -> WalkingSteadiness {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .walkingDoubleSupportPercentage)
+        let items = samples.map { item -> WalkingSteadiness.Item in
+            let percentage = item.quantity.doubleValue(for: .percent())
+            return WalkingSteadiness.Item(percentage: percentage, date: item.endDate)
+        }
+
+        let vm = WalkingSteadiness(items: items)
+        return vm
+    }
+
+    public func walkingStepLength() async throws -> WalkingStepLength {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .stairAscentSpeed)
+        let items = samples.map { item -> WalkingStepLength.Item in
+            let distanceCM = item.quantity.doubleValue(for: HKUnit.meterUnit(with: .centi))
+            return WalkingStepLength.Item(distance: distanceCM, date: item.endDate)
+        }
+
+        let vm = WalkingStepLength(items: items)
         return vm
     }
 }

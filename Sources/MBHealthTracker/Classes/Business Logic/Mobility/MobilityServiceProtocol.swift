@@ -16,4 +16,9 @@ public protocol MobilityServiceProtocol: AnyObject {
     func sixMinuteWalk() async throws -> SixMinuteWalk
     func stairSpeedDown() async throws -> StairSpeedDown
     func stairSpeedUp() async throws -> StairSpeedUp
+    func verticalOscillation() async throws -> VerticalOscillation
+    func walkingAsymmetry() async throws -> WalkingAsymmetry
+    func walkingSpeed() async throws -> WalkingSpeed
+    func walkingSteadiness() async throws -> WalkingSteadiness
+    func walkingStepLength() async throws -> WalkingStepLength
 }

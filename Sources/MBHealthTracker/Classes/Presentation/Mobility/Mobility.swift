@@ -66,3 +66,53 @@ public struct StairSpeedUp {
 
     public let items: [Item]
 }
+
+public struct VerticalOscillation {
+
+    public struct Item {
+        public let distance: Double // cm
+        public let date: Date
+    }
+
+    public let items: [Item]
+}
+
+public struct WalkingAsymmetry {
+
+    public struct Item {
+        public let percentage: Double
+        public let date: Date
+    }
+
+    public let items: [Item]
+}
+
+public struct WalkingSpeed {
+
+    public struct Item {
+        public let velocity: Double // km/h
+        public let date: Date
+    }
+
+    public let items: [Item]
+}
+
+public struct WalkingSteadiness {
+
+    public struct Item {
+        public let percentage: Double
+        public let date: Date
+    }
+
+    public let items: [Item]
+}
+
+public struct WalkingStepLength {
+
+    public struct Item {
+        public let distance: Double // cm
+        public let date: Date
+    }
+
+    public let items: [Item]
+}
