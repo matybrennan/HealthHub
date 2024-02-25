@@ -19,7 +19,7 @@ public protocol ReadableType {
 public typealias SharableReadableType = SharableType & ReadableType
 
 /// Has both read and sharing capabilities
-public enum MBObjectType: SharableType, ReadableType {
+public enum MBObjectType: SharableType, ReadableType, CaseIterable {
     
     // Duplicates
     case sexualActivity // cycle, other
