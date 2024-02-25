@@ -136,6 +136,7 @@ Split into sections to gather data based on timeIntervals
 ```var bodyMeasurements: BodyMeasurementsServiceProtocol```
 
 ### Mobility
+- cardioFitness
 - doubleSupportTime
 - groundContactTime
 - runningStrideLength

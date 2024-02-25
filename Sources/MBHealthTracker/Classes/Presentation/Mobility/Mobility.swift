@@ -7,6 +7,16 @@
 
 import Foundation
 
+public struct CardioFitness {
+
+    public struct Item {
+        public let vo2Max: Double
+        public let date: Date
+    }
+
+    public let items: [Item]
+}
+
 public struct DoubleSupportTime {
 
     public struct Item {

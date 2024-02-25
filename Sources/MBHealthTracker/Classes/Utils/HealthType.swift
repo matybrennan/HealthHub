@@ -49,6 +49,7 @@ public enum MBObjectType: SharableType, ReadableType {
     case wristTemperature
     
     // Mobility
+    case cardioFitness
     case doubleSupportTime
     case groundContactTime
     case runningStrideLength
@@ -207,10 +208,10 @@ public enum MBObjectType: SharableType, ReadableType {
         case .wristTemperature: return HKQuantityType.quantityType(forIdentifier: .appleSleepingWristTemperature)!
 
         // Mobility
-        case .doubleSupportTime: return HKQuantityType.quantityType(forIdentifier: .walkingDoubleSupportPercentage)!
-        case .groundContactTime: return HKQuantityType.quantityType(forIdentifier: .runningGroundContactTime)!
-        case .runningStrideLength: return HKQuantityType.quantityType(forIdentifier: .runningStrideLength)!
-
+        case .cardioFitness: return HKCategoryType(.lowCardioFitnessEvent)
+        case .doubleSupportTime: return HKQuantityType(.walkingDoubleSupportPercentage)
+        case .groundContactTime: return HKQuantityType(.runningGroundContactTime)
+        case .runningStrideLength: return HKQuantityType(.runningStrideLength)
 
         // Nutrition
         /// Macronutrients
@@ -366,9 +367,10 @@ public enum MBObjectType: SharableType, ReadableType {
         case .wristTemperature: return HKQuantityType.quantityType(forIdentifier: .appleSleepingWristTemperature)!
         
         // Mobility
-        case .doubleSupportTime: return HKQuantityType.quantityType(forIdentifier: .walkingDoubleSupportPercentage)!
-        case .groundContactTime: return HKQuantityType.quantityType(forIdentifier: .runningGroundContactTime)!
-        case .runningStrideLength: return HKQuantityType.quantityType(forIdentifier: .runningStrideLength)!
+        case .cardioFitness: return HKCategoryType(.lowCardioFitnessEvent)
+        case .doubleSupportTime: return HKQuantityType(.walkingDoubleSupportPercentage)
+        case .groundContactTime: return HKQuantityType(.runningGroundContactTime)
+        case .runningStrideLength: return HKQuantityType(.runningStrideLength)
 
         // Nutrition
         /// Macronutrients
