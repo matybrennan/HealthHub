@@ -29,7 +29,7 @@ final class Store: ObservableObject {
     }
 
     func configurePermissions() async {
-        try? await healthTracker.configuration.requestAuthorization(toShare: [MBObjectType.stairSpeedUp, MBObjectType.stairSpeedDown], toRead: [MBObjectType.stairSpeedUp, MBObjectType.stairSpeedDown])
+        try? await healthTracker.configuration.requestAuthorization(toShare: MBObjectType.allCases, toRead: [MBObjectType.stairSpeedUp, MBObjectType.stairSpeedDown])
     }
 
     func runTest() async {

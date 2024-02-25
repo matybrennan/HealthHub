@@ -9,7 +9,7 @@ import Foundation
 import HealthKit
 
 public protocol SharableType {
-    var sharable: HKSampleType { get }
+    var sharable: HKSampleType? { get }
 }
 
 public protocol ReadableType {
@@ -181,7 +181,7 @@ public enum MBObjectType: SharableType, ReadableType, CaseIterable {
     case uvExposure
     case waterTemperature
     
-    public var sharable: HKSampleType {
+    public var sharable: HKSampleType? {
         switch self {
             
         // Common
@@ -213,7 +213,7 @@ public enum MBObjectType: SharableType, ReadableType, CaseIterable {
         case .wristTemperature: return HKQuantityType(.appleSleepingWristTemperature)
 
         // Mobility
-        case .cardioFitness: return HKCategoryType(.lowCardioFitnessEvent)
+        case .cardioFitness: return nil
         case .doubleSupportTime: return HKQuantityType(.walkingDoubleSupportPercentage)
         case .groundContactTime: return HKQuantityType(.runningGroundContactTime)
         case .runningStrideLength: return HKQuantityType(.runningStrideLength)
@@ -506,38 +506,10 @@ public enum MBObjectType: SharableType, ReadableType, CaseIterable {
     }
 }
 
-/// Just has read capabilities
-public enum MBReadType: ReadableType {
-    
-    // Characteristics
-    case dob
-    case gender
-    
-    public var readable: HKObjectType {
-        switch self {
-        case .dob:
-            return HKCharacteristicType.characteristicType(forIdentifier: .dateOfBirth)!
-        case .gender:
-            return HKCharacteristicType.characteristicType(forIdentifier: .biologicalSex)!
-        }
-    }
-}
-
-/// Just has share capabilities
-public enum MBShareType: SharableType {
-    
-    public var sharable: HKSampleType {
-        switch self {
-            //
-        }
-    }
-}
-
-
 public struct MBHealthType {
     
     static func shareTypes(_ types: [SharableType]) -> Set<HKSampleType> {
-        let res = types.map { $0.sharable }
+        let res = types.compactMap { $0.sharable }
         return Set(res)
     }
     
