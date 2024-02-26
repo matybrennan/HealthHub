@@ -21,10 +21,11 @@ extension MobilityService: MobilityServiceProtocol {
 
     // FIXME: Not working fetching nothing
     public func cardioFitness() async throws -> CardioFitness {
-        let samples = try await fetchCategorySamples(categoryIdentifier: .lowCardioFitnessEvent)
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .vo2Max)
         let items = samples.map { item -> CardioFitness.Item in
             let VO₂Unit = HKUnit(from: "ml/kg*min")
-            let cycleStartInt = item.metadata?[HKMetadataKeyLowCardioFitnessEventThreshold] as? Int ?? 0
+            let threshold = item.metadata?[HKMetadataKeyLowCardioFitnessEventThreshold] as? Int ?? 0
+            let voMax = item.metadata?[HKMetadataKeyVO2MaxValue] as? Int ?? 0
             //let vo2Max = item..doubleValue(for: VO₂Unit)
             return CardioFitness.Item(vo2Max: 0, date: item.endDate)
         }
