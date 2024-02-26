@@ -20,6 +20,13 @@ public typealias SharableReadableType = SharableType & ReadableType
 
 public enum MBObjectType: SharableReadableType, CaseIterable {
 
+    // Characteristics
+    case biologicalSex
+    case bloodType
+    case dateOfBirth
+    case skinType
+    case wheelchairUse
+
     // Duplicates
     case sexualActivity // cycle, other
     case respiratoryRate // respiratory, vitals
@@ -187,7 +194,14 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
     
     public var sharable: HKSampleType? {
         switch self {
-            
+
+        // Characteristics
+        case .biologicalSex: return nil
+        case .bloodType: return nil
+        case .dateOfBirth: return nil
+        case .skinType: return nil
+        case .wheelchairUse: return nil
+
         // Common
         case .sexualActivity: return HKCategoryType(.sexualActivity)
         case .respiratoryRate: return HKQuantityType(.respiratoryRate)
@@ -354,7 +368,14 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
     
     public var readable: HKObjectType {
         switch self {
-            
+
+        // Characteristics
+        case .biologicalSex: return HKCharacteristicType(.biologicalSex)
+        case .bloodType: return HKCharacteristicType(.bloodType)
+        case .dateOfBirth: return HKCharacteristicType(.dateOfBirth)
+        case .skinType: return HKCharacteristicType(.fitzpatrickSkinType)
+        case .wheelchairUse: return HKCharacteristicType(.wheelchairUse)
+
         // Common
         case .sexualActivity: return HKCategoryType(.sexualActivity)
         case .respiratoryRate: return HKQuantityType(.respiratoryRate)
