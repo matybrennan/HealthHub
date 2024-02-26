@@ -19,7 +19,6 @@ extension MobilityService: FetchQuantitySample, FetchCategorySample, SixMinuteWa
 // MARK: - MobilityServiceProtocol
 extension MobilityService: MobilityServiceProtocol {
 
-    // FIXME: Not working fetching nothing
     public func cardioFitness() async throws -> CardioFitness {
         let samples = try await fetchQuantitySamples(quantityIdentifier: .vo2Max)
         let items = samples.map { item -> CardioFitness.Item in

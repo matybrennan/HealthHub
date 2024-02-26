@@ -10,7 +10,7 @@ import HealthKit
 
 // TODO: Figure out better way to be able to use this in the framework
 public var healthStore: HKHealthStore {
-    return HKHealthStore()
+    HKHealthStore()
 }
 
 public enum AuthorizationStatusError: LocalizedError {
