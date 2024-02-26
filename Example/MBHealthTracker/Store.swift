@@ -34,10 +34,10 @@ final class Store: ObservableObject {
 
     func runTest() async {
         do {
-            let model = SixMinuteWalk(
-            try await healthTracker.mobility.saveSixMinuteWalk(model: )
+            let model = SixMinuteWalk(items: [SixMinuteWalk.Item(distance: 200, startDate: Date(), endDate: Date().addingTimeInterval(100))])
+            try await healthTracker.mobility.saveSixMinuteWalk(model: model)
             let down = try await healthTracker.mobility.stairSpeedDown()
-            print("up: \(up)")
+            //print("up: \(up)")
             print("down: \(down)")
         } catch {
             print("Error: \(error.localizedDescription)")

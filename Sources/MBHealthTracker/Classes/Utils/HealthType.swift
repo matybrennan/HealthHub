@@ -224,9 +224,9 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
         case .stairSpeedDown: return HKQuantityType(.stairDescentSpeed)
         case .stairSpeedUp: return HKQuantityType(.stairAscentSpeed)
         case .verticalOscillation: return HKQuantityType(.runningVerticalOscillation)
-        case .walkingAsymmetry: return HKQuantityType(.walkingAsymmetryPercentage)
+        case .walkingAsymmetry: return nil
         case .walkingSpeed: return HKQuantityType(.walkingSpeed)
-        case .walkingSteadiness: return HKQuantityType(.appleWalkingSteadiness)
+        case .walkingSteadiness: return nil
         case .walkingStepLength: return HKQuantityType(.walkingStepLength)
 
         // Nutrition
