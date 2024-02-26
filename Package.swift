@@ -22,7 +22,7 @@ let package = Package(
         .target(
             name: "MBHealthTracker",
             dependencies: [],
-            path: "Sources",
+            path: "",
             exclude: [
                 "Example/*"
             ]
