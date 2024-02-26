@@ -217,7 +217,7 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
         case .wristTemperature: return nil
 
         // Mobility
-        case .cardioFitness: return nil
+        case .cardioFitness: return HKQuantityType(.vo2Max)
         case .doubleSupportTime: return HKQuantityType(.walkingDoubleSupportPercentage)
         case .groundContactTime: return HKQuantityType(.runningGroundContactTime)
         case .runningStrideLength: return HKQuantityType(.runningStrideLength)
@@ -384,7 +384,7 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
         case .wristTemperature: return HKQuantityType(.appleSleepingWristTemperature)
 
         // Mobility
-        case .cardioFitness: return HKCategoryType(.lowCardioFitnessEvent)
+        case .cardioFitness: return HKQuantityType(.vo2Max)
         case .doubleSupportTime: return HKQuantityType(.walkingDoubleSupportPercentage)
         case .groundContactTime: return HKQuantityType(.runningGroundContactTime)
         case .runningStrideLength: return HKQuantityType(.runningStrideLength)
