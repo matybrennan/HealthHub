@@ -149,4 +149,10 @@ extension MobilityService: MobilityServiceProtocol {
         let vm = WalkingStepLength(items: items)
         return vm
     }
+
+    // MARK: Saving
+
+    public func saveSixMinuteWalk(model: SixMinuteWalk) async throws {
+        try await saveBaseSixMinuteWalk(model)
+    }
 }

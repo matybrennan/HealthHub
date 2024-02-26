@@ -9,6 +9,7 @@ import Foundation
 
 public protocol MobilityServiceProtocol: AnyObject {
 
+    // Fetch
     func cardioFitness() async throws -> CardioFitness
     func doubleSupportTime() async throws -> DoubleSupportTime
     func groundContactTime() async throws -> GroundContactTime
@@ -21,4 +22,7 @@ public protocol MobilityServiceProtocol: AnyObject {
     func walkingSpeed() async throws -> WalkingSpeed
     func walkingSteadiness() async throws -> WalkingSteadiness
     func walkingStepLength() async throws -> WalkingStepLength
+
+    // Save
+    func saveSixMinuteWalk(model: SixMinuteWalk) async throws
 }

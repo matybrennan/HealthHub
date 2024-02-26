@@ -140,7 +140,7 @@ Split into sections to gather data based on timeIntervals
 - doubleSupportTime
 - groundContactTime
 - runningStrideLength
-- sixMinuteWalk
+- sixMinuteWalk & saveSixMinuteWalk(_model)
 - stairSpeedDown
 - stairSpeedUp
 - verticalOscillation
