@@ -34,7 +34,8 @@ final class Store: ObservableObject {
 
     func runTest() async {
         do {
-            let up = try await healthTracker.mobility.cardioFitness()
+            let model = SixMinuteWalk(
+            try await healthTracker.mobility.saveSixMinuteWalk(model: )
             let down = try await healthTracker.mobility.stairSpeedDown()
             print("up: \(up)")
             print("down: \(down)")

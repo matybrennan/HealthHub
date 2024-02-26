@@ -22,6 +22,10 @@ public struct RespiratoryRate {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct ForcedExpiratoryVolume {
@@ -37,6 +41,10 @@ public struct ForcedExpiratoryVolume {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct ForcedVitalCapacity {
@@ -52,6 +60,10 @@ public struct ForcedVitalCapacity {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct PeakExpiratoryFlowRate {
@@ -67,6 +79,10 @@ public struct PeakExpiratoryFlowRate {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct SixMinuteWalk {
@@ -84,4 +100,8 @@ public struct SixMinuteWalk {
     }
 
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
