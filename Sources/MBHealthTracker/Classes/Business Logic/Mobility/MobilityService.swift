@@ -24,10 +24,8 @@ extension MobilityService: MobilityServiceProtocol {
         let samples = try await fetchQuantitySamples(quantityIdentifier: .vo2Max)
         let items = samples.map { item -> CardioFitness.Item in
             let VO₂Unit = HKUnit(from: "ml/kg*min")
-            let threshold = item.metadata?[HKMetadataKeyLowCardioFitnessEventThreshold] as? Int ?? 0
-            let voMax = item.metadata?[HKMetadataKeyVO2MaxValue] as? Int ?? 0
-            //let vo2Max = item..doubleValue(for: VO₂Unit)
-            return CardioFitness.Item(vo2Max: 0, date: item.endDate)
+            let VO₂Max = item.quantity.doubleValue(for: VO₂Unit)
+            return CardioFitness.Item(vo2Max: VO₂Max, date: item.endDate)
         }
 
         let vm = CardioFitness(items: items)
