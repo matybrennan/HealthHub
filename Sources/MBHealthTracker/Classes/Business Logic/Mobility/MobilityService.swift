@@ -150,107 +150,107 @@ extension MobilityService: MobilityServiceProtocol {
 
     // MARK: Saving
 
-    public func saveDoubleSupportTime(model: DoubleSupportTime) async throws {
+    public func saveDoubleSupportTime(model: DoubleSupportTime, extra: [String : Any]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .walkingDoubleSupportPercentage)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .percent(), doubleValue: $0.percentage)
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveGroundContactTime(model: GroundContactTime) async throws {
+    public func saveGroundContactTime(model: GroundContactTime, extra: [String : Any]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .runningGroundContactTime)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit.secondUnit(with: .milli)
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: unit, doubleValue: $0.duration)
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveRunningStrideLength(model: RunningStrideLength) async throws {
+    public func saveRunningStrideLength(model: RunningStrideLength, extra: [String : Any]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .runningStrideLength)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .meter(), doubleValue: $0.distance)
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveSixMinuteWalk(model: SixMinuteWalk) async throws {
-        try await saveBaseSixMinuteWalk(model)
+    public func saveSixMinuteWalk(model: SixMinuteWalk, extra: [String : Any]?) async throws {
+        try await saveBaseSixMinuteWalk(model, extra: extra)
     }
 
-    public func saveStairSpeedDown(model: StairSpeedDown) async throws {
+    public func saveStairSpeedDown(model: StairSpeedDown, extra: [String : Any]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .stairDescentSpeed)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
         let speedUnit = HKUnit.meter().unitDivided(by: HKUnit.second())
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: speedUnit, doubleValue: $0.velocity)
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveStairSpeedUp(model: StairSpeedUp) async throws {
+    public func saveStairSpeedUp(model: StairSpeedUp, extra: [String : Any]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .stairAscentSpeed)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
         let speedUnit = HKUnit.meter().unitDivided(by: HKUnit.second())
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: speedUnit, doubleValue: $0.velocity)
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveVerticalOscillation(model: VerticalOscillation) async throws {
+    public func saveVerticalOscillation(model: VerticalOscillation, extra: [String : Any]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .runningVerticalOscillation)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit.meterUnit(with: .centi)
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: unit, doubleValue: $0.distance)
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveWalkingSpeed(model: WalkingSpeed) async throws {
+    public func saveWalkingSpeed(model: WalkingSpeed, extra: [String : Any]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .walkingSpeed)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
         let speedUnit = HKUnit.meterUnit(with: .kilo).unitDivided(by: HKUnit.hour())
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: speedUnit, doubleValue: $0.velocity)
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveWalkingStepLength(model: WalkingStepLength) async throws {
+    public func saveWalkingStepLength(model: WalkingStepLength, extra: [String : Any]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .walkingStepLength)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit.meterUnit(with: .centi)
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: unit, doubleValue: $0.distance)
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
         try await healthStore.save(sampleObjects)

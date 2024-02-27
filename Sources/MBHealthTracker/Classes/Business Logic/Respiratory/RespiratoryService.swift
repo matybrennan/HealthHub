@@ -14,7 +14,7 @@ public class RespiratoryService {
 }
 
 // MARK: - FetchQuantitySample
-extension RespiratoryService: FetchQuantitySample, RespiratoryRateCase, BloodOxygenCase, InhalerUsageCase { }
+extension RespiratoryService: FetchQuantitySample, RespiratoryRateCase, BloodOxygenCase, InhalerUsageCase, SixMinuteWalkCase { }
 
 // MARK: - RespiratoryServiceProtocol
 extension RespiratoryService: RespiratoryServiceProtocol {
@@ -65,13 +65,61 @@ extension RespiratoryService: RespiratoryServiceProtocol {
     }
 
     public func sixMinuteWalk() async throws -> SixMinuteWalk {
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .sixMinuteWalkTestDistance)
-        let items = samples.map { item -> SixMinuteWalk.Item in
-            let distanceMeters = item.quantity.doubleValue(for: HKUnit.meter())
-            return SixMinuteWalk.Item(distance: distanceMeters, startDate: item.startDate, endDate: item.endDate)
+        try await baseSixMinuteWalk()
+    }
+
+     // MARK: Saving
+
+    public func saveBloodOxygen(model: BloodOxygen, extra: [String : Any]?) async throws {
+        try await saveBaseBloodOxygen(model: model, extra: extra)
+    }
+
+    public func saveForcedExpiratoryVolume(model: ForcedExpiratoryVolume, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .forcedExpiratoryVolume1)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: .liter(), doubleValue: $0.liters)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        let model = SixMinuteWalk(items: items)
-        return model
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveForcedVitalCapacity(model: ForcedVitalCapacity, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .forcedVitalCapacity)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: .liter(), doubleValue: $0.liters)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveInhalerUsage(model: InhalerUsage, extra: [String : Any]?) async throws {
+        try await saveBaseInhalerUsage(model: model, extra: extra)
+    }
+
+    public func savePeakExpiratoryFlowRate(model: PeakExpiratoryFlowRate, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .peakExpiratoryFlowRate)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let unit = HKUnit(from: "L/min")
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: unit, doubleValue: $0.litersPerMinute)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveRespiratoryRate(model: RespiratoryRate, extra: [String : Any]?) async throws {
+        try await saveBaseRespiratoryRate(model: model, extra: extra)
+    }
+
+    public func saveSixMinuteWalk(model: SixMinuteWalk, extra: [String : Any]?) async throws {
+        try await saveBaseSixMinuteWalk(model, extra: extra)
     }
 }

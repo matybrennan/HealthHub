@@ -25,4 +25,16 @@ extension BodyTemperatureCase {
         let model = BodyTemperature(items: items)
         return model
     }
+
+    func saveBaseBodyTemperature(model: BodyTemperature, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyTemperature)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: .degreeCelsius(), doubleValue: $0.celsius)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
 }

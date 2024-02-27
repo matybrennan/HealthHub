@@ -22,4 +22,17 @@ extension InhalerUsageCase {
         let model = InhalerUsage(items: items)
         return model
     }
+
+    func saveBaseInhalerUsage(model: InhalerUsage, extra: [String: Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .inhalerUsage)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let unit = HKUnit.count()
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: unit, doubleValue: Double($0.value))
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
 }

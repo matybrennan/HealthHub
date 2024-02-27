@@ -56,5 +56,49 @@ extension VitalsService: VitalsServiceProtocol {
     public func respiratoryRate() async throws -> RespiratoryRate {
         try await baseRespiratoryRate()
     }
+
+    // MARK: - Saving
+
+    public func saveBloodGlucose(model: BloodGlucose, extra: [String : Any]?) async throws {
+        try await saveBaseBloodGlucose(model: model, extra: extra)
+    }
+
+    public func saveBloodOxygen(model: BloodOxygen, extra: [String : Any]?) async throws {
+        try await saveBaseBloodOxygen(model: model, extra: extra)
+    }
+
+    public func saveBloodPressure(model: BloodPressure, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(correlationIdentifier: .bloodPressure)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let unit = HKUnit.millimeterOfMercury()
+        let sampleObjects = model.items.map {
+            let systolicQuantity = HKQuantity(unit: unit, doubleValue: $0.systolic)
+            let diastolicQuantity = HKQuantity(unit: unit, doubleValue: $0.diastolic)
+
+            let systolicType = HKQuantityType(.bloodPressureSystolic)
+            let diastolicType = HKQuantityType(.bloodPressureDiastolic)
+
+            let systolicSample = HKQuantitySample(type: systolicType, quantity: systolicQuantity, start: $0.startDate, end: $0.endDate)
+            let diastolicSample = HKQuantitySample(type: diastolicType, quantity: diastolicQuantity, start: $0.startDate, end: $0.endDate)
+            let objects: Set<HKSample> = [systolicSample, diastolicSample]
+
+            return HKCorrelation(type: type, start: $0.startDate, end: $0.endDate, objects: objects, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveBodyTemperature(model: BodyTemperature, extra: [String : Any]?) async throws {
+        try await saveBaseBodyTemperature(model: model, extra: extra)
+    }
+
+    public func saveMenstruation(model: Menstruation, extra: [String : Any]?) async throws {
+        try await saveBaseMenstruation(model, extra: extra)
+    }
+
+    public func saveRespiratoryRate(model: RespiratoryRate, extra: [String : Any]?) async throws {
+        try await saveBaseRespiratoryRate(model: model, extra: extra)
+    }
 }
 

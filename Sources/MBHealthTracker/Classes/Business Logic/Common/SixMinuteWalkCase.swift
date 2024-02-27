@@ -23,13 +23,13 @@ extension SixMinuteWalkCase {
         return model
     }
 
-    func saveBaseSixMinuteWalk(_ model: SixMinuteWalk) async throws {
+    func saveBaseSixMinuteWalk(_ model: SixMinuteWalk, extra: [String : Any]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .sixMinuteWalkTestDistance)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .meter(), doubleValue: $0.distance)
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.startDate, end: $0.endDate)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.startDate, end: $0.endDate, metadata: extra)
         }
 
         try await healthStore.save(sampleObjects)

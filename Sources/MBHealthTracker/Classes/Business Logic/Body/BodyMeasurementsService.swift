@@ -148,114 +148,106 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
 
     // MARK: Saving
 
-    public func saveBasalBodyTemperature(model: BasalBodyTemperature) async throws {
+    public func saveBasalBodyTemperature(model: BasalBodyTemperature, extra: [String : Any]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .basalBodyTemperature)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .degreeCelsius(), doubleValue: $0.celsius)
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveBodyFatPercentage(model: BodyFatPercentage) async throws {
+    public func saveBodyFatPercentage(model: BodyFatPercentage, extra: [String : Any]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyFatPercentage)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .percent(), doubleValue: $0.percentage)
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveBodyMassIndex(model: BodyMassIndex) async throws {
+    public func saveBodyMassIndex(model: BodyMassIndex, extra: [String : Any]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyMassIndex)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .count(), doubleValue: $0.value)
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveBodyTemperature(model: BodyTemperature) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyTemperature)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
-
-        let sampleObjects = model.items.map {
-            let quantity = HKQuantity(unit: .degreeCelsius(), doubleValue: $0.celsius)
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.startDate, end: $0.endDate)
-        }
-
-        try await healthStore.save(sampleObjects)
+    public func saveBodyTemperature(model: BodyTemperature, extra: [String : Any]?) async throws {
+        try await saveBaseBodyTemperature(model: model, extra: extra)
     }
 
-    public func saveElectrodermalActivity(model: ElectrodermalActivity) async throws {
+    public func saveElectrodermalActivity(model: ElectrodermalActivity, extra: [String : Any]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .electrodermalActivity)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit.siemenUnit(with: .micro)
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: unit, doubleValue: $0.value)
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveHeight(model: BodyHeight) async throws {
+    public func saveHeight(model: BodyHeight, extra: [String : Any]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .height)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit(from: .centimeter)
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: unit, doubleValue: Double($0.cm))
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveLeanBodyMass(model: LeanBodyMass) async throws {
+    public func saveLeanBodyMass(model: LeanBodyMass, extra: [String : Any]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .leanBodyMass)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit.gramUnit(with: .kilo)
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: unit, doubleValue: $0.kg)
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveWaistCircumference(model: WaistCircumference) async throws {
+    public func saveWaistCircumference(model: WaistCircumference, extra: [String : Any]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .waistCircumference)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit(from: .centimeter)
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: unit, doubleValue: Double($0.cm))
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveWeight(model: BodyWeight) async throws {
+    public func saveWeight(model: BodyWeight, extra: [String : Any]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyMass)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit.gramUnit(with: .kilo)
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: unit, doubleValue: $0.kg)
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
         try await healthStore.save(sampleObjects)

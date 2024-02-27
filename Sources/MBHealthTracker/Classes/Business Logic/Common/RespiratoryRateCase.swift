@@ -22,4 +22,17 @@ extension RespiratoryRateCase {
         let model = RespiratoryRate(items: items)
         return model
     }
+
+    func saveBaseRespiratoryRate(model: RespiratoryRate, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .respiratoryRate)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let unit = HKUnit(from: "count/min")
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: unit, doubleValue: $0.value)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
 }

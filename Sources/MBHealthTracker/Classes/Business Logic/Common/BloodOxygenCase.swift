@@ -22,4 +22,16 @@ extension BloodOxygenCase {
         let model = BloodOxygen(items: items)
         return model
     }
+
+    func saveBaseBloodOxygen(model: BloodOxygen, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .oxygenSaturation)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: .percent(), doubleValue: $0.oxygenSaturationPercentage)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
 }

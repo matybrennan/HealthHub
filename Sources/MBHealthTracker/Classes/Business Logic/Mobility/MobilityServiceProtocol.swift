@@ -24,13 +24,13 @@ public protocol MobilityServiceProtocol: AnyObject {
     func walkingStepLength() async throws -> WalkingStepLength
 
     // Save
-    func saveDoubleSupportTime(model: DoubleSupportTime) async throws
-    func saveGroundContactTime(model: GroundContactTime) async throws
-    func saveRunningStrideLength(model: RunningStrideLength) async throws
-    func saveSixMinuteWalk(model: SixMinuteWalk) async throws
-    func saveStairSpeedDown(model: StairSpeedDown) async throws
-    func saveStairSpeedUp(model: StairSpeedUp) async throws
-    func saveVerticalOscillation(model: VerticalOscillation) async throws
-    func saveWalkingSpeed(model: WalkingSpeed) async throws
-    func saveWalkingStepLength(model: WalkingStepLength) async throws
+    func saveDoubleSupportTime(model: DoubleSupportTime, extra: [String : Any]?) async throws
+    func saveGroundContactTime(model: GroundContactTime, extra: [String : Any]?) async throws
+    func saveRunningStrideLength(model: RunningStrideLength, extra: [String : Any]?) async throws
+    func saveSixMinuteWalk(model: SixMinuteWalk, extra: [String : Any]?) async throws
+    func saveStairSpeedDown(model: StairSpeedDown, extra: [String : Any]?) async throws
+    func saveStairSpeedUp(model: StairSpeedUp, extra: [String : Any]?) async throws
+    func saveVerticalOscillation(model: VerticalOscillation, extra: [String : Any]?) async throws
+    func saveWalkingSpeed(model: WalkingSpeed, extra: [String : Any]?) async throws
+    func saveWalkingStepLength(model: WalkingStepLength, extra: [String : Any]?) async throws
 }

@@ -24,4 +24,19 @@ extension BloodGlucoseCase {
         let model = BloodGlucose(items: items)
         return model
     }
+
+    func saveBaseBloodGlucose(model: BloodGlucose, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bloodGlucose)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let unit = HKUnit(from: "mg/dL")
+        let sampleObjects = model.items.map {
+            var metadata = extra ?? [:]
+            metadata[HKMetadataKeyBloodGlucoseMealTime] = $0.mealTime.rawValue
+            let quantity = HKQuantity(unit: unit, doubleValue: $0.bloodGlucose)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: metadata)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
 }

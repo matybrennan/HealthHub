@@ -23,4 +23,17 @@ extension SexualActivityCase {
         let model = SexualActivity(items: items)
         return model
     }
+
+    func saveBaseSexualActivity(_ model: SexualActivity, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .sexualActivity)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            var metadata = extra ?? [:]
+            metadata[HKMetadataKeySexualActivityProtectionUsed] = $0.type.rawValue
+            return HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: metadata)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
 }
