@@ -122,15 +122,15 @@ Split into sections to gather data based on timeIntervals
 ------------------------------------------------------------------------
 
 ### Body Measurements
-- basalBodyTemperature
-- bodyFatPercentage
-- bodyMassIndex
-- bodyTemperature
-- electrodermalActivity
-- height
-- leanBodyMass
-- waistCircumference
-- weight
+- basalBodyTemperature & saveBasalBodyTemperature(_: model)
+- bodyFatPercentage & saveBodyFatPercentage(_: model)
+- bodyMassIndex & saveBodyMassIndex(_: model)
+- bodyTemperature & saBeBodyTemperature(_: model)
+- electrodermalActivity & saveElectrodermalActivity(_: model)
+- height & saveHeight(_: model)
+- leanBodyMass & saveLeanBodyMass(_: model)
+- waistCircumference & saveWaistCircumference(_: model)
+- weight & saveweight(_: model)
 - wristTemperature
 
 ```var bodyMeasurements: BodyMeasurementsServiceProtocol```

@@ -60,7 +60,7 @@ public struct BodyHeight {
 public struct BodyFatPercentage {
 
     public struct Item {
-        public let value: Double
+        public let percentage: Double
         public let date: Date
     }
     
