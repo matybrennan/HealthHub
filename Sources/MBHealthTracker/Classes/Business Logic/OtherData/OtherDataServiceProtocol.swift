@@ -9,6 +9,7 @@ import Foundation
 
 public protocol OtherDataServiceProtocol: AnyObject {
     
+    // Fetch
     func alcoholConsumption() async throws -> AlcoholConsumption
     func bloodAlcoholContent() async throws -> AlcoholContent
     func bloodGlucose() async throws -> BloodGlucose
@@ -21,4 +22,18 @@ public protocol OtherDataServiceProtocol: AnyObject {
     func timeInDaylight() async throws -> TimeInDaylight
     func uvExposure() async throws -> UVExposure
     func waterTemperature() async throws -> WaterTemperature
+
+    // Save
+    func saveAlcoholConsumption(model: AlcoholConsumption, extra: [String: Any]?) async throws
+    func saveBloodAlcoholContent(model: AlcoholContent, extra: [String: Any]?) async throws
+    func saveBloodGlucose(model: BloodGlucose, extra: [String: Any]?) async throws
+    func saveHandWashing(model: HandWashing, extra: [String: Any]?) async throws
+    func saveInhalerUsage(model: InhalerUsage, extra: [String: Any]?) async throws
+    func saveInsulinDelivery(model: InsulinDelivery, extra: [String: Any]?) async throws
+    func saveNumberOfTimesFallen(model: NumberOfTimesFallen, extra: [String: Any]?) async throws
+    func saveSexualActivity(model: SexualActivity, extra: [String: Any]?) async throws
+    func saveToothBrushing(model: ToothBrushing, extra: [String: Any]?) async throws
+    func saveTimeInDaylight(model: TimeInDaylight, extra: [String: Any]?) async throws
+    func saveUvExposure(model: UVExposure, extra: [String: Any]?) async throws
+    func saveWaterTemperature(model: WaterTemperature, extra: [String: Any]?) async throws
 }

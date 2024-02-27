@@ -30,8 +30,8 @@ public struct AlcoholContent {
 public struct HandWashing {
     
     public struct Item {
-        public let duration: Int
-        public let date: Date
+        public let startDate: Date
+        public let endDate: Date
     }
     
     public let items: [Item]
@@ -78,8 +78,8 @@ public struct NumberOfTimesFallen {
 public struct ToothBrushing {
     
     public struct Item {
-        public let durationSeconds: Int
-        public let date: Date
+        public let startDate: Date
+        public let endDate: Date
     }
     
     public let items: [Item]

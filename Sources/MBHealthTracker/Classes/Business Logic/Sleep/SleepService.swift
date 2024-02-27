@@ -30,10 +30,14 @@ extension SleepService: SleepServiceProtocol {
         return vm
     }
     
-    public func save(sleep: Sleep.Info, extra: [String : Any]?) async throws {
+    public func save(model: Sleep, extra: [String : Any]?) async throws {
         let sleepType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .sleepAnalysis)
         try MBHealthParser.checkSharingAuthorizationStatus(for: sleepType)
-        let sampleObj = HKCategorySample(type: sleepType, value: sleep.style.rawValue, start: sleep.startDate, end: sleep.endDate, metadata: extra)
-        try await healthStore.save(sampleObj)
+
+        let sampleObjects = model.items.map {
+            HKCategorySample(type: sleepType, value: $0.style.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
     }
 }

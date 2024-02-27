@@ -18,7 +18,7 @@ extension OtherDataService: FetchQuantitySample, FetchCategorySample, SexualActi
 
 // MARK: OtherDataServiceProtocol
 extension OtherDataService: OtherDataServiceProtocol {
-    
+
     public func alcoholConsumption() async throws -> AlcoholConsumption {
         let samples = try await fetchQuantitySamples(quantityIdentifier: .numberOfAlcoholicBeverages)
         let items = samples.map { item -> AlcoholConsumption.Item in
@@ -48,8 +48,7 @@ extension OtherDataService: OtherDataServiceProtocol {
     public func handWashing() async throws -> HandWashing {
         let samples = try await fetchCategorySamples(categoryIdentifier: .handwashingEvent)
         let items = samples.map { item -> HandWashing.Item in
-            let duration = Int(item.endDate.timeIntervalSince(item.startDate))
-            return HandWashing.Item(duration: duration, date: item.startDate)
+            return HandWashing.Item(startDate: item.startDate, endDate: item.endDate)
         }
         
         let model = HandWashing(items: items)
@@ -91,8 +90,7 @@ extension OtherDataService: OtherDataServiceProtocol {
     public func toothBrushing() async throws -> ToothBrushing {
         let samples = try await fetchCategorySamples(categoryIdentifier: .toothbrushingEvent)
         let items = samples.map { item -> ToothBrushing.Item in
-            let duration = Int(item.endDate.timeIntervalSince(item.startDate))
-            return ToothBrushing.Item(durationSeconds: duration, date: item.startDate)
+            return ToothBrushing.Item(startDate: item.startDate, endDate: item.endDate)
         }
         
         let model = ToothBrushing(items: items)
@@ -131,5 +129,131 @@ extension OtherDataService: OtherDataServiceProtocol {
         
         let model = WaterTemperature(items: items)
         return model
+    }
+
+    // MARK: Saving
+
+    public func saveAlcoholConsumption(model: AlcoholConsumption, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .numberOfAlcoholicBeverages)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: .count(), doubleValue: $0.drinks)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveBloodAlcoholContent(model: AlcoholContent, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bloodAlcoholContent)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: .percent(), doubleValue: $0.percentage)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveBloodGlucose(model: BloodGlucose, extra: [String : Any]?) async throws {
+        try await saveBaseBloodGlucose(model: model, extra: extra)
+    }
+
+    public func saveHandWashing(model: HandWashing, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .handwashingEvent)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            let duration = Int($0.endDate.timeIntervalSince($0.startDate))
+            return HKCategorySample(type: type, value: duration, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveInhalerUsage(model: InhalerUsage, extra: [String : Any]?) async throws {
+        try await saveBaseInhalerUsage(model: model, extra: extra)
+    }
+
+    public func saveInsulinDelivery(model: InsulinDelivery, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .insulinDelivery)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let unit = HKUnit(from: "IU")
+        let sampleObjects = model.items.map {
+            var metadata = extra ?? [:]
+            metadata[HKMetadataKeyInsulinDeliveryReason] = $0.purpose.rawValue
+            let quantity = HKQuantity(unit: unit, doubleValue: $0.value)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveNumberOfTimesFallen(model: NumberOfTimesFallen, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .numberOfTimesFallen)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: .count(), doubleValue: Double($0.value))
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveSexualActivity(model: SexualActivity, extra: [String : Any]?) async throws {
+        try await saveBaseSexualActivity(model, extra: extra)
+    }
+
+    public func saveToothBrushing(model: ToothBrushing, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .toothbrushingEvent)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            let duration = Int($0.endDate.timeIntervalSince($0.startDate))
+            return HKCategorySample(type: type, value: duration, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveTimeInDaylight(model: TimeInDaylight, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .timeInDaylight)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            let duration = Int($0.endDate.timeIntervalSince($0.startDate))
+            let quantity = HKQuantity(unit: .count(), doubleValue: Double(duration))
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveUvExposure(model: UVExposure, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .uvExposure)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: .count(), doubleValue: Double($0.value))
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveWaterTemperature(model: WaterTemperature, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .waterTemperature)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: .degreeCelsius(), doubleValue: $0.celsius)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
     }
 }

@@ -67,8 +67,7 @@ mbHealthHandler = MBHealthHandler()
 ```
 
 ### Sleep
-- sleep
-- saving sleep item
+- sleep & saveSleep(_: model, _:extra)
 
 ```var sleep: SleepServiceProtocol```
 
@@ -122,28 +121,28 @@ Split into sections to gather data based on timeIntervals
 ------------------------------------------------------------------------
 
 ### Body Measurements
-- basalBodyTemperature & saveBasalBodyTemperature(_: model)
-- bodyFatPercentage & saveBodyFatPercentage(_: model)
-- bodyMassIndex & saveBodyMassIndex(_: model)
-- bodyTemperature & saBeBodyTemperature(_: model)
-- electrodermalActivity & saveElectrodermalActivity(_: model)
-- height & saveHeight(_: model)
-- leanBodyMass & saveLeanBodyMass(_: model)
-- waistCircumference & saveWaistCircumference(_: model)
-- weight & saveweight(_: model)
+- basalBodyTemperature & saveBasalBodyTemperature(_: model, _:extra)
+- bodyFatPercentage & saveBodyFatPercentage(_: model, _:extra)
+- bodyMassIndex & saveBodyMassIndex(_: model, _:extra)
+- bodyTemperature & saBeBodyTemperature(_: model, _:extra)
+- electrodermalActivity & saveElectrodermalActivity(_: model, _:extra)
+- height & saveHeight(_: model, _:extra)
+- leanBodyMass & saveLeanBodyMass(_: model, _:extra)
+- waistCircumference & saveWaistCircumference(_: model, _:extra)
+- weight & saveweight(_: model, _:extra)
 - wristTemperature
 
 ```var bodyMeasurements: BodyMeasurementsServiceProtocol```
 
 ### Mobility
 - cardioFitness
-- doubleSupportTime & saveDoubleSupportTime(_: model)
-- groundContactTime & saveGroundContactTime(_: model)
-- runningStrideLength & saveRunningStrideLength(_: model)
-- sixMinuteWalk & saveSixMinuteWalk(_: model)
-- stairSpeedDown & saveStairSpeedDown(_: model)
-- stairSpeedUp & saveStairSpeedUp(_: model)
-- verticalOscillation & saveVerticalOscillation(_: model)
+- doubleSupportTime & saveDoubleSupportTime(_: model, _:extra)
+- groundContactTime & saveGroundContactTime(_: model, _:extra)
+- runningStrideLength & saveRunningStrideLength(_: model, _:extra)
+- sixMinuteWalk & saveSixMinuteWalk(_: model, _:extra)
+- stairSpeedDown & saveStairSpeedDown(_: model, _:extra)
+- stairSpeedUp & saveStairSpeedUp(_: model, _:extra)
+- verticalOscillation & saveVerticalOscillation(_: model, _:extra)
 - walkingAsymmetry
 - walkingSpeed & saveWalkingSpeed(_: model)
 - walkingSteadiness
@@ -225,39 +224,39 @@ Split into sections to gather data based on timeIntervals
 ```var symptoms: SymptomsServiceProtocol```
 
 ### Respiratory
-- bloodOxygen
-- forcedExpiratoryVolume
-- forcedVitalCapacity
-- inhalerUsage
-- peakExpiratoryFlowRate
-- respiratoryRate
-- sixMinuteWalk
+- bloodOxygen & saveBloodOxygen(_: model, _:extra)
+- forcedExpiratoryVolume & saveForcedExpiratoryVolume(_: model, _:extra)
+- forcedVitalCapacity & saveForcedVitalCapacity(_: model, _:extra)
+- inhalerUsage & saveInhalerUsage(_: model, _:extra)
+- peakExpiratoryFlowRate & savePeakExpiratoryFlowRate(_: model, _:extra)
+- respiratoryRate & saveRespiratoryRate(_: model, _:extra)
+- sixMinuteWalk & saveSixMinuteWalk(_: model, _:extra)
 
 ```var respiratory: RespiratoryServiceProtocol```
 
 ### Vitals
-- bloodGlucose
-- bloodOxygen
-- bloodPressure
-- bodyTemperature
-- menstruation
-- respiratoryRate
+- bloodGlucose & saveBloodGlucose(_: model, _:extra)
+- bloodOxygen & saveBloodOxygen(_: model, _:extra)
+- bloodPressure & saveBloodPressure(_: model, _:extra)
+- bodyTemperature & saveBodyTemperature_: model, _:extra)
+- menstruation & saveMenstruation(_: model, _:extra)
+- respiratoryRate & saveRespiratoryRate(_: model, _:extra)
 
 ```var vitals: VitalsServiceProtocol```
 
 ### Other Data
-- alcoholConsumption
-- bloodAlcoholContent
-- bloodGlucose
-- handWashing
-- inhalerUsage
-- insulinDelivery
-- numberOfTimesFallen
-- sexualActivity
-- toothBrushing
-- timeInDaylight
-- uvExposure
-- waterTemperature
+- alcoholConsumption & saveAlcoholConsumption(_: model, _:extra)
+- bloodAlcoholContent & saveBloodAlcoholContent(_: model, _:extra)
+- bloodGlucose & saveBloodGlucose(_: model, _:extra)
+- handWashing & saveHandWashing(_: model, _:extra)
+- inhalerUsage & saveInhalerUsage(_: model, _:extra)
+- insulinDelivery & saveInsulinDelivery(_: model, _:extra)
+- numberOfTimesFallen & saveNumberOfTimesFallen(_: model, _:extra)
+- sexualActivity & saveSexualActivity(_: model, _:extra)
+- toothBrushing & saveToothBrushing(_: model, _:extra)
+- timeInDaylight & saveTimeInDaylight(_: model, _:extra)
+- uvExposure & saveUvExposure(_: model, _:extra)
+- waterTemperature & saveWaterTemperature(_: model, _:extra)
 
 ```var otherData: OtherDataServiceProtocol```
 
