@@ -15,6 +15,10 @@ public struct AlcoholConsumption {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct AlcoholContent {
@@ -25,6 +29,10 @@ public struct AlcoholContent {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct HandWashing {
@@ -35,6 +43,10 @@ public struct HandWashing {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct InhalerUsage {
@@ -45,6 +57,10 @@ public struct InhalerUsage {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct InsulinDelivery {
@@ -63,6 +79,10 @@ public struct InsulinDelivery {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct NumberOfTimesFallen {
@@ -73,6 +93,10 @@ public struct NumberOfTimesFallen {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct ToothBrushing {
@@ -80,9 +104,18 @@ public struct ToothBrushing {
     public struct Item {
         public let startDate: Date
         public let endDate: Date
+
+        public init(startDate: Date, endDate: Date) {
+            self.startDate = startDate
+            self.endDate = endDate
+        }
     }
     
     public let items: [Item]
+    
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct UVExposure {
@@ -91,9 +124,19 @@ public struct UVExposure {
         public let value: Int
         public let startDate: Date
         public let endDate: Date
+
+        public init(value: Int, startDate: Date, endDate: Date) {
+            self.value = value
+            self.startDate = startDate
+            self.endDate = endDate
+        }
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct TimeInDaylight {
@@ -101,9 +144,18 @@ public struct TimeInDaylight {
     public struct Item {
         public let startDate: Date
         public let endDate: Date
+
+        public init(startDate: Date, endDate: Date) {
+            self.startDate = startDate
+            self.endDate = endDate
+        }
     }
 
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct WaterTemperature {
@@ -121,6 +173,10 @@ public struct WaterTemperature {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 

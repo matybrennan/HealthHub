@@ -15,6 +15,10 @@ public struct CardioFitness {
     }
 
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct DoubleSupportTime {
@@ -25,6 +29,10 @@ public struct DoubleSupportTime {
     }
 
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct GroundContactTime {
@@ -35,6 +43,10 @@ public struct GroundContactTime {
     }
 
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct RunningStrideLength {
@@ -45,6 +57,10 @@ public struct RunningStrideLength {
     }
 
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct StairSpeedDown {
@@ -55,6 +71,10 @@ public struct StairSpeedDown {
     }
 
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct StairSpeedUp {
@@ -65,6 +85,10 @@ public struct StairSpeedUp {
     }
 
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct VerticalOscillation {
@@ -75,6 +99,10 @@ public struct VerticalOscillation {
     }
 
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct WalkingAsymmetry {
@@ -85,6 +113,10 @@ public struct WalkingAsymmetry {
     }
 
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct WalkingSpeed {
@@ -95,6 +127,10 @@ public struct WalkingSpeed {
     }
 
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct WalkingSteadiness {
@@ -105,6 +141,10 @@ public struct WalkingSteadiness {
     }
 
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct WalkingStepLength {
@@ -115,4 +155,8 @@ public struct WalkingStepLength {
     }
 
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }

@@ -25,19 +25,22 @@ extension NutritionService: NutritionServiceProtocol {
         let samples = try await fetchQuantitySamples(quantityIdentifier: identifier)
         
         let items = samples.map {
-            Nutrition.Info(value: $0.quantity.doubleValue(for: unitToUse.unit), unit: unitToUse.unitStr, date: $0.endDate, type: type.quantityType)
+            Nutrition.Info(value: $0.quantity.doubleValue(for: unitToUse.unit), unit: unitToUse.unitStr, date: $0.endDate)
         }
         
-        let vm = Nutrition(items: items)
+        let vm = Nutrition(items: items, type: type.quantityType)
         return vm
     }
     
-    public func save(nutrition: Nutrition.Info, extra: [String : Any]?) async throws {
-        let nutritionType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: HKQuantityTypeIdentifier(rawValue: nutrition.type.identifier))
-        let quantity = HKQuantity(unit: HKUnit(from: nutrition.unit), doubleValue: nutrition.value)
-        let nutritionObj = HKQuantitySample(type: nutritionType, quantity: quantity, start: nutrition.date, end: nutrition.date, metadata: extra)
-        
-        try await healthStore.save(nutritionObj)
+    public func save(model: Nutrition, extra: [String : Any]?) async throws {
+        let nutritionType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: HKQuantityTypeIdentifier(rawValue: model.type.identifier))
+
+        let nutritionObjects = model.items.map {
+            let quantity = HKQuantity(unit: HKUnit(from: $0.unit), doubleValue: $0.value)
+            return HKQuantitySample(type: nutritionType, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+        }
+
+        try await healthStore.save(nutritionObjects)
     }
 }
 

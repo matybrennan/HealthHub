@@ -10,7 +10,7 @@ import HealthKit
 
 public protocol NutritionServiceProtocol {
     func nutrition(type: NutritionType) async throws -> Nutrition
-    func save(nutrition: Nutrition.Info, extra: [String : Any]?) async throws
+    func save(model: Nutrition, extra: [String : Any]?) async throws
 }
 
 /*
