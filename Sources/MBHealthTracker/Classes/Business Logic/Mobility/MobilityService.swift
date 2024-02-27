@@ -150,7 +150,109 @@ extension MobilityService: MobilityServiceProtocol {
 
     // MARK: Saving
 
+    public func saveDoubleSupportTime(model: DoubleSupportTime) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .walkingDoubleSupportPercentage)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: .percent(), doubleValue: $0.percentage)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveGroundContactTime(model: GroundContactTime) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .runningGroundContactTime)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let unit = HKUnit.secondUnit(with: .milli)
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: unit, doubleValue: $0.duration)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveRunningStrideLength(model: RunningStrideLength) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .runningStrideLength)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: .meter(), doubleValue: $0.distance)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
     public func saveSixMinuteWalk(model: SixMinuteWalk) async throws {
         try await saveBaseSixMinuteWalk(model)
+    }
+
+    public func saveStairSpeedDown(model: StairSpeedDown) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .stairDescentSpeed)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let speedUnit = HKUnit.meter().unitDivided(by: HKUnit.second())
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: speedUnit, doubleValue: $0.velocity)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveStairSpeedUp(model: StairSpeedUp) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .stairAscentSpeed)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let speedUnit = HKUnit.meter().unitDivided(by: HKUnit.second())
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: speedUnit, doubleValue: $0.velocity)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveVerticalOscillation(model: VerticalOscillation) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .runningVerticalOscillation)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let unit = HKUnit.meterUnit(with: .centi)
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: unit, doubleValue: $0.distance)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveWalkingSpeed(model: WalkingSpeed) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .walkingSpeed)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let speedUnit = HKUnit.meterUnit(with: .kilo).unitDivided(by: HKUnit.hour())
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: speedUnit, doubleValue: $0.velocity)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveWalkingStepLength(model: WalkingStepLength) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .walkingStepLength)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let unit = HKUnit.meterUnit(with: .centi)
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: unit, doubleValue: $0.distance)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date)
+        }
+
+        try await healthStore.save(sampleObjects)
     }
 }

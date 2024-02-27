@@ -137,17 +137,17 @@ Split into sections to gather data based on timeIntervals
 
 ### Mobility
 - cardioFitness
-- doubleSupportTime
-- groundContactTime
-- runningStrideLength
-- sixMinuteWalk & saveSixMinuteWalk(_model)
-- stairSpeedDown
-- stairSpeedUp
-- verticalOscillation
+- doubleSupportTime & saveDoubleSupportTime(_: model)
+- groundContactTime & saveGroundContactTime(_: model)
+- runningStrideLength & saveRunningStrideLength(_: model)
+- sixMinuteWalk & saveSixMinuteWalk(_: model)
+- stairSpeedDown & saveStairSpeedDown(_: model)
+- stairSpeedUp & saveStairSpeedUp(_: model)
+- verticalOscillation & saveVerticalOscillation(_: model)
 - walkingAsymmetry
-- walkingSpeed
+- walkingSpeed & saveWalkingSpeed(_: model)
 - walkingSteadiness
-- walkingStepLength
+- walkingStepLength & saveWalkingStepLength(_: model)
 
 ```var mobility: MobilityServiceProtocol```
 
