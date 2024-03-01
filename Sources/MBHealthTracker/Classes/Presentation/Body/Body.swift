@@ -22,6 +22,10 @@ public struct BasalBodyTemperature {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct BodyWeight {
@@ -30,9 +34,19 @@ public struct BodyWeight {
         public let kg: Double
         public let lbs: Double
         public let date: Date
+
+        public init(kg: Double, lbs: Double, date: Date) {
+            self.kg = kg
+            self.lbs = lbs
+            self.date = date
+        }
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct LeanBodyMass {
@@ -41,9 +55,19 @@ public struct LeanBodyMass {
         public let kg: Double
         public let lbs: Double
         public let date: Date
+
+        public init(kg: Double, lbs: Double, date: Date) {
+            self.kg = kg
+            self.lbs = lbs
+            self.date = date
+        }
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct BodyHeight {
@@ -52,9 +76,19 @@ public struct BodyHeight {
         public let inches: Int
         public let cm: Int
         public let date: Date
+
+        public init(inches: Int, cm: Int, date: Date) {
+            self.inches = inches
+            self.cm = cm
+            self.date = date
+        }
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct BodyFatPercentage {
@@ -62,9 +96,18 @@ public struct BodyFatPercentage {
     public struct Item {
         public let percentage: Double
         public let date: Date
+
+        public init(percentage: Double, date: Date) {
+            self.percentage = percentage
+            self.date = date
+        }
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct BodyMassIndex {
@@ -72,9 +115,18 @@ public struct BodyMassIndex {
     public struct Item {
         public let value: Double
         public let date: Date
+
+        public init(value: Double, date: Date) {
+            self.value = value
+            self.date = date
+        }
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct WaistCircumference {
@@ -83,9 +135,19 @@ public struct WaistCircumference {
         public let inches: Int
         public let cm: Int
         public let date: Date
+
+        public init(inches: Int, cm: Int, date: Date) {
+            self.inches = inches
+            self.cm = cm
+            self.date = date
+        }
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct ElectrodermalActivity {
@@ -93,9 +155,18 @@ public struct ElectrodermalActivity {
     public struct Item {
         public let value: Double
         public let date: Date
+
+        public init(value: Double, date: Date) {
+            self.value = value
+            self.date = date
+        }
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct WristTemperature {
@@ -113,4 +184,8 @@ public struct WristTemperature {
     }
 
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }

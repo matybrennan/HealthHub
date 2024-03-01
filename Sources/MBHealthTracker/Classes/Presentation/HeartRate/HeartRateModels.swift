@@ -10,13 +10,23 @@ import Foundation
 public struct HeartRate {
     
     public struct Item {
-        let max: Double!
-        let min: Double!
-        let average: Double!
+        let max: Double
+        let min: Double
+        let average: Double
+
+        public init(max: Double, min: Double, average: Double) {
+            self.max = max
+            self.min = min
+            self.average = average
+        }
     }
     
     // Computed from timeIntervals and if One item
-    public let items: [Item]!
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 extension HeartRate {

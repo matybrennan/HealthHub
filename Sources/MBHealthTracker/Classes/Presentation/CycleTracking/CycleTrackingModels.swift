@@ -41,6 +41,10 @@ public struct CervicalMucusQuality {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct Menstruation {
@@ -79,6 +83,10 @@ public struct Menstruation {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public enum CycleResultType: Int {
@@ -113,6 +121,10 @@ public struct Ovulation {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct PregnancyTestResult {
@@ -129,6 +141,10 @@ public struct PregnancyTestResult {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct ProgesteroneTestResult {
@@ -145,6 +161,10 @@ public struct ProgesteroneTestResult {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct SexualActivity {
@@ -177,6 +197,10 @@ public struct SexualActivity {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct Spotting {
@@ -193,5 +217,9 @@ public struct Spotting {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 

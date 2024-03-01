@@ -128,11 +128,14 @@ private extension HeartService {
             completionHandler(.failed(MBAsyncParsingError.unableToParse("HeartRate log")))
             return
         }
-        
-        let items = quantitySamples.map {
-            HeartRate.Item(max: $0.maximumQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)),
-                           min: $0.minimumQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)),
-                           average: $0.averageQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)))
+
+        let items = quantitySamples.compactMap { sample -> HeartRate.Item? in
+            guard let max = sample.maximumQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)),
+                let min = sample.minimumQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)),
+                let average = sample.averageQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)) else {
+                return nil
+            }
+            return HeartRate.Item(max: max, min: min, average: average)
         }
         
         let vm = HeartRate(items: items)

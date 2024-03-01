@@ -32,14 +32,9 @@ public struct Sleep {
     }
     
     public let items: [Info]
-}
 
-extension Sleep.Info {
-    
-    public init(style: Style, startDate: Date) {
-        self.style = style
-        self.startDate = startDate
-        self.endDate = Date()
+    public init(items: [Info]) {
+        self.items = items
     }
 }
 

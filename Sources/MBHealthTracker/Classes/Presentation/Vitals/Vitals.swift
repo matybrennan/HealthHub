@@ -27,7 +27,11 @@ public struct BloodPressure {
         }
     }
     
-    public let items: [Info]    
+    public let items: [Info]
+
+    public init(items: [Info]) {
+        self.items = items
+    }
 }
 
 public struct BodyTemperature {
@@ -47,6 +51,10 @@ public struct BodyTemperature {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct BloodGlucose {
@@ -71,6 +79,10 @@ public struct BloodGlucose {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct BloodOxygen {
@@ -87,4 +99,8 @@ public struct BloodOxygen {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }

@@ -12,6 +12,11 @@ public struct AlcoholConsumption {
     public struct Item {
         public let drinks: Double
         public let date: Date
+
+        public init(drinks: Double, date: Date) {
+            self.drinks = drinks
+            self.date = date
+        }
     }
     
     public let items: [Item]
@@ -26,6 +31,11 @@ public struct AlcoholContent {
     public struct Item {
         public let percentage: Double
         public let date: Date
+
+        public init(percentage: Double, date: Date) {
+            self.percentage = percentage
+            self.date = date
+        }
     }
     
     public let items: [Item]
@@ -40,6 +50,11 @@ public struct HandWashing {
     public struct Item {
         public let startDate: Date
         public let endDate: Date
+
+        public init(startDate: Date, endDate: Date) {
+            self.startDate = startDate
+            self.endDate = endDate
+        }
     }
     
     public let items: [Item]
@@ -54,6 +69,11 @@ public struct InhalerUsage {
     public struct Item {
         public let value: Int
         public let date: Date
+
+        public init(value: Int, date: Date) {
+            self.value = value
+            self.date = date
+        }
     }
     
     public let items: [Item]
@@ -76,6 +96,13 @@ public struct InsulinDelivery {
         public let purpose: Purpose
         public let startDate: Date
         public let endDate: Date
+
+        public init(value: Double, purpose: Purpose, startDate: Date, endDate: Date) {
+            self.value = value
+            self.purpose = purpose
+            self.startDate = startDate
+            self.endDate = endDate
+        }
     }
     
     public let items: [Item]
@@ -90,6 +117,11 @@ public struct NumberOfTimesFallen {
     public struct Item {
         public let value: Int
         public let date: Date
+
+        public init(value: Int, date: Date) {
+            self.value = value
+            self.date = date
+        }
     }
     
     public let items: [Item]

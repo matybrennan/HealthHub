@@ -9,4 +9,8 @@ import Foundation
 
 public struct ActiveEnergy {
     public let calories: Double
+
+    public init(calories: Double) {
+        self.calories = calories
+    }
 }

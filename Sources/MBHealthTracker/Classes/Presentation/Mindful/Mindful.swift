@@ -26,6 +26,10 @@ public struct Mindful {
     }
     
     public let items: [Info]
+
+    public init(items: [Info]) {
+        self.items = items
+    }
 }
 
 extension Mindful.Info {

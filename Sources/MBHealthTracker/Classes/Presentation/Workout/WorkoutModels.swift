@@ -21,11 +21,22 @@ public struct MBWorkout {
         // TODO: Create some helper to get name of sport/activityType used as string and not healthKit type
         // let activityName: String
         public var activityType: HKWorkoutActivityType!
+
+        public init(duration: Double!, energyBurned: Double? = nil, distance: Double? = nil, startDate: Date!, endDate: Date!, activityType: HKWorkoutActivityType!) {
+            self.duration = duration
+            self.energyBurned = energyBurned
+            self.distance = distance
+            self.startDate = startDate
+            self.endDate = endDate
+            self.activityType = activityType
+        }
     }
     
     public let items: [Item]!
     
-    
+    public init(items: [Item]!) {
+        self.items = items
+    }
 }
 
 extension MBWorkout.Item {
@@ -47,5 +58,4 @@ extension MBWorkout.Item {
         self.endDate = endDate
         self.activityType = .other
     }
-    
 }

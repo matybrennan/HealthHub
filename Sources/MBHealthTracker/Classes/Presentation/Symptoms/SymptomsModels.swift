@@ -41,6 +41,10 @@ public struct GenericSymptomModel {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct AppetiteChanges {
@@ -75,4 +79,8 @@ public struct AppetiteChanges {
     }
     
     public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
