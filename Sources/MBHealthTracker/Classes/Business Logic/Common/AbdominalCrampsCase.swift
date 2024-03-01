@@ -19,7 +19,18 @@ extension AbdominalCrampsCase {
             return GenericSymptomModel.Item(style: style, startDate: item.startDate, endDate: item.endDate)
         }
         
-        let model = GenericSymptomModel(items: items)
+        let model = GenericSymptomModel(items: items, type: SymptomType.abdominal.categoryType)
         return model
+    }
+
+    func saveBaseAbdominalCramps(model: GenericSymptomModel, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .abdominalCramps)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            HKCategorySample(type: type, value: $0.style.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
     }
 }

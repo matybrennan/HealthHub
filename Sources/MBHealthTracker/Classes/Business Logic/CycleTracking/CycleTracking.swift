@@ -26,7 +26,8 @@ private extension CycleTracking {
             return GenericSymptomModel.Item(style: style, startDate: item.startDate, endDate: item.endDate)
         }
         
-        let model = GenericSymptomModel(items: items)
+        let type = HKCategoryType(categoryIdentifier)
+        let model = GenericSymptomModel(items: items, type: type)
         return model
     }
 
@@ -130,7 +131,7 @@ extension CycleTracking: CycleTrackingProtocol {
     // MARK: - Saving
 
     public func saveAbdominalCramps(model: GenericSymptomModel, extra: [String : Any]?) async throws {
-        try await saveGenericCycleResult(model: model, categoryIdentifier: .abdominalCramps, extra: extra)
+        try await saveBaseAbdominalCramps(model: model, extra: extra)
     }
 
     public func saveBloating(model: GenericSymptomModel, extra: [String : Any]?) async throws {
@@ -194,14 +195,7 @@ extension CycleTracking: CycleTrackingProtocol {
     }
 
     public func saveSexualActivity(model: SexualActivity, extra: [String : Any]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .sexualActivity)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
-
-        let sampleObjects = model.items.map {
-            HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
-        }
-
-        try await healthStore.save(sampleObjects)
+        try await saveBaseSexualActivity(model, extra: extra)
     }
 
     public func saveSpotting(model: Spotting, extra: [String : Any]?) async throws {

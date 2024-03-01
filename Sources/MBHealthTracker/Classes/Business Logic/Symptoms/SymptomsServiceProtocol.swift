@@ -6,46 +6,92 @@
 //
 
 import Foundation
+import HealthKit
 
 public protocol SymptomsServiceProtocol: AnyObject {
-    
-    func abdominalCramps() async throws -> GenericSymptomModel
-    func acne() async throws -> GenericSymptomModel
+
+    // Fetch
+    func symptom(type: SymptomType) async throws -> GenericSymptomModel
     func appetiteChanges() async throws -> AppetiteChanges
-    func bladderIncontinence() async throws -> GenericSymptomModel
-    func bloating() async throws -> GenericSymptomModel
-    func bodyAndMuscleAche() async throws -> GenericSymptomModel
-    func breastPain() async throws -> GenericSymptomModel
-    func chestTightnessOrPain() async throws -> GenericSymptomModel
-    func chills() async throws -> GenericSymptomModel
-    func congestion() async throws -> GenericSymptomModel
-    func constipation() async throws -> GenericSymptomModel
-    func coughing() async throws -> GenericSymptomModel
-    func diarrhea() async throws -> GenericSymptomModel
-    func dizziness() async throws -> GenericSymptomModel
-    func drySkin() async throws -> GenericSymptomModel
-    func fainting() async throws -> GenericSymptomModel
-    func fatigue() async throws -> GenericSymptomModel
-    func fever() async throws -> GenericSymptomModel
-    func hairLoss() async throws -> GenericSymptomModel
-    func headache() async throws -> GenericSymptomModel
-    func heartBurn() async throws -> GenericSymptomModel
-    func hotFlushes() async throws -> GenericSymptomModel
-    func lossOfSmell() async throws -> GenericSymptomModel
-    func lossOfTaste() async throws -> GenericSymptomModel
-    func lowerBackPain() async throws -> GenericSymptomModel
-    func memoryLapse() async throws -> GenericSymptomModel
-    func moodChanges() async throws -> GenericSymptomModel
-    func nausea() async throws -> GenericSymptomModel
-    func nightSweats() async throws -> GenericSymptomModel
-    func pelvicPain() async throws -> GenericSymptomModel
-    func rapidPoundingOrFlutteringHeartbeat() async throws -> GenericSymptomModel
-    func runnyNose() async throws -> GenericSymptomModel
-    func shortnessOfBreath() async throws -> GenericSymptomModel
-    func skippedHeartbeat() async throws -> GenericSymptomModel
-    func sleepChanges() async throws -> GenericSymptomModel
-    func soreThroat() async throws -> GenericSymptomModel
-    func vaginalDryness() async throws -> GenericSymptomModel
-    func vomiting() async throws -> GenericSymptomModel
-    func wheezing() async throws -> GenericSymptomModel
+
+    // Save
+    func saveSymptom(type: SymptomType, model: GenericSymptomModel, extra: [String: Any]?) async throws 
+    func saveAppetiteChanges(model: AppetiteChanges, extra: [String : Any]?) async throws
+}
+
+public enum SymptomType {
+    case abdominal
+    case acne
+    case appetiteChanges
+    case bladderIncontinence
+    case bodyAndAchePain
+    case chills
+    case chestTightnessOrPain
+    case constipation
+    case coughing
+    case diarrhea
+    case dizziness
+    case drySkin
+    case fainting
+    case fatigue
+    case fever
+    case hairLoss
+    case headache
+    case heartBurn
+    case hotFlushes
+    case lossOfSmell
+    case lossOfTaste
+    case lowerBackPain
+    case memoryLapse
+    case nausea
+    case nightSweats
+    case pelvicPain
+    case rapidPoundingOrFlutteringHeartbeat
+    case runnyNose
+    case shortnessOfBreath
+    case skippedHeartbeat
+    case sleepChanges
+    case soreThroat
+    case vomiting
+    case wheezing
+
+
+    var categoryType: HKCategoryType {
+        switch self {
+        case .abdominal: return HKCategoryType(.abdominalCramps)
+        case .acne: return HKCategoryType(.acne)
+        case .appetiteChanges: return HKCategoryType(.appetiteChanges)
+        case .bladderIncontinence: return HKCategoryType(.bladderIncontinence)
+        case .bodyAndAchePain: return HKCategoryType(.generalizedBodyAche)
+        case .chills: return HKCategoryType(.chills)
+        case .chestTightnessOrPain: return HKCategoryType(.chestTightnessOrPain)
+        case .constipation: return HKCategoryType(.constipation)
+        case .coughing: return HKCategoryType(.coughing)
+        case .diarrhea: return HKCategoryType(.diarrhea)
+        case .dizziness: return HKCategoryType(.dizziness)
+        case .drySkin: return HKCategoryType(.drySkin)
+        case .fatigue: return HKCategoryType(.fatigue)
+        case .fainting: return HKCategoryType(.fainting)
+        case .fever: return HKCategoryType(.fever)
+        case .hairLoss: return HKCategoryType(.hairLoss)
+        case .headache: return HKCategoryType(.headache)
+        case .heartBurn: return HKCategoryType(.heartburn)
+        case .hotFlushes: return HKCategoryType(.hotFlashes)
+        case .lossOfSmell: return HKCategoryType(.lossOfSmell)
+        case .lossOfTaste: return HKCategoryType(.lossOfTaste)
+        case .lowerBackPain: return HKCategoryType(.lowerBackPain)
+        case .memoryLapse: return HKCategoryType(.memoryLapse)
+        case .nausea: return HKCategoryType(.nausea)
+        case .nightSweats: return HKCategoryType(.nightSweats)
+        case .pelvicPain: return HKCategoryType(.pelvicPain)
+        case .rapidPoundingOrFlutteringHeartbeat: return HKCategoryType(.rapidPoundingOrFlutteringHeartbeat)
+        case .runnyNose: return HKCategoryType(.runnyNose)
+        case .shortnessOfBreath: return HKCategoryType(.shortnessOfBreath)
+        case .skippedHeartbeat: return HKCategoryType(.skippedHeartbeat)
+        case .sleepChanges: return HKCategoryType(.sleepChanges)
+        case .soreThroat: return HKCategoryType(.soreThroat)
+        case .vomiting: return HKCategoryType(.vomiting)
+        case .wheezing: return HKCategoryType(.wheezing)
+        }
+    }
 }

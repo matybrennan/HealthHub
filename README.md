@@ -151,6 +151,8 @@ Split into sections to gather data based on timeIntervals
 ```var mobility: MobilityServiceProtocol```
 
 ### Nutrition
+- nutrition(_ :type) & saveNutrition(_: model, _:extra)
+Types vary based on:
 - macronutrients
 - minerals
 - ultratrace minerals
@@ -182,9 +184,11 @@ Split into sections to gather data based on timeIntervals
 ```var cycleTracking: CycleTrackingServiceProtocol```
 
 ### Symptoms
+- appetiteChanges & saveAppetiteChanges(_: model, _:extra)
+- symptom(_: type) & saveSymptom(_: model, _:extra)
+Types include:
 - abdominalCramps
 - acne        
-- appetiteChanges
 - bladderIncontinence
 - bloating
 - bodyAndMuscleAche

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import HealthKit
 
 public struct GenericSymptomModel {
     
@@ -41,9 +42,11 @@ public struct GenericSymptomModel {
     }
     
     public let items: [Item]
+    public let type: HKCategoryType
 
-    public init(items: [Item]) {
+    public init(items: [Item], type: HKCategoryType) {
         self.items = items
+        self.type = type
     }
 }
 

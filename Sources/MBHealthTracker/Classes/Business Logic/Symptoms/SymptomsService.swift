@@ -19,182 +19,64 @@ extension SymptomsService: FetchCategorySample, AbdominalCrampsCase { }
 // MARK: - Private methods
 private extension SymptomsService {
     
-    func fetchGenericSymptomResult(categoryIdentifier: HKCategoryTypeIdentifier) async throws -> GenericSymptomModel {
-        let samples = try await fetchCategorySamples(categoryIdentifier: categoryIdentifier)
+    func fetchGenericSymptomResult(categoryType: HKCategoryType) async throws -> GenericSymptomModel {
+        let identifier = HKCategoryTypeIdentifier(rawValue: categoryType.identifier)
+        let samples = try await fetchCategorySamples(categoryIdentifier: identifier)
         let items = samples.map { item -> GenericSymptomModel.Item in
             let style = GenericSymptomModel.Item.Style(rawValue: item.value) ?? .notPresent
             return GenericSymptomModel.Item(style: style, startDate: item.startDate, endDate: item.endDate)
         }
         
-        let model = GenericSymptomModel(items: items)
+        let model = GenericSymptomModel(items: items, type: categoryType)
         return model
+    }
+
+    func saveGenericSymptomResult(categoryType: HKCategoryType, model: GenericSymptomModel, extra: [String : Any]?) async throws {
+        let identifier = HKCategoryTypeIdentifier(rawValue: categoryType.identifier)
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: identifier)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            return HKCategorySample(type: type, value: $0.style.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
     }
 }
 
 // MARK: - SymptomsServiceProtocol
 extension SymptomsService: SymptomsServiceProtocol {
     
-    public func abdominalCramps() async throws -> GenericSymptomModel {
-        try await baseAbdominalCramps()
+    public func symptom(type: SymptomType) async throws -> GenericSymptomModel {
+        return try await fetchGenericSymptomResult(categoryType: type.categoryType)
     }
-    
-    public func acne() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .acne)
-    }
-    
+
     public func appetiteChanges() async throws -> AppetiteChanges {
         let samples = try await fetchCategorySamples(categoryIdentifier: .appetiteChanges)
         let items = samples.map { item -> AppetiteChanges.Item in
             let type = AppetiteChanges.Item.AppetiteChangesType(rawValue: item.value) ?? .noChange
             return AppetiteChanges.Item(type: type, startDate: item.startDate, endDate: item.endDate)
         }
-        
+
         let model = AppetiteChanges(items: items)
         return model
     }
-    
-    public func bladderIncontinence() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .bladderIncontinence)
+
+    // MARK: - Save
+
+    public func saveSymptom(type: SymptomType, model: GenericSymptomModel, extra: [String : Any]?) async throws {
+        try await saveGenericSymptomResult(categoryType: type.categoryType, model: model, extra: extra)
     }
 
-    public func bloating() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .bloating)
-    }
-    
-    public func bodyAndMuscleAche() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .generalizedBodyAche)
-    }
+    public func saveAppetiteChanges(model: AppetiteChanges, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .appetiteChanges)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
-    public func breastPain() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .breastPain)
-    }
-    
-    public func chestTightnessOrPain() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .chestTightnessOrPain)
-    }
-    
-    public func chills() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .chills)
-    }
-    
-    public func congestion() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .sinusCongestion)
-    }
-    
-    public func constipation() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .constipation)
-    }
-    
-    public func coughing() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .coughing)
-    }
-    
-    public func diarrhea() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .diarrhea)
-    }
+        let sampleObjects = model.items.map {
+            return HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
 
-    public func dizziness() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .dizziness)
-    }
-    
-    public func drySkin() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .drySkin)
-    }
-    
-    public func fainting() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .fainting)
-    }
-    
-    public func fatigue() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .fatigue)
-    }
-    
-    public func fever() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .fever)
-    }
-    
-    public func hairLoss() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .hairLoss)
-    }
-    
-    public func headache() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .headache)
-    }
-    
-    public func heartBurn() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .heartburn)
-    }
-    
-    public func hotFlushes() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .hotFlashes)
-    }
-    
-    public func lossOfSmell() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .lossOfSmell)
-    }
-    
-    public func lossOfTaste() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .lossOfTaste)
-    }
-    
-    public func lowerBackPain() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .lowerBackPain)
-    }
-    
-    public func memoryLapse() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .memoryLapse)
-    }
-
-    public func moodChanges() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .moodChanges)
-    }
-    
-    public func nausea() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .nausea)
-    }
-    
-    public func nightSweats() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .nightSweats)
-    }
-    
-    public func pelvicPain() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .pelvicPain)
-    }
-    
-    public func rapidPoundingOrFlutteringHeartbeat() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .rapidPoundingOrFlutteringHeartbeat)
-    }
-    
-    public func runnyNose() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .runnyNose)
-    }
-    
-    public func shortnessOfBreath() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .shortnessOfBreath)
-    }
-    
-    public func skippedHeartbeat() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .skippedHeartbeat)
-    }
-    
-    public func sleepChanges() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .sleepChanges)
-    }
-    
-    public func soreThroat() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .soreThroat)
-    }
-
-    public func vaginalDryness() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .vaginalDryness)
-    }
-    
-    public func vomiting() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .vomiting)
-    }
-    
-    public func wheezing() async throws -> GenericSymptomModel {
-        try await fetchGenericSymptomResult(categoryIdentifier: .wheezing)
+        try await healthStore.save(sampleObjects)
     }
 }
 
