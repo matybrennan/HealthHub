@@ -29,6 +29,17 @@ private extension CycleTracking {
         let model = GenericSymptomModel(items: items)
         return model
     }
+
+    func saveGenericCycleResult(model: GenericSymptomModel, categoryIdentifier: HKCategoryTypeIdentifier, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: categoryIdentifier)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            HKCategorySample(type: type, value: $0.style.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
 }
 
 // MARK: - CycleTrackingProtocol
@@ -105,7 +116,7 @@ extension CycleTracking: CycleTrackingProtocol {
     public func spotting() async throws -> Spotting {
         let samples = try await fetchCategorySamples(categoryIdentifier: .intermenstrualBleeding)
         let items = samples.map { item -> Spotting.Item in
-            return Spotting.Item(startDate: item.startDate, endDate: item.endDate)
+            return Spotting.Item(date: item.endDate)
         }
         
         let model = Spotting(items: items)
@@ -114,5 +125,97 @@ extension CycleTracking: CycleTrackingProtocol {
     
     public func vaginalDryness() async throws -> GenericSymptomModel {
         try await fetchGenericCycleResult(categoryIdentifier: .vaginalDryness)
+    }
+
+    // MARK: - Saving
+
+    public func saveAbdominalCramps(model: GenericSymptomModel, extra: [String : Any]?) async throws {
+        try await saveGenericCycleResult(model: model, categoryIdentifier: .abdominalCramps, extra: extra)
+    }
+
+    public func saveBloating(model: GenericSymptomModel, extra: [String : Any]?) async throws {
+        try await saveGenericCycleResult(model: model, categoryIdentifier: .bloating, extra: extra)
+    }
+
+    public func saveBreastPain(model: GenericSymptomModel, extra: [String : Any]?) async throws {
+        try await saveGenericCycleResult(model: model, categoryIdentifier: .breastPain, extra: extra)
+    }
+
+    public func saveCervicalMucusQuality(model: CervicalMucusQuality, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .cervicalMucusQuality)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveMenstruation(model: Menstruation, extra: [String : Any]?) async throws {
+        try await saveBaseMenstruation(model, extra: extra)
+    }
+
+    public func saveMoodChanges(model: GenericSymptomModel, extra: [String : Any]?) async throws {
+        try await saveGenericCycleResult(model: model, categoryIdentifier: .moodChanges, extra: extra)
+    }
+
+    public func saveOvulation(model: Ovulation, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .ovulationTestResult)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func savePregnancyTestResult(model: PregnancyTestResult, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .pregnancyTestResult)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            HKCategorySample(type: type, value: $0.type.rawValue, start: $0.date, end: $0.date, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveProgesteroneTestResult(model: ProgesteroneTestResult, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .progesteroneTestResult)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            HKCategorySample(type: type, value: $0.type.rawValue, start: $0.date, end: $0.date, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveSexualActivity(model: SexualActivity, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .sexualActivity)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveSpotting(model: Spotting, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .intermenstrualBleeding)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            HKCategorySample(type: type, value: 0, start: $0.date, end: $0.date)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func saveVaginalDryness(model: GenericSymptomModel, extra: [String : Any]?) async throws {
+        try await saveGenericCycleResult(model: model, categoryIdentifier: .vaginalDryness, extra: extra)
     }
 }

@@ -166,18 +166,18 @@ Split into sections to gather data based on timeIntervals
 ```var heart: HeartServiceProtocol```
 
 ### Cycle Tracking
-- abdominalCramps
-- bloating
-- breastPain
-- cervicalMucusQuality
-- menstruation
-- moodChanges
-- ovulation
-- pregnancyTestResult
-- progesteroneTestResult
-- sexualActivity
-- spotting
-- vaginalDryness
+- abdominalCramps & saveAbdominalCramps(_: model, _:extra)
+- bloating & saveBloating(_: model, _:extra)
+- breastPain & saveBreastPain(_: model, _:extra)
+- cervicalMucusQuality & saveCervicalMucusQuality(_: model, _:extra)
+- menstruation & saveMenstruation(_: model, _:extra)
+- moodChanges & saveMoodChanges(_: model, _:extra)
+- ovulation & saveOvulation(_: model, _:extra)
+- pregnancyTestResult & savePregnancyTestResult(_: model, _:extra)
+- progesteroneTestResult & saveProgesteroneTestResult(_: model, _:extra)
+- sexualActivity & saveSexualActivity(_: model, _:extra)
+- spotting & saveSpotting(_: model, _:extra)
+- vaginalDryness & saveVaginalDryness(_: model, _:extra)
 
 ```var cycleTracking: CycleTrackingServiceProtocol```
 

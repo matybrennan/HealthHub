@@ -207,12 +207,10 @@ public struct Spotting {
     
     public struct Item {
         
-        public let startDate: Date
-        public let endDate: Date
+        public let date: Date
         
-        public init(startDate: Date, endDate: Date) {
-            self.startDate = startDate
-            self.endDate = endDate
+        public init(date: Date) {
+            self.date = date
         }
     }
     

@@ -130,9 +130,9 @@ private extension HeartService {
         }
 
         let items = quantitySamples.compactMap { sample -> HeartRate.Item? in
-            guard let max = sample.maximumQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)),
-                let min = sample.minimumQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)),
-                let average = sample.averageQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)) else {
+            guard let max = sample.maximumQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)) as? Double,
+                let min = sample.minimumQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)) as? Double,
+                let average = sample.averageQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)) as? Double else {
                 return nil
             }
             return HeartRate.Item(max: max, min: min, average: average)
