@@ -22,7 +22,7 @@ open class MBHealthTracker: ObservableObject {
     private lazy var privateNutritionService = NutritionService()
     private lazy var privateSleepService = SleepService()
     private lazy var privateBodyMeasurementsService = BodyMeasurementsService()
-    private lazy var privateMindfulService = MindfulnessService()
+    private lazy var privateMindfulService = MentalWellbeingService()
     private lazy var privateCycleTrackingService = CycleTracking()
     private lazy var privateSymptomsService = SymptomsService()
     private lazy var privateRespiratoryService = RespiratoryService()
@@ -64,7 +64,7 @@ extension MBHealthTracker: MBHealthTrackerProtocol {
         privateBodyMeasurementsService
     }
     
-    public var mindful: MindfulnessServiceProtocol {
+    public var mindful: MentalWellbeingServiceProtocol {
         privateMindfulService
     }
     

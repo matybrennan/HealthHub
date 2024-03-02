@@ -1,5 +1,5 @@
 //
-//  MindfulnessService.swift
+//  MentalWellbeingService.swift
 //  MBHealthTracker
 //
 //  Created by matybrennan on 24/9/19.
@@ -8,16 +8,16 @@
 import Foundation
 import HealthKit
 
-public class MindfulnessService {
+public class MentalWellbeingService {
     
     public init() { }
 }
 
 // MARK: - FetchQuantitySample
-extension MindfulnessService: FetchCategorySample { }
+extension MentalWellbeingService: FetchCategorySample { }
 
 // MARK: - MindfulnessServiceProtocol
-extension MindfulnessService: MindfulnessServiceProtocol {
+extension MentalWellbeingService: MentalWellbeingServiceProtocol {
     
     public func mindfulActivity() async throws -> Mindful {
         let samples = try await fetchCategorySamples(categoryIdentifier: .mindfulSession)
@@ -29,10 +29,13 @@ extension MindfulnessService: MindfulnessServiceProtocol {
         return vm
     }
     
-    public func save(mindful: Mindful.Info, extra: [String : Any]?) async throws {
+    public func save(mindful: Mindful, extra: [String : Any]?) async throws {
         let mindfulType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .mindfulSession)
         try MBHealthParser.checkSharingAuthorizationStatus(for: mindfulType)
-        let sampleObj = HKCategorySample(type: mindfulType, value: mindful.value, start: mindful.startDate, end: mindful.endDate, metadata: extra)
-        try await healthStore.save(sampleObj)
+        let sampleObjects = mindful.items.map {
+            HKCategorySample(type: mindfulType, value: $0.value, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
     }
 }

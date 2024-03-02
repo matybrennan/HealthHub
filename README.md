@@ -71,11 +71,10 @@ mbHealthHandler = MBHealthHandler()
 
 ```var sleep: SleepServiceProtocol```
 
-### Mindfulness
-- mindful sessions
-- saving mindful item
+### MentalWellbeing
+- mindfulActivity & saveMindful(_: model, _:extra)
 
-```var mindful: MindfulnessServiceProtocol```
+```var mentalWellbeing: MentalWellbeingServiceProtocol```
 
 ### Characteristics
 - biologicalSex

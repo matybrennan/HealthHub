@@ -25,7 +25,7 @@ public protocol MBHealthTrackerProtocol: AnyObject {
     
     var bodyMeasurements: BodyMeasurementsServiceProtocol { get }
     
-    var mindful: MindfulnessServiceProtocol { get }
+    var mindful: MentalWellbeingServiceProtocol { get }
     
     var cycleTracking: CycleTrackingProtocol { get }
     
