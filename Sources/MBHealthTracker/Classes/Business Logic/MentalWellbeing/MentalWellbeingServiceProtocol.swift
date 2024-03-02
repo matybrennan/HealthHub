@@ -9,6 +9,13 @@ import Foundation
 
 public protocol MentalWellbeingServiceProtocol: AnyObject {
     
+    // Fetch
     func mindfulActivity() async throws -> Mindful
+    func sleep() async throws -> Sleep
+    func timeInDaylight() async throws -> TimeInDaylight
+
+    // Save
     func save(mindful: Mindful, extra: [String : Any]?) async throws
+    func save(model: Sleep, extra: [String : Any]?) async throws
+    func saveTimeInDaylight(model: TimeInDaylight, extra: [String: Any]?) async throws
 }

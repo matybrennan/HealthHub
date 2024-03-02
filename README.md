@@ -73,6 +73,8 @@ mbHealthHandler = MBHealthHandler()
 
 ### MentalWellbeing
 - mindfulActivity & saveMindful(_: model, _:extra)
+- sleep & saveSleep(_: model, _:extra)
+- timeInDaylight & saveTimeInDaylight(_: model, _:extra)
 
 ```var mentalWellbeing: MentalWellbeingServiceProtocol```
 

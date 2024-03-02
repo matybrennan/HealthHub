@@ -14,7 +14,7 @@ public class MentalWellbeingService {
 }
 
 // MARK: - FetchQuantitySample
-extension MentalWellbeingService: FetchCategorySample { }
+extension MentalWellbeingService: FetchCategorySample, SleepCase, TimeInDaylightCase { }
 
 // MARK: - MindfulnessServiceProtocol
 extension MentalWellbeingService: MentalWellbeingServiceProtocol {
@@ -28,7 +28,17 @@ extension MentalWellbeingService: MentalWellbeingServiceProtocol {
         let vm = Mindful(items: items)
         return vm
     }
-    
+
+    public func sleep() async throws -> Sleep {
+        try await baseSleep()
+    }
+
+    public func timeInDaylight() async throws -> TimeInDaylight {
+        try await baseTimeInDaylight()
+    }
+
+    // MARK: - Saving
+
     public func save(mindful: Mindful, extra: [String : Any]?) async throws {
         let mindfulType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .mindfulSession)
         try MBHealthParser.checkSharingAuthorizationStatus(for: mindfulType)
@@ -37,5 +47,13 @@ extension MentalWellbeingService: MentalWellbeingServiceProtocol {
         }
 
         try await healthStore.save(sampleObjects)
+    }
+
+    public func save(model: Sleep, extra: [String : Any]?) async throws {
+        try await baseSaveSleep(model: model, extra: extra)
+    }
+
+    public func saveTimeInDaylight(model: TimeInDaylight, extra: [String : Any]?) async throws {
+        try await baseSaveTimeInDaylight(model: model, extra: extra)
     }
 }

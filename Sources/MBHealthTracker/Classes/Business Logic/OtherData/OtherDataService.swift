@@ -14,7 +14,7 @@ public class OtherDataService {
 }
 
 // MARK: - FetchQuantitySample & FetchCategorySample
-extension OtherDataService: FetchQuantitySample, FetchCategorySample, SexualActivityCase, BloodGlucoseCase, InhalerUsageCase { }
+extension OtherDataService: FetchQuantitySample, FetchCategorySample, SexualActivityCase, BloodGlucoseCase, InhalerUsageCase, TimeInDaylightCase { }
 
 // MARK: OtherDataServiceProtocol
 extension OtherDataService: OtherDataServiceProtocol {
@@ -98,13 +98,7 @@ extension OtherDataService: OtherDataServiceProtocol {
     }
 
     public func timeInDaylight() async throws -> TimeInDaylight {
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .timeInDaylight)
-        let items = samples.map { item -> TimeInDaylight.Item in
-            TimeInDaylight.Item(startDate: item.startDate, endDate: item.endDate)
-        }
-
-        let model = TimeInDaylight(items: items)
-        return model
+        try await baseTimeInDaylight()
     }
 
     public func uvExposure() async throws -> UVExposure {
@@ -221,16 +215,7 @@ extension OtherDataService: OtherDataServiceProtocol {
     }
 
     public func saveTimeInDaylight(model: TimeInDaylight, extra: [String : Any]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .timeInDaylight)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
-
-        let sampleObjects = model.items.map {
-            let duration = Int($0.endDate.timeIntervalSince($0.startDate))
-            let quantity = HKQuantity(unit: .count(), doubleValue: Double(duration))
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.startDate, end: $0.endDate, metadata: extra)
-        }
-
-        try await healthStore.save(sampleObjects)
+        try await baseSaveTimeInDaylight(model: model, extra: extra)
     }
 
     public func saveUvExposure(model: UVExposure, extra: [String : Any]?) async throws {
