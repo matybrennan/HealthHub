@@ -14,21 +14,13 @@ public class MobilityService {
 }
 
 // MARK: - FetchQuantitySample
-extension MobilityService: FetchQuantitySample, FetchCategorySample, SixMinuteWalkCase { }
+extension MobilityService: FetchQuantitySample, FetchCategorySample, SixMinuteWalkCase, CardioFitnessCase { }
 
 // MARK: - MobilityServiceProtocol
 extension MobilityService: MobilityServiceProtocol {
 
     public func cardioFitness() async throws -> CardioFitness {
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .vo2Max)
-        let items = samples.map { item -> CardioFitness.Item in
-            let VO₂Unit = HKUnit(from: "ml/kg*min")
-            let VO₂Max = item.quantity.doubleValue(for: VO₂Unit)
-            return CardioFitness.Item(vo2Max: VO₂Max, date: item.endDate)
-        }
-
-        let vm = CardioFitness(items: items)
-        return vm
+        try await baseCardioFitness()
     }
 
     public func doubleSupportTime() async throws -> DoubleSupportTime {
@@ -149,6 +141,10 @@ extension MobilityService: MobilityServiceProtocol {
     }
 
     // MARK: Saving
+
+    public func saveCardioFitness(model: CardioFitness, extra: [String : Any]?) async throws {
+        try await saveBaseCardioFitness(model, extra: extra)
+    }
 
     public func saveDoubleSupportTime(model: DoubleSupportTime, extra: [String : Any]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .walkingDoubleSupportPercentage)

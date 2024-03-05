@@ -10,7 +10,7 @@ import Foundation
 public protocol MobilityServiceProtocol: AnyObject {
 
     // Fetch
-    func cardioFitness() async throws -> CardioFitness // Cant save as healthkit prohibits
+    func cardioFitness() async throws -> CardioFitness
     func doubleSupportTime() async throws -> DoubleSupportTime
     func groundContactTime() async throws -> GroundContactTime
     func runningStrideLength() async throws -> RunningStrideLength
@@ -24,6 +24,7 @@ public protocol MobilityServiceProtocol: AnyObject {
     func walkingStepLength() async throws -> WalkingStepLength
 
     // Save
+    func saveCardioFitness(model: CardioFitness, extra: [String : Any]?) async throws
     func saveDoubleSupportTime(model: DoubleSupportTime, extra: [String : Any]?) async throws
     func saveGroundContactTime(model: GroundContactTime, extra: [String : Any]?) async throws
     func saveRunningStrideLength(model: RunningStrideLength, extra: [String : Any]?) async throws

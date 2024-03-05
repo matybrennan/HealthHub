@@ -136,7 +136,7 @@ Split into sections to gather data based on timeIntervals
 ```var bodyMeasurements: BodyMeasurementsServiceProtocol```
 
 ### Mobility
-- cardioFitness
+- cardioFitness & saveCardioFitness(_: model, _:extra)
 - doubleSupportTime & saveDoubleSupportTime(_: model, _:extra)
 - groundContactTime & saveGroundContactTime(_: model, _:extra)
 - runningStrideLength & saveRunningStrideLength(_: model, _:extra)
@@ -164,6 +164,8 @@ Types vary based on:
 ```var nutrition: NutritionServiceProtocol```
 
 ### Heart
+- bloodPressure & saveBloodPressure(_: model, _:extra)
+- cardioFitness & saveCardioFitness(_: model, _:extra)
 - heartRate (timeIntervals -> current, today, thisWeek, all, between times)
 
 ```var heart: HeartServiceProtocol```

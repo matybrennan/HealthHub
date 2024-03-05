@@ -17,8 +17,19 @@ public class HeartService {
     public init() { }
 }
 
+// MARK: - BloodPressureCase
+extension HeartService: BloodPressureCase, CardioFitnessCase { }
+
 extension HeartService: HeartServiceProtocol {
     
+    public func bloodPressure() async throws -> BloodPressure {
+        try await baseBloodPressure()
+    }
+
+    public func cardioFitness() async throws -> CardioFitness {
+        try await baseCardioFitness()
+    }
+
     public func heartRate(fromHeartRateType type: HeartRateType, completionHandler: @escaping (MBAsyncCallResult<HeartRate>) -> Void) throws {
         
         // Confirm that the type and device works
@@ -113,7 +124,16 @@ extension HeartService: HeartServiceProtocol {
         
         healthStore.execute(query)
     }
+
+    // MARK: - Save
+
+    public func saveBloodPressure(model: BloodPressure, extra: [String : Any]?) async throws {
+        try await baseSaveBloodPressure(model: model, extra: extra)
+    }
     
+    public func saveCardioFitness(model: CardioFitness, extra: [String : Any]?) async throws {
+        try await saveBaseCardioFitness(model, extra: extra)
+    }
 }
 
 private extension HeartService {

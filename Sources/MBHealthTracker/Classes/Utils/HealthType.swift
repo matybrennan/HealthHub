@@ -28,6 +28,7 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
     case wheelchairUse
 
     // Duplicates
+    case cardioFitness // Mobility & heart
     case sexualActivity // cycle, other
     case respiratoryRate // respiratory, vitals
     case bodyTemperature // body, vitals
@@ -57,7 +58,6 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
     case wristTemperature
     
     // Mobility
-    case cardioFitness
     case doubleSupportTime
     case groundContactTime
     case runningStrideLength
@@ -203,6 +203,7 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
         case .wheelchairUse: return nil
 
         // Common
+        case .cardioFitness: return HKQuantityType(.vo2Max)
         case .sexualActivity: return HKCategoryType(.sexualActivity)
         case .respiratoryRate: return HKQuantityType(.respiratoryRate)
         case .bodyTemperature: return HKQuantityType(.bodyTemperature)
@@ -231,7 +232,6 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
         case .wristTemperature: return nil
 
         // Mobility
-        case .cardioFitness: return HKQuantityType(.vo2Max)
         case .doubleSupportTime: return HKQuantityType(.walkingDoubleSupportPercentage)
         case .groundContactTime: return HKQuantityType(.runningGroundContactTime)
         case .runningStrideLength: return HKQuantityType(.runningStrideLength)
@@ -377,6 +377,7 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
         case .wheelchairUse: return HKCharacteristicType(.wheelchairUse)
 
         // Common
+        case .cardioFitness: return HKQuantityType(.vo2Max)
         case .sexualActivity: return HKCategoryType(.sexualActivity)
         case .respiratoryRate: return HKQuantityType(.respiratoryRate)
         case .bodyTemperature: return HKQuantityType(.bodyTemperature)
@@ -405,7 +406,6 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
         case .wristTemperature: return HKQuantityType(.appleSleepingWristTemperature)
 
         // Mobility
-        case .cardioFitness: return HKQuantityType(.vo2Max)
         case .doubleSupportTime: return HKQuantityType(.walkingDoubleSupportPercentage)
         case .groundContactTime: return HKQuantityType(.runningGroundContactTime)
         case .runningStrideLength: return HKQuantityType(.runningStrideLength)
