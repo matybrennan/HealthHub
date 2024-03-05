@@ -30,6 +30,17 @@ extension HeartService: HeartServiceProtocol {
         try await baseCardioFitness()
     }
 
+    public func cardioRecovery() async throws -> CardioRecovery {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .heartRateRecoveryOneMinute)
+        let items = samples.map { item -> CardioRecovery.Item in
+            let value = item.quantity.doubleValue(for: HKUnit(from: "count/min"))
+            return CardioRecovery.Item(bpm: Int(value), date: item.endDate)
+        }
+
+        let model = CardioRecovery(items: items)
+        return model
+    }
+
     public func heartRate(fromHeartRateType type: HeartRateType, completionHandler: @escaping (MBAsyncCallResult<HeartRate>) -> Void) throws {
         
         // Confirm that the type and device works
@@ -133,6 +144,19 @@ extension HeartService: HeartServiceProtocol {
     
     public func saveCardioFitness(model: CardioFitness, extra: [String : Any]?) async throws {
         try await saveBaseCardioFitness(model, extra: extra)
+    }
+
+    public func saveCardioRecovery(model: CardioRecovery, extra: [String : Any]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .heartRateRecoveryOneMinute)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let unit = HKUnit(from: "count/min")
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: unit, doubleValue: Double($0.bpm))
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
     }
 }
 

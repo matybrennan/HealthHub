@@ -1,5 +1,5 @@
 //
-//  HeartRateModels.swift
+//  HeartModels.swift
 //  Pods-TestPod_Example
 //
 //  Created by Maty Brennan on 2/12/18.
@@ -32,25 +32,43 @@ public struct HeartRate {
 extension HeartRate {
     
     public var total: Double {
-        return items.reduce(0.0, { (res, item) -> Double in
-            return res + item.average
+        items.reduce(0.0, { (res, item) -> Double in
+            res + item.average
         })
     }
     
     public var average: Double {
-        return items.isEmpty ? 0.0 : total / Double(count)
+        items.isEmpty ? 0.0 : total / Double(count)
     }
     
     public var first: Item {
-        return items.first!
+        items.first!
     }
     
     public var last: Item {
-        return items.last!
+        items.last!
     }
     
     public var count: Int {
-        return items.count
+        items.count
     }
-    
+}
+
+public struct CardioRecovery {
+
+    public struct Item {
+        let bpm: Int
+        let date: Date
+
+        public init(bpm: Int, date: Date) {
+            self.bpm = bpm
+            self.date = date
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
 }

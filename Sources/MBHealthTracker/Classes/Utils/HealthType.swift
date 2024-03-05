@@ -39,12 +39,15 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
     case inhalerUsage // respiratory, other
     case sixMinuteWalk // mobility, respiratory
 
-    // Heart
+    // Activity
     case stepCount
-    case heartRate
     case workout
     case activeEnergy
-    
+
+    // Heart
+    case heartRate
+    case cardioRecovery
+
     // Body
     case basalBodyTemperature
     case bodyMassIndex
@@ -214,11 +217,14 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
         case .inhalerUsage: return HKQuantityType(.inhalerUsage)
         case .sixMinuteWalk: return HKQuantityType(.sixMinuteWalkTestDistance)
 
-        // Heart
+        // Activity
         case .stepCount: return HKQuantityType(.stepCount)
-        case .heartRate: return HKQuantityType(.heartRate)
         case .workout: return HKWorkoutType.workoutType()
         case .activeEnergy: return HKQuantityType(.activeEnergyBurned)
+
+        // Heart
+        case .heartRate: return HKQuantityType(.heartRate)
+        case .cardioRecovery: return HKQuantityType(.heartRateRecoveryOneMinute)
 
         // Body
         case .basalBodyTemperature: return HKQuantityType(.basalBodyTemperature)
@@ -388,11 +394,14 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
         case .inhalerUsage: return HKQuantityType(.inhalerUsage)
         case .sixMinuteWalk: return HKQuantityType(.sixMinuteWalkTestDistance)
 
-        // Heart
+        // Activity
         case .stepCount: return HKQuantityType(.stepCount)
-        case .heartRate: return HKQuantityType(.heartRate)
         case .workout: return HKWorkoutType.workoutType()
         case .activeEnergy: return HKQuantityType(.activeEnergyBurned)
+
+        // Heart
+        case .heartRate: return HKQuantityType(.heartRate)
+        case .cardioRecovery: return HKQuantityType(.heartRateRecoveryOneMinute)
 
         // Body
         case .basalBodyTemperature: return HKQuantityType(.basalBodyTemperature)

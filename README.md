@@ -166,6 +166,7 @@ Types vary based on:
 ### Heart
 - bloodPressure & saveBloodPressure(_: model, _:extra)
 - cardioFitness & saveCardioFitness(_: model, _:extra)
+- cardioRecovery & saveCardioRecovery(_: model, _:extra)
 - heartRate (timeIntervals -> current, today, thisWeek, all, between times)
 
 ```var heart: HeartServiceProtocol```
