@@ -34,10 +34,8 @@ final class Store: ObservableObject {
 
     func runTest() async {
         do {
-            let model = SixMinuteWalk(items: [SixMinuteWalk.Item(distance: 200, startDate: Date(), endDate: Date().addingTimeInterval(100))])
-            try await healthTracker.mobility.saveSixMinuteWalk(model: model)
             print("6done")
-            let down = try await healthTracker.mobility.cardioFitness()
+            let down = try await healthTracker.heart.cardioRecovery()
             //print("up: \(up)")
             print("down: \(down)")
         } catch {
