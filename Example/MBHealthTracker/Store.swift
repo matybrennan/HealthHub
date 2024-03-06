@@ -35,7 +35,7 @@ final class Store: ObservableObject {
     func runTest() async {
         do {
             print("6done")
-            let down = try await healthTracker.heart.cardioRecovery()
+            let down = try await healthTracker.heart.atrialFibrillation()
             //print("up: \(up)")
             print("down: \(down)")
         } catch {
