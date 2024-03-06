@@ -164,6 +164,7 @@ Types vary based on:
 ```var nutrition: NutritionServiceProtocol```
 
 ### Heart
+- atrialFibrillation
 - bloodPressure & saveBloodPressure(_: model, _:extra)
 - cardioFitness & saveCardioFitness(_: model, _:extra)
 - cardioRecovery & saveCardioRecovery(_: model, _:extra)

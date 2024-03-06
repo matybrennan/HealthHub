@@ -26,7 +26,7 @@ extension HeartService: HeartServiceProtocol {
         let samples = try await fetchQuantitySamples(quantityIdentifier: .atrialFibrillationBurden)
         let items = samples.map { item -> AtrialFibrillationHistory.Item in
             let percentage = item.quantity.doubleValue(for: .percent())
-            return AtrialFibrillationHistory.Item(percentage: percentage, date: item.endDate)
+            return AtrialFibrillationHistory.Item(percentage: percentage, startDate: item.startDate, endDate: item.endDate)
         }
 
         let vm = AtrialFibrillationHistory(items: items)

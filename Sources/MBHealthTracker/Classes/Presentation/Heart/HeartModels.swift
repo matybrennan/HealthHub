@@ -78,11 +78,13 @@ public struct AtrialFibrillationHistory {
     public struct Item {
         
         let percentage: Double
-        let date: Date
+        let startDate: Date
+        let endDate: Date
 
-        public init(percentage: Double, date: Date) {
+        public init(percentage: Double, startDate: Date, endDate: Date) {
             self.percentage = percentage
-            self.date = date
+            self.startDate = startDate
+            self.endDate = endDate
         }
     }
 
