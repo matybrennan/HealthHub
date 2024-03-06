@@ -45,6 +45,7 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
     case activeEnergy
 
     // Heart
+    case atrialFibrillation
     case heartRate
     case cardioRecovery
 
@@ -223,6 +224,7 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
         case .activeEnergy: return HKQuantityType(.activeEnergyBurned)
 
         // Heart
+        case .atrialFibrillation: return HKQuantityType(.atrialFibrillationBurden)
         case .heartRate: return HKQuantityType(.heartRate)
         case .cardioRecovery: return HKQuantityType(.heartRateRecoveryOneMinute)
 
@@ -400,6 +402,7 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
         case .activeEnergy: return HKQuantityType(.activeEnergyBurned)
 
         // Heart
+        case .atrialFibrillation: return HKQuantityType(.atrialFibrillationBurden)
         case .heartRate: return HKQuantityType(.heartRate)
         case .cardioRecovery: return HKQuantityType(.heartRateRecoveryOneMinute)
 

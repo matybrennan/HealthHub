@@ -22,6 +22,17 @@ extension HeartService: BloodPressureCase, CardioFitnessCase { }
 
 extension HeartService: HeartServiceProtocol {
     
+    public func atrialFibrillation() async throws -> AtrialFibrillationHistory {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .vo2Max)
+        let items = samples.map { item -> AtrialFibrillationHistory.Item in
+            let percentage = item.quantity.doubleValue(for: .percent())
+            return AtrialFibrillationHistory.Item(percentage: percentage, date: item.endDate)
+        }
+
+        let vm = AtrialFibrillationHistory(items: items)
+        return vm
+    }
+
     public func bloodPressure() async throws -> BloodPressure {
         try await baseBloodPressure()
     }

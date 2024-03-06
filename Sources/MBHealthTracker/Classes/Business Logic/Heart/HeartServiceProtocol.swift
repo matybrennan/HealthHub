@@ -24,6 +24,7 @@ public enum HeartRateType {
 public protocol HeartServiceProtocol {
 
     // Fetch
+    func atrialFibrillation() async throws -> AtrialFibrillationHistory
     func bloodPressure() async throws -> BloodPressure
     func cardioFitness() async throws -> CardioFitness
     func cardioRecovery() async throws -> CardioRecovery

@@ -72,3 +72,23 @@ public struct CardioRecovery {
         self.items = items
     }
 }
+
+public struct AtrialFibrillationHistory {
+
+    public struct Item {
+        
+        let percentage: Double
+        let date: Date
+
+        public init(percentage: Double, date: Date) {
+            self.percentage = percentage
+            self.date = date
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+}
