@@ -66,18 +66,6 @@ tracker.mbHealthHandler.$state.sink { state in ... }
 mbHealthHandler = MBHealthHandler()
 ```
 
-### Sleep
-- sleep & saveSleep(_: model, _:extra)
-
-```var sleep: SleepServiceProtocol```
-
-### MentalWellbeing
-- mindfulActivity & saveMindful(_: model, _:extra)
-- sleep & saveSleep(_: model, _:extra)
-- timeInDaylight & saveTimeInDaylight(_: model, _:extra)
-
-```var mentalWellbeing: MentalWellbeingServiceProtocol```
-
 ### Characteristics
 - biologicalSex
 - bloodType
@@ -86,8 +74,9 @@ mbHealthHandler = MBHealthHandler()
 - isWheelChairUser
 
 ```var characteristics: CharacteristicServiceProtocol```
-    
+
 ------------------------------------------------------------------------
+
 ### ActivityManager
 The ```ActivityManager``` contains all the services below and can be injected into your services with  ```ActivityManagerProtocol``` if you just need this service
 ``` 
@@ -135,42 +124,7 @@ Split into sections to gather data based on timeIntervals
 
 ```var bodyMeasurements: BodyMeasurementsServiceProtocol```
 
-### Mobility
-- cardioFitness & saveCardioFitness(_: model, _:extra)
-- doubleSupportTime & saveDoubleSupportTime(_: model, _:extra)
-- groundContactTime & saveGroundContactTime(_: model, _:extra)
-- runningStrideLength & saveRunningStrideLength(_: model, _:extra)
-- sixMinuteWalk & saveSixMinuteWalk(_: model, _:extra)
-- stairSpeedDown & saveStairSpeedDown(_: model, _:extra)
-- stairSpeedUp & saveStairSpeedUp(_: model, _:extra)
-- verticalOscillation & saveVerticalOscillation(_: model, _:extra)
-- walkingAsymmetry
-- walkingSpeed & saveWalkingSpeed(_: model)
-- walkingSteadiness
-- walkingStepLength & saveWalkingStepLength(_: model)
-
-```var mobility: MobilityServiceProtocol```
-
-### Nutrition
-- nutrition(_ :type) & saveNutrition(_: model, _:extra)
-Types vary based on:
-- macronutrients
-- minerals
-- ultratrace minerals
-- vitamins
-- hydration
-- caffeine
-
-```var nutrition: NutritionServiceProtocol```
-
-### Heart
-- atrialFibrillation
-- bloodPressure & saveBloodPressure(_: model, _:extra)
-- cardioFitness & saveCardioFitness(_: model, _:extra)
-- cardioRecovery & saveCardioRecovery(_: model, _:extra)
-- heartRate (timeIntervals -> current, today, thisWeek, all, between times)
-
-```var heart: HeartServiceProtocol```
+------------------------------------------------------------------------
 
 ### Cycle Tracking
 - abdominalCramps & saveAbdominalCramps(_: model, _:extra)
@@ -188,49 +142,59 @@ Types vary based on:
 
 ```var cycleTracking: CycleTrackingServiceProtocol```
 
-### Symptoms
-- appetiteChanges & saveAppetiteChanges(_: model, _:extra)
-- symptom(_: type) & saveSymptom(_: model, _:extra)
-Types include:
-- abdominalCramps
-- acne        
-- bladderIncontinence
-- bloating
-- bodyAndMuscleAche
-- breastPain
-- chestTightnessOrPain
-- chills
-- congestion
-- constipation
-- coughing
-- diarrhea
-- dizziness
-- drySkin
-- fainting
-- fatigue
-- fever
-- hairLoss
-- headache
-- hotFlushes
-- loss of smell
-- loss of taste
-- lowerBackPain
-- memoryLapse
-- moodChanges
-- nausea
-- nightSweats
-- pelvicPain
-- rapidPoundingOrFlutteringHeartbeat
-- runnyNose
-- shortnessOfBreath
-- skippedHeartbeat
-- sleepChanges
-- soreThroat
-- vaginalDryness
-- vomiting
-- wheezing
+------------------------------------------------------------------------
 
-```var symptoms: SymptomsServiceProtocol```
+### Heart
+- atrialFibrillation
+- bloodPressure & saveBloodPressure(_: model, _:extra)
+- cardioFitness & saveCardioFitness(_: model, _:extra)
+- cardioRecovery & saveCardioRecovery(_: model, _:extra)
+- heartRate (timeIntervals -> current, today, thisWeek, all, between times)
+
+```var heart: HeartServiceProtocol```
+
+------------------------------------------------------------------------
+
+### MentalWellbeing
+- mindfulActivity & saveMindful(_: model, _:extra)
+- sleep & saveSleep(_: model, _:extra)
+- timeInDaylight & saveTimeInDaylight(_: model, _:extra)
+
+```var mentalWellbeing: MentalWellbeingServiceProtocol```
+    
+------------------------------------------------------------------------
+
+### Mobility
+- cardioFitness & saveCardioFitness(_: model, _:extra)
+- doubleSupportTime & saveDoubleSupportTime(_: model, _:extra)
+- groundContactTime & saveGroundContactTime(_: model, _:extra)
+- runningStrideLength & saveRunningStrideLength(_: model, _:extra)
+- sixMinuteWalk & saveSixMinuteWalk(_: model, _:extra)
+- stairSpeedDown & saveStairSpeedDown(_: model, _:extra)
+- stairSpeedUp & saveStairSpeedUp(_: model, _:extra)
+- verticalOscillation & saveVerticalOscillation(_: model, _:extra)
+- walkingAsymmetry
+- walkingSpeed & saveWalkingSpeed(_: model)
+- walkingSteadiness
+- walkingStepLength & saveWalkingStepLength(_: model)
+
+```var mobility: MobilityServiceProtocol```
+
+------------------------------------------------------------------------
+
+### Nutrition
+- nutrition(_ :type) & saveNutrition(_: model, _:extra)
+Types vary based on:
+- macronutrients
+- minerals
+- ultratrace minerals
+- vitamins
+- hydration
+- caffeine
+
+```var nutrition: NutritionServiceProtocol```
+
+------------------------------------------------------------------------
 
 ### Respiratory
 - bloodOxygen & saveBloodOxygen(_: model, _:extra)
@@ -243,6 +207,31 @@ Types include:
 
 ```var respiratory: RespiratoryServiceProtocol```
 
+------------------------------------------------------------------------
+
+### Sleep
+- sleep & saveSleep(_: model, _:extra)
+
+```var sleep: SleepServiceProtocol```
+
+------------------------------------------------------------------------
+
+### Symptoms
+- appetiteChanges & saveAppetiteChanges(_: model, _:extra)
+- symptom(_: type) & saveSymptom(_: model, _:extra)
+
+Symptom types include:
+- abdominalCramps, acne, bladderIncontinence, bloating, bodyAndMuscleAche, breastPain, 
+chestTightnessOrPain, chills, congestion, constipation, coughing, diarrhea, dizziness,
+drySkin, fainting, fatigue, fever, hairLoss, headache, hotFlushes, loss of smell, 
+loss of taste, lowerBackPain, memoryLapse, moodChanges, nausea, nightSweats, pelvicPain,
+rapidPoundingOrFlutteringHeartbeat, runnyNose, shortnessOfBreath, skippedHeartbeat, 
+sleepChanges, soreThroat, vaginalDryness, vomiting, wheezing
+
+```var symptoms: SymptomsServiceProtocol```
+
+------------------------------------------------------------------------
+
 ### Vitals
 - bloodGlucose & saveBloodGlucose(_: model, _:extra)
 - bloodOxygen & saveBloodOxygen(_: model, _:extra)
@@ -252,6 +241,8 @@ Types include:
 - respiratoryRate & saveRespiratoryRate(_: model, _:extra)
 
 ```var vitals: VitalsServiceProtocol```
+
+------------------------------------------------------------------------
 
 ### Other Data
 - alcoholConsumption & saveAlcoholConsumption(_: model, _:extra)
@@ -268,6 +259,8 @@ Types include:
 - waterTemperature & saveWaterTemperature(_: model, _:extra)
 
 ```var otherData: OtherDataServiceProtocol```
+
+------------------------------------------------------------------------
 
 ## Contact
 

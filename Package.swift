@@ -1,7 +1,11 @@
-// swift-tools-version:5.9
+// swift-tools-version:5.10
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
+
+let settings: [SwiftSetting] = [
+  .enableExperimentalFeature("StrictConcurrency")
+]
 
 let package = Package(
     name: "MBHealthTracker",
@@ -22,10 +26,13 @@ let package = Package(
         .target(
             name: "MBHealthTracker",
             dependencies: [],
-            path: "Sources"),
+            path: "Sources",
+            swiftSettings: settings
+        ),
         .testTarget(
             name: "MBHealthTrackerTests",
             dependencies: ["MBHealthTracker"],
-            path: "Tests/UnitTests"),
+            path: "Tests/UnitTests"
+        ),
     ]
 )
