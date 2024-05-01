@@ -184,6 +184,7 @@ Split into sections to gather data based on timeIntervals
 
 ### Nutrition
 - nutrition(_ :type) & saveNutrition(_: model, _:extra)
+
 Types vary based on:
 - macronutrients
 - minerals
