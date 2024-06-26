@@ -1,14 +1,15 @@
 {
+  "originHash" : "6998b70adb2d14a99c696c136da154bbd4b33165235b513f79efb689797c3bec",
   "pins" : [
     {
       "identity" : "mbhealthtracker",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/matybrennan/MBHealthTracker/",
+      "kind" : "localSourceControl",
+      "location" : "/Users/maty.brennan/Documents/personal/MBHealthTracker",
       "state" : {
         "branch" : "release/2.7.0",
-        "revision" : "7b2d2e2d1ed894c85313b4acba02f9c816417955"
+        "revision" : "fb81ecae7aa2beb0d26cc7424e25f2bbce1fd7f2"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

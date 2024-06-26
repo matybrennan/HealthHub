@@ -12,9 +12,10 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		F13D652F2B524DCB00FB19E0 /* MBHealthTracker in Frameworks */ = {isa = PBXBuildFile; productRef = F13D652E2B524DCB00FB19E0 /* MBHealthTracker */; };
 		F168EE812A822BDC00FFDA00 /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168EE802A822BDC00FFDA00 /* MainApp.swift */; };
 		F168EE832A822C2000FFDA00 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168EE822A822C2000FFDA00 /* ContentView.swift */; };
+		F1E9B49C2C2CCFEE00D0DBA9 /* MBHealthTracker in Frameworks */ = {isa = PBXBuildFile; productRef = F1E9B49B2C2CCFEE00D0DBA9 /* MBHealthTracker */; };
+		F1F38C482C2CD1250019B6B2 /* MBHealthTracker in Frameworks */ = {isa = PBXBuildFile; productRef = F1F38C472C2CD1250019B6B2 /* MBHealthTracker */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F13D652F2B524DCB00FB19E0 /* MBHealthTracker in Frameworks */,
+				F1E9B49C2C2CCFEE00D0DBA9 /* MBHealthTracker in Frameworks */,
+				F1F38C482C2CD1250019B6B2 /* MBHealthTracker in Frameworks */,
 				2E5F4A082037B3E700947553 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,7 +164,8 @@
 			);
 			name = MBHealthTracker_Example;
 			packageProductDependencies = (
-				F13D652E2B524DCB00FB19E0 /* MBHealthTracker */,
+				F1E9B49B2C2CCFEE00D0DBA9 /* MBHealthTracker */,
+				F1F38C472C2CD1250019B6B2 /* MBHealthTracker */,
 			);
 			productName = MBHealthTracker;
 			productReference = 607FACD01AFB9204008FA782 /* MBHealthTracker_Example.app */;
@@ -224,7 +227,7 @@
 			);
 			mainGroup = 607FACC71AFB9204008FA782;
 			packageReferences = (
-				F13D652D2B524DCB00FB19E0 /* XCRemoteSwiftPackageReference "MBHealthTracker" */,
+				F1F38C462C2CD1250019B6B2 /* XCRemoteSwiftPackageReference "MBHealthTracker" */,
 			);
 			productRefGroup = 607FACD11AFB9204008FA782 /* Products */;
 			projectDirPath = "";
@@ -531,9 +534,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F13D652D2B524DCB00FB19E0 /* XCRemoteSwiftPackageReference "MBHealthTracker" */ = {
+		F1F38C462C2CD1250019B6B2 /* XCRemoteSwiftPackageReference "MBHealthTracker" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/matybrennan/MBHealthTracker/";
+			repositoryURL = "file:///Users/maty.brennan/Documents/personal/MBHealthTracker";
 			requirement = {
 				branch = release/2.7.0;
 				kind = branch;
@@ -542,9 +545,13 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F13D652E2B524DCB00FB19E0 /* MBHealthTracker */ = {
+		F1E9B49B2C2CCFEE00D0DBA9 /* MBHealthTracker */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F13D652D2B524DCB00FB19E0 /* XCRemoteSwiftPackageReference "MBHealthTracker" */;
+			productName = MBHealthTracker;
+		};
+		F1F38C472C2CD1250019B6B2 /* MBHealthTracker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1F38C462C2CD1250019B6B2 /* XCRemoteSwiftPackageReference "MBHealthTracker" */;
 			productName = MBHealthTracker;
 		};
 /* End XCSwiftPackageProductDependency section */
