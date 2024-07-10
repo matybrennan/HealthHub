@@ -7,18 +7,24 @@
 
 import Foundation
 
-public class MBHealthHandler: ObservableObject {
-    
+public actor MBHealthHandler: ObservableObject {
+
     public init() { }
     
-    public enum State {
+    public enum State: Sendable {
         case idle
         case hasRequestedHealthKitInfo(Bool)
     }
     
-    @Published public var state: State = .idle
+    @Published public private(set) var state: State = .idle
     
     public func resetState() {
         state = .idle
+    }
+
+    public func updateState(_ state: State) {
+        self.state = state
+        print(Thread.current)
+        resetState()
     }
 }

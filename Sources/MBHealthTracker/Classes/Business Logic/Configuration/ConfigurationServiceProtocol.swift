@@ -8,8 +8,8 @@
 import Foundation
 import HealthKit
 
-
-public protocol ConfigurationServiceProtocol {
+@MainActor
+public protocol ConfigurationServiceProtocol: Sendable {
     
     func requestAuthorization(toShare share: [SharableType], toRead read: [ReadableType]) async throws
     func navigateToHealthSettings()

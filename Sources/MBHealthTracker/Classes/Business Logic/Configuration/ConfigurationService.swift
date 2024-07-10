@@ -9,8 +9,8 @@ import Foundation
 import HealthKit
 import UIKit
 
-open class ConfigurationService: ConfigurationServiceProtocol {
-    
+public final class ConfigurationService: ConfigurationServiceProtocol {
+
     static let appleHealthAppURL = "x-apple-health://"
     
     public let handler: MBHealthHandler
@@ -23,8 +23,9 @@ open class ConfigurationService: ConfigurationServiceProtocol {
         let shareTypes = MBHealthType.shareTypes(share)
         let readTypes = MBHealthType.readTypes(read)
         try await healthStore.requestAuthorization(toShare: shareTypes, read: readTypes)
-        handler.state = .hasRequestedHealthKitInfo(true)
-        handler.resetState()
+        print(Thread.current)
+        await handler.updateState(.hasRequestedHealthKitInfo(true))
+        print(Thread.current)
     }
     
     public func navigateToHealthSettings() {
