@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import HealthKit
+@preconcurrency import HealthKit
 
 public final class MentalWellbeingService {
     

@@ -13,7 +13,7 @@ final class MBHealthTracker: ObservableObject, Sendable {
 
     public lazy var mbHealthHandler = MBHealthHandler()
     
-    nonisolated public init() { }
+    public init() { }
 
     private lazy var privateConfiguration = ConfigurationService(handler: mbHealthHandler)
     private lazy var privateActivityManager = ActivityManager()

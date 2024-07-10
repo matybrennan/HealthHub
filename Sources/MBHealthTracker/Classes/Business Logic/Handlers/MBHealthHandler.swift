@@ -24,7 +24,6 @@ public actor MBHealthHandler: ObservableObject {
 
     public func updateState(_ state: State) {
         self.state = state
-        print(Thread.current)
         resetState()
     }
 }
