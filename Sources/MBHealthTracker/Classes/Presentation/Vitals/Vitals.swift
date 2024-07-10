@@ -7,9 +7,9 @@
 
 import Foundation
 
-public struct BloodPressure {
-    
-    public struct Info {
+public struct BloodPressure: Sendable {
+
+    public struct Info: Sendable {
         public let systolic: Double
         public let diastolic: Double
         public let startDate: Date
@@ -34,9 +34,9 @@ public struct BloodPressure {
     }
 }
 
-public struct BodyTemperature {
-    
-    public struct Item {
+public struct BodyTemperature: Sendable {
+
+    public struct Item: Sendable {
         public let celsius: Double
         public let fahrenheit: Double
         public let startDate: Date
@@ -57,11 +57,11 @@ public struct BodyTemperature {
     }
 }
 
-public struct BloodGlucose {
-    
-    public struct Item {
-        
-        public enum MealTime: Int {
+public struct BloodGlucose: Sendable {
+
+    public struct Item: Sendable{
+
+        public enum MealTime: Int, Sendable {
             case unspecified
             case beforeMeal
             case afterMeal
@@ -85,10 +85,10 @@ public struct BloodGlucose {
     }
 }
 
-public struct BloodOxygen {
-    
-    public struct Item {
-        
+public struct BloodOxygen: Sendable {
+
+    public struct Item: Sendable {
+
         public let date: Date
         public let oxygenSaturationPercentage: Double
         

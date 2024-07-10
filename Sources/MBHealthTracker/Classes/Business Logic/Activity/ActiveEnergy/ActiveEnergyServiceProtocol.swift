@@ -13,7 +13,8 @@ public enum ActiveEnergyType {
     case betweenTimePref(start: Date, end: Date)
 }
 
-public protocol ActiveEnergyServiceProtocol: AnyObject {
+@MainActor
+public protocol ActiveEnergyServiceProtocol: AnyObject, Sendable {
     
     func activeEnergy(from type: ActiveEnergyType) async throws -> ActiveEnergy
 }

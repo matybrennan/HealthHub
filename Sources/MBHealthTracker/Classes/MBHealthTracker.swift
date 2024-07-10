@@ -8,12 +8,13 @@
 import Foundation
 import Combine
 
-open class MBHealthTracker: ObservableObject {
-    
+@MainActor
+final class MBHealthTracker: ObservableObject {
+
     public lazy var mbHealthHandler = MBHealthHandler()
     
-    public init() { }
-    
+    nonisolated public init() { }
+
     private lazy var privateConfiguration = ConfigurationService(handler: mbHealthHandler)
     private lazy var privateActivityManager = ActivityManager()
     private lazy var privateHeart = HeartService()
@@ -29,6 +30,7 @@ open class MBHealthTracker: ObservableObject {
     private lazy var privateVitalsService = VitalsService()
     private lazy var privateOtherDataService = OtherDataService()
 }
+
 
 extension MBHealthTracker: MBHealthTrackerProtocol {
     

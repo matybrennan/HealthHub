@@ -21,7 +21,8 @@ public enum HeartRateType {
     case betweenTimePref(start: Date, end: Date)
 }
 
-public protocol HeartServiceProtocol {
+@MainActor
+public protocol HeartServiceProtocol: Sendable {
 
     // Fetch
     func atrialFibrillation() async throws -> AtrialFibrillationHistory

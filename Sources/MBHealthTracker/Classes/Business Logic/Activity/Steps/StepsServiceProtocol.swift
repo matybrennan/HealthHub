@@ -25,8 +25,8 @@ public enum StepsType {
     case betweenTimePref(start: Date, end: Date, timeInterval: Int)
 }
 
+@MainActor
+public protocol StepsServiceProtocol: Sendable {
 
-public protocol StepsServiceProtocol {
-    
     func steps(fromStepsType type: StepsType, completionHandler: @escaping (MBAsyncCallResult<Steps>) -> Void) throws
 }

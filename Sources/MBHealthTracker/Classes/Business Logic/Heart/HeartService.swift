@@ -8,8 +8,8 @@
 import Foundation
 import HealthKit
 
-public class HeartService {
-    
+public final class HeartService {
+
     struct Unit {
         static let heartRateCountMin = "count/min"
     }

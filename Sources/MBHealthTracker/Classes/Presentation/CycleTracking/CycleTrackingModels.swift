@@ -7,11 +7,11 @@
 
 import Foundation
 
-public struct CervicalMucusQuality {
+public struct CervicalMucusQuality: Sendable {
     
-    public struct Item {
-        
-        public enum MucusType: Int {
+    public struct Item: Sendable {
+
+        public enum MucusType: Int, Sendable {
             case dry = 1
             case sticky
             case creamy
@@ -47,11 +47,11 @@ public struct CervicalMucusQuality {
     }
 }
 
-public struct Menstruation {
-    
-    public struct Item {
-        
-        public enum FlowType: Int {
+public struct Menstruation: Sendable {
+
+    public struct Item: Sendable {
+
+        public enum FlowType: Int, Sendable {
             case unspecified = 1
             case light
             case medium
@@ -89,7 +89,7 @@ public struct Menstruation {
     }
 }
 
-public enum CycleResultType: Int {
+public enum CycleResultType: Int, Sendable {
     case negative = 1
     case positive
     case indetermined
@@ -105,10 +105,10 @@ public enum CycleResultType: Int {
     }
 }
 
-public struct Ovulation {
-    
-    public struct Item {
-        
+public struct Ovulation: Sendable {
+
+    public struct Item: Sendable {
+
         public let type: CycleResultType
         public let startDate: Date
         public let endDate: Date
@@ -127,10 +127,10 @@ public struct Ovulation {
     }
 }
 
-public struct PregnancyTestResult {
-    
-    public struct Item {
-        
+public struct PregnancyTestResult: Sendable {
+
+    public struct Item: Sendable {
+
         public let type: CycleResultType
         public let date: Date
         
@@ -147,10 +147,10 @@ public struct PregnancyTestResult {
     }
 }
 
-public struct ProgesteroneTestResult {
-    
-    public struct Item {
-        
+public struct ProgesteroneTestResult: Sendable {
+
+    public struct Item: Sendable {
+
         public let type: CycleResultType
         public let date: Date
         
@@ -167,11 +167,11 @@ public struct ProgesteroneTestResult {
     }
 }
 
-public struct SexualActivity {
-    
-    public struct Item {
-        
-        public enum StyleType: Int {
+public struct SexualActivity: Sendable {
+
+    public struct Item: Sendable {
+
+        public enum StyleType: Int, Sendable {
             case unspecified = -1
             case protectionUsed
             case protectionNotUsed
@@ -203,9 +203,9 @@ public struct SexualActivity {
     }
 }
 
-public struct Spotting {
-    
-    public struct Item {
+public struct Spotting: Sendable {
+
+    public struct Item: Sendable {
         
         public let date: Date
         

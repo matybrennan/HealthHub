@@ -7,9 +7,9 @@
 
 import Foundation
 
-public struct RespiratoryRate {
-    
-    public struct Item {
+public struct RespiratoryRate: Sendable {
+
+    public struct Item: Sendable {
         public let value: Double // counts per min
         public let startDate: Date
         public let endDate: Date
@@ -28,9 +28,9 @@ public struct RespiratoryRate {
     }
 }
 
-public struct ForcedExpiratoryVolume {
-    
-    public struct Item {
+public struct ForcedExpiratoryVolume: Sendable {
+
+    public struct Item: Sendable {
         public let liters: Double
         public let date: Date
         
@@ -47,9 +47,9 @@ public struct ForcedExpiratoryVolume {
     }
 }
 
-public struct ForcedVitalCapacity {
-    
-    public struct Item {
+public struct ForcedVitalCapacity: Sendable {
+
+    public struct Item: Sendable {
         public let liters: Double
         public let date: Date
         
@@ -66,9 +66,9 @@ public struct ForcedVitalCapacity {
     }
 }
 
-public struct PeakExpiratoryFlowRate {
-    
-    public struct Item {
+public struct PeakExpiratoryFlowRate: Sendable {
+
+    public struct Item: Sendable {
         public let litersPerMinute: Double
         public let date: Date
         
@@ -85,9 +85,9 @@ public struct PeakExpiratoryFlowRate {
     }
 }
 
-public struct SixMinuteWalk {
+public struct SixMinuteWalk: Sendable {
 
-    public struct Item {
+    public struct Item: Sendable {
         public let distance: Double // mtrs
         public let startDate: Date
         public let endDate: Date

@@ -7,9 +7,9 @@
 
 import Foundation
 
-public struct CardioFitness {
+public struct CardioFitness: Sendable {
 
-    public struct Item {
+    public struct Item: Sendable {
         public let vo2Max: Double
         public let date: Date
 
@@ -26,9 +26,9 @@ public struct CardioFitness {
     }
 }
 
-public struct DoubleSupportTime {
+public struct DoubleSupportTime: Sendable {
 
-    public struct Item {
+    public struct Item: Sendable {
         public let percentage: Double
         public let date: Date
 
@@ -45,9 +45,9 @@ public struct DoubleSupportTime {
     }
 }
 
-public struct GroundContactTime {
+public struct GroundContactTime: Sendable {
 
-    public struct Item {
+    public struct Item: Sendable {
         public let duration: Double // ms
         public let date: Date
 
@@ -64,9 +64,9 @@ public struct GroundContactTime {
     }
 }
 
-public struct RunningStrideLength {
+public struct RunningStrideLength: Sendable {
 
-    public struct Item {
+    public struct Item: Sendable {
         public let distance: Double // m
         public let date: Date
 
@@ -83,9 +83,9 @@ public struct RunningStrideLength {
     }
 }
 
-public struct StairSpeedDown {
+public struct StairSpeedDown: Sendable {
 
-    public struct Item {
+    public struct Item: Sendable {
         public let velocity: Double // m/s
         public let date: Date
 
@@ -102,9 +102,9 @@ public struct StairSpeedDown {
     }
 }
 
-public struct StairSpeedUp {
+public struct StairSpeedUp: Sendable {
 
-    public struct Item {
+    public struct Item: Sendable {
         public let velocity: Double // m/s
         public let date: Date
 
@@ -121,9 +121,9 @@ public struct StairSpeedUp {
     }
 }
 
-public struct VerticalOscillation {
+public struct VerticalOscillation: Sendable {
 
-    public struct Item {
+    public struct Item: Sendable {
         public let distance: Double // cm
         public let date: Date
 
@@ -140,9 +140,9 @@ public struct VerticalOscillation {
     }
 }
 
-public struct WalkingAsymmetry {
+public struct WalkingAsymmetry: Sendable {
 
-    public struct Item {
+    public struct Item: Sendable {
         public let percentage: Double
         public let date: Date
 
@@ -159,9 +159,9 @@ public struct WalkingAsymmetry {
     }
 }
 
-public struct WalkingSpeed {
+public struct WalkingSpeed: Sendable {
 
-    public struct Item {
+    public struct Item: Sendable {
         public let velocity: Double // km/h
         public let date: Date
 
@@ -178,9 +178,9 @@ public struct WalkingSpeed {
     }
 }
 
-public struct WalkingSteadiness {
+public struct WalkingSteadiness: Sendable {
 
-    public struct Item {
+    public struct Item: Sendable {
         public let percentage: Double
         public let date: Date
 
@@ -197,9 +197,9 @@ public struct WalkingSteadiness {
     }
 }
 
-public struct WalkingStepLength {
+public struct WalkingStepLength: Sendable {
 
-    public struct Item {
+    public struct Item: Sendable {
         public let distance: Double // cm
         public let date: Date
 

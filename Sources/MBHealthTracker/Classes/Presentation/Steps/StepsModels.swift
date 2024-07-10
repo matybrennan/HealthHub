@@ -7,9 +7,9 @@
 
 import Foundation
 
-public struct Steps {
-    
-    public struct Item {
+public struct Steps: Sendable {
+
+    public struct Item: Sendable {
         
         public let count: Double!
     }

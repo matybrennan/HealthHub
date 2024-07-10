@@ -23,9 +23,8 @@ public final class ConfigurationService: ConfigurationServiceProtocol {
         let shareTypes = MBHealthType.shareTypes(share)
         let readTypes = MBHealthType.readTypes(read)
         try await healthStore.requestAuthorization(toShare: shareTypes, read: readTypes)
-        print(Thread.current)
         await handler.updateState(.hasRequestedHealthKitInfo(true))
-        print(Thread.current)
+
     }
     
     public func navigateToHealthSettings() {

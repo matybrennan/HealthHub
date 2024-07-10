@@ -7,11 +7,11 @@
 
 import Foundation
 
-public struct Sleep {
-    
-    public struct Info {
+public struct Sleep: Sendable {
 
-        public enum Style: Int {
+    public struct Info: Sendable {
+
+        public enum Style: Int, Sendable {
             case inBed
             case asleep
             case awake

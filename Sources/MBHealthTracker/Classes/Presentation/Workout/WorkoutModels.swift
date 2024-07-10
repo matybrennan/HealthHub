@@ -8,10 +8,10 @@
 import Foundation
 import HealthKit
 
-public struct MBWorkout {
-    
-    public struct Item {
-        
+public struct MBWorkout: Sendable {
+
+    public struct Item: Sendable {
+
         public var duration: Double! // secs
         public var energyBurned: Double? // cals/kilocals
         public var distance: Double? // mi/km

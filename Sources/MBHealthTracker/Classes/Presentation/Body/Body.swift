@@ -7,9 +7,9 @@
 
 import Foundation
 
-public struct BasalBodyTemperature {
+public struct BasalBodyTemperature: Sendable {
 
-    public struct Item {
+    public struct Item: Sendable {
         public let celsius: Double
         public let fahrenheit: Double
         public let date: Date
@@ -28,9 +28,9 @@ public struct BasalBodyTemperature {
     }
 }
 
-public struct BodyWeight {
-    
-    public struct Item {
+public struct BodyWeight: Sendable {
+
+    public struct Item: Sendable {
         public let kg: Double
         public let lbs: Double
         public let date: Date
@@ -49,9 +49,9 @@ public struct BodyWeight {
     }
 }
 
-public struct LeanBodyMass {
-    
-    public struct Item {
+public struct LeanBodyMass: Sendable {
+
+    public struct Item: Sendable {
         public let kg: Double
         public let lbs: Double
         public let date: Date
@@ -70,9 +70,9 @@ public struct LeanBodyMass {
     }
 }
 
-public struct BodyHeight {
-    
-    public struct Item {
+public struct BodyHeight: Sendable {
+
+    public struct Item: Sendable {
         public let inches: Int
         public let cm: Int
         public let date: Date
@@ -91,9 +91,9 @@ public struct BodyHeight {
     }
 }
 
-public struct BodyFatPercentage {
+public struct BodyFatPercentage: Sendable {
 
-    public struct Item {
+    public struct Item: Sendable {
         public let percentage: Double
         public let date: Date
 
@@ -110,9 +110,9 @@ public struct BodyFatPercentage {
     }
 }
 
-public struct BodyMassIndex {
-    
-    public struct Item {
+public struct BodyMassIndex: Sendable {
+
+    public struct Item: Sendable {
         public let value: Double
         public let date: Date
 
@@ -129,9 +129,9 @@ public struct BodyMassIndex {
     }
 }
 
-public struct WaistCircumference {
-    
-    public struct Item {
+public struct WaistCircumference: Sendable {
+
+    public struct Item: Sendable {
         public let inches: Int
         public let cm: Int
         public let date: Date
@@ -150,9 +150,9 @@ public struct WaistCircumference {
     }
 }
 
-public struct ElectrodermalActivity {
-    
-    public struct Item {
+public struct ElectrodermalActivity: Sendable {
+
+    public struct Item: Sendable {
         public let value: Double
         public let date: Date
 
@@ -169,9 +169,9 @@ public struct ElectrodermalActivity {
     }
 }
 
-public struct WristTemperature {
+public struct WristTemperature: Sendable {
 
-    public struct Item {
+    public struct Item: Sendable {
         public let celsius: Double
         public let fahrenheit: Double
         public let date: Date

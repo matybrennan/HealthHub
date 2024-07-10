@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ActiveEnergy {
+public struct ActiveEnergy: Sendable {
     public let calories: Double
 
     public init(calories: Double) {

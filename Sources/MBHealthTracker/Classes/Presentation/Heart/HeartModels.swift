@@ -7,9 +7,9 @@
 
 import Foundation
 
-public struct HeartRate {
-    
-    public struct Item {
+public struct HeartRate: Sendable {
+
+    public struct Item: Sendable {
         let max: Double
         let min: Double
         let average: Double
@@ -30,7 +30,7 @@ public struct HeartRate {
 }
 
 extension HeartRate {
-    
+
     public var total: Double {
         items.reduce(0.0, { (res, item) -> Double in
             res + item.average
@@ -54,9 +54,9 @@ extension HeartRate {
     }
 }
 
-public struct CardioRecovery {
+public struct CardioRecovery: Sendable {
 
-    public struct Item {
+    public struct Item: Sendable {
         let bpm: Int
         let date: Date
 
@@ -73,9 +73,9 @@ public struct CardioRecovery {
     }
 }
 
-public struct AtrialFibrillationHistory {
+public struct AtrialFibrillationHistory: Sendable {
 
-    public struct Item {
+    public struct Item: Sendable {
         
         let percentage: Double
         let startDate: Date

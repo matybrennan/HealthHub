@@ -8,9 +8,9 @@
 import Foundation
 import HealthKit
 
-public struct Nutrition {
-    
-    public struct Info {
+public struct Nutrition: Sendable {
+
+    public struct Info: Sendable {
         public let value: Double
         public let unit: String
         public let date: Date

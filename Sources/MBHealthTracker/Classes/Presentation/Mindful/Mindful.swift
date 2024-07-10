@@ -7,9 +7,9 @@
 
 import Foundation
 
-public struct Mindful {
-    
-    public struct Info {
+public struct Mindful: Sendable {
+
+    public struct Info: Sendable {
         public let value: Int
         public let startDate: Date
         public let endDate: Date

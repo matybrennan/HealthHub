@@ -7,8 +7,9 @@
 
 import Foundation
 
-public protocol ActivityManagerProtocol: AnyObject {
-    
+@MainActor
+public protocol ActivityManagerProtocol: Sendable {
+
     var activeEnergy: ActiveEnergyServiceProtocol { get }
     var steps: StepsServiceProtocol { get }
     var workout: WorkoutManagerProtocol { get }

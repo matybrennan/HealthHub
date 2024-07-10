@@ -7,9 +7,9 @@
 
 import Foundation
 
-public struct AlcoholConsumption {
-    
-    public struct Item {
+public struct AlcoholConsumption: Sendable {
+
+    public struct Item: Sendable {
         public let drinks: Double
         public let date: Date
 
@@ -26,9 +26,9 @@ public struct AlcoholConsumption {
     }
 }
 
-public struct AlcoholContent {
-    
-    public struct Item {
+public struct AlcoholContent: Sendable {
+
+    public struct Item: Sendable {
         public let percentage: Double
         public let date: Date
 
@@ -45,9 +45,9 @@ public struct AlcoholContent {
     }
 }
 
-public struct HandWashing {
-    
-    public struct Item {
+public struct HandWashing: Sendable {
+
+    public struct Item: Sendable {
         public let startDate: Date
         public let endDate: Date
 
@@ -64,9 +64,9 @@ public struct HandWashing {
     }
 }
 
-public struct InhalerUsage {
-    
-    public struct Item {
+public struct InhalerUsage: Sendable {
+
+    public struct Item: Sendable {
         public let value: Int
         public let date: Date
 
@@ -83,11 +83,11 @@ public struct InhalerUsage {
     }
 }
 
-public struct InsulinDelivery {
-    
-    public struct Item {
-        
-        public enum Purpose: Int {
+public struct InsulinDelivery: Sendable {
+
+    public struct Item: Sendable {
+
+        public enum Purpose: Int, Sendable {
             case basal = 1
             case bolus
         }
@@ -112,9 +112,9 @@ public struct InsulinDelivery {
     }
 }
 
-public struct NumberOfTimesFallen {
-    
-    public struct Item {
+public struct NumberOfTimesFallen: Sendable {
+
+    public struct Item: Sendable {
         public let value: Int
         public let date: Date
 
@@ -131,9 +131,9 @@ public struct NumberOfTimesFallen {
     }
 }
 
-public struct ToothBrushing {
-    
-    public struct Item {
+public struct ToothBrushing: Sendable {
+
+    public struct Item: Sendable {
         public let startDate: Date
         public let endDate: Date
 
@@ -150,9 +150,9 @@ public struct ToothBrushing {
     }
 }
 
-public struct UVExposure {
-    
-    public struct Item {
+public struct UVExposure: Sendable {
+
+    public struct Item: Sendable {
         public let value: Int
         public let startDate: Date
         public let endDate: Date
@@ -171,9 +171,9 @@ public struct UVExposure {
     }
 }
 
-public struct TimeInDaylight {
+public struct TimeInDaylight: Sendable {
 
-    public struct Item {
+    public struct Item: Sendable {
         public let startDate: Date
         public let endDate: Date
 
@@ -190,9 +190,9 @@ public struct TimeInDaylight {
     }
 }
 
-public struct WaterTemperature {
-    
-    public struct Item {
+public struct WaterTemperature: Sendable {
+
+    public struct Item: Sendable {
         public let celsius: Double
         public let fahrenheit: Double
         public let date: Date

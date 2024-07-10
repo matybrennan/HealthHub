@@ -7,8 +7,9 @@
 
 import Foundation
 
-public protocol MBHealthTrackerProtocol: AnyObject {
-    
+@MainActor
+public protocol MBHealthTrackerProtocol {
+
     var configuration: ConfigurationServiceProtocol { get }
     
     var activityManager: ActivityManagerProtocol { get }

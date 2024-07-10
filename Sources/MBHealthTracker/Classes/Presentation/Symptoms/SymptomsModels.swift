@@ -8,11 +8,11 @@
 import Foundation
 import HealthKit
 
-public struct GenericSymptomModel {
-    
-    public struct Item {
-        
-        public enum Style: Int {
+public struct GenericSymptomModel: Sendable {
+
+    public struct Item: Sendable {
+
+        public enum Style: Int, Sendable {
             case present = 0
             case notPresent
             case mild
@@ -50,11 +50,11 @@ public struct GenericSymptomModel {
     }
 }
 
-public struct AppetiteChanges {
-    
-    public struct Item {
-        
-        public enum AppetiteChangesType: Int {
+public struct AppetiteChanges: Sendable {
+
+    public struct Item: Sendable {
+
+        public enum AppetiteChangesType: Int, Sendable{
             case present = 0
             case noChange
             case decreased
