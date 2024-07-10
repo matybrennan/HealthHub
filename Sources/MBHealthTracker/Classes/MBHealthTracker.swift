@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 @MainActor
-final class MBHealthTracker: ObservableObject, Sendable {
+public final class MBHealthTracker: ObservableObject, Sendable {
 
     public lazy var mbHealthHandler = MBHealthHandler()
     
