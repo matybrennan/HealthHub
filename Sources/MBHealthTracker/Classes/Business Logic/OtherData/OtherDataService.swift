@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-public class OtherDataService {
+public final class OtherDataService {
     
     public init() { }
 }

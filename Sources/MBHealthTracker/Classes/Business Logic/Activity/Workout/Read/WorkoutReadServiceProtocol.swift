@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import HealthKit
 
 public enum WorkoutType {
     
@@ -15,7 +14,8 @@ public enum WorkoutType {
     case all
 }
 
-public protocol WorkoutReadServiceProtocol {
-    
+@MainActor
+public protocol WorkoutReadServiceProtocol: Sendable {
+
     func workouts(fromWorkoutType type: WorkoutType) async throws -> MBWorkout
 }

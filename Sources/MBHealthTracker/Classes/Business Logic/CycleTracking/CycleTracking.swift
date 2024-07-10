@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-public class CycleTracking {
+public final class CycleTracking {
     
     public init() { }
 }

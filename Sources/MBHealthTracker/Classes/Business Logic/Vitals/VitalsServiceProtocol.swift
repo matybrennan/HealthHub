@@ -7,8 +7,9 @@
 
 import Foundation
 
-public protocol VitalsServiceProtocol: AnyObject {
-    
+@MainActor
+public protocol VitalsServiceProtocol: Sendable {
+
     // Fetch
     func bloodGlucose() async throws -> BloodGlucose
     func bloodOxygen() async throws -> BloodOxygen

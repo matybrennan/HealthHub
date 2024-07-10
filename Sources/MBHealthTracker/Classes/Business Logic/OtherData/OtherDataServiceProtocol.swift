@@ -7,8 +7,9 @@
 
 import Foundation
 
-public protocol OtherDataServiceProtocol: AnyObject {
-    
+@MainActor
+public protocol OtherDataServiceProtocol: Sendable {
+
     // Fetch
     func alcoholConsumption() async throws -> AlcoholConsumption
     func bloodAlcoholContent() async throws -> AlcoholContent

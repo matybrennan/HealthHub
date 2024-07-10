@@ -8,8 +8,8 @@
 import Foundation
 import HealthKit
 
-public class NutritionService {
-    
+public final class NutritionService {
+
     public init() { }
 }
 
@@ -44,5 +44,3 @@ extension NutritionService: NutritionServiceProtocol {
         try await healthStore.save(nutritionObjects)
     }
 }
-
-

@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-public class WorkoutWriteService {
+public final class WorkoutWriteService {
     
     public init() { }
     

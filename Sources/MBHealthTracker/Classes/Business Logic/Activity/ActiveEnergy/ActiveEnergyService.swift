@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-public class ActiveEnergyService {
+public final class ActiveEnergyService {
     
     public init() { }
 }

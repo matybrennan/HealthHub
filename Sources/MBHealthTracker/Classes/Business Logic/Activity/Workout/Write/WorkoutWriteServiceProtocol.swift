@@ -6,9 +6,9 @@
 //
 
 import Foundation
-import HealthKit
 
-public protocol WorkoutWriteServiceProtocol {
-    
+@MainActor
+public protocol WorkoutWriteServiceProtocol: Sendable {
+
     func saveWorkout(workout: MBWorkout.Item, extra: [String: Any]?) async throws
 }

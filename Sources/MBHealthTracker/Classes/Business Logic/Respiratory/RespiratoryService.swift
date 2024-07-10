@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-public class RespiratoryService {
+public final class RespiratoryService {
     
     public init() { }
 }

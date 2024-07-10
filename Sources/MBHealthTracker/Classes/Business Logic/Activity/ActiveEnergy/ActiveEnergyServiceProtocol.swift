@@ -14,7 +14,7 @@ public enum ActiveEnergyType {
 }
 
 @MainActor
-public protocol ActiveEnergyServiceProtocol: AnyObject, Sendable {
+public protocol ActiveEnergyServiceProtocol: Sendable {
     
     func activeEnergy(from type: ActiveEnergyType) async throws -> ActiveEnergy
 }

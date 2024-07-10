@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-public class BodyMeasurementsService {
+public final class BodyMeasurementsService {
     
     public init() { }
 }

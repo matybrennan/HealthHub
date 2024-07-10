@@ -8,8 +8,8 @@
 import Foundation
 import HealthKit
 
-public class StepsService {
-    
+public final class StepsService {
+
     struct StepsConfig {
         static let oneHour: TimeInterval = 3600
         static let stepsCount = "count"

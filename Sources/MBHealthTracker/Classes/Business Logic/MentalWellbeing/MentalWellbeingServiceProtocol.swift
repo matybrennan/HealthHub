@@ -7,8 +7,9 @@
 
 import Foundation
 
-public protocol MentalWellbeingServiceProtocol: AnyObject {
-    
+@MainActor
+public protocol MentalWellbeingServiceProtocol: Sendable {
+
     // Fetch
     func mindfulActivity() async throws -> Mindful
     func sleep() async throws -> Sleep

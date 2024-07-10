@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-public class MentalWellbeingService {
+public final class MentalWellbeingService {
     
     public init() { }
 }

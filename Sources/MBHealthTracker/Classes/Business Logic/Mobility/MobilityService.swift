@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-public class MobilityService {
+public final class MobilityService {
 
     public init() { }
 }

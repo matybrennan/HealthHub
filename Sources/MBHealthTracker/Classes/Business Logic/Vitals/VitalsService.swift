@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-public class VitalsService {
+public final class VitalsService {
     
     public init() { }
 }

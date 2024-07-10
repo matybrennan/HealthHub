@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-public class SleepService {
+public final class SleepService {
     
     public init() { }
 }

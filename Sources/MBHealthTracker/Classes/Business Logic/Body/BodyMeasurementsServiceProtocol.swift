@@ -7,8 +7,9 @@
 
 import Foundation
 
-public protocol BodyMeasurementsServiceProtocol: AnyObject {
-    
+@MainActor
+public protocol BodyMeasurementsServiceProtocol: Sendable {
+
     // Fetch
     func basalBodyTemperature() async throws -> BasalBodyTemperature
     func bodyFatPercentage() async throws -> BodyFatPercentage

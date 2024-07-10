@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-public class CharacteristicService {
+public final class CharacteristicService {
     
     public init() { }
 }

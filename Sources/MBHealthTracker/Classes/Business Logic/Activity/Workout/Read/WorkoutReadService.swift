@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-public class WorkoutReadService {
+public final class WorkoutReadService {
     
     struct Unit {
         static let workoutEnergy = HKUnit.smallCalorie()

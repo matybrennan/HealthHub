@@ -8,7 +8,8 @@
 import Foundation
 import HealthKit
 
-public protocol SymptomsServiceProtocol: AnyObject {
+@MainActor
+public protocol SymptomsServiceProtocol: Sendable {
 
     // Fetch
     func symptom(type: SymptomType) async throws -> GenericSymptomModel

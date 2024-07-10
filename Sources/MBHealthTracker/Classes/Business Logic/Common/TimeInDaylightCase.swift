@@ -6,8 +6,9 @@
 //
 
 import Foundation
-import HealthKit
+@preconcurrency import HealthKit
 
+@MainActor
 protocol TimeInDaylightCase: FetchQuantitySample { }
 
 extension TimeInDaylightCase {

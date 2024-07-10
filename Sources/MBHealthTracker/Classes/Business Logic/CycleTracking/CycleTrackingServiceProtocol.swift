@@ -7,8 +7,9 @@
 
 import Foundation
 
-public protocol CycleTrackingProtocol: AnyObject {
-    
+@MainActor
+public protocol CycleTrackingProtocol: Sendable {
+
     // Fetch
     func abdominalCramps() async throws -> GenericSymptomModel
     func bloating() async throws -> GenericSymptomModel

@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor
-public protocol MBHealthTrackerProtocol {
+public protocol MBHealthTrackerProtocol: Sendable {
 
     var configuration: ConfigurationServiceProtocol { get }
     
