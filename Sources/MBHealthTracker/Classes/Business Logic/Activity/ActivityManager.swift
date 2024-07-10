@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor
-public final class ActivityManager: Sendable {
+public final class ActivityManager {
 
     public init() { }
     
