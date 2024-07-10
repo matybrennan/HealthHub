@@ -61,7 +61,7 @@ let myService = MyService(configuration: configuration)
 ### Handlers - These can only be accessed directly from ```MBHealthTracker```
 ```
 let tracker = MBHealthTracker()
-tracker.mbHealthHandler.state = .idle
+tracker.mbHealthHandler.updateState(.idle)
 tracker.mbHealthHandler.$state.sink { state in ... }
 mbHealthHandler = MBHealthHandler()
 ```

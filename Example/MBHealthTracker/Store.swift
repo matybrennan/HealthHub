@@ -10,17 +10,16 @@ import Foundation
 import MBHealthTracker
 import Combine
 
+@MainActor
 final class Store: ObservableObject {
     
     private let healthTracker: MBHealthTracker
     private var cancellables = [AnyCancellable]()
 
-    init(healthTracker: MBHealthTracker = MBHealthTracker()) {
+    init(healthTracker: MBHealthTracker = MBHealthTracker()) async {
         self.healthTracker = healthTracker
         
-        Task {
-            await configure()
-        }
+        await configure()
     }
 
     func configure() async {
