@@ -16,7 +16,7 @@ public protocol MentalWellbeingServiceProtocol: Sendable {
     func timeInDaylight() async throws -> TimeInDaylight
 
     // Save
-    func save(mindful: Mindful, extra: [String : Any]?) async throws
-    func save(model: Sleep, extra: [String : Any]?) async throws
-    func saveTimeInDaylight(model: TimeInDaylight, extra: [String: Any]?) async throws
+    func save(mindful: Mindful, extra: [String: Sendable]?) async throws
+    func save(model: Sleep, extra: [String: Sendable]?) async throws
+    func saveTimeInDaylight(model: TimeInDaylight, extra: [String: Sendable]?) async throws
 }

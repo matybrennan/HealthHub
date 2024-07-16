@@ -23,7 +23,7 @@ extension SleepService: SleepServiceProtocol {
         try await baseSleep()
     }
     
-    public func save(model: Sleep, extra: [String : Any]?) async throws {
+    public func save(model: Sleep, extra: [String: Sendable]?) async throws {
         try await baseSaveSleep(model: model, extra: extra)
     }
 }

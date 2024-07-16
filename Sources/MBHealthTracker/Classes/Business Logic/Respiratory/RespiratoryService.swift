@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import HealthKit
+@preconcurrency import HealthKit
 
 public final class RespiratoryService {
     
@@ -70,11 +70,11 @@ extension RespiratoryService: RespiratoryServiceProtocol {
 
      // MARK: Saving
 
-    public func saveBloodOxygen(model: BloodOxygen, extra: [String : Any]?) async throws {
+    public func saveBloodOxygen(model: BloodOxygen, extra: [String: Sendable]?) async throws {
         try await saveBaseBloodOxygen(model: model, extra: extra)
     }
 
-    public func saveForcedExpiratoryVolume(model: ForcedExpiratoryVolume, extra: [String : Any]?) async throws {
+    public func saveForcedExpiratoryVolume(model: ForcedExpiratoryVolume, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .forcedExpiratoryVolume1)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -86,7 +86,7 @@ extension RespiratoryService: RespiratoryServiceProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveForcedVitalCapacity(model: ForcedVitalCapacity, extra: [String : Any]?) async throws {
+    public func saveForcedVitalCapacity(model: ForcedVitalCapacity, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .forcedVitalCapacity)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -98,11 +98,11 @@ extension RespiratoryService: RespiratoryServiceProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveInhalerUsage(model: InhalerUsage, extra: [String : Any]?) async throws {
+    public func saveInhalerUsage(model: InhalerUsage, extra: [String: Sendable]?) async throws {
         try await saveBaseInhalerUsage(model: model, extra: extra)
     }
 
-    public func savePeakExpiratoryFlowRate(model: PeakExpiratoryFlowRate, extra: [String : Any]?) async throws {
+    public func savePeakExpiratoryFlowRate(model: PeakExpiratoryFlowRate, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .peakExpiratoryFlowRate)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -115,11 +115,11 @@ extension RespiratoryService: RespiratoryServiceProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveRespiratoryRate(model: RespiratoryRate, extra: [String : Any]?) async throws {
+    public func saveRespiratoryRate(model: RespiratoryRate, extra: [String: Sendable]?) async throws {
         try await saveBaseRespiratoryRate(model: model, extra: extra)
     }
 
-    public func saveSixMinuteWalk(model: SixMinuteWalk, extra: [String : Any]?) async throws {
+    public func saveSixMinuteWalk(model: SixMinuteWalk, extra: [String: Sendable]?) async throws {
         try await saveBaseSixMinuteWalk(model, extra: extra)
     }
 }

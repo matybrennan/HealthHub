@@ -31,7 +31,7 @@ extension BloodPressureCase {
         return model
     }
 
-    func baseSaveBloodPressure(model: BloodPressure, extra: [String : Any]?) async throws {
+    func baseSaveBloodPressure(model: BloodPressure, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(correlationIdentifier: .bloodPressure)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 

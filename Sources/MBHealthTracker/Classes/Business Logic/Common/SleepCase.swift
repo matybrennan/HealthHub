@@ -24,7 +24,7 @@ extension SleepCase {
         return vm
     }
 
-    func baseSaveSleep(model: Sleep, extra: [String : Any]?) async throws {
+    func baseSaveSleep(model: Sleep, extra: [String: Sendable]?) async throws {
         let sleepType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .sleepAnalysis)
         try MBHealthParser.checkSharingAuthorizationStatus(for: sleepType)
 

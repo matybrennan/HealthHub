@@ -20,11 +20,11 @@ public protocol RespiratoryServiceProtocol: Sendable {
     func sixMinuteWalk()  async throws -> SixMinuteWalk
 
     // Save
-    func saveBloodOxygen(model: BloodOxygen, extra: [String : Any]?) async throws
-    func saveForcedExpiratoryVolume(model: ForcedExpiratoryVolume, extra: [String : Any]?) async throws
-    func saveForcedVitalCapacity(model: ForcedVitalCapacity, extra: [String : Any]?) async throws
-    func saveInhalerUsage(model: InhalerUsage, extra: [String : Any]?) async throws
-    func savePeakExpiratoryFlowRate(model: PeakExpiratoryFlowRate, extra: [String : Any]?) async throws
-    func saveRespiratoryRate(model: RespiratoryRate, extra: [String : Any]?) async throws
-    func saveSixMinuteWalk(model: SixMinuteWalk, extra: [String : Any]?)  async throws
+    func saveBloodOxygen(model: BloodOxygen, extra: [String: Sendable]?) async throws
+    func saveForcedExpiratoryVolume(model: ForcedExpiratoryVolume, extra: [String: Sendable]?) async throws
+    func saveForcedVitalCapacity(model: ForcedVitalCapacity, extra: [String: Sendable]?) async throws
+    func saveInhalerUsage(model: InhalerUsage, extra: [String: Sendable]?) async throws
+    func savePeakExpiratoryFlowRate(model: PeakExpiratoryFlowRate, extra: [String: Sendable]?) async throws
+    func saveRespiratoryRate(model: RespiratoryRate, extra: [String: Sendable]?) async throws
+    func saveSixMinuteWalk(model: SixMinuteWalk, extra: [String: Sendable]?)  async throws
 }

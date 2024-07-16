@@ -142,11 +142,11 @@ extension MobilityService: MobilityServiceProtocol {
 
     // MARK: Saving
 
-    public func saveCardioFitness(model: CardioFitness, extra: [String : Any]?) async throws {
+    public func saveCardioFitness(model: CardioFitness, extra: [String: Sendable]?) async throws {
         try await saveBaseCardioFitness(model, extra: extra)
     }
 
-    public func saveDoubleSupportTime(model: DoubleSupportTime, extra: [String : Any]?) async throws {
+    public func saveDoubleSupportTime(model: DoubleSupportTime, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .walkingDoubleSupportPercentage)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -158,7 +158,7 @@ extension MobilityService: MobilityServiceProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveGroundContactTime(model: GroundContactTime, extra: [String : Any]?) async throws {
+    public func saveGroundContactTime(model: GroundContactTime, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .runningGroundContactTime)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -171,7 +171,7 @@ extension MobilityService: MobilityServiceProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveRunningStrideLength(model: RunningStrideLength, extra: [String : Any]?) async throws {
+    public func saveRunningStrideLength(model: RunningStrideLength, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .runningStrideLength)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -183,11 +183,11 @@ extension MobilityService: MobilityServiceProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveSixMinuteWalk(model: SixMinuteWalk, extra: [String : Any]?) async throws {
+    public func saveSixMinuteWalk(model: SixMinuteWalk, extra: [String: Sendable]?) async throws {
         try await saveBaseSixMinuteWalk(model, extra: extra)
     }
 
-    public func saveStairSpeedDown(model: StairSpeedDown, extra: [String : Any]?) async throws {
+    public func saveStairSpeedDown(model: StairSpeedDown, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .stairDescentSpeed)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -200,7 +200,7 @@ extension MobilityService: MobilityServiceProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveStairSpeedUp(model: StairSpeedUp, extra: [String : Any]?) async throws {
+    public func saveStairSpeedUp(model: StairSpeedUp, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .stairAscentSpeed)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -213,7 +213,7 @@ extension MobilityService: MobilityServiceProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveVerticalOscillation(model: VerticalOscillation, extra: [String : Any]?) async throws {
+    public func saveVerticalOscillation(model: VerticalOscillation, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .runningVerticalOscillation)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -226,7 +226,7 @@ extension MobilityService: MobilityServiceProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveWalkingSpeed(model: WalkingSpeed, extra: [String : Any]?) async throws {
+    public func saveWalkingSpeed(model: WalkingSpeed, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .walkingSpeed)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -239,7 +239,7 @@ extension MobilityService: MobilityServiceProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveWalkingStepLength(model: WalkingStepLength, extra: [String : Any]?) async throws {
+    public func saveWalkingStepLength(model: WalkingStepLength, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .walkingStepLength)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 

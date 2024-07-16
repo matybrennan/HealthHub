@@ -32,7 +32,7 @@ extension NutritionService: NutritionServiceProtocol {
         return vm
     }
     
-    public func save(model: Nutrition, extra: [String : Any]?) async throws {
+    public func save(model: Nutrition, extra: [String: Sendable]?) async throws {
         let nutritionType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: HKQuantityTypeIdentifier(rawValue: model.type.identifier))
         try MBHealthParser.checkSharingAuthorizationStatus(for: model.type)
 

@@ -30,7 +30,7 @@ extension WorkoutManager: WorkoutManagerProtocol {
     
     // MARK: Write Service
     
-    public func saveWorkout(workout: MBWorkout.Item, extra: [String : Any]?) async throws {
+    public func saveWorkout(workout: MBWorkout.Item, extra: [String: Sendable]?) async throws {
         try await workoutWriteService.saveWorkout(workout: workout, extra: extra)
     }
 }

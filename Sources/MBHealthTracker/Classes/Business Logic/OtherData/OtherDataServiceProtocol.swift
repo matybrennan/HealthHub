@@ -25,16 +25,16 @@ public protocol OtherDataServiceProtocol: Sendable {
     func waterTemperature() async throws -> WaterTemperature
 
     // Save
-    func saveAlcoholConsumption(model: AlcoholConsumption, extra: [String: Any]?) async throws
-    func saveBloodAlcoholContent(model: AlcoholContent, extra: [String: Any]?) async throws
-    func saveBloodGlucose(model: BloodGlucose, extra: [String: Any]?) async throws
-    func saveHandWashing(model: HandWashing, extra: [String: Any]?) async throws
-    func saveInhalerUsage(model: InhalerUsage, extra: [String: Any]?) async throws
-    func saveInsulinDelivery(model: InsulinDelivery, extra: [String: Any]?) async throws
-    func saveNumberOfTimesFallen(model: NumberOfTimesFallen, extra: [String: Any]?) async throws
-    func saveSexualActivity(model: SexualActivity, extra: [String: Any]?) async throws
-    func saveToothBrushing(model: ToothBrushing, extra: [String: Any]?) async throws
-    func saveTimeInDaylight(model: TimeInDaylight, extra: [String: Any]?) async throws
-    func saveUvExposure(model: UVExposure, extra: [String: Any]?) async throws
-    func saveWaterTemperature(model: WaterTemperature, extra: [String: Any]?) async throws
+    func saveAlcoholConsumption(model: AlcoholConsumption, extra: [String: Sendable]?) async throws
+    func saveBloodAlcoholContent(model: AlcoholContent, extra: [String: Sendable]?) async throws
+    func saveBloodGlucose(model: BloodGlucose, extra: [String: Sendable]?) async throws
+    func saveHandWashing(model: HandWashing, extra: [String: Sendable]?) async throws
+    func saveInhalerUsage(model: InhalerUsage, extra: [String: Sendable]?) async throws
+    func saveInsulinDelivery(model: InsulinDelivery, extra: [String: Sendable]?) async throws
+    func saveNumberOfTimesFallen(model: NumberOfTimesFallen, extra: [String: Sendable]?) async throws
+    func saveSexualActivity(model: SexualActivity, extra: [String: Sendable]?) async throws
+    func saveToothBrushing(model: ToothBrushing, extra: [String: Sendable]?) async throws
+    func saveTimeInDaylight(model: TimeInDaylight, extra: [String: Sendable]?) async throws
+    func saveUvExposure(model: UVExposure, extra: [String: Sendable]?) async throws
+    func saveWaterTemperature(model: WaterTemperature, extra: [String: Sendable]?) async throws
 }

@@ -23,13 +23,13 @@ public protocol BodyMeasurementsServiceProtocol: Sendable {
     func wristTemperature() async throws -> WristTemperature // Cant save prohibited in healthkit
 
     // Save
-    func saveBasalBodyTemperature(model: BasalBodyTemperature, extra: [String : Any]?) async throws
-    func saveBodyFatPercentage(model: BodyFatPercentage, extra: [String : Any]?) async throws
-    func saveBodyMassIndex(model: BodyMassIndex, extra: [String : Any]?) async throws
-    func saveBodyTemperature(model: BodyTemperature, extra: [String : Any]?) async throws
-    func saveElectrodermalActivity(model: ElectrodermalActivity, extra: [String : Any]?) async throws
-    func saveHeight(model: BodyHeight, extra: [String : Any]?) async throws
-    func saveLeanBodyMass(model: LeanBodyMass, extra: [String : Any]?) async throws
-    func saveWaistCircumference(model: WaistCircumference, extra: [String : Any]?) async throws
-    func saveWeight(model: BodyWeight, extra: [String : Any]?) async throws
+    func saveBasalBodyTemperature(model: BasalBodyTemperature, extra: [String: Sendable]?) async throws
+    func saveBodyFatPercentage(model: BodyFatPercentage, extra: [String: Sendable]?) async throws
+    func saveBodyMassIndex(model: BodyMassIndex, extra: [String: Sendable]?) async throws
+    func saveBodyTemperature(model: BodyTemperature, extra: [String: Sendable]?) async throws
+    func saveElectrodermalActivity(model: ElectrodermalActivity, extra: [String: Sendable]?) async throws
+    func saveHeight(model: BodyHeight, extra: [String: Sendable]?) async throws
+    func saveLeanBodyMass(model: LeanBodyMass, extra: [String: Sendable]?) async throws
+    func saveWaistCircumference(model: WaistCircumference, extra: [String: Sendable]?) async throws
+    func saveWeight(model: BodyWeight, extra: [String: Sendable]?) async throws
 }

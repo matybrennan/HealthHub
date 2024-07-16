@@ -10,7 +10,7 @@ import HealthKit
 
 @MainActor
 public protocol WorkoutManagerWriteProtocol: Sendable {
-    func saveWorkout(workout: MBWorkout.Item, extra: [String: Any]?) async throws
+    func saveWorkout(workout: MBWorkout.Item, extra: [String: Sendable]?) async throws
 }
 
 @MainActor

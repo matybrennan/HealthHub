@@ -19,11 +19,11 @@ public protocol VitalsServiceProtocol: Sendable {
     func respiratoryRate() async throws -> RespiratoryRate
 
     // Save
-    func saveBloodGlucose(model: BloodGlucose, extra: [String : Any]?) async throws
-    func saveBloodOxygen(model: BloodOxygen, extra: [String : Any]?) async throws
-    func saveBloodPressure(model: BloodPressure, extra: [String : Any]?) async throws
-    func saveBodyTemperature(model: BodyTemperature, extra: [String : Any]?) async throws
-    func saveMenstruation(model: Menstruation, extra: [String : Any]?) async throws
-    func saveRespiratoryRate(model: RespiratoryRate, extra: [String : Any]?) async throws
+    func saveBloodGlucose(model: BloodGlucose, extra: [String: Sendable]?) async throws
+    func saveBloodOxygen(model: BloodOxygen, extra: [String: Sendable]?) async throws
+    func saveBloodPressure(model: BloodPressure, extra: [String: Sendable]?) async throws
+    func saveBodyTemperature(model: BodyTemperature, extra: [String: Sendable]?) async throws
+    func saveMenstruation(model: Menstruation, extra: [String: Sendable]?) async throws
+    func saveRespiratoryRate(model: RespiratoryRate, extra: [String: Sendable]?) async throws
 }
 

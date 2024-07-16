@@ -16,7 +16,7 @@ public final class WorkoutWriteService {
 
 extension WorkoutWriteService: WorkoutWriteServiceProtocol {
     
-    public func saveWorkout(workout: MBWorkout.Item, extra: [String: Any]?) async throws {
+    public func saveWorkout(workout: MBWorkout.Item, extra: [String: Sendable]?) async throws {
         
         let workoutType = try MBHealthParser.workoutTypeAndCheckIfAvailable()
         try MBHealthParser.checkSharingAuthorizationStatus(for: workoutType)

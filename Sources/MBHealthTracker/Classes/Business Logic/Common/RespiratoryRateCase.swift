@@ -24,7 +24,7 @@ extension RespiratoryRateCase {
         return model
     }
 
-    func saveBaseRespiratoryRate(model: RespiratoryRate, extra: [String : Any]?) async throws {
+    func saveBaseRespiratoryRate(model: RespiratoryRate, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .respiratoryRate)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 

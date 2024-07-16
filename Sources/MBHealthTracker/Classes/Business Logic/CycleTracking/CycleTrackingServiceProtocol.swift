@@ -25,16 +25,16 @@ public protocol CycleTrackingProtocol: Sendable {
     func vaginalDryness() async throws -> GenericSymptomModel
 
     // Save
-    func saveAbdominalCramps(model: GenericSymptomModel, extra: [String : Any]?) async throws
-    func saveBloating(model: GenericSymptomModel, extra: [String : Any]?) async throws
-    func saveBreastPain(model: GenericSymptomModel, extra: [String : Any]?) async throws
-    func saveCervicalMucusQuality(model: CervicalMucusQuality, extra: [String : Any]?) async throws
-    func saveMenstruation(model: Menstruation, extra: [String : Any]?) async throws
-    func saveMoodChanges(model: GenericSymptomModel, extra: [String : Any]?) async throws
-    func saveOvulation(model: Ovulation, extra: [String : Any]?) async throws
-    func savePregnancyTestResult(model: PregnancyTestResult, extra: [String : Any]?) async throws
-    func saveProgesteroneTestResult(model: ProgesteroneTestResult, extra: [String : Any]?) async throws
-    func saveSexualActivity(model: SexualActivity, extra: [String : Any]?) async throws
-    func saveSpotting(model: Spotting, extra: [String : Any]?) async throws
-    func saveVaginalDryness(model: GenericSymptomModel, extra: [String : Any]?) async throws
+    func saveAbdominalCramps(model: GenericSymptomModel, extra: [String: Sendable]?) async throws
+    func saveBloating(model: GenericSymptomModel, extra: [String: Sendable]?) async throws
+    func saveBreastPain(model: GenericSymptomModel, extra: [String: Sendable]?) async throws
+    func saveCervicalMucusQuality(model: CervicalMucusQuality, extra: [String: Sendable]?) async throws
+    func saveMenstruation(model: Menstruation, extra: [String: Sendable]?) async throws
+    func saveMoodChanges(model: GenericSymptomModel, extra: [String: Sendable]?) async throws
+    func saveOvulation(model: Ovulation, extra: [String: Sendable]?) async throws
+    func savePregnancyTestResult(model: PregnancyTestResult, extra: [String: Sendable]?) async throws
+    func saveProgesteroneTestResult(model: ProgesteroneTestResult, extra: [String: Sendable]?) async throws
+    func saveSexualActivity(model: SexualActivity, extra: [String: Sendable]?) async throws
+    func saveSpotting(model: Spotting, extra: [String: Sendable]?) async throws
+    func saveVaginalDryness(model: GenericSymptomModel, extra: [String: Sendable]?) async throws
 }

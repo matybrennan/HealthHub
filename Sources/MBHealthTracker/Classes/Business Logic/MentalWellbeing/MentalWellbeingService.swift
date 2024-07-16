@@ -39,7 +39,7 @@ extension MentalWellbeingService: MentalWellbeingServiceProtocol {
 
     // MARK: - Saving
 
-    public func save(mindful: Mindful, extra: [String : Any]?) async throws {
+    public func save(mindful: Mindful, extra: [String: Sendable]?) async throws {
         let mindfulType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .mindfulSession)
         try MBHealthParser.checkSharingAuthorizationStatus(for: mindfulType)
         let sampleObjects = mindful.items.map {
@@ -49,11 +49,11 @@ extension MentalWellbeingService: MentalWellbeingServiceProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func save(model: Sleep, extra: [String : Any]?) async throws {
+    public func save(model: Sleep, extra: [String: Sendable]?) async throws {
         try await baseSaveSleep(model: model, extra: extra)
     }
 
-    public func saveTimeInDaylight(model: TimeInDaylight, extra: [String : Any]?) async throws {
+    public func saveTimeInDaylight(model: TimeInDaylight, extra: [String: Sendable]?) async throws {
         try await baseSaveTimeInDaylight(model: model, extra: extra)
     }
 }

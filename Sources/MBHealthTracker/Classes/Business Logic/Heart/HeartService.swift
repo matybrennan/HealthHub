@@ -149,15 +149,15 @@ extension HeartService: HeartServiceProtocol {
 
     // MARK: - Save
 
-    public func saveBloodPressure(model: BloodPressure, extra: [String : Any]?) async throws {
+    public func saveBloodPressure(model: BloodPressure, extra: [String: Sendable]?) async throws {
         try await baseSaveBloodPressure(model: model, extra: extra)
     }
     
-    public func saveCardioFitness(model: CardioFitness, extra: [String : Any]?) async throws {
+    public func saveCardioFitness(model: CardioFitness, extra: [String: Sendable]?) async throws {
         try await saveBaseCardioFitness(model, extra: extra)
     }
 
-    public func saveCardioRecovery(model: CardioRecovery, extra: [String : Any]?) async throws {
+    public func saveCardioRecovery(model: CardioRecovery, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .heartRateRecoveryOneMinute)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 

@@ -10,5 +10,5 @@ import Foundation
 @MainActor
 public protocol WorkoutWriteServiceProtocol: Sendable {
 
-    func saveWorkout(workout: MBWorkout.Item, extra: [String: Any]?) async throws
+    func saveWorkout(workout: MBWorkout.Item, extra: [String: Sendable]?) async throws
 }

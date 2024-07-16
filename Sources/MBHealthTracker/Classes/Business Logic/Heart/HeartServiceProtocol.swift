@@ -32,7 +32,7 @@ public protocol HeartServiceProtocol: Sendable {
     func heartRate(fromHeartRateType type: HeartRateType, completionHandler: @escaping (MBAsyncCallResult<HeartRate>) -> Void) throws
 
     // Save
-    func saveBloodPressure(model: BloodPressure, extra: [String : Any]?) async throws
-    func saveCardioFitness(model: CardioFitness, extra: [String : Any]?) async throws
-    func saveCardioRecovery(model: CardioRecovery, extra: [String : Any]?) async throws 
+    func saveBloodPressure(model: BloodPressure, extra: [String: Sendable]?) async throws
+    func saveCardioFitness(model: CardioFitness, extra: [String: Sendable]?) async throws
+    func saveCardioRecovery(model: CardioRecovery, extra: [String: Sendable]?) async throws 
 }

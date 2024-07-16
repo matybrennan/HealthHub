@@ -45,27 +45,27 @@ extension VitalsService: VitalsServiceProtocol {
 
     // MARK: - Saving
 
-    public func saveBloodGlucose(model: BloodGlucose, extra: [String : Any]?) async throws {
+    public func saveBloodGlucose(model: BloodGlucose, extra: [String: Sendable]?) async throws {
         try await saveBaseBloodGlucose(model: model, extra: extra)
     }
 
-    public func saveBloodOxygen(model: BloodOxygen, extra: [String : Any]?) async throws {
+    public func saveBloodOxygen(model: BloodOxygen, extra: [String: Sendable]?) async throws {
         try await saveBaseBloodOxygen(model: model, extra: extra)
     }
 
-    public func saveBloodPressure(model: BloodPressure, extra: [String : Any]?) async throws {
+    public func saveBloodPressure(model: BloodPressure, extra: [String: Sendable]?) async throws {
         try await baseSaveBloodPressure(model: model, extra: extra)
     }
 
-    public func saveBodyTemperature(model: BodyTemperature, extra: [String : Any]?) async throws {
+    public func saveBodyTemperature(model: BodyTemperature, extra: [String: Sendable]?) async throws {
         try await saveBaseBodyTemperature(model: model, extra: extra)
     }
 
-    public func saveMenstruation(model: Menstruation, extra: [String : Any]?) async throws {
+    public func saveMenstruation(model: Menstruation, extra: [String: Sendable]?) async throws {
         try await saveBaseMenstruation(model, extra: extra)
     }
 
-    public func saveRespiratoryRate(model: RespiratoryRate, extra: [String : Any]?) async throws {
+    public func saveRespiratoryRate(model: RespiratoryRate, extra: [String: Sendable]?) async throws {
         try await saveBaseRespiratoryRate(model: model, extra: extra)
     }
 }

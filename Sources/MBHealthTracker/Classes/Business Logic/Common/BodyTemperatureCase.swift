@@ -27,7 +27,7 @@ extension BodyTemperatureCase {
         return model
     }
 
-    func saveBaseBodyTemperature(model: BodyTemperature, extra: [String : Any]?) async throws {
+    func saveBaseBodyTemperature(model: BodyTemperature, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyTemperature)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 

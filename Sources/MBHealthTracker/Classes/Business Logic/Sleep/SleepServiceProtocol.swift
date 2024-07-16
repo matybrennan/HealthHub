@@ -11,5 +11,5 @@ import Foundation
 public protocol SleepServiceProtocol: Sendable {
 
     func sleep() async throws -> Sleep
-    func save(model: Sleep, extra: [String : Any]?) async throws
+    func save(model: Sleep, extra: [String: Sendable]?) async throws
 }

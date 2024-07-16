@@ -24,7 +24,7 @@ extension AbdominalCrampsCase {
         return model
     }
 
-    func saveBaseAbdominalCramps(model: GenericSymptomModel, extra: [String : Any]?) async throws {
+    func saveBaseAbdominalCramps(model: GenericSymptomModel, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .abdominalCramps)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 

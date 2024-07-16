@@ -127,7 +127,7 @@ extension OtherDataService: OtherDataServiceProtocol {
 
     // MARK: Saving
 
-    public func saveAlcoholConsumption(model: AlcoholConsumption, extra: [String : Any]?) async throws {
+    public func saveAlcoholConsumption(model: AlcoholConsumption, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .numberOfAlcoholicBeverages)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -139,7 +139,7 @@ extension OtherDataService: OtherDataServiceProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveBloodAlcoholContent(model: AlcoholContent, extra: [String : Any]?) async throws {
+    public func saveBloodAlcoholContent(model: AlcoholContent, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bloodAlcoholContent)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -151,11 +151,11 @@ extension OtherDataService: OtherDataServiceProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveBloodGlucose(model: BloodGlucose, extra: [String : Any]?) async throws {
+    public func saveBloodGlucose(model: BloodGlucose, extra: [String: Sendable]?) async throws {
         try await saveBaseBloodGlucose(model: model, extra: extra)
     }
 
-    public func saveHandWashing(model: HandWashing, extra: [String : Any]?) async throws {
+    public func saveHandWashing(model: HandWashing, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .handwashingEvent)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -167,11 +167,11 @@ extension OtherDataService: OtherDataServiceProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveInhalerUsage(model: InhalerUsage, extra: [String : Any]?) async throws {
+    public func saveInhalerUsage(model: InhalerUsage, extra: [String: Sendable]?) async throws {
         try await saveBaseInhalerUsage(model: model, extra: extra)
     }
 
-    public func saveInsulinDelivery(model: InsulinDelivery, extra: [String : Any]?) async throws {
+    public func saveInsulinDelivery(model: InsulinDelivery, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .insulinDelivery)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -186,7 +186,7 @@ extension OtherDataService: OtherDataServiceProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveNumberOfTimesFallen(model: NumberOfTimesFallen, extra: [String : Any]?) async throws {
+    public func saveNumberOfTimesFallen(model: NumberOfTimesFallen, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .numberOfTimesFallen)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -198,11 +198,11 @@ extension OtherDataService: OtherDataServiceProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveSexualActivity(model: SexualActivity, extra: [String : Any]?) async throws {
+    public func saveSexualActivity(model: SexualActivity, extra: [String: Sendable]?) async throws {
         try await saveBaseSexualActivity(model, extra: extra)
     }
 
-    public func saveToothBrushing(model: ToothBrushing, extra: [String : Any]?) async throws {
+    public func saveToothBrushing(model: ToothBrushing, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .toothbrushingEvent)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -214,11 +214,11 @@ extension OtherDataService: OtherDataServiceProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveTimeInDaylight(model: TimeInDaylight, extra: [String : Any]?) async throws {
+    public func saveTimeInDaylight(model: TimeInDaylight, extra: [String: Sendable]?) async throws {
         try await baseSaveTimeInDaylight(model: model, extra: extra)
     }
 
-    public func saveUvExposure(model: UVExposure, extra: [String : Any]?) async throws {
+    public func saveUvExposure(model: UVExposure, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .uvExposure)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -230,7 +230,7 @@ extension OtherDataService: OtherDataServiceProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveWaterTemperature(model: WaterTemperature, extra: [String : Any]?) async throws {
+    public func saveWaterTemperature(model: WaterTemperature, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .waterTemperature)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 

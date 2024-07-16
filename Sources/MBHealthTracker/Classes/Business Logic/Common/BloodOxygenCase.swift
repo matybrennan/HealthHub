@@ -24,7 +24,7 @@ extension BloodOxygenCase {
         return model
     }
 
-    func saveBaseBloodOxygen(model: BloodOxygen, extra: [String : Any]?) async throws {
+    func saveBaseBloodOxygen(model: BloodOxygen, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .oxygenSaturation)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 

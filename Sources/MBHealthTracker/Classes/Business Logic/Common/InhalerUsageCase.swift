@@ -24,7 +24,7 @@ extension InhalerUsageCase {
         return model
     }
 
-    func saveBaseInhalerUsage(model: InhalerUsage, extra: [String: Any]?) async throws {
+    func saveBaseInhalerUsage(model: InhalerUsage, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .inhalerUsage)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 

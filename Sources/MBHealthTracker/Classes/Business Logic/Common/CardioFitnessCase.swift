@@ -25,7 +25,7 @@ extension CardioFitnessCase {
         return vm
     }
 
-    func saveBaseCardioFitness(_ model: CardioFitness, extra: [String : Any]?) async throws {
+    func saveBaseCardioFitness(_ model: CardioFitness, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .vo2Max)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 

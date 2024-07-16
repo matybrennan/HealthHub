@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import HealthKit
+@preconcurrency import HealthKit
 
 public final class CycleTracking {
     
@@ -31,7 +31,7 @@ private extension CycleTracking {
         return model
     }
 
-    func saveGenericCycleResult(model: GenericSymptomModel, categoryIdentifier: HKCategoryTypeIdentifier, extra: [String : Any]?) async throws {
+    func saveGenericCycleResult(model: GenericSymptomModel, categoryIdentifier: HKCategoryTypeIdentifier, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: categoryIdentifier)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -130,19 +130,19 @@ extension CycleTracking: CycleTrackingProtocol {
 
     // MARK: - Saving
 
-    public func saveAbdominalCramps(model: GenericSymptomModel, extra: [String : Any]?) async throws {
+    public func saveAbdominalCramps(model: GenericSymptomModel, extra: [String: Sendable]?) async throws {
         try await saveBaseAbdominalCramps(model: model, extra: extra)
     }
 
-    public func saveBloating(model: GenericSymptomModel, extra: [String : Any]?) async throws {
+    public func saveBloating(model: GenericSymptomModel, extra: [String: Sendable]?) async throws {
         try await saveGenericCycleResult(model: model, categoryIdentifier: .bloating, extra: extra)
     }
 
-    public func saveBreastPain(model: GenericSymptomModel, extra: [String : Any]?) async throws {
+    public func saveBreastPain(model: GenericSymptomModel, extra: [String: Sendable]?) async throws {
         try await saveGenericCycleResult(model: model, categoryIdentifier: .breastPain, extra: extra)
     }
 
-    public func saveCervicalMucusQuality(model: CervicalMucusQuality, extra: [String : Any]?) async throws {
+    public func saveCervicalMucusQuality(model: CervicalMucusQuality, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .cervicalMucusQuality)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -153,15 +153,15 @@ extension CycleTracking: CycleTrackingProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveMenstruation(model: Menstruation, extra: [String : Any]?) async throws {
+    public func saveMenstruation(model: Menstruation, extra: [String: Sendable]?) async throws {
         try await saveBaseMenstruation(model, extra: extra)
     }
 
-    public func saveMoodChanges(model: GenericSymptomModel, extra: [String : Any]?) async throws {
+    public func saveMoodChanges(model: GenericSymptomModel, extra: [String: Sendable]?) async throws {
         try await saveGenericCycleResult(model: model, categoryIdentifier: .moodChanges, extra: extra)
     }
 
-    public func saveOvulation(model: Ovulation, extra: [String : Any]?) async throws {
+    public func saveOvulation(model: Ovulation, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .ovulationTestResult)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -172,7 +172,7 @@ extension CycleTracking: CycleTrackingProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func savePregnancyTestResult(model: PregnancyTestResult, extra: [String : Any]?) async throws {
+    public func savePregnancyTestResult(model: PregnancyTestResult, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .pregnancyTestResult)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -183,7 +183,7 @@ extension CycleTracking: CycleTrackingProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveProgesteroneTestResult(model: ProgesteroneTestResult, extra: [String : Any]?) async throws {
+    public func saveProgesteroneTestResult(model: ProgesteroneTestResult, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .progesteroneTestResult)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -194,11 +194,11 @@ extension CycleTracking: CycleTrackingProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveSexualActivity(model: SexualActivity, extra: [String : Any]?) async throws {
+    public func saveSexualActivity(model: SexualActivity, extra: [String: Sendable]?) async throws {
         try await saveBaseSexualActivity(model, extra: extra)
     }
 
-    public func saveSpotting(model: Spotting, extra: [String : Any]?) async throws {
+    public func saveSpotting(model: Spotting, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .intermenstrualBleeding)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -209,7 +209,7 @@ extension CycleTracking: CycleTrackingProtocol {
         try await healthStore.save(sampleObjects)
     }
 
-    public func saveVaginalDryness(model: GenericSymptomModel, extra: [String : Any]?) async throws {
+    public func saveVaginalDryness(model: GenericSymptomModel, extra: [String: Sendable]?) async throws {
         try await saveGenericCycleResult(model: model, categoryIdentifier: .vaginalDryness, extra: extra)
     }
 }

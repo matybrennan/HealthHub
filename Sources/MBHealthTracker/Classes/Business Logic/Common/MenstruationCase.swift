@@ -26,7 +26,7 @@ extension MenstruationCase {
         return model
     }
 
-    func saveBaseMenstruation(_ model: Menstruation, extra: [String : Any]?) async throws {
+    func saveBaseMenstruation(_ model: Menstruation, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .menstrualFlow)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 

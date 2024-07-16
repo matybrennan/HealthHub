@@ -25,7 +25,7 @@ extension SexualActivityCase {
         return model
     }
 
-    func saveBaseSexualActivity(_ model: SexualActivity, extra: [String : Any]?) async throws {
+    func saveBaseSexualActivity(_ model: SexualActivity, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .sexualActivity)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 

@@ -16,8 +16,8 @@ public protocol SymptomsServiceProtocol: Sendable {
     func appetiteChanges() async throws -> AppetiteChanges
 
     // Save
-    func saveSymptom(type: SymptomType, model: GenericSymptomModel, extra: [String: Any]?) async throws 
-    func saveAppetiteChanges(model: AppetiteChanges, extra: [String : Any]?) async throws
+    func saveSymptom(type: SymptomType, model: GenericSymptomModel, extra: [String: Sendable]?) async throws
+    func saveAppetiteChanges(model: AppetiteChanges, extra: [String: Sendable]?) async throws
 }
 
 public enum SymptomType {

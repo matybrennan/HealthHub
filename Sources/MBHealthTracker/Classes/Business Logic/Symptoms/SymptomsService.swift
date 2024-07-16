@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import HealthKit
+@preconcurrency import HealthKit
 
 public final class SymptomsService {
     
@@ -31,7 +31,7 @@ private extension SymptomsService {
         return model
     }
 
-    func saveGenericSymptomResult(categoryType: HKCategoryType, model: GenericSymptomModel, extra: [String : Any]?) async throws {
+    func saveGenericSymptomResult(categoryType: HKCategoryType, model: GenericSymptomModel, extra: [String: Sendable]?) async throws {
         let identifier = HKCategoryTypeIdentifier(rawValue: categoryType.identifier)
         let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: identifier)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
@@ -64,11 +64,11 @@ extension SymptomsService: SymptomsServiceProtocol {
 
     // MARK: - Save
 
-    public func saveSymptom(type: SymptomType, model: GenericSymptomModel, extra: [String : Any]?) async throws {
+    public func saveSymptom(type: SymptomType, model: GenericSymptomModel, extra: [String: Sendable]?) async throws {
         try await saveGenericSymptomResult(categoryType: type.categoryType, model: model, extra: extra)
     }
 
-    public func saveAppetiteChanges(model: AppetiteChanges, extra: [String : Any]?) async throws {
+    public func saveAppetiteChanges(model: AppetiteChanges, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .appetiteChanges)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 

@@ -23,7 +23,7 @@ extension TimeInDaylightCase {
         return model
     }
 
-    func baseSaveTimeInDaylight(model: TimeInDaylight, extra: [String : Any]?) async throws {
+    func baseSaveTimeInDaylight(model: TimeInDaylight, extra: [String: Sendable]?) async throws {
         let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .timeInDaylight)
         try MBHealthParser.checkSharingAuthorizationStatus(for: type)
 
