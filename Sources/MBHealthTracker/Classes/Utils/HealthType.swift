@@ -8,11 +8,11 @@
 import Foundation
 import HealthKit
 
-public protocol SharableType {
+public protocol SharableType: Sendable {
     var sharable: HKSampleType? { get }
 }
 
-public protocol ReadableType {
+public protocol ReadableType: Sendable {
     var readable: HKObjectType { get }
 }
 

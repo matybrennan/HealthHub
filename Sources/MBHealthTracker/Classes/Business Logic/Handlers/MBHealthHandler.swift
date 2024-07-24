@@ -7,7 +7,7 @@
 
 import Foundation
 
-public actor MBHealthHandler: ObservableObject {
+public final class MBHealthHandler: ObservableObject {
 
     public init() { }
     

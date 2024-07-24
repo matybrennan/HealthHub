@@ -16,14 +16,14 @@ final class Store: ObservableObject {
     private let healthTracker: MBHealthTracker
     private var cancellables = [AnyCancellable]()
 
-    init(healthTracker: MBHealthTracker = MBHealthTracker()) async {
+    init(healthTracker: MBHealthTracker = MBHealthTracker()) {
         self.healthTracker = healthTracker
         
-        await configure()
+        configure()
     }
 
-    func configure() async {
-        await healthTracker.mbHealthHandler.$state.sink { state in
+    func configure() {
+        healthTracker.mbHealthHandler.$state.sink { state in
             switch state {
             case .idle:
                 print("idle")
