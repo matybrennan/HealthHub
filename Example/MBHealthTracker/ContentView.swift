@@ -7,10 +7,11 @@
 //
 
 import SwiftUI
+import MBHealthTracker
 
 struct ContentView: View {
 
-    @StateObject private var store = Store()
+    @StateObject private var store = Store(healthTracker: MBHealthTracker())
 
     var body: some View {
         Text("Content View")

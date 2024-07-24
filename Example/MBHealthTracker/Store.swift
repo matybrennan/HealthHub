@@ -16,7 +16,7 @@ final class Store: ObservableObject {
     private let healthTracker: MBHealthTracker
     private var cancellables = [AnyCancellable]()
 
-    init(healthTracker: MBHealthTracker = MBHealthTracker()) {
+    init(healthTracker: MBHealthTracker) {
         self.healthTracker = healthTracker
         
         configure()

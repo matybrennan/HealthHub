@@ -6,8 +6,8 @@
       "kind" : "localSourceControl",
       "location" : "/Users/maty.brennan/Documents/personal/MBHealthTracker",
       "state" : {
-        "branch" : "release/2.8.0",
-        "revision" : "14db0c2aa80d1fd39c31d70bc48581fa782c755f"
+        "branch" : "release/2.8.0-patch",
+        "revision" : "8c6ffee6f01551e0607036bd6820304821d48c3e"
       }
     }
   ],
