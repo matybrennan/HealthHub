@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum ActiveEnergyType {
+public enum ActiveEnergyType: Sendable {
     case today
     case thisWeek
     case betweenTimePref(start: Date, end: Date)
