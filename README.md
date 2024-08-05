@@ -144,14 +144,22 @@ Split into sections to gather data based on timeIntervals
 
 ------------------------------------------------------------------------
 
-### Heart
+### HeartManager
+- heartRate (see reference below)
 - atrialFibrillation
 - bloodPressure & saveBloodPressure(_: model, _:extra)
 - cardioFitness & saveCardioFitness(_: model, _:extra)
 - cardioRecovery & saveCardioRecovery(_: model, _:extra)
-- heartRate (timeIntervals -> current, today, thisWeek, all, between times)
 
-```var heart: HeartServiceProtocol```
+```var heart: HeartManagerProtocol```
+
+#### HeartRate
+- func heartRate(fromHeartRateType type: HeartRateType)
+- Will retrieve results in heartRate (current, today, thisWeek, allTime, betweenTimePreference)
+- func reset(type: HeartRateType)
+- Will remove all results in heartRate type selected (current, today, thisWeek, allTime, betweenTimePreference)
+
+```var heartRate: HeartRateService```
 
 ------------------------------------------------------------------------
 

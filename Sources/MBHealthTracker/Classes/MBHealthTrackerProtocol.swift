@@ -14,7 +14,7 @@ public protocol MBHealthTrackerProtocol: Sendable {
     
     var activityManager: ActivityManagerProtocol { get }
     
-    var heart: HeartServiceProtocol { get }
+    var heartManager: HeartManagerProtocol { get }
     
     var characteristics: CharacteristicServiceProtocol { get }
     

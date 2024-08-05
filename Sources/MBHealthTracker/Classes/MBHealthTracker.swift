@@ -17,7 +17,7 @@ public final class MBHealthTracker: ObservableObject {
 
     private lazy var privateConfiguration = ConfigurationService(handler: mbHealthHandler)
     private lazy var privateActivityManager = ActivityManager()
-    private lazy var privateHeart = HeartService()
+    private lazy var privateHeartManager = HeartManager()
     private lazy var privateCharacteristicsService = CharacteristicService()
     private lazy var privateMobilityService = MobilityService()
     private lazy var privateNutritionService = NutritionService()
@@ -42,8 +42,8 @@ extension MBHealthTracker: MBHealthTrackerProtocol {
         privateActivityManager
     }
     
-    public var heart: HeartServiceProtocol {
-        privateHeart
+    public var heartManager: HeartManagerProtocol {
+        privateHeartManager
     }
     
     public var characteristics: CharacteristicServiceProtocol {
