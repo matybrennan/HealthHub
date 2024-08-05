@@ -12,7 +12,7 @@ public enum MBAsyncCallResult<T> {
     case failed(Error)
 }
 
-public enum MBAsyncParsingError: LocalizedError {
+enum MBAsyncParsingError: LocalizedError {
     case unableToParse(String)
     
     public var errorDescription: String? {

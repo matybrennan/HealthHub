@@ -56,7 +56,7 @@ extension StepsService: StepsServiceProtocol {
             
             // set timeInterval for grabbing data batches (in mins)
             var component = DateComponents()
-            component.hour = timeInterval ?? 1
+            component.hour = timeInterval
             
             query = HKStatisticsCollectionQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: Date().startOfDay, intervalComponents: component)
             
@@ -74,7 +74,7 @@ extension StepsService: StepsServiceProtocol {
             
             // set timeInterval for grabbing data batches (in mins)
             var component = DateComponents()
-            component.hour = timeInterval ?? 1
+            component.hour = timeInterval
             
             query = HKStatisticsCollectionQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: Date().startOfWeek!, intervalComponents: component)
             

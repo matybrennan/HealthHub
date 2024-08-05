@@ -12,21 +12,17 @@ public enum StepsType {
     
     // count of steps
     case lastHour
-    
-    // timeInterval for collections of data throughout the day
-    /// mainly for graphing purposes
+
     // timeinterval is in hours
-    case today(timeInterval: Int?)
-    
-    // timeInterval for collections of data throughout the week
-    /// mainly for graphing purposes
+    case today(timeInterval: Int)
+
     // timeinterval is in days
-    case thisWeek(timeInterval: Int?)
+    case thisWeek(timeInterval: Int)
+    
     case betweenTimePref(start: Date, end: Date, timeInterval: Int)
 }
 
 @MainActor
 public protocol StepsServiceProtocol: Sendable {
-
     func steps(fromStepsType type: StepsType, completionHandler: @escaping (MBAsyncCallResult<Steps>) -> Void) throws
 }
