@@ -20,9 +20,12 @@ public enum AuthorizationStatusError: LocalizedError {
     
     public var errorDescription: String? {
         switch self {
-        case let .notDetermined(type): return "The status for \(type) has not been allowed in health settings"
-        case let .sharingDenied(type): return "The status for \(type) has sharing denied in health settings for sharing"
-        case .healthDataNotAvailable: return "Health data is not available to use on this device"
+        case let .notDetermined(type):
+            "The status for \(type) has not been allowed in health settings"
+        case let .sharingDenied(type):
+            "The status for \(type) has sharing denied in health settings for sharing"
+        case .healthDataNotAvailable:
+            "Health data is not available to use on this device"
         }
     }
 }

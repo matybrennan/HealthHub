@@ -21,11 +21,16 @@ public struct GenericSymptomModel: Sendable {
             
             public var name: String {
                 switch self {
-                case .present: return "Present"
-                case .notPresent: return "Not Present"
-                case .mild: return "Mild"
-                case .moderate: return "Moderate"
-                case .severe: return "Severe"
+                case .present:
+                    "Present"
+                case .notPresent:
+                    "Not Present"
+                case .mild:
+                    "Mild"
+                case .moderate:
+                    "Moderate"
+                case .severe:
+                    "Severe"
                 }
             }
         }
@@ -62,10 +67,14 @@ public struct AppetiteChanges: Sendable {
             
             public var name: String {
                 switch self {
-                case .present: return "Present"
-                case .noChange: return "No Change"
-                case .decreased: return "Decreased"
-                case .increased: return "Increased"
+                case .present:
+                    "Present"
+                case .noChange:
+                    "No Change"
+                case .decreased:
+                    "Decreased"
+                case .increased:
+                    "Increased"
                 }
             }
         }

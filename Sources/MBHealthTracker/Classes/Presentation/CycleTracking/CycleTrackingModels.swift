@@ -20,11 +20,16 @@ public struct CervicalMucusQuality: Sendable {
             
             public var name: String {
                 switch self {
-                case .dry: return "Dry"
-                case .sticky: return "Sticky"
-                case .creamy: return "Creamy"
-                case .watery: return "Watery"
-                case .eggWhite: return "Egg white"
+                case .dry:
+                    "Dry"
+                case .sticky:
+                    "Sticky"
+                case .creamy:
+                    "Creamy"
+                case .watery:
+                    "Watery"
+                case .eggWhite:
+                    "Egg white"
                 }
             }
         }
@@ -60,11 +65,16 @@ public struct Menstruation: Sendable {
             
             public var name: String {
                 switch self {
-                case .unspecified: return "Unspecified Flow"
-                case .light: return "Light"
-                case .medium: return "Medium"
-                case .heavy: return "Heavy"
-                case .none: return "No Flow"
+                case .unspecified:
+                    "Unspecified Flow"
+                case .light:
+                    "Light"
+                case .medium:
+                    "Medium"
+                case .heavy:
+                    "Heavy"
+                case .none:
+                    "No Flow"
                 }
             }
         }
@@ -97,10 +107,14 @@ public enum CycleResultType: Int, Sendable {
     
     public var name: String {
         switch self {
-        case .negative: return "Negative"
-        case .positive: return "Positive"
-        case .indetermined: return "Indetermined"
-        case .high: return "High"
+        case .negative:
+            "Negative"
+        case .positive:
+            "Positive"
+        case .indetermined:
+            "Indetermined"
+        case .high:
+            "High"
         }
     }
 }
@@ -178,9 +192,12 @@ public struct SexualActivity: Sendable {
             
             public var name: String {
                 switch self {
-                case .unspecified: return "Unspecified"
-                case .protectionUsed: return "Protection used"
-                case .protectionNotUsed: return "Protection not used"
+                case .unspecified:
+                    "Unspecified"
+                case .protectionUsed:
+                    "Protection used"
+                case .protectionNotUsed:
+                    "Protection not used"
                 }
             }
         }

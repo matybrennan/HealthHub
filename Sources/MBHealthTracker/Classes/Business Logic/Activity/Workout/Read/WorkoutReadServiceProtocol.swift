@@ -12,6 +12,17 @@ public enum WorkoutType {
     case today
     case thisWeek
     case all
+
+    func predicate() throws -> NSPredicate? {
+        switch self {
+        case .today:
+            try NSPredicate.today()
+        case .thisWeek:
+            try NSPredicate.thisWeek()
+        case .all:
+            nil
+        }
+    }
 }
 
 @MainActor

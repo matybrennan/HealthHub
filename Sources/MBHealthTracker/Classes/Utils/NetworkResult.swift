@@ -17,7 +17,8 @@ public enum MBAsyncParsingError: LocalizedError {
     
     public var errorDescription: String? {
         switch self {
-        case let .unableToParse(value): return "Unable to parse: \(value)"
+        case let .unableToParse(value):
+            "Unable to parse: \(value)"
         }
     }
 }
