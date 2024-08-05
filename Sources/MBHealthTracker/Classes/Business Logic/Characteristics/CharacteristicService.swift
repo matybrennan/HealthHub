@@ -49,7 +49,7 @@ extension CharacteristicService: CharacteristicServiceProtocol {
     }
     
     public var dateOfBirth: DateComponents? {
-        return try? healthStore.dateOfBirthComponents()
+        try? healthStore.dateOfBirthComponents()
     }
     
     public var skinType: String? {
