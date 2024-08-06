@@ -16,11 +16,11 @@ public final class HeartRateService {
         static let heartRateCountMin = "count/min"
     }
 
-    private(set) var current: HeartRate.Item?
-    private(set) var today: [HeartRate.Item] = []
-    private(set) var thisWeek: [HeartRate.Item] = []
-    private(set) var allTime: [HeartRate.Item] = []
-    private(set) var betweenTimePreference: [HeartRate.Item] = []
+    public private(set) var current: HeartRate.Item?
+    public private(set) var today: [HeartRate.Item] = []
+    public private(set) var thisWeek: [HeartRate.Item] = []
+    public private(set) var allTime: [HeartRate.Item] = []
+    public private(set) var betweenTimePreference: [HeartRate.Item] = []
 
     public init() { }
 

@@ -17,10 +17,10 @@ public final class StepsService {
         static let stepsCount = "count"
     }
 
-    private(set) var lastHour: [Steps.Item] = []
-    private(set) var today: [Steps.Item] = []
-    private(set) var thisWeek: [Steps.Item] = []
-    private(set) var betweenTimePreference: [Steps.Item] = []
+    public private(set) var lastHour: [Steps.Item] = []
+    public private(set) var today: [Steps.Item] = []
+    public private(set) var thisWeek: [Steps.Item] = []
+    public private(set) var betweenTimePreference: [Steps.Item] = []
 
     public init() { }
 }
