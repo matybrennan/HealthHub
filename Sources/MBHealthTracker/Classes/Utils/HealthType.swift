@@ -556,12 +556,12 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
 public struct MBHealthType {
     
     static func shareTypes(_ types: [SharableType]) -> Set<HKSampleType> {
-        let res = types.compactMap { $0.sharable }
+        let res = types.compactMap(\.sharable)
         return Set(res)
     }
     
     static func readTypes(_ types: [ReadableType]) -> Set<HKObjectType> {
-        let res = types.map { $0.readable }
+        let res = types.map(\.readable)
         return Set(res)
     }
 }
