@@ -17,10 +17,10 @@ public final class StepsService {
         static let stepsCount = "count"
     }
 
-    public private(set) var lastHour: [Steps.Item] = []
-    public private(set) var today: [Steps.Item] = []
-    public private(set) var thisWeek: [Steps.Item] = []
-    public private(set) var betweenTimePreference: [Steps.Item] = []
+    public private(set) var lastHour = Steps(items: [])
+    public private(set) var today = Steps(items: [])
+    public private(set) var thisWeek = Steps(items: [])
+    public private(set) var betweenTimePreference = Steps(items: [])
 
     public init() { }
 }
@@ -115,13 +115,13 @@ extension StepsService: StepsServiceProtocol {
     public func reset(type: StepsType) {
         switch type {
         case .lastHour:
-            lastHour = []
+            lastHour = Steps(items: [])
         case .today:
-            today = []
+            today = Steps(items: [])
         case .thisWeek:
-            thisWeek = []
+            thisWeek = Steps(items: [])
         case .betweenTimePreference:
-            betweenTimePreference = []
+            betweenTimePreference = Steps(items: [])
         }
     }
 }
@@ -147,13 +147,17 @@ private extension StepsService {
 
         switch type {
         case .lastHour:
-            lastHour = lastHour + items
+            let allItems = lastHour.items + items
+            lastHour = Steps(items: allItems)
         case .today:
-            today = today + items
+            let allItems = today.items + items
+            today = Steps(items: allItems)
         case .thisWeek:
-            thisWeek = thisWeek + items
+            let allItems = thisWeek.items + items
+            thisWeek = Steps(items: allItems)
         case .betweenTimePreference:
-            betweenTimePreference = betweenTimePreference + items
+            let allItems = betweenTimePreference.items + items
+            betweenTimePreference = Steps(items: allItems)
         }
     }
 }

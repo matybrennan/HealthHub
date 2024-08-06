@@ -17,10 +17,10 @@ public final class HeartRateService {
     }
 
     public private(set) var current: HeartRate.Item?
-    public private(set) var today: [HeartRate.Item] = []
-    public private(set) var thisWeek: [HeartRate.Item] = []
-    public private(set) var allTime: [HeartRate.Item] = []
-    public private(set) var betweenTimePreference: [HeartRate.Item] = []
+    public private(set) var today = HeartRate(items: [])
+    public private(set) var thisWeek = HeartRate(items: [])
+    public private(set) var allTime = HeartRate(items: [])
+    public private(set) var betweenTimePreference = HeartRate(items: [])
 
     public init() { }
 
@@ -126,13 +126,13 @@ public final class HeartRateService {
         case .current:
             current = nil
         case .today:
-            today = []
+            today = HeartRate(items: [])
         case .thisWeek:
-            thisWeek = []
+            thisWeek = HeartRate(items: [])
         case .allTime:
-            allTime = []
+            allTime = HeartRate(items: [])
         case .betweenTimePreference:
-            betweenTimePreference = []
+            betweenTimePreference = HeartRate(items: [])
         }
     }
 }
@@ -161,13 +161,17 @@ private extension HeartRateService {
         case .current:
             break
         case .today:
-            today = today + items
+            let allItems = today.items + items
+            today = HeartRate(items: allItems)
         case .thisWeek:
-            thisWeek = thisWeek + items
+            let allItems = thisWeek.items + items
+            thisWeek = HeartRate(items: allItems)
         case .allTime:
-            allTime = allTime + items
+            let allItems = allTime.items + items
+            allTime = HeartRate(items: allItems)
         case .betweenTimePreference:
-            betweenTimePreference = betweenTimePreference + items
+            let allItems = betweenTimePreference.items + items
+            betweenTimePreference = HeartRate(items: allItems)
         }
     }
 }
