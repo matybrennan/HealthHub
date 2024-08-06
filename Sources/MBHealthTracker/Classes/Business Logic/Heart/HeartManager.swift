@@ -57,6 +57,17 @@ extension HeartManager: HeartManagerProtocol {
         return model
     }
 
+    public func peripheralPerfusionIndex() async throws -> PeripheralPerfusionIndex {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .peripheralPerfusionIndex)
+        let items = samples.map { item -> PeripheralPerfusionIndex.Item in
+            let percentage = item.quantity.doubleValue(for: HKUnit.percent()) * 100
+            return PeripheralPerfusionIndex.Item(percentage: percentage, date: item.endDate)
+        }
+
+        let model = PeripheralPerfusionIndex(items: items)
+        return model
+    }
+
     // MARK: - Save
 
     public func saveBloodPressure(model: BloodPressure, extra: [String: Sendable]?) async throws {
@@ -74,6 +85,18 @@ extension HeartManager: HeartManagerProtocol {
         let unit = HKUnit(from: "count/min")
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: unit, doubleValue: Double($0.bpm))
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+        }
+
+        try await healthStore.save(sampleObjects)
+    }
+
+    public func savePeripheralPerfusionIndex(model: PeripheralPerfusionIndex, extra: [String : any Sendable]?) async throws {
+        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .peripheralPerfusionIndex)
+        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: .percent(), doubleValue: $0.percentage)
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 

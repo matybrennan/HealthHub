@@ -19,10 +19,11 @@ public enum StepsType {
     // timeinterval is in days
     case thisWeek(timeInterval: Int)
     
-    case betweenTimePref(start: Date, end: Date, timeInterval: Int)
+    case betweenTimePreference(start: Date, end: Date)
 }
 
 @MainActor
 public protocol StepsServiceProtocol: Sendable {
-    func steps(fromStepsType type: StepsType, completionHandler: @escaping (MBAsyncCallResult<Steps>) -> Void) throws
+    func steps(fromStepsType type: StepsType) throws
+    func reset(type: StepsType)
 }

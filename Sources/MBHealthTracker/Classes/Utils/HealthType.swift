@@ -48,6 +48,7 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
     case atrialFibrillation
     case heartRate
     case cardioRecovery
+    case peripheralPerfusionIndex
 
     // Body
     case basalBodyTemperature
@@ -227,6 +228,7 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
         case .atrialFibrillation: nil
         case .heartRate: HKQuantityType(.heartRate)
         case .cardioRecovery: HKQuantityType(.heartRateRecoveryOneMinute)
+        case .peripheralPerfusionIndex: HKQuantityType(.peripheralPerfusionIndex)
 
         // Body
         case .basalBodyTemperature: HKQuantityType(.basalBodyTemperature)
@@ -405,6 +407,7 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
         case .atrialFibrillation: HKQuantityType(.atrialFibrillationBurden)
         case .heartRate: HKQuantityType(.heartRate)
         case .cardioRecovery: HKQuantityType(.heartRateRecoveryOneMinute)
+        case .peripheralPerfusionIndex: HKQuantityType(.peripheralPerfusionIndex)
 
         // Body
         case .basalBodyTemperature: HKQuantityType(.basalBodyTemperature)

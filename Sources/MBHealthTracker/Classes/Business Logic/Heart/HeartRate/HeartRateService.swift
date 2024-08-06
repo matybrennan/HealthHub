@@ -67,8 +67,9 @@ public final class HeartRateService {
             query = HKStatisticsCollectionQuery(quantityType: heartRate, quantitySamplePredicate: predicate, options: [.discreteAverage, .discreteMax, .discreteMin], anchorDate: Date().startOfDay, intervalComponents: component)
 
 
-            (query as! HKStatisticsCollectionQuery).initialResultsHandler = {
+            (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [weak self]
                 query, collection, error in
+                guard let self else { return }
                 try? self.configure(query: query, collection: collection, error: error, type: .today(timeInterval: interval))
             }
         case let .thisWeek(interval):
@@ -83,8 +84,9 @@ public final class HeartRateService {
             query = HKStatisticsCollectionQuery(quantityType: heartRate, quantitySamplePredicate: predicate, options: [.discreteAverage, .discreteMax, .discreteMin], anchorDate: Date().startOfDay, intervalComponents: component)
 
 
-            (query as! HKStatisticsCollectionQuery).initialResultsHandler = {
+            (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [weak self]
                 query, collection, error in
+                guard let self else { return }
                 try? self.configure(query: query, collection: collection, error: error, type: .thisWeek(timeInterval: interval))
             }
         case let .allTime(interval):
@@ -95,8 +97,9 @@ public final class HeartRateService {
             // create query
             query = HKStatisticsCollectionQuery(quantityType: heartRate, quantitySamplePredicate: nil, options: [.discreteAverage, .discreteMax, .discreteMin], anchorDate: Date().startOfDay, intervalComponents: component)
 
-            (query as! HKStatisticsCollectionQuery).initialResultsHandler = {
+            (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [weak self]
                 query, collection, error in
+                guard let self else { return }
                 try? self.configure(query: query, collection: collection, error: error, type: .allTime(timeInterval: interval))
             }
 
@@ -108,8 +111,9 @@ public final class HeartRateService {
             let pred = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
             query = HKStatisticsCollectionQuery(quantityType: heartRate, quantitySamplePredicate: pred, options: [.discreteAverage, .discreteMax, .discreteMin], anchorDate: startDate, intervalComponents: components)
 
-            (query as! HKStatisticsCollectionQuery).initialResultsHandler = {
+            (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [weak self]
                 query, collection, error in
+                guard let self else { return }
                 try? self.configure(query: query, collection: collection, error: error, type: .betweenTimePreference(start: startDate, end: endDate))
             }
         }

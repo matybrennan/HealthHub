@@ -41,12 +41,12 @@ extension HeartRate {
         items.isEmpty ? 0.0 : total / Double(count)
     }
     
-    public var first: Item {
-        items.first!
+    public var first: Item? {
+        items.first
     }
     
-    public var last: Item {
-        items.last!
+    public var last: Item? {
+        items.last
     }
     
     public var count: Int {
@@ -85,6 +85,25 @@ public struct AtrialFibrillationHistory: Sendable {
             self.percentage = percentage
             self.startDate = startDate
             self.endDate = endDate
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+}
+
+public struct PeripheralPerfusionIndex: Sendable {
+
+    public struct Item: Sendable {
+        public let percentage: Double
+        public let date: Date
+
+        public init(percentage: Double, date: Date) {
+            self.percentage = percentage
+            self.date = date
         }
     }
 

@@ -96,8 +96,10 @@ Split into sections to gather data based on timeIntervals
 ```var activeEnergy: ActiveEnergyServiceProtocol```
     
 #### Steps
-Split into sections to gather data based on timeIntervals
-- last hour, today, thisWeek, betweenTime
+- func steps(fromStepsType type: StepsType)
+- Will retrieve results in steps (lastHour, today, thisWeek, betweenTimePreference)
+- func reset(type: StepsType)
+- Will remove all results in stepType type selected (lastHour, today, thisWeek, betweenTimePreference)
 
 ```var steps: StepsServiceProtocol```
 
@@ -150,6 +152,7 @@ Split into sections to gather data based on timeIntervals
 - bloodPressure & saveBloodPressure(_: model, _:extra)
 - cardioFitness & saveCardioFitness(_: model, _:extra)
 - cardioRecovery & saveCardioRecovery(_: model, _:extra)
+- peripheralPerfusionIndex & savePeripheralPerfusionIndex(_: model, _:extra)
 
 ```var heart: HeartManagerProtocol```
 

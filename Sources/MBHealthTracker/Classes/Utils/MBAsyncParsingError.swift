@@ -7,11 +7,6 @@
 
 import Foundation
 
-public enum MBAsyncCallResult<T> {
-    case success(T)
-    case failed(Error)
-}
-
 enum MBAsyncParsingError: LocalizedError {
     case unableToParse(String)
     
