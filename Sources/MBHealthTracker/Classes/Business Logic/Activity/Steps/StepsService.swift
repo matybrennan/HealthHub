@@ -8,7 +8,6 @@
 import Foundation
 import HealthKit
 
-@MainActor
 @Observable
 public final class StepsService {
 
