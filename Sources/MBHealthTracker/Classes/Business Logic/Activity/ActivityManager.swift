@@ -7,8 +7,7 @@
 
 import Foundation
 
-@MainActor
-public final class ActivityManager {
+public final class ActivityManager: @unchecked Sendable {
 
     public init() { }
     

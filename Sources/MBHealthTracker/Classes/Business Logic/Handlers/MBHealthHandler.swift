@@ -7,7 +7,7 @@
 
 import Foundation
 
-public final class MBHealthHandler: ObservableObject {
+public final class MBHealthHandler: ObservableObject, @unchecked Sendable {
 
     public init() { }
     

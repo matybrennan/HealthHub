@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 public protocol HeartManagerProtocol: Sendable {
 
     // Services

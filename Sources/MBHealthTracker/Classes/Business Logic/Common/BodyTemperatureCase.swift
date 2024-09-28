@@ -6,9 +6,8 @@
 //
 
 import Foundation
-@preconcurrency import HealthKit
+import HealthKit
 
-@MainActor
 protocol BodyTemperatureCase: FetchQuantitySample { }
 
 extension BodyTemperatureCase {

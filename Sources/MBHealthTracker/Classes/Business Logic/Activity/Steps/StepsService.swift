@@ -9,7 +9,7 @@ import Foundation
 import HealthKit
 
 @Observable
-public final class StepsService {
+public final class StepsService: @unchecked Sendable {
 
     struct StepsConfig {
         static let oneHour: TimeInterval = 3600

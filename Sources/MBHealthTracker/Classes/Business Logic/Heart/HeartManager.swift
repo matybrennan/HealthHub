@@ -8,8 +8,7 @@
 import Foundation
 @preconcurrency import HealthKit
 
-@MainActor
-public final class HeartManager {
+public final class HeartManager: @unchecked Sendable {
 
     public init() { }
 

@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 public protocol OtherDataServiceProtocol: Sendable {
 
     // Fetch

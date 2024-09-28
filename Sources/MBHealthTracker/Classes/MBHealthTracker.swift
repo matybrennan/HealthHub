@@ -8,8 +8,7 @@
 import Foundation
 import Combine
 
-@MainActor
-public final class MBHealthTracker: ObservableObject {
+public final class MBHealthTracker: ObservableObject, @unchecked Sendable {
 
     public lazy var mbHealthHandler = MBHealthHandler()
     

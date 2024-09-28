@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 public protocol CharacteristicServiceProtocol: Sendable {
     var biologicalSex: String? { get }
     var bloodType: String? { get }

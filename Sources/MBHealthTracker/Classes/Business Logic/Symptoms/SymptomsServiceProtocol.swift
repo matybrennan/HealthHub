@@ -8,7 +8,6 @@
 import Foundation
 import HealthKit
 
-@MainActor
 public protocol SymptomsServiceProtocol: Sendable {
 
     // Fetch

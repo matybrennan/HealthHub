@@ -6,12 +6,11 @@
 //
 
 import Foundation
-@preconcurrency import HealthKit
+import HealthKit
 
 public final class WorkoutWriteService {
     
     public init() { }
-    
 }
 
 extension WorkoutWriteService: WorkoutWriteServiceProtocol {

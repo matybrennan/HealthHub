@@ -7,7 +7,6 @@
 
 @preconcurrency import HealthKit
 
-@MainActor
 protocol FetchQuantitySample: Sendable {
     func fetchQuantitySamples(quantityIdentifier: HKQuantityTypeIdentifier, predicate: NSPredicate?, sortDescriptors: [SortDescriptor<HKQuantitySample>], limit: Int?) async throws -> [HKQuantitySample]
 }
@@ -21,7 +20,6 @@ extension FetchQuantitySample {
     }
 }
 
-@MainActor
 protocol FetchCategorySample: Sendable {
     func fetchCategorySamples(categoryIdentifier: HKCategoryTypeIdentifier, sortDescriptors: [SortDescriptor<HKCategorySample>], limit: Int?) async throws -> [HKCategorySample]
 }
@@ -35,7 +33,6 @@ extension FetchCategorySample {
     }
 }
 
-@MainActor
 protocol FetchCorrelationSample: Sendable {
     func fetchCorrelationSamples(correlationIdentifier: HKCorrelationTypeIdentifier, sortDescriptors: [SortDescriptor<HKCorrelation>], limit: Int?) async throws -> [HKCorrelation]
 }
@@ -49,7 +46,6 @@ extension FetchCorrelationSample {
     }
 }
 
-@MainActor
 protocol FetchWorkoutSample: Sendable {
     func fetchWorkoutSamples(workoutIdentifier: HKWorkoutType, predicate: NSPredicate?, sortDescriptors: [SortDescriptor<HKWorkout>], limit: Int?) async throws -> [HKWorkout]
 }

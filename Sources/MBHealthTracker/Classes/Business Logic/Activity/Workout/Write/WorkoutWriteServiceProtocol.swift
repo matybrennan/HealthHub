@@ -7,8 +7,6 @@
 
 import Foundation
 
-@MainActor
 public protocol WorkoutWriteServiceProtocol: Sendable {
-
     func saveWorkout(workout: MBWorkout.Item, extra: [String: Sendable]?) async throws
 }

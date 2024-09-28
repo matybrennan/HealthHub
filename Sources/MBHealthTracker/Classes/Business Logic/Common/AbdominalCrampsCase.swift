@@ -8,7 +8,6 @@
 import Foundation
 @preconcurrency import HealthKit
 
-@MainActor
 protocol AbdominalCrampsCase: FetchCategorySample { }
 
 extension AbdominalCrampsCase {

@@ -8,12 +8,10 @@
 import Foundation
 import HealthKit
 
-@MainActor
 public protocol WorkoutManagerWriteProtocol: Sendable {
     func saveWorkout(workout: MBWorkout.Item, extra: [String: Sendable]?) async throws
 }
 
-@MainActor
 public protocol WorkoutManagerReadProtocol: Sendable {
     func workouts(fromWorkoutType type: WorkoutType) async throws -> MBWorkout
 }

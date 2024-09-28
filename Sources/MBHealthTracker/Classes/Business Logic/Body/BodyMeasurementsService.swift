@@ -6,10 +6,10 @@
 //
 
 import Foundation
-@preconcurrency import HealthKit
+import HealthKit
 
 public final class BodyMeasurementsService {
-    
+
     public init() { }
 }
 

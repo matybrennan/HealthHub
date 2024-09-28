@@ -8,7 +8,6 @@
 import Foundation
 @preconcurrency import HealthKit
 
-@MainActor
 protocol MenstruationCase: FetchCategorySample { }
 
 extension MenstruationCase {

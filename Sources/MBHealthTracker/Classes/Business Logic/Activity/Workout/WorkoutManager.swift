@@ -8,8 +8,8 @@
 import Foundation
 import HealthKit
 
-public final class WorkoutManager {
-    
+public final class WorkoutManager: Sendable {
+
     private let workoutReadService: WorkoutReadServiceProtocol
     private let workoutWriteService: WorkoutWriteServiceProtocol
     

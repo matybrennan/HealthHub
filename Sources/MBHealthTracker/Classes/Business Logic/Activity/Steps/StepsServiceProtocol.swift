@@ -22,7 +22,6 @@ public enum StepsType {
     case betweenTimePreference(start: Date, end: Date)
 }
 
-@MainActor
 public protocol StepsServiceProtocol: Sendable {
     func steps(fromStepsType type: StepsType) throws
     func reset(type: StepsType)

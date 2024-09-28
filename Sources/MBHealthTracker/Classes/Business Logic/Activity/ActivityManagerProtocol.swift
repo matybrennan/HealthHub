@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 public protocol ActivityManagerProtocol: Sendable {
 
     var activeEnergy: ActiveEnergyServiceProtocol { get }

@@ -6,11 +6,10 @@
 //
 
 import Foundation
-import HealthKit
+@preconcurrency import HealthKit
 
 public final class WorkoutReadService {
-    
-    @MainActor
+
     struct Unit {
         static let workoutEnergy = HKUnit.smallCalorie()
         static let workoutDistance = HKUnit.meter()

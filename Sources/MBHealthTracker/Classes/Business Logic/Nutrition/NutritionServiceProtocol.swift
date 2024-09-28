@@ -8,8 +8,7 @@
 import Foundation
 import HealthKit
 
-@MainActor
-public protocol NutritionServiceProtocol: Sendable {
+public protocol NutritionServiceProtocol {
     func nutrition(type: NutritionType) async throws -> Nutrition
     func save(model: Nutrition, extra: [String: Sendable]?) async throws
 }

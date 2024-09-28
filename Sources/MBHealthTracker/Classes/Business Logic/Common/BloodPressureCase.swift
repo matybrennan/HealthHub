@@ -8,8 +8,7 @@
 import Foundation
 @preconcurrency import HealthKit
 
-@MainActor
-protocol BloodPressureCase: FetchCorrelationSample, Sendable { }
+protocol BloodPressureCase: FetchCorrelationSample { }
 
 extension BloodPressureCase {
 
