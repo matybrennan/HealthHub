@@ -9,7 +9,7 @@ import Foundation
 import HealthKit
 
 @Observable
-public final class HeartRateService {
+public final class HeartRateService: @unchecked Sendable {
 
     struct Unit {
         static let heartRateCountMin = "count/min"
