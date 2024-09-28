@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-public enum StepsType {
+public enum StepsType: Sendable {
     
     // count of steps
     case lastHour
