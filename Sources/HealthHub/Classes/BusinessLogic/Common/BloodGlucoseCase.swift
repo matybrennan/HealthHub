@@ -26,8 +26,8 @@ extension BloodGlucoseCase {
     }
 
     func saveBaseBloodGlucose(model: BloodGlucose, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bloodGlucose)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bloodGlucose)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit(from: "mg/dL")
         let sampleObjects = model.items.map {

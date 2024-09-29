@@ -32,8 +32,8 @@ private extension CycleTracking {
     }
 
     func saveGenericCycleResult(model: GenericSymptomModel, categoryIdentifier: HKCategoryTypeIdentifier, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: categoryIdentifier)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: categoryIdentifier)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             HKCategorySample(type: type, value: $0.style.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
@@ -143,8 +143,8 @@ extension CycleTracking: CycleTrackingProtocol {
     }
 
     public func saveCervicalMucusQuality(model: CervicalMucusQuality, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .cervicalMucusQuality)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .cervicalMucusQuality)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
@@ -162,8 +162,8 @@ extension CycleTracking: CycleTrackingProtocol {
     }
 
     public func saveOvulation(model: Ovulation, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .ovulationTestResult)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .ovulationTestResult)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
@@ -173,8 +173,8 @@ extension CycleTracking: CycleTrackingProtocol {
     }
 
     public func savePregnancyTestResult(model: PregnancyTestResult, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .pregnancyTestResult)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .pregnancyTestResult)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             HKCategorySample(type: type, value: $0.type.rawValue, start: $0.date, end: $0.date, metadata: extra)
@@ -184,8 +184,8 @@ extension CycleTracking: CycleTrackingProtocol {
     }
 
     public func saveProgesteroneTestResult(model: ProgesteroneTestResult, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .progesteroneTestResult)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .progesteroneTestResult)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             HKCategorySample(type: type, value: $0.type.rawValue, start: $0.date, end: $0.date, metadata: extra)
@@ -199,8 +199,8 @@ extension CycleTracking: CycleTrackingProtocol {
     }
 
     public func saveSpotting(model: Spotting, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .intermenstrualBleeding)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .intermenstrualBleeding)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             HKCategorySample(type: type, value: 0, start: $0.date, end: $0.date)

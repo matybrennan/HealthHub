@@ -23,14 +23,14 @@ extension WorkoutManager: WorkoutManagerProtocol {
     
     // MARK: Read Service
     
-    public func workouts(fromWorkoutType type: WorkoutType) async throws -> MBWorkout {
+    public func workouts(fromWorkoutType type: WorkoutType) async throws -> Workout {
         try await workoutReadService.workouts(fromWorkoutType: type)
     }
     
     
     // MARK: Write Service
     
-    public func saveWorkout(workout: MBWorkout.Item, extra: [String: Sendable]?) async throws {
+    public func saveWorkout(workout: Workout.Item, extra: [String: Sendable]?) async throws {
         try await workoutWriteService.saveWorkout(workout: workout, extra: extra)
     }
 }

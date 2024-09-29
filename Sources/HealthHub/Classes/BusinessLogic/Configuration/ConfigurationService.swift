@@ -22,8 +22,8 @@ public final class ConfigurationService: ConfigurationServiceProtocol {
     }
     
     public func requestAuthorization(toShare share: [SharableType], toRead read: [ReadableType]) async throws {
-        let shareTypes = MBHealthType.shareTypes(share)
-        let readTypes = MBHealthType.readTypes(read)
+        let shareTypes = HealthType.shareTypes(share)
+        let readTypes = HealthType.readTypes(read)
         try await healthStore.requestAuthorization(toShare: shareTypes, read: readTypes)
         handler.updateState(.hasRequestedHealthKitInfo(true))
     }

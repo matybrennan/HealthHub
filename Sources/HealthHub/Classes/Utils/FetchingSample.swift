@@ -13,7 +13,7 @@ protocol FetchQuantitySample: Sendable {
 
 extension FetchQuantitySample {
     func fetchQuantitySamples(quantityIdentifier: HKQuantityTypeIdentifier, predicate: NSPredicate? = nil, sortDescriptors: [SortDescriptor<HKQuantitySample>] = [], limit: Int? = nil) async throws -> [HKQuantitySample] {
-        let quantityType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: quantityIdentifier)
+        let quantityType = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: quantityIdentifier)
         let queryDescriptor = HKSampleQueryDescriptor(predicates: [.quantitySample(type: quantityType, predicate: predicate)], sortDescriptors: sortDescriptors, limit: limit)
         let samples = try await queryDescriptor.result(for: healthStore)
         return samples
@@ -26,7 +26,7 @@ protocol FetchCategorySample: Sendable {
 
 extension FetchCategorySample {
     func fetchCategorySamples(categoryIdentifier: HKCategoryTypeIdentifier, sortDescriptors: [SortDescriptor<HKCategorySample>] = [], limit: Int? = nil) async throws -> [HKCategorySample] {
-        let categoryType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: categoryIdentifier)
+        let categoryType = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: categoryIdentifier)
         let queryDescriptor = HKSampleQueryDescriptor(predicates: [.categorySample(type: categoryType)], sortDescriptors: sortDescriptors, limit: limit)
         let samples = try await queryDescriptor.result(for: healthStore)
         return samples
@@ -39,7 +39,7 @@ protocol FetchCorrelationSample: Sendable {
 
 extension FetchCorrelationSample {
     func fetchCorrelationSamples(correlationIdentifier: HKCorrelationTypeIdentifier, sortDescriptors: [SortDescriptor<HKCorrelation>] = [], limit: Int? = nil) async throws -> [HKCorrelation] {
-        let correlationType = try MBHealthParser.unboxAndCheckIfAvailable(correlationIdentifier: correlationIdentifier)
+        let correlationType = try HealthParser.unboxAndCheckIfAvailable(correlationIdentifier: correlationIdentifier)
         let queryDescriptor = HKSampleQueryDescriptor(predicates: [.correlation(type: correlationType)], sortDescriptors: sortDescriptors, limit: limit)
         let samples = try await queryDescriptor.result(for: healthStore)
         return samples
@@ -52,7 +52,7 @@ protocol FetchWorkoutSample: Sendable {
 
 extension FetchWorkoutSample {
     func fetchWorkoutSamples(workoutIdentifier: HKWorkoutType, predicate: NSPredicate? = nil, sortDescriptors: [SortDescriptor<HKWorkout>] = [], limit: Int? = nil) async throws -> [HKWorkout] {
-        let _ = try MBHealthParser.workoutTypeAndCheckIfAvailable()
+        let _ = try HealthParser.workoutTypeAndCheckIfAvailable()
         let queryDescriptor = HKSampleQueryDescriptor(predicates: [.workout(predicate)], sortDescriptors: sortDescriptors, limit: limit)
         let samples = try await queryDescriptor.result(for: healthStore)
         return samples

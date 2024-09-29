@@ -18,7 +18,7 @@ public protocol ReadableType: Sendable {
 
 public typealias SharableReadableType = SharableType & ReadableType
 
-public enum MBObjectType: SharableReadableType, CaseIterable {
+public enum HealthObjectType: SharableReadableType, CaseIterable {
 
     // Characteristics
     case biologicalSex
@@ -556,7 +556,7 @@ public enum MBObjectType: SharableReadableType, CaseIterable {
     }
 }
 
-public struct MBHealthType {
+public struct HealthType {
     
     static func shareTypes(_ types: [SharableType]) -> Set<HKSampleType> {
         let res = types.compactMap(\.sharable)

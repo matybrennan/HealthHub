@@ -1,5 +1,5 @@
 //
-//  MBHealthHandler.swift
+//  HealthHandler.swift
 //  HealthHub
 //
 //  Created by Maty Brennan on 9/2/2023.

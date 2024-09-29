@@ -27,8 +27,8 @@ extension BodyTemperatureCase {
     }
 
     func saveBaseBodyTemperature(model: BodyTemperature, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyTemperature)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyTemperature)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .degreeCelsius(), doubleValue: $0.celsius)

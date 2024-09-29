@@ -26,8 +26,8 @@ extension MenstruationCase {
     }
 
     func saveBaseMenstruation(_ model: Menstruation, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .menstrualFlow)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .menstrualFlow)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             var metadata = extra ?? [:]

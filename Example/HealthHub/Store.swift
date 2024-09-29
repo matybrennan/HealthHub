@@ -23,7 +23,7 @@ final class Store {
     }
 
     func configure() {
-        healthTracker.mbHealthHandler.$state.sink { state in
+        hub.healthHandler.$state.sink { state in
             switch state {
             case .idle:
                 print("idle")

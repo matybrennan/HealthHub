@@ -78,8 +78,8 @@ extension HeartManager: HeartManagerProtocol {
     }
 
     public func saveCardioRecovery(model: CardioRecovery, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .heartRateRecoveryOneMinute)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .heartRateRecoveryOneMinute)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit(from: "count/min")
         let sampleObjects = model.items.map {
@@ -91,8 +91,8 @@ extension HeartManager: HeartManagerProtocol {
     }
 
     public func savePeripheralPerfusionIndex(model: PeripheralPerfusionIndex, extra: [String : any Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .peripheralPerfusionIndex)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .peripheralPerfusionIndex)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .percent(), doubleValue: $0.percentage)

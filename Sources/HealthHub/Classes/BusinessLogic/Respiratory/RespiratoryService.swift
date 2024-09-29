@@ -75,8 +75,8 @@ extension RespiratoryService: RespiratoryServiceProtocol {
     }
 
     public func saveForcedExpiratoryVolume(model: ForcedExpiratoryVolume, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .forcedExpiratoryVolume1)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .forcedExpiratoryVolume1)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .liter(), doubleValue: $0.liters)
@@ -87,8 +87,8 @@ extension RespiratoryService: RespiratoryServiceProtocol {
     }
 
     public func saveForcedVitalCapacity(model: ForcedVitalCapacity, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .forcedVitalCapacity)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .forcedVitalCapacity)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .liter(), doubleValue: $0.liters)
@@ -103,8 +103,8 @@ extension RespiratoryService: RespiratoryServiceProtocol {
     }
 
     public func savePeakExpiratoryFlowRate(model: PeakExpiratoryFlowRate, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .peakExpiratoryFlowRate)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .peakExpiratoryFlowRate)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit(from: "L/min")
         let sampleObjects = model.items.map {

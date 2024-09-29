@@ -23,8 +23,8 @@ extension TimeInDaylightCase {
     }
 
     func baseSaveTimeInDaylight(model: TimeInDaylight, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .timeInDaylight)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .timeInDaylight)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let duration = Int($0.endDate.timeIntervalSince($0.startDate))

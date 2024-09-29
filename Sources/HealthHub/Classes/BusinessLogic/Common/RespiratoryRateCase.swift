@@ -24,8 +24,8 @@ extension RespiratoryRateCase {
     }
 
     func saveBaseRespiratoryRate(model: RespiratoryRate, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .respiratoryRate)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .respiratoryRate)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit(from: "count/min")
         let sampleObjects = model.items.map {

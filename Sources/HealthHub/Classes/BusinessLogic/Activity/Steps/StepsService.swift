@@ -29,7 +29,7 @@ extension StepsService: StepsServiceProtocol {
     public func steps(fromStepsType type: StepsType) throws {
         
         // Confirm that the type and device works
-        let stepCountType = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .stepCount)
+        let stepCountType = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .stepCount)
         
         var query: HKQuery!
         

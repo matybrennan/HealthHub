@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol WorkoutWriteServiceProtocol: Sendable {
-    func saveWorkout(workout: MBWorkout.Item, extra: [String: Sendable]?) async throws
+    func saveWorkout(workout: Workout.Item, extra: [String: Sendable]?) async throws
 }

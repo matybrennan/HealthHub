@@ -33,8 +33,8 @@ private extension SymptomsService {
 
     func saveGenericSymptomResult(categoryType: HKCategoryType, model: GenericSymptomModel, extra: [String: Sendable]?) async throws {
         let identifier = HKCategoryTypeIdentifier(rawValue: categoryType.identifier)
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: identifier)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: identifier)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             return HKCategorySample(type: type, value: $0.style.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
@@ -69,8 +69,8 @@ extension SymptomsService: SymptomsServiceProtocol {
     }
 
     public func saveAppetiteChanges(model: AppetiteChanges, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .appetiteChanges)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .appetiteChanges)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             return HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)

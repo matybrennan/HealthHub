@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-public struct MBWorkout: Sendable {
+public struct Workout: Sendable {
 
     public struct Item: Sendable {
 
@@ -39,7 +39,7 @@ public struct MBWorkout: Sendable {
     }
 }
 
-extension MBWorkout.Item {
+extension Workout.Item {
     
     public init(duration: Double, energyBurned: Double?, distance: Double?, startDate: Date, endDate: Date, activityType: HKWorkoutActivityType) {
         self.duration = duration

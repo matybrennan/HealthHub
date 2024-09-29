@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-open class MBHealthParser {
+open class HealthParser {
     
     public static func unboxAndCheckIfAvailable(quantityIdentifier: HKQuantityTypeIdentifier) throws -> HKQuantityType {
         let result = HKQuantityType(quantityIdentifier)

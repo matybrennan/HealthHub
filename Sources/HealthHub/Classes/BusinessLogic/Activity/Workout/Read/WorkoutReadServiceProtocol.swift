@@ -26,5 +26,5 @@ public enum WorkoutType {
 }
 
 public protocol WorkoutReadServiceProtocol: Sendable {
-    func workouts(fromWorkoutType type: WorkoutType) async throws -> MBWorkout
+    func workouts(fromWorkoutType type: WorkoutType) async throws -> Workout
 }

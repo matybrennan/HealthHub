@@ -24,8 +24,8 @@ extension BloodOxygenCase {
     }
 
     func saveBaseBloodOxygen(model: BloodOxygen, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .oxygenSaturation)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .oxygenSaturation)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .percent(), doubleValue: $0.oxygenSaturationPercentage)

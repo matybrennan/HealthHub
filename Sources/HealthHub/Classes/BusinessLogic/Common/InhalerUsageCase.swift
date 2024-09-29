@@ -24,8 +24,8 @@ extension InhalerUsageCase {
     }
 
     func saveBaseInhalerUsage(model: InhalerUsage, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .inhalerUsage)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .inhalerUsage)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit.count()
         let sampleObjects = model.items.map {

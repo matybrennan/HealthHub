@@ -25,8 +25,8 @@ extension CardioFitnessCase {
     }
 
     func saveBaseCardioFitness(_ model: CardioFitness, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .vo2Max)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .vo2Max)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit(from: "ml/kg*min")
         let sampleObjects = model.items.map {

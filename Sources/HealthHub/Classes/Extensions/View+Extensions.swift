@@ -16,8 +16,8 @@ extension View {
         trigger: some Equatable,
         completion: @escaping @Sendable (Result<Bool, any Error>) -> Void
     ) -> some View {
-        let shareTypes = MBHealthType.shareTypes(share)
-        let readTypes = MBHealthType.readTypes(read)
+        let shareTypes = HealthType.shareTypes(share)
+        let readTypes = HealthType.readTypes(read)
         return healthDataAccessRequest(
             store: healthStore,
             shareTypes: shareTypes,

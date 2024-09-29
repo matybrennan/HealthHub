@@ -149,8 +149,8 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
     // MARK: Saving
 
     public func saveBasalBodyTemperature(model: BasalBodyTemperature, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .basalBodyTemperature)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .basalBodyTemperature)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .degreeCelsius(), doubleValue: $0.celsius)
@@ -161,8 +161,8 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
     }
 
     public func saveBodyFatPercentage(model: BodyFatPercentage, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyFatPercentage)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyFatPercentage)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .percent(), doubleValue: $0.percentage)
@@ -173,8 +173,8 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
     }
 
     public func saveBodyMassIndex(model: BodyMassIndex, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyMassIndex)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyMassIndex)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .count(), doubleValue: $0.value)
@@ -189,8 +189,8 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
     }
 
     public func saveElectrodermalActivity(model: ElectrodermalActivity, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .electrodermalActivity)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .electrodermalActivity)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit.siemenUnit(with: .micro)
         let sampleObjects = model.items.map {
@@ -202,8 +202,8 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
     }
 
     public func saveHeight(model: BodyHeight, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .height)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .height)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit(from: .centimeter)
         let sampleObjects = model.items.map {
@@ -215,8 +215,8 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
     }
 
     public func saveLeanBodyMass(model: LeanBodyMass, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .leanBodyMass)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .leanBodyMass)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit.gramUnit(with: .kilo)
         let sampleObjects = model.items.map {
@@ -228,8 +228,8 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
     }
 
     public func saveWaistCircumference(model: WaistCircumference, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .waistCircumference)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .waistCircumference)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit(from: .centimeter)
         let sampleObjects = model.items.map {
@@ -241,8 +241,8 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
     }
 
     public func saveWeight(model: BodyWeight, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyMass)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyMass)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit.gramUnit(with: .kilo)
         let sampleObjects = model.items.map {

@@ -24,8 +24,8 @@ extension SleepCase {
     }
 
     func baseSaveSleep(model: Sleep, extra: [String: Sendable]?) async throws {
-        let sleepType = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .sleepAnalysis)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: sleepType)
+        let sleepType = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .sleepAnalysis)
+        try HealthParser.checkSharingAuthorizationStatus(for: sleepType)
 
         let sampleObjects = model.items.map {
             HKCategorySample(type: sleepType, value: $0.style.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)

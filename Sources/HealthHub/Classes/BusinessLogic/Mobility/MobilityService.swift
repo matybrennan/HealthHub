@@ -147,8 +147,8 @@ extension MobilityService: MobilityServiceProtocol {
     }
 
     public func saveDoubleSupportTime(model: DoubleSupportTime, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .walkingDoubleSupportPercentage)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .walkingDoubleSupportPercentage)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .percent(), doubleValue: $0.percentage)
@@ -159,8 +159,8 @@ extension MobilityService: MobilityServiceProtocol {
     }
 
     public func saveGroundContactTime(model: GroundContactTime, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .runningGroundContactTime)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .runningGroundContactTime)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit.secondUnit(with: .milli)
         let sampleObjects = model.items.map {
@@ -172,8 +172,8 @@ extension MobilityService: MobilityServiceProtocol {
     }
 
     public func saveRunningStrideLength(model: RunningStrideLength, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .runningStrideLength)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .runningStrideLength)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .meter(), doubleValue: $0.distance)
@@ -188,8 +188,8 @@ extension MobilityService: MobilityServiceProtocol {
     }
 
     public func saveStairSpeedDown(model: StairSpeedDown, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .stairDescentSpeed)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .stairDescentSpeed)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let speedUnit = HKUnit.meter().unitDivided(by: HKUnit.second())
         let sampleObjects = model.items.map {
@@ -201,8 +201,8 @@ extension MobilityService: MobilityServiceProtocol {
     }
 
     public func saveStairSpeedUp(model: StairSpeedUp, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .stairAscentSpeed)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .stairAscentSpeed)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let speedUnit = HKUnit.meter().unitDivided(by: HKUnit.second())
         let sampleObjects = model.items.map {
@@ -214,8 +214,8 @@ extension MobilityService: MobilityServiceProtocol {
     }
 
     public func saveVerticalOscillation(model: VerticalOscillation, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .runningVerticalOscillation)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .runningVerticalOscillation)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit.meterUnit(with: .centi)
         let sampleObjects = model.items.map {
@@ -227,8 +227,8 @@ extension MobilityService: MobilityServiceProtocol {
     }
 
     public func saveWalkingSpeed(model: WalkingSpeed, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .walkingSpeed)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .walkingSpeed)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let speedUnit = HKUnit.meterUnit(with: .kilo).unitDivided(by: HKUnit.hour())
         let sampleObjects = model.items.map {
@@ -240,8 +240,8 @@ extension MobilityService: MobilityServiceProtocol {
     }
 
     public func saveWalkingStepLength(model: WalkingStepLength, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .walkingStepLength)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .walkingStepLength)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit.meterUnit(with: .centi)
         let sampleObjects = model.items.map {

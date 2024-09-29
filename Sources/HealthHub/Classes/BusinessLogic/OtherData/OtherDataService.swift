@@ -128,8 +128,8 @@ extension OtherDataService: OtherDataServiceProtocol {
     // MARK: Saving
 
     public func saveAlcoholConsumption(model: AlcoholConsumption, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .numberOfAlcoholicBeverages)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .numberOfAlcoholicBeverages)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .count(), doubleValue: $0.drinks)
@@ -140,8 +140,8 @@ extension OtherDataService: OtherDataServiceProtocol {
     }
 
     public func saveBloodAlcoholContent(model: AlcoholContent, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bloodAlcoholContent)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bloodAlcoholContent)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .percent(), doubleValue: $0.percentage)
@@ -156,8 +156,8 @@ extension OtherDataService: OtherDataServiceProtocol {
     }
 
     public func saveHandWashing(model: HandWashing, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .handwashingEvent)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .handwashingEvent)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let duration = Int($0.endDate.timeIntervalSince($0.startDate))
@@ -172,8 +172,8 @@ extension OtherDataService: OtherDataServiceProtocol {
     }
 
     public func saveInsulinDelivery(model: InsulinDelivery, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .insulinDelivery)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .insulinDelivery)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit(from: "IU")
         let sampleObjects = model.items.map {
@@ -187,8 +187,8 @@ extension OtherDataService: OtherDataServiceProtocol {
     }
 
     public func saveNumberOfTimesFallen(model: NumberOfTimesFallen, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .numberOfTimesFallen)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .numberOfTimesFallen)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .count(), doubleValue: Double($0.value))
@@ -203,8 +203,8 @@ extension OtherDataService: OtherDataServiceProtocol {
     }
 
     public func saveToothBrushing(model: ToothBrushing, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .toothbrushingEvent)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .toothbrushingEvent)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let duration = Int($0.endDate.timeIntervalSince($0.startDate))
@@ -219,8 +219,8 @@ extension OtherDataService: OtherDataServiceProtocol {
     }
 
     public func saveUvExposure(model: UVExposure, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .uvExposure)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .uvExposure)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .count(), doubleValue: Double($0.value))
@@ -231,8 +231,8 @@ extension OtherDataService: OtherDataServiceProtocol {
     }
 
     public func saveWaterTemperature(model: WaterTemperature, extra: [String: Sendable]?) async throws {
-        let type = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .waterTemperature)
-        try MBHealthParser.checkSharingAuthorizationStatus(for: type)
+        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .waterTemperature)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .degreeCelsius(), doubleValue: $0.celsius)

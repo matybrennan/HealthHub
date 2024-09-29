@@ -26,7 +26,7 @@ public final class HeartRateService: @unchecked Sendable {
     public func heartRate(fromHeartRateType type: HeartRateType) throws {
 
         // Confirm that the type and device works
-        let heartRate = try MBHealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .heartRate)
+        let heartRate = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .heartRate)
 
         var query: HKQuery!
 
