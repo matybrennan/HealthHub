@@ -11,7 +11,7 @@ import MBHealthTracker
 
 struct ContentView: View {
 
-    @StateObject private var store = Store(healthTracker: MBHealthTracker())
+    private let store = Store(healthTracker: MBHealthTracker())
 
     var body: some View {
         Text("Content View")
@@ -22,8 +22,6 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }

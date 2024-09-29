@@ -11,7 +11,7 @@ import MBHealthTracker
 import Combine
 
 @MainActor
-final class Store: ObservableObject {
+final class Store {
     
     private let healthTracker: MBHealthTracker
     private var cancellables = [AnyCancellable]()
@@ -39,10 +39,7 @@ final class Store: ObservableObject {
 
     func runTest() async {
         do {
-            print("6done")
-            let down = try await healthTracker.heart.atrialFibrillation()
-            //print("up: \(up)")
-            print("down: \(down)")
+            let down = try await healthTracker.heartManager.atrialFibrillation()
         } catch {
             print("Error: \(error.localizedDescription)")
         }
