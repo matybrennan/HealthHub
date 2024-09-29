@@ -14,7 +14,7 @@ enum NSPredicateError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .unableToGetDate:
-            return "Unable to calculate date"
+            "Unable to calculate date"
         }
     }
 }

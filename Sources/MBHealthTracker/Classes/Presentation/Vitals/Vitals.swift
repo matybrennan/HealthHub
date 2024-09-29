@@ -16,7 +16,7 @@ public struct BloodPressure: Sendable {
         public let endDate: Date
         
         public var value: String {
-            return "\(systolic) / \(diastolic)"
+            "\(systolic) / \(diastolic)"
         }
         
         public init(systolic: Double, diastolic: Double, startDate: Date, endDate: Date) {
