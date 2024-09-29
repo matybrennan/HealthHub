@@ -1,29 +1,28 @@
 //
-//  ViewInteractor.swift
-//  HealthHub_Example
+//  Store.swift
+//  HealthHubExample
 //
-//  Created by Maty Brennan on 2/17/18.
-//  Copyright © 2018 CocoaPods. All rights reserved.
+//  Created by Maty Brennan on 29/9/2024.
 //
 
 import Foundation
 import HealthHub
 import Combine
 
-@MainActor
+@Observable
 final class Store {
-    
-    private let hub: HealthHub
+
+    private let manager: HealthHubManager
     private var cancellables = [AnyCancellable]()
 
-    init(healthTracker: HealthHub) {
-        self.healthTracker = healthTracker
-        
+    init(manager: HealthHubManager) {
+        self.manager = manager
+
         configure()
     }
 
     func configure() {
-        hub.healthHandler.$state.sink { state in
+        manager.healthHandler.$state.sink { state in
             switch state {
             case .idle:
                 print("idle")
@@ -34,12 +33,13 @@ final class Store {
     }
 
     func configurePermissions() async {
-        try? await healthTracker.configuration.requestAuthorization(toShare: MBObjectType.allCases, toRead: MBObjectType.allCases)
+        try? await manager.configuration.requestAuthorization(toShare: HealthObjectType.allCases, toRead: HealthObjectType.allCases)
     }
 
     func runTest() async {
         do {
-            let down = try await healthTracker.heartManager.atrialFibrillation()
+            let result = try await manager.heartManager.atrialFibrillation()
+            print("result: \(result)")
         } catch {
             print("Error: \(error.localizedDescription)")
         }

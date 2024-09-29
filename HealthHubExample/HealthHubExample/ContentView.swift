@@ -1,9 +1,8 @@
 //
 //  ContentView.swift
-//  HealthHub_Example
+//  HealthHubExample
 //
-//  Created by Maty Brennan on 8/8/2023.
-//  Copyright © 2023 CocoaPods. All rights reserved.
+//  Created by Maty Brennan on 29/9/2024.
 //
 
 import SwiftUI
@@ -11,7 +10,7 @@ import HealthHub
 
 struct ContentView: View {
 
-    private let store = Store(hub: HealthHub())
+    @State private var store = Store(manager: HealthHubManager())
 
     var body: some View {
         Text("Content View")
