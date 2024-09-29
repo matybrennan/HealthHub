@@ -8,13 +8,13 @@ let settings: [SwiftSetting] = [
 ]
 
 let package = Package(
-    name: "MBHealthTracker",
+    name: "HealthHub",
     platforms: [.iOS("17.0")],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "MBHealthTracker",
-            targets: ["MBHealthTracker"]),
+            name: "HealthHub",
+            targets: ["HealthHub"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -24,14 +24,14 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
-            name: "MBHealthTracker",
+            name: "HealthHub",
             dependencies: [],
             path: "Sources",
             swiftSettings: settings
         ),
         .testTarget(
-            name: "MBHealthTrackerTests",
-            dependencies: ["MBHealthTracker"],
+            name: "HealthHubTests",
+            dependencies: ["HealthHub"],
             path: "Tests/UnitTests"
         ),
     ]

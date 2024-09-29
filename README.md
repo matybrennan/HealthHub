@@ -1,4 +1,4 @@
-# MBHealthTracker
+# HealthHub
 
 ## Goals
 
@@ -9,10 +9,10 @@
 
 ## Installation
 
-MBHealthTracker is available through Swift Package Manager, either via Xcode or in Package.swift:
+HealthHub is available through Swift Package Manager, either via Xcode or in Package.swift:
 
 ```ruby
-.package(url: "https://github.com/matybrennan/MBHealthTracker", from: "3.0.0"),
+.package(url: "https://github.com/matybrennan/HealthHub", from: "3.0.0"),
 ```
 
 Package version "2.4.0" and above requires iOS17 and above in project
@@ -32,15 +32,15 @@ Add below code to your info.plist
 
 ### Guide
 
-The main driver that contains all the business logic is ```MBHealthTracker``` which can be injected into your services with  ```MBHealthTrackerProtocol```
+The main driver that contains all the business logic is ```HealthHub``` which can be injected into your services with  ```HealthHubProtocol```
 
-The ```MBHealthTracker``` contains all the services below
+The ```HealthHub``` contains all the services below
 ``` 
-@StateObject private var healthTracker = MBHealthTracker()
+@StateObject private var healthTracker = HealthHub()
 
 or 
 
-let tracker = MBHealthTracker()
+let hub = HealthHub()
 let configuration = tracker.configuration
 ```
 
@@ -58,12 +58,12 @@ let myService = MyService(configuration: configuration)
 
 ```var configuration: ConfigurationServiceProtocol```
 
-### Handlers - These can only be accessed directly from ```MBHealthTracker```
+### Handlers - These can only be accessed directly from ```HealthHub```
 ```
-let tracker = MBHealthTracker()
-tracker.mbHealthHandler.updateState(.idle)
-tracker.mbHealthHandler.$state.sink { state in ... }
-mbHealthHandler = MBHealthHandler()
+let hub = HealthHub()
+hub.healthHandler.updateState(.idle)
+hub.healthHandler.$state.sink { state in ... }
+healthHandler = HealthHandler()
 ```
 
 ### Characteristics
@@ -83,10 +83,10 @@ The ```ActivityManager``` contains all the services below and can be injected in
 let activityManager = ActivityManager()
 let activeEnergy = activityManager.activeEnergy
 ```
-or using MBHealthTracker
+or using HealthHub
 ``` 
-let tracker = MBHealthTracker()
-let activeEnergy = tracker.activityManager.activeEnergy
+let hub = HealthHub()
+let activeEnergy = hub.activityManager.activeEnergy
 ```
     
 #### ActiveEnergy
@@ -276,9 +276,9 @@ sleepChanges, soreThroat, vaginalDryness, vomiting, wheezing
 
 ## Contact
 
-Have a question or an issue about MBHealthTracker? Create an [issue](https://github.com/matybrennan/MBHealthTracker/issues/new)!
+Have a question or an issue about HealthHub? Create an [issue](https://github.com/matybrennan/HealthHub/issues/new)!
 
-Interested in contributing to MBHealthTracker? Branch off and create a PR 
+Interested in contributing to HealthHub? Branch off and create a PR 
 
 ### Apps using this library
 
@@ -288,4 +288,4 @@ Add your app to the list of apps using this library and make a pull request.
 
 ## License
 
-MBHealthTracker is available under the MIT license.
+HealthHub is available under the MIT license.

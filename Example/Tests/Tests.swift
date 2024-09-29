@@ -1,5 +1,5 @@
 import XCTest
-import MBHealthTracker
+import HealthHub
 
 class Tests: XCTestCase {
     
