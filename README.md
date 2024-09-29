@@ -32,15 +32,15 @@ Add below code to your info.plist
 
 ### Guide
 
-The main driver that contains all the business logic is ```HealthHub``` which can be injected into your services with  ```HealthHubProtocol```
+The main driver that contains all the business logic is ```HealthHubManager``` which can be injected into your services with  ```HealthHubManagerProtocol```
 
-The ```HealthHub``` contains all the services below
+The ```HealthHubManager``` contains all the services below
 ``` 
-@StateObject private var healthTracker = HealthHub()
+@StateObject private var hub = HealthHubManager()
 
 or 
 
-let hub = HealthHub()
+let hub = HealthHubManager()
 let configuration = tracker.configuration
 ```
 
@@ -58,9 +58,9 @@ let myService = MyService(configuration: configuration)
 
 ```var configuration: ConfigurationServiceProtocol```
 
-### Handlers - These can only be accessed directly from ```HealthHub```
+### Handlers - These can only be accessed directly from ```HealthHubManager```
 ```
-let hub = HealthHub()
+let hub = HealthHubManager()
 hub.healthHandler.updateState(.idle)
 hub.healthHandler.$state.sink { state in ... }
 healthHandler = HealthHandler()
@@ -83,9 +83,9 @@ The ```ActivityManager``` contains all the services below and can be injected in
 let activityManager = ActivityManager()
 let activeEnergy = activityManager.activeEnergy
 ```
-or using HealthHub
+or using HealthHubManager
 ``` 
-let hub = HealthHub()
+let hub = HealthHubManager()
 let activeEnergy = hub.activityManager.activeEnergy
 ```
     

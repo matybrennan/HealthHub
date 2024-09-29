@@ -1,5 +1,5 @@
 //
-//  HealthHub.swift
+//  HealthHubManager.swift
 //  Pods-TestPod_Example
 //
 //  Created by Maty Brennan on 2/6/18.
@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-public final class HealthHub: ObservableObject, @unchecked Sendable {
+public final class HealthHubManager: ObservableObject, @unchecked Sendable {
 
     public lazy var healthHandler = HealthHandler()
 
@@ -31,7 +31,7 @@ public final class HealthHub: ObservableObject, @unchecked Sendable {
 }
 
 
-extension HealthHub: HealthHubProtocol {
+extension HealthHubManager: HealthHubManagerProtocol {
     
     public var configuration: ConfigurationServiceProtocol {
         privateConfiguration

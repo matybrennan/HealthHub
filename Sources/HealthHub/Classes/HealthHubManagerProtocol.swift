@@ -1,5 +1,5 @@
 //
-//  HealthHubProtocol.swift
+//  HealthHubManagerProtocol.swift
 //  Pods-TestPod_Example
 //
 //  Created by Maty Brennan on 2/6/18.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol HealthHubProtocol: Sendable {
+public protocol HealthHubManagerProtocol: Sendable {
 
     var configuration: ConfigurationServiceProtocol { get }
     
