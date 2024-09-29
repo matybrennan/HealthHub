@@ -13,6 +13,12 @@ public var healthStore: HKHealthStore {
     HKHealthStore()
 }
 
+public protocol HealthStoreProtocol: Sendable {
+    func requestAuthorization(toShare typesToShare: Set<HKSampleType>, read typesToRead: Set<HKObjectType>) async throws
+}
+
+extension HKHealthStore: HealthStoreProtocol { }
+
 public enum AuthorizationStatusError: LocalizedError {
     case notDetermined(String)
     case sharingDenied(String)

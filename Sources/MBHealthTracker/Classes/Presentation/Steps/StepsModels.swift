@@ -9,7 +9,7 @@ import Foundation
 
 public struct Steps: Sendable {
 
-    public struct Item: Sendable {
+    public struct Item: Sendable, Equatable {
         public let count: Double
 
         public init(count: Double) {

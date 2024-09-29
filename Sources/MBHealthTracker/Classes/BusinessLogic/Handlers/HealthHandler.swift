@@ -7,23 +7,28 @@
 
 import Foundation
 
-public final class MBHealthHandler: ObservableObject, @unchecked Sendable {
+public protocol HealthHandlable: Sendable {
+    func updateState(_ state: HealthHandler.State)
+    func resetState()
+}
+
+public final class HealthHandler: ObservableObject, HealthHandlable, @unchecked Sendable {
 
     public init() { }
     
-    public enum State: Sendable {
+    public enum State: Sendable, Equatable {
         case idle
         case hasRequestedHealthKitInfo(Bool)
     }
     
     @Published public private(set) var state: State = .idle
-    
-    public func resetState() {
-        state = .idle
-    }
 
     public func updateState(_ state: State) {
         self.state = state
         resetState()
+    }
+
+    public func resetState() {
+        state = .idle
     }
 }

@@ -134,7 +134,7 @@ private extension StepsService {
         }
         
         guard let quantitySamples = collectionStats?.statistics() else {
-            throw MBAsyncParsingError.unableToParse("Steps log")
+            throw AsyncParsingError.unableToParse("Steps log")
         }
         
         let items = quantitySamples.compactMap { item -> Steps.Item? in

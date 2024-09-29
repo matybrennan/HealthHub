@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum MBAsyncParsingError: LocalizedError {
+enum AsyncParsingError: LocalizedError {
     case unableToParse(String)
     
     public var errorDescription: String? {

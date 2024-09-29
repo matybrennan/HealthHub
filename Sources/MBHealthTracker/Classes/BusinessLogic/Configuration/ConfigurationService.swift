@@ -13,10 +13,12 @@ public final class ConfigurationService: ConfigurationServiceProtocol {
 
     static let appleHealthAppURL = "x-apple-health://"
     
-    public let handler: MBHealthHandler
-    
-    public init(handler: MBHealthHandler) {
+    public let handler: HealthHandlable
+    public let healthStore: HealthStoreProtocol
+
+    public init(handler: HealthHandlable, healthStore: HealthStoreProtocol) {
         self.handler = handler
+        self.healthStore = healthStore
     }
     
     public func requestAuthorization(toShare share: [SharableType], toRead read: [ReadableType]) async throws {

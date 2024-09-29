@@ -44,7 +44,7 @@ public final class HeartRateService: @unchecked Sendable {
                 }
 
                 guard let quantitySample = samples?.first as? HKQuantitySample else {
-                    let _ = MBAsyncParsingError.unableToParse("current heartRate or no heart rate samples")
+                    let _ = AsyncParsingError.unableToParse("current heartRate or no heart rate samples")
                     return
                 }
                 let hr = quantitySample.quantity.doubleValue(for: HKUnit(from: Unit.heartRateCountMin))
@@ -144,7 +144,7 @@ private extension HeartRateService {
         }
 
         guard let quantitySamples = collection?.statistics() else {
-            throw MBAsyncParsingError.unableToParse("HeartRate log")
+            throw AsyncParsingError.unableToParse("HeartRate log")
         }
 
         let items = quantitySamples.compactMap { sample -> HeartRate.Item? in
