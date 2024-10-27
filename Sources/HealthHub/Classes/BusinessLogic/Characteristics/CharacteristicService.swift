@@ -23,9 +23,9 @@ extension CharacteristicService: CharacteristicServiceProtocol {
         
         switch sexCase {
         case 0: return nil
-        case 1: return "Female"
-        case 2: return "Male"
-        default: return "Other"
+        case 1: return Copy.Gender.female
+        case 2: return Copy.Gender.male
+        default: return Copy.Gender.other
         }
     }
     
