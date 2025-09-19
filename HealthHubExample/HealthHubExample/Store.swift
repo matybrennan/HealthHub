@@ -9,6 +9,7 @@ import Foundation
 import HealthHub
 import Combine
 
+@MainActor
 @Observable
 final class Store {
 
