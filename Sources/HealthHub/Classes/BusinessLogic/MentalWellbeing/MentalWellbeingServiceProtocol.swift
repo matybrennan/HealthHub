@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol MentalWellbeingServiceProtocol: Sendable {
+public protocol MentalWellbeingServiceProtocol {
 
     // Fetch
     func mindfulActivity() async throws -> Mindful

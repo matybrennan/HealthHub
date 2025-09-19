@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol CycleTrackingProtocol: Sendable {
+public protocol CycleTrackingProtocol {
 
     // Fetch
     func abdominalCramps() async throws -> GenericSymptomModel

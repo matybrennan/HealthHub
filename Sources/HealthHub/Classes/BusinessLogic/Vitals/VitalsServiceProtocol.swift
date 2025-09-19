@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol VitalsServiceProtocol: Sendable {
+public protocol VitalsServiceProtocol {
 
     // Fetch
     func bloodGlucose() async throws -> BloodGlucose

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol OtherDataServiceProtocol: Sendable {
+public protocol OtherDataServiceProtocol {
 
     // Fetch
     func alcoholConsumption() async throws -> AlcoholConsumption

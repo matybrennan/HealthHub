@@ -6,7 +6,7 @@
 //
 
 import Foundation
-@preconcurrency import HealthKit
+import HealthKit
 
 protocol BloodOxygenCase: FetchQuantitySample { }
 

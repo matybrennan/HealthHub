@@ -14,7 +14,6 @@ struct HealthHubExampleApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(HealthHandler())
         }
     }
 }

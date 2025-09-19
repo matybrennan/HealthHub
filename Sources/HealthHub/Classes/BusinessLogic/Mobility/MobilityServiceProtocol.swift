@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol MobilityServiceProtocol: Sendable {
+public protocol MobilityServiceProtocol {
 
     // Fetch
     func cardioFitness() async throws -> CardioFitness

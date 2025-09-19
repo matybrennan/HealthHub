@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol RespiratoryServiceProtocol: Sendable {
+public protocol RespiratoryServiceProtocol {
 
     // Fetch
     func bloodOxygen() async throws -> BloodOxygen
