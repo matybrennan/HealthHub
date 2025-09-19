@@ -9,7 +9,7 @@ import Foundation
 import HealthKit
 
 @Observable
-public final class HeartRateService: @unchecked Sendable {
+public final class HeartRateService {
 
     struct Unit {
         static let heartRateCountMin = "count/min"
@@ -69,7 +69,9 @@ public final class HeartRateService: @unchecked Sendable {
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [weak self]
                 query, collection, error in
                 guard let self else { return }
-                try? self.configure(query: query, collection: collection, error: error, type: .today(timeInterval: interval))
+                Task { @MainActor in
+                    try? self.configure(query: query, collection: collection, error: error, type: .today(timeInterval: interval))
+                }
             }
         case let .thisWeek(interval):
 
@@ -86,7 +88,9 @@ public final class HeartRateService: @unchecked Sendable {
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [weak self]
                 query, collection, error in
                 guard let self else { return }
-                try? self.configure(query: query, collection: collection, error: error, type: .thisWeek(timeInterval: interval))
+                Task { @MainActor in
+                    try? self.configure(query: query, collection: collection, error: error, type: .thisWeek(timeInterval: interval))
+                }
             }
         case let .allTime(interval):
 
@@ -99,7 +103,9 @@ public final class HeartRateService: @unchecked Sendable {
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [weak self]
                 query, collection, error in
                 guard let self else { return }
-                try? self.configure(query: query, collection: collection, error: error, type: .allTime(timeInterval: interval))
+                Task { @MainActor in
+                    try? self.configure(query: query, collection: collection, error: error, type: .allTime(timeInterval: interval))
+                }
             }
 
         case let .betweenTimePreference(startDate, endDate):
@@ -113,7 +119,9 @@ public final class HeartRateService: @unchecked Sendable {
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [weak self]
                 query, collection, error in
                 guard let self else { return }
-                try? self.configure(query: query, collection: collection, error: error, type: .betweenTimePreference(start: startDate, end: endDate))
+                Task { @MainActor in
+                    try? self.configure(query: query, collection: collection, error: error, type: .betweenTimePreference(start: startDate, end: endDate))
+                }
             }
         }
 

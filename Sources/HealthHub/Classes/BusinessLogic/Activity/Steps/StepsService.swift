@@ -9,7 +9,7 @@ import Foundation
 import HealthKit
 
 @Observable
-public final class StepsService: @unchecked Sendable {
+public final class StepsService {
 
     struct StepsConfig {
         static let oneHour: TimeInterval = 3600
@@ -51,7 +51,9 @@ extension StepsService: StepsServiceProtocol {
             
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [weak self] query, collection, error in
                 guard let self else { return }
-                try? self.configure(query: query, collectionStats: collection, error: error, type: type)
+                Task { @MainActor in
+                    try? self.configure(query: query, collectionStats: collection, error: error, type: type)
+                }
             }
             
         // Get the sum of the steps from today and state the timeInterval you want to recevie batches of steps count defaults to each hour
@@ -69,7 +71,9 @@ extension StepsService: StepsServiceProtocol {
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [weak self]
                 query, collection, error in
                 guard let self else { return }
-                try? self.configure(query: query, collectionStats: collection, error: error, type: type)
+                Task { @MainActor in
+                    try? self.configure(query: query, collectionStats: collection, error: error, type: type)
+                }
             }
             
         // Get the sum of the steps from week and state the timeInterval you want to recevie batches of steps count defaults to each day
@@ -87,7 +91,9 @@ extension StepsService: StepsServiceProtocol {
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [weak self]
                 query, collection, error in
                 guard let self else { return }
-                try? self.configure(query: query, collectionStats: collection, error: error, type: type)
+                Task { @MainActor in
+                    try? self.configure(query: query, collectionStats: collection, error: error, type: type)
+                }
             }
             
             
@@ -105,7 +111,9 @@ extension StepsService: StepsServiceProtocol {
             (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [weak self]
                 query, collection, error in
                 guard let self else { return }
-                try? self.configure(query: query, collectionStats: collection, error: error, type: type)
+                Task { @MainActor in
+                    try? self.configure(query: query, collectionStats: collection, error: error, type: type)
+                }
             }
         }
         healthStore.execute(query)
