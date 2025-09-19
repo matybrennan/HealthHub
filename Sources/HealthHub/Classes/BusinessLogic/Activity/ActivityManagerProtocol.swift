@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol ActivityManagerProtocol: Sendable {
+public protocol ActivityManagerProtocol {
 
     var activeEnergy: ActiveEnergyServiceProtocol { get }
     var steps: StepsServiceProtocol { get }

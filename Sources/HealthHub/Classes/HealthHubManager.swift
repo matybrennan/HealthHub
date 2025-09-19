@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-public final class HealthHubManager: ObservableObject, @unchecked Sendable {
+public final class HealthHubManager {
 
     public init() { }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol HealthHubManagerProtocol: Sendable {
+public protocol HealthHubManagerProtocol {
 
     var configuration: ConfigurationServiceProtocol { get }
     

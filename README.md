@@ -35,11 +35,7 @@ Add below code to your info.plist
 The main driver that contains all the business logic is ```HealthHubManager``` which can be injected into your services with  ```HealthHubManagerProtocol```
 
 The ```HealthHubManager``` contains all the services below
-``` 
-@StateObject private var hub = HealthHubManager()
-
-or 
-
+```  
 let hub = HealthHubManager()
 let configuration = tracker.configuration
 ```
@@ -58,6 +54,10 @@ let myService = MyService(configuration: configuration)
 - state (status of requesting health kit information)
 
 ```var configuration: ConfigurationServiceProtocol```
+
+or
+
+@State private var configuration = ConfigurationService(healthStore: HealthStoreProtocol)
 
 ### Characteristics
 - biologicalSex

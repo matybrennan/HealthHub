@@ -47,9 +47,11 @@ public final class HeartRateService {
                     let _ = AsyncParsingError.unableToParse("current heartRate or no heart rate samples")
                     return
                 }
-                let hr = quantitySample.quantity.doubleValue(for: HKUnit(from: Unit.heartRateCountMin))
-                let item = HeartRate.Item(max: hr, min: hr, average: hr)
-                self.current = item
+                Task { @MainActor in
+                    let hr = quantitySample.quantity.doubleValue(for: HKUnit(from: Unit.heartRateCountMin))
+                    let item = HeartRate.Item(max: hr, min: hr, average: hr)
+                    self.current = item
+                }
             })
 
         case let .today(interval):
