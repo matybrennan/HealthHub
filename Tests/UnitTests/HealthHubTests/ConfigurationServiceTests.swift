@@ -6,9 +6,8 @@ struct ConfigurationServiceTests {
 
     @Test("ConfigurationService")
     func configurationServiceRqeuestAuthorization() async throws {
-        let mock = HealthHandlerMock()
-        let service = ConfigurationService(handler: mock, healthStore: HealthStoreMock())
+        let service = ConfigurationService(healthStore: HealthStoreMock())
         try await service.requestAuthorization(toShare: HealthObjectType.allCases, toRead: HealthObjectType.allCases)
-        #expect(mock.state == .hasRequestedHealthKitInfo(true))
+        #expect(service.state == .hasRequestedHealthKitInfo(true))
     }
 }

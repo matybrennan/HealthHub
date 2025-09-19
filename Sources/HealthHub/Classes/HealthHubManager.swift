@@ -10,11 +10,9 @@ import Combine
 
 public final class HealthHubManager: ObservableObject, @unchecked Sendable {
 
-    public lazy var healthHandler = HealthHandler()
-
     public init() { }
 
-    private lazy var privateConfiguration = ConfigurationService(handler: healthHandler, healthStore: healthStore)
+    private lazy var privateConfiguration = ConfigurationService(healthStore: healthStore)
     private lazy var privateActivityManager = ActivityManager()
     private lazy var privateHeartManager = HeartManager()
     private lazy var privateCharacteristicsService = CharacteristicService()

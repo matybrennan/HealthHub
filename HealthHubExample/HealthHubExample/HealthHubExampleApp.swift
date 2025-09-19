@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import HealthHub
 
 @main
 struct HealthHubExampleApp: App {
@@ -13,6 +14,7 @@ struct HealthHubExampleApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(HealthHandler())
         }
     }
 }

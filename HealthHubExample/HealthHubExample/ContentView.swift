@@ -10,13 +10,17 @@ import HealthHub
 
 struct ContentView: View {
 
-    @State private var store = Store(manager: HealthHubManager())
+    private let configuration = ConfigurationService(healthStore: healthStore)
 
     var body: some View {
         Text("Content View")
-            .task {
-                await store.configurePermissions()
-                await store.runTest()
+            .onAppear {
+                Task {
+                    try? await configuration.requestAuthorization(toShare: HealthObjectType.allCases, toRead: HealthObjectType.allCases)
+                }
+            }
+            .onChange(of: configuration.state) { oldValue, newValue in
+                print("new: \(newValue) : old: \(oldValue)")
             }
     }
 }

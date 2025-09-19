@@ -55,16 +55,9 @@ let myService = MyService(configuration: configuration)
 ### Configuration 
 - requestingAuthorization
 - presenting healthKit app
+- state (status of requesting health kit information)
 
 ```var configuration: ConfigurationServiceProtocol```
-
-### Handlers - These can only be accessed directly from ```HealthHubManager```
-```
-let hub = HealthHubManager()
-hub.healthHandler.updateState(.idle)
-hub.healthHandler.$state.sink { state in ... }
-healthHandler = HealthHandler()
-```
 
 ### Characteristics
 - biologicalSex

@@ -9,15 +9,21 @@ import Foundation
 import HealthKit
 import UIKit
 
+@Observable
 public final class ConfigurationService: ConfigurationServiceProtocol {
 
     static let appleHealthAppURL = "x-apple-health://"
-    
-    public let handler: HealthHandlable
+
     public let healthStore: HealthStoreProtocol
 
-    public init(handler: HealthHandlable, healthStore: HealthStoreProtocol) {
-        self.handler = handler
+    public enum State: Equatable {
+        case idle
+        case hasRequestedHealthKitInfo(Bool)
+    }
+
+    public private(set) var state: State = .idle
+
+    public init(healthStore: HealthStoreProtocol) {
         self.healthStore = healthStore
     }
     
@@ -25,7 +31,7 @@ public final class ConfigurationService: ConfigurationServiceProtocol {
         let shareTypes = HealthType.shareTypes(share)
         let readTypes = HealthType.readTypes(read)
         try await healthStore.requestAuthorization(toShare: shareTypes, read: readTypes)
-        handler.updateState(.hasRequestedHealthKitInfo(true))
+        state = .hasRequestedHealthKitInfo(true)
     }
     
     public func navigateToHealthSettings() async {

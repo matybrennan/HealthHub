@@ -12,28 +12,16 @@ import Combine
 @Observable
 final class Store {
 
-    private let manager: HealthHubManager
+    let manager: HealthHubManager
     private var cancellables = [AnyCancellable]()
 
     init(manager: HealthHubManager) {
         self.manager = manager
-
         configure()
     }
 
     func configure() {
-        manager.healthHandler.$state.sink { state in
-            switch state {
-            case .idle:
-                print("idle")
-            case .hasRequestedHealthKitInfo(let value):
-                print("value: \(value)")
-            }
-        }.store(in: &cancellables)
-    }
-
-    func configurePermissions() async {
-        try? await manager.configuration.requestAuthorization(toShare: HealthObjectType.allCases, toRead: HealthObjectType.allCases)
+        //
     }
 
     func runTest() async {
