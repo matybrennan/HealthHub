@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol HeartManagerProtocol: Sendable {
+public protocol HeartManagerProtocol {
 
     // Services
     var heartRate: HeartRateService { get }

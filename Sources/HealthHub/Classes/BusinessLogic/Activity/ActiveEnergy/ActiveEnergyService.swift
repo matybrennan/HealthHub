@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-public final class ActiveEnergyService: Sendable {
+public final class ActiveEnergyService {
 
     public init() { }
 }

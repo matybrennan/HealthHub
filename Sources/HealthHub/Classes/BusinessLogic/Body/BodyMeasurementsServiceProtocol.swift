@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol BodyMeasurementsServiceProtocol: Sendable {
+public protocol BodyMeasurementsServiceProtocol {
 
     // Fetch
     func basalBodyTemperature() async throws -> BasalBodyTemperature

@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-public final class HeartManager: @unchecked Sendable {
+public final class HeartManager {
 
     public init() { }
 

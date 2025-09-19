@@ -22,7 +22,7 @@ public enum StepsType: Sendable {
     case betweenTimePreference(start: Date, end: Date)
 }
 
-public protocol StepsServiceProtocol: Sendable {
+public protocol StepsServiceProtocol {
     func steps(fromStepsType type: StepsType) throws
     func reset(type: StepsType)
 }

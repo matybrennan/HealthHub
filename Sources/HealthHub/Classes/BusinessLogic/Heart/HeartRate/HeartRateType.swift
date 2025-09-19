@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum HeartRateType {
+public enum HeartRateType: Sendable {
 
     case current
 

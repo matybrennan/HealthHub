@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol CharacteristicServiceProtocol: Sendable {
+public protocol CharacteristicServiceProtocol {
     var biologicalSex: String? { get }
     var bloodType: String? { get }
     var dateOfBirth: DateComponents? { get }
