@@ -34,11 +34,7 @@ public final class ConfigurationService: ConfigurationServiceProtocol {
         state = .hasRequestedHealthKitInfo(true)
     }
     
-    public func navigateToHealthSettings() async {
-        #if canImport(UIKit)
-        await MainActor.run {
-            UIApplication.shared.open(URL(string: ConfigurationService.appleHealthAppURL)!, options: [:], completionHandler: nil)
-        }
-        #endif
+    public func navigateToHealthSettings() {
+        UIApplication.shared.open(URL(string: ConfigurationService.appleHealthAppURL)!, options: [:], completionHandler: nil)
     }
 }

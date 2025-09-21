@@ -10,5 +10,5 @@ import HealthKit
 
 public protocol ConfigurationServiceProtocol {
     func requestAuthorization(toShare share: [SharableType], toRead read: [ReadableType]) async throws
-    func navigateToHealthSettings() async
+    func navigateToHealthSettings()
 }

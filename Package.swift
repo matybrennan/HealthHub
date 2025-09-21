@@ -5,7 +5,7 @@ import PackageDescription
 
 let settings: [SwiftSetting] = [
     .swiftLanguageMode(.v6),
-    .defaultIsolation(MainActor.self)
+    .defaultIsolation(MainActor.self),
 ]
 
 let package = Package(
