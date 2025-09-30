@@ -13,7 +13,7 @@ public var healthStore: HKHealthStore {
     HKHealthStore()
 }
 
-public protocol HealthStoreProtocol: Sendable {
+public protocol HealthStoreProtocol {
     func requestAuthorization(toShare typesToShare: Set<HKSampleType>, read typesToRead: Set<HKObjectType>) async throws
 }
 

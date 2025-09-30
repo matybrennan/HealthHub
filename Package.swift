@@ -3,11 +3,6 @@
 
 import PackageDescription
 
-let settings: [SwiftSetting] = [
-    .swiftLanguageMode(.v6),
-    .defaultIsolation(MainActor.self),
-]
-
 let package = Package(
     name: "HealthHub",
     platforms: [.iOS(.v18)],
@@ -23,8 +18,7 @@ let package = Package(
         .target(
             name: "HealthHub",
             dependencies: [],
-            path: "Sources",
-            swiftSettings: settings
+            path: "Sources"
         ),
         .testTarget(
             name: "HealthHubTests",
@@ -33,3 +27,13 @@ let package = Package(
         ),
     ]
 )
+
+for target in package.targets {
+  var settings = target.swiftSettings ?? []
+  settings.append(contentsOf: [
+    .defaultIsolation(MainActor.self),
+//    .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+//    .enableUpcomingFeature("InferIsolatedConformances")
+  ])
+  target.swiftSettings = settings
+}
