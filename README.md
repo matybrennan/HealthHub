@@ -12,7 +12,7 @@
 HealthHub is available through Swift Package Manager, either via Xcode or in Package.swift:
 
 ```ruby
-.package(url: "https://github.com/matybrennan/HealthHub", from: "3.1.0"),
+.package(url: "https://github.com/matybrennan/HealthHub", from: "3.2.0"),
 ```
 
 Package version "3.1.0" and above requires iOS18 and above in project
