@@ -33,7 +33,7 @@ extension NutritionService: NutritionServiceProtocol {
     }
     
     public func save(model: Nutrition, extra: [String: Sendable]?) async throws {
-        let nutritionType = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: HKQuantityTypeIdentifier(rawValue: model.type.identifier))
+        let nutritionType = try HealthParser.quantityType(for: HKQuantityTypeIdentifier(rawValue: model.type.identifier))
         try HealthParser.checkSharingAuthorizationStatus(for: model.type)
 
         let nutritionObjects = model.items.map {
@@ -41,6 +41,6 @@ extension NutritionService: NutritionServiceProtocol {
             return HKQuantitySample(type: nutritionType, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(nutritionObjects)
+        try await HealthStoreProvider.shared.save(nutritionObjects)
     }
 }

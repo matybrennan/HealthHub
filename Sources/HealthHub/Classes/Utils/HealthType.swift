@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-public protocol SharableType: Sendable {
+public protocol ShareableType: Sendable {
     var sharable: HKSampleType? { get }
 }
 
@@ -16,9 +16,9 @@ public protocol ReadableType: Sendable {
     var readable: HKObjectType { get }
 }
 
-public typealias SharableReadableType = SharableType & ReadableType
+public typealias ShareableReadableType = ShareableType & ReadableType
 
-public enum HealthObjectType: SharableReadableType, CaseIterable {
+public enum HealthObjectType: ShareableReadableType, CaseIterable {
 
     // Characteristics
     case biologicalSex
@@ -558,13 +558,11 @@ public enum HealthObjectType: SharableReadableType, CaseIterable {
 
 public struct HealthType {
     
-    static func shareTypes(_ types: [SharableType]) -> Set<HKSampleType> {
-        let res = types.compactMap(\.sharable)
-        return Set(res)
+    static func shareTypes(from types: [ShareableType]) -> Set<HKSampleType> {
+        Set(types.compactMap(\.sharable))
     }
     
     static func readTypes(_ types: [ReadableType]) -> Set<HKObjectType> {
-        let res = types.map(\.readable)
-        return Set(res)
+        Set(types.map(\.readable))
     }
 }

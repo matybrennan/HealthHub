@@ -17,7 +17,7 @@ public final class CharacteristicService {
 extension CharacteristicService: CharacteristicServiceProtocol {
     
     public var biologicalSex: String? {
-        guard let sexCase: Int = try? healthStore.biologicalSex().biologicalSex.rawValue else {
+        guard let sexCase: Int = try? HealthStoreProvider.shared.biologicalSex().biologicalSex.rawValue else {
             return nil
         }
         
@@ -30,7 +30,7 @@ extension CharacteristicService: CharacteristicServiceProtocol {
     }
     
     public var bloodType: String? {
-        guard let bloodType = try? healthStore.bloodType().bloodType.rawValue else {
+        guard let bloodType = try? HealthStoreProvider.shared.bloodType().bloodType.rawValue else {
             return nil
         }
         
@@ -49,11 +49,11 @@ extension CharacteristicService: CharacteristicServiceProtocol {
     }
     
     public var dateOfBirth: DateComponents? {
-        try? healthStore.dateOfBirthComponents()
+        try? HealthStoreProvider.shared.dateOfBirthComponents()
     }
     
     public var skinType: String? {
-        guard let skin = try? healthStore.fitzpatrickSkinType().skinType.rawValue else {
+        guard let skin = try? HealthStoreProvider.shared.fitzpatrickSkinType().skinType.rawValue else {
             return nil
         }
         
@@ -70,7 +70,7 @@ extension CharacteristicService: CharacteristicServiceProtocol {
     }
     
     public var isWheelChairUser: Bool? {
-        guard let wheelChairCase = try? healthStore.wheelchairUse().wheelchairUse.rawValue else {
+        guard let wheelChairCase = try? HealthStoreProvider.shared.wheelchairUse().wheelchairUse.rawValue else {
             return nil
         }
         

@@ -26,7 +26,7 @@ extension MenstruationCase {
     }
 
     func saveBaseMenstruation(_ model: Menstruation, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .menstrualFlow)
+        let type = try HealthParser.categoryType(for: .menstrualFlow)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
@@ -35,6 +35,6 @@ extension MenstruationCase {
             return HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: metadata)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 }

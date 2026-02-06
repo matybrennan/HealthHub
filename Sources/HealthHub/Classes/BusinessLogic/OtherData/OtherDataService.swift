@@ -128,7 +128,7 @@ extension OtherDataService: OtherDataServiceProtocol {
     // MARK: Saving
 
     public func saveAlcoholConsumption(model: AlcoholConsumption, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .numberOfAlcoholicBeverages)
+        let type = try HealthParser.quantityType(for: .numberOfAlcoholicBeverages)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
@@ -136,11 +136,11 @@ extension OtherDataService: OtherDataServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveBloodAlcoholContent(model: AlcoholContent, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bloodAlcoholContent)
+        let type = try HealthParser.quantityType(for: .bloodAlcoholContent)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
@@ -148,7 +148,7 @@ extension OtherDataService: OtherDataServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveBloodGlucose(model: BloodGlucose, extra: [String: Sendable]?) async throws {
@@ -156,7 +156,7 @@ extension OtherDataService: OtherDataServiceProtocol {
     }
 
     public func saveHandWashing(model: HandWashing, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .handwashingEvent)
+        let type = try HealthParser.categoryType(for: .handwashingEvent)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
@@ -164,7 +164,7 @@ extension OtherDataService: OtherDataServiceProtocol {
             return HKCategorySample(type: type, value: duration, start: $0.startDate, end: $0.endDate, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveInhalerUsage(model: InhalerUsage, extra: [String: Sendable]?) async throws {
@@ -172,7 +172,7 @@ extension OtherDataService: OtherDataServiceProtocol {
     }
 
     public func saveInsulinDelivery(model: InsulinDelivery, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .insulinDelivery)
+        let type = try HealthParser.quantityType(for: .insulinDelivery)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit(from: "IU")
@@ -183,11 +183,11 @@ extension OtherDataService: OtherDataServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.startDate, end: $0.endDate, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveNumberOfTimesFallen(model: NumberOfTimesFallen, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .numberOfTimesFallen)
+        let type = try HealthParser.quantityType(for: .numberOfTimesFallen)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
@@ -195,7 +195,7 @@ extension OtherDataService: OtherDataServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveSexualActivity(model: SexualActivity, extra: [String: Sendable]?) async throws {
@@ -203,7 +203,7 @@ extension OtherDataService: OtherDataServiceProtocol {
     }
 
     public func saveToothBrushing(model: ToothBrushing, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .toothbrushingEvent)
+        let type = try HealthParser.categoryType(for: .toothbrushingEvent)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
@@ -211,7 +211,7 @@ extension OtherDataService: OtherDataServiceProtocol {
             return HKCategorySample(type: type, value: duration, start: $0.startDate, end: $0.endDate, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveTimeInDaylight(model: TimeInDaylight, extra: [String: Sendable]?) async throws {
@@ -219,7 +219,7 @@ extension OtherDataService: OtherDataServiceProtocol {
     }
 
     public func saveUvExposure(model: UVExposure, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .uvExposure)
+        let type = try HealthParser.quantityType(for: .uvExposure)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
@@ -227,11 +227,11 @@ extension OtherDataService: OtherDataServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.startDate, end: $0.endDate, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveWaterTemperature(model: WaterTemperature, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .waterTemperature)
+        let type = try HealthParser.quantityType(for: .waterTemperature)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
@@ -239,6 +239,6 @@ extension OtherDataService: OtherDataServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 }

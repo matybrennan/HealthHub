@@ -8,9 +8,8 @@
 import Foundation
 import HealthKit
 
-// TODO: Figure out better way to be able to use this in the framework
-public var healthStore: HKHealthStore {
-    HKHealthStore()
+public enum HealthStoreProvider {
+    public static let shared = HKHealthStore()
 }
 
 public protocol HealthStoreProtocol {
@@ -36,7 +35,7 @@ public enum AuthorizationStatusError: LocalizedError {
     }
 }
 
-public func isDataStoreAvailable() throws {
+public func ensureHealthDataAvailable() throws {
     if !HKHealthStore.isHealthDataAvailable() {
         throw AuthorizationStatusError.healthDataNotAvailable
     }

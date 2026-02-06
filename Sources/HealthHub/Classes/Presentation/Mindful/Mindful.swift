@@ -15,7 +15,7 @@ public struct Mindful: Sendable {
         public let endDate: Date
         
         public var minutes: Int {
-            Date().getDateDiff(start: startDate, end: endDate)
+            Date().minutes(from: startDate, to: endDate)
         }
         
         public init(value: Int, startDate: Date, endDate: Date) {

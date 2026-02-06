@@ -26,7 +26,7 @@ extension BloodGlucoseCase {
     }
 
     func saveBaseBloodGlucose(model: BloodGlucose, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bloodGlucose)
+        let type = try HealthParser.quantityType(for: .bloodGlucose)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit(from: "mg/dL")
@@ -37,6 +37,6 @@ extension BloodGlucoseCase {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: metadata)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 }

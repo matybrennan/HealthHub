@@ -13,8 +13,8 @@ protocol BloodPressureCase: FetchCorrelationSample { }
 extension BloodPressureCase {
 
     func baseBloodPressure() async throws -> BloodPressure {
-        let bloodPressureSystolicType = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bloodPressureSystolic)
-        let bloodPressureDiastolicType = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bloodPressureDiastolic)
+        let bloodPressureSystolicType = try HealthParser.quantityType(for: .bloodPressureSystolic)
+        let bloodPressureDiastolicType = try HealthParser.quantityType(for: .bloodPressureDiastolic)
         let samples = try await fetchCorrelationSamples(correlationIdentifier: .bloodPressure)
         let items = samples.compactMap { item -> BloodPressure.Info? in
             guard let systolic = item.objects(for: bloodPressureSystolicType).first as? HKQuantitySample else { return nil }
@@ -31,7 +31,7 @@ extension BloodPressureCase {
     }
 
     func baseSaveBloodPressure(model: BloodPressure, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(correlationIdentifier: .bloodPressure)
+        let type = try HealthParser.correlationType(for: .bloodPressure)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit.millimeterOfMercury()
@@ -49,6 +49,6 @@ extension BloodPressureCase {
             return HKCorrelation(type: type, start: $0.startDate, end: $0.endDate, objects: objects, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 }

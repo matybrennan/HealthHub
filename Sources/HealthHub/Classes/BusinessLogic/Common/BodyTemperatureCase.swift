@@ -27,7 +27,7 @@ extension BodyTemperatureCase {
     }
 
     func saveBaseBodyTemperature(model: BodyTemperature, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyTemperature)
+        let type = try HealthParser.quantityType(for: .bodyTemperature)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
@@ -35,6 +35,6 @@ extension BodyTemperatureCase {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.startDate, end: $0.endDate, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 }

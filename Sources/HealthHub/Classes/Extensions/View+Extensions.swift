@@ -11,15 +11,15 @@ import HealthKitUI
 extension View {
 
     func onHealthAccessRequest(
-        toShare share: [SharableType],
+        toShare share: [ShareableType],
         toRead read: [ReadableType],
         trigger: some Equatable,
         completion: @escaping @Sendable (Result<Bool, any Error>) -> Void
     ) -> some View {
-        let shareTypes = HealthType.shareTypes(share)
+        let shareTypes = HealthType.shareTypes(from: share)
         let readTypes = HealthType.readTypes(read)
         return healthDataAccessRequest(
-            store: healthStore,
+            store: HealthStoreProvider.shared,
             shareTypes: shareTypes,
             readTypes: readTypes,
             trigger: trigger,

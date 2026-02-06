@@ -33,14 +33,14 @@ private extension SymptomsService {
 
     func saveGenericSymptomResult(categoryType: HKCategoryType, model: GenericSymptomModel, extra: [String: Sendable]?) async throws {
         let identifier = HKCategoryTypeIdentifier(rawValue: categoryType.identifier)
-        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: identifier)
+        let type = try HealthParser.categoryType(for: identifier)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             return HKCategorySample(type: type, value: $0.style.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 }
 
@@ -69,14 +69,14 @@ extension SymptomsService: SymptomsServiceProtocol {
     }
 
     public func saveAppetiteChanges(model: AppetiteChanges, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .appetiteChanges)
+        let type = try HealthParser.categoryType(for: .appetiteChanges)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             return HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 }
 

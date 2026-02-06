@@ -25,7 +25,7 @@ extension SexualActivityCase {
     }
 
     func saveBaseSexualActivity(_ model: SexualActivity, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .sexualActivity)
+        let type = try HealthParser.categoryType(for: .sexualActivity)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
@@ -34,6 +34,6 @@ extension SexualActivityCase {
             return HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: metadata)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 }

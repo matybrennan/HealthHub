@@ -25,7 +25,7 @@ extension CardioFitnessCase {
     }
 
     func saveBaseCardioFitness(_ model: CardioFitness, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .vo2Max)
+        let type = try HealthParser.quantityType(for: .vo2Max)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit(from: "ml/kg*min")
@@ -34,6 +34,6 @@ extension CardioFitnessCase {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 }

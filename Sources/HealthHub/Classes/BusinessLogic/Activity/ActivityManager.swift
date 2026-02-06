@@ -12,28 +12,20 @@ public final class ActivityManager {
     public init() { }
     
     private lazy var activeEnergyService = ActiveEnergyService()
+    private lazy var stepsService = StepsService()
+    private lazy var workoutReadService = WorkoutReadService()
+    private lazy var workoutWriteService = WorkoutWriteService()
 
-    private lazy var privateSteps = StepsService()
-
-    private lazy var privateWorkoutReadService = WorkoutReadService()
-
-    private lazy var privateWorkoutWriteService = WorkoutWriteService()
-
-    private lazy var privateWorkout = WorkoutManager(readService: self.privateWorkoutReadService, writeService: self.privateWorkoutWriteService)
+    private lazy var workoutManager = WorkoutManager(
+        readService: workoutReadService,
+        writeService: workoutWriteService
+    )
 }
 
 // MARK: - ActivityManagerProtocol
 extension ActivityManager: ActivityManagerProtocol {
 
-    public var activeEnergy: ActiveEnergyServiceProtocol {
-        activeEnergyService
-    }
-
-    public var steps: StepsServiceProtocol {
-        privateSteps
-    }
-    
-    public var workout: WorkoutManagerProtocol {
-        privateWorkout
-    }
+    public var activeEnergy: ActiveEnergyServiceProtocol { activeEnergyService }
+    public var steps: StepsServiceProtocol { stepsService }
+    public var workout: WorkoutManagerProtocol { workoutManager }
 }

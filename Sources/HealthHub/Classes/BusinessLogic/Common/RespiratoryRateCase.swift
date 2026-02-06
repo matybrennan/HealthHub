@@ -24,7 +24,7 @@ extension RespiratoryRateCase {
     }
 
     func saveBaseRespiratoryRate(model: RespiratoryRate, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .respiratoryRate)
+        let type = try HealthParser.quantityType(for: .respiratoryRate)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit(from: "count/min")
@@ -33,6 +33,6 @@ extension RespiratoryRateCase {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.startDate, end: $0.endDate, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 }

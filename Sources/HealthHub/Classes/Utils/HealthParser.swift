@@ -10,40 +10,35 @@ import HealthKit
 
 open class HealthParser {
     
-    public static func unboxAndCheckIfAvailable(quantityIdentifier: HKQuantityTypeIdentifier) throws -> HKQuantityType {
-        let result = HKQuantityType(quantityIdentifier)
-        try isDataStoreAvailable()
-        return result
+    public static func quantityType(for identifier: HKQuantityTypeIdentifier) throws -> HKQuantityType {
+        try ensureHealthDataAvailable()
+        return HKQuantityType(identifier)
     }
     
-    public static func unboxAndCheckIfAvailable(characterIdentifier: HKCharacteristicTypeIdentifier) throws -> HKCharacteristicType {
-        let result = HKCharacteristicType(characterIdentifier)
-        try isDataStoreAvailable()
-        return result
+    public static func characteristicType(for identifier: HKCharacteristicTypeIdentifier) throws -> HKCharacteristicType {
+        try ensureHealthDataAvailable()
+        return HKCharacteristicType(identifier)
     }
     
-    public static func unboxAndCheckIfAvailable(categoryIdentifier: HKCategoryTypeIdentifier) throws -> HKCategoryType {
-        let result = HKCategoryType(categoryIdentifier)
-        try isDataStoreAvailable()
-        return result
+    public static func categoryType(for identifier: HKCategoryTypeIdentifier) throws -> HKCategoryType {
+        try ensureHealthDataAvailable()
+        return HKCategoryType(identifier)
     }
     
-    public static func unboxAndCheckIfAvailable(correlationIdentifier: HKCorrelationTypeIdentifier) throws -> HKCorrelationType {
-        let result = HKCorrelationType(correlationIdentifier)
-        try isDataStoreAvailable()
-        return result
+    public static func correlationType(for identifier: HKCorrelationTypeIdentifier) throws -> HKCorrelationType {
+        try ensureHealthDataAvailable()
+        return HKCorrelationType(identifier)
     }
     
     public static func workoutTypeAndCheckIfAvailable() throws -> HKWorkoutType {
-        let workout = HKWorkoutType.workoutType()
-        try isDataStoreAvailable()
-        return workout
+        try ensureHealthDataAvailable()
+        return HKWorkoutType.workoutType()
     }
     
     // Shareable content checker
     public static func checkSharingAuthorizationStatus(for type: HKObjectType) throws {
         
-        switch healthStore.authorizationStatus(for: type) {
+        switch HealthStoreProvider.shared.authorizationStatus(for: type) {
         case .notDetermined:
             throw AuthorizationStatusError.notDetermined(type.identifier)
         case .sharingDenied:

@@ -32,14 +32,14 @@ private extension CycleTracking {
     }
 
     func saveGenericCycleResult(model: GenericSymptomModel, categoryIdentifier: HKCategoryTypeIdentifier, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: categoryIdentifier)
+        let type = try HealthParser.categoryType(for: categoryIdentifier)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             HKCategorySample(type: type, value: $0.style.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 }
 
@@ -143,14 +143,14 @@ extension CycleTracking: CycleTrackingProtocol {
     }
 
     public func saveCervicalMucusQuality(model: CervicalMucusQuality, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .cervicalMucusQuality)
+        let type = try HealthParser.categoryType(for: .cervicalMucusQuality)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveMenstruation(model: Menstruation, extra: [String: Sendable]?) async throws {
@@ -162,36 +162,36 @@ extension CycleTracking: CycleTrackingProtocol {
     }
 
     public func saveOvulation(model: Ovulation, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .ovulationTestResult)
+        let type = try HealthParser.categoryType(for: .ovulationTestResult)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func savePregnancyTestResult(model: PregnancyTestResult, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .pregnancyTestResult)
+        let type = try HealthParser.categoryType(for: .pregnancyTestResult)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             HKCategorySample(type: type, value: $0.type.rawValue, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveProgesteroneTestResult(model: ProgesteroneTestResult, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .progesteroneTestResult)
+        let type = try HealthParser.categoryType(for: .progesteroneTestResult)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             HKCategorySample(type: type, value: $0.type.rawValue, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveSexualActivity(model: SexualActivity, extra: [String: Sendable]?) async throws {
@@ -199,14 +199,14 @@ extension CycleTracking: CycleTrackingProtocol {
     }
 
     public func saveSpotting(model: Spotting, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .intermenstrualBleeding)
+        let type = try HealthParser.categoryType(for: .intermenstrualBleeding)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
             HKCategorySample(type: type, value: 0, start: $0.date, end: $0.date)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveVaginalDryness(model: GenericSymptomModel, extra: [String: Sendable]?) async throws {

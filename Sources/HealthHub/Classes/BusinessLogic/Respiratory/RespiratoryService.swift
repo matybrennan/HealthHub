@@ -75,7 +75,7 @@ extension RespiratoryService: RespiratoryServiceProtocol {
     }
 
     public func saveForcedExpiratoryVolume(model: ForcedExpiratoryVolume, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .forcedExpiratoryVolume1)
+        let type = try HealthParser.quantityType(for: .forcedExpiratoryVolume1)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
@@ -83,11 +83,11 @@ extension RespiratoryService: RespiratoryServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveForcedVitalCapacity(model: ForcedVitalCapacity, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .forcedVitalCapacity)
+        let type = try HealthParser.quantityType(for: .forcedVitalCapacity)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
@@ -95,7 +95,7 @@ extension RespiratoryService: RespiratoryServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveInhalerUsage(model: InhalerUsage, extra: [String: Sendable]?) async throws {
@@ -103,7 +103,7 @@ extension RespiratoryService: RespiratoryServiceProtocol {
     }
 
     public func savePeakExpiratoryFlowRate(model: PeakExpiratoryFlowRate, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .peakExpiratoryFlowRate)
+        let type = try HealthParser.quantityType(for: .peakExpiratoryFlowRate)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit(from: "L/min")
@@ -112,7 +112,7 @@ extension RespiratoryService: RespiratoryServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveRespiratoryRate(model: RespiratoryRate, extra: [String: Sendable]?) async throws {

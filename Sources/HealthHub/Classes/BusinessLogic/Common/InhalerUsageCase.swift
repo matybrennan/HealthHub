@@ -24,7 +24,7 @@ extension InhalerUsageCase {
     }
 
     func saveBaseInhalerUsage(model: InhalerUsage, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .inhalerUsage)
+        let type = try HealthParser.quantityType(for: .inhalerUsage)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit.count()
@@ -33,6 +33,6 @@ extension InhalerUsageCase {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 }

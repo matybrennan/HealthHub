@@ -40,13 +40,13 @@ extension MentalWellbeingService: MentalWellbeingServiceProtocol {
     // MARK: - Saving
 
     public func save(mindful: Mindful, extra: [String: Sendable]?) async throws {
-        let mindfulType = try HealthParser.unboxAndCheckIfAvailable(categoryIdentifier: .mindfulSession)
+        let mindfulType = try HealthParser.categoryType(for: .mindfulSession)
         try HealthParser.checkSharingAuthorizationStatus(for: mindfulType)
         let sampleObjects = mindful.items.map {
             HKCategorySample(type: mindfulType, value: $0.value, start: $0.startDate, end: $0.endDate, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func save(model: Sleep, extra: [String: Sendable]?) async throws {

@@ -31,6 +31,6 @@ extension WorkoutWriteService: WorkoutWriteServiceProtocol {
         
         let workoutObj = HKWorkout(activityType: workout.activityType, start: workout.startDate, end: workout.endDate, duration: workout.duration, totalEnergyBurned: energyBurned, totalDistance: distance, device: HKDevice.local(), metadata: extra)
         
-        try await healthStore.save(workoutObj)
+        try await HealthStoreProvider.shared.save(workoutObj)
     }
 }

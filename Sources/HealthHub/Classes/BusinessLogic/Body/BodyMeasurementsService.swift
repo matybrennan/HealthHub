@@ -149,7 +149,7 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
     // MARK: Saving
 
     public func saveBasalBodyTemperature(model: BasalBodyTemperature, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .basalBodyTemperature)
+        let type = try HealthParser.quantityType(for: .basalBodyTemperature)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
@@ -157,11 +157,11 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveBodyFatPercentage(model: BodyFatPercentage, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyFatPercentage)
+        let type = try HealthParser.quantityType(for: .bodyFatPercentage)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
@@ -169,11 +169,11 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveBodyMassIndex(model: BodyMassIndex, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyMassIndex)
+        let type = try HealthParser.quantityType(for: .bodyMassIndex)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
@@ -181,7 +181,7 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveBodyTemperature(model: BodyTemperature, extra: [String: Sendable]?) async throws {
@@ -189,7 +189,7 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
     }
 
     public func saveElectrodermalActivity(model: ElectrodermalActivity, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .electrodermalActivity)
+        let type = try HealthParser.quantityType(for: .electrodermalActivity)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit.siemenUnit(with: .micro)
@@ -198,11 +198,11 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveHeight(model: BodyHeight, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .height)
+        let type = try HealthParser.quantityType(for: .height)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit(from: .centimeter)
@@ -211,11 +211,11 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveLeanBodyMass(model: LeanBodyMass, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .leanBodyMass)
+        let type = try HealthParser.quantityType(for: .leanBodyMass)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit.gramUnit(with: .kilo)
@@ -224,11 +224,11 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveWaistCircumference(model: WaistCircumference, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .waistCircumference)
+        let type = try HealthParser.quantityType(for: .waistCircumference)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit(from: .centimeter)
@@ -237,11 +237,11 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveWeight(model: BodyWeight, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .bodyMass)
+        let type = try HealthParser.quantityType(for: .bodyMass)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit.gramUnit(with: .kilo)
@@ -250,6 +250,6 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 }

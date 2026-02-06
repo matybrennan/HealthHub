@@ -26,7 +26,7 @@ public final class HeartRateService {
     public func heartRate(fromHeartRateType type: HeartRateType) throws {
 
         // Confirm that the type and device works
-        let heartRate = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .heartRate)
+        let heartRate = try HealthParser.quantityType(for: .heartRate)
 
         var query: HKQuery!
 
@@ -127,7 +127,7 @@ public final class HeartRateService {
             }
         }
 
-        healthStore.execute(query)
+        HealthStoreProvider.shared.execute(query)
     }
 
     public func reset(type: HeartRateType) {

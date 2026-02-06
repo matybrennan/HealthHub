@@ -147,7 +147,7 @@ extension MobilityService: MobilityServiceProtocol {
     }
 
     public func saveDoubleSupportTime(model: DoubleSupportTime, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .walkingDoubleSupportPercentage)
+        let type = try HealthParser.quantityType(for: .walkingDoubleSupportPercentage)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
@@ -155,11 +155,11 @@ extension MobilityService: MobilityServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveGroundContactTime(model: GroundContactTime, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .runningGroundContactTime)
+        let type = try HealthParser.quantityType(for: .runningGroundContactTime)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit.secondUnit(with: .milli)
@@ -168,11 +168,11 @@ extension MobilityService: MobilityServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveRunningStrideLength(model: RunningStrideLength, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .runningStrideLength)
+        let type = try HealthParser.quantityType(for: .runningStrideLength)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
@@ -180,7 +180,7 @@ extension MobilityService: MobilityServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveSixMinuteWalk(model: SixMinuteWalk, extra: [String: Sendable]?) async throws {
@@ -188,7 +188,7 @@ extension MobilityService: MobilityServiceProtocol {
     }
 
     public func saveStairSpeedDown(model: StairSpeedDown, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .stairDescentSpeed)
+        let type = try HealthParser.quantityType(for: .stairDescentSpeed)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let speedUnit = HKUnit.meter().unitDivided(by: HKUnit.second())
@@ -197,11 +197,11 @@ extension MobilityService: MobilityServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveStairSpeedUp(model: StairSpeedUp, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .stairAscentSpeed)
+        let type = try HealthParser.quantityType(for: .stairAscentSpeed)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let speedUnit = HKUnit.meter().unitDivided(by: HKUnit.second())
@@ -210,11 +210,11 @@ extension MobilityService: MobilityServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveVerticalOscillation(model: VerticalOscillation, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .runningVerticalOscillation)
+        let type = try HealthParser.quantityType(for: .runningVerticalOscillation)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit.meterUnit(with: .centi)
@@ -223,11 +223,11 @@ extension MobilityService: MobilityServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveWalkingSpeed(model: WalkingSpeed, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .walkingSpeed)
+        let type = try HealthParser.quantityType(for: .walkingSpeed)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let speedUnit = HKUnit.meterUnit(with: .kilo).unitDivided(by: HKUnit.hour())
@@ -236,11 +236,11 @@ extension MobilityService: MobilityServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveWalkingStepLength(model: WalkingStepLength, extra: [String: Sendable]?) async throws {
-        let type = try HealthParser.unboxAndCheckIfAvailable(quantityIdentifier: .walkingStepLength)
+        let type = try HealthParser.quantityType(for: .walkingStepLength)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit.meterUnit(with: .centi)
@@ -249,6 +249,6 @@ extension MobilityService: MobilityServiceProtocol {
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
-        try await healthStore.save(sampleObjects)
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 }

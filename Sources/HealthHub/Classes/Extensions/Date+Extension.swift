@@ -10,36 +10,27 @@ import Foundation
 extension Date {
     
     var startOfDay: Date {
-        let calendar = Calendar.current
-        let unitFlags = Set<Calendar.Component>([.year, .month, .day])
-        let components = calendar.dateComponents(unitFlags, from: self)
-        return calendar.date(from: components)!
+        Calendar.current.startOfDay(for: self)
     }
-    
+
     var endOfDay: Date {
-        var components = DateComponents()
-        components.day = 1
-        let date = Calendar.current.date(byAdding: components, to: self.startOfDay)
-        return (date?.addingTimeInterval(-1))!
+        Calendar.current.date(byAdding: DateComponents(day: 1, second: -1), to: startOfDay) ?? startOfDay
     }
-    
+
     var startOfWeek: Date? {
-        let gregorian = Calendar(identifier: .gregorian)
-        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
-        return gregorian.date(byAdding: .day, value: 1, to: sunday)
+        let calendar = Calendar(identifier: .gregorian)
+        guard let weekStart = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else {
+            return nil
+        }
+        return calendar.date(byAdding: .day, value: 1, to: weekStart)
     }
     
     var endOfWeek: Date? {
-        let gregorian = Calendar(identifier: .gregorian)
-        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
-        return gregorian.date(byAdding: .day, value: 7, to: sunday)
+        guard let start = startOfWeek else { return nil }
+        return Calendar(identifier: .gregorian).date(byAdding: .day, value: 6, to: start)?.endOfDay
     }
     
-    func getDateDiff(start: Date, end: Date) -> Int  {
-        let calendar = Calendar.current
-        let dateComponents = calendar.dateComponents([.minute], from: start, to: end)
-        
-        let minutes = dateComponents.minute
-        return minutes!
+    func minutes(from start: Date, to end: Date) -> Int  {
+        Calendar.current.dateComponents([.minute], from: start, to: end).minute ?? 0
     }
 }

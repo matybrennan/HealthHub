@@ -10,7 +10,7 @@ import HealthHub
 
 struct ContentView: View {
 
-    private let configuration = ConfigurationService(healthStore: healthStore)
+    private let configuration = ConfigurationService(healthStore: HealthStoreProvider.shared)
 
     var body: some View {
         Text("Content View")
