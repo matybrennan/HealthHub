@@ -103,6 +103,34 @@ Split into sections to gather data based on timeIntervals
 
 ```var workout: WorkoutManagerProtocol```
 
+#### Activity
+All other Apple Health Activity data types
+
+- crossCountrySkiingDistance & saveCrossCountrySkiingDistance(_: model, _:extra)
+- crossCountrySkiingSpeed & saveCrossCountrySkiingSpeed(_: model, _:extra)
+- cyclingCadence & saveCyclingCadence(_: model, _:extra)
+- cyclingDistance & saveCyclingDistance(_: model, _:extra)
+- cyclingFunctionalThresholdPower & saveCyclingFunctionalThresholdPower(_: model, _:extra)
+- cyclingPower & saveCyclingPower(_: model, _:extra)
+- cyclingSpeed & saveCyclingSpeed(_: model, _:extra)
+- downhillSnowSportsDistance & saveDownhillSnowSportsDistance(_: model, _:extra)
+- exerciseMinutes
+- flightsClimbed & saveFlightsClimbed(_: model, _:extra)
+- moveTime
+- nikeFuel & saveNikeFuel(_: model, _:extra)
+- physicalEffort & savePhysicalEffort(_: model, _:extra)
+- pushCount & savePushCount(_: model, _:extra)
+- restingEnergy & saveRestingEnergy(_: model, _:extra)
+- runningPower & saveRunningPower(_: model, _:extra)
+- runningSpeed & saveRunningSpeed(_: model, _:extra)
+- standTime
+- swimmingDistance & saveSwimmingDistance(_: model, _:extra)
+- swimmingStrokeCount & saveSwimmingStrokeCount(_: model, _:extra)
+- walkingRunningDistance & saveWalkingRunningDistance(_: model, _:extra)
+- wheelchairDistance & saveWheelchairDistance(_: model, _:extra)
+
+```var activity: ActivityServiceProtocol```
+
 ------------------------------------------------------------------------
 
 ### Body Measurements

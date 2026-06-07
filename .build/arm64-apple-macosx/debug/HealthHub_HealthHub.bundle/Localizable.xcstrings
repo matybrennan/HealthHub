@@ -1,0 +1,57 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Copy.Gender.Female" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Female"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Femenino"
+          }
+        }
+      }
+    },
+    "Copy.Gender.Male" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Male"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Masculino"
+          }
+        }
+      }
+    },
+    "Copy.Gender.Other" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otro"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

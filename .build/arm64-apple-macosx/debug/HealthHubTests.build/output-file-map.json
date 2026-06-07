@@ -1,0 +1,26 @@
+{
+  "": {
+    "swift-dependencies": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/primary.swiftdeps"
+  },
+  "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/ConfigurationServiceTests.swift": {
+    "dependencies": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/ConfigurationServiceTests.d",
+    "object": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/ConfigurationServiceTests.swift.o",
+    "swiftmodule": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/ConfigurationServiceTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/ConfigurationServiceTests.swiftdeps",
+    "diagnostics": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/ConfigurationServiceTests.dia"
+  },
+  "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/HealthTrackerTests.swift": {
+    "dependencies": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthTrackerTests.d",
+    "object": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthTrackerTests.swift.o",
+    "swiftmodule": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthTrackerTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthTrackerTests.swiftdeps",
+    "diagnostics": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthTrackerTests.dia"
+  },
+  "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/Mocks/HealthStoreMock.swift": {
+    "dependencies": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthStoreMock.d",
+    "object": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthStoreMock.swift.o",
+    "swiftmodule": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthStoreMock~partial.swiftmodule",
+    "swift-dependencies": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthStoreMock.swiftdeps",
+    "diagnostics": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthStoreMock.dia"
+  }
+}

@@ -1,0 +1,2199 @@
+{
+  "builtTestProducts" : [
+    {
+      "binaryPath" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubPackageTests.xctest/Contents/MacOS/HealthHubPackageTests",
+      "packagePath" : "/Users/matybrennan/Documents/apps/HealthHub",
+      "productName" : "HealthHubPackageTests"
+    }
+  ],
+  "copyCommands" : {
+    "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub_HealthHub.bundle/Copy.swift" : {
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Resources/Copy.swift"
+        }
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub_HealthHub.bundle/Copy.swift"
+        }
+      ]
+    },
+    "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub_HealthHub.bundle/Localizable.xcstrings" : {
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Resources/Localizable.xcstrings"
+        }
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub_HealthHub.bundle/Localizable.xcstrings"
+        }
+      ]
+    }
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.HealthHub-arm64-apple-macosx-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/sources",
+      "importPath" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/ActiveEnergy/ActiveEnergyService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/ActiveEnergy/ActiveEnergyServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Activity/ActivityService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Activity/ActivityServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/ActivityManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/ActivityManagerProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Steps/StepsService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Steps/StepsServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/Read/WorkoutReadService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/Read/WorkoutReadServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/WorkoutManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/WorkoutManagerProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/Write/WorkoutWriteService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/Write/WorkoutWriteServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Body/BodyMeasurementsService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Body/BodyMeasurementsServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Characteristics/CharacteristicService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Characteristics/CharacteristicServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/AbdominalCrampsCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/BloodGlucoseCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/BloodOxygenCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/BloodPressureCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/BodyTemperatureCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/CardioFitnessCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/InhalerUsageCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/MenstruationCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/RespiratoryRateCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/SeuxalActivityCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/SixMinuteWalkCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/SleepCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/TimeInDaylightCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Configuration/ConfigurationService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Configuration/ConfigurationServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/CycleTracking/CycleTracking.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/CycleTracking/CycleTrackingServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Heart/HeartManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Heart/HeartManagerProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Heart/HeartRate/HeartRateService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Heart/HeartRate/HeartRateType.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/MentalWellbeing/MentalWellbeingService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/MentalWellbeing/MentalWellbeingServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Mobility/MobilityService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Mobility/MobilityServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Nutrition/NutritionService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Nutrition/NutritionServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/OtherData/OtherDataService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/OtherData/OtherDataServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Respiratory/RespiratoryService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Respiratory/RespiratoryServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Sleep/SleepService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Sleep/SleepServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Symptoms/SymptomsService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Symptoms/SymptomsServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Vitals/VitalsService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Vitals/VitalsServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Extensions/Date+Extension.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Extensions/NSPredicate+Extension.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Extensions/View+Extensions.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/HealthHubManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/HealthHubManagerProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/ActiveEnergy/ActiveEnergyModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Activity/ActivityModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Body/Body.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/CycleTracking/CycleTrackingModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Heart/HeartModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Mindful/Mindful.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Mobility/Mobility.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Nutrition/NutritionModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/OtherData/OtherDataModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Respiratory/RespiratoryModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Sleep/Sleep.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Steps/StepsModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Symptoms/SymptomsModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Vitals/Vitals.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Workout/WorkoutModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/AsyncParsingError.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/FetchingSample.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/HealthParser.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/HealthType.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/Helpers.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/DerivedSources/resource_bundle_accessor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "virtual",
+          "name" : "<HealthHub-arm64-apple-macosx-debug.module-resources>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "HealthHub",
+      "moduleOutputPath" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/Modules/HealthHub.swiftmodule",
+      "objects" : [
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActiveEnergyService.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActiveEnergyServiceProtocol.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActivityService.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActivityServiceProtocol.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActivityManager.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActivityManagerProtocol.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/StepsService.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/StepsServiceProtocol.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutReadService.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutReadServiceProtocol.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutManager.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutManagerProtocol.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutWriteService.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutWriteServiceProtocol.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/BodyMeasurementsService.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/BodyMeasurementsServiceProtocol.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/CharacteristicService.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/CharacteristicServiceProtocol.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/AbdominalCrampsCase.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/BloodGlucoseCase.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/BloodOxygenCase.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/BloodPressureCase.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/BodyTemperatureCase.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/CardioFitnessCase.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/InhalerUsageCase.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/MenstruationCase.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/RespiratoryRateCase.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SeuxalActivityCase.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SixMinuteWalkCase.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SleepCase.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/TimeInDaylightCase.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ConfigurationService.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ConfigurationServiceProtocol.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/CycleTracking.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/CycleTrackingServiceProtocol.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HeartManager.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HeartManagerProtocol.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HeartRateService.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HeartRateType.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/MentalWellbeingService.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/MentalWellbeingServiceProtocol.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/MobilityService.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/MobilityServiceProtocol.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/NutritionService.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/NutritionServiceProtocol.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/OtherDataService.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/OtherDataServiceProtocol.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/RespiratoryService.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/RespiratoryServiceProtocol.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SleepService.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SleepServiceProtocol.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SymptomsService.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SymptomsServiceProtocol.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/VitalsService.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/VitalsServiceProtocol.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Date+Extension.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/NSPredicate+Extension.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/View+Extensions.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HealthHubManager.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HealthHubManagerProtocol.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActiveEnergyModels.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActivityModels.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Body.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/CycleTrackingModels.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HeartModels.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Mindful.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Mobility.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/NutritionModels.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/OtherDataModels.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/RespiratoryModels.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Sleep.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/StepsModels.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SymptomsModels.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Vitals.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutModels.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/AsyncParsingError.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/FetchingSample.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HealthParser.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HealthType.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Helpers.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/resource_bundle_accessor.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx10.13",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j10",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_AVAILABLE",
+        "-module-cache-path",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/include/HealthHub-Swift.h",
+        "-swift-version",
+        "6",
+        "-default-isolation",
+        "MainActor",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "healthhub"
+      ],
+      "outputFileMapPath" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActiveEnergyService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActiveEnergyServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActivityService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActivityServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActivityManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActivityManagerProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/StepsService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/StepsServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutReadService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutReadServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutManagerProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutWriteService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutWriteServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/BodyMeasurementsService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/BodyMeasurementsServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/CharacteristicService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/CharacteristicServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/AbdominalCrampsCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/BloodGlucoseCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/BloodOxygenCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/BloodPressureCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/BodyTemperatureCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/CardioFitnessCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/InhalerUsageCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/MenstruationCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/RespiratoryRateCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SeuxalActivityCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SixMinuteWalkCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SleepCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/TimeInDaylightCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ConfigurationService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ConfigurationServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/CycleTracking.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/CycleTrackingServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HeartManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HeartManagerProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HeartRateService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HeartRateType.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/MentalWellbeingService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/MentalWellbeingServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/MobilityService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/MobilityServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/NutritionService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/NutritionServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/OtherDataService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/OtherDataServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/RespiratoryService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/RespiratoryServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SleepService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SleepServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SymptomsService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SymptomsServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/VitalsService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/VitalsServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Date+Extension.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/NSPredicate+Extension.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/View+Extensions.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HealthHubManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HealthHubManagerProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActiveEnergyModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActivityModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Body.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/CycleTrackingModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HeartModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Mindful.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Mobility.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/NutritionModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/OtherDataModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/RespiratoryModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Sleep.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/StepsModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SymptomsModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Vitals.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/AsyncParsingError.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/FetchingSample.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HealthParser.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HealthType.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Helpers.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/resource_bundle_accessor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/Modules/HealthHub.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/ActiveEnergy/ActiveEnergyService.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/ActiveEnergy/ActiveEnergyServiceProtocol.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Activity/ActivityService.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Activity/ActivityServiceProtocol.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/ActivityManager.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/ActivityManagerProtocol.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Steps/StepsService.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Steps/StepsServiceProtocol.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/Read/WorkoutReadService.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/Read/WorkoutReadServiceProtocol.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/WorkoutManager.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/WorkoutManagerProtocol.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/Write/WorkoutWriteService.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/Write/WorkoutWriteServiceProtocol.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Body/BodyMeasurementsService.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Body/BodyMeasurementsServiceProtocol.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Characteristics/CharacteristicService.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Characteristics/CharacteristicServiceProtocol.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/AbdominalCrampsCase.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/BloodGlucoseCase.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/BloodOxygenCase.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/BloodPressureCase.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/BodyTemperatureCase.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/CardioFitnessCase.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/InhalerUsageCase.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/MenstruationCase.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/RespiratoryRateCase.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/SeuxalActivityCase.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/SixMinuteWalkCase.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/SleepCase.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/TimeInDaylightCase.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Configuration/ConfigurationService.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Configuration/ConfigurationServiceProtocol.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/CycleTracking/CycleTracking.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/CycleTracking/CycleTrackingServiceProtocol.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Heart/HeartManager.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Heart/HeartManagerProtocol.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Heart/HeartRate/HeartRateService.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Heart/HeartRate/HeartRateType.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/MentalWellbeing/MentalWellbeingService.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/MentalWellbeing/MentalWellbeingServiceProtocol.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Mobility/MobilityService.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Mobility/MobilityServiceProtocol.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Nutrition/NutritionService.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Nutrition/NutritionServiceProtocol.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/OtherData/OtherDataService.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/OtherData/OtherDataServiceProtocol.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Respiratory/RespiratoryService.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Respiratory/RespiratoryServiceProtocol.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Sleep/SleepService.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Sleep/SleepServiceProtocol.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Symptoms/SymptomsService.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Symptoms/SymptomsServiceProtocol.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Vitals/VitalsService.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Vitals/VitalsServiceProtocol.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Extensions/Date+Extension.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Extensions/NSPredicate+Extension.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Extensions/View+Extensions.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/HealthHubManager.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/HealthHubManagerProtocol.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/ActiveEnergy/ActiveEnergyModels.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Activity/ActivityModels.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Body/Body.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/CycleTracking/CycleTrackingModels.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Heart/HeartModels.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Mindful/Mindful.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Mobility/Mobility.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Nutrition/NutritionModels.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/OtherData/OtherDataModels.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Respiratory/RespiratoryModels.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Sleep/Sleep.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Steps/StepsModels.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Symptoms/SymptomsModels.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Vitals/Vitals.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Workout/WorkoutModels.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/AsyncParsingError.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/FetchingSample.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/HealthParser.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/HealthType.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/Helpers.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/DerivedSources/resource_bundle_accessor.swift"
+      ],
+      "tempsPath" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.HealthHubPackageTests-arm64-apple-macosx-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubPackageTests.build/sources",
+      "importPath" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubPackageTests.derived/runner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/Modules/HealthHubTests.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubPackageTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "HealthHubPackageTests",
+      "moduleOutputPath" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/Modules/HealthHubPackageTests.swiftmodule",
+      "objects" : [
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubPackageTests.build/runner.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx10.13",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j10",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubPackageTests.build/include/HealthHubPackageTests-Swift.h",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "healthhub"
+      ],
+      "outputFileMapPath" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubPackageTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubPackageTests.build/runner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/Modules/HealthHubPackageTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubPackageTests.derived/runner.swift"
+      ],
+      "tempsPath" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubPackageTests.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.HealthHubTests-arm64-apple-macosx-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/sources",
+      "importPath" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/ConfigurationServiceTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/HealthTrackerTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/Mocks/HealthStoreMock.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/Modules/HealthHub.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "HealthHubTests",
+      "moduleOutputPath" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/Modules/HealthHubTests.swiftmodule",
+      "objects" : [
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/ConfigurationServiceTests.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthTrackerTests.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthStoreMock.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx14.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j10",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-swift-version",
+        "6",
+        "-default-isolation",
+        "MainActor",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "healthhub"
+      ],
+      "outputFileMapPath" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/ConfigurationServiceTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthTrackerTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthStoreMock.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/Modules/HealthHubTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/ConfigurationServiceTests.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/HealthTrackerTests.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/Mocks/HealthStoreMock.swift"
+      ],
+      "tempsPath" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "HealthHub" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "HealthHub",
+      "-package-name",
+      "healthhub",
+      "-c",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/ActiveEnergy/ActiveEnergyService.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/ActiveEnergy/ActiveEnergyServiceProtocol.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Activity/ActivityService.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Activity/ActivityServiceProtocol.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/ActivityManager.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/ActivityManagerProtocol.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Steps/StepsService.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Steps/StepsServiceProtocol.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/Read/WorkoutReadService.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/Read/WorkoutReadServiceProtocol.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/WorkoutManager.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/WorkoutManagerProtocol.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/Write/WorkoutWriteService.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/Write/WorkoutWriteServiceProtocol.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Body/BodyMeasurementsService.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Body/BodyMeasurementsServiceProtocol.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Characteristics/CharacteristicService.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Characteristics/CharacteristicServiceProtocol.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/AbdominalCrampsCase.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/BloodGlucoseCase.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/BloodOxygenCase.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/BloodPressureCase.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/BodyTemperatureCase.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/CardioFitnessCase.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/InhalerUsageCase.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/MenstruationCase.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/RespiratoryRateCase.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/SeuxalActivityCase.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/SixMinuteWalkCase.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/SleepCase.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/TimeInDaylightCase.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Configuration/ConfigurationService.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Configuration/ConfigurationServiceProtocol.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/CycleTracking/CycleTracking.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/CycleTracking/CycleTrackingServiceProtocol.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Heart/HeartManager.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Heart/HeartManagerProtocol.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Heart/HeartRate/HeartRateService.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Heart/HeartRate/HeartRateType.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/MentalWellbeing/MentalWellbeingService.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/MentalWellbeing/MentalWellbeingServiceProtocol.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Mobility/MobilityService.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Mobility/MobilityServiceProtocol.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Nutrition/NutritionService.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Nutrition/NutritionServiceProtocol.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/OtherData/OtherDataService.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/OtherData/OtherDataServiceProtocol.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Respiratory/RespiratoryService.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Respiratory/RespiratoryServiceProtocol.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Sleep/SleepService.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Sleep/SleepServiceProtocol.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Symptoms/SymptomsService.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Symptoms/SymptomsServiceProtocol.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Vitals/VitalsService.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Vitals/VitalsServiceProtocol.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Extensions/Date+Extension.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Extensions/NSPredicate+Extension.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Extensions/View+Extensions.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/HealthHubManager.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/HealthHubManagerProtocol.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/ActiveEnergy/ActiveEnergyModels.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Activity/ActivityModels.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Body/Body.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/CycleTracking/CycleTrackingModels.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Heart/HeartModels.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Mindful/Mindful.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Mobility/Mobility.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Nutrition/NutritionModels.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/OtherData/OtherDataModels.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Respiratory/RespiratoryModels.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Sleep/Sleep.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Steps/StepsModels.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Symptoms/SymptomsModels.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Vitals/Vitals.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Workout/WorkoutModels.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/AsyncParsingError.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/FetchingSample.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/HealthParser.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/HealthType.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/Helpers.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/DerivedSources/resource_bundle_accessor.swift",
+      "-I",
+      "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx10.13",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j10",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_AVAILABLE",
+      "-module-cache-path",
+      "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/include/HealthHub-Swift.h",
+      "-swift-version",
+      "6",
+      "-default-isolation",
+      "MainActor",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "healthhub",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ],
+    "HealthHubPackageTests" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "HealthHubPackageTests",
+      "-package-name",
+      "healthhub",
+      "-c",
+      "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubPackageTests.derived/runner.swift",
+      "-I",
+      "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx10.13",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j10",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubPackageTests.build/include/HealthHubPackageTests-Swift.h",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "healthhub",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ],
+    "HealthHubTests" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "HealthHubTests",
+      "-package-name",
+      "healthhub",
+      "-c",
+      "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/ConfigurationServiceTests.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/HealthTrackerTests.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/Mocks/HealthStoreMock.swift",
+      "-I",
+      "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx14.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j10",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-swift-version",
+      "6",
+      "-default-isolation",
+      "MainActor",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "healthhub",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "HealthHub" : [
+
+    ],
+    "HealthHubPackageTests" : [
+      "HealthHubTests",
+      "HealthHub"
+    ],
+    "HealthHubTests" : [
+      "HealthHub"
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+    "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubPackageTests.derived/runner.swift" : {
+      "inputs" : [
+
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubPackageTests.derived/runner.swift"
+        }
+      ]
+    }
+  },
+  "traitConfiguration" : {
+    "default" : {
+
+    }
+  },
+  "writeCommands" : {
+    "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/ActiveEnergy/ActiveEnergyService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/ActiveEnergy/ActiveEnergyServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Activity/ActivityService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Activity/ActivityServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/ActivityManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/ActivityManagerProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Steps/StepsService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Steps/StepsServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/Read/WorkoutReadService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/Read/WorkoutReadServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/WorkoutManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/WorkoutManagerProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/Write/WorkoutWriteService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Activity/Workout/Write/WorkoutWriteServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Body/BodyMeasurementsService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Body/BodyMeasurementsServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Characteristics/CharacteristicService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Characteristics/CharacteristicServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/AbdominalCrampsCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/BloodGlucoseCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/BloodOxygenCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/BloodPressureCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/BodyTemperatureCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/CardioFitnessCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/InhalerUsageCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/MenstruationCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/RespiratoryRateCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/SeuxalActivityCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/SixMinuteWalkCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/SleepCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Common/TimeInDaylightCase.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Configuration/ConfigurationService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Configuration/ConfigurationServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/CycleTracking/CycleTracking.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/CycleTracking/CycleTrackingServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Heart/HeartManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Heart/HeartManagerProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Heart/HeartRate/HeartRateService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Heart/HeartRate/HeartRateType.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/MentalWellbeing/MentalWellbeingService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/MentalWellbeing/MentalWellbeingServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Mobility/MobilityService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Mobility/MobilityServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Nutrition/NutritionService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Nutrition/NutritionServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/OtherData/OtherDataService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/OtherData/OtherDataServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Respiratory/RespiratoryService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Respiratory/RespiratoryServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Sleep/SleepService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Sleep/SleepServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Symptoms/SymptomsService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Symptoms/SymptomsServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Vitals/VitalsService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/BusinessLogic/Vitals/VitalsServiceProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Extensions/Date+Extension.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Extensions/NSPredicate+Extension.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Extensions/View+Extensions.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/HealthHubManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/HealthHubManagerProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/ActiveEnergy/ActiveEnergyModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Activity/ActivityModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Body/Body.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/CycleTracking/CycleTrackingModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Heart/HeartModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Mindful/Mindful.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Mobility/Mobility.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Nutrition/NutritionModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/OtherData/OtherDataModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Respiratory/RespiratoryModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Sleep/Sleep.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Steps/StepsModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Symptoms/SymptomsModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Vitals/Vitals.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Workout/WorkoutModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/AsyncParsingError.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/FetchingSample.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/HealthParser.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/HealthType.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/Helpers.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/DerivedSources/resource_bundle_accessor.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/sources"
+    },
+    "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubPackageTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubPackageTests.derived/runner.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubPackageTests.build/sources"
+    },
+    "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubPackageTests.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/AbdominalCrampsCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActiveEnergyModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActiveEnergyService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActiveEnergyServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActivityManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActivityManagerProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActivityModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActivityService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ActivityServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/AsyncParsingError.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/BloodGlucoseCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/BloodOxygenCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/BloodPressureCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Body.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/BodyMeasurementsService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/BodyMeasurementsServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/BodyTemperatureCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/CardioFitnessCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/CharacteristicService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/CharacteristicServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ConfigurationService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ConfigurationServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/CycleTracking.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/CycleTrackingModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/CycleTrackingServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Date+Extension.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/FetchingSample.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HealthHubManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HealthHubManagerProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HealthParser.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HealthType.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HeartManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HeartManagerProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HeartModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HeartRateService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HeartRateType.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Helpers.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/InhalerUsageCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/MenstruationCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/MentalWellbeingService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/MentalWellbeingServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Mindful.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Mobility.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/MobilityService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/MobilityServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/NSPredicate+Extension.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/NutritionModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/NutritionService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/NutritionServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/OtherDataModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/OtherDataService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/OtherDataServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/RespiratoryModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/RespiratoryRateCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/RespiratoryService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/RespiratoryServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SeuxalActivityCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SixMinuteWalkCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Sleep.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SleepCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SleepService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SleepServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/StepsModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/StepsService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/StepsServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SymptomsModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SymptomsService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/SymptomsServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/TimeInDaylightCase.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/View+Extensions.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Vitals.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/VitalsService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/VitalsServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutManagerProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutReadService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutReadServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutWriteService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutWriteServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/resource_bundle_accessor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubPackageTests.build/runner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/ConfigurationServiceTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthStoreMock.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthTrackerTests.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubPackageTests.product/Objects.LinkFileList"
+    },
+    "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/ConfigurationServiceTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/HealthTrackerTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/Mocks/HealthStoreMock.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/sources"
+    },
+    "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+    }
+  }
+}

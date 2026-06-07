@@ -1,0 +1,3 @@
+module HealthHub {
+    header "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/include/HealthHub-Swift.h"
+}

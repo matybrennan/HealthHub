@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "HealthHub",
-    platforms: [.iOS(.v18)],
+    platforms: [.iOS(.v26)],
     products: [
         .library(
             name: "HealthHub",
@@ -18,7 +18,7 @@ let package = Package(
         .target(
             name: "HealthHub",
             dependencies: [],
-            path: "Sources"
+            resources: [.process("Resources")]
         ),
         .testTarget(
             name: "HealthHubTests",
