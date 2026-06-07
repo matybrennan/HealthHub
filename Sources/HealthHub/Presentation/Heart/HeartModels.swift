@@ -113,3 +113,117 @@ public struct PeripheralPerfusionIndex: Sendable {
         self.items = items
     }
 }
+
+public struct HeartRateVariability: Sendable {
+
+    public struct Item: Sendable {
+        public let sdnn: Double // milliseconds
+        public let date: Date
+
+        public init(sdnn: Double, date: Date) {
+            self.sdnn = sdnn
+            self.date = date
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+}
+
+public struct HighHeartRateEvent: Sendable {
+
+    public struct Item: Sendable {
+        public let startDate: Date
+        public let endDate: Date
+
+        public init(startDate: Date, endDate: Date) {
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+}
+
+public struct IrregularHeartRhythmEvent: Sendable {
+
+    public struct Item: Sendable {
+        public let startDate: Date
+        public let endDate: Date
+
+        public init(startDate: Date, endDate: Date) {
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+}
+
+public struct LowHeartRateEvent: Sendable {
+
+    public struct Item: Sendable {
+        public let startDate: Date
+        public let endDate: Date
+
+        public init(startDate: Date, endDate: Date) {
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+}
+
+public struct RestingHeartRate: Sendable {
+
+    public struct Item: Sendable {
+        public let bpm: Double
+        public let date: Date
+
+        public init(bpm: Double, date: Date) {
+            self.bpm = bpm
+            self.date = date
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+}
+
+public struct WalkingHeartRateAverage: Sendable {
+
+    public struct Item: Sendable {
+        public let bpm: Double
+        public let date: Date
+
+        public init(bpm: Double, date: Date) {
+            self.bpm = bpm
+            self.date = date
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+}

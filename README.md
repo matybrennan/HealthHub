@@ -173,7 +173,13 @@ All other Apple Health Activity data types
 - bloodPressure & saveBloodPressure(_: model, _:extra)
 - cardioFitness & saveCardioFitness(_: model, _:extra)
 - cardioRecovery & saveCardioRecovery(_: model, _:extra)
+- heartRateVariability
+- highHeartRateEvents
+- irregularHeartRhythmEvents
+- lowHeartRateEvents
 - peripheralPerfusionIndex & savePeripheralPerfusionIndex(_: model, _:extra)
+- restingHeartRate
+- walkingHeartRateAverage
 
 ```var heart: HeartManagerProtocol```
 

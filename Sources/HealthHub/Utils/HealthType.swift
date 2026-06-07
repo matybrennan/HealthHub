@@ -69,8 +69,14 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
     // Heart
     case atrialFibrillation
     case heartRate
+    case heartRateVariability
+    case highHeartRateEvent
+    case irregularHeartRhythmEvent
+    case lowHeartRateEvent
     case cardioRecovery
     case peripheralPerfusionIndex
+    case restingHeartRate
+    case walkingHeartRateAverage
 
     // Body
     case basalBodyTemperature
@@ -271,8 +277,14 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         // Heart
         case .atrialFibrillation: nil
         case .heartRate: HKQuantityType(.heartRate)
+        case .heartRateVariability: nil
+        case .highHeartRateEvent: nil
+        case .irregularHeartRhythmEvent: nil
+        case .lowHeartRateEvent: nil
         case .cardioRecovery: HKQuantityType(.heartRateRecoveryOneMinute)
         case .peripheralPerfusionIndex: HKQuantityType(.peripheralPerfusionIndex)
+        case .restingHeartRate: nil
+        case .walkingHeartRateAverage: nil
 
         // Body
         case .basalBodyTemperature: HKQuantityType(.basalBodyTemperature)
@@ -472,8 +484,14 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         // Heart
         case .atrialFibrillation: HKQuantityType(.atrialFibrillationBurden)
         case .heartRate: HKQuantityType(.heartRate)
+        case .heartRateVariability: HKQuantityType(.heartRateVariabilitySDNN)
+        case .highHeartRateEvent: HKCategoryType(.highHeartRateEvent)
+        case .irregularHeartRhythmEvent: HKCategoryType(.irregularHeartRhythmEvent)
+        case .lowHeartRateEvent: HKCategoryType(.lowHeartRateEvent)
         case .cardioRecovery: HKQuantityType(.heartRateRecoveryOneMinute)
         case .peripheralPerfusionIndex: HKQuantityType(.peripheralPerfusionIndex)
+        case .restingHeartRate: HKQuantityType(.restingHeartRate)
+        case .walkingHeartRateAverage: HKQuantityType(.walkingHeartRateAverage)
 
         // Body
         case .basalBodyTemperature: HKQuantityType(.basalBodyTemperature)

@@ -16,7 +16,7 @@ public final class HeartManager {
 }
 
 // MARK: - BloodPressureCase
-extension HeartManager: BloodPressureCase, CardioFitnessCase { }
+extension HeartManager: BloodPressureCase, CardioFitnessCase, FetchCategorySample { }
 
 extension HeartManager: HeartManagerProtocol {
     
@@ -56,6 +56,47 @@ extension HeartManager: HeartManagerProtocol {
         return model
     }
 
+    public func heartRateVariability() async throws -> HeartRateVariability {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .heartRateVariabilitySDNN)
+        let items = samples.map { item -> HeartRateVariability.Item in
+            let sdnn = item.quantity.doubleValue(for: HKUnit.secondUnit(with: .milli))
+            return HeartRateVariability.Item(sdnn: sdnn, date: item.endDate)
+        }
+
+        let model = HeartRateVariability(items: items)
+        return model
+    }
+
+    public func highHeartRateEvents() async throws -> HighHeartRateEvent {
+        let samples = try await fetchCategorySamples(categoryIdentifier: .highHeartRateEvent)
+        let items = samples.map { item -> HighHeartRateEvent.Item in
+            HighHeartRateEvent.Item(startDate: item.startDate, endDate: item.endDate)
+        }
+
+        let model = HighHeartRateEvent(items: items)
+        return model
+    }
+
+    public func irregularHeartRhythmEvents() async throws -> IrregularHeartRhythmEvent {
+        let samples = try await fetchCategorySamples(categoryIdentifier: .irregularHeartRhythmEvent)
+        let items = samples.map { item -> IrregularHeartRhythmEvent.Item in
+            IrregularHeartRhythmEvent.Item(startDate: item.startDate, endDate: item.endDate)
+        }
+
+        let model = IrregularHeartRhythmEvent(items: items)
+        return model
+    }
+
+    public func lowHeartRateEvents() async throws -> LowHeartRateEvent {
+        let samples = try await fetchCategorySamples(categoryIdentifier: .lowHeartRateEvent)
+        let items = samples.map { item -> LowHeartRateEvent.Item in
+            LowHeartRateEvent.Item(startDate: item.startDate, endDate: item.endDate)
+        }
+
+        let model = LowHeartRateEvent(items: items)
+        return model
+    }
+
     public func peripheralPerfusionIndex() async throws -> PeripheralPerfusionIndex {
         let samples = try await fetchQuantitySamples(quantityIdentifier: .peripheralPerfusionIndex)
         let items = samples.map { item -> PeripheralPerfusionIndex.Item in
@@ -64,6 +105,28 @@ extension HeartManager: HeartManagerProtocol {
         }
 
         let model = PeripheralPerfusionIndex(items: items)
+        return model
+    }
+
+    public func restingHeartRate() async throws -> RestingHeartRate {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .restingHeartRate)
+        let items = samples.map { item -> RestingHeartRate.Item in
+            let bpm = item.quantity.doubleValue(for: HKUnit(from: "count/min"))
+            return RestingHeartRate.Item(bpm: bpm, date: item.endDate)
+        }
+
+        let model = RestingHeartRate(items: items)
+        return model
+    }
+
+    public func walkingHeartRateAverage() async throws -> WalkingHeartRateAverage {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .walkingHeartRateAverage)
+        let items = samples.map { item -> WalkingHeartRateAverage.Item in
+            let bpm = item.quantity.doubleValue(for: HKUnit(from: "count/min"))
+            return WalkingHeartRateAverage.Item(bpm: bpm, date: item.endDate)
+        }
+
+        let model = WalkingHeartRateAverage(items: items)
         return model
     }
 

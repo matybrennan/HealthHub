@@ -9,17 +9,22 @@ import Foundation
 
 public protocol HeartManagerProtocol {
 
-    // Services
     var heartRate: HeartRateService { get }
 
-    // Fetch
     func atrialFibrillation() async throws -> AtrialFibrillationHistory
     func bloodPressure() async throws -> BloodPressure
     func cardioFitness() async throws -> CardioFitness
     func cardioRecovery() async throws -> CardioRecovery
+    func heartRateVariability() async throws -> HeartRateVariability
+    func highHeartRateEvents() async throws -> HighHeartRateEvent
+    func irregularHeartRhythmEvents() async throws -> IrregularHeartRhythmEvent
+    func lowHeartRateEvents() async throws -> LowHeartRateEvent
     func peripheralPerfusionIndex() async throws -> PeripheralPerfusionIndex
+    func restingHeartRate() async throws -> RestingHeartRate
+    func walkingHeartRateAverage() async throws -> WalkingHeartRateAverage
 
-    // Save
+    // MARK: - Save
+
     func saveBloodPressure(model: BloodPressure, extra: [String: Sendable]?) async throws
     func saveCardioFitness(model: CardioFitness, extra: [String: Sendable]?) async throws
     func saveCardioRecovery(model: CardioRecovery, extra: [String: Sendable]?) async throws
