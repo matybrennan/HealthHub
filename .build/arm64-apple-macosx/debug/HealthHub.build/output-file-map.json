@@ -534,6 +534,13 @@
     "swift-dependencies": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/AsyncParsingError.swiftdeps",
     "diagnostics": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/AsyncParsingError.dia"
   },
+  "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/Copy.swift": {
+    "dependencies": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Copy.d",
+    "object": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Copy.swift.o",
+    "swiftmodule": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Copy~partial.swiftmodule",
+    "swift-dependencies": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Copy.swiftdeps",
+    "diagnostics": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Copy.dia"
+  },
   "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/FetchingSample.swift": {
     "dependencies": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/FetchingSample.d",
     "object": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/FetchingSample.swift.o",

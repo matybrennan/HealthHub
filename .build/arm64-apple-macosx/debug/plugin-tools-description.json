@@ -7,20 +7,6 @@
     }
   ],
   "copyCommands" : {
-    "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub_HealthHub.bundle/Copy.swift" : {
-      "inputs" : [
-        {
-          "kind" : "file",
-          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Resources/Copy.swift"
-        }
-      ],
-      "outputs" : [
-        {
-          "kind" : "file",
-          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub_HealthHub.bundle/Copy.swift"
-        }
-      ]
-    },
     "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub_HealthHub.bundle/Localizable.xcstrings" : {
       "inputs" : [
         {
@@ -359,6 +345,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/Copy.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/FetchingSample.swift"
         },
         {
@@ -470,6 +460,7 @@
         "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Vitals.swift.o",
         "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/WorkoutModels.swift.o",
         "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/AsyncParsingError.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Copy.swift.o",
         "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/FetchingSample.swift.o",
         "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HealthParser.swift.o",
         "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/HealthType.swift.o",
@@ -835,6 +826,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Copy.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/FetchingSample.swift.o"
         },
         {
@@ -936,6 +931,7 @@
         "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Vitals/Vitals.swift",
         "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Workout/WorkoutModels.swift",
         "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/AsyncParsingError.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/Copy.swift",
         "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/FetchingSample.swift",
         "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/HealthParser.swift",
         "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/HealthType.swift",
@@ -1244,6 +1240,7 @@
       "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Vitals/Vitals.swift",
       "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Presentation/Workout/WorkoutModels.swift",
       "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/AsyncParsingError.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/Copy.swift",
       "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/FetchingSample.swift",
       "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/HealthParser.swift",
       "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/HealthType.swift",
@@ -1774,6 +1771,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/Copy.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/matybrennan/Documents/apps/HealthHub/Sources/HealthHub/Utils/FetchingSample.swift"
         },
         {
@@ -1903,6 +1904,10 @@
         {
           "kind" : "file",
           "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/ConfigurationServiceProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHub.build/Copy.swift.o"
         },
         {
           "kind" : "file",
