@@ -37,7 +37,7 @@ The main driver that contains all the business logic is ```HealthHubManager``` w
 The ```HealthHubManager``` contains all the services below
 ```  
 let hub = HealthHubManager()
-let configuration = tracker.configuration
+let configuration = hub.configuration
 ```
 
 Alternatively is you just need a single service you could just inject the protocol needed
