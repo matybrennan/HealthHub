@@ -10,9 +10,15 @@ import HealthKit
 
 public final class HeartManager {
 
-    public init() { }
+    private let heartRateService: HeartRateService
 
-    private lazy var heartRateService = HeartRateService()
+    public init(heartRateService: HeartRateService) {
+        self.heartRateService = heartRateService
+    }
+
+    public convenience init() {
+        self.init(heartRateService: HeartRateService())
+    }
 }
 
 // MARK: - BloodPressureCase

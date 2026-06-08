@@ -10,22 +10,71 @@ import Combine
 
 public final class HealthHubManager {
 
-    public init() { }
+    private let configurationService: ConfigurationServiceProtocol
+    private let activityManagerService: ActivityManagerProtocol
+    private let heartManagerService: HeartManagerProtocol
+    private let characteristicsService: CharacteristicServiceProtocol
+    private let mobilityService: MobilityServiceProtocol
+    private let nutritionService: NutritionServiceProtocol
+    private let sleepService: SleepServiceProtocol
+    private let bodyMeasurementsService: BodyMeasurementsServiceProtocol
+    private let mindfulService: MentalWellbeingServiceProtocol
+    private let cycleTrackingService: CycleTrackingProtocol
+    private let symptomsService: SymptomsServiceProtocol
+    private let respiratoryService: RespiratoryServiceProtocol
+    private let vitalsService: VitalsServiceProtocol
+    private let otherDataService: OtherDataServiceProtocol
 
-    private lazy var configurationService = ConfigurationService(healthStore: HealthStoreProvider.shared)
-    private lazy var activityManagerService = ActivityManager()
-    private lazy var heartManagerService = HeartManager()
-    private lazy var characteristicsService = CharacteristicService()
-    private lazy var mobilityService = MobilityService()
-    private lazy var nutritionService = NutritionService()
-    private lazy var sleepService = SleepService()
-    private lazy var bodyMeasurementsService = BodyMeasurementsService()
-    private lazy var mindfulService = MentalWellbeingService()
-    private lazy var cycleTrackingService = CycleTracking()
-    private lazy var symptomsService = SymptomsService()
-    private lazy var respiratoryService = RespiratoryService()
-    private lazy var vitalsService = VitalsService()
-    private lazy var otherDataService = OtherDataService()
+    public init(
+        configuration: ConfigurationServiceProtocol,
+        activityManager: ActivityManagerProtocol,
+        heartManager: HeartManagerProtocol,
+        characteristics: CharacteristicServiceProtocol,
+        mobility: MobilityServiceProtocol,
+        nutrition: NutritionServiceProtocol,
+        sleep: SleepServiceProtocol,
+        bodyMeasurements: BodyMeasurementsServiceProtocol,
+        mindful: MentalWellbeingServiceProtocol,
+        cycleTracking: CycleTrackingProtocol,
+        symptoms: SymptomsServiceProtocol,
+        respiratory: RespiratoryServiceProtocol,
+        vitals: VitalsServiceProtocol,
+        otherData: OtherDataServiceProtocol
+    ) {
+        self.configurationService = configuration
+        self.activityManagerService = activityManager
+        self.heartManagerService = heartManager
+        self.characteristicsService = characteristics
+        self.mobilityService = mobility
+        self.nutritionService = nutrition
+        self.sleepService = sleep
+        self.bodyMeasurementsService = bodyMeasurements
+        self.mindfulService = mindful
+        self.cycleTrackingService = cycleTracking
+        self.symptomsService = symptoms
+        self.respiratoryService = respiratory
+        self.vitalsService = vitals
+        self.otherDataService = otherData
+    }
+
+    public convenience init() {
+        self.init(
+            configuration: ConfigurationService(healthStore: HealthStoreProvider.shared),
+            activityManager: ActivityManager(),
+            heartManager: HeartManager(),
+            characteristics: CharacteristicService(),
+            mobility: MobilityService(),
+            nutrition: NutritionService(),
+            sleep: SleepService(),
+            bodyMeasurements: BodyMeasurementsService(),
+            mindful: MentalWellbeingService(),
+            cycleTracking: CycleTracking(),
+            symptoms: SymptomsService(),
+            respiratory: RespiratoryService(),
+            vitals: VitalsService(),
+            otherData: OtherDataService()
+        )
+    }
 }
 
 

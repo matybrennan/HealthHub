@@ -9,18 +9,33 @@ import Foundation
 
 public final class ActivityManager {
 
-    public init() { }
-    
-    private lazy var activeEnergyService = ActiveEnergyService()
-    private lazy var stepsService = StepsService()
-    private lazy var workoutReadService = WorkoutReadService()
-    private lazy var workoutWriteService = WorkoutWriteService()
-    private lazy var activityService = ActivityService()
+    private let activeEnergyService: ActiveEnergyServiceProtocol
+    private let stepsService: StepsServiceProtocol
+    private let workoutManagerService: WorkoutManagerProtocol
+    private let activityService: ActivityServiceProtocol
 
-    private lazy var workoutManager = WorkoutManager(
-        readService: workoutReadService,
-        writeService: workoutWriteService
-    )
+    public init(
+        activeEnergy: ActiveEnergyServiceProtocol,
+        steps: StepsServiceProtocol,
+        workout: WorkoutManagerProtocol,
+        activity: ActivityServiceProtocol
+    ) {
+        self.activeEnergyService = activeEnergy
+        self.stepsService = steps
+        self.workoutManagerService = workout
+        self.activityService = activity
+    }
+
+    public convenience init() {
+        let workoutReadService = WorkoutReadService()
+        let workoutWriteService = WorkoutWriteService()
+        self.init(
+            activeEnergy: ActiveEnergyService(),
+            steps: StepsService(),
+            workout: WorkoutManager(readService: workoutReadService, writeService: workoutWriteService),
+            activity: ActivityService()
+        )
+    }
 }
 
 // MARK: - ActivityManagerProtocol
@@ -28,6 +43,6 @@ extension ActivityManager: ActivityManagerProtocol {
 
     public var activeEnergy: ActiveEnergyServiceProtocol { activeEnergyService }
     public var steps: StepsServiceProtocol { stepsService }
-    public var workout: WorkoutManagerProtocol { workoutManager }
+    public var workout: WorkoutManagerProtocol { workoutManagerService }
     public var activity: ActivityServiceProtocol { activityService }
 }

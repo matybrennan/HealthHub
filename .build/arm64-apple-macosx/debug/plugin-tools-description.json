@@ -1055,6 +1055,18 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/Mocks/MockWorkoutReadService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/Mocks/MockWorkoutWriteService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/WorkoutManagerTests.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
         },
         {
@@ -1072,7 +1084,10 @@
       "objects" : [
         "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/ConfigurationServiceTests.swift.o",
         "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthTrackerTests.swift.o",
-        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthStoreMock.swift.o"
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthStoreMock.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/MockWorkoutReadService.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/MockWorkoutWriteService.swift.o",
+        "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/WorkoutManagerTests.swift.o"
       ],
       "otherArguments" : [
         "-target",
@@ -1140,6 +1155,18 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/MockWorkoutReadService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/MockWorkoutWriteService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/WorkoutManagerTests.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/Modules/HealthHubTests.swiftmodule"
         }
       ],
@@ -1147,7 +1174,10 @@
       "sources" : [
         "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/ConfigurationServiceTests.swift",
         "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/HealthTrackerTests.swift",
-        "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/Mocks/HealthStoreMock.swift"
+        "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/Mocks/HealthStoreMock.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/Mocks/MockWorkoutReadService.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/Mocks/MockWorkoutWriteService.swift",
+        "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/WorkoutManagerTests.swift"
       ],
       "tempsPath" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build",
       "wholeModuleOptimization" : false
@@ -1370,6 +1400,9 @@
       "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/ConfigurationServiceTests.swift",
       "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/HealthTrackerTests.swift",
       "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/Mocks/HealthStoreMock.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/Mocks/MockWorkoutReadService.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/Mocks/MockWorkoutWriteService.swift",
+      "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/WorkoutManagerTests.swift",
       "-I",
       "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/Modules",
       "-target",
@@ -2160,6 +2193,18 @@
         {
           "kind" : "file",
           "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthTrackerTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/MockWorkoutReadService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/MockWorkoutWriteService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/WorkoutManagerTests.swift.o"
         }
       ],
       "outputFilePath" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubPackageTests.product/Objects.LinkFileList"
@@ -2182,6 +2227,18 @@
         {
           "kind" : "file",
           "name" : "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/Mocks/HealthStoreMock.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/Mocks/MockWorkoutReadService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/Mocks/MockWorkoutWriteService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/WorkoutManagerTests.swift"
         }
       ],
       "outputFilePath" : "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/sources"

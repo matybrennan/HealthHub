@@ -22,5 +22,26 @@
     "swiftmodule": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthStoreMock~partial.swiftmodule",
     "swift-dependencies": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthStoreMock.swiftdeps",
     "diagnostics": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/HealthStoreMock.dia"
+  },
+  "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/Mocks/MockWorkoutReadService.swift": {
+    "dependencies": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/MockWorkoutReadService.d",
+    "object": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/MockWorkoutReadService.swift.o",
+    "swiftmodule": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/MockWorkoutReadService~partial.swiftmodule",
+    "swift-dependencies": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/MockWorkoutReadService.swiftdeps",
+    "diagnostics": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/MockWorkoutReadService.dia"
+  },
+  "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/Mocks/MockWorkoutWriteService.swift": {
+    "dependencies": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/MockWorkoutWriteService.d",
+    "object": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/MockWorkoutWriteService.swift.o",
+    "swiftmodule": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/MockWorkoutWriteService~partial.swiftmodule",
+    "swift-dependencies": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/MockWorkoutWriteService.swiftdeps",
+    "diagnostics": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/MockWorkoutWriteService.dia"
+  },
+  "/Users/matybrennan/Documents/apps/HealthHub/Tests/UnitTests/HealthHubTests/WorkoutManagerTests.swift": {
+    "dependencies": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/WorkoutManagerTests.d",
+    "object": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/WorkoutManagerTests.swift.o",
+    "swiftmodule": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/WorkoutManagerTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/WorkoutManagerTests.swiftdeps",
+    "diagnostics": "/Users/matybrennan/Documents/apps/HealthHub/.build/arm64-apple-macosx/debug/HealthHubTests.build/WorkoutManagerTests.dia"
   }
 }
