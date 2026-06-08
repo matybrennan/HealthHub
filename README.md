@@ -1,318 +1,530 @@
-# HealthHub
+# 🏥 HealthHub
 
-## Goals
+[![Swift](https://img.shields.io/badge/Swift-6.2-orange.svg)](https://swift.org)
+[![Platform](https://img.shields.io/badge/Platform-iOS_26+-blue.svg)](https://developer.apple.com/ios/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![SPM](https://img.shields.io/badge/SPM-Compatible-brightgreen.svg)](https://swift.org/package-manager/)
 
-- Make using HealthKit to a project easy.
-- Enable easy integration for health data.
-- Provide an Open Source project for the iOS open source community.
-- Help others learn about HealthKit.
+A modern Swift library that makes HealthKit integration simple, testable, and elegant. Read and write health data with protocol-driven architecture and full dependency injection support.
 
-## Installation
+---
 
-HealthHub is available through Swift Package Manager, either via Xcode or in Package.swift:
+## ✨ Features
 
-```ruby
-.package(url: "https://github.com/matybrennan/HealthHub", from: "3.2.0"),
+- 🏃 **Activity** — Steps, workouts, active energy, cycling, running, swimming & more
+- ❤️ **Heart** — Heart rate, HRV, AFib, blood pressure, cardio fitness
+- 🧘 **Mental Wellbeing** — Mindfulness, sleep, time in daylight
+- 🫁 **Respiratory** — Blood oxygen, respiratory rate, forced vital capacity
+- 🍎 **Nutrition** — Macronutrients, vitamins, minerals, hydration, caffeine
+- 🏋️ **Body** — Weight, BMI, body fat, height, temperature
+- 🩺 **Vitals** — Blood glucose, blood pressure, body temperature
+- 🔬 **Other Data** — Alcohol, hand washing, UV exposure, insulin & more
+- 🧬 **Characteristics** — Biological sex, blood type, DOB, skin type
+- 🚴 **Mobility** — Walking steadiness, stair speed, stride length
+- 🩸 **Cycle Tracking** — Menstruation, ovulation, symptoms
+- 🤒 **Symptoms** — 35+ symptom types
+
+---
+
+## 📦 Installation
+
+### Swift Package Manager
+
+Add HealthHub to your `Package.swift`:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/matybrennan/HealthHub", from: "3.2.0")
+]
 ```
 
-Package version "3.2.0" and above requires iOS26 and above in project
+Or add it via Xcode: **File → Add Package Dependencies** → paste the URL above.
 
-## Getting Started
+> ⚠️ **Requires iOS 26+** (Package version 3.2.0 and above)
 
-### Configuration for HealthKit
-Add health kit in capabilities through project in "Capabilities"
+---
 
-Add below code to your info.plist
-```
+## 🚀 Getting Started
+
+### 1. Enable HealthKit Capability
+
+In your Xcode project, go to **Signing & Capabilities** → **+ Capability** → **HealthKit**
+
+### 2. Add Info.plist Keys
+
+```xml
 <key>NSHealthShareUsageDescription</key>
-<string>Health want to read your health data</string>
+<string>We need access to read your health data</string>
 <key>NSHealthUpdateUsageDescription</key>
-<string>Health wants to write your progress to health store</string>
+<string>We need access to write health data</string>
 ```
 
-### Guide
+### 3. Request Authorization
 
-The main driver that contains all the business logic is ```HealthHubManager``` which can be injected into your services with  ```HealthHubManagerProtocol```
+```swift
+import HealthHub
 
-The ```HealthHubManager``` contains all the services below
-```  
 let hub = HealthHubManager()
-let configuration = hub.configuration
+
+// Request access to read/write specific data types
+try await hub.configuration.requestAuthorization(
+    toShare: [.stepCount, .workout],
+    toRead: [.stepCount, .heartRate, .workout]
+)
 ```
 
-Alternatively is you just need a single service you could just inject the protocol needed
+---
+
+## 🏗️ Architecture
+
+HealthHub uses a **protocol-driven, dependency-injectable architecture** that makes testing easy:
 
 ```
-let configuration = ConfigurationService()
-MyService -> init(configuration: ConfigurationServiceProtocol)
-let myService = MyService(configuration: configuration)
+HealthHubManager (facade)
+├── ConfigurationService
+├── ActivityManager
+│   ├── ActiveEnergyService
+│   ├── StepsService
+│   ├── WorkoutManager
+│   │   ├── WorkoutReadService
+│   │   └── WorkoutWriteService
+│   └── ActivityService
+├── HeartManager
+│   └── HeartRateService
+├── BodyMeasurementsService
+├── MobilityService
+├── NutritionService
+├── SleepService
+├── MentalWellbeingService
+├── CycleTracking
+├── SymptomsService
+├── RespiratoryService
+├── VitalsService
+└── OtherDataService
 ```
 
-### Configuration 
-- requestingAuthorization
-- presenting healthKit app
-- state (status of requesting health kit information)
+Every layer is backed by protocols and supports dependency injection:
 
-```var configuration: ConfigurationServiceProtocol```
+```swift
+// Production — uses default concrete implementations
+let hub = HealthHubManager()
 
-or
+// Testing — inject mocks at any level
+let hub = HealthHubManager(
+    configuration: MockConfigurationService(),
+    activityManager: MockActivityManager(),
+    heartManager: MockHeartManager(),
+    // ... inject what you need
+)
+```
 
-@State private var configuration = ConfigurationService(healthStore: HealthStoreProtocol)
+---
+
+## 📖 Usage
+
+### Using the Main Manager
+
+```swift
+let hub = HealthHubManager()
+
+// Access any service through the manager
+let workouts = try await hub.activityManager.workout.workouts(fromWorkoutType: .today)
+let heartRate = hub.activityManager.steps
+```
+
+### Using Individual Services
+
+If you only need a specific service, inject it directly:
+
+```swift
+let workoutManager = WorkoutManager(
+    readService: WorkoutReadService(),
+    writeService: WorkoutWriteService()
+)
+let todayWorkouts = try await workoutManager.workouts(fromWorkoutType: .today)
+```
+
+---
+
+## 📚 API Reference
+
+### Configuration
+
+| Method | Description |
+|--------|-------------|
+| `requestAuthorization(toShare:toRead:)` | Request HealthKit permissions |
+| `navigateToHealthSettings()` | Open the Health app settings |
+
+```swift
+var configuration: ConfigurationServiceProtocol
+```
+
+---
 
 ### Characteristics
-- biologicalSex
-- bloodType
-- dateOfBirth
-- skinType
-- isWheelChairUser
 
-```var characteristics: CharacteristicServiceProtocol```
+| Data | Description |
+|------|-------------|
+| `biologicalSex` | Biological sex |
+| `bloodType` | Blood type |
+| `dateOfBirth` | Date of birth |
+| `skinType` | Fitzpatrick skin type |
+| `isWheelChairUser` | Wheelchair use status |
 
-------------------------------------------------------------------------
-
-### ActivityManager
-The ```ActivityManager``` contains all the services below and can be injected into your services with  ```ActivityManagerProtocol``` if you just need this service
-``` 
-let activityManager = ActivityManager()
-let activeEnergy = activityManager.activeEnergy
+```swift
+var characteristics: CharacteristicServiceProtocol
 ```
-or using HealthHubManager
-``` 
-let hub = HealthHubManager()
-let activeEnergy = hub.activityManager.activeEnergy
-```
-    
-#### ActiveEnergy
-Split into sections to gather data based on timeIntervals
-- today, thisWeek, betweenTime
 
-```var activeEnergy: ActiveEnergyServiceProtocol```
-    
+---
+
+### Activity Manager
+
+Access via `hub.activityManager` or use `ActivityManager()` directly.
+
+#### Active Energy
+
+Retrieve calories burned by time period.
+
+```swift
+let energy = try await hub.activityManager.activeEnergy.activeEnergy(from: .today)
+print("Burned: \(energy.calories) kcal")
+```
+
+| Query Type | Description |
+|-----------|-------------|
+| `.today` | Today's active energy |
+| `.thisWeek` | This week's active energy |
+| `.betweenTimePref(start:end:)` | Custom date range |
+
 #### Steps
-- func steps(fromStepsType type: StepsType)
-- Will retrieve results in steps (lastHour, today, thisWeek, betweenTimePreference)
-- func reset(type: StepsType)
-- Will remove all results in stepType type selected (lastHour, today, thisWeek, betweenTimePreference)
 
-```var steps: StepsServiceProtocol```
+Retrieve step counts with observable state.
+
+```swift
+try hub.activityManager.steps.steps(fromStepsType: .today(timeInterval: 1))
+// Access results via published properties
+let todaySteps = hub.activityManager.steps.today
+```
+
+| Query Type | Description |
+|-----------|-------------|
+| `.lastHour` | Steps in the last hour |
+| `.today(timeInterval:)` | Today's steps in hourly batches |
+| `.thisWeek(timeInterval:)` | This week's steps in daily batches |
+| `.betweenTimePreference(start:end:)` | Custom date range |
 
 #### Workouts
-- saveWorkoutItem
-- workouts
-- today, thisWeek, all
 
-```var workout: WorkoutManagerProtocol```
+Read and save workouts with full detail support including routes, heart rate, and events.
 
-#### Activity
-All other Apple Health Activity data types
+```swift
+// Fetch workouts
+let workouts = try await hub.activityManager.workout.workouts(fromWorkoutType: .thisWeek)
 
-- crossCountrySkiingDistance & saveCrossCountrySkiingDistance(_: model, _:extra)
-- crossCountrySkiingSpeed & saveCrossCountrySkiingSpeed(_: model, _:extra)
-- cyclingCadence & saveCyclingCadence(_: model, _:extra)
-- cyclingDistance & saveCyclingDistance(_: model, _:extra)
-- cyclingFunctionalThresholdPower & saveCyclingFunctionalThresholdPower(_: model, _:extra)
-- cyclingPower & saveCyclingPower(_: model, _:extra)
-- cyclingSpeed & saveCyclingSpeed(_: model, _:extra)
-- downhillSnowSportsDistance & saveDownhillSnowSportsDistance(_: model, _:extra)
+// Fetch detailed workout info (route, HR, events)
+let detail = try await hub.activityManager.workout.workoutDetail(
+    for: workout.startDate,
+    endDate: workout.endDate
+)
+
+// Save a workout with associated data
+try await hub.activityManager.workout.saveWorkout(
+    workout: workoutItem,
+    events: lapEvents,
+    routeLocations: gpsLocations,
+    heartRateSamples: hrSamples,
+    extra: nil
+)
+```
+
+| Query Type | Description |
+|-----------|-------------|
+| `.today` | Today's workouts |
+| `.thisWeek` | This week's workouts |
+| `.all` | All workouts |
+| `.betweenTimePreference(start:end:)` | Custom date range |
+| `.byActivityType(HKWorkoutActivityType)` | Filter by sport |
+
+| Detail Methods | Description |
+|---------------|-------------|
+| `workoutRoute(for:endDate:)` | GPS route data |
+| `workoutHeartRate(for:endDate:)` | Heart rate during workout |
+| `workoutEvents(for:endDate:)` | Laps, pauses, segments |
+| `workoutDetail(for:endDate:)` | Combined rich detail |
+
+#### Activity Service
+
+All other Apple Health activity data types — cycling distance/speed/power, running metrics, swimming, skiing, and more.
+
+```swift
+var activity: ActivityServiceProtocol
+```
+
+<details>
+<summary>View all activity data types</summary>
+
+- crossCountrySkiingDistance & save
+- crossCountrySkiingSpeed & save
+- cyclingCadence & save
+- cyclingDistance & save
+- cyclingFunctionalThresholdPower & save
+- cyclingPower & save
+- cyclingSpeed & save
+- downhillSnowSportsDistance & save
 - exerciseMinutes
-- flightsClimbed & saveFlightsClimbed(_: model, _:extra)
+- flightsClimbed & save
 - moveTime
-- nikeFuel & saveNikeFuel(_: model, _:extra)
-- physicalEffort & savePhysicalEffort(_: model, _:extra)
-- pushCount & savePushCount(_: model, _:extra)
-- restingEnergy & saveRestingEnergy(_: model, _:extra)
-- runningPower & saveRunningPower(_: model, _:extra)
-- runningSpeed & saveRunningSpeed(_: model, _:extra)
+- nikeFuel & save
+- physicalEffort & save
+- pushCount & save
+- restingEnergy & save
+- runningPower & save
+- runningSpeed & save
 - standTime
-- swimmingDistance & saveSwimmingDistance(_: model, _:extra)
-- swimmingStrokeCount & saveSwimmingStrokeCount(_: model, _:extra)
-- walkingRunningDistance & saveWalkingRunningDistance(_: model, _:extra)
-- wheelchairDistance & saveWheelchairDistance(_: model, _:extra)
+- swimmingDistance & save
+- swimmingStrokeCount & save
+- walkingRunningDistance & save
+- wheelchairDistance & save
 
-```var activity: ActivityServiceProtocol```
+</details>
 
-------------------------------------------------------------------------
+---
+
+### Heart Manager
+
+Access via `hub.heartManager` or use `HeartManager()` directly.
+
+```swift
+let afib = try await hub.heartManager.atrialFibrillation()
+let bp = try await hub.heartManager.bloodPressure()
+```
+
+| Data | Saveable |
+|------|----------|
+| Heart Rate (real-time, observable) | — |
+| Atrial Fibrillation | — |
+| Blood Pressure | ✅ |
+| Cardio Fitness (VO2 Max) | ✅ |
+| Cardio Recovery | ✅ |
+| Heart Rate Variability | — |
+| High Heart Rate Events | — |
+| Irregular Heart Rhythm Events | — |
+| Low Heart Rate Events | — |
+| Peripheral Perfusion Index | ✅ |
+| Resting Heart Rate | — |
+| Walking Heart Rate Average | — |
+
+#### Heart Rate (Observable)
+
+```swift
+try hub.heartManager.heartRate.heartRate(fromHeartRateType: .current)
+// Access via published properties
+let current = hub.heartManager.heartRate.current
+```
+
+---
 
 ### Body Measurements
-- basalBodyTemperature & saveBasalBodyTemperature(_: model, _:extra)
-- bodyFatPercentage & saveBodyFatPercentage(_: model, _:extra)
-- bodyMassIndex & saveBodyMassIndex(_: model, _:extra)
-- bodyTemperature & saBeBodyTemperature(_: model, _:extra)
-- electrodermalActivity & saveElectrodermalActivity(_: model, _:extra)
-- height & saveHeight(_: model, _:extra)
-- leanBodyMass & saveLeanBodyMass(_: model, _:extra)
-- waistCircumference & saveWaistCircumference(_: model, _:extra)
-- weight & saveweight(_: model, _:extra)
-- wristTemperature
 
-```var bodyMeasurements: BodyMeasurementsServiceProtocol```
+```swift
+let weight = try await hub.bodyMeasurements.weight()
+try await hub.bodyMeasurements.saveWeight(model: weightModel, extra: nil)
+```
 
-------------------------------------------------------------------------
+| Data | Saveable |
+|------|----------|
+| Basal Body Temperature | ✅ |
+| Body Fat Percentage | ✅ |
+| Body Mass Index | ✅ |
+| Body Temperature | ✅ |
+| Electrodermal Activity | ✅ |
+| Height | ✅ |
+| Lean Body Mass | ✅ |
+| Waist Circumference | ✅ |
+| Weight | ✅ |
+| Wrist Temperature | — |
 
-### Cycle Tracking
-- abdominalCramps & saveAbdominalCramps(_: model, _:extra)
-- bloating & saveBloating(_: model, _:extra)
-- breastPain & saveBreastPain(_: model, _:extra)
-- cervicalMucusQuality & saveCervicalMucusQuality(_: model, _:extra)
-- menstruation & saveMenstruation(_: model, _:extra)
-- moodChanges & saveMoodChanges(_: model, _:extra)
-- ovulation & saveOvulation(_: model, _:extra)
-- pregnancyTestResult & savePregnancyTestResult(_: model, _:extra)
-- progesteroneTestResult & saveProgesteroneTestResult(_: model, _:extra)
-- sexualActivity & saveSexualActivity(_: model, _:extra)
-- spotting & saveSpotting(_: model, _:extra)
-- vaginalDryness & saveVaginalDryness(_: model, _:extra)
+---
 
-```var cycleTracking: CycleTrackingServiceProtocol```
+### Mental Wellbeing
 
-------------------------------------------------------------------------
+| Data | Saveable |
+|------|----------|
+| Mindful Activity | ✅ |
+| Sleep | ✅ |
+| Time in Daylight | ✅ |
 
-### HeartManager
-- heartRate (see reference below)
-- atrialFibrillation
-- bloodPressure & saveBloodPressure(_: model, _:extra)
-- cardioFitness & saveCardioFitness(_: model, _:extra)
-- cardioRecovery & saveCardioRecovery(_: model, _:extra)
-- heartRateVariability
-- highHeartRateEvents
-- irregularHeartRhythmEvents
-- lowHeartRateEvents
-- peripheralPerfusionIndex & savePeripheralPerfusionIndex(_: model, _:extra)
-- restingHeartRate
-- walkingHeartRateAverage
-
-```var heart: HeartManagerProtocol```
-
-#### HeartRate
-- func heartRate(fromHeartRateType type: HeartRateType)
-- Will retrieve results in heartRate (current, today, thisWeek, allTime, betweenTimePreference)
-- func reset(type: HeartRateType)
-- Will remove all results in heartRate type selected (current, today, thisWeek, allTime, betweenTimePreference)
-
-```var heartRate: HeartRateService```
-
-------------------------------------------------------------------------
-
-### MentalWellbeing
-- mindfulActivity & saveMindful(_: model, _:extra)
-- sleep & saveSleep(_: model, _:extra)
-- timeInDaylight & saveTimeInDaylight(_: model, _:extra)
-
-```var mentalWellbeing: MentalWellbeingServiceProtocol```
-    
-------------------------------------------------------------------------
+---
 
 ### Mobility
-- cardioFitness & saveCardioFitness(_: model, _:extra)
-- doubleSupportTime & saveDoubleSupportTime(_: model, _:extra)
-- groundContactTime & saveGroundContactTime(_: model, _:extra)
-- runningStrideLength & saveRunningStrideLength(_: model, _:extra)
-- sixMinuteWalk & saveSixMinuteWalk(_: model, _:extra)
-- stairSpeedDown & saveStairSpeedDown(_: model, _:extra)
-- stairSpeedUp & saveStairSpeedUp(_: model, _:extra)
-- verticalOscillation & saveVerticalOscillation(_: model, _:extra)
-- walkingAsymmetry
-- walkingSpeed & saveWalkingSpeed(_: model)
-- walkingSteadiness
-- walkingStepLength & saveWalkingStepLength(_: model)
 
-```var mobility: MobilityServiceProtocol```
+| Data | Saveable |
+|------|----------|
+| Cardio Fitness | ✅ |
+| Double Support Time | ✅ |
+| Ground Contact Time | ✅ |
+| Running Stride Length | ✅ |
+| Six Minute Walk | ✅ |
+| Stair Speed Down | ✅ |
+| Stair Speed Up | ✅ |
+| Vertical Oscillation | ✅ |
+| Walking Asymmetry | — |
+| Walking Speed | ✅ |
+| Walking Steadiness | — |
+| Walking Step Length | ✅ |
 
-------------------------------------------------------------------------
+---
 
 ### Nutrition
-- nutrition(_ :type) & saveNutrition(_: model, _:extra)
 
-Types vary based on:
-- macronutrients
-- minerals
-- ultratrace minerals
-- vitamins
-- hydration
-- caffeine
+Query and save 50+ nutrition data types organized by category:
 
-```var nutrition: NutritionServiceProtocol```
+```swift
+let protein = try await hub.nutrition.nutrition(.macronutrients(.protein))
+try await hub.nutrition.saveNutrition(model: proteinModel, extra: nil)
+```
 
-------------------------------------------------------------------------
+**Categories:** Macronutrients, Minerals, Ultratrace Minerals, Vitamins, Hydration, Caffeine
+
+---
 
 ### Respiratory
-- bloodOxygen & saveBloodOxygen(_: model, _:extra)
-- forcedExpiratoryVolume & saveForcedExpiratoryVolume(_: model, _:extra)
-- forcedVitalCapacity & saveForcedVitalCapacity(_: model, _:extra)
-- inhalerUsage & saveInhalerUsage(_: model, _:extra)
-- peakExpiratoryFlowRate & savePeakExpiratoryFlowRate(_: model, _:extra)
-- respiratoryRate & saveRespiratoryRate(_: model, _:extra)
-- sixMinuteWalk & saveSixMinuteWalk(_: model, _:extra)
 
-```var respiratory: RespiratoryServiceProtocol```
+| Data | Saveable |
+|------|----------|
+| Blood Oxygen | ✅ |
+| Forced Expiratory Volume | ✅ |
+| Forced Vital Capacity | ✅ |
+| Inhaler Usage | ✅ |
+| Peak Expiratory Flow Rate | ✅ |
+| Respiratory Rate | ✅ |
+| Six Minute Walk | ✅ |
 
-------------------------------------------------------------------------
+---
 
 ### Sleep
-- sleep & saveSleep(_: model, _:extra)
 
-```var sleep: SleepServiceProtocol```
+```swift
+let sleep = try await hub.sleep.sleep()
+try await hub.sleep.saveSleep(model: sleepModel, extra: nil)
+```
 
-------------------------------------------------------------------------
+---
+
+### Cycle Tracking
+
+| Data | Saveable |
+|------|----------|
+| Abdominal Cramps | ✅ |
+| Bloating | ✅ |
+| Breast Pain | ✅ |
+| Cervical Mucus Quality | ✅ |
+| Menstruation | ✅ |
+| Mood Changes | ✅ |
+| Ovulation | ✅ |
+| Pregnancy Test Result | ✅ |
+| Progesterone Test Result | ✅ |
+| Sexual Activity | ✅ |
+| Spotting | ✅ |
+| Vaginal Dryness | ✅ |
+
+---
 
 ### Symptoms
-- appetiteChanges & saveAppetiteChanges(_: model, _:extra)
-- symptom(_: type) & saveSymptom(_: model, _:extra)
 
-Symptom types include:
-- abdominalCramps, acne, bladderIncontinence, bloating, bodyAndMuscleAche, breastPain, 
-chestTightnessOrPain, chills, congestion, constipation, coughing, diarrhea, dizziness,
-drySkin, fainting, fatigue, fever, hairLoss, headache, hotFlushes, loss of smell, 
-loss of taste, lowerBackPain, memoryLapse, moodChanges, nausea, nightSweats, pelvicPain,
-rapidPoundingOrFlutteringHeartbeat, runnyNose, shortnessOfBreath, skippedHeartbeat, 
-sleepChanges, soreThroat, vaginalDryness, vomiting, wheezing
+35+ symptom types — all readable and saveable:
 
-```var symptoms: SymptomsServiceProtocol```
+```swift
+let headaches = try await hub.symptoms.symptom(.headache)
+try await hub.symptoms.saveSymptom(model: headacheModel, extra: nil)
+```
 
-------------------------------------------------------------------------
+<details>
+<summary>View all symptom types</summary>
+
+abdominalCramps, acne, bladderIncontinence, bloating, bodyAndMuscleAche, breastPain, chestTightnessOrPain, chills, congestion, constipation, coughing, diarrhea, dizziness, drySkin, fainting, fatigue, fever, hairLoss, headache, hotFlushes, lossOfSmell, lossOfTaste, lowerBackPain, memoryLapse, moodChanges, nausea, nightSweats, pelvicPain, rapidPoundingOrFlutteringHeartbeat, runnyNose, shortnessOfBreath, skippedHeartbeat, sleepChanges, soreThroat, vaginalDryness, vomiting, wheezing
+
+</details>
+
+---
 
 ### Vitals
-- bloodGlucose & saveBloodGlucose(_: model, _:extra)
-- bloodOxygen & saveBloodOxygen(_: model, _:extra)
-- bloodPressure & saveBloodPressure(_: model, _:extra)
-- bodyTemperature & saveBodyTemperature_: model, _:extra)
-- menstruation & saveMenstruation(_: model, _:extra)
-- respiratoryRate & saveRespiratoryRate(_: model, _:extra)
 
-```var vitals: VitalsServiceProtocol```
+| Data | Saveable |
+|------|----------|
+| Blood Glucose | ✅ |
+| Blood Oxygen | ✅ |
+| Blood Pressure | ✅ |
+| Body Temperature | ✅ |
+| Menstruation | ✅ |
+| Respiratory Rate | ✅ |
 
-------------------------------------------------------------------------
+---
 
 ### Other Data
-- alcoholConsumption & saveAlcoholConsumption(_: model, _:extra)
-- bloodAlcoholContent & saveBloodAlcoholContent(_: model, _:extra)
-- bloodGlucose & saveBloodGlucose(_: model, _:extra)
-- handWashing & saveHandWashing(_: model, _:extra)
-- inhalerUsage & saveInhalerUsage(_: model, _:extra)
-- insulinDelivery & saveInsulinDelivery(_: model, _:extra)
-- numberOfTimesFallen & saveNumberOfTimesFallen(_: model, _:extra)
-- sexualActivity & saveSexualActivity(_: model, _:extra)
-- toothBrushing & saveToothBrushing(_: model, _:extra)
-- timeInDaylight & saveTimeInDaylight(_: model, _:extra)
-- uvExposure & saveUvExposure(_: model, _:extra)
-- waterTemperature & saveWaterTemperature(_: model, _:extra)
 
-```var otherData: OtherDataServiceProtocol```
+| Data | Saveable |
+|------|----------|
+| Alcohol Consumption | ✅ |
+| Blood Alcohol Content | ✅ |
+| Blood Glucose | ✅ |
+| Hand Washing | ✅ |
+| Inhaler Usage | ✅ |
+| Insulin Delivery | ✅ |
+| Number of Times Fallen | ✅ |
+| Sexual Activity | ✅ |
+| Tooth Brushing | ✅ |
+| Time in Daylight | ✅ |
+| UV Exposure | ✅ |
+| Water Temperature | ✅ |
 
-------------------------------------------------------------------------
+---
 
-## Contact
+## 🧪 Testing
 
-Have a question or an issue about HealthHub? Create an [issue](https://github.com/matybrennan/HealthHub/issues/new)!
+HealthHub is designed for testability. Every service uses protocols, and managers accept injected dependencies:
 
-Interested in contributing to HealthHub? Branch off and create a PR 
+```swift
+import Testing
+@testable import HealthHub
 
-### Apps using this library
+@Suite("Workout Tests")
+struct WorkoutTests {
 
-Add your app to the list of apps using this library and make a pull request.
+    @Test("Fetches today's workouts")
+    func fetchWorkouts() async throws {
+        let mockRead = MockWorkoutReadService()
+        mockRead.stubbedWorkouts = Workout(items: [
+            .init(duration: 3600, energyBurned: 500, startDate: .now, endDate: .now, activityType: .running)
+        ])
+
+        let manager = WorkoutManager(readService: mockRead, writeService: MockWorkoutWriteService())
+        let result = try await manager.workouts(fromWorkoutType: .today)
+
+        #expect(result.items.count == 1)
+        #expect(result.items[0].activityType == .running)
+    }
+}
+```
+
+---
+
+## 🤝 Contributing
+
+Have a question or found a bug? Create an [issue](https://github.com/matybrennan/HealthHub/issues/new)!
+
+Want to contribute? Fork the repo, branch off `main`, and open a PR.
+
+---
+
+## 📱 Apps Using HealthHub
 
 - [FitnessKit](https://apps.apple.com/us/app/gym-log-custom-workout-plan/id1445516231)
 
-## License
+*Using HealthHub in your app? Open a PR to add it here!*
 
-HealthHub is available under the MIT license.
+---
+
+## 📄 License
+
+HealthHub is available under the [MIT License](LICENSE).
