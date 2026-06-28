@@ -119,7 +119,7 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
     case thiamin
     case riboflavin
     case niacin
-    case pathothenicAcid
+    case pantothenicAcid
     case vitaminB6
     case biotin
     case vitaminB12
@@ -326,11 +326,11 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .thiamin: HKQuantityType(.dietaryThiamin)
         case .riboflavin: HKQuantityType(.dietaryRiboflavin)
         case .niacin: HKQuantityType(.dietaryNiacin)
-        case .pathothenicAcid: HKQuantityType(.dietaryPantothenicAcid)
+        case .pantothenicAcid: HKQuantityType(.dietaryPantothenicAcid)
         case .vitaminB6: HKQuantityType(.dietaryVitaminB6)
         case .biotin: HKQuantityType(.dietaryBiotin)
-        case .vitaminB12: HKQuantityType(.dietaryEnergyConsumed)
-        case .vitaminC: HKQuantityType(.dietaryVitaminB12)
+        case .vitaminB12: HKQuantityType(.dietaryVitaminB12)
+        case .vitaminC: HKQuantityType(.dietaryVitaminC)
         case .vitaminD: HKQuantityType(.dietaryVitaminD)
         case .vitaminE: HKQuantityType(.dietaryVitaminE)
         case .vitaminK: HKQuantityType(.dietaryVitaminK)
@@ -342,7 +342,7 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .magnesium: HKQuantityType(.dietaryMagnesium)
         case .phosphorus: HKQuantityType(.dietaryPhosphorus)
         case .potassium: HKQuantityType(.dietaryPotassium)
-        case .sodium: HKQuantityType(.dietaryPotassium)
+        case .sodium: HKQuantityType(.dietarySodium)
         case .zinc: HKQuantityType(.dietaryZinc)
         /// Ultratrace Minerals
         case .chromium: HKQuantityType(.dietaryChromium)
@@ -533,11 +533,11 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .thiamin: HKQuantityType(.dietaryThiamin)
         case .riboflavin: HKQuantityType(.dietaryRiboflavin)
         case .niacin: HKQuantityType(.dietaryNiacin)
-        case .pathothenicAcid: HKQuantityType(.dietaryPantothenicAcid)
+        case .pantothenicAcid: HKQuantityType(.dietaryPantothenicAcid)
         case .vitaminB6: HKQuantityType(.dietaryVitaminB6)
         case .biotin: HKQuantityType(.dietaryBiotin)
-        case .vitaminB12: HKQuantityType(.dietaryEnergyConsumed)
-        case .vitaminC: HKQuantityType(.dietaryVitaminB12)
+        case .vitaminB12: HKQuantityType(.dietaryVitaminB12)
+        case .vitaminC: HKQuantityType(.dietaryVitaminC)
         case .vitaminD: HKQuantityType(.dietaryVitaminD)
         case .vitaminE: HKQuantityType(.dietaryVitaminE)
         case .vitaminK: HKQuantityType(.dietaryVitaminK)
@@ -549,7 +549,7 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .magnesium: HKQuantityType(.dietaryMagnesium)
         case .phosphorus: HKQuantityType(.dietaryPhosphorus)
         case .potassium: HKQuantityType(.dietaryPotassium)
-        case .sodium: HKQuantityType(.dietaryPotassium)
+        case .sodium: HKQuantityType(.dietarySodium)
         case .zinc: HKQuantityType(.dietaryZinc)
         /// Ultratrace Minerals
         case .chromium: HKQuantityType(.dietaryChromium)

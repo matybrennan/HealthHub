@@ -377,14 +377,31 @@ try await hub.bodyMeasurements.saveWeight(model: weightModel, extra: nil)
 
 ### Nutrition
 
-Query and save 50+ nutrition data types organized by category:
+Query and save all HealthKit nutrition data types, organized by category with full metadata:
 
 ```swift
-let protein = try await hub.nutrition.nutrition(.macronutrients(.protein))
-try await hub.nutrition.saveNutrition(model: proteinModel, extra: nil)
+let protein = try await hub.nutrition.nutrition(type: .protein)
+print("\(protein.displayName): \(protein.items.first?.value ?? 0) \(protein.items.first?.unit ?? "")")
+print("Category: \(protein.category.rawValue)")
+
+// Save nutrition data
+try await hub.nutrition.save(model: proteinModel, extra: nil)
 ```
 
-**Categories:** Macronutrients, Minerals, Ultratrace Minerals, Vitamins, Hydration, Caffeine
+Results are sorted by date (most recent first) and include both start/end dates for accurate time-range tracking.
+
+**Categories & Types:**
+
+| Category | Types |
+|----------|-------|
+| Macronutrients | Energy Consumed, Carbohydrates, Fiber, Sugar, Total Fat, Monounsaturated Fat, Polyunsaturated Fat, Saturated Fat, Cholesterol, Protein |
+| Vitamins | A, Thiamin (B1), Riboflavin (B2), Niacin (B3), Pantothenic Acid (B5), B6, Biotin (B7), B12, C, D, E, K, Folate |
+| Minerals | Calcium, Chloride, Iron, Magnesium, Phosphorus, Potassium, Sodium, Zinc |
+| Ultratrace Minerals | Chromium, Copper, Iodine, Manganese, Molybdenum, Selenium |
+| Hydration | Water |
+| Caffeine | Caffeine |
+
+`NutritionType` conforms to `CaseIterable` for easy enumeration of all types.
 
 ---
 

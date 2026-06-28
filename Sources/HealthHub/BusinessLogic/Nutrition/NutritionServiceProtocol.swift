@@ -14,11 +14,11 @@ public protocol NutritionServiceProtocol {
 }
 
 /*
- - https://developer.apple.com/documentation/healthkit/health_data_types/nutrition_type_identifiers
+ - https://developer.apple.com/documentation/healthkit/nutrition-type-identifiers
  - reference link for types
  */
 
-public enum NutritionType {
+public enum NutritionType: CaseIterable, Sendable {
     
     // Macronutrients
     case energyConsumed
@@ -37,7 +37,7 @@ public enum NutritionType {
     case thiamin
     case riboflavin
     case niacin
-    case pathothenicAcid
+    case pantothenicAcid
     case vitaminB6
     case biotin
     case vitaminB12
@@ -70,68 +70,140 @@ public enum NutritionType {
     
     /// Caffeine
     case caffeine
+
+    // MARK: - Category
+
+    public enum Category: String, CaseIterable, Sendable {
+        case macronutrients = "Macronutrients"
+        case vitamins = "Vitamins"
+        case minerals = "Minerals"
+        case ultratraceMinerals = "Ultratrace Minerals"
+        case hydration = "Hydration"
+        case caffeine = "Caffeine"
+    }
+
+    public var category: Category {
+        switch self {
+        case .energyConsumed, .carbohydrates, .fiber, .sugar, .fatTotal, .fatMono, .fatPoly, .fatSaturated, .cholesterol, .protein:
+            return .macronutrients
+        case .vitaminA, .thiamin, .riboflavin, .niacin, .pantothenicAcid, .vitaminB6, .biotin, .vitaminB12, .vitaminC, .vitaminD, .vitaminE, .vitaminK, .folate:
+            return .vitamins
+        case .calcium, .chloride, .iron, .magnesium, .phosphorus, .potassium, .sodium, .zinc:
+            return .minerals
+        case .chromium, .copper, .iodine, .manganese, .molybdenum, .selenium:
+            return .ultratraceMinerals
+        case .water:
+            return .hydration
+        case .caffeine:
+            return .caffeine
+        }
+    }
+
+    // MARK: - Display Name
+
+    public var displayName: String {
+        switch self {
+        case .energyConsumed: return "Energy Consumed"
+        case .carbohydrates: return "Carbohydrates"
+        case .fiber: return "Fiber"
+        case .sugar: return "Sugar"
+        case .fatTotal: return "Total Fat"
+        case .fatMono: return "Monounsaturated Fat"
+        case .fatPoly: return "Polyunsaturated Fat"
+        case .fatSaturated: return "Saturated Fat"
+        case .cholesterol: return "Cholesterol"
+        case .protein: return "Protein"
+        case .vitaminA: return "Vitamin A"
+        case .thiamin: return "Thiamin (B1)"
+        case .riboflavin: return "Riboflavin (B2)"
+        case .niacin: return "Niacin (B3)"
+        case .pantothenicAcid: return "Pantothenic Acid (B5)"
+        case .vitaminB6: return "Vitamin B6"
+        case .biotin: return "Biotin (B7)"
+        case .vitaminB12: return "Vitamin B12"
+        case .vitaminC: return "Vitamin C"
+        case .vitaminD: return "Vitamin D"
+        case .vitaminE: return "Vitamin E"
+        case .vitaminK: return "Vitamin K"
+        case .folate: return "Folate"
+        case .calcium: return "Calcium"
+        case .chloride: return "Chloride"
+        case .iron: return "Iron"
+        case .magnesium: return "Magnesium"
+        case .phosphorus: return "Phosphorus"
+        case .potassium: return "Potassium"
+        case .sodium: return "Sodium"
+        case .zinc: return "Zinc"
+        case .chromium: return "Chromium"
+        case .copper: return "Copper"
+        case .iodine: return "Iodine"
+        case .manganese: return "Manganese"
+        case .molybdenum: return "Molybdenum"
+        case .selenium: return "Selenium"
+        case .water: return "Water"
+        case .caffeine: return "Caffeine"
+        }
+    }
+
+    // MARK: - Unit Measure
     
     public var unitMeasure: (unit: HKUnit, unitStr: String) {
-        
-        var unitTuple: (HKUnit, String)!
-        
         switch self {
            
         // Macronutrients
-        case .energyConsumed: unitTuple = (HKUnit.kilocalorie(), "kcal")
-        case .carbohydrates: unitTuple = (HKUnit.gram(), "g")
-        case .fiber: unitTuple = (HKUnit.gram(), "g")
-        case .sugar: unitTuple = (HKUnit.gram(), "g")
-        case .fatTotal: unitTuple = (HKUnit.gram(), "g")
-        case .fatMono: unitTuple = (HKUnit.gram(), "g")
-        case .fatPoly: unitTuple = (HKUnit.gram(), "g")
-        case .fatSaturated: unitTuple = (HKUnit.gram(), "g")
-        case .cholesterol: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
-        case .protein: unitTuple = (HKUnit.gram(), "g")
+        case .energyConsumed: (HKUnit.kilocalorie(), "kcal")
+        case .carbohydrates: (HKUnit.gram(), "g")
+        case .fiber: (HKUnit.gram(), "g")
+        case .sugar: (HKUnit.gram(), "g")
+        case .fatTotal: (HKUnit.gram(), "g")
+        case .fatMono: (HKUnit.gram(), "g")
+        case .fatPoly: (HKUnit.gram(), "g")
+        case .fatSaturated: (HKUnit.gram(), "g")
+        case .cholesterol: (HKUnit.gramUnit(with: .milli), "mg")
+        case .protein: (HKUnit.gram(), "g")
         
         /// Vitamins
-        case .vitaminA: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.micro), "mcg")
-        case .thiamin: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
-        case .riboflavin: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
-        case .niacin: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
-        case .pathothenicAcid: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
-        case .vitaminB6: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
-        case .biotin: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.micro), "mcg")
-        case .vitaminB12: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.micro), "mcg")
-        case .vitaminC: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
-        case .vitaminD: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.micro), "mcg")
-        case .vitaminE: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
-        case .vitaminK: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.micro), "mcg")
-        case .folate: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.micro), "mcg")
+        case .vitaminA: (HKUnit.gramUnit(with: .micro), "mcg")
+        case .thiamin: (HKUnit.gramUnit(with: .milli), "mg")
+        case .riboflavin: (HKUnit.gramUnit(with: .milli), "mg")
+        case .niacin: (HKUnit.gramUnit(with: .milli), "mg")
+        case .pantothenicAcid: (HKUnit.gramUnit(with: .milli), "mg")
+        case .vitaminB6: (HKUnit.gramUnit(with: .milli), "mg")
+        case .biotin: (HKUnit.gramUnit(with: .micro), "mcg")
+        case .vitaminB12: (HKUnit.gramUnit(with: .micro), "mcg")
+        case .vitaminC: (HKUnit.gramUnit(with: .milli), "mg")
+        case .vitaminD: (HKUnit.gramUnit(with: .micro), "mcg")
+        case .vitaminE: (HKUnit.gramUnit(with: .milli), "mg")
+        case .vitaminK: (HKUnit.gramUnit(with: .micro), "mcg")
+        case .folate: (HKUnit.gramUnit(with: .micro), "mcg")
         
         /// Minerals
-        case .calcium: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
-        case .chloride: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
-        case .iron: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
-        case .magnesium: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
-        case .phosphorus: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
-        case .potassium: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
-        case .sodium: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
-        case .zinc: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
-            
+        case .calcium: (HKUnit.gramUnit(with: .milli), "mg")
+        case .chloride: (HKUnit.gramUnit(with: .milli), "mg")
+        case .iron: (HKUnit.gramUnit(with: .milli), "mg")
+        case .magnesium: (HKUnit.gramUnit(with: .milli), "mg")
+        case .phosphorus: (HKUnit.gramUnit(with: .milli), "mg")
+        case .potassium: (HKUnit.gramUnit(with: .milli), "mg")
+        case .sodium: (HKUnit.gramUnit(with: .milli), "mg")
+        case .zinc: (HKUnit.gramUnit(with: .milli), "mg")
             
         /// Ultratrace Minerals
-        case .chromium: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.micro), "mcg")
-        case .copper: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
-        case .iodine: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.micro), "mcg")
-        case .manganese: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
-        case .molybdenum: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.micro), "mcg")
-        case .selenium: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.micro), "mcg")
+        case .chromium: (HKUnit.gramUnit(with: .micro), "mcg")
+        case .copper: (HKUnit.gramUnit(with: .milli), "mg")
+        case .iodine: (HKUnit.gramUnit(with: .micro), "mcg")
+        case .manganese: (HKUnit.gramUnit(with: .milli), "mg")
+        case .molybdenum: (HKUnit.gramUnit(with: .micro), "mcg")
+        case .selenium: (HKUnit.gramUnit(with: .micro), "mcg")
             
         /// Hydration
-        case .water: unitTuple = (HKUnit.literUnit(with: HKMetricPrefix.milli), "mL")
+        case .water: (HKUnit.literUnit(with: .milli), "mL")
             
         /// Caffeine
-        case .caffeine: unitTuple = (HKUnit.gramUnit(with: HKMetricPrefix.milli), "mg")
+        case .caffeine: (HKUnit.gramUnit(with: .milli), "mg")
         }
-        
-        return unitTuple
     }
+
+    // MARK: - Quantity Type
     
     public var quantityType: HKQuantityType {
         switch self {
@@ -153,7 +225,7 @@ public enum NutritionType {
         case .thiamin: HKQuantityType(.dietaryThiamin)
         case .riboflavin: HKQuantityType(.dietaryRiboflavin)
         case .niacin: HKQuantityType(.dietaryNiacin)
-        case .pathothenicAcid: HKQuantityType(.dietaryPantothenicAcid)
+        case .pantothenicAcid: HKQuantityType(.dietaryPantothenicAcid)
         case .vitaminB6: HKQuantityType(.dietaryVitaminB6)
         case .biotin: HKQuantityType(.dietaryBiotin)
         case .vitaminB12: HKQuantityType(.dietaryVitaminB12)
@@ -186,7 +258,6 @@ public enum NutritionType {
 
         /// Caffeine
         case .caffeine: HKQuantityType(.dietaryCaffeine)
-            
         }
     }
 }

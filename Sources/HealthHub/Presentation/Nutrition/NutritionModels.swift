@@ -13,20 +13,26 @@ public struct Nutrition: Sendable {
     public struct Info: Sendable {
         public let value: Double
         public let unit: String
-        public let date: Date
+        public let startDate: Date
+        public let endDate: Date
 
-        public init(value: Double, unit: String, date: Date) {
+        public init(value: Double, unit: String, startDate: Date, endDate: Date) {
             self.value = value
             self.unit = unit
-            self.date = date
+            self.startDate = startDate
+            self.endDate = endDate
         }
     }
     
     public let items: [Info]
     public let type: HKQuantityType
+    public let displayName: String
+    public let category: NutritionType.Category
 
-    public init(items: [Info], type: HKQuantityType) {
+    public init(items: [Info], type: HKQuantityType, displayName: String, category: NutritionType.Category) {
         self.items = items
         self.type = type
+        self.displayName = displayName
+        self.category = category
     }
 }

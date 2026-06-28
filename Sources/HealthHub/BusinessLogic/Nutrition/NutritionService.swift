@@ -22,13 +22,14 @@ extension NutritionService: NutritionServiceProtocol {
     public func nutrition(type: NutritionType) async throws -> Nutrition {
         let identifier = HKQuantityTypeIdentifier(rawValue: type.quantityType.identifier)
         let unitToUse = type.unitMeasure
-        let samples = try await fetchQuantitySamples(quantityIdentifier: identifier)
+        let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
+        let samples = try await fetchQuantitySamples(quantityIdentifier: identifier, sortDescriptors: [sortDescriptor])
         
         let items = samples.map {
-            Nutrition.Info(value: $0.quantity.doubleValue(for: unitToUse.unit), unit: unitToUse.unitStr, date: $0.endDate)
+            Nutrition.Info(value: $0.quantity.doubleValue(for: unitToUse.unit), unit: unitToUse.unitStr, startDate: $0.startDate, endDate: $0.endDate)
         }
         
-        let vm = Nutrition(items: items, type: type.quantityType)
+        let vm = Nutrition(items: items, type: type.quantityType, displayName: type.displayName, category: type.category)
         return vm
     }
     
@@ -38,7 +39,7 @@ extension NutritionService: NutritionServiceProtocol {
 
         let nutritionObjects = model.items.map {
             let quantity = HKQuantity(unit: HKUnit(from: $0.unit), doubleValue: $0.value)
-            return HKQuantitySample(type: nutritionType, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+            return HKQuantitySample(type: nutritionType, quantity: quantity, start: $0.startDate, end: $0.endDate, metadata: extra)
         }
 
         try await HealthStoreProvider.shared.save(nutritionObjects)
