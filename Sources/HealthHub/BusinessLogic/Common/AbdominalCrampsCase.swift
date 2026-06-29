@@ -19,7 +19,7 @@ extension AbdominalCrampsCase {
             return GenericSymptomModel.Item(style: style, startDate: item.startDate, endDate: item.endDate)
         }
         
-        let model = GenericSymptomModel(items: items, type: SymptomType.abdominal.categoryType)
+        let model = GenericSymptomModel(items: items, type: SymptomType.abdominalCramps.categoryType, displayName: SymptomType.abdominalCramps.displayName, category: SymptomType.abdominalCramps.category)
         return model
     }
 

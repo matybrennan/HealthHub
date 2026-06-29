@@ -177,6 +177,7 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
     case bodyAndAchePain
     case chills
     case chestTightnessOrPain
+    case congestion
     case constipation
     case coughing
     case diarrhea
@@ -382,6 +383,7 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .bodyAndAchePain: HKCategoryType(.generalizedBodyAche)
         case .chills: HKCategoryType(.chills)
         case .chestTightnessOrPain: HKCategoryType(.chestTightnessOrPain)
+        case .congestion: HKCategoryType(.sinusCongestion)
         case .constipation: HKCategoryType(.constipation)
         case .coughing: HKCategoryType(.coughing)
         case .diarrhea: HKCategoryType(.diarrhea)
@@ -589,6 +591,7 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .bodyAndAchePain: HKCategoryType(.generalizedBodyAche)
         case .chills: HKCategoryType(.chills)
         case .chestTightnessOrPain: HKCategoryType(.chestTightnessOrPain)
+        case .congestion: HKCategoryType(.sinusCongestion)
         case .constipation: HKCategoryType(.constipation)
         case .coughing: HKCategoryType(.coughing)
         case .diarrhea: HKCategoryType(.diarrhea)

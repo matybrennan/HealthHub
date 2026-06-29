@@ -13,21 +13,22 @@ public final class SymptomsService {
     public init() { }
 }
 
-// MARK: - FetchQuantitySample
+// MARK: - FetchCategorySample
 extension SymptomsService: FetchCategorySample, AbdominalCrampsCase { }
 
 // MARK: - Private methods
 private extension SymptomsService {
     
-    func fetchGenericSymptomResult(categoryType: HKCategoryType) async throws -> GenericSymptomModel {
-        let identifier = HKCategoryTypeIdentifier(rawValue: categoryType.identifier)
-        let samples = try await fetchCategorySamples(categoryIdentifier: identifier)
+    func fetchGenericSymptomResult(type: SymptomType) async throws -> GenericSymptomModel {
+        let identifier = HKCategoryTypeIdentifier(rawValue: type.categoryType.identifier)
+        let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
+        let samples = try await fetchCategorySamples(categoryIdentifier: identifier, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> GenericSymptomModel.Item in
             let style = GenericSymptomModel.Item.Style(rawValue: item.value) ?? .notPresent
             return GenericSymptomModel.Item(style: style, startDate: item.startDate, endDate: item.endDate)
         }
         
-        let model = GenericSymptomModel(items: items, type: categoryType)
+        let model = GenericSymptomModel(items: items, type: type.categoryType, displayName: type.displayName, category: type.category)
         return model
     }
 
@@ -48,11 +49,12 @@ private extension SymptomsService {
 extension SymptomsService: SymptomsServiceProtocol {
     
     public func symptom(type: SymptomType) async throws -> GenericSymptomModel {
-        return try await fetchGenericSymptomResult(categoryType: type.categoryType)
+        try await fetchGenericSymptomResult(type: type)
     }
 
     public func appetiteChanges() async throws -> AppetiteChanges {
-        let samples = try await fetchCategorySamples(categoryIdentifier: .appetiteChanges)
+        let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
+        let samples = try await fetchCategorySamples(categoryIdentifier: .appetiteChanges, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> AppetiteChanges.Item in
             let type = AppetiteChanges.Item.AppetiteChangesType(rawValue: item.value) ?? .noChange
             return AppetiteChanges.Item(type: type, startDate: item.startDate, endDate: item.endDate)

@@ -449,19 +449,35 @@ try await hub.sleep.saveSleep(model: sleepModel, extra: nil)
 
 ### Symptoms
 
-35+ symptom types — all readable and saveable:
+38 symptom types — all readable and saveable, organized by category with display names:
 
 ```swift
-let headaches = try await hub.symptoms.symptom(.headache)
-try await hub.symptoms.saveSymptom(model: headacheModel, extra: nil)
+let headaches = try await hub.symptoms.symptom(type: .headache)
+print("\(headaches.displayName): \(headaches.items.first?.style.name ?? "")")
+print("Category: \(headaches.category?.rawValue ?? "")")
+
+// Save
+try await hub.symptoms.saveSymptom(type: .headache, model: headacheModel, extra: nil)
+
+// Appetite changes (has its own dedicated model with increase/decrease tracking)
+let appetite = try await hub.symptoms.appetiteChanges()
 ```
 
-<details>
-<summary>View all symptom types</summary>
+Results are sorted by date (most recent first). `SymptomType` conforms to `CaseIterable` for easy enumeration.
 
-abdominalCramps, acne, bladderIncontinence, bloating, bodyAndMuscleAche, breastPain, chestTightnessOrPain, chills, congestion, constipation, coughing, diarrhea, dizziness, drySkin, fainting, fatigue, fever, hairLoss, headache, hotFlushes, lossOfSmell, lossOfTaste, lowerBackPain, memoryLapse, moodChanges, nausea, nightSweats, pelvicPain, rapidPoundingOrFlutteringHeartbeat, runnyNose, shortnessOfBreath, skippedHeartbeat, sleepChanges, soreThroat, vaginalDryness, vomiting, wheezing
+**Categories & Types:**
 
-</details>
+| Category | Types |
+|----------|-------|
+| Gastrointestinal | Abdominal Cramps, Bloating, Constipation, Diarrhea, Heartburn, Nausea, Vomiting |
+| Pain | Body & Muscle Ache, Breast Pain, Chest Tightness or Pain, Headache, Lower Back Pain, Pelvic Pain |
+| Skin & Hair | Acne, Dry Skin, Hair Loss |
+| Cardiovascular | Rapid/Pounding/Fluttering Heartbeat, Skipped Heartbeat |
+| Respiratory | Congestion, Coughing, Runny Nose, Shortness of Breath, Sore Throat, Wheezing |
+| Neurological & Mental | Dizziness, Fainting, Fatigue, Memory Lapse, Mood Changes, Sleep Changes |
+| Constitutional | Chills, Fever, Hot Flashes, Night Sweats |
+| Urogenital | Bladder Incontinence, Vaginal Dryness |
+| Sensory | Loss of Smell, Loss of Taste |
 
 ---
 

@@ -48,10 +48,14 @@ public struct GenericSymptomModel: Sendable {
     
     public let items: [Item]
     public let type: HKCategoryType
+    public let displayName: String
+    public let category: SymptomType.Category?
 
-    public init(items: [Item], type: HKCategoryType) {
+    public init(items: [Item], type: HKCategoryType, displayName: String = "", category: SymptomType.Category? = nil) {
         self.items = items
         self.type = type
+        self.displayName = displayName
+        self.category = category
     }
 }
 
@@ -59,7 +63,7 @@ public struct AppetiteChanges: Sendable {
 
     public struct Item: Sendable {
 
-        public enum AppetiteChangesType: Int, Sendable{
+        public enum AppetiteChangesType: Int, Sendable {
             case present = 0
             case noChange
             case decreased
