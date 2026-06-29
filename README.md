@@ -332,17 +332,26 @@ Access via `hub.heartManager` or use `HeartManager()` directly.
 
 ```swift
 let afib = try await hub.heartManager.atrialFibrillation()
+print("AFib burden: \(afib.averageBurden)%")
+
 let bp = try await hub.heartManager.bloodPressure()
+print("Latest: \(bp.mostRecent?.value ?? "")")
+
+let hrv = try await hub.heartManager.heartRateVariability()
+print("Average SDNN: \(hrv.averageSDNN) ms")
+
+let resting = try await hub.heartManager.restingHeartRate()
+print("Resting HR: \(resting.mostRecent?.bpm ?? 0) BPM")
 ```
 
 | Data | Saveable |
 |------|----------|
-| Heart Rate (real-time, observable) | — |
-| Atrial Fibrillation | — |
+| Heart Rate (async, observable) | — |
+| Atrial Fibrillation History | — |
 | Blood Pressure | ✅ |
-| Cardio Fitness (VO2 Max) | ✅ |
+| Cardio Fitness (VO₂ Max) | ✅ |
 | Cardio Recovery | ✅ |
-| Heart Rate Variability | — |
+| Heart Rate Variability (SDNN) | — |
 | High Heart Rate Events | — |
 | Irregular Heart Rhythm Events | — |
 | Low Heart Rate Events | — |
@@ -350,13 +359,40 @@ let bp = try await hub.heartManager.bloodPressure()
 | Resting Heart Rate | — |
 | Walking Heart Rate Average | — |
 
-#### Heart Rate (Observable)
+#### Heart Rate Service (Observable)
+
+The `HeartRateService` uses `@Observable` for reactive UI updates and modern `async/await` for fetching:
 
 ```swift
-try hub.heartManager.heartRate.heartRate(fromHeartRateType: .current)
-// Access via published properties
-let current = hub.heartManager.heartRate.current
+// Fetch heart rate with flexible time ranges
+try await hub.heartManager.heartRate.heartRate(fromHeartRateType: .current)
+try await hub.heartManager.heartRate.heartRate(fromHeartRateType: .today(timeInterval: 60))
+try await hub.heartManager.heartRate.heartRate(fromHeartRateType: .thisWeek(timeInterval: 1))
+try await hub.heartManager.heartRate.heartRate(fromHeartRateType: .thisMonth(timeInterval: 1))
+try await hub.heartManager.heartRate.heartRate(fromHeartRateType: .allTime(timeInterval: 7))
+try await hub.heartManager.heartRate.heartRate(fromHeartRateType: .betweenDates(start: startDate, end: endDate))
+
+// Access published properties (updates SwiftUI views automatically)
+let current = hub.heartManager.heartRate.current       // HeartRate.Item?
+let today = hub.heartManager.heartRate.today           // HeartRate
+let week = hub.heartManager.heartRate.thisWeek         // HeartRate
+
+// Rich computed properties
+print("Today avg: \(today.average) BPM")
+print("Max: \(today.overallMax ?? 0) BPM")
+print("Min: \(today.overallMin ?? 0) BPM")
 ```
+
+**HeartRateType options:**
+
+| Type | Interval Unit | Description |
+|------|---------------|-------------|
+| `.current` | — | Most recent single reading |
+| `.today(timeInterval:)` | Minutes | Today's data in batches (default: 60 min) |
+| `.thisWeek(timeInterval:)` | Days | This week in batches (default: 1 day) |
+| `.thisMonth(timeInterval:)` | Days | This month in batches (default: 1 day) |
+| `.allTime(timeInterval:)` | Days | All data in batches (default: 1 day) |
+| `.betweenDates(start:end:timeInterval:)` | Minutes | Custom range (auto-calculated if nil) |
 
 ---
 

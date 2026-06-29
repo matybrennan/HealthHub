@@ -1,6 +1,6 @@
 //
-//  File.swift
-//  
+//  HeartRateService.swift
+//  HealthHub
 //
 //  Created by Maty Brennan on 5/8/2024.
 //
@@ -11,125 +11,38 @@ import HealthKit
 @Observable
 public final class HeartRateService {
 
-    struct Unit {
-        static let heartRateCountMin = "count/min"
-    }
+    private nonisolated static let heartRateUnit = HKUnit(from: "count/min")
 
     public private(set) var current: HeartRate.Item?
     public private(set) var today = HeartRate(items: [])
     public private(set) var thisWeek = HeartRate(items: [])
+    public private(set) var thisMonth = HeartRate(items: [])
     public private(set) var allTime = HeartRate(items: [])
-    public private(set) var betweenTimePreference = HeartRate(items: [])
+    public private(set) var betweenDates = HeartRate(items: [])
 
     public init() { }
 
-    public func heartRate(fromHeartRateType type: HeartRateType) throws {
-
-        // Confirm that the type and device works
-        let heartRate = try HealthParser.quantityType(for: .heartRate)
-
-        var query: HKQuery!
-
+    /// Fetch heart rate data for the given type. Updates the corresponding published property.
+    public func heartRate(fromHeartRateType type: HeartRateType) async throws {
         switch type {
         case .current:
-
-            // Get last item in healthStore for heartRate
-            let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
-            
-            // create query for heartRate
-            query = HKSampleQuery(sampleType: heartRate, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor], resultsHandler: { (query, samples, error) in
-
-                guard error == nil else {
-                    return
-                }
-
-                guard let quantitySample = samples?.first as? HKQuantitySample else {
-                    let _ = AsyncParsingError.unableToParse("current heartRate or no heart rate samples")
-                    return
-                }
-                Task { @MainActor in
-                    let hr = quantitySample.quantity.doubleValue(for: HKUnit(from: Unit.heartRateCountMin))
-                    let item = HeartRate.Item(max: hr, min: hr, average: hr)
-                    self.current = item
-                }
-            })
-
+            current = try await fetchCurrent()
         case let .today(interval):
-
-            // create predicate for start and end of day
-            let predicate = try NSPredicate.today()
-
-            // set timeInterval for grabbing data batches (in mins)
-            // If no interval is set create it for 1 hour batches
-            var component = DateComponents()
-            component.minute = interval
-
-            // create query
-            query = HKStatisticsCollectionQuery(quantityType: heartRate, quantitySamplePredicate: predicate, options: [.discreteAverage, .discreteMax, .discreteMin], anchorDate: Date().startOfDay, intervalComponents: component)
-
-
-            (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [weak self]
-                query, collection, error in
-                guard let self else { return }
-                Task { @MainActor in
-                    try? self.configure(query: query, collection: collection, error: error, type: .today(timeInterval: interval))
-                }
-            }
+            today = try await fetchStatistics(predicate: NSPredicate.today(), intervalMinutes: interval, anchorDate: Date().startOfDay)
         case let .thisWeek(interval):
-
-            // create predicate for start and end of day
-            let predicate = try NSPredicate.thisWeek()
-
-            var component = DateComponents()
-            component.day = interval
-
-            // create query
-            query = HKStatisticsCollectionQuery(quantityType: heartRate, quantitySamplePredicate: predicate, options: [.discreteAverage, .discreteMax, .discreteMin], anchorDate: Date().startOfDay, intervalComponents: component)
-
-
-            (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [weak self]
-                query, collection, error in
-                guard let self else { return }
-                Task { @MainActor in
-                    try? self.configure(query: query, collection: collection, error: error, type: .thisWeek(timeInterval: interval))
-                }
-            }
+            thisWeek = try await fetchStatistics(predicate: NSPredicate.thisWeek(), intervalDays: interval, anchorDate: Date().startOfDay)
+        case let .thisMonth(interval):
+            thisMonth = try await fetchStatistics(predicate: Self.thisMonthPredicate(), intervalDays: interval, anchorDate: Date().startOfDay)
         case let .allTime(interval):
-
-            var component = DateComponents()
-            component.day = interval
-
-            // create query
-            query = HKStatisticsCollectionQuery(quantityType: heartRate, quantitySamplePredicate: nil, options: [.discreteAverage, .discreteMax, .discreteMin], anchorDate: Date().startOfDay, intervalComponents: component)
-
-            (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [weak self]
-                query, collection, error in
-                guard let self else { return }
-                Task { @MainActor in
-                    try? self.configure(query: query, collection: collection, error: error, type: .allTime(timeInterval: interval))
-                }
-            }
-
-        case let .betweenTimePreference(startDate, endDate):
-
-            let calendar = Calendar.current
-            let components = calendar.dateComponents([.second, .minute, .hour], from: startDate, to: endDate)
-
-            let pred = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
-            query = HKStatisticsCollectionQuery(quantityType: heartRate, quantitySamplePredicate: pred, options: [.discreteAverage, .discreteMax, .discreteMin], anchorDate: startDate, intervalComponents: components)
-
-            (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [weak self]
-                query, collection, error in
-                guard let self else { return }
-                Task { @MainActor in
-                    try? self.configure(query: query, collection: collection, error: error, type: .betweenTimePreference(start: startDate, end: endDate))
-                }
-            }
+            allTime = try await fetchStatistics(predicate: nil, intervalDays: interval, anchorDate: Date().startOfDay)
+        case let .betweenDates(start, end, interval):
+            let pred = HKQuery.predicateForSamples(withStart: start, end: end, options: .strictStartDate)
+            let minutes = interval ?? max(1, Calendar.current.dateComponents([.minute], from: start, to: end).minute ?? 60)
+            betweenDates = try await fetchStatistics(predicate: pred, intervalMinutes: minutes, anchorDate: start)
         }
-
-        HealthStoreProvider.shared.execute(query)
     }
 
+    /// Reset the published data for a given type
     public func reset(type: HeartRateType) {
         switch type {
         case .current:
@@ -138,49 +51,92 @@ public final class HeartRateService {
             today = HeartRate(items: [])
         case .thisWeek:
             thisWeek = HeartRate(items: [])
+        case .thisMonth:
+            thisMonth = HeartRate(items: [])
         case .allTime:
             allTime = HeartRate(items: [])
-        case .betweenTimePreference:
-            betweenTimePreference = HeartRate(items: [])
+        case .betweenDates:
+            betweenDates = HeartRate(items: [])
         }
     }
 }
 
+// MARK: - Private
+
 private extension HeartRateService {
 
-    func configure(query: HKStatisticsCollectionQuery, collection: HKStatisticsCollection?, error: Error?, type: HeartRateType) throws {
-        guard error == nil else {
-            throw error!
+    func fetchCurrent() async throws -> HeartRate.Item {
+        let heartRateType = try HealthParser.quantityType(for: .heartRate)
+        let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
+        let descriptor = HKSampleQueryDescriptor(
+            predicates: [.quantitySample(type: heartRateType)],
+            sortDescriptors: [sortDescriptor],
+            limit: 1
+        )
+        let samples = try await descriptor.result(for: HealthStoreProvider.shared)
+        guard let sample = samples.first else {
+            throw AsyncParsingError.unableToParse("No heart rate samples available")
         }
+        let bpm = sample.quantity.doubleValue(for: Self.heartRateUnit)
+        return HeartRate.Item(max: bpm, min: bpm, average: bpm, startDate: sample.startDate, endDate: sample.endDate)
+    }
 
-        guard let quantitySamples = collection?.statistics() else {
-            throw AsyncParsingError.unableToParse("HeartRate log")
-        }
+    func fetchStatistics(predicate: NSPredicate?, intervalMinutes: Int, anchorDate: Date) async throws -> HeartRate {
+        var component = DateComponents()
+        component.minute = intervalMinutes
+        return try await executeStatisticsQuery(predicate: predicate, interval: component, anchorDate: anchorDate)
+    }
 
-        let items = quantitySamples.compactMap { sample -> HeartRate.Item? in
-            guard let max = sample.maximumQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)) as? Double,
-                let min = sample.minimumQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)) as? Double,
-                let average = sample.averageQuantity()?.doubleValue(for: HKUnit(from: Unit.heartRateCountMin)) as? Double else {
-                return nil
+    func fetchStatistics(predicate: NSPredicate?, intervalDays: Int, anchorDate: Date) async throws -> HeartRate {
+        var component = DateComponents()
+        component.day = intervalDays
+        return try await executeStatisticsQuery(predicate: predicate, interval: component, anchorDate: anchorDate)
+    }
+
+    func executeStatisticsQuery(predicate: NSPredicate?, interval: DateComponents, anchorDate: Date) async throws -> HeartRate {
+        let heartRateType = try HealthParser.quantityType(for: .heartRate)
+
+        return try await withCheckedThrowingContinuation { continuation in
+            let query = HKStatisticsCollectionQuery(
+                quantityType: heartRateType,
+                quantitySamplePredicate: predicate,
+                options: [.discreteAverage, .discreteMax, .discreteMin],
+                anchorDate: anchorDate,
+                intervalComponents: interval
+            )
+
+            query.initialResultsHandler = { _, collection, error in
+                if let error {
+                    continuation.resume(throwing: error)
+                    return
+                }
+
+                guard let statistics = collection?.statistics(), !statistics.isEmpty else {
+                    continuation.resume(returning: HeartRate(items: []))
+                    return
+                }
+
+                let items = statistics.compactMap { sample -> HeartRate.Item? in
+                    guard let max = sample.maximumQuantity()?.doubleValue(for: Self.heartRateUnit),
+                          let min = sample.minimumQuantity()?.doubleValue(for: Self.heartRateUnit),
+                          let average = sample.averageQuantity()?.doubleValue(for: Self.heartRateUnit) else {
+                        return nil
+                    }
+                    return HeartRate.Item(max: max, min: min, average: average, startDate: sample.startDate, endDate: sample.endDate)
+                }
+
+                continuation.resume(returning: HeartRate(items: items))
             }
-            return HeartRate.Item(max: max, min: min, average: average)
-        }
 
-        switch type {
-        case .current:
-            break
-        case .today:
-            let allItems = today.items + items
-            today = HeartRate(items: allItems)
-        case .thisWeek:
-            let allItems = thisWeek.items + items
-            thisWeek = HeartRate(items: allItems)
-        case .allTime:
-            let allItems = allTime.items + items
-            allTime = HeartRate(items: allItems)
-        case .betweenTimePreference:
-            let allItems = betweenTimePreference.items + items
-            betweenTimePreference = HeartRate(items: allItems)
+            HealthStoreProvider.shared.execute(query)
         }
+    }
+
+    static func thisMonthPredicate() -> NSPredicate {
+        let now = Date()
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month], from: now)
+        let startOfMonth = calendar.date(from: components) ?? now
+        return HKQuery.predicateForSamples(withStart: startOfMonth, end: now, options: [])
     }
 }

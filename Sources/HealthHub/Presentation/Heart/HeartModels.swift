@@ -1,6 +1,6 @@
 //
 //  HeartModels.swift
-//  Pods-TestPod_Example
+//  HealthHub
 //
 //  Created by Maty Brennan on 2/12/18.
 //
@@ -10,21 +10,29 @@ import Foundation
 public struct HeartRate: Sendable {
 
     public struct Item: Sendable {
-        let max: Double
-        let min: Double
-        let average: Double
+        public let max: Double
+        public let min: Double
+        public let average: Double
+        public let startDate: Date
+        public let endDate: Date
 
-        public init(max: Double, min: Double, average: Double) {
+        nonisolated public init(max: Double, min: Double, average: Double, startDate: Date = .now, endDate: Date = .now) {
             self.max = max
             self.min = min
             self.average = average
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+
+        /// Range between min and max BPM
+        public var range: ClosedRange<Double> {
+            min...max
         }
     }
-    
-    // Computed from timeIntervals and if One item
+
     public let items: [Item]
 
-    public init(items: [Item]) {
+    nonisolated public init(items: [Item]) {
         self.items = items
     }
 }
@@ -32,33 +40,43 @@ public struct HeartRate: Sendable {
 extension HeartRate {
 
     public var total: Double {
-        items.reduce(0.0, { (res, item) -> Double in
-            res + item.average
-        })
+        items.reduce(0.0) { $0 + $1.average }
     }
-    
+
     public var average: Double {
         items.isEmpty ? 0.0 : total / Double(count)
     }
-    
+
+    public var overallMax: Double? {
+        items.map(\.max).max()
+    }
+
+    public var overallMin: Double? {
+        items.map(\.min).min()
+    }
+
     public var first: Item? {
         items.first
     }
-    
+
     public var last: Item? {
         items.last
     }
-    
+
     public var count: Int {
         items.count
+    }
+
+    public var mostRecent: Item? {
+        items.max(by: { $0.endDate < $1.endDate })
     }
 }
 
 public struct CardioRecovery: Sendable {
 
     public struct Item: Sendable {
-        let bpm: Int
-        let date: Date
+        public let bpm: Int
+        public let date: Date
 
         public init(bpm: Int, date: Date) {
             self.bpm = bpm
@@ -71,20 +89,33 @@ public struct CardioRecovery: Sendable {
     public init(items: [Item]) {
         self.items = items
     }
+
+    public var mostRecent: Item? {
+        items.max(by: { $0.date < $1.date })
+    }
+
+    public var average: Double {
+        guard !items.isEmpty else { return 0 }
+        return Double(items.reduce(0) { $0 + $1.bpm }) / Double(items.count)
+    }
 }
 
 public struct AtrialFibrillationHistory: Sendable {
 
     public struct Item: Sendable {
-        
-        let percentage: Double
-        let startDate: Date
-        let endDate: Date
+        public let percentage: Double
+        public let startDate: Date
+        public let endDate: Date
 
         public init(percentage: Double, startDate: Date, endDate: Date) {
             self.percentage = percentage
             self.startDate = startDate
             self.endDate = endDate
+        }
+
+        /// Duration of the AFib episode
+        public var duration: TimeInterval {
+            endDate.timeIntervalSince(startDate)
         }
     }
 
@@ -92,6 +123,16 @@ public struct AtrialFibrillationHistory: Sendable {
 
     public init(items: [Item]) {
         self.items = items
+    }
+
+    public var mostRecent: Item? {
+        items.max(by: { $0.endDate < $1.endDate })
+    }
+
+    /// Average AFib burden percentage
+    public var averageBurden: Double {
+        guard !items.isEmpty else { return 0 }
+        return items.reduce(0.0) { $0 + $1.percentage } / Double(items.count)
     }
 }
 
@@ -112,6 +153,10 @@ public struct PeripheralPerfusionIndex: Sendable {
     public init(items: [Item]) {
         self.items = items
     }
+
+    public var mostRecent: Item? {
+        items.max(by: { $0.date < $1.date })
+    }
 }
 
 public struct HeartRateVariability: Sendable {
@@ -131,6 +176,16 @@ public struct HeartRateVariability: Sendable {
     public init(items: [Item]) {
         self.items = items
     }
+
+    public var mostRecent: Item? {
+        items.max(by: { $0.date < $1.date })
+    }
+
+    /// Average SDNN across all readings
+    public var averageSDNN: Double {
+        guard !items.isEmpty else { return 0 }
+        return items.reduce(0.0) { $0 + $1.sdnn } / Double(items.count)
+    }
 }
 
 public struct HighHeartRateEvent: Sendable {
@@ -143,12 +198,24 @@ public struct HighHeartRateEvent: Sendable {
             self.startDate = startDate
             self.endDate = endDate
         }
+
+        public var duration: TimeInterval {
+            endDate.timeIntervalSince(startDate)
+        }
     }
 
     public let items: [Item]
 
     public init(items: [Item]) {
         self.items = items
+    }
+
+    public var mostRecent: Item? {
+        items.max(by: { $0.endDate < $1.endDate })
+    }
+
+    public var totalEvents: Int {
+        items.count
     }
 }
 
@@ -162,12 +229,24 @@ public struct IrregularHeartRhythmEvent: Sendable {
             self.startDate = startDate
             self.endDate = endDate
         }
+
+        public var duration: TimeInterval {
+            endDate.timeIntervalSince(startDate)
+        }
     }
 
     public let items: [Item]
 
     public init(items: [Item]) {
         self.items = items
+    }
+
+    public var mostRecent: Item? {
+        items.max(by: { $0.endDate < $1.endDate })
+    }
+
+    public var totalEvents: Int {
+        items.count
     }
 }
 
@@ -181,12 +260,24 @@ public struct LowHeartRateEvent: Sendable {
             self.startDate = startDate
             self.endDate = endDate
         }
+
+        public var duration: TimeInterval {
+            endDate.timeIntervalSince(startDate)
+        }
     }
 
     public let items: [Item]
 
     public init(items: [Item]) {
         self.items = items
+    }
+
+    public var mostRecent: Item? {
+        items.max(by: { $0.endDate < $1.endDate })
+    }
+
+    public var totalEvents: Int {
+        items.count
     }
 }
 
@@ -207,6 +298,16 @@ public struct RestingHeartRate: Sendable {
     public init(items: [Item]) {
         self.items = items
     }
+
+    public var mostRecent: Item? {
+        items.max(by: { $0.date < $1.date })
+    }
+
+    /// Average resting heart rate across all readings
+    public var average: Double {
+        guard !items.isEmpty else { return 0 }
+        return items.reduce(0.0) { $0 + $1.bpm } / Double(items.count)
+    }
 }
 
 public struct WalkingHeartRateAverage: Sendable {
@@ -225,5 +326,15 @@ public struct WalkingHeartRateAverage: Sendable {
 
     public init(items: [Item]) {
         self.items = items
+    }
+
+    public var mostRecent: Item? {
+        items.max(by: { $0.date < $1.date })
+    }
+
+    /// Average walking heart rate across all readings
+    public var average: Double {
+        guard !items.isEmpty else { return 0 }
+        return items.reduce(0.0) { $0 + $1.bpm } / Double(items.count)
     }
 }

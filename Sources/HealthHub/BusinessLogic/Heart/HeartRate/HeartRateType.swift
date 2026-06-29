@@ -1,6 +1,6 @@
 //
 //  HeartRateType.swift
-//  
+//  HealthHub
 //
 //  Created by Maty Brennan on 5/8/2024.
 //
@@ -9,16 +9,21 @@ import Foundation
 
 public enum HeartRateType: Sendable {
 
+    /// Fetch the most recent single heart rate reading
     case current
 
-    // made in mins to get heartRate items for time interval periods
-    case today(timeInterval: Int)
+    /// Heart rate data for today, batched in intervals (minutes)
+    case today(timeInterval: Int = 60)
 
-    // made in days to get heartRate items for time interval periods
-    case thisWeek(timeInterval: Int)
+    /// Heart rate data for this week, batched in intervals (days)
+    case thisWeek(timeInterval: Int = 1)
 
-    // made in days to get heartRate items for time interval periods
-    case allTime(timeInterval: Int)
+    /// Heart rate data for this month, batched in intervals (days)
+    case thisMonth(timeInterval: Int = 1)
 
-    case betweenTimePreference(start: Date, end: Date)
+    /// All heart rate data, batched in intervals (days)
+    case allTime(timeInterval: Int = 1)
+
+    /// Heart rate data between specific dates
+    case betweenDates(start: Date, end: Date, timeInterval: Int? = nil)
 }

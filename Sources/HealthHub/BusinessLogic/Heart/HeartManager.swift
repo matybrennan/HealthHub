@@ -1,6 +1,6 @@
 //
 //  HeartManager.swift
-//  Pods-TestPod_Example
+//  HealthHub
 //
 //  Created by Maty Brennan on 2/7/18.
 //
@@ -35,12 +35,11 @@ extension HeartManager: HeartManagerProtocol {
     public func atrialFibrillation() async throws -> AtrialFibrillationHistory {
         let samples = try await fetchQuantitySamples(quantityIdentifier: .atrialFibrillationBurden)
         let items = samples.map { item -> AtrialFibrillationHistory.Item in
-            let percentage = item.quantity.doubleValue(for: .percent())
+            let percentage = item.quantity.doubleValue(for: .percent()) * 100
             return AtrialFibrillationHistory.Item(percentage: percentage, startDate: item.startDate, endDate: item.endDate)
         }
 
-        let vm = AtrialFibrillationHistory(items: items)
-        return vm
+        return AtrialFibrillationHistory(items: items)
     }
 
     public func bloodPressure() async throws -> BloodPressure {
@@ -58,8 +57,7 @@ extension HeartManager: HeartManagerProtocol {
             return CardioRecovery.Item(bpm: Int(value), date: item.endDate)
         }
 
-        let model = CardioRecovery(items: items)
-        return model
+        return CardioRecovery(items: items)
     }
 
     public func heartRateVariability() async throws -> HeartRateVariability {
@@ -69,8 +67,7 @@ extension HeartManager: HeartManagerProtocol {
             return HeartRateVariability.Item(sdnn: sdnn, date: item.endDate)
         }
 
-        let model = HeartRateVariability(items: items)
-        return model
+        return HeartRateVariability(items: items)
     }
 
     public func highHeartRateEvents() async throws -> HighHeartRateEvent {
@@ -79,8 +76,7 @@ extension HeartManager: HeartManagerProtocol {
             HighHeartRateEvent.Item(startDate: item.startDate, endDate: item.endDate)
         }
 
-        let model = HighHeartRateEvent(items: items)
-        return model
+        return HighHeartRateEvent(items: items)
     }
 
     public func irregularHeartRhythmEvents() async throws -> IrregularHeartRhythmEvent {
@@ -89,8 +85,7 @@ extension HeartManager: HeartManagerProtocol {
             IrregularHeartRhythmEvent.Item(startDate: item.startDate, endDate: item.endDate)
         }
 
-        let model = IrregularHeartRhythmEvent(items: items)
-        return model
+        return IrregularHeartRhythmEvent(items: items)
     }
 
     public func lowHeartRateEvents() async throws -> LowHeartRateEvent {
@@ -99,8 +94,7 @@ extension HeartManager: HeartManagerProtocol {
             LowHeartRateEvent.Item(startDate: item.startDate, endDate: item.endDate)
         }
 
-        let model = LowHeartRateEvent(items: items)
-        return model
+        return LowHeartRateEvent(items: items)
     }
 
     public func peripheralPerfusionIndex() async throws -> PeripheralPerfusionIndex {
@@ -110,8 +104,7 @@ extension HeartManager: HeartManagerProtocol {
             return PeripheralPerfusionIndex.Item(percentage: percentage, date: item.endDate)
         }
 
-        let model = PeripheralPerfusionIndex(items: items)
-        return model
+        return PeripheralPerfusionIndex(items: items)
     }
 
     public func restingHeartRate() async throws -> RestingHeartRate {
@@ -121,8 +114,7 @@ extension HeartManager: HeartManagerProtocol {
             return RestingHeartRate.Item(bpm: bpm, date: item.endDate)
         }
 
-        let model = RestingHeartRate(items: items)
-        return model
+        return RestingHeartRate(items: items)
     }
 
     public func walkingHeartRateAverage() async throws -> WalkingHeartRateAverage {
@@ -132,8 +124,7 @@ extension HeartManager: HeartManagerProtocol {
             return WalkingHeartRateAverage.Item(bpm: bpm, date: item.endDate)
         }
 
-        let model = WalkingHeartRateAverage(items: items)
-        return model
+        return WalkingHeartRateAverage(items: items)
     }
 
     // MARK: - Save
@@ -164,7 +155,7 @@ extension HeartManager: HeartManagerProtocol {
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
-            let quantity = HKQuantity(unit: .percent(), doubleValue: $0.percentage)
+            let quantity = HKQuantity(unit: .percent(), doubleValue: $0.percentage / 100)
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
