@@ -12,16 +12,18 @@ public struct BloodPressure: Sendable {
     public struct Info: Sendable {
         public let systolic: Double
         public let diastolic: Double
+        public let unit: String
         public let startDate: Date
         public let endDate: Date
         
         public var value: String {
-            "\(systolic) / \(diastolic)"
+            "\(Int(systolic))/\(Int(diastolic)) \(unit)"
         }
         
-        public init(systolic: Double, diastolic: Double, startDate: Date, endDate: Date) {
+        public init(systolic: Double, diastolic: Double, unit: String = "mmHg", startDate: Date, endDate: Date) {
             self.systolic = systolic
             self.diastolic = diastolic
+            self.unit = unit
             self.startDate = startDate
             self.endDate = endDate
         }
@@ -59,22 +61,34 @@ public struct BodyTemperature: Sendable {
 
 public struct BloodGlucose: Sendable {
 
-    public struct Item: Sendable{
+    public struct Item: Sendable {
 
         public enum MealTime: Int, Sendable {
             case unspecified
             case beforeMeal
             case afterMeal
+
+            public var name: String {
+                switch self {
+                case .unspecified: return "Unspecified"
+                case .beforeMeal: return "Before Meal"
+                case .afterMeal: return "After Meal"
+                }
+            }
         }
         
-        public let date: Date
         public let bloodGlucose: Double
+        public let unit: String
         public let mealTime: MealTime
+        public let startDate: Date
+        public let endDate: Date
         
-        public init(date: Date, bloodGlucose: Double, mealTime: MealTime) {
-            self.date = date
+        public init(bloodGlucose: Double, unit: String = "mg/dL", mealTime: MealTime, startDate: Date, endDate: Date) {
             self.bloodGlucose = bloodGlucose
+            self.unit = unit
             self.mealTime = mealTime
+            self.startDate = startDate
+            self.endDate = endDate
         }
     }
     
@@ -88,13 +102,14 @@ public struct BloodGlucose: Sendable {
 public struct BloodOxygen: Sendable {
 
     public struct Item: Sendable {
-
-        public let date: Date
         public let oxygenSaturationPercentage: Double
+        public let startDate: Date
+        public let endDate: Date
         
-        public init(date: Date, oxygenSaturationPercentage: Double) {
-            self.date = date
+        public init(oxygenSaturationPercentage: Double, startDate: Date, endDate: Date) {
             self.oxygenSaturationPercentage = oxygenSaturationPercentage
+            self.startDate = startDate
+            self.endDate = endDate
         }
     }
     

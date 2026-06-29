@@ -13,7 +13,8 @@ protocol RespiratoryRateCase: FetchQuantitySample { }
 extension RespiratoryRateCase {
     
     func baseRespiratoryRate() async throws -> RespiratoryRate {
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .respiratoryRate)
+        let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .respiratoryRate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> RespiratoryRate.Item in
             let value = item.quantity.doubleValue(for: HKUnit(from: "count/min"))
             return RespiratoryRate.Item(value: value, startDate: item.startDate, endDate: item.endDate)

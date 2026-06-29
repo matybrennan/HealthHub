@@ -483,14 +483,29 @@ Results are sorted by date (most recent first). `SymptomType` conforms to `CaseI
 
 ### Vitals
 
-| Data | Saveable |
-|------|----------|
-| Blood Glucose | ✅ |
-| Blood Oxygen | ✅ |
-| Blood Pressure | ✅ |
-| Body Temperature | ✅ |
-| Menstruation | ✅ |
-| Respiratory Rate | ✅ |
+All vital sign data types with full read/write support and sort-by-date ordering:
+
+```swift
+let bp = try await hub.vitals.bloodPressure()
+print("\(bp.items.first?.value ?? "")") // "120/80 mmHg"
+
+let glucose = try await hub.vitals.bloodGlucose()
+print("\(glucose.items.first?.bloodGlucose ?? 0) mg/dL - \(glucose.items.first?.mealTime.name ?? "")")
+
+// Save
+try await hub.vitals.saveBloodPressure(model: bpModel, extra: nil)
+```
+
+`VitalType` enum provides `displayName` and `unit` for all types and conforms to `CaseIterable`.
+
+| Data | Unit | Saveable |
+|------|------|----------|
+| Blood Glucose | mg/dL | ✅ |
+| Blood Oxygen | % | ✅ |
+| Blood Pressure | mmHg | ✅ |
+| Body Temperature | °C / °F | ✅ |
+| Menstruation | — | ✅ |
+| Respiratory Rate | breaths/min | ✅ |
 
 ---
 

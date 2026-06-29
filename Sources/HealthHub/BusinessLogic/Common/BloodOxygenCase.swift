@@ -13,10 +13,11 @@ protocol BloodOxygenCase: FetchQuantitySample { }
 extension BloodOxygenCase {
 
     func baseBloodOxygen() async throws -> BloodOxygen {
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .oxygenSaturation)
+        let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .oxygenSaturation, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> BloodOxygen.Item in
             let percentage = item.quantity.doubleValue(for: .percent())
-            return BloodOxygen.Item(date: item.startDate, oxygenSaturationPercentage: percentage)
+            return BloodOxygen.Item(oxygenSaturationPercentage: percentage, startDate: item.startDate, endDate: item.endDate)
         }
 
         let model = BloodOxygen(items: items)
@@ -29,7 +30,7 @@ extension BloodOxygenCase {
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .percent(), doubleValue: $0.oxygenSaturationPercentage)
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.startDate, end: $0.endDate, metadata: extra)
         }
 
         try await HealthStoreProvider.shared.save(sampleObjects)

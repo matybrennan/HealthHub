@@ -13,12 +13,13 @@ protocol BloodGlucoseCase: FetchQuantitySample { }
 extension BloodGlucoseCase {
 
     func baseBloodGlucose() async throws -> BloodGlucose {
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .bloodGlucose)
+        let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .bloodGlucose, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> BloodGlucose.Item in
             let glucoseLevel = item.quantity.doubleValue(for: HKUnit(from: "mg/dL"))
             let mealtimeInt = item.metadata?[HKMetadataKeyBloodGlucoseMealTime] as? Int ?? 0
             let mealTime = BloodGlucose.Item.MealTime(rawValue: mealtimeInt) ?? .unspecified
-            return BloodGlucose.Item(date: item.startDate, bloodGlucose: glucoseLevel, mealTime: mealTime)
+            return BloodGlucose.Item(bloodGlucose: glucoseLevel, mealTime: mealTime, startDate: item.startDate, endDate: item.endDate)
         }
 
         let model = BloodGlucose(items: items)
@@ -34,7 +35,7 @@ extension BloodGlucoseCase {
             var metadata = extra ?? [:]
             metadata[HKMetadataKeyBloodGlucoseMealTime] = $0.mealTime.rawValue
             let quantity = HKQuantity(unit: unit, doubleValue: $0.bloodGlucose)
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: metadata)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.startDate, end: $0.endDate, metadata: metadata)
         }
 
         try await HealthStoreProvider.shared.save(sampleObjects)

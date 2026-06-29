@@ -15,7 +15,8 @@ extension BloodPressureCase {
     func baseBloodPressure() async throws -> BloodPressure {
         let bloodPressureSystolicType = try HealthParser.quantityType(for: .bloodPressureSystolic)
         let bloodPressureDiastolicType = try HealthParser.quantityType(for: .bloodPressureDiastolic)
-        let samples = try await fetchCorrelationSamples(correlationIdentifier: .bloodPressure)
+        let sortDescriptor = SortDescriptor(\HKCorrelation.endDate, order: .reverse)
+        let samples = try await fetchCorrelationSamples(correlationIdentifier: .bloodPressure, sortDescriptors: [sortDescriptor])
         let items = samples.compactMap { item -> BloodPressure.Info? in
             guard let systolic = item.objects(for: bloodPressureSystolicType).first as? HKQuantitySample else { return nil }
             guard let diastolic = item.objects(for: bloodPressureDiastolicType).first as? HKQuantitySample else { return nil }
