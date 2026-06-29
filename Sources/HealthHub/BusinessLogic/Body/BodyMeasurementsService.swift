@@ -81,9 +81,9 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
         let samples = try await fetchQuantitySamples(quantityIdentifier: .height, sortDescriptors: [sortDescriptor])
         
         let items = samples.map { item -> BodyHeight.Item in
-            let inches = Int(item.quantity.doubleValue(for: HKUnit.init(from: .inch)))
-            let cm = Int(item.quantity.doubleValue(for: HKUnit.init(from: .centimeter)))
-            return BodyHeight.Item(inches: inches, cm: cm, date: item.endDate)
+            let cm = item.quantity.doubleValue(for: HKUnit(from: .centimeter))
+            let inches = item.quantity.doubleValue(for: HKUnit(from: .inch))
+            return BodyHeight.Item(cm: cm, inches: inches, date: item.endDate)
         }
         
         let bodyHeight = BodyHeight(items: items)
@@ -109,9 +109,9 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
         let samples = try await fetchQuantitySamples(quantityIdentifier: .waistCircumference, sortDescriptors: [sortDescriptor])
         
         let items = samples.map { item -> WaistCircumference.Item in
-            let inches = Int(item.quantity.doubleValue(for: HKUnit(from: .inch)))
-            let cm = Int(item.quantity.doubleValue(for: HKUnit(from: .centimeter)))
-            return WaistCircumference.Item(inches: inches, cm: cm, date: item.endDate)
+            let cm = item.quantity.doubleValue(for: HKUnit(from: .centimeter))
+            let inches = item.quantity.doubleValue(for: HKUnit(from: .inch))
+            return WaistCircumference.Item(cm: cm, inches: inches, date: item.endDate)
         }
         
         let waistCircumference = WaistCircumference(items: items)
@@ -165,7 +165,7 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
-            let quantity = HKQuantity(unit: .percent(), doubleValue: $0.percentage)
+            let quantity = HKQuantity(unit: .percent(), doubleValue: $0.percentage / 100.0)
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
@@ -207,7 +207,7 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
 
         let unit = HKUnit(from: .centimeter)
         let sampleObjects = model.items.map {
-            let quantity = HKQuantity(unit: unit, doubleValue: Double($0.cm))
+            let quantity = HKQuantity(unit: unit, doubleValue: $0.cm)
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 
@@ -233,7 +233,7 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
 
         let unit = HKUnit(from: .centimeter)
         let sampleObjects = model.items.map {
-            let quantity = HKQuantity(unit: unit, doubleValue: Double($0.cm))
+            let quantity = HKQuantity(unit: unit, doubleValue: $0.cm)
             return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
         }
 

@@ -360,23 +360,42 @@ let current = hub.heartManager.heartRate.current
 
 ### Body Measurements
 
+Full body composition and measurement tracking with clinical classification:
+
 ```swift
 let weight = try await hub.bodyMeasurements.weight()
+print("\(weight.mostRecent?.kg ?? 0) kg")
+
+let bmi = try await hub.bodyMeasurements.bodyMassIndex()
+print("BMI: \(bmi.mostRecent?.value ?? 0) — \(bmi.mostRecent?.classification.rawValue ?? "")")
+
+let height = try await hub.bodyMeasurements.height()
+print("Height: \(height.mostRecent?.feetAndInches ?? "")")
+
+// Save
 try await hub.bodyMeasurements.saveWeight(model: weightModel, extra: nil)
 ```
 
-| Data | Saveable |
-|------|----------|
-| Basal Body Temperature | ✅ |
-| Body Fat Percentage | ✅ |
-| Body Mass Index | ✅ |
-| Body Temperature | ✅ |
-| Electrodermal Activity | ✅ |
-| Height | ✅ |
-| Lean Body Mass | ✅ |
-| Waist Circumference | ✅ |
-| Weight | ✅ |
-| Wrist Temperature | — |
+Results are sorted by date (most recent first) with `mostRecent` on all models.
+
+| Data | Unit | Saveable |
+|------|------|----------|
+| Basal Body Temperature | °C / °F | ✅ |
+| Body Fat Percentage | % | ✅ |
+| Body Mass Index | kg/m² | ✅ |
+| Body Temperature | °C / °F | ✅ |
+| Electrodermal Activity | μS | ✅ |
+| Height | cm / in | ✅ |
+| Lean Body Mass | kg / lbs | ✅ |
+| Waist Circumference | cm / in | ✅ |
+| Weight | kg / lbs | ✅ |
+| Wrist Temperature | °C / °F | — (read-only) |
+
+**Features:**
+- `BodyMassIndex.Classification` — WHO categories (Underweight, Normal, Overweight, Obese)
+- `BodyHeight.Item.feetAndInches` — formatted height string (e.g. 5'11")
+- `mostRecent` on all models
+- Dual-unit support (metric + imperial) on height, weight, lean body mass, waist
 
 ---
 

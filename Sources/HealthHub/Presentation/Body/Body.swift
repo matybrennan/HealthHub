@@ -26,6 +26,9 @@ public struct BasalBodyTemperature: Sendable {
     public init(items: [Item]) {
         self.items = items
     }
+
+    /// Most recent reading
+    public var mostRecent: Item? { items.first }
 }
 
 public struct BodyWeight: Sendable {
@@ -47,6 +50,9 @@ public struct BodyWeight: Sendable {
     public init(items: [Item]) {
         self.items = items
     }
+
+    /// Most recent reading
+    public var mostRecent: Item? { items.first }
 }
 
 public struct LeanBodyMass: Sendable {
@@ -68,19 +74,30 @@ public struct LeanBodyMass: Sendable {
     public init(items: [Item]) {
         self.items = items
     }
+
+    /// Most recent reading
+    public var mostRecent: Item? { items.first }
 }
 
 public struct BodyHeight: Sendable {
 
     public struct Item: Sendable {
-        public let inches: Int
-        public let cm: Int
+        public let cm: Double
+        public let inches: Double
         public let date: Date
 
-        public init(inches: Int, cm: Int, date: Date) {
-            self.inches = inches
+        public init(cm: Double, inches: Double, date: Date) {
             self.cm = cm
+            self.inches = inches
             self.date = date
+        }
+
+        /// Height in feet and inches (e.g. 5'11")
+        public var feetAndInches: String {
+            let totalInches = Int(inches)
+            let feet = totalInches / 12
+            let remainingInches = totalInches % 12
+            return "\(feet)'\(remainingInches)\""
         }
     }
     
@@ -89,6 +106,9 @@ public struct BodyHeight: Sendable {
     public init(items: [Item]) {
         self.items = items
     }
+
+    /// Most recent reading
+    public var mostRecent: Item? { items.first }
 }
 
 public struct BodyFatPercentage: Sendable {
@@ -108,9 +128,28 @@ public struct BodyFatPercentage: Sendable {
     public init(items: [Item]) {
         self.items = items
     }
+
+    /// Most recent reading
+    public var mostRecent: Item? { items.first }
 }
 
 public struct BodyMassIndex: Sendable {
+
+    public enum Classification: String, Sendable {
+        case underweight = "Underweight"
+        case normal = "Normal"
+        case overweight = "Overweight"
+        case obese = "Obese"
+
+        public init(bmi: Double) {
+            switch bmi {
+            case ..<18.5: self = .underweight
+            case 18.5..<25.0: self = .normal
+            case 25.0..<30.0: self = .overweight
+            default: self = .obese
+            }
+        }
+    }
 
     public struct Item: Sendable {
         public let value: Double
@@ -120,6 +159,11 @@ public struct BodyMassIndex: Sendable {
             self.value = value
             self.date = date
         }
+
+        /// WHO BMI classification
+        public var classification: Classification {
+            Classification(bmi: value)
+        }
     }
     
     public let items: [Item]
@@ -127,18 +171,21 @@ public struct BodyMassIndex: Sendable {
     public init(items: [Item]) {
         self.items = items
     }
+
+    /// Most recent reading
+    public var mostRecent: Item? { items.first }
 }
 
 public struct WaistCircumference: Sendable {
 
     public struct Item: Sendable {
-        public let inches: Int
-        public let cm: Int
+        public let cm: Double
+        public let inches: Double
         public let date: Date
 
-        public init(inches: Int, cm: Int, date: Date) {
-            self.inches = inches
+        public init(cm: Double, inches: Double, date: Date) {
             self.cm = cm
+            self.inches = inches
             self.date = date
         }
     }
@@ -148,11 +195,15 @@ public struct WaistCircumference: Sendable {
     public init(items: [Item]) {
         self.items = items
     }
+
+    /// Most recent reading
+    public var mostRecent: Item? { items.first }
 }
 
 public struct ElectrodermalActivity: Sendable {
 
     public struct Item: Sendable {
+        /// Value in microsiemens (μS)
         public let value: Double
         public let date: Date
 
@@ -167,6 +218,9 @@ public struct ElectrodermalActivity: Sendable {
     public init(items: [Item]) {
         self.items = items
     }
+
+    /// Most recent reading
+    public var mostRecent: Item? { items.first }
 }
 
 public struct WristTemperature: Sendable {
@@ -188,4 +242,7 @@ public struct WristTemperature: Sendable {
     public init(items: [Item]) {
         self.items = items
     }
+
+    /// Most recent reading
+    public var mostRecent: Item? { items.first }
 }
