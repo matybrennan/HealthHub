@@ -16,18 +16,16 @@ public final class ActiveEnergyService {
 // MARK: - FetchQuantitySample
 extension ActiveEnergyService: FetchQuantitySample { }
 
-
 // MARK: - ActiveEnergyServiceProtocol
 extension ActiveEnergyService: ActiveEnergyServiceProtocol {
-    
+
     public func activeEnergy(from type: ActiveEnergyType) async throws -> ActiveEnergy {
         let pred = try type.predicate()
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .activeEnergyBurned, predicate: pred, sortDescriptors: [], limit: nil)
-        let calories = samples.reduce(Double(), { (result, sample) -> Double in
-            return result + sample.quantity.doubleValue(for: HKUnit.kilocalorie())
-        })
-        
-        let model = ActiveEnergy(calories: calories)
-        return model
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .activeEnergyBurned, predicate: pred, sortDescriptors: [SortDescriptor(\HKQuantitySample.endDate, order: .reverse)], limit: nil)
+        let items = samples.map { sample -> ActiveEnergy.Item in
+            let calories = sample.quantity.doubleValue(for: .kilocalorie())
+            return ActiveEnergy.Item(calories: calories, startDate: sample.startDate, endDate: sample.endDate)
+        }
+        return ActiveEnergy(items: items)
     }
 }

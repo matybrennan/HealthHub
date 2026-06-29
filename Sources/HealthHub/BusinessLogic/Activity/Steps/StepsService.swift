@@ -11,112 +11,55 @@ import HealthKit
 @Observable
 public final class StepsService {
 
-    struct StepsConfig {
-        static let oneHour: TimeInterval = 3600
-        static let stepsCount = "count"
-    }
+    private nonisolated static let stepsUnit = HKUnit.count()
 
     public private(set) var lastHour = Steps(items: [])
     public private(set) var today = Steps(items: [])
     public private(set) var thisWeek = Steps(items: [])
-    public private(set) var betweenTimePreference = Steps(items: [])
+    public private(set) var thisMonth = Steps(items: [])
+    public private(set) var betweenDates = Steps(items: [])
 
     public init() { }
 }
 
 extension StepsService: StepsServiceProtocol {
-    
-    public func steps(fromStepsType type: StepsType) throws {
-        
-        // Confirm that the type and device works
-        let stepCountType = try HealthParser.quantityType(for: .stepCount)
-        
-        var query: HKQuery!
-        
+
+    public func steps(fromStepsType type: StepsType) async throws {
         switch type {
-            
-        // Get the sum of the last hour of steps
         case .lastHour:
-            
             let now = Date()
-            let oneHourAgo = Date(timeIntervalSinceNow: -StepsConfig.oneHour)
-            
-            // set timeInterval for grabbing data from hour period
+            let oneHourAgo = now.addingTimeInterval(-3600)
+            let predicate = HKQuery.predicateForSamples(withStart: oneHourAgo, end: now, options: [])
             var component = DateComponents()
             component.hour = 1
-            
-            let predicate = HKQuery.predicateForSamples(withStart: oneHourAgo, end: now, options: [])
-            
-            query = HKStatisticsCollectionQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: now, intervalComponents: component)
-            
-            (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [weak self] query, collection, error in
-                guard let self else { return }
-                Task { @MainActor in
-                    try? self.configure(query: query, collectionStats: collection, error: error, type: type)
-                }
-            }
-            
-        // Get the sum of the steps from today and state the timeInterval you want to recevie batches of steps count defaults to each hour
-        case let .today(timeInterval):
-            
-            // create predicate for start and end of day
-            let predicate = try NSPredicate.today()
-            
-            // set timeInterval for grabbing data batches (in mins)
-            var component = DateComponents()
-            component.hour = timeInterval
-            
-            query = HKStatisticsCollectionQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: Date().startOfDay, intervalComponents: component)
-            
-            (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [weak self]
-                query, collection, error in
-                guard let self else { return }
-                Task { @MainActor in
-                    try? self.configure(query: query, collectionStats: collection, error: error, type: type)
-                }
-            }
-            
-        // Get the sum of the steps from week and state the timeInterval you want to recevie batches of steps count defaults to each day
-        case let .thisWeek(timeInterval):
-            
-            // create predicate for start and end of week
-            let predicate = try NSPredicate.thisWeek()
-            
-            // set timeInterval for grabbing data batches (in mins)
-            var component = DateComponents()
-            component.hour = timeInterval
-            
-            query = HKStatisticsCollectionQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: Date().startOfWeek!, intervalComponents: component)
-            
-            (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [weak self]
-                query, collection, error in
-                guard let self else { return }
-                Task { @MainActor in
-                    try? self.configure(query: query, collectionStats: collection, error: error, type: type)
-                }
-            }
-            
-            
-        // Get the steps from within a time preference
-        case let .betweenTimePreference(start, end):
+            lastHour = try await executeStatisticsQuery(predicate: predicate, interval: component, anchorDate: now)
 
-            // create predicate for timePref
-            let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: [])
-            
-            let calendar = Calendar.current
-            let components = calendar.dateComponents([.second, .minute, .hour], from: start, to: end)
-            
-            query = HKStatisticsCollectionQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: start, intervalComponents: components)
-            
-            (query as! HKStatisticsCollectionQuery).initialResultsHandler = { [weak self]
-                query, collection, error in
-                guard let self else { return }
-                Task { @MainActor in
-                    try? self.configure(query: query, collectionStats: collection, error: error, type: type)
-                }
-            }
+        case let .today(interval):
+            let predicate = try NSPredicate.today()
+            var component = DateComponents()
+            component.hour = interval
+            today = try await executeStatisticsQuery(predicate: predicate, interval: component, anchorDate: Date().startOfDay)
+
+        case let .thisWeek(interval):
+            let predicate = try NSPredicate.thisWeek()
+            var component = DateComponents()
+            component.hour = interval
+            let anchor = Date().startOfWeek ?? Date().startOfDay
+            thisWeek = try await executeStatisticsQuery(predicate: predicate, interval: component, anchorDate: anchor)
+
+        case let .thisMonth(interval):
+            let predicate = Self.thisMonthPredicate()
+            var component = DateComponents()
+            component.day = interval
+            thisMonth = try await executeStatisticsQuery(predicate: predicate, interval: component, anchorDate: Date().startOfDay)
+
+        case let .betweenDates(start, end):
+            let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: .strictStartDate)
+            let minutes = max(1, Calendar.current.dateComponents([.minute], from: start, to: end).minute ?? 60)
+            var component = DateComponents()
+            component.minute = minutes
+            betweenDates = try await executeStatisticsQuery(predicate: predicate, interval: component, anchorDate: start)
         }
-        HealthStoreProvider.shared.execute(query)
     }
 
     public func reset(type: StepsType) {
@@ -127,44 +70,60 @@ extension StepsService: StepsServiceProtocol {
             today = Steps(items: [])
         case .thisWeek:
             thisWeek = Steps(items: [])
-        case .betweenTimePreference:
-            betweenTimePreference = Steps(items: [])
+        case .thisMonth:
+            thisMonth = Steps(items: [])
+        case .betweenDates:
+            betweenDates = Steps(items: [])
         }
     }
 }
 
+// MARK: - Private
+
 private extension StepsService {
-    
-    func configure(query: HKStatisticsCollectionQuery, collectionStats: HKStatisticsCollection?, error: Error?, type: StepsType) throws {
 
-        guard error == nil else {
-            throw error!
-        }
-        
-        guard let quantitySamples = collectionStats?.statistics() else {
-            throw AsyncParsingError.unableToParse("Steps log")
-        }
-        
-        let items = quantitySamples.compactMap { item -> Steps.Item? in
-            guard let count = item.sumQuantity()?.doubleValue(for: HKUnit(from: StepsConfig.stepsCount)) else {
-                return nil
+    func executeStatisticsQuery(predicate: NSPredicate?, interval: DateComponents, anchorDate: Date) async throws -> Steps {
+        let stepCountType = try HealthParser.quantityType(for: .stepCount)
+
+        return try await withCheckedThrowingContinuation { continuation in
+            let query = HKStatisticsCollectionQuery(
+                quantityType: stepCountType,
+                quantitySamplePredicate: predicate,
+                options: [.cumulativeSum],
+                anchorDate: anchorDate,
+                intervalComponents: interval
+            )
+
+            query.initialResultsHandler = { _, collection, error in
+                if let error {
+                    continuation.resume(throwing: error)
+                    return
+                }
+
+                guard let statistics = collection?.statistics(), !statistics.isEmpty else {
+                    continuation.resume(returning: Steps(items: []))
+                    return
+                }
+
+                let items = statistics.compactMap { sample -> Steps.Item? in
+                    guard let count = sample.sumQuantity()?.doubleValue(for: Self.stepsUnit) else {
+                        return nil
+                    }
+                    return Steps.Item(count: count, startDate: sample.startDate, endDate: sample.endDate)
+                }
+
+                continuation.resume(returning: Steps(items: items))
             }
-            return Steps.Item(count: count)
-        }
 
-        switch type {
-        case .lastHour:
-            let allItems = lastHour.items + items
-            lastHour = Steps(items: allItems)
-        case .today:
-            let allItems = today.items + items
-            today = Steps(items: allItems)
-        case .thisWeek:
-            let allItems = thisWeek.items + items
-            thisWeek = Steps(items: allItems)
-        case .betweenTimePreference:
-            let allItems = betweenTimePreference.items + items
-            betweenTimePreference = Steps(items: allItems)
+            HealthStoreProvider.shared.execute(query)
         }
+    }
+
+    nonisolated static func thisMonthPredicate() -> NSPredicate {
+        let now = Date()
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month], from: now)
+        let startOfMonth = calendar.date(from: components) ?? now
+        return HKQuery.predicateForSamples(withStart: startOfMonth, end: now, options: [])
     }
 }

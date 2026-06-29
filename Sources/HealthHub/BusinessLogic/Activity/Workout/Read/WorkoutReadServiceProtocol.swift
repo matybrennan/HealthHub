@@ -9,11 +9,12 @@ import Foundation
 import HealthKit
 
 public enum WorkoutType {
-    
+
     case today
     case thisWeek
+    case thisMonth
     case all
-    case betweenTimePreference(start: Date, end: Date)
+    case betweenDates(start: Date, end: Date)
     case byActivityType(HKWorkoutActivityType)
 
     func predicate() throws -> NSPredicate? {
@@ -22,13 +23,23 @@ public enum WorkoutType {
             try NSPredicate.today()
         case .thisWeek:
             try NSPredicate.thisWeek()
+        case .thisMonth:
+            Self.thisMonthPredicate()
         case .all:
             nil
-        case let .betweenTimePreference(start, end):
+        case let .betweenDates(start, end):
             HKQuery.predicateForSamples(withStart: start, end: end, options: .strictStartDate)
         case let .byActivityType(activityType):
             HKQuery.predicateForWorkouts(with: activityType)
         }
+    }
+
+    private static func thisMonthPredicate() -> NSPredicate {
+        let now = Date()
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month], from: now)
+        let startOfMonth = calendar.date(from: components) ?? now
+        return HKQuery.predicateForSamples(withStart: startOfMonth, end: now, options: [])
     }
 }
 

@@ -53,6 +53,38 @@ public struct Workout: Sendable {
             self.swimmingStrokeCount = swimmingStrokeCount
             self.metadata = metadata
         }
+
+        /// Duration formatted as hours and minutes
+        public var durationFormatted: String {
+            let hours = Int(duration) / 3600
+            let minutes = (Int(duration) % 3600) / 60
+            if hours > 0 {
+                return "\(hours)h \(minutes)m"
+            }
+            return "\(minutes)m"
+        }
+
+        /// Distance in kilometers
+        public var distanceKilometers: Double? {
+            distance.map { $0 / 1000 }
+        }
+
+        /// Distance in miles
+        public var distanceMiles: Double? {
+            distance.map { $0 / 1609.344 }
+        }
+
+        /// Average pace in min/km (for running/walking)
+        public var paceMinPerKm: Double? {
+            guard let distance, distance > 0 else { return nil }
+            return (duration / 60) / (distance / 1000)
+        }
+
+        /// Calories per minute
+        public var caloriesPerMinute: Double? {
+            guard duration > 0 else { return nil }
+            return energyBurned.map { $0 / (duration / 60) }
+        }
     }
 
     public struct Event: Sendable {
@@ -74,6 +106,36 @@ public struct Workout: Sendable {
 
         public init(locations: [Location]) {
             self.locations = locations
+        }
+
+        /// Total distance of the route in meters
+        public var totalDistance: Double {
+            guard locations.count > 1 else { return 0 }
+            var total = 0.0
+            for i in 1..<locations.count {
+                let prev = locations[i - 1]
+                let curr = locations[i]
+                let latDiff = curr.latitude - prev.latitude
+                let lonDiff = curr.longitude - prev.longitude
+                // Approximate distance using Haversine
+                let a = sin(latDiff * .pi / 180 / 2) * sin(latDiff * .pi / 180 / 2) +
+                    cos(prev.latitude * .pi / 180) * cos(curr.latitude * .pi / 180) *
+                    sin(lonDiff * .pi / 180 / 2) * sin(lonDiff * .pi / 180 / 2)
+                let c = 2 * atan2(sqrt(a), sqrt(1 - a))
+                total += 6371000 * c // Earth radius in meters
+            }
+            return total
+        }
+
+        /// Elevation gain across the route
+        public var elevationGain: Double {
+            guard locations.count > 1 else { return 0 }
+            var gain = 0.0
+            for i in 1..<locations.count {
+                let diff = locations[i].altitude - locations[i - 1].altitude
+                if diff > 0 { gain += diff }
+            }
+            return gain
         }
 
         public struct Location: Sendable {
@@ -117,11 +179,60 @@ public struct Workout: Sendable {
             self.route = route
             self.heartRateSamples = heartRateSamples
         }
+
+        /// Average heart rate from samples
+        public var averageHeartRate: Double? {
+            guard !heartRateSamples.isEmpty else { return nil }
+            return heartRateSamples.reduce(0.0) { $0 + $1.bpm } / Double(heartRateSamples.count)
+        }
+
+        /// Max heart rate from samples
+        public var maxHeartRate: Double? {
+            heartRateSamples.map(\.bpm).max()
+        }
+
+        /// Min heart rate from samples
+        public var minHeartRate: Double? {
+            heartRateSamples.map(\.bpm).min()
+        }
+
+        /// Number of laps (from lap events)
+        public var lapCount: Int {
+            events.filter { $0.type == .lap }.count
+        }
     }
-    
+
     public let items: [Item]
-    
+
     public init(items: [Item]) {
         self.items = items
+    }
+}
+
+extension Workout {
+
+    /// Most recent workout
+    public var mostRecent: Item? {
+        items.max(by: { $0.endDate < $1.endDate })
+    }
+
+    /// Total energy burned across all workouts
+    public var totalEnergyBurned: Double {
+        items.compactMap(\.energyBurned).reduce(0, +)
+    }
+
+    /// Total duration across all workouts (seconds)
+    public var totalDuration: Double {
+        items.reduce(0.0) { $0 + $1.duration }
+    }
+
+    /// Total distance across all workouts (meters)
+    public var totalDistance: Double {
+        items.compactMap(\.distance).reduce(0, +)
+    }
+
+    /// Number of workouts
+    public var count: Int {
+        items.count
     }
 }

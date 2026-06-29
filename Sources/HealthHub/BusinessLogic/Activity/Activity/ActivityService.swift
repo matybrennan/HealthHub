@@ -186,6 +186,33 @@ extension ActivityService: ActivityServiceProtocol {
         return RunningPower(items: items)
     }
 
+    public func runningStrideLength() async throws -> RunningStrideLength {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .runningStrideLength)
+        let items = samples.map { item -> RunningStrideLength.Item in
+            let length = item.quantity.doubleValue(for: .meter())
+            return RunningStrideLength.Item(distance: length, startDate: item.startDate, endDate: item.endDate)
+        }
+        return RunningStrideLength(items: items)
+    }
+
+    public func runningVerticalOscillation() async throws -> RunningVerticalOscillation {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .runningVerticalOscillation)
+        let items = samples.map { item -> RunningVerticalOscillation.Item in
+            let oscillation = item.quantity.doubleValue(for: HKUnit.meterUnit(with: .centi))
+            return RunningVerticalOscillation.Item(oscillation: oscillation, date: item.endDate)
+        }
+        return RunningVerticalOscillation(items: items)
+    }
+
+    public func runningGroundContactTime() async throws -> RunningGroundContactTime {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .runningGroundContactTime)
+        let items = samples.map { item -> RunningGroundContactTime.Item in
+            let duration = item.quantity.doubleValue(for: HKUnit.secondUnit(with: .milli))
+            return RunningGroundContactTime.Item(duration: duration, date: item.endDate)
+        }
+        return RunningGroundContactTime(items: items)
+    }
+
     // MARK: - Swimming Specific
 
     public func swimmingStrokeCount() async throws -> SwimmingStrokeCount {
@@ -195,6 +222,27 @@ extension ActivityService: ActivityServiceProtocol {
             return SwimmingStrokeCount.Item(count: count, date: item.endDate)
         }
         return SwimmingStrokeCount(items: items)
+    }
+
+    // MARK: - Underwater
+
+    public func underwaterDepth() async throws -> UnderwaterDepth {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .underwaterDepth)
+        let items = samples.map { item -> UnderwaterDepth.Item in
+            let depth = item.quantity.doubleValue(for: .meter())
+            return UnderwaterDepth.Item(depth: depth, date: item.endDate)
+        }
+        return UnderwaterDepth(items: items)
+    }
+
+    public func waterTemperature() async throws -> WaterTemperature {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .waterTemperature)
+        let items = samples.map { item -> WaterTemperature.Item in
+            let celsius = item.quantity.doubleValue(for: .degreeCelsius())
+            let fahrenheit = (celsius * 9 / 5) + 32
+            return WaterTemperature.Item(celsius: celsius, fahrenheit: fahrenheit, startDate: item.startDate, endDate: item.endDate)
+        }
+        return WaterTemperature(items: items)
     }
 
     // MARK: - Miscellaneous

@@ -9,28 +9,48 @@ import Foundation
 
 public protocol ActivityServiceProtocol {
 
+    // MARK: - Distance
     func crossCountrySkiingDistance() async throws -> CrossCountrySkiingDistance
-    func crossCountrySkiingSpeed() async throws -> CrossCountrySkiingSpeed
-    func cyclingCadence() async throws -> CyclingCadence
     func cyclingDistance() async throws -> CyclingDistance
+    func downhillSnowSportsDistance() async throws -> DownhillSnowSportsDistance
+    func swimmingDistance() async throws -> SwimmingDistance
+    func walkingRunningDistance() async throws -> WalkingRunningDistance
+    func wheelchairDistance() async throws -> WheelchairDistance
+
+    // MARK: - Speed
+    func crossCountrySkiingSpeed() async throws -> CrossCountrySkiingSpeed
+    func cyclingSpeed() async throws -> CyclingSpeed
+    func runningSpeed() async throws -> RunningSpeed
+
+    // MARK: - Cycling
+    func cyclingCadence() async throws -> CyclingCadence
     func cyclingFunctionalThresholdPower() async throws -> CyclingFunctionalThresholdPower
     func cyclingPower() async throws -> CyclingPower
-    func cyclingSpeed() async throws -> CyclingSpeed
-    func downhillSnowSportsDistance() async throws -> DownhillSnowSportsDistance
+
+    // MARK: - Running
+    func runningGroundContactTime() async throws -> RunningGroundContactTime
+    func runningPower() async throws -> RunningPower
+    func runningStrideLength() async throws -> RunningStrideLength
+    func runningVerticalOscillation() async throws -> RunningVerticalOscillation
+
+    // MARK: - Exercise & Energy
     func exerciseMinutes() async throws -> ExerciseMinutes
-    func flightsClimbed() async throws -> FlightsClimbed
     func moveTime() async throws -> MoveTime
+    func restingEnergy() async throws -> RestingEnergy
+    func standTime() async throws -> StandTime
+
+    // MARK: - Swimming
+    func swimmingStrokeCount() async throws -> SwimmingStrokeCount
+
+    // MARK: - Underwater
+    func underwaterDepth() async throws -> UnderwaterDepth
+    func waterTemperature() async throws -> WaterTemperature
+
+    // MARK: - Miscellaneous
+    func flightsClimbed() async throws -> FlightsClimbed
     func nikeFuel() async throws -> NikeFuel
     func physicalEffort() async throws -> PhysicalEffort
     func pushCount() async throws -> PushCount
-    func restingEnergy() async throws -> RestingEnergy
-    func runningPower() async throws -> RunningPower
-    func runningSpeed() async throws -> RunningSpeed
-    func standTime() async throws -> StandTime
-    func swimmingDistance() async throws -> SwimmingDistance
-    func swimmingStrokeCount() async throws -> SwimmingStrokeCount
-    func walkingRunningDistance() async throws -> WalkingRunningDistance
-    func wheelchairDistance() async throws -> WheelchairDistance
 
     // MARK: - Save
 

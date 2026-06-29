@@ -11,7 +11,8 @@ import HealthKit
 public enum ActiveEnergyType: Sendable {
     case today
     case thisWeek
-    case betweenTimePref(start: Date, end: Date)
+    case thisMonth
+    case betweenDates(start: Date, end: Date)
 
     func predicate() throws -> NSPredicate {
         switch self {
@@ -19,9 +20,19 @@ public enum ActiveEnergyType: Sendable {
             try NSPredicate.today()
         case .thisWeek:
             try NSPredicate.thisWeek()
-        case let .betweenTimePref(startDate, endDate):
+        case .thisMonth:
+            Self.thisMonthPredicate()
+        case let .betweenDates(startDate, endDate):
             HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
         }
+    }
+
+    private static func thisMonthPredicate() -> NSPredicate {
+        let now = Date()
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month], from: now)
+        let startOfMonth = calendar.date(from: components) ?? now
+        return HKQuery.predicateForSamples(withStart: startOfMonth, end: now, options: [])
     }
 }
 

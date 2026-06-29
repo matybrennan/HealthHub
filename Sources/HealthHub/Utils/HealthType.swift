@@ -66,6 +66,7 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
     case pushCount
     case nikeFuel
     case physicalEffort
+    case underwaterDepth
 
     // Heart
     case atrialFibrillation
@@ -288,6 +289,7 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .pushCount: HKQuantityType(.pushCount)
         case .nikeFuel: HKQuantityType(.nikeFuel)
         case .physicalEffort: HKQuantityType(.physicalEffort)
+        case .underwaterDepth: nil
 
         // Heart
         case .atrialFibrillation: nil
@@ -510,6 +512,7 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .pushCount: HKQuantityType(.pushCount)
         case .nikeFuel: HKQuantityType(.nikeFuel)
         case .physicalEffort: HKQuantityType(.physicalEffort)
+        case .underwaterDepth: HKQuantityType(.underwaterDepth)
 
         // Heart
         case .atrialFibrillation: HKQuantityType(.atrialFibrillationBurden)

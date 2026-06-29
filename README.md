@@ -219,35 +219,40 @@ Access via `hub.activityManager` or use `ActivityManager()` directly.
 
 #### Active Energy
 
-Retrieve calories burned by time period.
+Retrieve per-sample active energy burned by time period.
 
 ```swift
 let energy = try await hub.activityManager.activeEnergy.activeEnergy(from: .today)
-print("Burned: \(energy.calories) kcal")
+print("Total burned: \(energy.totalCalories) kcal")
+print("Most recent: \(energy.mostRecent?.calories ?? 0) kcal")
 ```
 
 | Query Type | Description |
 |-----------|-------------|
 | `.today` | Today's active energy |
 | `.thisWeek` | This week's active energy |
-| `.betweenTimePref(start:end:)` | Custom date range |
+| `.thisMonth` | This month's active energy |
+| `.betweenDates(start:end:)` | Custom date range |
 
 #### Steps
 
-Retrieve step counts with observable state.
+Retrieve step counts with observable state and async/await.
 
 ```swift
-try hub.activityManager.steps.steps(fromStepsType: .today(timeInterval: 1))
+try await hub.activityManager.steps.steps(fromStepsType: .today())
 // Access results via published properties
 let todaySteps = hub.activityManager.steps.today
+print("Total: \(todaySteps.total) steps")
+print("Peak interval: \(todaySteps.peakInterval?.count ?? 0) steps")
 ```
 
-| Query Type | Description |
-|-----------|-------------|
-| `.lastHour` | Steps in the last hour |
-| `.today(timeInterval:)` | Today's steps in hourly batches |
-| `.thisWeek(timeInterval:)` | This week's steps in daily batches |
-| `.betweenTimePreference(start:end:)` | Custom date range |
+| Query Type | Interval Unit | Description |
+|-----------|---------------|-------------|
+| `.lastHour` | — | Steps in the last hour |
+| `.today(timeInterval:)` | Hours (default: 1) | Today's steps in hourly batches |
+| `.thisWeek(timeInterval:)` | Hours (default: 24) | This week's steps |
+| `.thisMonth(timeInterval:)` | Days (default: 1) | This month's steps |
+| `.betweenDates(start:end:)` | Auto | Custom date range |
 
 #### Workouts
 
@@ -256,12 +261,16 @@ Read and save workouts with full detail support including routes, heart rate, an
 ```swift
 // Fetch workouts
 let workouts = try await hub.activityManager.workout.workouts(fromWorkoutType: .thisWeek)
+print("Total distance: \(workouts.totalDistance / 1000) km")
+print("Most recent: \(workouts.mostRecent?.durationFormatted ?? "")")
 
 // Fetch detailed workout info (route, HR, events)
 let detail = try await hub.activityManager.workout.workoutDetail(
     for: workout.startDate,
     endDate: workout.endDate
 )
+print("Avg HR: \(detail.averageHeartRate ?? 0) BPM")
+print("Laps: \(detail.lapCount)")
 
 // Save a workout with associated data
 try await hub.activityManager.workout.saveWorkout(
@@ -277,50 +286,50 @@ try await hub.activityManager.workout.saveWorkout(
 |-----------|-------------|
 | `.today` | Today's workouts |
 | `.thisWeek` | This week's workouts |
+| `.thisMonth` | This month's workouts |
 | `.all` | All workouts |
-| `.betweenTimePreference(start:end:)` | Custom date range |
+| `.betweenDates(start:end:)` | Custom date range |
 | `.byActivityType(HKWorkoutActivityType)` | Filter by sport |
 
 | Detail Methods | Description |
 |---------------|-------------|
-| `workoutRoute(for:endDate:)` | GPS route data |
+| `workoutRoute(for:endDate:)` | GPS route data with elevation/distance |
 | `workoutHeartRate(for:endDate:)` | Heart rate during workout |
 | `workoutEvents(for:endDate:)` | Laps, pauses, segments |
 | `workoutDetail(for:endDate:)` | Combined rich detail |
 
 #### Activity Service
 
-All other Apple Health activity data types — cycling distance/speed/power, running metrics, swimming, skiing, and more.
+All Apple Health activity data types — cycling, running, swimming, skiing, underwater, and more.
 
 ```swift
-var activity: ActivityServiceProtocol
+let speed = try await hub.activityManager.activity.runningSpeed()
+print("Avg pace: \(speed.mostRecent?.paceMinPerKm ?? 0) min/km")
+
+let cycling = try await hub.activityManager.activity.cyclingDistance()
+print("Total: \(cycling.totalKilometers) km")
 ```
 
 <details>
 <summary>View all activity data types</summary>
 
-- crossCountrySkiingDistance & save
-- crossCountrySkiingSpeed & save
-- cyclingCadence & save
-- cyclingDistance & save
-- cyclingFunctionalThresholdPower & save
-- cyclingPower & save
-- cyclingSpeed & save
-- downhillSnowSportsDistance & save
-- exerciseMinutes
-- flightsClimbed & save
-- moveTime
-- nikeFuel & save
-- physicalEffort & save
-- pushCount & save
-- restingEnergy & save
-- runningPower & save
-- runningSpeed & save
-- standTime
-- swimmingDistance & save
-- swimmingStrokeCount & save
-- walkingRunningDistance & save
-- wheelchairDistance & save
+**Distance** — cyclingDistance, walkingRunningDistance, swimmingDistance, wheelchairDistance, downhillSnowSportsDistance, crossCountrySkiingDistance
+
+**Speed** — cyclingSpeed, runningSpeed (with pace), crossCountrySkiingSpeed
+
+**Cycling** — cyclingCadence, cyclingPower, cyclingFunctionalThresholdPower
+
+**Running** — runningPower, runningStrideLength, runningVerticalOscillation, runningGroundContactTime
+
+**Swimming** — swimmingStrokeCount
+
+**Underwater** — underwaterDepth, waterTemperature
+
+**Exercise & Energy** — exerciseMinutes, restingEnergy, standTime, moveTime
+
+**Miscellaneous** — flightsClimbed, pushCount, nikeFuel, physicalEffort (with intensity levels)
+
+All distance/speed/cycling/running/swimming types support save.
 
 </details>
 
