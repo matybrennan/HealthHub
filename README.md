@@ -179,13 +179,31 @@ let status = hub.configuration.authorizationStatus(for: HealthObjectType.heartRa
 
 ### Characteristics
 
-| Data | Description |
-|------|-------------|
-| `biologicalSex` | Biological sex |
-| `bloodType` | Blood type |
-| `dateOfBirth` | Date of birth |
-| `skinType` | Fitzpatrick skin type |
-| `isWheelChairUser` | Wheelchair use status |
+All HealthKit user profile characteristics with strongly-typed enums:
+
+```swift
+let sex = hub.characteristics.biologicalSex
+print(sex.name) // "Female", "Male", "Other"
+
+let blood = hub.characteristics.bloodType
+print(blood.name) // "A+", "O-", etc.
+
+let skin = hub.characteristics.skinType
+print(skin.name) // "Type III — Darker white skin"
+print(skin.uvSensitivity) // "Moderate, sometimes burns"
+
+let moveMode = hub.characteristics.activityMoveMode
+print(moveMode.name) // "Active Energy" or "Move Time"
+```
+
+| Property | Return Type | Description |
+|----------|-------------|-------------|
+| `biologicalSex` | `BiologicalSex` | Female, Male, Other, Not Set |
+| `bloodType` | `BloodType` | A±, B±, AB±, O±, Not Set |
+| `dateOfBirth` | `DateComponents?` | Date of birth components |
+| `skinType` | `FitzpatrickSkinType` | Types I–VI with UV sensitivity |
+| `isWheelChairUser` | `WheelchairUse` | Yes, No, Not Set |
+| `activityMoveMode` | `ActivityMoveMode` | Active Energy or Move Time |
 
 ```swift
 var characteristics: CharacteristicServiceProtocol

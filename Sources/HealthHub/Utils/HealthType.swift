@@ -26,6 +26,7 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
     case dateOfBirth
     case skinType
     case wheelchairUse
+    case activityMoveMode
 
     // Duplicates
     case cardioFitness // Mobility & heart
@@ -246,6 +247,7 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .dateOfBirth: nil
         case .skinType: nil
         case .wheelchairUse: nil
+        case .activityMoveMode: nil
 
         // Common
         case .cardioFitness: HKQuantityType(.vo2Max)
@@ -466,6 +468,7 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .dateOfBirth: HKCharacteristicType(.dateOfBirth)
         case .skinType: HKCharacteristicType(.fitzpatrickSkinType)
         case .wheelchairUse: HKCharacteristicType(.wheelchairUse)
+        case .activityMoveMode: HKCharacteristicType(.activityMoveMode)
 
         // Common
         case .cardioFitness: HKQuantityType(.vo2Max)

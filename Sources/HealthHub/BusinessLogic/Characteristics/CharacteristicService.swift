@@ -16,69 +16,42 @@ public final class CharacteristicService {
 // MARK: - CharacteristicServiceProtocol
 extension CharacteristicService: CharacteristicServiceProtocol {
     
-    public var biologicalSex: String? {
-        guard let sexCase: Int = try? HealthStoreProvider.shared.biologicalSex().biologicalSex.rawValue else {
-            return nil
+    public var biologicalSex: BiologicalSex {
+        guard let hkSex = try? HealthStoreProvider.shared.biologicalSex().biologicalSex else {
+            return .notSet
         }
-        
-        switch sexCase {
-        case 0: return nil
-        case 1: return Copy.Gender.female
-        case 2: return Copy.Gender.male
-        default: return Copy.Gender.other
-        }
+        return BiologicalSex(from: hkSex)
     }
     
-    public var bloodType: String? {
-        guard let bloodType = try? HealthStoreProvider.shared.bloodType().bloodType.rawValue else {
-            return nil
+    public var bloodType: BloodType {
+        guard let hkBloodType = try? HealthStoreProvider.shared.bloodType().bloodType else {
+            return .notSet
         }
-        
-        switch bloodType {
-        case 0: return nil
-        case 1: return "aPositive"
-        case 2: return "aNegative"
-        case 3: return "bPositive"
-        case 4: return "bNegative"
-        case 5: return "abPositive"
-        case 6: return "abNegative"
-        case 7: return "oPositive"
-        case 8: return "oNegative"
-        default: return "Not Set"
-        }
+        return BloodType(from: hkBloodType)
     }
     
     public var dateOfBirth: DateComponents? {
         try? HealthStoreProvider.shared.dateOfBirthComponents()
     }
     
-    public var skinType: String? {
-        guard let skin = try? HealthStoreProvider.shared.fitzpatrickSkinType().skinType.rawValue else {
-            return nil
+    public var skinType: FitzpatrickSkinType {
+        guard let hkSkinType = try? HealthStoreProvider.shared.fitzpatrickSkinType().skinType else {
+            return .notSet
         }
-        
-        switch skin {
-        case 0: return nil
-        case 1: return "Pale white skin, blue/green eyes, blond/red hair"
-        case 2: return "Fair skin, blue eyes"
-        case 3: return "Darker white skin"
-        case 4: return "Light brown skin"
-        case 5: return "Brown skin"
-        case 6: return "Dark brown or black skin"
-        default: return "Not Set"
-        }
+        return FitzpatrickSkinType(from: hkSkinType)
     }
     
-    public var isWheelChairUser: Bool? {
-        guard let wheelChairCase = try? HealthStoreProvider.shared.wheelchairUse().wheelchairUse.rawValue else {
-            return nil
+    public var isWheelChairUser: WheelchairUse {
+        guard let hkWheelchairUse = try? HealthStoreProvider.shared.wheelchairUse().wheelchairUse else {
+            return .notSet
         }
-        
-        switch wheelChairCase {
-        case 0: return nil
-        case 1: return true
-        case 2: return false
-        default: return nil
+        return WheelchairUse(from: hkWheelchairUse)
+    }
+
+    public var activityMoveMode: ActivityMoveMode {
+        guard let hkMode = try? HealthStoreProvider.shared.activityMoveMode().activityMoveMode else {
+            return .notSet
         }
+        return ActivityMoveMode(from: hkMode)
     }
 }
