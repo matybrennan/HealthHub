@@ -1,5 +1,5 @@
 //
-//  SeuxalActivityCase.swift
+//  SexualActivityCase.swift
 //  HealthHub
 //
 //  Created by Maty Brennan on 9/2/2023.
@@ -13,7 +13,8 @@ protocol SexualActivityCase: FetchCategorySample { }
 extension SexualActivityCase {
     
     func baseSexualActivity() async throws -> SexualActivity {
-        let samples = try await fetchCategorySamples(categoryIdentifier: .sexualActivity)
+        let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
+        let samples = try await fetchCategorySamples(categoryIdentifier: .sexualActivity, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> SexualActivity.Item in
             let styleInt = item.metadata?[HKMetadataKeySexualActivityProtectionUsed] as? Int ?? -1
             let type: SexualActivity.Item.StyleType = SexualActivity.Item.StyleType(rawValue: styleInt) ?? .unspecified
@@ -31,7 +32,7 @@ extension SexualActivityCase {
         let sampleObjects = model.items.map {
             var metadata = extra ?? [:]
             metadata[HKMetadataKeySexualActivityProtectionUsed] = $0.type.rawValue
-            return HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: metadata)
+            return HKCategorySample(type: type, value: HKCategoryValue.notApplicable.rawValue, start: $0.startDate, end: $0.endDate, metadata: metadata)
         }
 
         try await HealthStoreProvider.shared.save(sampleObjects)

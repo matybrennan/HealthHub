@@ -13,10 +13,11 @@ protocol InhalerUsageCase: FetchQuantitySample { }
 extension InhalerUsageCase {
 
     func baseInhalerUsage() async throws -> InhalerUsage {
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .inhalerUsage)
+        let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .inhalerUsage, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> InhalerUsage.Item in
             let value = Int(item.quantity.doubleValue(for: HKUnit.count()))
-            return InhalerUsage.Item(value: value, date: item.startDate)
+            return InhalerUsage.Item(value: value, startDate: item.startDate, endDate: item.endDate)
         }
 
         let model = InhalerUsage(items: items)
@@ -30,7 +31,7 @@ extension InhalerUsageCase {
         let unit = HKUnit.count()
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: unit, doubleValue: Double($0.value))
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.startDate, end: $0.endDate, metadata: extra)
         }
 
         try await HealthStoreProvider.shared.save(sampleObjects)

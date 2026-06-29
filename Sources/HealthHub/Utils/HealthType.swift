@@ -153,8 +153,11 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
     // Sleep
     case sleepAnalysis
     
-    // Mindful
+    // Mental Wellbeing
     case mindful
+    case stateOfMind
+    case gad7Assessment
+    case phq9Assessment
     
     // Cycle tracking
     case bloating
@@ -225,6 +228,10 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
     case timeInDaylight
     case uvExposure
     case waterTemperature
+
+    // Hearing
+    case environmentalAudioExposure
+    case headphoneAudioExposure
     
     public var sharable: HKSampleType? {
         switch self {
@@ -360,8 +367,11 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         // Sleep
         case .sleepAnalysis: HKCategoryType(.sleepAnalysis)
 
-        // Mindful
+        // Mental Wellbeing
         case .mindful: HKCategoryType(.mindfulSession)
+        case .stateOfMind: HKSampleType.stateOfMindType()
+        case .gad7Assessment: HKScoredAssessmentType(.GAD7)
+        case .phq9Assessment: HKScoredAssessmentType(.PHQ9)
 
         // Cycle tracking
         case .bloating: HKCategoryType(.bloating)
@@ -431,6 +441,10 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .timeInDaylight: HKQuantityType(.timeInDaylight)
         case .uvExposure: HKQuantityType(.uvExposure)
         case .waterTemperature: HKQuantityType(.waterTemperature)
+
+        // Hearing
+        case .environmentalAudioExposure: HKQuantityType(.environmentalAudioExposure)
+        case .headphoneAudioExposure: HKQuantityType(.headphoneAudioExposure)
         }
     }
     
@@ -568,8 +582,11 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         // Sleep
         case .sleepAnalysis: HKCategoryType(.sleepAnalysis)
 
-        // Mindful
+        // Mental Wellbeing
         case .mindful: HKCategoryType(.mindfulSession)
+        case .stateOfMind: HKSampleType.stateOfMindType()
+        case .gad7Assessment: HKScoredAssessmentType(.GAD7)
+        case .phq9Assessment: HKScoredAssessmentType(.PHQ9)
 
         // Cycle tracking
         case .bloating: HKCategoryType(.bloating)
@@ -639,6 +656,10 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .timeInDaylight: HKQuantityType(.timeInDaylight)
         case .uvExposure: HKQuantityType(.uvExposure)
         case .waterTemperature: HKQuantityType(.waterTemperature)
+
+        // Hearing
+        case .environmentalAudioExposure: HKQuantityType(.environmentalAudioExposure)
+        case .headphoneAudioExposure: HKQuantityType(.headphoneAudioExposure)
         }
     }
 }

@@ -1,6 +1,6 @@
 //
-//  File.swift
-//  
+//  SleepCase.swift
+//  HealthHub
 //
 //  Created by Maty Brennan on 2/3/2024.
 //
@@ -13,9 +13,10 @@ protocol SleepCase: FetchCategorySample { }
 extension SleepCase {
 
     func baseSleep() async throws -> Sleep {
-        let samples = try await fetchCategorySamples(categoryIdentifier: .sleepAnalysis)
+        let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
+        let samples = try await fetchCategorySamples(categoryIdentifier: .sleepAnalysis, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> Sleep.Info in
-            let style = Sleep.Info.Style(rawValue: item.value) ?? Sleep.Info.Style.awake
+            let style = Sleep.Info.Style(rawValue: item.value) ?? .awake
             return Sleep.Info(style: style, startDate: item.startDate, endDate: item.endDate)
         }
 

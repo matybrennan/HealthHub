@@ -24,10 +24,11 @@ extension RespiratoryService: RespiratoryServiceProtocol {
     }
     
     public func forcedExpiratoryVolume() async throws -> ForcedExpiratoryVolume {
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .forcedExpiratoryVolume1)
+        let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .forcedExpiratoryVolume1, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> ForcedExpiratoryVolume.Item in
             let liters = item.quantity.doubleValue(for: HKUnit.liter())
-            return ForcedExpiratoryVolume.Item(liters: liters, date: item.endDate)
+            return ForcedExpiratoryVolume.Item(liters: liters, startDate: item.startDate, endDate: item.endDate)
         }
         
         let model = ForcedExpiratoryVolume(items: items)
@@ -35,10 +36,11 @@ extension RespiratoryService: RespiratoryServiceProtocol {
     }
     
     public func forcedVitalCapacity() async throws -> ForcedVitalCapacity {
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .forcedVitalCapacity)
+        let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .forcedVitalCapacity, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> ForcedVitalCapacity.Item in
             let liters = item.quantity.doubleValue(for: HKUnit.liter())
-            return ForcedVitalCapacity.Item(liters: liters, date: item.endDate)
+            return ForcedVitalCapacity.Item(liters: liters, startDate: item.startDate, endDate: item.endDate)
         }
         
         let model = ForcedVitalCapacity(items: items)
@@ -50,10 +52,11 @@ extension RespiratoryService: RespiratoryServiceProtocol {
     }
     
     public func peakExpiratoryFlowRate() async throws -> PeakExpiratoryFlowRate {
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .peakExpiratoryFlowRate)
+        let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .peakExpiratoryFlowRate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> PeakExpiratoryFlowRate.Item in
             let litersPerMin = item.quantity.doubleValue(for: HKUnit(from: "L/min"))
-            return PeakExpiratoryFlowRate.Item(litersPerMinute: litersPerMin, date: item.endDate)
+            return PeakExpiratoryFlowRate.Item(litersPerMinute: litersPerMin, startDate: item.startDate, endDate: item.endDate)
         }
         
         let model = PeakExpiratoryFlowRate(items: items)
@@ -80,7 +83,7 @@ extension RespiratoryService: RespiratoryServiceProtocol {
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .liter(), doubleValue: $0.liters)
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.startDate, end: $0.endDate, metadata: extra)
         }
 
         try await HealthStoreProvider.shared.save(sampleObjects)
@@ -92,7 +95,7 @@ extension RespiratoryService: RespiratoryServiceProtocol {
 
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: .liter(), doubleValue: $0.liters)
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.startDate, end: $0.endDate, metadata: extra)
         }
 
         try await HealthStoreProvider.shared.save(sampleObjects)
@@ -109,7 +112,7 @@ extension RespiratoryService: RespiratoryServiceProtocol {
         let unit = HKUnit(from: "L/min")
         let sampleObjects = model.items.map {
             let quantity = HKQuantity(unit: unit, doubleValue: $0.litersPerMinute)
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.startDate, end: $0.endDate, metadata: extra)
         }
 
         try await HealthStoreProvider.shared.save(sampleObjects)

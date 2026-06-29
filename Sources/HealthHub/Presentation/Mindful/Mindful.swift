@@ -14,8 +14,14 @@ public struct Mindful: Sendable {
         public let startDate: Date
         public let endDate: Date
         
+        /// Duration of the mindful session in minutes
         public var minutes: Int {
-            Date().minutes(from: startDate, to: endDate)
+            Calendar.current.dateComponents([.minute], from: startDate, to: endDate).minute ?? 0
+        }
+
+        /// Duration of the mindful session in seconds
+        public var duration: TimeInterval {
+            endDate.timeIntervalSince(startDate)
         }
         
         public init(value: Int, startDate: Date, endDate: Date) {
@@ -30,6 +36,20 @@ public struct Mindful: Sendable {
     public init(items: [Info]) {
         self.items = items
     }
+
+    /// Most recent mindful session
+    public var mostRecent: Info? { items.first }
+
+    /// Total mindful minutes across all sessions
+    public var totalMinutes: Int {
+        items.reduce(0) { $0 + $1.minutes }
+    }
+
+    /// Average session duration in minutes
+    public var averageMinutes: Double? {
+        guard !items.isEmpty else { return nil }
+        return Double(totalMinutes) / Double(items.count)
+    }
 }
 
 extension Mindful.Info {
@@ -40,3 +60,4 @@ extension Mindful.Info {
         self.endDate = Date()
     }
 }
+

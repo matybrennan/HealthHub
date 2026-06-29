@@ -1,6 +1,6 @@
 //
-//  File.swift
-//  
+//  SixMinuteWalkCase.swift
+//  HealthHub
 //
 //  Created by Maty Brennan on 25/2/2024.
 //
@@ -13,7 +13,8 @@ protocol SixMinuteWalkCase: FetchQuantitySample { }
 extension SixMinuteWalkCase {
 
     func baseSixMinuteWalk() async throws -> SixMinuteWalk {
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .sixMinuteWalkTestDistance)
+        let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .sixMinuteWalkTestDistance, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> SixMinuteWalk.Item in
             let distanceMeters = item.quantity.doubleValue(for: HKUnit.meter())
             return SixMinuteWalk.Item(distance: distanceMeters, startDate: item.startDate, endDate: item.endDate)

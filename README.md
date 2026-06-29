@@ -13,12 +13,12 @@ A modern Swift library that makes HealthKit integration simple, testable, and el
 
 - 🏃 **Activity** — Steps, workouts, active energy, cycling, running, swimming & more
 - ❤️ **Heart** — Heart rate, HRV, AFib, blood pressure, cardio fitness
-- 🧘 **Mental Wellbeing** — Mindfulness, sleep, time in daylight
+- 🧘 **Mental Wellbeing** — Mindfulness, state of mind, GAD-7, PHQ-9, sleep, daylight
 - 🫁 **Respiratory** — Blood oxygen, respiratory rate, forced vital capacity
 - 🍎 **Nutrition** — Macronutrients, vitamins, minerals, hydration, caffeine
 - 🏋️ **Body** — Weight, BMI, body fat, height, temperature
 - 🩺 **Vitals** — Blood glucose, blood pressure, body temperature
-- 🔬 **Other Data** — Alcohol, hand washing, UV exposure, insulin & more
+- 🔬 **Other Data** — Alcohol, hand washing, UV exposure, insulin, hearing & more
 - 🧬 **Characteristics** — Biological sex, blood type, DOB, skin type
 - 🚴 **Mobility** — Walking steadiness, stair speed, stride length
 - 🩸 **Cycle Tracking** — Menstruation, ovulation, symptoms
@@ -348,30 +348,53 @@ try await hub.bodyMeasurements.saveWeight(model: weightModel, extra: nil)
 
 ### Mental Wellbeing
 
-| Data | Saveable |
-|------|----------|
-| Mindful Activity | ✅ |
-| Sleep | ✅ |
-| Time in Daylight | ✅ |
+Full mental health tracking with State of Mind, anxiety/depression screenings, mindfulness, and sleep:
+
+| Data | Unit | Saveable |
+|------|------|----------|
+| Mindful Minutes | min | ✅ |
+| State of Mind | valence (-1 to +1) | ✅ |
+| GAD-7 (Anxiety) | score (0–21) | ✅ |
+| PHQ-9 (Depression) | score (0–27) | ✅ |
+| Sleep | hr | ✅ |
+| Time in Daylight | min | ✅ |
+
+**Features:**
+- `MentalWellbeingType` enum with `displayName` and `unit`
+- **State of Mind** — 38 emotion labels, 18 life associations, valence classification (Very Unpleasant → Very Pleasant), momentary emotion vs daily mood
+- **GAD-7** — 7-question anxiety screening with risk levels (None to Minimal, Mild, Moderate, Severe)
+- **PHQ-9** — 9-question depression screening with risk levels (None to Minimal → Severe)
+- `Mindful.totalMinutes`, `averageMinutes`, `mostRecent`
+- `StateOfMindEntry.averageValence`, `emotions`, `moods` filters
+- Sort descriptors (newest first) on all queries
 
 ---
 
 ### Mobility
 
-| Data | Saveable |
-|------|----------|
-| Cardio Fitness | ✅ |
-| Double Support Time | ✅ |
-| Ground Contact Time | ✅ |
-| Running Stride Length | ✅ |
-| Six Minute Walk | ✅ |
-| Stair Speed Down | ✅ |
-| Stair Speed Up | ✅ |
-| Vertical Oscillation | ✅ |
-| Walking Asymmetry | — |
-| Walking Speed | ✅ |
-| Walking Steadiness | — |
-| Walking Step Length | ✅ |
+Full mobility and gait analysis with correct HealthKit identifiers and clinical classification:
+
+| Data | Unit | Saveable |
+|------|------|----------|
+| Cardio Fitness (VO₂ Max) | mL/kg·min | ✅ |
+| Double Support Time | % | ✅ |
+| Ground Contact Time | ms | ✅ |
+| Running Stride Length | m | ✅ |
+| Six-Minute Walk | m | ✅ |
+| Stair Speed: Down | m/s | ✅ |
+| Stair Speed: Up | m/s | ✅ |
+| Vertical Oscillation | cm | ✅ |
+| Walking Asymmetry | % | — |
+| Walking Speed | km/hr | ✅ |
+| Walking Steadiness | % | — |
+| Walking Step Length | cm | ✅ |
+
+**Features:**
+- `MobilityType` enum with `displayName`, `unit`, and `isSaveable` flag
+- `WalkingSteadiness.Classification` — Apple's OK/Low/Very Low classification
+- `mostRecent` and averaging computed properties on all models
+- Sort descriptors (newest first) on all queries
+- Consistent `startDate`/`endDate` on all models
 
 ---
 
@@ -407,24 +430,68 @@ Results are sorted by date (most recent first) and include both start/end dates 
 
 ### Respiratory
 
-| Data | Saveable |
-|------|----------|
-| Blood Oxygen | ✅ |
-| Forced Expiratory Volume | ✅ |
-| Forced Vital Capacity | ✅ |
-| Inhaler Usage | ✅ |
-| Peak Expiratory Flow Rate | ✅ |
-| Respiratory Rate | ✅ |
-| Six Minute Walk | ✅ |
+Full respiratory health tracking with clinical ratio analysis:
+
+| Data | Unit | Saveable |
+|------|------|----------|
+| Blood Oxygen | % | ✅ |
+| Forced Expiratory Volume (FEV1) | L | ✅ |
+| Forced Vital Capacity (FVC) | L | ✅ |
+| Inhaler Usage | uses | ✅ |
+| Peak Expiratory Flow Rate | L/min | ✅ |
+| Respiratory Rate | breaths/min | ✅ |
+| Six Minute Walk | m | ✅ |
+
+**Features:**
+- `RespiratoryType` enum with `displayName` and `unit` for all types
+- `FEV1FVCRatio` struct with clinical classification (Normal ≥0.70, Mild/Moderate/Severe/Very Severe obstruction per ATS/ERS)
+- `mostRecent` on all models
+- Sort descriptors (newest first) on all queries
+- Consistent `startDate`/`endDate` on all models
 
 ---
 
 ### Sleep
 
+Full sleep analysis with individual stage tracking, computed durations, and session grouping:
+
 ```swift
 let sleep = try await hub.sleep.sleep()
-try await hub.sleep.saveSleep(model: sleepModel, extra: nil)
+
+// Per-stage durations
+print("Core: \(sleep.coreSleepDuration / 60) min")
+print("Deep: \(sleep.deepSleepDuration / 60) min")
+print("REM: \(sleep.remSleepDuration / 60) min")
+
+// Sleep efficiency (percentage of in-bed time spent asleep)
+print("Efficiency: \(Int(sleep.sleepEfficiency * 100))%")
+
+// Group into nightly sessions (splits on 2-hour gaps by default)
+let sessions = sleep.sessions()
+for session in sessions {
+    print("\(session.startDate) — \(session.totalSleepDuration / 3600) hrs asleep")
+    print("  Core: \(session.coreSleepDuration / 60) min")
+    print("  Deep: \(session.deepSleepDuration / 60) min")
+    print("  REM: \(session.remSleepDuration / 60) min")
+    print("  Efficiency: \(Int(session.sleepEfficiency * 100))%")
+}
+
+// Save
+try await hub.sleep.save(model: sleepModel, extra: nil)
 ```
+
+Results are sorted by date (most recent first).
+
+| Sleep Stage | Description |
+|-------------|-------------|
+| In Bed | Time spent in bed |
+| Asleep (Unspecified) | General sleep without stage detail |
+| Awake | Awake periods during sleep |
+| Core Sleep | Light/core sleep stage |
+| Deep Sleep | Deep sleep stage |
+| REM Sleep | REM sleep stage |
+
+**Computed Properties:** `totalSleepDuration`, `totalInBedDuration`, `totalAwakeDuration`, `coreSleepDuration`, `deepSleepDuration`, `remSleepDuration`, `sleepEfficiency`, `sessions(maxGap:)`
 
 ---
 
@@ -511,20 +578,34 @@ try await hub.vitals.saveBloodPressure(model: bpModel, extra: nil)
 
 ### Other Data
 
-| Data | Saveable |
-|------|----------|
-| Alcohol Consumption | ✅ |
-| Blood Alcohol Content | ✅ |
-| Blood Glucose | ✅ |
-| Hand Washing | ✅ |
-| Inhaler Usage | ✅ |
-| Insulin Delivery | ✅ |
-| Number of Times Fallen | ✅ |
-| Sexual Activity | ✅ |
-| Tooth Brushing | ✅ |
-| Time in Daylight | ✅ |
-| UV Exposure | ✅ |
-| Water Temperature | ✅ |
+Comprehensive "Other Data" tracking with clinical helpers and hearing support:
+
+| Data | Unit | Saveable |
+|------|------|----------|
+| Alcohol Consumption | drinks | ✅ |
+| Blood Alcohol Content | % | ✅ |
+| Blood Glucose | mg/dL | ✅ |
+| Environmental Audio Exposure | dBASPL | — |
+| Hand Washing | events | ✅ |
+| Headphone Audio Exposure | dBASPL | — |
+| Inhaler Usage | uses | ✅ |
+| Insulin Delivery | IU | ✅ |
+| Number of Times Fallen | times | ✅ |
+| Sexual Activity | events | ✅ |
+| Time in Daylight | min | ✅ |
+| Tooth Brushing | events | ✅ |
+| UV Exposure | UV Index | ✅ |
+| Water Temperature | °C | ✅ |
+
+**Features:**
+- `OtherDataType` enum with `displayName`, `unit`, and 8-category grouping (Alcohol, Hygiene, Diabetes, Safety, Reproductive, Respiratory, Environment, Hearing)
+- `UVExposure.Classification` — WHO/EPA UV Index levels (Low → Extreme)
+- `HandWashing.meetsRecommendedDuration` — WHO 20-second guideline
+- `ToothBrushing.meetsRecommendedDuration` — ADA 2-minute guideline
+- `InsulinDelivery.totalBasal` / `totalBolus` — delivery breakdown
+- `EnvironmentalAudioExposure.exceedsDamageThreshold` — NIOSH 85 dB limit
+- `AlcoholContent.isAboveLegalLimit` — US 0.08% BAC limit
+- Sort descriptors (newest first) and `mostRecent` on all models
 
 ---
 

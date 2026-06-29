@@ -13,7 +13,7 @@ public struct GenericSymptomModel: Sendable {
     public struct Item: Sendable {
 
         public enum Style: Int, Sendable {
-            case present = 0
+            case unspecified = 0
             case notPresent
             case mild
             case moderate
@@ -21,8 +21,8 @@ public struct GenericSymptomModel: Sendable {
             
             public var name: String {
                 switch self {
-                case .present:
-                    "Present"
+                case .unspecified:
+                    "Unspecified"
                 case .notPresent:
                     "Not Present"
                 case .mild:
@@ -33,11 +33,26 @@ public struct GenericSymptomModel: Sendable {
                     "Severe"
                 }
             }
+
+            /// Whether this represents an active symptom occurrence
+            public var isPresent: Bool {
+                switch self {
+                case .notPresent:
+                    return false
+                case .unspecified, .mild, .moderate, .severe:
+                    return true
+                }
+            }
         }
         
         public let style: Style
         public let startDate: Date
         public let endDate: Date
+
+        /// Duration of the symptom entry
+        public var duration: TimeInterval {
+            endDate.timeIntervalSince(startDate)
+        }
         
         public init(style: Style, startDate: Date, endDate: Date) {
             self.style = style
@@ -56,6 +71,21 @@ public struct GenericSymptomModel: Sendable {
         self.type = type
         self.displayName = displayName
         self.category = category
+    }
+
+    /// Only items where the symptom was actually present
+    public var presentItems: [Item] {
+        items.filter { $0.style.isPresent }
+    }
+
+    /// Most recent symptom entry (items should already be sorted most recent first)
+    public var mostRecent: Item? {
+        items.first
+    }
+
+    /// Number of times symptom was recorded as present
+    public var occurrenceCount: Int {
+        presentItems.count
     }
 }
 

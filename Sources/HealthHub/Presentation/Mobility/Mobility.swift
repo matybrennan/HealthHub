@@ -1,6 +1,6 @@
 //
-//  File.swift
-//  
+//  Mobility.swift
+//  HealthHub
 //
 //  Created by Maty Brennan on 24/2/2024.
 //
@@ -11,11 +11,22 @@ public struct CardioFitness: Sendable {
 
     public struct Item: Sendable {
         public let vo2Max: Double
-        public let date: Date
+        public let startDate: Date
+        public let endDate: Date
 
-        public init(vo2Max: Double, date: Date) {
+        public init(vo2Max: Double, startDate: Date, endDate: Date) {
             self.vo2Max = vo2Max
-            self.date = date
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+
+        /// Cardio fitness classification based on general population norms
+        public enum Classification: String, Sendable {
+            case poor
+            case belowAverage
+            case average
+            case aboveAverage
+            case excellent
         }
     }
 
@@ -24,17 +35,23 @@ public struct CardioFitness: Sendable {
     public init(items: [Item]) {
         self.items = items
     }
+
+    /// Most recent entry
+    public var mostRecent: Item? { items.first }
 }
 
 public struct DoubleSupportTime: Sendable {
 
     public struct Item: Sendable {
+        /// Percentage of gait cycle spent in double support (both feet on ground)
         public let percentage: Double
-        public let date: Date
+        public let startDate: Date
+        public let endDate: Date
 
-        public init(percentage: Double, date: Date) {
+        public init(percentage: Double, startDate: Date, endDate: Date) {
             self.percentage = percentage
-            self.date = date
+            self.startDate = startDate
+            self.endDate = endDate
         }
     }
 
@@ -42,18 +59,30 @@ public struct DoubleSupportTime: Sendable {
 
     public init(items: [Item]) {
         self.items = items
+    }
+
+    /// Most recent entry
+    public var mostRecent: Item? { items.first }
+
+    /// Average double support time percentage
+    public var averagePercentage: Double? {
+        guard !items.isEmpty else { return nil }
+        return items.reduce(0) { $0 + $1.percentage } / Double(items.count)
     }
 }
 
 public struct GroundContactTime: Sendable {
 
     public struct Item: Sendable {
-        public let duration: Double // ms
-        public let date: Date
+        /// Duration in milliseconds
+        public let duration: Double
+        public let startDate: Date
+        public let endDate: Date
 
-        public init(duration: Double, date: Date) {
+        public init(duration: Double, startDate: Date, endDate: Date) {
             self.duration = duration
-            self.date = date
+            self.startDate = startDate
+            self.endDate = endDate
         }
     }
 
@@ -61,18 +90,30 @@ public struct GroundContactTime: Sendable {
 
     public init(items: [Item]) {
         self.items = items
+    }
+
+    /// Most recent entry
+    public var mostRecent: Item? { items.first }
+
+    /// Average ground contact time in ms
+    public var averageDuration: Double? {
+        guard !items.isEmpty else { return nil }
+        return items.reduce(0) { $0 + $1.duration } / Double(items.count)
     }
 }
 
 public struct RunningStrideLength: Sendable {
 
     public struct Item: Sendable {
-        public let distance: Double // m
-        public let date: Date
+        /// Distance in meters
+        public let distance: Double
+        public let startDate: Date
+        public let endDate: Date
 
-        public init(distance: Double, date: Date) {
+        public init(distance: Double, startDate: Date, endDate: Date) {
             self.distance = distance
-            self.date = date
+            self.startDate = startDate
+            self.endDate = endDate
         }
     }
 
@@ -80,18 +121,30 @@ public struct RunningStrideLength: Sendable {
 
     public init(items: [Item]) {
         self.items = items
+    }
+
+    /// Most recent entry
+    public var mostRecent: Item? { items.first }
+
+    /// Average stride length in meters
+    public var averageDistance: Double? {
+        guard !items.isEmpty else { return nil }
+        return items.reduce(0) { $0 + $1.distance } / Double(items.count)
     }
 }
 
 public struct StairSpeedDown: Sendable {
 
     public struct Item: Sendable {
-        public let velocity: Double // m/s
-        public let date: Date
+        /// Descent velocity in m/s
+        public let velocity: Double
+        public let startDate: Date
+        public let endDate: Date
 
-        public init(velocity: Double, date: Date) {
+        public init(velocity: Double, startDate: Date, endDate: Date) {
             self.velocity = velocity
-            self.date = date
+            self.startDate = startDate
+            self.endDate = endDate
         }
     }
 
@@ -99,18 +152,30 @@ public struct StairSpeedDown: Sendable {
 
     public init(items: [Item]) {
         self.items = items
+    }
+
+    /// Most recent entry
+    public var mostRecent: Item? { items.first }
+
+    /// Average descent speed in m/s
+    public var averageVelocity: Double? {
+        guard !items.isEmpty else { return nil }
+        return items.reduce(0) { $0 + $1.velocity } / Double(items.count)
     }
 }
 
 public struct StairSpeedUp: Sendable {
 
     public struct Item: Sendable {
-        public let velocity: Double // m/s
-        public let date: Date
+        /// Ascent velocity in m/s
+        public let velocity: Double
+        public let startDate: Date
+        public let endDate: Date
 
-        public init(velocity: Double, date: Date) {
+        public init(velocity: Double, startDate: Date, endDate: Date) {
             self.velocity = velocity
-            self.date = date
+            self.startDate = startDate
+            self.endDate = endDate
         }
     }
 
@@ -118,18 +183,30 @@ public struct StairSpeedUp: Sendable {
 
     public init(items: [Item]) {
         self.items = items
+    }
+
+    /// Most recent entry
+    public var mostRecent: Item? { items.first }
+
+    /// Average ascent speed in m/s
+    public var averageVelocity: Double? {
+        guard !items.isEmpty else { return nil }
+        return items.reduce(0) { $0 + $1.velocity } / Double(items.count)
     }
 }
 
 public struct VerticalOscillation: Sendable {
 
     public struct Item: Sendable {
-        public let distance: Double // cm
-        public let date: Date
+        /// Vertical oscillation in centimeters
+        public let distance: Double
+        public let startDate: Date
+        public let endDate: Date
 
-        public init(distance: Double, date: Date) {
+        public init(distance: Double, startDate: Date, endDate: Date) {
             self.distance = distance
-            self.date = date
+            self.startDate = startDate
+            self.endDate = endDate
         }
     }
 
@@ -137,18 +214,30 @@ public struct VerticalOscillation: Sendable {
 
     public init(items: [Item]) {
         self.items = items
+    }
+
+    /// Most recent entry
+    public var mostRecent: Item? { items.first }
+
+    /// Average vertical oscillation in cm
+    public var averageDistance: Double? {
+        guard !items.isEmpty else { return nil }
+        return items.reduce(0) { $0 + $1.distance } / Double(items.count)
     }
 }
 
 public struct WalkingAsymmetry: Sendable {
 
     public struct Item: Sendable {
+        /// Asymmetry percentage (0% = perfectly symmetric)
         public let percentage: Double
-        public let date: Date
+        public let startDate: Date
+        public let endDate: Date
 
-        public init(percentage: Double, date: Date) {
+        public init(percentage: Double, startDate: Date, endDate: Date) {
             self.percentage = percentage
-            self.date = date
+            self.startDate = startDate
+            self.endDate = endDate
         }
     }
 
@@ -156,18 +245,30 @@ public struct WalkingAsymmetry: Sendable {
 
     public init(items: [Item]) {
         self.items = items
+    }
+
+    /// Most recent entry
+    public var mostRecent: Item? { items.first }
+
+    /// Average walking asymmetry percentage
+    public var averagePercentage: Double? {
+        guard !items.isEmpty else { return nil }
+        return items.reduce(0) { $0 + $1.percentage } / Double(items.count)
     }
 }
 
 public struct WalkingSpeed: Sendable {
 
     public struct Item: Sendable {
-        public let velocity: Double // km/h
-        public let date: Date
+        /// Walking speed in km/h
+        public let velocity: Double
+        public let startDate: Date
+        public let endDate: Date
 
-        public init(velocity: Double, date: Date) {
+        public init(velocity: Double, startDate: Date, endDate: Date) {
             self.velocity = velocity
-            self.date = date
+            self.startDate = startDate
+            self.endDate = endDate
         }
     }
 
@@ -175,18 +276,53 @@ public struct WalkingSpeed: Sendable {
 
     public init(items: [Item]) {
         self.items = items
+    }
+
+    /// Most recent entry
+    public var mostRecent: Item? { items.first }
+
+    /// Average walking speed in km/h
+    public var averageVelocity: Double? {
+        guard !items.isEmpty else { return nil }
+        return items.reduce(0) { $0 + $1.velocity } / Double(items.count)
     }
 }
 
 public struct WalkingSteadiness: Sendable {
 
-    public struct Item: Sendable {
-        public let percentage: Double
-        public let date: Date
+    public enum Classification: String, Sendable {
+        case ok
+        case low
+        case veryLow
 
-        public init(percentage: Double, date: Date) {
+        public var displayName: String {
+            switch self {
+            case .ok: "OK"
+            case .low: "Low"
+            case .veryLow: "Very Low"
+            }
+        }
+    }
+
+    public struct Item: Sendable {
+        /// Walking steadiness percentage (higher = more steady)
+        public let percentage: Double
+        public let startDate: Date
+        public let endDate: Date
+
+        public init(percentage: Double, startDate: Date, endDate: Date) {
             self.percentage = percentage
-            self.date = date
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+
+        /// Apple's walking steadiness classification
+        public var classification: Classification {
+            switch percentage {
+            case ..<0.15: .veryLow
+            case ..<0.30: .low
+            default: .ok
+            }
         }
     }
 
@@ -195,17 +331,23 @@ public struct WalkingSteadiness: Sendable {
     public init(items: [Item]) {
         self.items = items
     }
+
+    /// Most recent entry
+    public var mostRecent: Item? { items.first }
 }
 
 public struct WalkingStepLength: Sendable {
 
     public struct Item: Sendable {
-        public let distance: Double // cm
-        public let date: Date
+        /// Step length in centimeters
+        public let distance: Double
+        public let startDate: Date
+        public let endDate: Date
 
-        public init(distance: Double, date: Date) {
+        public init(distance: Double, startDate: Date, endDate: Date) {
             self.distance = distance
-            self.date = date
+            self.startDate = startDate
+            self.endDate = endDate
         }
     }
 
@@ -214,4 +356,14 @@ public struct WalkingStepLength: Sendable {
     public init(items: [Item]) {
         self.items = items
     }
+
+    /// Most recent entry
+    public var mostRecent: Item? { items.first }
+
+    /// Average step length in cm
+    public var averageDistance: Double? {
+        guard !items.isEmpty else { return nil }
+        return items.reduce(0) { $0 + $1.distance } / Double(items.count)
+    }
 }
+
