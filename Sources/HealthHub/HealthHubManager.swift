@@ -24,6 +24,7 @@ public final class HealthHubManager {
     private let respiratoryService: RespiratoryServiceProtocol
     private let vitalsService: VitalsServiceProtocol
     private let otherDataService: OtherDataServiceProtocol
+    private let hearingService: HearingServiceProtocol
 
     public init(
         configuration: ConfigurationServiceProtocol,
@@ -39,7 +40,8 @@ public final class HealthHubManager {
         symptoms: SymptomsServiceProtocol,
         respiratory: RespiratoryServiceProtocol,
         vitals: VitalsServiceProtocol,
-        otherData: OtherDataServiceProtocol
+        otherData: OtherDataServiceProtocol,
+        hearing: HearingServiceProtocol
     ) {
         self.configurationService = configuration
         self.activityManagerService = activityManager
@@ -55,6 +57,7 @@ public final class HealthHubManager {
         self.respiratoryService = respiratory
         self.vitalsService = vitals
         self.otherDataService = otherData
+        self.hearingService = hearing
     }
 
     public convenience init() {
@@ -72,7 +75,8 @@ public final class HealthHubManager {
             symptoms: SymptomsService(),
             respiratory: RespiratoryService(),
             vitals: VitalsService(),
-            otherData: OtherDataService()
+            otherData: OtherDataService(),
+            hearing: HearingService()
         )
     }
 }
@@ -94,4 +98,5 @@ extension HealthHubManager: HealthHubManagerProtocol {
     public var respiratory: RespiratoryServiceProtocol { respiratoryService }
     public var vitals: VitalsServiceProtocol { vitalsService }
     public var otherData: OtherDataServiceProtocol { otherDataService }
+    public var hearing: HearingServiceProtocol { hearingService }
 }

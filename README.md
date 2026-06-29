@@ -18,11 +18,12 @@ A modern Swift library that makes HealthKit integration simple, testable, and el
 - 🍎 **Nutrition** — Macronutrients, vitamins, minerals, hydration, caffeine
 - 🏋️ **Body** — Weight, BMI, body fat, height, temperature
 - 🩺 **Vitals** — Blood glucose, blood pressure, body temperature
-- 🔬 **Other Data** — Alcohol, hand washing, UV exposure, insulin, hearing & more
-- 🧬 **Characteristics** — Biological sex, blood type, DOB, skin type
+- 🔬 **Other Data** — Alcohol, hand washing, UV exposure, insulin & more
+- 🧬 **Characteristics** — Biological sex, blood type, DOB, skin type, activity move mode
 - 🚴 **Mobility** — Walking steadiness, stair speed, stride length
 - 🩸 **Cycle Tracking** — Menstruation, ovulation, contraceptives, pregnancy, lactation, cycle notifications
 - 🤒 **Symptoms** — 35+ symptom types
+- 👂 **Hearing** — Environmental audio, headphone audio, audiograms
 
 ---
 
@@ -100,7 +101,8 @@ HealthHubManager (facade)
 ├── SymptomsService
 ├── RespiratoryService
 ├── VitalsService
-└── OtherDataService
+├── OtherDataService
+└── HearingService
 ```
 
 Every layer is backed by protocols and supports dependency injection:
@@ -666,7 +668,7 @@ try await hub.vitals.saveBloodPressure(model: bpModel, extra: nil)
 
 ### Other Data
 
-Comprehensive "Other Data" tracking with clinical helpers and hearing support:
+Comprehensive "Other Data" tracking with clinical helpers:
 
 | Data | Unit | Saveable |
 |------|------|----------|
@@ -694,6 +696,40 @@ Comprehensive "Other Data" tracking with clinical helpers and hearing support:
 - `EnvironmentalAudioExposure.exceedsDamageThreshold` — NIOSH 85 dB limit
 - `AlcoholContent.isAboveLegalLimit` — US 0.08% BAC limit
 - Sort descriptors (newest first) and `mostRecent` on all models
+
+---
+
+### Hearing
+
+Dedicated hearing health tracking with audio exposure monitoring and audiogram support:
+
+```swift
+let environmental = try await hub.hearing.environmentalAudioExposure()
+print("Avg: \(environmental.averageLevel ?? 0) dB")
+print("Exceeds damage threshold: \(environmental.mostRecent?.exceedsDamageThreshold ?? false)")
+
+let headphone = try await hub.hearing.headphoneAudioExposure()
+print("Total listening: \(headphone.totalListeningDuration / 60) min")
+
+let audiogram = try await hub.hearing.audiogram()
+if let recent = audiogram.mostRecent {
+    print("Left ear: \(recent.leftEarClassification?.rawValue ?? "N/A")")
+    print("Right ear: \(recent.rightEarClassification?.rawValue ?? "N/A")")
+}
+```
+
+| Data | Unit | Saveable |
+|------|------|----------|
+| Environmental Audio Exposure | dBASPL | — (read-only) |
+| Headphone Audio Exposure | dBASPL | — (read-only) |
+| Audiogram | dBHL | — (read-only) |
+
+**Features:**
+- `EnvironmentalAudioExposureEvent` — WHO 70 dB and NIOSH 85 dB threshold checks
+- `HeadphoneAudioExposureEvent` — 85 dB headphone limit check, total listening duration
+- `AudiogramEntry` — per-frequency hearing sensitivity with Pure Tone Average (PTA)
+- `HearingLossClassification` — WHO categories (Normal, Mild, Moderate, Moderately Severe, Severe, Profound)
+- `mostRecent` and `averageLevel` on audio exposure models
 
 ---
 

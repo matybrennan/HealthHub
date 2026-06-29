@@ -1,6 +1,6 @@
 //
 //  HealthHubManagerProtocol.swift
-//  Pods-TestPod_Example
+//  HealthHub
 //
 //  Created by Maty Brennan on 2/6/18.
 //
@@ -36,4 +36,6 @@ public protocol HealthHubManagerProtocol {
     var vitals: VitalsServiceProtocol { get }
     
     var otherData: OtherDataServiceProtocol { get }
+
+    var hearing: HearingServiceProtocol { get }
 }

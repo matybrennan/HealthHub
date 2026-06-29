@@ -237,6 +237,7 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
     // Hearing
     case environmentalAudioExposure
     case headphoneAudioExposure
+    case audiogram
     
     public var sharable: HKSampleType? {
         switch self {
@@ -456,6 +457,7 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         // Hearing
         case .environmentalAudioExposure: HKQuantityType(.environmentalAudioExposure)
         case .headphoneAudioExposure: HKQuantityType(.headphoneAudioExposure)
+        case .audiogram: nil
         }
     }
     
@@ -677,6 +679,7 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         // Hearing
         case .environmentalAudioExposure: HKQuantityType(.environmentalAudioExposure)
         case .headphoneAudioExposure: HKQuantityType(.headphoneAudioExposure)
+        case .audiogram: HKAudiogramSampleType.audiogramSampleType()
         }
     }
 }
