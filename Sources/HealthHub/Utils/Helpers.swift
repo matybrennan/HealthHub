@@ -1,6 +1,6 @@
 //
 //  Helpers.swift
-//  Pods-TestPod_Example
+//  HealthHub
 //
 //  Created by Maty Brennan on 2/6/18.
 //
@@ -12,10 +12,11 @@ public enum HealthStoreProvider {
     public static let shared = HKHealthStore()
 }
 
-public protocol HealthStoreProtocol {
+public protocol HealthStoreProtocol: Sendable {
     func requestAuthorization(toShare typesToShare: Set<HKSampleType>, read typesToRead: Set<HKObjectType>) async throws
 }
 
+extension HKHealthStore: @retroactive @unchecked Sendable { }
 extension HKHealthStore: HealthStoreProtocol { }
 
 public enum AuthorizationStatusError: LocalizedError {
@@ -35,7 +36,7 @@ public enum AuthorizationStatusError: LocalizedError {
     }
 }
 
-public func ensureHealthDataAvailable() throws {
+func ensureHealthDataAvailable() throws {
     if !HKHealthStore.isHealthDataAvailable() {
         throw AuthorizationStatusError.healthDataNotAvailable
     }

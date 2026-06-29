@@ -1,6 +1,6 @@
 //
-//  HealthTypes.swift
-//  Pods
+//  HealthParser.swift
+//  HealthHub
 //
 //  Created by Maty Brennan on 2/13/18.
 //
@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-open class HealthParser {
+public enum HealthParser {
     
     public static func quantityType(for identifier: HKQuantityTypeIdentifier) throws -> HKQuantityType {
         try ensureHealthDataAvailable()
@@ -35,18 +35,16 @@ open class HealthParser {
         return HKWorkoutType.workoutType()
     }
     
-    // Shareable content checker
     public static func checkSharingAuthorizationStatus(for type: HKObjectType) throws {
-        
         switch HealthStoreProvider.shared.authorizationStatus(for: type) {
         case .notDetermined:
             throw AuthorizationStatusError.notDetermined(type.identifier)
         case .sharingDenied:
             throw AuthorizationStatusError.sharingDenied(type.identifier)
         case .sharingAuthorized:
-            print("Success status for: \(type.identifier)")
+            break
         @unknown default:
-            print("Unknown/New status for: \(type.identifier)")
+            break
         }
     }
 }

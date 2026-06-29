@@ -150,13 +150,29 @@ let todayWorkouts = try await workoutManager.workouts(fromWorkoutType: .today)
 
 ### Configuration
 
-| Method | Description |
+| Method / Property | Description |
 |--------|-------------|
 | `requestAuthorization(toShare:toRead:)` | Request HealthKit permissions |
-| `navigateToHealthSettings()` | Open the Health app settings |
+| `authorizationStatus(for:)` | Check read authorization status for a type |
+| `sharingAuthorizationStatus(for:)` | Check write authorization status for a type |
+| `isHealthDataAvailable` | Whether HealthKit is available on device |
+| `state` | Observable authorization state (`.idle` / `.hasRequestedHealthKitInfo`) |
+| `navigateToHealthSettings()` | Open the Apple Health app |
 
 ```swift
 var configuration: ConfigurationServiceProtocol
+
+// Check availability before requesting
+guard hub.configuration.isHealthDataAvailable else { return }
+
+// Request authorization
+try await hub.configuration.requestAuthorization(
+    toShare: [.stepCount, .workout],
+    toRead: [.stepCount, .heartRate, .workout]
+)
+
+// Check individual type status
+let status = hub.configuration.authorizationStatus(for: HealthObjectType.heartRate)
 ```
 
 ---

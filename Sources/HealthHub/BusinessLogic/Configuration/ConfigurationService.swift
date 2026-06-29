@@ -1,6 +1,6 @@
 //
 //  ConfigurationService.swift
-//  Pods-TestPod_Example
+//  HealthHub
 //
 //  Created by Maty Brennan on 2/6/18.
 //
@@ -12,29 +12,52 @@ import UIKit
 @Observable
 public final class ConfigurationService: ConfigurationServiceProtocol {
 
-    static let appleHealthAppURL = "x-apple-health://"
+    private static let appleHealthAppURL = "x-apple-health://"
 
-    public let healthStore: HealthStoreProtocol
+    private let healthStoreInstance: HealthStoreProtocol
 
-    public enum State: Equatable {
+    public var healthStore: HealthStoreProtocol {
+        healthStoreInstance
+    }
+
+    public enum State: Equatable, Sendable {
         case idle
         case hasRequestedHealthKitInfo(Bool)
     }
 
     public private(set) var state: State = .idle
 
+    public var isHealthDataAvailable: Bool {
+        HKHealthStore.isHealthDataAvailable()
+    }
+
     public init(healthStore: HealthStoreProtocol) {
-        self.healthStore = healthStore
+        self.healthStoreInstance = healthStore
     }
     
     public func requestAuthorization(toShare share: [ShareableType], toRead read: [ReadableType]) async throws {
+        guard isHealthDataAvailable else {
+            throw AuthorizationStatusError.healthDataNotAvailable
+        }
         let shareTypes = HealthType.shareTypes(from: share)
         let readTypes = HealthType.readTypes(read)
-        try await HealthStoreProvider.shared.requestAuthorization(toShare: shareTypes, read: readTypes)
+        try await healthStoreInstance.requestAuthorization(toShare: shareTypes, read: readTypes)
         state = .hasRequestedHealthKitInfo(true)
+    }
+
+    public func authorizationStatus(for type: ReadableType) -> HKAuthorizationStatus {
+        HealthStoreProvider.shared.authorizationStatus(for: type.readable)
+    }
+
+    public func sharingAuthorizationStatus(for type: ShareableType) -> HKAuthorizationRequestStatus? {
+        guard let sampleType = type.sharable else { return nil }
+        return HealthStoreProvider.shared.authorizationStatus(for: sampleType) == .sharingAuthorized
+            ? .unnecessary
+            : .shouldRequest
     }
     
     public func navigateToHealthSettings() {
-        UIApplication.shared.open(URL(string: ConfigurationService.appleHealthAppURL)!, options: [:], completionHandler: nil)
+        guard let url = URL(string: Self.appleHealthAppURL) else { return }
+        UIApplication.shared.open(url)
     }
 }

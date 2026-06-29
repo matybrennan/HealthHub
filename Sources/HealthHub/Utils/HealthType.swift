@@ -678,13 +678,13 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
     }
 }
 
-public struct HealthType {
+public enum HealthType {
     
-    static func shareTypes(from types: [ShareableType]) -> Set<HKSampleType> {
+    public static func shareTypes(from types: [ShareableType]) -> Set<HKSampleType> {
         Set(types.compactMap(\.sharable))
     }
     
-    static func readTypes(_ types: [ReadableType]) -> Set<HKObjectType> {
+    public static func readTypes(_ types: [ReadableType]) -> Set<HKObjectType> {
         Set(types.map(\.readable))
     }
 }
