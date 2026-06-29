@@ -50,6 +50,174 @@ public struct CervicalMucusQuality: Sendable {
     public init(items: [Item]) {
         self.items = items
     }
+
+    /// Most recent cervical mucus quality entry
+    public var mostRecent: Item? {
+        items.first
+    }
+}
+
+public struct Contraceptive: Sendable {
+
+    public struct Item: Sendable {
+
+        public enum ContraceptiveType: Int, Sendable {
+            case unspecified = 1
+            case implant
+            case injection
+            case intrauterineDevice
+            case intravaginalRing
+            case oral
+            case patch
+            
+            public var name: String {
+                switch self {
+                case .unspecified:
+                    "Unspecified"
+                case .implant:
+                    "Implant"
+                case .injection:
+                    "Injection"
+                case .intrauterineDevice:
+                    "Intrauterine Device (IUD)"
+                case .intravaginalRing:
+                    "Intravaginal Ring"
+                case .oral:
+                    "Oral"
+                case .patch:
+                    "Patch"
+                }
+            }
+        }
+        
+        public let type: ContraceptiveType
+        public let startDate: Date
+        public let endDate: Date
+        
+        public init(type: ContraceptiveType, startDate: Date, endDate: Date) {
+            self.type = type
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+    }
+    
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    /// Most recent contraceptive entry
+    public var mostRecent: Item? {
+        items.first
+    }
+}
+
+public struct Lactation: Sendable {
+
+    public struct Item: Sendable {
+
+        public let startDate: Date
+        public let endDate: Date
+        
+        public init(startDate: Date, endDate: Date) {
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+
+        /// Duration of the lactation entry
+        public var duration: TimeInterval {
+            endDate.timeIntervalSince(startDate)
+        }
+    }
+    
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    /// Most recent lactation entry
+    public var mostRecent: Item? {
+        items.first
+    }
+}
+
+public struct Pregnancy: Sendable {
+
+    public struct Item: Sendable {
+
+        public let startDate: Date
+        public let endDate: Date
+        
+        public init(startDate: Date, endDate: Date) {
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+
+        /// Duration of the pregnancy entry
+        public var duration: TimeInterval {
+            endDate.timeIntervalSince(startDate)
+        }
+    }
+    
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    /// Most recent pregnancy entry
+    public var mostRecent: Item? {
+        items.first
+    }
+}
+
+public struct CycleNotification: Sendable {
+
+    public enum NotificationType: Sendable {
+        case infrequentMenstrualCycles
+        case irregularMenstrualCycles
+        case persistentIntermenstrualBleeding
+        case prolongedMenstrualPeriods
+
+        public var name: String {
+            switch self {
+            case .infrequentMenstrualCycles:
+                "Infrequent Menstrual Cycles"
+            case .irregularMenstrualCycles:
+                "Irregular Menstrual Cycles"
+            case .persistentIntermenstrualBleeding:
+                "Persistent Intermenstrual Bleeding"
+            case .prolongedMenstrualPeriods:
+                "Prolonged Menstrual Periods"
+            }
+        }
+    }
+
+    public struct Item: Sendable {
+
+        public let startDate: Date
+        public let endDate: Date
+        
+        public init(startDate: Date, endDate: Date) {
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+    }
+    
+    public let notificationType: NotificationType
+    public let items: [Item]
+
+    public init(notificationType: NotificationType, items: [Item]) {
+        self.notificationType = notificationType
+        self.items = items
+    }
+
+    /// Most recent notification
+    public var mostRecent: Item? {
+        items.first
+    }
 }
 
 public struct Menstruation: Sendable {
@@ -97,6 +265,16 @@ public struct Menstruation: Sendable {
     public init(items: [Item]) {
         self.items = items
     }
+
+    /// Most recent menstruation entry
+    public var mostRecent: Item? {
+        items.first
+    }
+
+    /// Items that mark the start of a new cycle
+    public var cycleStarts: [Item] {
+        items.filter { $0.isStartOfCycle }
+    }
 }
 
 public enum CycleResultType: Int, Sendable {
@@ -139,6 +317,16 @@ public struct Ovulation: Sendable {
     public init(items: [Item]) {
         self.items = items
     }
+
+    /// Most recent ovulation test result
+    public var mostRecent: Item? {
+        items.first
+    }
+
+    /// Items with a positive result
+    public var positiveResults: [Item] {
+        items.filter { $0.type == .positive }
+    }
 }
 
 public struct PregnancyTestResult: Sendable {
@@ -159,6 +347,16 @@ public struct PregnancyTestResult: Sendable {
     public init(items: [Item]) {
         self.items = items
     }
+
+    /// Most recent pregnancy test result
+    public var mostRecent: Item? {
+        items.first
+    }
+
+    /// Items with a positive result
+    public var positiveResults: [Item] {
+        items.filter { $0.type == .positive }
+    }
 }
 
 public struct ProgesteroneTestResult: Sendable {
@@ -178,6 +376,11 @@ public struct ProgesteroneTestResult: Sendable {
 
     public init(items: [Item]) {
         self.items = items
+    }
+
+    /// Most recent progesterone test result
+    public var mostRecent: Item? {
+        items.first
     }
 }
 
@@ -202,7 +405,7 @@ public struct SexualActivity: Sendable {
             }
         }
         
-        let type: StyleType
+        public let type: StyleType
         public let startDate: Date
         public let endDate: Date
         
@@ -217,6 +420,11 @@ public struct SexualActivity: Sendable {
 
     public init(items: [Item]) {
         self.items = items
+    }
+
+    /// Most recent sexual activity entry
+    public var mostRecent: Item? {
+        items.first
     }
 }
 
@@ -235,6 +443,16 @@ public struct Spotting: Sendable {
 
     public init(items: [Item]) {
         self.items = items
+    }
+
+    /// Most recent spotting entry
+    public var mostRecent: Item? {
+        items.first
+    }
+
+    /// Total number of spotting occurrences
+    public var occurrenceCount: Int {
+        items.count
     }
 }
 

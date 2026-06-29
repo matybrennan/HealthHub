@@ -163,15 +163,19 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
     case bloating
     case breastPain
     case cervicalMucusQuality
-    //case contraceptives // no values needed for now
-    //case lactation // no values needed for now
+    case contraceptives
+    case lactation
     case moodChanges
     case ovulationTestResult
-    //case pregnancy // no values needed for now
+    case pregnancy
     case pregancyTestResult
     case progesteroneTestResult
     case spotting
     case vaginalDryness
+    case infrequentMenstrualCycles
+    case irregularMenstrualCycles
+    case persistentIntermenstrualBleeding
+    case prolongedMenstrualPeriods
     
     // Symptoms
     case acne
@@ -377,14 +381,19 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .bloating: HKCategoryType(.bloating)
         case .breastPain: HKCategoryType(.breastPain)
         case .cervicalMucusQuality: HKCategoryType(.cervicalMucusQuality)
-        //case .contraceptives: HKCategoryType(.contraceptive)
-        //case .lactation: HKCategoryType(.lactation)
+        case .contraceptives: HKCategoryType(.contraceptive)
+        case .lactation: HKCategoryType(.lactation)
         case .moodChanges: HKCategoryType(.moodChanges)
         case .ovulationTestResult: HKCategoryType(.ovulationTestResult)
+        case .pregnancy: HKCategoryType(.pregnancy)
         case .pregancyTestResult: HKCategoryType(.pregnancyTestResult)
         case .progesteroneTestResult: HKCategoryType(.progesteroneTestResult)
         case .spotting: HKCategoryType(.intermenstrualBleeding)
         case .vaginalDryness: HKCategoryType(.vaginalDryness)
+        case .infrequentMenstrualCycles: nil
+        case .irregularMenstrualCycles: nil
+        case .persistentIntermenstrualBleeding: nil
+        case .prolongedMenstrualPeriods: nil
 
         // Symptoms
         case .acne: HKCategoryType(.acne)
@@ -592,14 +601,19 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .bloating: HKCategoryType(.bloating)
         case .breastPain: HKCategoryType(.breastPain)
         case .cervicalMucusQuality: HKCategoryType(.cervicalMucusQuality)
-        //case .contraceptives: HKCategoryType(.contraceptive)
-        //case .lactation: HKCategoryType(.lactation)
+        case .contraceptives: HKCategoryType(.contraceptive)
+        case .lactation: HKCategoryType(.lactation)
         case .moodChanges: HKCategoryType(.moodChanges)
         case .ovulationTestResult: HKCategoryType(.ovulationTestResult)
+        case .pregnancy: HKCategoryType(.pregnancy)
         case .pregancyTestResult: HKCategoryType(.pregnancyTestResult)
         case .progesteroneTestResult: HKCategoryType(.progesteroneTestResult)
         case .spotting: HKCategoryType(.intermenstrualBleeding)
         case .vaginalDryness: HKCategoryType(.vaginalDryness)
+        case .infrequentMenstrualCycles: HKCategoryType(.infrequentMenstrualCycles)
+        case .irregularMenstrualCycles: HKCategoryType(.irregularMenstrualCycles)
+        case .persistentIntermenstrualBleeding: HKCategoryType(.persistentIntermenstrualBleeding)
+        case .prolongedMenstrualPeriods: HKCategoryType(.prolongedMenstrualPeriods)
 
         // Symptoms
         case .acne: HKCategoryType(.acne)

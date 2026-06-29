@@ -20,7 +20,8 @@ extension CycleTracking: FetchCategorySample, SexualActivityCase, MenstruationCa
 private extension CycleTracking {
     
     func fetchGenericCycleResult(categoryIdentifier: HKCategoryTypeIdentifier) async throws -> GenericSymptomModel {
-        let samples = try await fetchCategorySamples(categoryIdentifier: categoryIdentifier)
+        let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
+        let samples = try await fetchCategorySamples(categoryIdentifier: categoryIdentifier, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> GenericSymptomModel.Item in
             let style = GenericSymptomModel.Item.Style(rawValue: item.value) ?? .notPresent
             return GenericSymptomModel.Item(style: style, startDate: item.startDate, endDate: item.endDate)
@@ -41,6 +42,17 @@ private extension CycleTracking {
 
         try await HealthStoreProvider.shared.save(sampleObjects)
     }
+
+    func fetchCycleNotification(categoryIdentifier: HKCategoryTypeIdentifier, notificationType: CycleNotification.NotificationType) async throws -> CycleNotification {
+        let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
+        let samples = try await fetchCategorySamples(categoryIdentifier: categoryIdentifier, sortDescriptors: [sortDescriptor])
+        let items = samples.map { item -> CycleNotification.Item in
+            CycleNotification.Item(startDate: item.startDate, endDate: item.endDate)
+        }
+
+        let model = CycleNotification(notificationType: notificationType, items: items)
+        return model
+    }
 }
 
 // MARK: - CycleTrackingProtocol
@@ -59,13 +71,37 @@ extension CycleTracking: CycleTrackingProtocol {
     }
     
     public func cervicalMucusQuality() async throws -> CervicalMucusQuality {
-        let samples = try await fetchCategorySamples(categoryIdentifier: .cervicalMucusQuality)
+        let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
+        let samples = try await fetchCategorySamples(categoryIdentifier: .cervicalMucusQuality, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> CervicalMucusQuality.Item in
             let type: CervicalMucusQuality.Item.MucusType = CervicalMucusQuality.Item.MucusType(rawValue: item.value) ?? .dry
             return CervicalMucusQuality.Item(type: type, startDate: item.startDate, endDate: item.endDate)
         }
         
         let model = CervicalMucusQuality(items: items)
+        return model
+    }
+
+    public func contraceptive() async throws -> Contraceptive {
+        let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
+        let samples = try await fetchCategorySamples(categoryIdentifier: .contraceptive, sortDescriptors: [sortDescriptor])
+        let items = samples.map { item -> Contraceptive.Item in
+            let type = Contraceptive.Item.ContraceptiveType(rawValue: item.value) ?? .unspecified
+            return Contraceptive.Item(type: type, startDate: item.startDate, endDate: item.endDate)
+        }
+
+        let model = Contraceptive(items: items)
+        return model
+    }
+
+    public func lactation() async throws -> Lactation {
+        let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
+        let samples = try await fetchCategorySamples(categoryIdentifier: .lactation, sortDescriptors: [sortDescriptor])
+        let items = samples.map { item -> Lactation.Item in
+            Lactation.Item(startDate: item.startDate, endDate: item.endDate)
+        }
+
+        let model = Lactation(items: items)
         return model
     }
     
@@ -78,7 +114,8 @@ extension CycleTracking: CycleTrackingProtocol {
     }
     
     public func ovulation() async throws -> Ovulation {
-        let samples = try await fetchCategorySamples(categoryIdentifier: .ovulationTestResult)
+        let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
+        let samples = try await fetchCategorySamples(categoryIdentifier: .ovulationTestResult, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> Ovulation.Item in
             let type: CycleResultType = CycleResultType(rawValue: item.value) ?? .indetermined
             return Ovulation.Item(type: type, startDate: item.startDate, endDate: item.endDate)
@@ -87,9 +124,21 @@ extension CycleTracking: CycleTrackingProtocol {
         let model = Ovulation(items: items)
         return model
     }
+
+    public func pregnancy() async throws -> Pregnancy {
+        let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
+        let samples = try await fetchCategorySamples(categoryIdentifier: .pregnancy, sortDescriptors: [sortDescriptor])
+        let items = samples.map { item -> Pregnancy.Item in
+            Pregnancy.Item(startDate: item.startDate, endDate: item.endDate)
+        }
+
+        let model = Pregnancy(items: items)
+        return model
+    }
     
     public func pregnancyTestResult() async throws -> PregnancyTestResult {
-        let samples = try await fetchCategorySamples(categoryIdentifier: .pregnancyTestResult)
+        let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
+        let samples = try await fetchCategorySamples(categoryIdentifier: .pregnancyTestResult, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> PregnancyTestResult.Item in
             let type: CycleResultType = CycleResultType(rawValue: item.value) ?? .indetermined
             return PregnancyTestResult.Item(type: type, date: item.endDate)
@@ -100,7 +149,8 @@ extension CycleTracking: CycleTrackingProtocol {
     }
     
     public func progesteroneTestResult() async throws -> ProgesteroneTestResult {
-        let samples = try await fetchCategorySamples(categoryIdentifier: .progesteroneTestResult)
+        let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
+        let samples = try await fetchCategorySamples(categoryIdentifier: .progesteroneTestResult, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> ProgesteroneTestResult.Item in
             let type: CycleResultType = CycleResultType(rawValue: item.value) ?? .indetermined
             return ProgesteroneTestResult.Item(type: type, date: item.endDate)
@@ -115,7 +165,8 @@ extension CycleTracking: CycleTrackingProtocol {
     }
     
     public func spotting() async throws -> Spotting {
-        let samples = try await fetchCategorySamples(categoryIdentifier: .intermenstrualBleeding)
+        let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
+        let samples = try await fetchCategorySamples(categoryIdentifier: .intermenstrualBleeding, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> Spotting.Item in
             return Spotting.Item(date: item.endDate)
         }
@@ -126,6 +177,24 @@ extension CycleTracking: CycleTrackingProtocol {
     
     public func vaginalDryness() async throws -> GenericSymptomModel {
         try await fetchGenericCycleResult(categoryIdentifier: .vaginalDryness)
+    }
+
+    // MARK: - Cycle Notifications (read-only)
+
+    public func infrequentMenstrualCycles() async throws -> CycleNotification {
+        try await fetchCycleNotification(categoryIdentifier: .infrequentMenstrualCycles, notificationType: .infrequentMenstrualCycles)
+    }
+
+    public func irregularMenstrualCycles() async throws -> CycleNotification {
+        try await fetchCycleNotification(categoryIdentifier: .irregularMenstrualCycles, notificationType: .irregularMenstrualCycles)
+    }
+
+    public func persistentIntermenstrualBleeding() async throws -> CycleNotification {
+        try await fetchCycleNotification(categoryIdentifier: .persistentIntermenstrualBleeding, notificationType: .persistentIntermenstrualBleeding)
+    }
+
+    public func prolongedMenstrualPeriods() async throws -> CycleNotification {
+        try await fetchCycleNotification(categoryIdentifier: .prolongedMenstrualPeriods, notificationType: .prolongedMenstrualPeriods)
     }
 
     // MARK: - Saving
@@ -153,6 +222,28 @@ extension CycleTracking: CycleTrackingProtocol {
         try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
+    public func saveContraceptive(model: Contraceptive, extra: [String: Sendable]?) async throws {
+        let type = try HealthParser.categoryType(for: .contraceptive)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await HealthStoreProvider.shared.save(sampleObjects)
+    }
+
+    public func saveLactation(model: Lactation, extra: [String: Sendable]?) async throws {
+        let type = try HealthParser.categoryType(for: .lactation)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            HKCategorySample(type: type, value: HKCategoryValue.notApplicable.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await HealthStoreProvider.shared.save(sampleObjects)
+    }
+
     public func saveMenstruation(model: Menstruation, extra: [String: Sendable]?) async throws {
         try await saveBaseMenstruation(model, extra: extra)
     }
@@ -167,6 +258,17 @@ extension CycleTracking: CycleTrackingProtocol {
 
         let sampleObjects = model.items.map {
             HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await HealthStoreProvider.shared.save(sampleObjects)
+    }
+
+    public func savePregnancy(model: Pregnancy, extra: [String: Sendable]?) async throws {
+        let type = try HealthParser.categoryType(for: .pregnancy)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            HKCategorySample(type: type, value: HKCategoryValue.notApplicable.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
         }
 
         try await HealthStoreProvider.shared.save(sampleObjects)
