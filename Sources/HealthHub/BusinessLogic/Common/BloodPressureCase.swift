@@ -12,7 +12,7 @@ protocol BloodPressureCase: FetchCorrelationSample { }
 
 extension BloodPressureCase {
 
-    func baseBloodPressure() async throws -> BloodPressure {
+    func baseBloodPressure(from dateRange: DateRangeType = .allTime) async throws -> BloodPressure {
         let bloodPressureSystolicType = try HealthParser.quantityType(for: .bloodPressureSystolic)
         let bloodPressureDiastolicType = try HealthParser.quantityType(for: .bloodPressureDiastolic)
         let sortDescriptor = SortDescriptor(\HKCorrelation.endDate, order: .reverse)

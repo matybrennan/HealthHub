@@ -7,6 +7,88 @@
 
 import Foundation
 
+public enum CycleTrackingType: String, CaseIterable, Sendable {
+
+    // Symptoms
+    case abdominalCramps
+    case bloating
+    case breastPain
+    case moodChanges
+    case vaginalDryness
+
+    // Tracking
+    case cervicalMucusQuality
+    case contraceptive
+    case lactation
+    case menstruation
+    case ovulation
+    case pregnancy
+    case pregnancyTestResult
+    case progesteroneTestResult
+    case sexualActivity
+    case spotting
+
+    // Notifications (read-only)
+    case infrequentMenstrualCycles
+    case irregularMenstrualCycles
+    case persistentIntermenstrualBleeding
+    case prolongedMenstrualPeriods
+
+    public enum Category: String, CaseIterable, Sendable {
+        case symptoms = "Symptoms"
+        case tracking = "Tracking"
+        case notifications = "Notifications"
+    }
+
+    public var category: Category {
+        switch self {
+        case .abdominalCramps, .bloating, .breastPain, .moodChanges, .vaginalDryness:
+            return .symptoms
+        case .cervicalMucusQuality, .contraceptive, .lactation, .menstruation, .ovulation,
+             .pregnancy, .pregnancyTestResult, .progesteroneTestResult, .sexualActivity, .spotting:
+            return .tracking
+        case .infrequentMenstrualCycles, .irregularMenstrualCycles,
+             .persistentIntermenstrualBleeding, .prolongedMenstrualPeriods:
+            return .notifications
+        }
+    }
+
+    public var displayName: String {
+        switch self {
+        case .abdominalCramps: "Abdominal Cramps"
+        case .bloating: "Bloating"
+        case .breastPain: "Breast Pain"
+        case .cervicalMucusQuality: "Cervical Mucus Quality"
+        case .contraceptive: "Contraceptive"
+        case .lactation: "Lactation"
+        case .menstruation: "Menstruation"
+        case .moodChanges: "Mood Changes"
+        case .ovulation: "Ovulation Test Result"
+        case .pregnancy: "Pregnancy"
+        case .pregnancyTestResult: "Pregnancy Test Result"
+        case .progesteroneTestResult: "Progesterone Test Result"
+        case .sexualActivity: "Sexual Activity"
+        case .spotting: "Spotting"
+        case .vaginalDryness: "Vaginal Dryness"
+        case .infrequentMenstrualCycles: "Infrequent Menstrual Cycles"
+        case .irregularMenstrualCycles: "Irregular Menstrual Cycles"
+        case .persistentIntermenstrualBleeding: "Persistent Intermenstrual Bleeding"
+        case .prolongedMenstrualPeriods: "Prolonged Menstrual Periods"
+        }
+    }
+
+    /// Whether this type can be saved by third-party apps
+    public var isSaveable: Bool {
+        switch self {
+        case .infrequentMenstrualCycles, .irregularMenstrualCycles,
+             .persistentIntermenstrualBleeding, .prolongedMenstrualPeriods:
+            false
+        default:
+            true
+        }
+    }
+}
+
 public protocol CycleTrackingProtocol {
 
     // Fetch

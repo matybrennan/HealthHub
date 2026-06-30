@@ -19,13 +19,14 @@ extension MobilityService: FetchQuantitySample, FetchCategorySample, SixMinuteWa
 // MARK: - MobilityServiceProtocol
 extension MobilityService: MobilityServiceProtocol {
 
-    public func cardioFitness() async throws -> CardioFitness {
-        try await baseCardioFitness()
+    public func cardioFitness(from dateRange: DateRangeType) async throws -> CardioFitness {
+        try await baseCardioFitness(from: dateRange)
     }
 
-    public func doubleSupportTime() async throws -> DoubleSupportTime {
+    public func doubleSupportTime(from dateRange: DateRangeType) async throws -> DoubleSupportTime {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .walkingDoubleSupportPercentage, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .walkingDoubleSupportPercentage, predicate: predicate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> DoubleSupportTime.Item in
             let percentage = item.quantity.doubleValue(for: .percent())
             return DoubleSupportTime.Item(percentage: percentage, startDate: item.startDate, endDate: item.endDate)
@@ -34,9 +35,10 @@ extension MobilityService: MobilityServiceProtocol {
         return DoubleSupportTime(items: items)
     }
     
-    public func groundContactTime() async throws -> GroundContactTime {
+    public func groundContactTime(from dateRange: DateRangeType) async throws -> GroundContactTime {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .runningGroundContactTime, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .runningGroundContactTime, predicate: predicate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> GroundContactTime.Item in
             let durationMS = item.quantity.doubleValue(for: HKUnit.secondUnit(with: .milli))
             return GroundContactTime.Item(duration: durationMS, startDate: item.startDate, endDate: item.endDate)
@@ -45,9 +47,10 @@ extension MobilityService: MobilityServiceProtocol {
         return GroundContactTime(items: items)
     }
     
-    public func runningStrideLength() async throws -> RunningStrideLength {
+    public func runningStrideLength(from dateRange: DateRangeType) async throws -> RunningStrideLength {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .runningStrideLength, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .runningStrideLength, predicate: predicate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> RunningStrideLength.Item in
             let distanceMeters = item.quantity.doubleValue(for: HKUnit.meter())
             return RunningStrideLength.Item(distance: distanceMeters, startDate: item.startDate, endDate: item.endDate)
@@ -56,13 +59,14 @@ extension MobilityService: MobilityServiceProtocol {
         return RunningStrideLength(items: items)
     }
 
-    public func sixMinuteWalk() async throws -> SixMinuteWalk {
-        try await baseSixMinuteWalk()
+    public func sixMinuteWalk(from dateRange: DateRangeType) async throws -> SixMinuteWalk {
+        try await baseSixMinuteWalk(from: dateRange)
     }
 
-    public func stairSpeedDown() async throws -> StairSpeedDown {
+    public func stairSpeedDown(from dateRange: DateRangeType) async throws -> StairSpeedDown {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .stairDescentSpeed, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .stairDescentSpeed, predicate: predicate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> StairSpeedDown.Item in
             let speedUnit = HKUnit.meter().unitDivided(by: HKUnit.second())
             let velocity = item.quantity.doubleValue(for: speedUnit)
@@ -72,9 +76,10 @@ extension MobilityService: MobilityServiceProtocol {
         return StairSpeedDown(items: items)
     }
 
-    public func stairSpeedUp() async throws -> StairSpeedUp {
+    public func stairSpeedUp(from dateRange: DateRangeType) async throws -> StairSpeedUp {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .stairAscentSpeed, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .stairAscentSpeed, predicate: predicate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> StairSpeedUp.Item in
             let speedUnit = HKUnit.meter().unitDivided(by: HKUnit.second())
             let velocity = item.quantity.doubleValue(for: speedUnit)
@@ -84,9 +89,10 @@ extension MobilityService: MobilityServiceProtocol {
         return StairSpeedUp(items: items)
     }
 
-    public func verticalOscillation() async throws -> VerticalOscillation {
+    public func verticalOscillation(from dateRange: DateRangeType) async throws -> VerticalOscillation {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .runningVerticalOscillation, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .runningVerticalOscillation, predicate: predicate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> VerticalOscillation.Item in
             let distanceCM = item.quantity.doubleValue(for: HKUnit.meterUnit(with: .centi))
             return VerticalOscillation.Item(distance: distanceCM, startDate: item.startDate, endDate: item.endDate)
@@ -95,9 +101,10 @@ extension MobilityService: MobilityServiceProtocol {
         return VerticalOscillation(items: items)
     }
 
-    public func walkingAsymmetry() async throws -> WalkingAsymmetry {
+    public func walkingAsymmetry(from dateRange: DateRangeType) async throws -> WalkingAsymmetry {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .walkingAsymmetryPercentage, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .walkingAsymmetryPercentage, predicate: predicate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> WalkingAsymmetry.Item in
             let percentage = item.quantity.doubleValue(for: .percent())
             return WalkingAsymmetry.Item(percentage: percentage, startDate: item.startDate, endDate: item.endDate)
@@ -106,9 +113,10 @@ extension MobilityService: MobilityServiceProtocol {
         return WalkingAsymmetry(items: items)
     }
 
-    public func walkingSpeed() async throws -> WalkingSpeed {
+    public func walkingSpeed(from dateRange: DateRangeType) async throws -> WalkingSpeed {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .walkingSpeed, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .walkingSpeed, predicate: predicate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> WalkingSpeed.Item in
             let speedUnit = HKUnit.meterUnit(with: .kilo).unitDivided(by: HKUnit.hour())
             let velocity = item.quantity.doubleValue(for: speedUnit)
@@ -118,9 +126,10 @@ extension MobilityService: MobilityServiceProtocol {
         return WalkingSpeed(items: items)
     }
 
-    public func walkingSteadiness() async throws -> WalkingSteadiness {
+    public func walkingSteadiness(from dateRange: DateRangeType) async throws -> WalkingSteadiness {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .appleWalkingSteadiness, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .appleWalkingSteadiness, predicate: predicate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> WalkingSteadiness.Item in
             let percentage = item.quantity.doubleValue(for: .percent())
             return WalkingSteadiness.Item(percentage: percentage, startDate: item.startDate, endDate: item.endDate)
@@ -129,9 +138,10 @@ extension MobilityService: MobilityServiceProtocol {
         return WalkingSteadiness(items: items)
     }
 
-    public func walkingStepLength() async throws -> WalkingStepLength {
+    public func walkingStepLength(from dateRange: DateRangeType) async throws -> WalkingStepLength {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .walkingStepLength, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .walkingStepLength, predicate: predicate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> WalkingStepLength.Item in
             let distanceCM = item.quantity.doubleValue(for: HKUnit.meterUnit(with: .centi))
             return WalkingStepLength.Item(distance: distanceCM, startDate: item.startDate, endDate: item.endDate)

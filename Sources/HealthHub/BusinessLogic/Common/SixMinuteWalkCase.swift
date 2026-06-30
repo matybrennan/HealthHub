@@ -12,9 +12,10 @@ protocol SixMinuteWalkCase: FetchQuantitySample { }
 
 extension SixMinuteWalkCase {
 
-    func baseSixMinuteWalk() async throws -> SixMinuteWalk {
+    func baseSixMinuteWalk(from dateRange: DateRangeType = .allTime) async throws -> SixMinuteWalk {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .sixMinuteWalkTestDistance, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .sixMinuteWalkTestDistance, predicate: predicate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> SixMinuteWalk.Item in
             let distanceMeters = item.quantity.doubleValue(for: HKUnit.meter())
             return SixMinuteWalk.Item(distance: distanceMeters, startDate: item.startDate, endDate: item.endDate)

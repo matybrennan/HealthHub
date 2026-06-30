@@ -12,7 +12,7 @@ protocol SexualActivityCase: FetchCategorySample { }
 
 extension SexualActivityCase {
     
-    func baseSexualActivity() async throws -> SexualActivity {
+    func baseSexualActivity(from dateRange: DateRangeType = .allTime) async throws -> SexualActivity {
         let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
         let samples = try await fetchCategorySamples(categoryIdentifier: .sexualActivity, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> SexualActivity.Item in

@@ -12,7 +12,7 @@ protocol SleepCase: FetchCategorySample { }
 
 extension SleepCase {
 
-    func baseSleep() async throws -> Sleep {
+    func baseSleep(from dateRange: DateRangeType = .allTime) async throws -> Sleep {
         let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
         let samples = try await fetchCategorySamples(categoryIdentifier: .sleepAnalysis, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> Sleep.Info in

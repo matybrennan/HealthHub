@@ -19,28 +19,28 @@ extension VitalsService: FetchQuantitySample, FetchCorrelationSample, Respirator
 // MARK: - VitalsServiceProtocol
 extension VitalsService: VitalsServiceProtocol {
     
-    public func bloodGlucose() async throws -> BloodGlucose {
-        try await baseBloodGlucose()
+    public func bloodGlucose(from dateRange: DateRangeType) async throws -> BloodGlucose {
+        try await baseBloodGlucose(from: dateRange)
     }
     
-    public func bloodPressure() async throws -> BloodPressure {
-        try await baseBloodPressure()
+    public func bloodPressure(from dateRange: DateRangeType) async throws -> BloodPressure {
+        try await baseBloodPressure(from: dateRange)
     }
     
-    public func bloodOxygen() async throws -> BloodOxygen {
-        try await baseBloodOxygen()
+    public func bloodOxygen(from dateRange: DateRangeType) async throws -> BloodOxygen {
+        try await baseBloodOxygen(from: dateRange)
     }
     
-    public func bodyTemperature() async throws -> BodyTemperature {
-        try await baseBodyTemperature()
+    public func bodyTemperature(from dateRange: DateRangeType) async throws -> BodyTemperature {
+        try await baseBodyTemperature(from: dateRange)
     }
     
-    public func menstruation() async throws -> Menstruation {
-        try await baseMenstruation()
+    public func menstruation(from dateRange: DateRangeType) async throws -> Menstruation {
+        try await baseMenstruation(from: dateRange)
     }
     
-    public func respiratoryRate() async throws -> RespiratoryRate {
-        try await baseRespiratoryRate()
+    public func respiratoryRate(from dateRange: DateRangeType) async throws -> RespiratoryRate {
+        try await baseRespiratoryRate(from: dateRange)
     }
 
     // MARK: - Saving

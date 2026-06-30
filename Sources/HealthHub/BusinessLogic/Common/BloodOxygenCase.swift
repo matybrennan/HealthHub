@@ -12,9 +12,10 @@ protocol BloodOxygenCase: FetchQuantitySample { }
 
 extension BloodOxygenCase {
 
-    func baseBloodOxygen() async throws -> BloodOxygen {
+    func baseBloodOxygen(from dateRange: DateRangeType = .allTime) async throws -> BloodOxygen {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .oxygenSaturation, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .oxygenSaturation, predicate: predicate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> BloodOxygen.Item in
             let percentage = item.quantity.doubleValue(for: .percent())
             return BloodOxygen.Item(oxygenSaturationPercentage: percentage, startDate: item.startDate, endDate: item.endDate)

@@ -11,12 +11,12 @@ import HealthKit
 public protocol VitalsServiceProtocol {
 
     // Fetch
-    func bloodGlucose() async throws -> BloodGlucose
-    func bloodOxygen() async throws -> BloodOxygen
-    func bloodPressure() async throws -> BloodPressure
-    func bodyTemperature() async throws -> BodyTemperature
-    func menstruation() async throws -> Menstruation
-    func respiratoryRate() async throws -> RespiratoryRate
+    func bloodGlucose(from dateRange: DateRangeType) async throws -> BloodGlucose
+    func bloodOxygen(from dateRange: DateRangeType) async throws -> BloodOxygen
+    func bloodPressure(from dateRange: DateRangeType) async throws -> BloodPressure
+    func bodyTemperature(from dateRange: DateRangeType) async throws -> BodyTemperature
+    func menstruation(from dateRange: DateRangeType) async throws -> Menstruation
+    func respiratoryRate(from dateRange: DateRangeType) async throws -> RespiratoryRate
 
     // Save
     func saveBloodGlucose(model: BloodGlucose, extra: [String: Sendable]?) async throws
@@ -25,6 +25,17 @@ public protocol VitalsServiceProtocol {
     func saveBodyTemperature(model: BodyTemperature, extra: [String: Sendable]?) async throws
     func saveMenstruation(model: Menstruation, extra: [String: Sendable]?) async throws
     func saveRespiratoryRate(model: RespiratoryRate, extra: [String: Sendable]?) async throws
+}
+
+// MARK: - Default date range (backwards compatibility)
+
+public extension VitalsServiceProtocol {
+    func bloodGlucose() async throws -> BloodGlucose { try await bloodGlucose(from: .allTime) }
+    func bloodOxygen() async throws -> BloodOxygen { try await bloodOxygen(from: .allTime) }
+    func bloodPressure() async throws -> BloodPressure { try await bloodPressure(from: .allTime) }
+    func bodyTemperature() async throws -> BodyTemperature { try await bodyTemperature(from: .allTime) }
+    func menstruation() async throws -> Menstruation { try await menstruation(from: .allTime) }
+    func respiratoryRate() async throws -> RespiratoryRate { try await respiratoryRate(from: .allTime) }
 }
 
 public enum VitalType: CaseIterable, Sendable {

@@ -12,7 +12,7 @@ protocol AbdominalCrampsCase: FetchCategorySample { }
 
 extension AbdominalCrampsCase {
     
-    func baseAbdominalCramps() async throws -> GenericSymptomModel {
+    func baseAbdominalCramps(from dateRange: DateRangeType = .allTime) async throws -> GenericSymptomModel {
         let samples = try await fetchCategorySamples(categoryIdentifier: .abdominalCramps)
         let items = samples.map { item -> GenericSymptomModel.Item in
             let style = GenericSymptomModel.Item.Style(rawValue: item.value) ?? .notPresent

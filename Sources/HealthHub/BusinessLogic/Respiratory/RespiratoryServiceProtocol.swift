@@ -11,13 +11,13 @@ import HealthKit
 public protocol RespiratoryServiceProtocol {
 
     // Fetch
-    func bloodOxygen() async throws -> BloodOxygen
-    func forcedExpiratoryVolume() async throws -> ForcedExpiratoryVolume
-    func forcedVitalCapacity() async throws -> ForcedVitalCapacity
-    func inhalerUsage() async throws -> InhalerUsage
-    func peakExpiratoryFlowRate() async throws -> PeakExpiratoryFlowRate
-    func respiratoryRate() async throws -> RespiratoryRate
-    func sixMinuteWalk() async throws -> SixMinuteWalk
+    func bloodOxygen(from dateRange: DateRangeType) async throws -> BloodOxygen
+    func forcedExpiratoryVolume(from dateRange: DateRangeType) async throws -> ForcedExpiratoryVolume
+    func forcedVitalCapacity(from dateRange: DateRangeType) async throws -> ForcedVitalCapacity
+    func inhalerUsage(from dateRange: DateRangeType) async throws -> InhalerUsage
+    func peakExpiratoryFlowRate(from dateRange: DateRangeType) async throws -> PeakExpiratoryFlowRate
+    func respiratoryRate(from dateRange: DateRangeType) async throws -> RespiratoryRate
+    func sixMinuteWalk(from dateRange: DateRangeType) async throws -> SixMinuteWalk
 
     // Save
     func saveBloodOxygen(model: BloodOxygen, extra: [String: Sendable]?) async throws
@@ -27,6 +27,18 @@ public protocol RespiratoryServiceProtocol {
     func savePeakExpiratoryFlowRate(model: PeakExpiratoryFlowRate, extra: [String: Sendable]?) async throws
     func saveRespiratoryRate(model: RespiratoryRate, extra: [String: Sendable]?) async throws
     func saveSixMinuteWalk(model: SixMinuteWalk, extra: [String: Sendable]?) async throws
+}
+
+// MARK: - Default date range (backwards compatibility)
+
+public extension RespiratoryServiceProtocol {
+    func bloodOxygen() async throws -> BloodOxygen { try await bloodOxygen(from: .allTime) }
+    func forcedExpiratoryVolume() async throws -> ForcedExpiratoryVolume { try await forcedExpiratoryVolume(from: .allTime) }
+    func forcedVitalCapacity() async throws -> ForcedVitalCapacity { try await forcedVitalCapacity(from: .allTime) }
+    func inhalerUsage() async throws -> InhalerUsage { try await inhalerUsage(from: .allTime) }
+    func peakExpiratoryFlowRate() async throws -> PeakExpiratoryFlowRate { try await peakExpiratoryFlowRate(from: .allTime) }
+    func respiratoryRate() async throws -> RespiratoryRate { try await respiratoryRate(from: .allTime) }
+    func sixMinuteWalk() async throws -> SixMinuteWalk { try await sixMinuteWalk(from: .allTime) }
 }
 
 public enum RespiratoryType: CaseIterable, Sendable {

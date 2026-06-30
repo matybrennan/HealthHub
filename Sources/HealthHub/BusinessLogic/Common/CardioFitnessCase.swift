@@ -12,9 +12,10 @@ protocol CardioFitnessCase: FetchQuantitySample { }
 
 extension CardioFitnessCase {
 
-    func baseCardioFitness() async throws -> CardioFitness {
+    func baseCardioFitness(from dateRange: DateRangeType = .allTime) async throws -> CardioFitness {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .vo2Max, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .vo2Max, predicate: predicate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> CardioFitness.Item in
             let VO₂Unit = HKUnit(from: "ml/kg*min")
             let VO₂Max = item.quantity.doubleValue(for: VO₂Unit)

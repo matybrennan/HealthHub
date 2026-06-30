@@ -19,13 +19,14 @@ extension RespiratoryService: FetchQuantitySample, RespiratoryRateCase, BloodOxy
 // MARK: - RespiratoryServiceProtocol
 extension RespiratoryService: RespiratoryServiceProtocol {
 
-    public func bloodOxygen() async throws -> BloodOxygen {
-        try await baseBloodOxygen()
+    public func bloodOxygen(from dateRange: DateRangeType) async throws -> BloodOxygen {
+        try await baseBloodOxygen(from: dateRange)
     }
     
-    public func forcedExpiratoryVolume() async throws -> ForcedExpiratoryVolume {
+    public func forcedExpiratoryVolume(from dateRange: DateRangeType) async throws -> ForcedExpiratoryVolume {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .forcedExpiratoryVolume1, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .forcedExpiratoryVolume1, predicate: predicate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> ForcedExpiratoryVolume.Item in
             let liters = item.quantity.doubleValue(for: HKUnit.liter())
             return ForcedExpiratoryVolume.Item(liters: liters, startDate: item.startDate, endDate: item.endDate)
@@ -35,9 +36,10 @@ extension RespiratoryService: RespiratoryServiceProtocol {
         return model
     }
     
-    public func forcedVitalCapacity() async throws -> ForcedVitalCapacity {
+    public func forcedVitalCapacity(from dateRange: DateRangeType) async throws -> ForcedVitalCapacity {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .forcedVitalCapacity, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .forcedVitalCapacity, predicate: predicate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> ForcedVitalCapacity.Item in
             let liters = item.quantity.doubleValue(for: HKUnit.liter())
             return ForcedVitalCapacity.Item(liters: liters, startDate: item.startDate, endDate: item.endDate)
@@ -47,13 +49,14 @@ extension RespiratoryService: RespiratoryServiceProtocol {
         return model
     }
 
-    public func inhalerUsage() async throws -> InhalerUsage {
-        try await baseInhalerUsage()
+    public func inhalerUsage(from dateRange: DateRangeType) async throws -> InhalerUsage {
+        try await baseInhalerUsage(from: dateRange)
     }
     
-    public func peakExpiratoryFlowRate() async throws -> PeakExpiratoryFlowRate {
+    public func peakExpiratoryFlowRate(from dateRange: DateRangeType) async throws -> PeakExpiratoryFlowRate {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .peakExpiratoryFlowRate, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .peakExpiratoryFlowRate, predicate: predicate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> PeakExpiratoryFlowRate.Item in
             let litersPerMin = item.quantity.doubleValue(for: HKUnit(from: "L/min"))
             return PeakExpiratoryFlowRate.Item(litersPerMinute: litersPerMin, startDate: item.startDate, endDate: item.endDate)
@@ -63,12 +66,12 @@ extension RespiratoryService: RespiratoryServiceProtocol {
         return model
     }
     
-    public func respiratoryRate() async throws -> RespiratoryRate {
-        try await baseRespiratoryRate()
+    public func respiratoryRate(from dateRange: DateRangeType) async throws -> RespiratoryRate {
+        try await baseRespiratoryRate(from: dateRange)
     }
 
-    public func sixMinuteWalk() async throws -> SixMinuteWalk {
-        try await baseSixMinuteWalk()
+    public func sixMinuteWalk(from dateRange: DateRangeType) async throws -> SixMinuteWalk {
+        try await baseSixMinuteWalk(from: dateRange)
     }
 
      // MARK: Saving

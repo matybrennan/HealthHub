@@ -12,9 +12,10 @@ protocol BloodGlucoseCase: FetchQuantitySample { }
 
 extension BloodGlucoseCase {
 
-    func baseBloodGlucose() async throws -> BloodGlucose {
+    func baseBloodGlucose(from dateRange: DateRangeType = .allTime) async throws -> BloodGlucose {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .bloodGlucose, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .bloodGlucose, predicate: predicate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> BloodGlucose.Item in
             let glucoseLevel = item.quantity.doubleValue(for: HKUnit(from: "mg/dL"))
             let mealtimeInt = item.metadata?[HKMetadataKeyBloodGlucoseMealTime] as? Int ?? 0

@@ -1,6 +1,6 @@
 # 🏥 HealthHub
 
-[![Swift](https://img.shields.io/badge/Swift-6.2-orange.svg)](https://swift.org)
+[![Swift](https://img.shields.io/badge/Swift-6.3-orange.svg)](https://swift.org)
 [![Platform](https://img.shields.io/badge/Platform-iOS_26+-blue.svg)](https://developer.apple.com/ios/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![SPM](https://img.shields.io/badge/SPM-Compatible-brightgreen.svg)](https://swift.org/package-manager/)
@@ -8,6 +8,7 @@
 A modern Swift library that makes HealthKit integration simple, testable, and elegant. Read and write health data with protocol-driven architecture and full dependency injection support.
 
 ---
+
 
 ## ✨ Features
 
@@ -778,6 +779,35 @@ if let recent = audiogram.mostRecent {
 
 ---
 
+## 📅 Date Range Filtering
+
+Most services support flexible date range filtering with `DateRangeType`:
+
+```swift
+// Filter body measurements to this month
+let weight = try await hub.bodyMeasurements.weight(from: .thisMonth)
+
+// Vitals from the last 7 days
+let bp = try await hub.vitals.bloodPressure(from: .lastNDays(7))
+
+// Mobility data for a custom range
+let speed = try await hub.mobility.walkingSpeed(from: .betweenDates(start: startDate, end: endDate))
+
+// All data (default behavior, backwards compatible)
+let oxygen = try await hub.respiratory.bloodOxygen()  // same as .allTime
+```
+
+| Range | Description |
+|-------|-------------|
+| `.today` | Today only |
+| `.thisWeek` | Current week |
+| `.thisMonth` | Current month |
+| `.lastNDays(N)` | Last N days |
+| `.betweenDates(start:end:)` | Custom date range |
+| `.allTime` | No filtering (default) |
+
+---
+
 ## 🧪 Testing
 
 HealthHub is designed for testability. Every service uses protocols, and managers accept injected dependencies:
@@ -807,11 +837,25 @@ struct WorkoutTests {
 
 ---
 
+## 📱 Example App
+
+The `HealthHubExample/` project demonstrates:
+
+- Requesting HealthKit authorization
+- Fetching steps, active energy, workouts, heart rate, weight, and sleep
+- Using `DateRangeType` for date-filtered queries
+- `@Observable` integration with SwiftUI
+- Dependency injection with `HealthHubManager`
+
+Open `HealthHubExample/HealthHubExample.xcodeproj` in Xcode to run it on a device or simulator.
+
+---
+
 ## 🤝 Contributing
 
 Have a question or found a bug? Create an [issue](https://github.com/matybrennan/HealthHub/issues/new)!
 
-Want to contribute? Fork the repo, branch off `main`, and open a PR.
+Want to contribute? See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ---
 

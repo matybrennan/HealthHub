@@ -12,9 +12,10 @@ protocol InhalerUsageCase: FetchQuantitySample { }
 
 extension InhalerUsageCase {
 
-    func baseInhalerUsage() async throws -> InhalerUsage {
+    func baseInhalerUsage(from dateRange: DateRangeType = .allTime) async throws -> InhalerUsage {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .inhalerUsage, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .inhalerUsage, predicate: predicate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> InhalerUsage.Item in
             let value = Int(item.quantity.doubleValue(for: HKUnit.count()))
             return InhalerUsage.Item(value: value, startDate: item.startDate, endDate: item.endDate)

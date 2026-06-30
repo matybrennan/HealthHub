@@ -12,9 +12,10 @@ protocol BodyTemperatureCase: FetchQuantitySample { }
 
 extension BodyTemperatureCase {
     
-    func baseBodyTemperature() async throws -> BodyTemperature {
+    func baseBodyTemperature(from dateRange: DateRangeType = .allTime) async throws -> BodyTemperature {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .bodyTemperature, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .bodyTemperature, predicate: predicate, sortDescriptors: [sortDescriptor])
         
         let items = samples.map { item -> BodyTemperature.Item in
             let celsius = item.quantity.doubleValue(for: .degreeCelsius())

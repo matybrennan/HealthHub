@@ -12,7 +12,7 @@ protocol MenstruationCase: FetchCategorySample { }
 
 extension MenstruationCase {
     
-    func baseMenstruation() async throws -> Menstruation {
+    func baseMenstruation(from dateRange: DateRangeType = .allTime) async throws -> Menstruation {
         let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
         let samples = try await fetchCategorySamples(categoryIdentifier: .menstrualFlow, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> Menstruation.Item in

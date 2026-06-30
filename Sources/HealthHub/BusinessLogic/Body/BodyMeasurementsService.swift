@@ -19,9 +19,10 @@ extension BodyMeasurementsService: FetchQuantitySample, BodyTemperatureCase { }
 // MARK: - BodyServiceProtocol
 extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
     
-    public func basalBodyTemperature() async throws -> BasalBodyTemperature {
+    public func basalBodyTemperature(from dateRange: DateRangeType) async throws -> BasalBodyTemperature {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .basalBodyTemperature, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .basalBodyTemperature, predicate: predicate, sortDescriptors: [sortDescriptor])
         
         let items = samples.map { item -> BasalBodyTemperature.Item in
             let celsius = item.quantity.doubleValue(for: .degreeCelsius())
@@ -33,9 +34,10 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
         return model
     }
     
-    public func bodyFatPercentage() async throws -> BodyFatPercentage {
+    public func bodyFatPercentage(from dateRange: DateRangeType) async throws -> BodyFatPercentage {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .bodyFatPercentage, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .bodyFatPercentage, predicate: predicate, sortDescriptors: [sortDescriptor])
         
         let items = samples.map { item -> BodyFatPercentage.Item in
             let percentage = item.quantity.doubleValue(for: HKUnit.percent()) * 100
@@ -46,9 +48,10 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
         return bodyFatPercentage
     }
     
-    public func bodyMassIndex() async throws -> BodyMassIndex {
+    public func bodyMassIndex(from dateRange: DateRangeType) async throws -> BodyMassIndex {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .bodyMassIndex, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .bodyMassIndex, predicate: predicate, sortDescriptors: [sortDescriptor])
         
         let items = samples.map { item -> BodyMassIndex.Item in
             let value = item.quantity.doubleValue(for: HKUnit.count())
@@ -59,13 +62,14 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
         return bodyMassIndex
     }
     
-    public func bodyTemperature() async throws -> BodyTemperature {
-        try await baseBodyTemperature()
+    public func bodyTemperature(from dateRange: DateRangeType) async throws -> BodyTemperature {
+        try await baseBodyTemperature(from: dateRange)
     }
 
-    public func electrodermalActivity() async throws -> ElectrodermalActivity {
+    public func electrodermalActivity(from dateRange: DateRangeType) async throws -> ElectrodermalActivity {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .electrodermalActivity, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .electrodermalActivity, predicate: predicate, sortDescriptors: [sortDescriptor])
 
         let items = samples.map { item -> ElectrodermalActivity.Item in
             let value = item.quantity.doubleValue(for: HKUnit.siemenUnit(with: .micro))
@@ -76,9 +80,10 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
         return electrodermalActivity
     }
     
-    public func height() async throws -> BodyHeight {
+    public func height(from dateRange: DateRangeType) async throws -> BodyHeight {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .height, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .height, predicate: predicate, sortDescriptors: [sortDescriptor])
         
         let items = samples.map { item -> BodyHeight.Item in
             let cm = item.quantity.doubleValue(for: HKUnit(from: .centimeter))
@@ -90,9 +95,10 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
         return bodyHeight
     }
     
-    public func leanBodyMass() async throws -> LeanBodyMass {
+    public func leanBodyMass(from dateRange: DateRangeType) async throws -> LeanBodyMass {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .leanBodyMass, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .leanBodyMass, predicate: predicate, sortDescriptors: [sortDescriptor])
         
         let items = samples.map { item -> LeanBodyMass.Item in
             let leanBodyMassKg = item.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo))
@@ -104,9 +110,10 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
         return leanBodyMass
     }
     
-    public func waistCircumference() async throws -> WaistCircumference {
+    public func waistCircumference(from dateRange: DateRangeType) async throws -> WaistCircumference {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .waistCircumference, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .waistCircumference, predicate: predicate, sortDescriptors: [sortDescriptor])
         
         let items = samples.map { item -> WaistCircumference.Item in
             let cm = item.quantity.doubleValue(for: HKUnit(from: .centimeter))
@@ -118,9 +125,10 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
         return waistCircumference
     }
     
-    public func weight() async throws -> BodyWeight {
+    public func weight(from dateRange: DateRangeType) async throws -> BodyWeight {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .bodyMass, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .bodyMass, predicate: predicate, sortDescriptors: [sortDescriptor])
         
         let items = samples.map { item -> BodyWeight.Item in
             let bodyMassKg = item.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo))
@@ -132,9 +140,10 @@ extension BodyMeasurementsService: BodyMeasurementsServiceProtocol {
         return bodyWeight
     }
 
-    public func wristTemperature() async throws -> WristTemperature {
+    public func wristTemperature(from dateRange: DateRangeType) async throws -> WristTemperature {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .appleSleepingWristTemperature, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .appleSleepingWristTemperature, predicate: predicate, sortDescriptors: [sortDescriptor])
 
         let items = samples.map { item -> WristTemperature.Item in
             let celsius = item.quantity.doubleValue(for: .degreeCelsius())

@@ -12,9 +12,10 @@ protocol TimeInDaylightCase: FetchQuantitySample { }
 
 extension TimeInDaylightCase {
 
-    func baseTimeInDaylight() async throws -> TimeInDaylight {
+    func baseTimeInDaylight(from dateRange: DateRangeType = .allTime) async throws -> TimeInDaylight {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .timeInDaylight, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .timeInDaylight, predicate: predicate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> TimeInDaylight.Item in
             let minutes = item.quantity.doubleValue(for: .minute())
             let duration = minutes * 60

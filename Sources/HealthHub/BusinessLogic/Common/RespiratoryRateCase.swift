@@ -12,9 +12,10 @@ protocol RespiratoryRateCase: FetchQuantitySample { }
 
 extension RespiratoryRateCase {
     
-    func baseRespiratoryRate() async throws -> RespiratoryRate {
+    func baseRespiratoryRate(from dateRange: DateRangeType = .allTime) async throws -> RespiratoryRate {
         let sortDescriptor = SortDescriptor(\HKQuantitySample.endDate, order: .reverse)
-        let samples = try await fetchQuantitySamples(quantityIdentifier: .respiratoryRate, sortDescriptors: [sortDescriptor])
+        let predicate = try dateRange.predicate()
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .respiratoryRate, predicate: predicate, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> RespiratoryRate.Item in
             let value = item.quantity.doubleValue(for: HKUnit(from: "count/min"))
             return RespiratoryRate.Item(value: value, startDate: item.startDate, endDate: item.endDate)
