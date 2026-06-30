@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import HealthKit
 import HealthHub
 
 struct WorkoutsExampleView: View {
@@ -15,30 +16,30 @@ struct WorkoutsExampleView: View {
     @State private var error: String?
 
     var body: some View {
-        List {
+        VStack {
             if let workouts {
-                Section("This Week (\(workouts.items.count) workouts)") {
-                    ForEach(workouts.items.prefix(10), id: \.startDate) { item in
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(item.activityType.name)
-                                .font(.headline)
-                            HStack {
-                                Text(item.durationFormatted)
-                                Spacer()
-                                Text("\(String(format: "%.0f", item.energyBurned)) kcal")
+                List(Array(workouts.items.prefix(10)), id: \.startDate) { item in
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(item.activityType.commonName)
+                            .font(.headline)
+                        HStack {
+                            Text(item.durationFormatted)
+                            Spacer()
+                            if let energyBurned = item.energyBurned {
+                                Text("\(String(format: "%.0f", energyBurned)) kcal")
                             }
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
                         }
-                        .padding(.vertical, 2)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
                     }
+                    .padding(.vertical, 2)
                 }
             }
 
             if let error {
-                Section("Error") {
-                    Text(error).foregroundStyle(.red)
-                }
+                Text(error)
+                    .foregroundStyle(.red)
+                    .padding()
             }
         }
         .navigationTitle("Workouts")
@@ -48,6 +49,24 @@ struct WorkoutsExampleView: View {
             } catch {
                 self.error = error.localizedDescription
             }
+        }
+    }
+}
+
+extension HKWorkoutActivityType {
+    var commonName: String {
+        switch self {
+        case .running: "Running"
+        case .cycling: "Cycling"
+        case .walking: "Walking"
+        case .swimming: "Swimming"
+        case .yoga: "Yoga"
+        case .functionalStrengthTraining: "Strength Training"
+        case .highIntensityIntervalTraining: "HIIT"
+        case .hiking: "Hiking"
+        case .dance: "Dance"
+        case .cooldown: "Cooldown"
+        default: "Workout"
         }
     }
 }

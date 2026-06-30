@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import HealthHub
 
 @main
 struct HealthHubExampleApp: App {
