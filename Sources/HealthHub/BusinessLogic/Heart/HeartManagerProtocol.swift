@@ -66,7 +66,7 @@ public enum HeartType: String, CaseIterable, Sendable {
 
 public protocol HeartManagerProtocol {
 
-    var heartRate: HeartRateService { get }
+    var heartRate: HeartRateServiceProtocol { get }
 
     func atrialFibrillation() async throws -> AtrialFibrillationHistory
     func bloodPressure() async throws -> BloodPressure

@@ -10,9 +10,9 @@ import HealthKit
 
 public final class HeartManager {
 
-    private let heartRateService: HeartRateService
+    private let heartRateService: HeartRateServiceProtocol
 
-    public init(heartRateService: HeartRateService) {
+    public init(heartRateService: HeartRateServiceProtocol) {
         self.heartRateService = heartRateService
     }
 
@@ -28,7 +28,7 @@ extension HeartManager: HeartManagerProtocol {
     
     // MARK: - Services
 
-    public var heartRate: HeartRateService {
+    public var heartRate: HeartRateServiceProtocol {
         heartRateService
     }
 

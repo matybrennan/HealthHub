@@ -114,6 +114,22 @@ struct WorkoutManagerTests {
         #expect(result.item.duration == 1800)
     }
 
+    @Test("Fetch workouts propagates errors from read service")
+    func fetchWorkoutsError() async {
+        mockReadService.shouldThrowError = NSError(domain: "test", code: 1)
+        await #expect(throws: Error.self) {
+            _ = try await sut.workouts(fromWorkoutType: .today)
+        }
+    }
+
+    @Test("Fetch workout route propagates errors from read service")
+    func fetchWorkoutRouteError() async {
+        mockReadService.shouldThrowError = NSError(domain: "test", code: 2)
+        await #expect(throws: Error.self) {
+            _ = try await sut.workoutRoute(for: Date(), endDate: Date())
+        }
+    }
+
     // MARK: - Write Tests
 
     @Test("Saving workout delegates to write service")

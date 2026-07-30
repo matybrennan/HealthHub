@@ -9,7 +9,7 @@ import Foundation
 import HealthKit
 
 @Observable
-public final class HeartRateService {
+public final class HeartRateService: HeartRateServiceProtocol {
 
     private nonisolated static let heartRateUnit = HKUnit(from: "count/min")
 
