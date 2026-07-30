@@ -13,8 +13,13 @@ build/
 !default.perspectivev3
 xcuserdata/
 *.xccheckout
+*.xcuserstate
 profile
 *.moved-aside
 DerivedData
 *.hmap
 *.ipa
+
+# Swift Package Manager
+.build/
+.swiftpm/xcode/xcuserdata/
