@@ -62,4 +62,15 @@ struct NutritionTypeTests {
     func energyConsumedDisplayName() {
         #expect(NutritionType.energyConsumed.displayName == "Energy Consumed")
     }
+
+    @Test("Reverse lookup resolves a NutritionType from its quantity identifier")
+    func reverseLookupResolves() {
+        let identifier = NutritionType.protein.quantityType.identifier
+        #expect(NutritionType(quantityIdentifier: identifier) == .protein)
+    }
+
+    @Test("Reverse lookup returns nil for an unknown identifier")
+    func reverseLookupUnknown() {
+        #expect(NutritionType(quantityIdentifier: "not.a.real.identifier") == nil)
+    }
 }

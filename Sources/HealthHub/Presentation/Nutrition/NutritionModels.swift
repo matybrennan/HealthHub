@@ -36,3 +36,32 @@ public struct Nutrition: Sendable {
         self.category = category
     }
 }
+
+/// Groups multiple nutrition quantity samples into a single meal/food entry, mirroring
+/// the `HKCorrelationTypeIdentifier.food` correlation type.
+public struct Food: Sendable {
+
+    public struct Item: Sendable {
+        public let foodType: String?
+        public let nutrients: [NutritionType: Double]
+        public let startDate: Date
+        public let endDate: Date
+
+        public init(foodType: String? = nil, nutrients: [NutritionType: Double], startDate: Date, endDate: Date) {
+            self.foodType = foodType
+            self.nutrients = nutrients
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var mostRecent: Item? {
+        items.max(by: { $0.endDate < $1.endDate })
+    }
+}

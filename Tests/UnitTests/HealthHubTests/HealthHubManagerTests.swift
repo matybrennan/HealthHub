@@ -132,6 +132,12 @@ struct HealthHubManagerTests {
         #expect(mockNutrition.lastNutritionType == .protein)
     }
 
+    @Test("Food correlation fetch delegates through the facade")
+    func foodFetch() async throws {
+        _ = try await sut.nutrition.food()
+        #expect(mockNutrition.foodCallCount == 1)
+    }
+
     // MARK: - Body Measurements
 
     @Test("Body weight fetch delegates through the facade")

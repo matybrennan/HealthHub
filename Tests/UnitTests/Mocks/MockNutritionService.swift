@@ -26,4 +26,19 @@ final class MockNutritionService: NutritionServiceProtocol {
         saveCallCount += 1
         if let error = shouldThrowError { throw error }
     }
+
+    var foodCallCount = 0
+    var saveFoodCallCount = 0
+    var stubbedFood = Food(items: [])
+
+    func food() async throws -> Food {
+        foodCallCount += 1
+        if let error = shouldThrowError { throw error }
+        return stubbedFood
+    }
+
+    func saveFood(model: Food.Item, extra: [String: Sendable]?) async throws {
+        saveFoodCallCount += 1
+        if let error = shouldThrowError { throw error }
+    }
 }

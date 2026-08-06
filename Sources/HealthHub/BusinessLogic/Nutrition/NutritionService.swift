@@ -16,6 +16,9 @@ public final class NutritionService {
 // MARK: - FetchQuantitySample
 extension NutritionService: FetchQuantitySample { }
 
+// MARK: - FoodCase
+extension NutritionService: FoodCase { }
+
 // MARK: - NutritionServiceProtocol
 extension NutritionService: NutritionServiceProtocol {
     
@@ -43,5 +46,13 @@ extension NutritionService: NutritionServiceProtocol {
         }
 
         try await HealthStoreProvider.shared.save(nutritionObjects)
+    }
+
+    public func food() async throws -> Food {
+        try await baseFood()
+    }
+
+    public func saveFood(model: Food.Item, extra: [String: Sendable]?) async throws {
+        try await baseSaveFood(model: model, extra: extra)
     }
 }

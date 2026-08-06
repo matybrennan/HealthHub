@@ -11,6 +11,8 @@ import HealthKit
 public protocol NutritionServiceProtocol {
     func nutrition(type: NutritionType) async throws -> Nutrition
     func save(model: Nutrition, extra: [String: Sendable]?) async throws
+    func food() async throws -> Food
+    func saveFood(model: Food.Item, extra: [String: Sendable]?) async throws
 }
 
 /*
@@ -18,7 +20,7 @@ public protocol NutritionServiceProtocol {
  - reference link for types
  */
 
-public enum NutritionType: CaseIterable, Sendable {
+public enum NutritionType: CaseIterable, Hashable, Sendable {
     
     // Macronutrients
     case energyConsumed
@@ -201,6 +203,16 @@ public enum NutritionType: CaseIterable, Sendable {
         /// Caffeine
         case .caffeine: (HKUnit.gramUnit(with: .milli), "mg")
         }
+    }
+
+    // MARK: - Lookup
+
+    /// Reverse-lookup a `NutritionType` from its underlying `HKQuantityType` identifier.
+    /// Used when parsing food correlation samples, which store arbitrary nutrition
+    /// quantity samples without knowing which `NutritionType` produced them.
+    public init?(quantityIdentifier: String) {
+        guard let match = Self.allCases.first(where: { $0.quantityType.identifier == quantityIdentifier }) else { return nil }
+        self = match
     }
 
     // MARK: - Quantity Type
