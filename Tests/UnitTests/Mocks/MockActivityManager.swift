@@ -62,6 +62,16 @@ final class MockWorkoutManager: WorkoutManagerProtocol {
         return Workout.Detail(item: Workout.Item(duration: 0, startDate: Date(), endDate: Date()))
     }
 
+    func workoutActivities(for startDate: Date, endDate: Date) async throws -> [Workout.Activity] {
+        if let error = shouldThrowError { throw error }
+        return []
+    }
+
+    func workoutEffortRelationships(for startDate: Date, endDate: Date) async throws -> [Workout.EffortRelationship] {
+        if let error = shouldThrowError { throw error }
+        return []
+    }
+
     func saveWorkout(workout: Workout.Item, extra: [String: Sendable]?) async throws {
         if let error = shouldThrowError { throw error }
     }

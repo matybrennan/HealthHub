@@ -202,6 +202,41 @@ public struct Workout: Sendable {
         }
     }
 
+    /// A single sub-activity segment within a multi-sport (composite) workout, e.g. one leg of a triathlon.
+    public struct Activity: Sendable {
+        public let activityType: HKWorkoutActivityType
+        public let startDate: Date
+        public let endDate: Date?
+        public let duration: Double // secs
+        public let metadata: [String: Sendable]?
+
+        public init(activityType: HKWorkoutActivityType, startDate: Date, endDate: Date? = nil, duration: Double, metadata: [String: Sendable]? = nil) {
+            self.activityType = activityType
+            self.startDate = startDate
+            self.endDate = endDate
+            self.duration = duration
+            self.metadata = metadata
+        }
+    }
+
+    /// Describes how a workout (and optionally one of its sub-activities) relates to other samples,
+    /// such as a workout effort score. See `HKWorkoutEffortRelationshipQuery` (iOS 18+).
+    public struct EffortRelationship: Sendable {
+        public let workoutStartDate: Date
+        public let workoutEndDate: Date
+        public let activityStartDate: Date?
+        public let activityEndDate: Date?
+        public let relatedSampleCount: Int
+
+        public init(workoutStartDate: Date, workoutEndDate: Date, activityStartDate: Date? = nil, activityEndDate: Date? = nil, relatedSampleCount: Int) {
+            self.workoutStartDate = workoutStartDate
+            self.workoutEndDate = workoutEndDate
+            self.activityStartDate = activityStartDate
+            self.activityEndDate = activityEndDate
+            self.relatedSampleCount = relatedSampleCount
+        }
+    }
+
     public let items: [Item]
 
     public init(items: [Item]) {
