@@ -21,6 +21,14 @@ struct HealthHubManagerTests {
     let mockVitals: MockVitalsService
     let mockOtherData: MockOtherDataService
     let mockHearing: MockHearingService
+    let mockClinicalRecords: MockClinicalRecordsService
+    let mockCDADocuments: MockCDADocumentsService
+    let mockElectrocardiogram: MockElectrocardiogramService
+    let mockHeartbeatSeries: MockHeartbeatSeriesService
+    let mockVerifiableClinicalRecords: MockVerifiableClinicalRecordsService
+    let mockAttachments: MockAttachmentsService
+    let mockMedications: MockMedicationsService
+    let mockVisionPrescriptions: MockVisionPrescriptionsService
     let sut: HealthHubManager
 
     init() {
@@ -39,6 +47,14 @@ struct HealthHubManagerTests {
         mockVitals = MockVitalsService()
         mockOtherData = MockOtherDataService()
         mockHearing = MockHearingService()
+        mockClinicalRecords = MockClinicalRecordsService()
+        mockCDADocuments = MockCDADocumentsService()
+        mockElectrocardiogram = MockElectrocardiogramService()
+        mockHeartbeatSeries = MockHeartbeatSeriesService()
+        mockVerifiableClinicalRecords = MockVerifiableClinicalRecordsService()
+        mockAttachments = MockAttachmentsService()
+        mockMedications = MockMedicationsService()
+        mockVisionPrescriptions = MockVisionPrescriptionsService()
         sut = HealthHubManager(
             configuration: mockConfig,
             activityManager: mockActivity,
@@ -54,7 +70,15 @@ struct HealthHubManagerTests {
             respiratory: mockRespiratory,
             vitals: mockVitals,
             otherData: mockOtherData,
-            hearing: mockHearing
+            hearing: mockHearing,
+            clinicalRecords: mockClinicalRecords,
+            cdaDocuments: mockCDADocuments,
+            electrocardiogram: mockElectrocardiogram,
+            heartbeatSeries: mockHeartbeatSeries,
+            verifiableClinicalRecords: mockVerifiableClinicalRecords,
+            attachments: mockAttachments,
+            medications: mockMedications,
+            visionPrescriptions: mockVisionPrescriptions
         )
     }
 
@@ -225,5 +249,74 @@ struct HealthHubManagerTests {
     func bloodType() {
         mockCharacteristics.bloodType = .oPositive
         #expect(sut.characteristics.bloodType == .oPositive)
+    }
+
+    // MARK: - Clinical Records
+
+    @Test("Clinical records allergy record delegates through the facade")
+    func clinicalRecordsAllergyRecord() async throws {
+        _ = try await sut.clinicalRecords.allergyRecord()
+        #expect(mockClinicalRecords.fetchCallCount == 1)
+    }
+
+    // MARK: - CDA Documents
+
+    @Test("CDA documents delegates through the facade")
+    func cdaDocuments() async throws {
+        _ = try await sut.cdaDocuments.cdaDocuments()
+        #expect(mockCDADocuments.fetchCallCount == 1)
+    }
+
+    // MARK: - Electrocardiogram
+
+    @Test("Electrocardiogram delegates through the facade")
+    func electrocardiogram() async throws {
+        _ = try await sut.electrocardiogram.electrocardiogram()
+        #expect(mockElectrocardiogram.electrocardiogramCallCount == 1)
+    }
+
+    // MARK: - Heartbeat Series
+
+    @Test("Heartbeat series delegates through the facade")
+    func heartbeatSeries() async throws {
+        _ = try await sut.heartbeatSeries.heartbeatSeries()
+        #expect(mockHeartbeatSeries.heartbeatSeriesCallCount == 1)
+    }
+
+    // MARK: - Verifiable Clinical Records
+
+    @Test("Verifiable clinical records delegates through the facade")
+    func verifiableClinicalRecords() async throws {
+        _ = try await sut.verifiableClinicalRecords.verifiableClinicalRecords()
+        #expect(mockVerifiableClinicalRecords.fetchCallCount == 1)
+    }
+
+    // MARK: - Attachments
+
+    @Test("Attachments fetch delegates through the facade")
+    func attachmentsFetch() async throws {
+        _ = try await sut.attachments.attachments(for: HKQuantitySample(
+            type: HKQuantityType(.stepCount),
+            quantity: HKQuantity(unit: .count(), doubleValue: 1),
+            start: Date(),
+            end: Date()
+        ))
+        #expect(mockAttachments.fetchCallCount == 1)
+    }
+
+    // MARK: - Medications
+
+    @Test("Medications delegates through the facade")
+    func medications() async throws {
+        _ = try await sut.medications.medications()
+        #expect(mockMedications.fetchCallCount == 1)
+    }
+
+    // MARK: - Vision Prescriptions
+
+    @Test("Vision prescriptions glasses delegates through the facade")
+    func visionPrescriptionsGlasses() async throws {
+        _ = try await sut.visionPrescriptions.glassesPrescriptions()
+        #expect(mockVisionPrescriptions.fetchCallCount == 1)
     }
 }
