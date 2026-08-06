@@ -101,10 +101,63 @@ struct ActivityManagerTests {
         #expect(mockActivity.fetchCallCount == 1)
     }
 
+    @Test("Paddle sports distance fetch delegates to activity service")
+    func paddleSportsDistance() async throws {
+        let expected = PaddleSportsDistance(items: [
+            PaddleSportsDistance.Item(distance: 3200, date: Date())
+        ])
+        mockActivity.stubbedPaddleSportsDistance = expected
+
+        let result = try await sut.activity.paddleSportsDistance()
+
+        #expect(mockActivity.fetchCallCount == 1)
+        #expect(result.items.count == 1)
+        #expect(result.totalKilometers == 3.2)
+    }
+
     @Test("Physical effort fetch delegates to activity service")
     func physicalEffort() async throws {
         _ = try await sut.activity.physicalEffort()
         #expect(mockActivity.fetchCallCount == 1)
+    }
+
+    @Test("Estimated workout effort score fetch delegates to activity service")
+    func estimatedWorkoutEffortScore() async throws {
+        let expected = EstimatedWorkoutEffortScore(items: [
+            EstimatedWorkoutEffortScore.Item(effort: 6, date: Date())
+        ])
+        mockActivity.stubbedEstimatedWorkoutEffortScore = expected
+
+        let result = try await sut.activity.estimatedWorkoutEffortScore()
+
+        #expect(mockActivity.fetchCallCount == 1)
+        #expect(result.items.count == 1)
+        #expect(result.average == 6)
+    }
+
+    @Test("Apple stand hour fetch delegates to activity service")
+    func appleStandHour() async throws {
+        let expected = StandHourEvent(items: [
+            StandHourEvent.Item(isStood: true, startDate: Date(), endDate: Date())
+        ])
+        mockActivity.stubbedAppleStandHour = expected
+
+        let result = try await sut.activity.appleStandHour()
+
+        #expect(mockActivity.fetchCallCount == 1)
+        #expect(result.items.count == 1)
+        #expect(result.stoodHours == 1)
+    }
+
+    @Test("Workout effort score save delegates to activity service")
+    func workoutEffortScoreSave() async throws {
+        let model = WorkoutEffortScore(items: [
+            WorkoutEffortScore.Item(effort: 7, date: Date())
+        ])
+
+        try await sut.activity.saveWorkoutEffortScore(model: model, extra: nil)
+
+        #expect(mockActivity.saveCallCount == 1)
     }
 
     @Test("Activity service propagates errors")

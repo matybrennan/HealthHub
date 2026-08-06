@@ -13,8 +13,8 @@ public final class ActivityService {
     public init() { }
 }
 
-// MARK: - FetchQuantitySample
-extension ActivityService: FetchQuantitySample { }
+// MARK: - FetchQuantitySample & FetchCategorySample
+extension ActivityService: FetchQuantitySample, FetchCategorySample { }
 
 // MARK: - ActivityServiceProtocol
 extension ActivityService: ActivityServiceProtocol {
@@ -75,6 +75,33 @@ extension ActivityService: ActivityServiceProtocol {
         return CrossCountrySkiingDistance(items: items)
     }
 
+    public func paddleSportsDistance() async throws -> PaddleSportsDistance {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .distancePaddleSports)
+        let items = samples.map { item -> PaddleSportsDistance.Item in
+            let distance = item.quantity.doubleValue(for: .meter())
+            return PaddleSportsDistance.Item(distance: distance, date: item.endDate)
+        }
+        return PaddleSportsDistance(items: items)
+    }
+
+    public func rowingDistance() async throws -> RowingDistance {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .distanceRowing)
+        let items = samples.map { item -> RowingDistance.Item in
+            let distance = item.quantity.doubleValue(for: .meter())
+            return RowingDistance.Item(distance: distance, date: item.endDate)
+        }
+        return RowingDistance(items: items)
+    }
+
+    public func skatingSportsDistance() async throws -> SkatingSportsDistance {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .distanceSkatingSports)
+        let items = samples.map { item -> SkatingSportsDistance.Item in
+            let distance = item.quantity.doubleValue(for: .meter())
+            return SkatingSportsDistance.Item(distance: distance, date: item.endDate)
+        }
+        return SkatingSportsDistance(items: items)
+    }
+
     // MARK: - Speed
 
     public func crossCountrySkiingSpeed() async throws -> CrossCountrySkiingSpeed {
@@ -95,6 +122,26 @@ extension ActivityService: ActivityServiceProtocol {
             return CyclingSpeed.Item(speed: speed, date: item.endDate)
         }
         return CyclingSpeed(items: items)
+    }
+
+    public func paddleSportsSpeed() async throws -> PaddleSportsSpeed {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .paddleSportsSpeed)
+        let items = samples.map { item -> PaddleSportsSpeed.Item in
+            let speedUnit = HKUnit.meter().unitDivided(by: HKUnit.second())
+            let speed = item.quantity.doubleValue(for: speedUnit)
+            return PaddleSportsSpeed.Item(speed: speed, date: item.endDate)
+        }
+        return PaddleSportsSpeed(items: items)
+    }
+
+    public func rowingSpeed() async throws -> RowingSpeed {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .rowingSpeed)
+        let items = samples.map { item -> RowingSpeed.Item in
+            let speedUnit = HKUnit.meter().unitDivided(by: HKUnit.second())
+            let speed = item.quantity.doubleValue(for: speedUnit)
+            return RowingSpeed.Item(speed: speed, date: item.endDate)
+        }
+        return RowingSpeed(items: items)
     }
 
     public func runningSpeed() async throws -> RunningSpeed {
@@ -148,6 +195,15 @@ extension ActivityService: ActivityServiceProtocol {
         return ExerciseMinutes(items: items)
     }
 
+    public func estimatedWorkoutEffortScore() async throws -> EstimatedWorkoutEffortScore {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .estimatedWorkoutEffortScore)
+        let items = samples.map { item -> EstimatedWorkoutEffortScore.Item in
+            let effort = item.quantity.doubleValue(for: .appleEffortScore())
+            return EstimatedWorkoutEffortScore.Item(effort: effort, date: item.endDate)
+        }
+        return EstimatedWorkoutEffortScore(items: items)
+    }
+
     public func restingEnergy() async throws -> RestingEnergy {
         let samples = try await fetchQuantitySamples(quantityIdentifier: .basalEnergyBurned)
         let items = samples.map { item -> RestingEnergy.Item in
@@ -173,6 +229,25 @@ extension ActivityService: ActivityServiceProtocol {
             return MoveTime.Item(duration: duration, date: item.endDate)
         }
         return MoveTime(items: items)
+    }
+
+    public func workoutEffortScore() async throws -> WorkoutEffortScore {
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .workoutEffortScore)
+        let items = samples.map { item -> WorkoutEffortScore.Item in
+            let effort = item.quantity.doubleValue(for: .appleEffortScore())
+            return WorkoutEffortScore.Item(effort: effort, date: item.endDate)
+        }
+        return WorkoutEffortScore(items: items)
+    }
+
+    public func appleStandHour() async throws -> StandHourEvent {
+        let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
+        let samples = try await fetchCategorySamples(categoryIdentifier: .appleStandHour, sortDescriptors: [sortDescriptor])
+        let items = samples.map { item -> StandHourEvent.Item in
+            let standValue = HKCategoryValueAppleStandHour(rawValue: item.value) ?? .idle
+            return StandHourEvent.Item(isStood: standValue == .stood, startDate: item.startDate, endDate: item.endDate)
+        }
+        return StandHourEvent(items: items)
     }
 
     // MARK: - Running Specific
@@ -351,6 +426,39 @@ extension ActivityService: ActivityServiceProtocol {
         try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
+    public func savePaddleSportsDistance(model: PaddleSportsDistance, extra: [String: Sendable]?) async throws {
+        let type = try HealthParser.quantityType(for: .distancePaddleSports)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: .meter(), doubleValue: $0.distance)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+        }
+        try await HealthStoreProvider.shared.save(sampleObjects)
+    }
+
+    public func saveRowingDistance(model: RowingDistance, extra: [String: Sendable]?) async throws {
+        let type = try HealthParser.quantityType(for: .distanceRowing)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: .meter(), doubleValue: $0.distance)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+        }
+        try await HealthStoreProvider.shared.save(sampleObjects)
+    }
+
+    public func saveSkatingSportsDistance(model: SkatingSportsDistance, extra: [String: Sendable]?) async throws {
+        let type = try HealthParser.quantityType(for: .distanceSkatingSports)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: .meter(), doubleValue: $0.distance)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+        }
+        try await HealthStoreProvider.shared.save(sampleObjects)
+    }
+
     public func saveCrossCountrySkiingSpeed(model: CrossCountrySkiingSpeed, extra: [String: Sendable]?) async throws {
         let type = try HealthParser.quantityType(for: .crossCountrySkiingSpeed)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
@@ -365,6 +473,30 @@ extension ActivityService: ActivityServiceProtocol {
 
     public func saveCyclingSpeed(model: CyclingSpeed, extra: [String: Sendable]?) async throws {
         let type = try HealthParser.quantityType(for: .cyclingSpeed)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let speedUnit = HKUnit.meter().unitDivided(by: HKUnit.second())
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: speedUnit, doubleValue: $0.speed)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+        }
+        try await HealthStoreProvider.shared.save(sampleObjects)
+    }
+
+    public func savePaddleSportsSpeed(model: PaddleSportsSpeed, extra: [String: Sendable]?) async throws {
+        let type = try HealthParser.quantityType(for: .paddleSportsSpeed)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let speedUnit = HKUnit.meter().unitDivided(by: HKUnit.second())
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: speedUnit, doubleValue: $0.speed)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+        }
+        try await HealthStoreProvider.shared.save(sampleObjects)
+    }
+
+    public func saveRowingSpeed(model: RowingSpeed, extra: [String: Sendable]?) async throws {
+        let type = try HealthParser.quantityType(for: .rowingSpeed)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let speedUnit = HKUnit.meter().unitDivided(by: HKUnit.second())
@@ -489,6 +621,17 @@ extension ActivityService: ActivityServiceProtocol {
 
     public func savePhysicalEffort(model: PhysicalEffort, extra: [String: Sendable]?) async throws {
         let type = try HealthParser.quantityType(for: .physicalEffort)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            let quantity = HKQuantity(unit: .appleEffortScore(), doubleValue: $0.effort)
+            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+        }
+        try await HealthStoreProvider.shared.save(sampleObjects)
+    }
+
+    public func saveWorkoutEffortScore(model: WorkoutEffortScore, extra: [String: Sendable]?) async throws {
+        let type = try HealthParser.quantityType(for: .workoutEffortScore)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let sampleObjects = model.items.map {
