@@ -17,6 +17,8 @@ public enum HeartType: String, CaseIterable, Sendable {
     case highHeartRateEvents
     case irregularHeartRhythmEvents
     case lowHeartRateEvents
+    case lowCardioFitnessEvents
+    case hypertensionEvents
     case peripheralPerfusionIndex
     case restingHeartRate
     case walkingHeartRateAverage
@@ -32,6 +34,8 @@ public enum HeartType: String, CaseIterable, Sendable {
         case .highHeartRateEvents: "High Heart Rate Notifications"
         case .irregularHeartRhythmEvents: "Irregular Heart Rhythm Notifications"
         case .lowHeartRateEvents: "Low Heart Rate Notifications"
+        case .lowCardioFitnessEvents: "Low Cardio Fitness Notifications"
+        case .hypertensionEvents: "Hypertension Notifications"
         case .peripheralPerfusionIndex: "Peripheral Perfusion Index"
         case .restingHeartRate: "Resting Heart Rate"
         case .walkingHeartRateAverage: "Walking Heart Rate Average"
@@ -49,6 +53,8 @@ public enum HeartType: String, CaseIterable, Sendable {
         case .highHeartRateEvents: "events"
         case .irregularHeartRhythmEvents: "events"
         case .lowHeartRateEvents: "events"
+        case .lowCardioFitnessEvents: "events"
+        case .hypertensionEvents: "events"
         case .peripheralPerfusionIndex: "%"
         case .restingHeartRate: "BPM"
         case .walkingHeartRateAverage: "BPM"
@@ -76,6 +82,9 @@ public protocol HeartManagerProtocol {
     func highHeartRateEvents() async throws -> HighHeartRateEvent
     func irregularHeartRhythmEvents() async throws -> IrregularHeartRhythmEvent
     func lowHeartRateEvents() async throws -> LowHeartRateEvent
+    func lowCardioFitnessEvents() async throws -> LowCardioFitnessEvent
+    /// Requires iOS 26.2+. Throws `AsyncParsingError.unsupportedOSVersion` on earlier OS versions.
+    func hypertensionEvents() async throws -> HypertensionEvent
     func peripheralPerfusionIndex() async throws -> PeripheralPerfusionIndex
     func restingHeartRate() async throws -> RestingHeartRate
     func walkingHeartRateAverage() async throws -> WalkingHeartRateAverage

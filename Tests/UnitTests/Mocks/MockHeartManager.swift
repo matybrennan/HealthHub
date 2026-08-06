@@ -16,6 +16,8 @@ final class MockHeartManager: HeartManagerProtocol {
     var stubbedHighHeartRateEvents = HighHeartRateEvent(items: [])
     var stubbedIrregularHeartRhythmEvents = IrregularHeartRhythmEvent(items: [])
     var stubbedLowHeartRateEvents = LowHeartRateEvent(items: [])
+    var stubbedLowCardioFitnessEvents = LowCardioFitnessEvent(items: [])
+    var stubbedHypertensionEvents = HypertensionEvent(items: [])
     var stubbedPeripheralPerfusionIndex = PeripheralPerfusionIndex(items: [])
     var stubbedRestingHeartRate = RestingHeartRate(items: [])
     var stubbedWalkingHeartRateAverage = WalkingHeartRateAverage(items: [])
@@ -45,6 +47,8 @@ final class MockHeartManager: HeartManagerProtocol {
     func highHeartRateEvents() async throws -> HighHeartRateEvent { try await fetch(stubbedHighHeartRateEvents) }
     func irregularHeartRhythmEvents() async throws -> IrregularHeartRhythmEvent { try await fetch(stubbedIrregularHeartRhythmEvents) }
     func lowHeartRateEvents() async throws -> LowHeartRateEvent { try await fetch(stubbedLowHeartRateEvents) }
+    func lowCardioFitnessEvents() async throws -> LowCardioFitnessEvent { try await fetch(stubbedLowCardioFitnessEvents) }
+    func hypertensionEvents() async throws -> HypertensionEvent { try await fetch(stubbedHypertensionEvents) }
     func peripheralPerfusionIndex() async throws -> PeripheralPerfusionIndex { try await fetch(stubbedPeripheralPerfusionIndex) }
     func restingHeartRate() async throws -> RestingHeartRate { try await fetch(stubbedRestingHeartRate) }
     func walkingHeartRateAverage() async throws -> WalkingHeartRateAverage { try await fetch(stubbedWalkingHeartRateAverage) }

@@ -338,3 +338,66 @@ public struct WalkingHeartRateAverage: Sendable {
         return items.reduce(0.0) { $0 + $1.bpm } / Double(items.count)
     }
 }
+
+public struct LowCardioFitnessEvent: Sendable {
+
+    public struct Item: Sendable {
+        public let startDate: Date
+        public let endDate: Date
+
+        public init(startDate: Date, endDate: Date) {
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+
+        public var duration: TimeInterval {
+            endDate.timeIntervalSince(startDate)
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var mostRecent: Item? {
+        items.max(by: { $0.endDate < $1.endDate })
+    }
+
+    public var totalEvents: Int {
+        items.count
+    }
+}
+
+/// Hypertension notification event. Requires iOS 26.2+.
+public struct HypertensionEvent: Sendable {
+
+    public struct Item: Sendable {
+        public let startDate: Date
+        public let endDate: Date
+
+        public init(startDate: Date, endDate: Date) {
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+
+        public var duration: TimeInterval {
+            endDate.timeIntervalSince(startDate)
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var mostRecent: Item? {
+        items.max(by: { $0.endDate < $1.endDate })
+    }
+
+    public var totalEvents: Int {
+        items.count
+    }
+}

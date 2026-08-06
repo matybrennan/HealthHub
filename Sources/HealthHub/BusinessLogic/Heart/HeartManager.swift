@@ -97,6 +97,28 @@ extension HeartManager: HeartManagerProtocol {
         return LowHeartRateEvent(items: items)
     }
 
+    public func lowCardioFitnessEvents() async throws -> LowCardioFitnessEvent {
+        let samples = try await fetchCategorySamples(categoryIdentifier: .lowCardioFitnessEvent)
+        let items = samples.map { item -> LowCardioFitnessEvent.Item in
+            LowCardioFitnessEvent.Item(startDate: item.startDate, endDate: item.endDate)
+        }
+
+        return LowCardioFitnessEvent(items: items)
+    }
+
+    public func hypertensionEvents() async throws -> HypertensionEvent {
+        guard #available(iOS 26.2, *) else {
+            throw AsyncParsingError.unsupportedOSVersion("Hypertension notifications")
+        }
+
+        let samples = try await fetchCategorySamples(categoryIdentifier: .hypertensionEvent)
+        let items = samples.map { item -> HypertensionEvent.Item in
+            HypertensionEvent.Item(startDate: item.startDate, endDate: item.endDate)
+        }
+
+        return HypertensionEvent(items: items)
+    }
+
     public func peripheralPerfusionIndex() async throws -> PeripheralPerfusionIndex {
         let samples = try await fetchQuantitySamples(quantityIdentifier: .peripheralPerfusionIndex)
         let items = samples.map { item -> PeripheralPerfusionIndex.Item in
