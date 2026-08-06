@@ -63,4 +63,30 @@ struct SleepModelTests {
     func remSleepDisplayName() {
         #expect(Sleep.Info.Style.asleepREM.displayName == "REM Sleep")
     }
+
+    @Test("Sleep apnea events count total events")
+    func sleepApneaEventTotalEvents() {
+        let start = Date()
+        let end = start.addingTimeInterval(600)
+        let model = SleepApneaEvent(items: [
+            SleepApneaEvent.Item(startDate: start, endDate: end),
+            SleepApneaEvent.Item(startDate: end, endDate: end.addingTimeInterval(300))
+        ])
+
+        #expect(model.totalEvents == 2)
+        #expect(model.mostRecent?.endDate == end.addingTimeInterval(300))
+    }
+
+    @Test("Sleeping breathing disturbances aggregate counts")
+    func sleepingBreathingDisturbancesAggregates() {
+        let start = Date()
+        let items = [
+            SleepingBreathingDisturbances.Item(count: 2, startDate: start, endDate: start.addingTimeInterval(60)),
+            SleepingBreathingDisturbances.Item(count: 4, startDate: start.addingTimeInterval(120), endDate: start.addingTimeInterval(180))
+        ]
+        let model = SleepingBreathingDisturbances(items: items)
+
+        #expect(model.averageCount == 3.0)
+        #expect(model.totalCount == 6.0)
+    }
 }

@@ -21,7 +21,7 @@ struct CycleTrackingTypeTests {
 
     @Test("Tracking types have tracking category")
     func trackingCategory() {
-        let types: [CycleTrackingType] = [.cervicalMucusQuality, .contraceptive, .lactation, .menstruation, .ovulation, .pregnancy, .sexualActivity, .spotting]
+        let types: [CycleTrackingType] = [.cervicalMucusQuality, .contraceptive, .bleedingAfterPregnancy, .bleedingDuringPregnancy, .lactation, .menstruation, .ovulation, .pregnancy, .sexualActivity, .spotting]
         for type in types {
             #expect(type.category == .tracking, "\(type) should be tracking")
         }
@@ -45,7 +45,7 @@ struct CycleTrackingTypeTests {
 
     @Test("Tracking types are saveable")
     func trackingTypesAreSaveable() {
-        let saveable: [CycleTrackingType] = [.cervicalMucusQuality, .contraceptive, .lactation, .menstruation, .ovulation, .pregnancy, .sexualActivity]
+        let saveable: [CycleTrackingType] = [.cervicalMucusQuality, .contraceptive, .bleedingAfterPregnancy, .bleedingDuringPregnancy, .lactation, .menstruation, .ovulation, .pregnancy, .sexualActivity]
         for type in saveable {
             #expect(type.isSaveable == true, "\(type) should be saveable")
         }
@@ -54,5 +54,10 @@ struct CycleTrackingTypeTests {
     @Test("Menstruation display name")
     func menstruationDisplayName() {
         #expect(CycleTrackingType.menstruation.displayName == "Menstruation")
+    }
+
+    @Test("Bleeding during pregnancy display name")
+    func bleedingDuringPregnancyDisplayName() {
+        #expect(CycleTrackingType.bleedingDuringPregnancy.displayName == "Bleeding During Pregnancy")
     }
 }

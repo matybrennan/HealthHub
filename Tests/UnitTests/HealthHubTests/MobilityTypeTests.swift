@@ -28,6 +28,11 @@ struct MobilityTypeTests {
         #expect(MobilityType.walkingSteadiness.isSaveable == false)
     }
 
+    @Test("Walking steadiness notifications are not saveable")
+    func walkingSteadinessEventNotSaveable() {
+        #expect(MobilityType.walkingSteadinessEvent.isSaveable == false)
+    }
+
     @Test("Cardio fitness is saveable")
     func cardioFitnessIsSaveable() {
         #expect(MobilityType.cardioFitness.isSaveable == true)
@@ -46,5 +51,10 @@ struct MobilityTypeTests {
     @Test("Ground contact time unit is ms")
     func groundContactTimeUnit() {
         #expect(MobilityType.groundContactTime.unit == "ms")
+    }
+
+    @Test("Walking steadiness notifications unit is events")
+    func walkingSteadinessEventUnit() {
+        #expect(MobilityType.walkingSteadinessEvent.unit == "events")
     }
 }

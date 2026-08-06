@@ -202,3 +202,71 @@ public struct Sleep: Sendable {
     }
 }
 
+public struct SleepApneaEvent: Sendable {
+
+    public struct Item: Sendable {
+        public let startDate: Date
+        public let endDate: Date
+
+        public init(startDate: Date, endDate: Date) {
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+
+        public var duration: TimeInterval {
+            endDate.timeIntervalSince(startDate)
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var mostRecent: Item? {
+        items.max(by: { $0.endDate < $1.endDate })
+    }
+
+    public var totalEvents: Int {
+        items.count
+    }
+}
+
+public struct SleepingBreathingDisturbances: Sendable {
+
+    public struct Item: Sendable {
+        public let count: Double
+        public let startDate: Date
+        public let endDate: Date
+
+        public init(count: Double, startDate: Date, endDate: Date) {
+            self.count = count
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+
+        public var duration: TimeInterval {
+            endDate.timeIntervalSince(startDate)
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var mostRecent: Item? {
+        items.first
+    }
+
+    public var averageCount: Double? {
+        guard !items.isEmpty else { return nil }
+        return items.reduce(0) { $0 + $1.count } / Double(items.count)
+    }
+
+    public var totalCount: Double {
+        items.reduce(0) { $0 + $1.count }
+    }
+}

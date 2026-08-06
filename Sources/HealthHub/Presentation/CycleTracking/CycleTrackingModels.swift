@@ -173,6 +173,79 @@ public struct Pregnancy: Sendable {
     }
 }
 
+public enum VaginalBleedingType: Int, Sendable {
+    case unspecified = 1
+    case light
+    case medium
+    case heavy
+    case none
+
+    public var name: String {
+        switch self {
+        case .unspecified:
+            "Unspecified Flow"
+        case .light:
+            "Light"
+        case .medium:
+            "Medium"
+        case .heavy:
+            "Heavy"
+        case .none:
+            "No Flow"
+        }
+    }
+}
+
+public struct BleedingDuringPregnancy: Sendable {
+
+    public struct Item: Sendable {
+        public let type: VaginalBleedingType
+        public let startDate: Date
+        public let endDate: Date
+
+        public init(type: VaginalBleedingType, startDate: Date, endDate: Date) {
+            self.type = type
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var mostRecent: Item? {
+        items.first
+    }
+}
+
+public struct BleedingAfterPregnancy: Sendable {
+
+    public struct Item: Sendable {
+        public let type: VaginalBleedingType
+        public let startDate: Date
+        public let endDate: Date
+
+        public init(type: VaginalBleedingType, startDate: Date, endDate: Date) {
+            self.type = type
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var mostRecent: Item? {
+        items.first
+    }
+}
+
 public struct CycleNotification: Sendable {
 
     public enum NotificationType: Sendable {
@@ -455,4 +528,3 @@ public struct Spotting: Sendable {
         items.count
     }
 }
-

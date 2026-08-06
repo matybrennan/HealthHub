@@ -9,6 +9,8 @@ final class MockCycleTracking: CycleTrackingProtocol {
     var saveCallCount = 0
 
     var stubbedSymptom = GenericSymptomModel(items: [], type: HKCategoryType(.abdominalCramps))
+    var stubbedBleedingAfterPregnancy = BleedingAfterPregnancy(items: [])
+    var stubbedBleedingDuringPregnancy = BleedingDuringPregnancy(items: [])
     var stubbedCervicalMucusQuality = CervicalMucusQuality(items: [])
     var stubbedContraceptive = Contraceptive(items: [])
     var stubbedLactation = Lactation(items: [])
@@ -40,6 +42,8 @@ final class MockCycleTracking: CycleTrackingProtocol {
     func abdominalCramps() async throws -> GenericSymptomModel { try await fetch(stubbedSymptom) }
     func bloating() async throws -> GenericSymptomModel { try await fetch(stubbedSymptom) }
     func breastPain() async throws -> GenericSymptomModel { try await fetch(stubbedSymptom) }
+    func bleedingAfterPregnancy() async throws -> BleedingAfterPregnancy { try await fetch(stubbedBleedingAfterPregnancy) }
+    func bleedingDuringPregnancy() async throws -> BleedingDuringPregnancy { try await fetch(stubbedBleedingDuringPregnancy) }
     func cervicalMucusQuality() async throws -> CervicalMucusQuality { try await fetch(stubbedCervicalMucusQuality) }
     func contraceptive() async throws -> Contraceptive { try await fetch(stubbedContraceptive) }
     func lactation() async throws -> Lactation { try await fetch(stubbedLactation) }
@@ -62,6 +66,8 @@ final class MockCycleTracking: CycleTrackingProtocol {
     func saveAbdominalCramps(model: GenericSymptomModel, extra: [String: Sendable]?) async throws { try await save() }
     func saveBloating(model: GenericSymptomModel, extra: [String: Sendable]?) async throws { try await save() }
     func saveBreastPain(model: GenericSymptomModel, extra: [String: Sendable]?) async throws { try await save() }
+    func saveBleedingAfterPregnancy(model: BleedingAfterPregnancy, extra: [String: Sendable]?) async throws { try await save() }
+    func saveBleedingDuringPregnancy(model: BleedingDuringPregnancy, extra: [String: Sendable]?) async throws { try await save() }
     func saveCervicalMucusQuality(model: CervicalMucusQuality, extra: [String: Sendable]?) async throws { try await save() }
     func saveContraceptive(model: Contraceptive, extra: [String: Sendable]?) async throws { try await save() }
     func saveLactation(model: Lactation, extra: [String: Sendable]?) async throws { try await save() }

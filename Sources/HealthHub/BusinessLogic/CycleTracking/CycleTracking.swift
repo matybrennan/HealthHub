@@ -53,6 +53,11 @@ private extension CycleTracking {
         let model = CycleNotification(notificationType: notificationType, items: items)
         return model
     }
+
+    func fetchVaginalBleedingSamples(categoryIdentifier: HKCategoryTypeIdentifier) async throws -> [HKCategorySample] {
+        let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
+        return try await fetchCategorySamples(categoryIdentifier: categoryIdentifier, sortDescriptors: [sortDescriptor])
+    }
 }
 
 // MARK: - CycleTrackingProtocol
@@ -68,6 +73,26 @@ extension CycleTracking: CycleTrackingProtocol {
     
     public func breastPain() async throws -> GenericSymptomModel {
         try await fetchGenericCycleResult(categoryIdentifier: .breastPain)
+    }
+
+    public func bleedingAfterPregnancy() async throws -> BleedingAfterPregnancy {
+        let samples = try await fetchVaginalBleedingSamples(categoryIdentifier: .bleedingAfterPregnancy)
+        let items = samples.map { item -> BleedingAfterPregnancy.Item in
+            let type = VaginalBleedingType(rawValue: item.value) ?? .unspecified
+            return BleedingAfterPregnancy.Item(type: type, startDate: item.startDate, endDate: item.endDate)
+        }
+
+        return BleedingAfterPregnancy(items: items)
+    }
+
+    public func bleedingDuringPregnancy() async throws -> BleedingDuringPregnancy {
+        let samples = try await fetchVaginalBleedingSamples(categoryIdentifier: .bleedingDuringPregnancy)
+        let items = samples.map { item -> BleedingDuringPregnancy.Item in
+            let type = VaginalBleedingType(rawValue: item.value) ?? .unspecified
+            return BleedingDuringPregnancy.Item(type: type, startDate: item.startDate, endDate: item.endDate)
+        }
+
+        return BleedingDuringPregnancy(items: items)
     }
     
     public func cervicalMucusQuality() async throws -> CervicalMucusQuality {
@@ -209,6 +234,28 @@ extension CycleTracking: CycleTrackingProtocol {
 
     public func saveBreastPain(model: GenericSymptomModel, extra: [String: Sendable]?) async throws {
         try await saveGenericCycleResult(model: model, categoryIdentifier: .breastPain, extra: extra)
+    }
+
+    public func saveBleedingAfterPregnancy(model: BleedingAfterPregnancy, extra: [String: Sendable]?) async throws {
+        let type = try HealthParser.categoryType(for: .bleedingAfterPregnancy)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await HealthStoreProvider.shared.save(sampleObjects)
+    }
+
+    public func saveBleedingDuringPregnancy(model: BleedingDuringPregnancy, extra: [String: Sendable]?) async throws {
+        let type = try HealthParser.categoryType(for: .bleedingDuringPregnancy)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveCervicalMucusQuality(model: CervicalMucusQuality, extra: [String: Sendable]?) async throws {

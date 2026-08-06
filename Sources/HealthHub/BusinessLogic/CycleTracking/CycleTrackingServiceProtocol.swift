@@ -19,6 +19,8 @@ public enum CycleTrackingType: String, CaseIterable, Sendable {
     // Tracking
     case cervicalMucusQuality
     case contraceptive
+    case bleedingAfterPregnancy
+    case bleedingDuringPregnancy
     case lactation
     case menstruation
     case ovulation
@@ -44,7 +46,8 @@ public enum CycleTrackingType: String, CaseIterable, Sendable {
         switch self {
         case .abdominalCramps, .bloating, .breastPain, .moodChanges, .vaginalDryness:
             return .symptoms
-        case .cervicalMucusQuality, .contraceptive, .lactation, .menstruation, .ovulation,
+        case .cervicalMucusQuality, .contraceptive, .bleedingAfterPregnancy, .bleedingDuringPregnancy,
+             .lactation, .menstruation, .ovulation,
              .pregnancy, .pregnancyTestResult, .progesteroneTestResult, .sexualActivity, .spotting:
             return .tracking
         case .infrequentMenstrualCycles, .irregularMenstrualCycles,
@@ -58,6 +61,8 @@ public enum CycleTrackingType: String, CaseIterable, Sendable {
         case .abdominalCramps: "Abdominal Cramps"
         case .bloating: "Bloating"
         case .breastPain: "Breast Pain"
+        case .bleedingAfterPregnancy: "Bleeding After Pregnancy"
+        case .bleedingDuringPregnancy: "Bleeding During Pregnancy"
         case .cervicalMucusQuality: "Cervical Mucus Quality"
         case .contraceptive: "Contraceptive"
         case .lactation: "Lactation"
@@ -95,6 +100,8 @@ public protocol CycleTrackingProtocol {
     func abdominalCramps() async throws -> GenericSymptomModel
     func bloating() async throws -> GenericSymptomModel
     func breastPain() async throws -> GenericSymptomModel
+    func bleedingAfterPregnancy() async throws -> BleedingAfterPregnancy
+    func bleedingDuringPregnancy() async throws -> BleedingDuringPregnancy
     func cervicalMucusQuality() async throws -> CervicalMucusQuality
     func contraceptive() async throws -> Contraceptive
     func lactation() async throws -> Lactation
@@ -118,6 +125,8 @@ public protocol CycleTrackingProtocol {
     func saveAbdominalCramps(model: GenericSymptomModel, extra: [String: Sendable]?) async throws
     func saveBloating(model: GenericSymptomModel, extra: [String: Sendable]?) async throws
     func saveBreastPain(model: GenericSymptomModel, extra: [String: Sendable]?) async throws
+    func saveBleedingAfterPregnancy(model: BleedingAfterPregnancy, extra: [String: Sendable]?) async throws
+    func saveBleedingDuringPregnancy(model: BleedingDuringPregnancy, extra: [String: Sendable]?) async throws
     func saveCervicalMucusQuality(model: CervicalMucusQuality, extra: [String: Sendable]?) async throws
     func saveContraceptive(model: Contraceptive, extra: [String: Sendable]?) async throws
     func saveLactation(model: Lactation, extra: [String: Sendable]?) async throws

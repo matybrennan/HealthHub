@@ -9,5 +9,7 @@ import Foundation
 
 public protocol SleepServiceProtocol {
     func sleep() async throws -> Sleep
+    func sleepApneaEvent() async throws -> SleepApneaEvent
+    func sleepingBreathingDisturbances() async throws -> SleepingBreathingDisturbances
     func save(model: Sleep, extra: [String: Sendable]?) async throws
 }

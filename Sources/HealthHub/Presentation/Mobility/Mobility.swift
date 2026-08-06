@@ -336,6 +336,69 @@ public struct WalkingSteadiness: Sendable {
     public var mostRecent: Item? { items.first }
 }
 
+public struct WalkingSteadinessEvent: Sendable {
+
+    public enum Classification: Int, Sendable {
+        case initialLow = 1
+        case initialVeryLow = 2
+        case repeatLow = 3
+        case repeatVeryLow = 4
+
+        public var displayName: String {
+            switch self {
+            case .initialLow: "Initial Low"
+            case .initialVeryLow: "Initial Very Low"
+            case .repeatLow: "Repeat Low"
+            case .repeatVeryLow: "Repeat Very Low"
+            }
+        }
+
+        public var isRepeatNotification: Bool {
+            switch self {
+            case .repeatLow, .repeatVeryLow: true
+            case .initialLow, .initialVeryLow: false
+            }
+        }
+
+        public var isVeryLow: Bool {
+            switch self {
+            case .initialVeryLow, .repeatVeryLow: true
+            case .initialLow, .repeatLow: false
+            }
+        }
+    }
+
+    public struct Item: Sendable {
+        public let classification: Classification
+        public let startDate: Date
+        public let endDate: Date
+
+        public init(classification: Classification, startDate: Date, endDate: Date) {
+            self.classification = classification
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+
+        public var duration: TimeInterval {
+            endDate.timeIntervalSince(startDate)
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var mostRecent: Item? {
+        items.max(by: { $0.endDate < $1.endDate })
+    }
+
+    public var totalEvents: Int {
+        items.count
+    }
+}
+
 public struct WalkingStepLength: Sendable {
 
     public struct Item: Sendable {
@@ -366,4 +429,3 @@ public struct WalkingStepLength: Sendable {
         return items.reduce(0) { $0 + $1.distance } / Double(items.count)
     }
 }
-

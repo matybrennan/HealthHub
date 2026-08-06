@@ -13,6 +13,14 @@ public final class MobilityService {
     public init() { }
 }
 
+private extension MobilityService {
+    func fetchCategorySamples(categoryIdentifier: HKCategoryTypeIdentifier, from dateRange: DateRangeType, sortDescriptors: [SortDescriptor<HKCategorySample>]) async throws -> [HKCategorySample] {
+        let samples = try await fetchCategorySamples(categoryIdentifier: categoryIdentifier, sortDescriptors: sortDescriptors)
+        guard let predicate = try dateRange.predicate() else { return samples }
+        return samples.filter { predicate.evaluate(with: $0) }
+    }
+}
+
 // MARK: - FetchQuantitySample
 extension MobilityService: FetchQuantitySample, FetchCategorySample, SixMinuteWalkCase, CardioFitnessCase { }
 
@@ -136,6 +144,17 @@ extension MobilityService: MobilityServiceProtocol {
         }
 
         return WalkingSteadiness(items: items)
+    }
+
+    public func walkingSteadinessEvent(from dateRange: DateRangeType) async throws -> WalkingSteadinessEvent {
+        let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
+        let samples = try await fetchCategorySamples(categoryIdentifier: .appleWalkingSteadinessEvent, from: dateRange, sortDescriptors: [sortDescriptor])
+        let items = samples.map { item -> WalkingSteadinessEvent.Item in
+            let classification = WalkingSteadinessEvent.Classification(rawValue: item.value) ?? .initialLow
+            return WalkingSteadinessEvent.Item(classification: classification, startDate: item.startDate, endDate: item.endDate)
+        }
+
+        return WalkingSteadinessEvent(items: items)
     }
 
     public func walkingStepLength(from dateRange: DateRangeType) async throws -> WalkingStepLength {
@@ -262,4 +281,3 @@ extension MobilityService: MobilityServiceProtocol {
         try await HealthStoreProvider.shared.save(sampleObjects)
     }
 }
-

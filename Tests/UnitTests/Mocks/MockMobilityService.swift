@@ -18,6 +18,7 @@ final class MockMobilityService: MobilityServiceProtocol {
     var stubbedWalkingAsymmetry = WalkingAsymmetry(items: [])
     var stubbedWalkingSpeed = WalkingSpeed(items: [])
     var stubbedWalkingSteadiness = WalkingSteadiness(items: [])
+    var stubbedWalkingSteadinessEvent = WalkingSteadinessEvent(items: [])
     var stubbedWalkingStepLength = WalkingStepLength(items: [])
 
     private func fetch<T>(_ value: T) async throws -> T {
@@ -42,6 +43,7 @@ final class MockMobilityService: MobilityServiceProtocol {
     func walkingAsymmetry(from dateRange: DateRangeType) async throws -> WalkingAsymmetry { try await fetch(stubbedWalkingAsymmetry) }
     func walkingSpeed(from dateRange: DateRangeType) async throws -> WalkingSpeed { try await fetch(stubbedWalkingSpeed) }
     func walkingSteadiness(from dateRange: DateRangeType) async throws -> WalkingSteadiness { try await fetch(stubbedWalkingSteadiness) }
+    func walkingSteadinessEvent(from dateRange: DateRangeType) async throws -> WalkingSteadinessEvent { try await fetch(stubbedWalkingSteadinessEvent) }
     func walkingStepLength(from dateRange: DateRangeType) async throws -> WalkingStepLength { try await fetch(stubbedWalkingStepLength) }
 
     func saveCardioFitness(model: CardioFitness, extra: [String: Sendable]?) async throws { try await save() }

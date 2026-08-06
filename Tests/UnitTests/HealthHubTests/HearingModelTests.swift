@@ -97,4 +97,32 @@ struct HearingModelTests {
         let item = HeadphoneAudioExposureEvent.Item(value: 90, startDate: Date(), endDate: Date())
         #expect(item.exceedsRecommendedLevel == true)
     }
+
+    @Test("Environmental audio exposure notifications count events")
+    func environmentalAudioExposureNotificationTotalEvents() {
+        let now = Date()
+        let model = EnvironmentalAudioExposureNotification(items: [
+            EnvironmentalAudioExposureNotification.Item(type: .momentaryLimit, startDate: now, endDate: now),
+            EnvironmentalAudioExposureNotification.Item(type: .momentaryLimit, startDate: now, endDate: now.addingTimeInterval(10))
+        ])
+
+        #expect(model.totalEvents == 2)
+        #expect(model.mostRecent?.type == .momentaryLimit)
+    }
+
+    @Test("Headphone audio exposure notifications use seven day limit label")
+    func headphoneAudioExposureNotificationDisplayName() {
+        #expect(HeadphoneAudioExposureNotification.EventType.sevenDayLimit.displayName == "Seven-Day Limit")
+    }
+
+    @Test("Environmental sound reduction average computes correctly")
+    func environmentalSoundReductionAverage() {
+        let start = Date()
+        let model = EnvironmentalSoundReduction(items: [
+            EnvironmentalSoundReduction.Item(value: 10, startDate: start, endDate: start),
+            EnvironmentalSoundReduction.Item(value: 20, startDate: start, endDate: start)
+        ])
+
+        #expect(model.averageReduction == 15.0)
+    }
 }
