@@ -35,6 +35,13 @@ public actor HealthHubClient {
         try await store.authorizationRequestStatus(for: plan)
     }
 
+    /// The earliest date the app may read for each type when the user granted limited access.
+    ///
+    /// Types with full access are omitted. Use the date to clamp the start of a query's date range.
+    public func earliestAuthorizedDates(for types: [HealthObjectType]) async throws -> [HealthObjectType: Date] {
+        try await store.earliestAuthorizedDates(for: types)
+    }
+
     public func dashboard(for dateRange: DateRangeType = .today) async throws -> HealthDashboard {
         try await HealthDashboardService(store: store).summary(for: dateRange)
     }

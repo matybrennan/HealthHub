@@ -6,19 +6,26 @@ actor MockHealthStoreClient: HealthStoreClientProtocol {
 
     let requestStatus: HealthAuthorizationRequestStatus
     let requestResult: HealthAuthorizationRequestResult
+    let earliestDates: [HealthObjectType: Date]
     let statisticsByIdentifier: [String: HealthQuantityStatistics]
     let summariesByIdentifier: [String: [HealthSampleSummary]]
 
     init(
         requestStatus: HealthAuthorizationRequestStatus = .shouldRequest,
         requestResult: HealthAuthorizationRequestResult = .requested,
+        earliestDates: [HealthObjectType: Date] = [:],
         statisticsByIdentifier: [String: HealthQuantityStatistics] = [:],
         summariesByIdentifier: [String: [HealthSampleSummary]] = [:]
     ) {
         self.requestStatus = requestStatus
         self.requestResult = requestResult
+        self.earliestDates = earliestDates
         self.statisticsByIdentifier = statisticsByIdentifier
         self.summariesByIdentifier = summariesByIdentifier
+    }
+
+    func earliestAuthorizedDates(for types: [HealthObjectType]) async throws -> [HealthObjectType: Date] {
+        earliestDates.filter { types.contains($0.key) }
     }
 
     func authorizationRequestStatus(for plan: HealthAuthorizationPlan) async throws -> HealthAuthorizationRequestStatus {

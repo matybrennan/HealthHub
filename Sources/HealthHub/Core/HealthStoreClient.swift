@@ -19,6 +19,15 @@ public protocol HealthStoreClientProtocol: Sendable {
     func synchronize(for type: HealthObjectType, anchorKey: String, anchorStore: any HealthQueryAnchorStoring, query: HealthQuery, unit: HKUnit?) async throws -> HealthAnchoredChange
     func updates(for types: [HealthObjectType], query: HealthQuery) async throws -> AsyncThrowingStream<HealthStoreChange, Error>
     func enableBackgroundUpdates(for types: [HealthObjectType], frequency: HKUpdateFrequency) async throws
+    /// Earliest readable date per type when the user granted limited read access. Types with full access are omitted.
+    func earliestAuthorizedDates(for types: [HealthObjectType]) async throws -> [HealthObjectType: Date]
+}
+
+public extension HealthStoreClientProtocol {
+
+    func earliestAuthorizedDates(for types: [HealthObjectType]) async throws -> [HealthObjectType: Date] {
+        [:]
+    }
 }
 
 /// The iOS 27 HealthKit client used by `HealthHubClient`.
@@ -47,6 +56,16 @@ public actor HealthStoreClient: HealthStoreClientProtocol {
             return .unnecessary
         @unknown default:
             return .unknown
+        }
+    }
+
+    public func earliestAuthorizedDates(for types: [HealthObjectType]) async throws -> [HealthObjectType: Date] {
+        try ensureHealthDataAvailable()
+
+        let available = types.filter(\.isAvailable)
+        let dates = try await healthStore.earliestAuthorizedSampleDate(for: Set(available.map(\.readable)))
+        return available.reduce(into: [:]) { result, type in
+            result[type] = dates[type.readable]
         }
     }
 

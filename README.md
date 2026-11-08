@@ -131,6 +131,19 @@ let plan = HealthAuthorizationPlan(
 try await health.requestAuthorization(plan: plan)
 ```
 
+### 4. Respect Limited Read Access (iOS 27)
+
+Users can limit how far back your app may read. Ask HealthHub for the earliest readable date and clamp your queries to it. Types with full access are omitted:
+
+```swift
+let earliest = try await health.earliestAuthorizedDates(for: [.stepCount, .heartRate])
+
+if let cutoff = earliest[.stepCount] {
+    let query = HealthQuery(dateRange: .betweenDates(start: cutoff, end: .now))
+    // Query steps without requesting data the user restricted
+}
+```
+
 ---
 
 ## 🏗️ Architecture

@@ -27,6 +27,17 @@ struct HealthHubClientTests {
         #expect(plan?.toShare == [.workout])
     }
 
+    @Test("Reports earliest authorized dates only for requested types")
+    func reportsEarliestAuthorizedDates() async throws {
+        let cutoff = Date(timeIntervalSince1970: 1_700_000_000)
+        let client = MockHealthStoreClient(earliestDates: [.stepCount: cutoff, .heartRate: cutoff])
+        let hub = HealthHubClient(store: client)
+
+        let dates = try await hub.earliestAuthorizedDates(for: [.stepCount, .weight])
+
+        #expect(dates == [.stepCount: cutoff])
+    }
+
     @Test("Builds a dashboard from injected statistics and samples")
     func buildsDashboard() async throws {
         let now = Date()

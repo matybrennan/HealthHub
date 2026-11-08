@@ -19,6 +19,7 @@ See [MIGRATING_TO_4.0.md](MIGRATING_TO_4.0.md) for upgrade guidance.
 - `HealthDashboardService` for daily activity, heart, workout, and sleep summaries
 - `HealthDataCatalog` and `HealthQueryAnchorStore` for centralized type metadata and persisted incremental sync
 - `HealthHubClient.requestAuthorization(scopes:toShare:)` one-line shortcut for requesting authorization from health domains
+- `earliestAuthorizedDates(for:)` on `HealthHubClient` and `HealthStoreClientProtocol` for iOS 27 limited read access
 
 ### Changed
 - **Breaking:** minimum deployment target raised to iOS 27 and Swift 6.4
