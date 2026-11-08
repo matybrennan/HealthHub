@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.4.0]
+
 ### Added
 - Swift 6.4 package manifest support and Xcode 27.2 CI coverage
 - iOS 27 HealthKit support for RMSSD heart-rate variability, menopausal state, and bleeding after menopause
@@ -38,7 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - The example app now builds in Swift 6 language mode and reports HealthKit authorization errors
-- Generated SwiftPM workspace data is ignored to keep clones clean
+- Generated build artifacts are ignored and no longer tracked
 - Body, Vitals, Respiratory, and Mobility service protocols now accept `DateRangeType` parameter
 - All shared "Case" protocols (BloodPressureCase, CardioFitnessCase, etc.) support date range filtering
 - Backwards compatible — existing code without date range parameters continues to work via protocol extensions

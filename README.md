@@ -46,7 +46,7 @@ Add HealthHub to your `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/matybrennan/HealthHub", from: "3.4.0")
+    .package(url: "https://github.com/matybrennan/HealthHub", from: "3.5.0")
 ]
 ```
 
