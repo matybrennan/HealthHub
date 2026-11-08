@@ -70,6 +70,20 @@ extension HeartManager: HeartManagerProtocol {
         return HeartRateVariability(items: items)
     }
 
+    public func heartRateVariabilityRMSSD() async throws -> HeartRateVariabilityRMSSD {
+        guard #available(iOS 27.0, *) else {
+            throw AsyncParsingError.unsupportedOSVersion("RMSSD heart rate variability")
+        }
+
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .heartRateVariabilityRMSSD)
+        let items = samples.map { item -> HeartRateVariabilityRMSSD.Item in
+            let rmssd = item.quantity.doubleValue(for: HKUnit.secondUnit(with: .milli))
+            return HeartRateVariabilityRMSSD.Item(rmssd: rmssd, date: item.endDate)
+        }
+
+        return HeartRateVariabilityRMSSD(items: items)
+    }
+
     public func highHeartRateEvents() async throws -> HighHeartRateEvent {
         let samples = try await fetchCategorySamples(categoryIdentifier: .highHeartRateEvent)
         let items = samples.map { item -> HighHeartRateEvent.Item in

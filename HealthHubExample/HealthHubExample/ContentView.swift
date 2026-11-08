@@ -45,6 +45,8 @@ struct ContentView: View {
             Section("Heart") {
                 Label("Heart Rate", systemImage: "heart")
                     .tag(SidebarItem.heartRate)
+                Label("Heart Rate Variability", systemImage: "waveform.path.ecg")
+                    .tag(SidebarItem.heartRateVariability)
             }
 
             Section("Body Measurements") {
@@ -60,6 +62,11 @@ struct ContentView: View {
             Section("Characteristics") {
                 Label("User Profile", systemImage: "person")
                     .tag(SidebarItem.characteristics)
+            }
+
+            Section("Cycle Tracking") {
+                Label("Menopause", systemImage: "calendar.badge.heart")
+                    .tag(SidebarItem.menopause)
             }
         }
     }
@@ -77,12 +84,16 @@ struct ContentView: View {
             WorkoutsExampleView(store: store)
         case .heartRate:
             HeartRateExampleView(store: store)
+        case .heartRateVariability:
+            HeartRateVariabilityExampleView(store: store)
         case .weight:
             WeightExampleView(store: store)
         case .sleep:
             SleepExampleView(store: store)
         case .characteristics:
             CharacteristicsExampleView(store: store)
+        case .menopause:
+            MenopauseExampleView(store: store)
         }
     }
 }
@@ -90,10 +101,11 @@ struct ContentView: View {
 enum SidebarItem: Hashable {
     case configuration
     case steps, activeEnergy, workouts
-    case heartRate
+    case heartRate, heartRateVariability
     case weight
     case sleep
     case characteristics
+    case menopause
 }
 
 #Preview {

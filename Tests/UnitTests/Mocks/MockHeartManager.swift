@@ -13,6 +13,7 @@ final class MockHeartManager: HeartManagerProtocol {
     var stubbedCardioFitness = CardioFitness(items: [])
     var stubbedCardioRecovery = CardioRecovery(items: [])
     var stubbedHeartRateVariability = HeartRateVariability(items: [])
+    var stubbedHeartRateVariabilityRMSSD = HeartRateVariabilityRMSSD(items: [])
     var stubbedHighHeartRateEvents = HighHeartRateEvent(items: [])
     var stubbedIrregularHeartRhythmEvents = IrregularHeartRhythmEvent(items: [])
     var stubbedLowHeartRateEvents = LowHeartRateEvent(items: [])
@@ -44,6 +45,7 @@ final class MockHeartManager: HeartManagerProtocol {
     func cardioFitness() async throws -> CardioFitness { try await fetch(stubbedCardioFitness) }
     func cardioRecovery() async throws -> CardioRecovery { try await fetch(stubbedCardioRecovery) }
     func heartRateVariability() async throws -> HeartRateVariability { try await fetch(stubbedHeartRateVariability) }
+    func heartRateVariabilityRMSSD() async throws -> HeartRateVariabilityRMSSD { try await fetch(stubbedHeartRateVariabilityRMSSD) }
     func highHeartRateEvents() async throws -> HighHeartRateEvent { try await fetch(stubbedHighHeartRateEvents) }
     func irregularHeartRhythmEvents() async throws -> IrregularHeartRhythmEvent { try await fetch(stubbedIrregularHeartRhythmEvents) }
     func lowHeartRateEvents() async throws -> LowHeartRateEvent { try await fetch(stubbedLowHeartRateEvents) }

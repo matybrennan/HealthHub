@@ -14,6 +14,7 @@ public enum HeartType: String, CaseIterable, Sendable {
     case cardioRecovery
     case heartRate
     case heartRateVariability
+    case heartRateVariabilityRMSSD
     case highHeartRateEvents
     case irregularHeartRhythmEvents
     case lowHeartRateEvents
@@ -31,6 +32,7 @@ public enum HeartType: String, CaseIterable, Sendable {
         case .cardioRecovery: "Cardio Recovery"
         case .heartRate: "Heart Rate"
         case .heartRateVariability: "Heart Rate Variability"
+        case .heartRateVariabilityRMSSD: "Heart Rate Variability (RMSSD)"
         case .highHeartRateEvents: "High Heart Rate Notifications"
         case .irregularHeartRhythmEvents: "Irregular Heart Rhythm Notifications"
         case .lowHeartRateEvents: "Low Heart Rate Notifications"
@@ -50,6 +52,7 @@ public enum HeartType: String, CaseIterable, Sendable {
         case .cardioRecovery: "BPM"
         case .heartRate: "BPM"
         case .heartRateVariability: "ms"
+        case .heartRateVariabilityRMSSD: "ms"
         case .highHeartRateEvents: "events"
         case .irregularHeartRhythmEvents: "events"
         case .lowHeartRateEvents: "events"
@@ -79,6 +82,8 @@ public protocol HeartManagerProtocol {
     func cardioFitness() async throws -> CardioFitness
     func cardioRecovery() async throws -> CardioRecovery
     func heartRateVariability() async throws -> HeartRateVariability
+    /// Requires iOS 27.0+. Throws `AsyncParsingError.unsupportedOSVersion` on earlier OS versions.
+    func heartRateVariabilityRMSSD() async throws -> HeartRateVariabilityRMSSD
     func highHeartRateEvents() async throws -> HighHeartRateEvent
     func irregularHeartRhythmEvents() async throws -> IrregularHeartRhythmEvent
     func lowHeartRateEvents() async throws -> LowHeartRateEvent

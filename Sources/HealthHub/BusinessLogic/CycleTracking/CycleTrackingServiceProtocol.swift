@@ -19,6 +19,7 @@ public enum CycleTrackingType: String, CaseIterable, Sendable {
     // Tracking
     case cervicalMucusQuality
     case contraceptive
+    case bleedingAfterMenopause
     case bleedingAfterPregnancy
     case bleedingDuringPregnancy
     case lactation
@@ -27,6 +28,7 @@ public enum CycleTrackingType: String, CaseIterable, Sendable {
     case pregnancy
     case pregnancyTestResult
     case progesteroneTestResult
+    case menopausalState
     case sexualActivity
     case spotting
 
@@ -46,9 +48,9 @@ public enum CycleTrackingType: String, CaseIterable, Sendable {
         switch self {
         case .abdominalCramps, .bloating, .breastPain, .moodChanges, .vaginalDryness:
             return .symptoms
-        case .cervicalMucusQuality, .contraceptive, .bleedingAfterPregnancy, .bleedingDuringPregnancy,
+        case .cervicalMucusQuality, .contraceptive, .bleedingAfterMenopause, .bleedingAfterPregnancy, .bleedingDuringPregnancy,
              .lactation, .menstruation, .ovulation,
-             .pregnancy, .pregnancyTestResult, .progesteroneTestResult, .sexualActivity, .spotting:
+             .pregnancy, .pregnancyTestResult, .progesteroneTestResult, .menopausalState, .sexualActivity, .spotting:
             return .tracking
         case .infrequentMenstrualCycles, .irregularMenstrualCycles,
              .persistentIntermenstrualBleeding, .prolongedMenstrualPeriods:
@@ -61,12 +63,14 @@ public enum CycleTrackingType: String, CaseIterable, Sendable {
         case .abdominalCramps: "Abdominal Cramps"
         case .bloating: "Bloating"
         case .breastPain: "Breast Pain"
+        case .bleedingAfterMenopause: "Bleeding After Menopause"
         case .bleedingAfterPregnancy: "Bleeding After Pregnancy"
         case .bleedingDuringPregnancy: "Bleeding During Pregnancy"
         case .cervicalMucusQuality: "Cervical Mucus Quality"
         case .contraceptive: "Contraceptive"
         case .lactation: "Lactation"
         case .menstruation: "Menstruation"
+        case .menopausalState: "Menopausal State"
         case .moodChanges: "Mood Changes"
         case .ovulation: "Ovulation Test Result"
         case .pregnancy: "Pregnancy"
@@ -100,12 +104,16 @@ public protocol CycleTrackingProtocol {
     func abdominalCramps() async throws -> GenericSymptomModel
     func bloating() async throws -> GenericSymptomModel
     func breastPain() async throws -> GenericSymptomModel
+    /// Requires iOS 27.0+. Throws `AsyncParsingError.unsupportedOSVersion` on earlier OS versions.
+    func bleedingAfterMenopause() async throws -> BleedingAfterMenopause
     func bleedingAfterPregnancy() async throws -> BleedingAfterPregnancy
     func bleedingDuringPregnancy() async throws -> BleedingDuringPregnancy
     func cervicalMucusQuality() async throws -> CervicalMucusQuality
     func contraceptive() async throws -> Contraceptive
     func lactation() async throws -> Lactation
     func menstruation() async throws -> Menstruation
+    /// Requires iOS 27.0+. Throws `AsyncParsingError.unsupportedOSVersion` on earlier OS versions.
+    func menopausalState() async throws -> MenopausalState
     func moodChanges() async throws -> GenericSymptomModel
     func ovulation() async throws -> Ovulation
     func pregnancy() async throws -> Pregnancy
@@ -125,12 +133,16 @@ public protocol CycleTrackingProtocol {
     func saveAbdominalCramps(model: GenericSymptomModel, extra: [String: Sendable]?) async throws
     func saveBloating(model: GenericSymptomModel, extra: [String: Sendable]?) async throws
     func saveBreastPain(model: GenericSymptomModel, extra: [String: Sendable]?) async throws
+    /// Requires iOS 27.0+. Throws `AsyncParsingError.unsupportedOSVersion` on earlier OS versions.
+    func saveBleedingAfterMenopause(model: BleedingAfterMenopause, extra: [String: Sendable]?) async throws
     func saveBleedingAfterPregnancy(model: BleedingAfterPregnancy, extra: [String: Sendable]?) async throws
     func saveBleedingDuringPregnancy(model: BleedingDuringPregnancy, extra: [String: Sendable]?) async throws
     func saveCervicalMucusQuality(model: CervicalMucusQuality, extra: [String: Sendable]?) async throws
     func saveContraceptive(model: Contraceptive, extra: [String: Sendable]?) async throws
     func saveLactation(model: Lactation, extra: [String: Sendable]?) async throws
     func saveMenstruation(model: Menstruation, extra: [String: Sendable]?) async throws
+    /// Requires iOS 27.0+. Throws `AsyncParsingError.unsupportedOSVersion` on earlier OS versions.
+    func saveMenopausalState(model: MenopausalState, extra: [String: Sendable]?) async throws
     func saveMoodChanges(model: GenericSymptomModel, extra: [String: Sendable]?) async throws
     func saveOvulation(model: Ovulation, extra: [String: Sendable]?) async throws
     func savePregnancy(model: Pregnancy, extra: [String: Sendable]?) async throws

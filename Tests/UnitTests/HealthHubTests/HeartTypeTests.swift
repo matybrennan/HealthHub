@@ -48,6 +48,16 @@ struct HeartTypeTests {
         #expect(HeartType.heartRateVariability.isSaveable == false)
     }
 
+    @Test("RMSSD heart rate variability average")
+    func heartRateVariabilityRMSSDAverage() {
+        let model = HeartRateVariabilityRMSSD(items: [
+            .init(rmssd: 30, date: .now),
+            .init(rmssd: 50, date: .now)
+        ])
+
+        #expect(model.averageRMSSD == 40)
+    }
+
     @Test("Atrial fibrillation display name")
     func atrialFibrillationDisplayName() {
         #expect(HeartType.atrialFibrillation.displayName == "Atrial Fibrillation")

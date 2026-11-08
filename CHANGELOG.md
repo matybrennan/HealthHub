@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Swift 6.4 package manifest support and Xcode 27.2 CI coverage
+- iOS 27 HealthKit support for RMSSD heart-rate variability, menopausal state, and bleeding after menopause
+- Example views for RMSSD heart-rate variability and menopause tracking, with availability messaging
+- Availability filtering for dynamic `HealthObjectType` authorization requests
 - `HeartType` enum with `displayName`, `unit`, and `isSaveable` properties
 - `BodyMeasurementType` enum with `displayName`, `unit`, and `isSaveable` properties
 - `CycleTrackingType` enum with `displayName`, `isSaveable`, and category grouping
@@ -33,6 +37,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Corrected several `HealthObjectType` cases that incorrectly reported `sharable: nil` when the underlying HealthKit type is writable (e.g. `heartRateVariability`, `restingHeartRate`, `underwaterDepth`)
 
 ### Changed
+- The example app now builds in Swift 6 language mode and reports HealthKit authorization errors
+- Generated SwiftPM workspace data is ignored to keep clones clean
 - Body, Vitals, Respiratory, and Mobility service protocols now accept `DateRangeType` parameter
 - All shared "Case" protocols (BloodPressureCase, CardioFitnessCase, etc.) support date range filtering
 - Backwards compatible — existing code without date range parameters continues to work via protocol extensions

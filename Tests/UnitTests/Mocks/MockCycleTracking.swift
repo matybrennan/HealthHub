@@ -9,12 +9,14 @@ final class MockCycleTracking: CycleTrackingProtocol {
     var saveCallCount = 0
 
     var stubbedSymptom = GenericSymptomModel(items: [], type: HKCategoryType(.abdominalCramps))
+    var stubbedBleedingAfterMenopause = BleedingAfterMenopause(items: [])
     var stubbedBleedingAfterPregnancy = BleedingAfterPregnancy(items: [])
     var stubbedBleedingDuringPregnancy = BleedingDuringPregnancy(items: [])
     var stubbedCervicalMucusQuality = CervicalMucusQuality(items: [])
     var stubbedContraceptive = Contraceptive(items: [])
     var stubbedLactation = Lactation(items: [])
     var stubbedMenstruation = Menstruation(items: [])
+    var stubbedMenopausalState = MenopausalState(items: [])
     var stubbedOvulation = Ovulation(items: [])
     var stubbedPregnancy = Pregnancy(items: [])
     var stubbedPregnancyTestResult = PregnancyTestResult(items: [])
@@ -42,12 +44,14 @@ final class MockCycleTracking: CycleTrackingProtocol {
     func abdominalCramps() async throws -> GenericSymptomModel { try await fetch(stubbedSymptom) }
     func bloating() async throws -> GenericSymptomModel { try await fetch(stubbedSymptom) }
     func breastPain() async throws -> GenericSymptomModel { try await fetch(stubbedSymptom) }
+    func bleedingAfterMenopause() async throws -> BleedingAfterMenopause { try await fetch(stubbedBleedingAfterMenopause) }
     func bleedingAfterPregnancy() async throws -> BleedingAfterPregnancy { try await fetch(stubbedBleedingAfterPregnancy) }
     func bleedingDuringPregnancy() async throws -> BleedingDuringPregnancy { try await fetch(stubbedBleedingDuringPregnancy) }
     func cervicalMucusQuality() async throws -> CervicalMucusQuality { try await fetch(stubbedCervicalMucusQuality) }
     func contraceptive() async throws -> Contraceptive { try await fetch(stubbedContraceptive) }
     func lactation() async throws -> Lactation { try await fetch(stubbedLactation) }
     func menstruation() async throws -> Menstruation { try await fetch(stubbedMenstruation) }
+    func menopausalState() async throws -> MenopausalState { try await fetch(stubbedMenopausalState) }
     func moodChanges() async throws -> GenericSymptomModel { try await fetch(stubbedSymptom) }
     func ovulation() async throws -> Ovulation { try await fetch(stubbedOvulation) }
     func pregnancy() async throws -> Pregnancy { try await fetch(stubbedPregnancy) }
@@ -66,12 +70,14 @@ final class MockCycleTracking: CycleTrackingProtocol {
     func saveAbdominalCramps(model: GenericSymptomModel, extra: [String: Sendable]?) async throws { try await save() }
     func saveBloating(model: GenericSymptomModel, extra: [String: Sendable]?) async throws { try await save() }
     func saveBreastPain(model: GenericSymptomModel, extra: [String: Sendable]?) async throws { try await save() }
+    func saveBleedingAfterMenopause(model: BleedingAfterMenopause, extra: [String: Sendable]?) async throws { try await save() }
     func saveBleedingAfterPregnancy(model: BleedingAfterPregnancy, extra: [String: Sendable]?) async throws { try await save() }
     func saveBleedingDuringPregnancy(model: BleedingDuringPregnancy, extra: [String: Sendable]?) async throws { try await save() }
     func saveCervicalMucusQuality(model: CervicalMucusQuality, extra: [String: Sendable]?) async throws { try await save() }
     func saveContraceptive(model: Contraceptive, extra: [String: Sendable]?) async throws { try await save() }
     func saveLactation(model: Lactation, extra: [String: Sendable]?) async throws { try await save() }
     func saveMenstruation(model: Menstruation, extra: [String: Sendable]?) async throws { try await save() }
+    func saveMenopausalState(model: MenopausalState, extra: [String: Sendable]?) async throws { try await save() }
     func saveMoodChanges(model: GenericSymptomModel, extra: [String: Sendable]?) async throws { try await save() }
     func saveOvulation(model: Ovulation, extra: [String: Sendable]?) async throws { try await save() }
     func savePregnancy(model: Pregnancy, extra: [String: Sendable]?) async throws { try await save() }
