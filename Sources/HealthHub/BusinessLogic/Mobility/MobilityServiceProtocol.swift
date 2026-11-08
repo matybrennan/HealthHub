@@ -20,6 +20,7 @@ public enum MobilityType: String, CaseIterable, Sendable {
     case walkingAsymmetry
     case walkingSpeed
     case walkingSteadiness
+    case walkingSteadinessEvent
     case walkingStepLength
 
     public var displayName: String {
@@ -35,6 +36,7 @@ public enum MobilityType: String, CaseIterable, Sendable {
         case .walkingAsymmetry: "Walking Asymmetry"
         case .walkingSpeed: "Walking Speed"
         case .walkingSteadiness: "Walking Steadiness"
+        case .walkingSteadinessEvent: "Walking Steadiness Notifications"
         case .walkingStepLength: "Walking Step Length"
         }
     }
@@ -52,6 +54,7 @@ public enum MobilityType: String, CaseIterable, Sendable {
         case .walkingAsymmetry: "%"
         case .walkingSpeed: "km/hr"
         case .walkingSteadiness: "%"
+        case .walkingSteadinessEvent: "events"
         case .walkingStepLength: "cm"
         }
     }
@@ -59,7 +62,7 @@ public enum MobilityType: String, CaseIterable, Sendable {
     /// Whether this type can be saved by third-party apps
     public var isSaveable: Bool {
         switch self {
-        case .walkingAsymmetry, .walkingSteadiness: false
+        case .walkingAsymmetry, .walkingSteadiness, .walkingSteadinessEvent: false
         default: true
         }
     }
@@ -79,6 +82,7 @@ public protocol MobilityServiceProtocol {
     func walkingAsymmetry(from dateRange: DateRangeType) async throws -> WalkingAsymmetry
     func walkingSpeed(from dateRange: DateRangeType) async throws -> WalkingSpeed
     func walkingSteadiness(from dateRange: DateRangeType) async throws -> WalkingSteadiness
+    func walkingSteadinessEvent(from dateRange: DateRangeType) async throws -> WalkingSteadinessEvent
     func walkingStepLength(from dateRange: DateRangeType) async throws -> WalkingStepLength
 
     // Save
@@ -108,6 +112,6 @@ public extension MobilityServiceProtocol {
     func walkingAsymmetry() async throws -> WalkingAsymmetry { try await walkingAsymmetry(from: .allTime) }
     func walkingSpeed() async throws -> WalkingSpeed { try await walkingSpeed(from: .allTime) }
     func walkingSteadiness() async throws -> WalkingSteadiness { try await walkingSteadiness(from: .allTime) }
+    func walkingSteadinessEvent() async throws -> WalkingSteadinessEvent { try await walkingSteadinessEvent(from: .allTime) }
     func walkingStepLength() async throws -> WalkingStepLength { try await walkingStepLength(from: .allTime) }
 }
-

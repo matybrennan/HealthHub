@@ -1,6 +1,6 @@
 # 🏥 HealthHub
 
-[![Swift](https://img.shields.io/badge/Swift-6.3-orange.svg)](https://swift.org)
+[![Swift](https://img.shields.io/badge/Swift-6.4-orange.svg)](https://swift.org)
 [![Platform](https://img.shields.io/badge/Platform-iOS_26+-blue.svg)](https://developer.apple.com/ios/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![SPM](https://img.shields.io/badge/SPM-Compatible-brightgreen.svg)](https://swift.org/package-manager/)
@@ -13,7 +13,7 @@ A modern Swift library that makes HealthKit integration simple, testable, and el
 ## ✨ Features
 
 - 🏃 **Activity** — Steps, workouts, active energy, cycling, running, swimming & more
-- ❤️ **Heart** — Heart rate, HRV, AFib, blood pressure, cardio fitness
+- ❤️ **Heart** — Heart rate, HRV (SDNN and RMSSD), AFib, blood pressure, cardio fitness
 - 🧘 **Mental Wellbeing** — Mindfulness, state of mind, GAD-7, PHQ-9, sleep, daylight
 - 🫁 **Respiratory** — Blood oxygen, respiratory rate, forced vital capacity
 - 🍎 **Nutrition** — Macronutrients, vitamins, minerals, hydration, caffeine
@@ -22,9 +22,19 @@ A modern Swift library that makes HealthKit integration simple, testable, and el
 - 🔬 **Other Data** — Alcohol, hand washing, UV exposure, insulin & more
 - 🧬 **Characteristics** — Biological sex, blood type, DOB, skin type, activity move mode
 - 🚴 **Mobility** — Walking steadiness, stair speed, stride length
-- 🩸 **Cycle Tracking** — Menstruation, ovulation, contraceptives, pregnancy, lactation, cycle notifications
+- 🩸 **Cycle Tracking** — Menstruation, ovulation, contraceptives, pregnancy, menopause, lactation, cycle notifications
 - 🤒 **Symptoms** — 35+ symptom types
 - 👂 **Hearing** — Environmental audio, headphone audio, audiograms
+- 📋 **Clinical Records** — Allergies, conditions, immunizations, lab results, medications, procedures, vitals, coverage, clinical notes (FHIR-backed)
+- 📄 **CDA Documents** — Legacy clinical document (`HKCDADocumentSample`) support
+- 💓 **Electrocardiogram** — Watch ECG classification & voltage waveform measurements
+- 📈 **Heartbeat Series** — Beat-to-beat irregular rhythm precursor data (read + write)
+- ✅ **Verifiable Clinical Records** — Vaccination & lab "card" records (SMART Health Cards)
+- 📎 **Attachments** — Attach files/images to any HealthKit sample or workout
+- 💊 **Medications** — User-annotated medication schedules & dose events
+- 👓 **Vision Prescriptions** — Glasses & contact lens prescriptions (full read + write)
+- 🍽️ **Food Correlation** — Group nutrition samples into meals via `HKCorrelationTypeIdentifier.food`
+- 🏊 **Multi-Activity Workouts** — Composite workouts (e.g. triathlons) and workout effort score linking
 
 ---
 
@@ -36,13 +46,13 @@ Add HealthHub to your `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/matybrennan/HealthHub", from: "3.3.0")
+    .package(url: "https://github.com/matybrennan/HealthHub", from: "3.4.0")
 ]
 ```
 
 Or add it via Xcode: **File → Add Package Dependencies** → paste the URL above.
 
-> ⚠️ **Requires iOS 26+** (Package version 3.2.0 and above)
+> ⚠️ **Requires iOS 26+ and Swift 6.4** (Xcode 27.2 or later).
 
 ---
 
@@ -103,7 +113,15 @@ HealthHubManager (facade)
 ├── RespiratoryService
 ├── VitalsService
 ├── OtherDataService
-└── HearingService
+├── HearingService
+├── ClinicalRecordsService
+├── CDADocumentsService
+├── ElectrocardiogramService
+├── HeartbeatSeriesService
+├── VerifiableClinicalRecordsService
+├── AttachmentsService
+├── MedicationsService
+└── VisionPrescriptionsService
 ```
 
 Every layer is backed by protocols and supports dependency injection:
@@ -177,6 +195,8 @@ try await hub.configuration.requestAuthorization(
 // Check individual type status
 let status = hub.configuration.authorizationStatus(for: HealthObjectType.heartRate)
 ```
+
+`requestAuthorization` automatically skips `HealthObjectType` cases that are unavailable on the current OS. Check `isAvailable` before directly using a type introduced after your deployment target.
 
 ---
 
@@ -298,6 +318,8 @@ try await hub.activityManager.workout.saveWorkout(
 | `workoutHeartRate(for:endDate:)` | Heart rate during workout |
 | `workoutEvents(for:endDate:)` | Laps, pauses, segments |
 | `workoutDetail(for:endDate:)` | Combined rich detail |
+| `workoutActivities(for:endDate:)` | Sub-activity segments for composite workouts (e.g. triathlons) |
+| `workoutEffortRelationships(for:endDate:)` | Links a workout to its linked effort score sample |
 
 #### Activity Service
 
@@ -314,9 +336,9 @@ print("Total: \(cycling.totalKilometers) km")
 <details>
 <summary>View all activity data types</summary>
 
-**Distance** — cyclingDistance, walkingRunningDistance, swimmingDistance, wheelchairDistance, downhillSnowSportsDistance, crossCountrySkiingDistance
+**Distance** — cyclingDistance, walkingRunningDistance, swimmingDistance, wheelchairDistance, downhillSnowSportsDistance, crossCountrySkiingDistance, distanceRowing, distancePaddleSports, distanceSkatingSports
 
-**Speed** — cyclingSpeed, runningSpeed (with pace), crossCountrySkiingSpeed
+**Speed** — cyclingSpeed, runningSpeed (with pace), crossCountrySkiingSpeed, rowingSpeed, paddleSportsSpeed
 
 **Cycling** — cyclingCadence, cyclingPower, cyclingFunctionalThresholdPower
 
@@ -326,9 +348,9 @@ print("Total: \(cycling.totalKilometers) km")
 
 **Underwater** — underwaterDepth, waterTemperature
 
-**Exercise & Energy** — exerciseMinutes, restingEnergy, standTime, moveTime
+**Exercise & Energy** — exerciseMinutes, restingEnergy, standTime, moveTime, workoutEffortScore (user-entered RPE), estimatedWorkoutEffortScore (Apple-calculated)
 
-**Miscellaneous** — flightsClimbed, pushCount, nikeFuel, physicalEffort (with intensity levels)
+**Miscellaneous** — flightsClimbed, pushCount, nikeFuel, physicalEffort (with intensity levels), appleStandHour
 
 All distance/speed/cycling/running/swimming types support save.
 
@@ -350,6 +372,11 @@ print("Latest: \(bp.mostRecent?.value ?? "")")
 let hrv = try await hub.heartManager.heartRateVariability()
 print("Average SDNN: \(hrv.averageSDNN) ms")
 
+if #available(iOS 27.0, *) {
+    let rmssd = try await hub.heartManager.heartRateVariabilityRMSSD()
+    print("Average RMSSD: \(rmssd.averageRMSSD) ms")
+}
+
 let resting = try await hub.heartManager.restingHeartRate()
 print("Resting HR: \(resting.mostRecent?.bpm ?? 0) BPM")
 ```
@@ -362,8 +389,11 @@ print("Resting HR: \(resting.mostRecent?.bpm ?? 0) BPM")
 | Cardio Fitness (VO₂ Max) | ✅ |
 | Cardio Recovery | ✅ |
 | Heart Rate Variability (SDNN) | — |
+| Heart Rate Variability (RMSSD, iOS 27+) | — |
 | High Heart Rate Events | — |
 | Irregular Heart Rhythm Events | — |
+| Low Cardio Fitness Event Notifications | — |
+| Hypertension Event Notifications (iOS 26.2+) | — |
 | Low Heart Rate Events | — |
 | Peripheral Perfusion Index | ✅ |
 | Resting Heart Rate | — |
@@ -527,6 +557,25 @@ Results are sorted by date (most recent first) and include both start/end dates 
 
 `NutritionType` conforms to `CaseIterable` for easy enumeration of all types.
 
+**Food Correlation**
+
+Group multiple nutrition samples into a single meal entry using `HKCorrelationTypeIdentifier.food`:
+
+```swift
+let meal = try await hub.nutrition.food()
+print("Latest meal: \(meal.mostRecent?.foodType ?? "")")
+print("Calories: \(meal.mostRecent?.nutrients[.energyConsumed] ?? 0)")
+
+// Save a meal grouping multiple nutrients together
+let item = Food.Item(
+    foodType: "Grilled Chicken Salad",
+    nutrients: [.energyConsumed: 350, .protein: 40, .carbohydrates: 12],
+    startDate: mealStart,
+    endDate: mealEnd
+)
+try await hub.nutrition.saveFood(model: item, extra: nil)
+```
+
 ---
 
 ### Respiratory
@@ -598,7 +647,7 @@ Results are sorted by date (most recent first).
 
 ### Cycle Tracking
 
-Full cycle tracking with contraceptive logging, pregnancy tracking, lactation, and Apple cycle notifications:
+Full cycle tracking with contraceptive logging, pregnancy and menopause tracking, lactation, and Apple cycle notifications:
 
 ```swift
 let menstruation = try await hub.cycleTracking.menstruation()
@@ -607,6 +656,14 @@ print("Cycle starts: \(menstruation.cycleStarts.count)")
 
 let contraceptive = try await hub.cycleTracking.contraceptive()
 print("Method: \(contraceptive.mostRecent?.type.name ?? "")")
+
+if #available(iOS 27.0, *) {
+    let menopause = try await hub.cycleTracking.menopausalState()
+    print("State: \(menopause.mostRecent?.state.name ?? "")")
+
+    let bleeding = try await hub.cycleTracking.bleedingAfterMenopause()
+    print("Most recent bleeding: \(bleeding.mostRecent?.type.name ?? "")")
+}
 
 // Cycle notifications (read-only, generated by Apple)
 let irregular = try await hub.cycleTracking.irregularMenstrualCycles()
@@ -624,10 +681,14 @@ Results are sorted by date (most recent first) with `mostRecent` computed proper
 | Abdominal Cramps | ✅ |
 | Bloating | ✅ |
 | Breast Pain | ✅ |
+| Bleeding After Menopause (iOS 27+) | ✅ |
+| Bleeding After Pregnancy | ✅ |
+| Bleeding During Pregnancy | ✅ |
 | Cervical Mucus Quality | ✅ |
 | Contraceptive | ✅ |
 | Lactation | ✅ |
 | Menstruation | ✅ |
+| Menopausal State (iOS 27+) | ✅ |
 | Mood Changes | ✅ |
 | Ovulation | ✅ |
 | Pregnancy | ✅ |
@@ -779,6 +840,171 @@ if let recent = audiogram.mostRecent {
 
 ---
 
+### Clinical Records
+
+Read-only access to all 9 `HKClinicalType` health records, with automatic FHIR resource passthrough when a provider supplies structured data.
+
+```swift
+let allergies = try await hub.clinicalRecords.allergyRecord()
+print("Latest: \(allergies.mostRecent?.displayName ?? "")")
+print("Records with FHIR data: \(allergies.recordsWithFHIRDataCount)")
+
+let labs = try await hub.clinicalRecords.labResultRecord()
+if let fhirData = labs.mostRecent?.fhirData {
+    // Parse fhirData (JSON) using your own FHIR model of choice
+}
+```
+
+| Method | Description |
+|--------|-------------|
+| `allergyRecord()` | Allergy records |
+| `conditionRecord()` | Condition/diagnosis records |
+| `immunizationRecord()` | Immunization records |
+| `labResultRecord()` | Lab result records |
+| `medicationRecord()` | Prescribed medication records |
+| `procedureRecord()` | Procedure records |
+| `vitalSignRecord()` | Vital sign records |
+| `coverageRecord()` | Insurance coverage records |
+| `clinicalNoteRecord()` | Clinical note records |
+
+Each returns a `ClinicalRecord` with `items: [ClinicalRecord.Item]` containing `displayName`, `providerName`, `startDate`, and optional `fhirResourceType`/`fhirData`/`fhirVersion`/`sourceURL`.
+
+---
+
+### CDA Documents
+
+Legacy Continuity of Care Document (`HKCDADocumentSample`) support, still present in the HealthKit SDK for older provider integrations.
+
+```swift
+let documents = try await hub.cdaDocuments.cdaDocuments()
+print("Latest: \(documents.mostRecent?.title ?? "")")
+print("Documents with raw data: \(documents.documentsWithDataCount)")
+```
+
+Returns a `CDADocument` with `items: [CDADocument.Item]` containing `title`, `patientName`, `authorName`, `custodianName`, optional `documentData`, and `startDate`/`endDate`.
+
+---
+
+### Electrocardiogram
+
+Read-only access to Apple Watch ECG classifications and their underlying voltage waveform.
+
+```swift
+let ecg = try await hub.electrocardiogram.electrocardiogram()
+print("Classification: \(ecg.mostRecent?.classification ?? "")")
+print("Average heart rate: \(ecg.averageHeartRate ?? 0) BPM")
+print("Total voltage measurements: \(ecg.totalVoltageMeasurements)")
+```
+
+| Method | Description |
+|--------|-------------|
+| `electrocardiogram()` | All ECG samples (classification, average heart rate, symptoms status) |
+| `voltageMeasurements(for:)` | Raw voltage waveform (mV) for a given `HKElectrocardiogram` sample |
+
+---
+
+### Heartbeat Series
+
+Beat-to-beat interval data collected around irregular rhythm notifications, with full read and write support.
+
+```swift
+let series = try await hub.heartbeatSeries.heartbeatSeries()
+print("Latest series started: \(series.mostRecent?.startDate ?? Date())")
+
+// Save a new heartbeat series
+try await hub.heartbeatSeries.saveHeartbeatSeries(model: record, extra: nil)
+```
+
+| Method | Description |
+|--------|-------------|
+| `heartbeatSeries()` | All recorded heartbeat series sessions |
+| `heartbeats(for:)` | Individual beat-to-beat timing for a given `HKHeartbeatSeriesSample` |
+| `saveHeartbeatSeries(model:extra:)` | Save a new heartbeat series recording |
+
+---
+
+### Verifiable Clinical Records
+
+Read-only access to SMART Health Card style vaccination and lab records (`HKVerifiableClinicalRecord`).
+
+```swift
+let records = try await hub.verifiableClinicalRecords.verifiableClinicalRecords()
+print("Latest record: \(records.mostRecent?.displayName ?? "")")
+```
+
+---
+
+### Attachments
+
+Cross-cutting support for attaching files (photos, PDFs, etc.) to any `HKObject` — samples, workouts, or clinical records.
+
+```swift
+let attachment = try await hub.attachments.addAttachment(
+    data: imageData,
+    name: "wound-photo.jpg",
+    contentType: "image/jpeg",
+    to: workoutSample
+)
+
+let all = try await hub.attachments.attachments(for: workoutSample)
+let content = try await hub.attachments.attachmentContent(for: attachment, from: workoutSample)
+try await hub.attachments.deleteAttachment(attachment, from: workoutSample)
+```
+
+| Method | Description |
+|--------|-------------|
+| `addAttachment(data:name:contentType:to:)` | Attach a file to any `HKObject` |
+| `attachments(for:)` | List attachments on an `HKObject` |
+| `attachmentContent(for:from:)` | Download the raw `Data` for an attachment |
+| `deleteAttachment(_:from:)` | Remove an attachment |
+
+---
+
+### Medications
+
+Read-only access to `HKUserAnnotatedMedication` — user-managed medication schedules and dose events.
+
+```swift
+let medications = try await hub.medications.medications()
+print("Latest: \(medications.mostRecent?.displayName ?? "")")
+print("Total dose events: \(medications.totalDoseEvents)")
+```
+
+Returns a `Medications` model with `items: [Medications.Item]`, each with a `doseEvents: [Medications.DoseEvent]` (`.taken`, `.skipped`, `.snoozed`, `.notInteracted`).
+
+---
+
+### Vision Prescriptions
+
+Full read and write support for glasses and contact lens prescriptions.
+
+```swift
+let glasses = try await hub.visionPrescriptions.glassesPrescriptions()
+print("Right eye sphere: \(glasses.mostRecent?.rightEye?.lens.sphere ?? 0)")
+
+let contacts = try await hub.visionPrescriptions.contactsPrescriptions()
+print("Brand: \(contacts.mostRecent?.brand ?? "")")
+
+// Save a new glasses prescription
+let item = GlassesPrescription.Item(
+    rightEye: .init(lens: .init(sphere: -1.5, cylinder: -0.5, axis: 90)),
+    leftEye: .init(lens: .init(sphere: -1.75)),
+    dateIssued: Date()
+)
+try await hub.visionPrescriptions.saveGlassesPrescription(model: item, extra: nil)
+```
+
+| Method | Description |
+|--------|-------------|
+| `glassesPrescriptions()` | All glasses prescriptions (lens spec, prism, vertex/pupillary distance) |
+| `contactsPrescriptions()` | All contact lens prescriptions (lens spec, base curve, diameter, brand) |
+| `saveGlassesPrescription(model:extra:)` | Save a new glasses prescription |
+| `saveContactsPrescription(model:extra:)` | Save a new contact lens prescription |
+
+`VisionPrism` supports both polar (`amount`/`angle`) and rectangular (`verticalAmount`/`horizontalAmount`) coordinate systems.
+
+---
+
 ## 📅 Date Range Filtering
 
 Most services support flexible date range filtering with `DateRangeType`:
@@ -842,7 +1068,7 @@ struct WorkoutTests {
 The `HealthHubExample/` project demonstrates:
 
 - Requesting HealthKit authorization
-- Fetching steps, active energy, workouts, heart rate, weight, and sleep
+- Fetching steps, active energy, workouts, heart rate, RMSSD heart-rate variability, menopause data, weight, and sleep
 - Using `DateRangeType` for date-filtered queries
 - `@Observable` integration with SwiftUI
 - Dependency injection with `HealthHubManager`

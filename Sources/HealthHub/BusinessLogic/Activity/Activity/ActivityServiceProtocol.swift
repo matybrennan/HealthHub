@@ -12,6 +12,9 @@ public protocol ActivityServiceProtocol {
     // MARK: - Distance
     func crossCountrySkiingDistance() async throws -> CrossCountrySkiingDistance
     func cyclingDistance() async throws -> CyclingDistance
+    func paddleSportsDistance() async throws -> PaddleSportsDistance
+    func rowingDistance() async throws -> RowingDistance
+    func skatingSportsDistance() async throws -> SkatingSportsDistance
     func downhillSnowSportsDistance() async throws -> DownhillSnowSportsDistance
     func swimmingDistance() async throws -> SwimmingDistance
     func walkingRunningDistance() async throws -> WalkingRunningDistance
@@ -20,6 +23,8 @@ public protocol ActivityServiceProtocol {
     // MARK: - Speed
     func crossCountrySkiingSpeed() async throws -> CrossCountrySkiingSpeed
     func cyclingSpeed() async throws -> CyclingSpeed
+    func paddleSportsSpeed() async throws -> PaddleSportsSpeed
+    func rowingSpeed() async throws -> RowingSpeed
     func runningSpeed() async throws -> RunningSpeed
 
     // MARK: - Cycling
@@ -35,9 +40,12 @@ public protocol ActivityServiceProtocol {
 
     // MARK: - Exercise & Energy
     func exerciseMinutes() async throws -> ExerciseMinutes
+    func estimatedWorkoutEffortScore() async throws -> EstimatedWorkoutEffortScore
     func moveTime() async throws -> MoveTime
     func restingEnergy() async throws -> RestingEnergy
     func standTime() async throws -> StandTime
+    func workoutEffortScore() async throws -> WorkoutEffortScore
+    func appleStandHour() async throws -> StandHourEvent
 
     // MARK: - Swimming
     func swimmingStrokeCount() async throws -> SwimmingStrokeCount
@@ -64,13 +72,19 @@ public protocol ActivityServiceProtocol {
     func saveDownhillSnowSportsDistance(model: DownhillSnowSportsDistance, extra: [String: Sendable]?) async throws
     func saveFlightsClimbed(model: FlightsClimbed, extra: [String: Sendable]?) async throws
     func saveNikeFuel(model: NikeFuel, extra: [String: Sendable]?) async throws
+    func savePaddleSportsDistance(model: PaddleSportsDistance, extra: [String: Sendable]?) async throws
+    func savePaddleSportsSpeed(model: PaddleSportsSpeed, extra: [String: Sendable]?) async throws
     func savePhysicalEffort(model: PhysicalEffort, extra: [String: Sendable]?) async throws
     func savePushCount(model: PushCount, extra: [String: Sendable]?) async throws
     func saveRestingEnergy(model: RestingEnergy, extra: [String: Sendable]?) async throws
+    func saveRowingDistance(model: RowingDistance, extra: [String: Sendable]?) async throws
+    func saveRowingSpeed(model: RowingSpeed, extra: [String: Sendable]?) async throws
     func saveRunningPower(model: RunningPower, extra: [String: Sendable]?) async throws
     func saveRunningSpeed(model: RunningSpeed, extra: [String: Sendable]?) async throws
+    func saveSkatingSportsDistance(model: SkatingSportsDistance, extra: [String: Sendable]?) async throws
     func saveSwimmingDistance(model: SwimmingDistance, extra: [String: Sendable]?) async throws
     func saveSwimmingStrokeCount(model: SwimmingStrokeCount, extra: [String: Sendable]?) async throws
     func saveWalkingRunningDistance(model: WalkingRunningDistance, extra: [String: Sendable]?) async throws
     func saveWheelchairDistance(model: WheelchairDistance, extra: [String: Sendable]?) async throws
+    func saveWorkoutEffortScore(model: WorkoutEffortScore, extra: [String: Sendable]?) async throws
 }

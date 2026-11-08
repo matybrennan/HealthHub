@@ -53,6 +53,11 @@ private extension CycleTracking {
         let model = CycleNotification(notificationType: notificationType, items: items)
         return model
     }
+
+    func fetchVaginalBleedingSamples(categoryIdentifier: HKCategoryTypeIdentifier) async throws -> [HKCategorySample] {
+        let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
+        return try await fetchCategorySamples(categoryIdentifier: categoryIdentifier, sortDescriptors: [sortDescriptor])
+    }
 }
 
 // MARK: - CycleTrackingProtocol
@@ -68,6 +73,40 @@ extension CycleTracking: CycleTrackingProtocol {
     
     public func breastPain() async throws -> GenericSymptomModel {
         try await fetchGenericCycleResult(categoryIdentifier: .breastPain)
+    }
+
+    public func bleedingAfterMenopause() async throws -> BleedingAfterMenopause {
+        guard #available(iOS 27.0, *) else {
+            throw AsyncParsingError.unsupportedOSVersion("Bleeding after menopause")
+        }
+
+        let samples = try await fetchVaginalBleedingSamples(categoryIdentifier: .bleedingAfterMenopause)
+        let items = samples.map { item -> BleedingAfterMenopause.Item in
+            let type = VaginalBleedingType(rawValue: item.value) ?? .unspecified
+            return BleedingAfterMenopause.Item(type: type, startDate: item.startDate, endDate: item.endDate)
+        }
+
+        return BleedingAfterMenopause(items: items)
+    }
+
+    public func bleedingAfterPregnancy() async throws -> BleedingAfterPregnancy {
+        let samples = try await fetchVaginalBleedingSamples(categoryIdentifier: .bleedingAfterPregnancy)
+        let items = samples.map { item -> BleedingAfterPregnancy.Item in
+            let type = VaginalBleedingType(rawValue: item.value) ?? .unspecified
+            return BleedingAfterPregnancy.Item(type: type, startDate: item.startDate, endDate: item.endDate)
+        }
+
+        return BleedingAfterPregnancy(items: items)
+    }
+
+    public func bleedingDuringPregnancy() async throws -> BleedingDuringPregnancy {
+        let samples = try await fetchVaginalBleedingSamples(categoryIdentifier: .bleedingDuringPregnancy)
+        let items = samples.map { item -> BleedingDuringPregnancy.Item in
+            let type = VaginalBleedingType(rawValue: item.value) ?? .unspecified
+            return BleedingDuringPregnancy.Item(type: type, startDate: item.startDate, endDate: item.endDate)
+        }
+
+        return BleedingDuringPregnancy(items: items)
     }
     
     public func cervicalMucusQuality() async throws -> CervicalMucusQuality {
@@ -107,6 +146,21 @@ extension CycleTracking: CycleTrackingProtocol {
     
     public func menstruation() async throws -> Menstruation {
         try await baseMenstruation()
+    }
+
+    public func menopausalState() async throws -> MenopausalState {
+        guard #available(iOS 27.0, *) else {
+            throw AsyncParsingError.unsupportedOSVersion("Menopausal state")
+        }
+
+        let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
+        let samples = try await fetchCategorySamples(categoryIdentifier: .menopausalState, sortDescriptors: [sortDescriptor])
+        let items = samples.map { item -> MenopausalState.Item in
+            let state = MenopausalState.Item.State(rawValue: item.value) ?? .none
+            return MenopausalState.Item(state: state, startDate: item.startDate, endDate: item.endDate)
+        }
+
+        return MenopausalState(items: items)
     }
     
     public func moodChanges() async throws -> GenericSymptomModel {
@@ -211,6 +265,43 @@ extension CycleTracking: CycleTrackingProtocol {
         try await saveGenericCycleResult(model: model, categoryIdentifier: .breastPain, extra: extra)
     }
 
+    public func saveBleedingAfterMenopause(model: BleedingAfterMenopause, extra: [String: Sendable]?) async throws {
+        guard #available(iOS 27.0, *) else {
+            throw AsyncParsingError.unsupportedOSVersion("Bleeding after menopause")
+        }
+
+        let type = try HealthParser.categoryType(for: .bleedingAfterMenopause)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await HealthStoreProvider.shared.save(sampleObjects)
+    }
+
+    public func saveBleedingAfterPregnancy(model: BleedingAfterPregnancy, extra: [String: Sendable]?) async throws {
+        let type = try HealthParser.categoryType(for: .bleedingAfterPregnancy)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await HealthStoreProvider.shared.save(sampleObjects)
+    }
+
+    public func saveBleedingDuringPregnancy(model: BleedingDuringPregnancy, extra: [String: Sendable]?) async throws {
+        let type = try HealthParser.categoryType(for: .bleedingDuringPregnancy)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            HKCategorySample(type: type, value: $0.type.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await HealthStoreProvider.shared.save(sampleObjects)
+    }
+
     public func saveCervicalMucusQuality(model: CervicalMucusQuality, extra: [String: Sendable]?) async throws {
         let type = try HealthParser.categoryType(for: .cervicalMucusQuality)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
@@ -246,6 +337,21 @@ extension CycleTracking: CycleTrackingProtocol {
 
     public func saveMenstruation(model: Menstruation, extra: [String: Sendable]?) async throws {
         try await saveBaseMenstruation(model, extra: extra)
+    }
+
+    public func saveMenopausalState(model: MenopausalState, extra: [String: Sendable]?) async throws {
+        guard #available(iOS 27.0, *) else {
+            throw AsyncParsingError.unsupportedOSVersion("Menopausal state")
+        }
+
+        let type = try HealthParser.categoryType(for: .menopausalState)
+        try HealthParser.checkSharingAuthorizationStatus(for: type)
+
+        let sampleObjects = model.items.map {
+            HKCategorySample(type: type, value: $0.state.rawValue, start: $0.startDate, end: $0.endDate, metadata: extra)
+        }
+
+        try await HealthStoreProvider.shared.save(sampleObjects)
     }
 
     public func saveMoodChanges(model: GenericSymptomModel, extra: [String: Sendable]?) async throws {

@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Swift 6.4 package manifest support and Xcode 27.2 CI coverage
+- iOS 27 HealthKit support for RMSSD heart-rate variability, menopausal state, and bleeding after menopause
+- Example views for RMSSD heart-rate variability and menopause tracking, with availability messaging
+- Availability filtering for dynamic `HealthObjectType` authorization requests
 - `HeartType` enum with `displayName`, `unit`, and `isSaveable` properties
 - `BodyMeasurementType` enum with `displayName`, `unit`, and `isSaveable` properties
 - `CycleTrackingType` enum with `displayName`, `isSaveable`, and category grouping
@@ -15,8 +19,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Date range filtering on Body, Vitals, Respiratory, Mobility services
 - Improved example app demonstrating all major features
 - CONTRIBUTING.md, CHANGELOG.md for repo visibility
+- 9 missing `HKQuantityTypeIdentifier` types: rowing/paddle sports distance & speed, skating distance, environmental sound reduction, workout effort score, estimated workout effort score, sleeping breathing disturbances
+- 9 missing `HKCategoryTypeIdentifier` types: Apple Stand Hour, walking steadiness events, pregnancy bleeding events, environmental/headphone audio exposure events, hypertension events, low cardio fitness events, sleep apnea events
+- Multi-activity workout support (`Workout.Activity`) for composite workouts (e.g. triathlons) via `workoutActivities(for:endDate:)`
+- Workout effort relationship linking (`Workout.EffortRelationship`) via `workoutEffortRelationships(for:endDate:)`
+- Clinical Records module covering all 9 `HKClinicalType` records with FHIR resource passthrough
+- CDA Documents module for legacy `HKCDADocumentSample` clinical document support
+- Electrocardiogram module wrapping Watch ECG classification and voltage waveform measurements
+- Heartbeat Series module with full read and write support for beat-to-beat irregular rhythm precursor data
+- Verifiable Clinical Records module for vaccination/lab "card" records
+- Attachments module — cross-cutting support for attaching files to any `HKObject`
+- Medications module wrapping `HKUserAnnotatedMedication`
+- Vision Prescriptions module with full read/write support for glasses and contact lens prescriptions, including prism, vertex/pupillary distance, base curve, and diameter
+- Food correlation support (`HKCorrelationTypeIdentifier.food`) grouping nutrition samples into meals
+
+### Fixed
+- Corrected several `HealthObjectType` cases that incorrectly reported `sharable: nil` when the underlying HealthKit type is writable (e.g. `heartRateVariability`, `restingHeartRate`, `underwaterDepth`)
 
 ### Changed
+- The example app now builds in Swift 6 language mode and reports HealthKit authorization errors
+- Generated SwiftPM workspace data is ignored to keep clones clean
 - Body, Vitals, Respiratory, and Mobility service protocols now accept `DateRangeType` parameter
 - All shared "Case" protocols (BloodPressureCase, CardioFitnessCase, etc.) support date range filtering
 - Backwards compatible — existing code without date range parameters continues to work via protocol extensions

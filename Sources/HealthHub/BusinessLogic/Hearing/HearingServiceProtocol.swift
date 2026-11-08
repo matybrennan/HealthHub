@@ -11,6 +11,9 @@ public protocol HearingServiceProtocol {
 
     // Fetch
     func environmentalAudioExposure() async throws -> EnvironmentalAudioExposureEvent
+    func environmentalAudioExposureEvent() async throws -> EnvironmentalAudioExposureNotification
+    func environmentalSoundReduction() async throws -> EnvironmentalSoundReduction
     func headphoneAudioExposure() async throws -> HeadphoneAudioExposureEvent
+    func headphoneAudioExposureEvent() async throws -> HeadphoneAudioExposureNotification
     func audiogram() async throws -> AudiogramEntry
 }

@@ -63,6 +63,90 @@ public struct WalkingRunningDistance: Sendable {
     public var mostRecent: Item? { items.max(by: { $0.date < $1.date }) }
 }
 
+public struct PaddleSportsDistance: Sendable {
+
+    public struct Item: Sendable {
+        public let distance: Double // meters
+        public let date: Date
+
+        public init(distance: Double, date: Date) {
+            self.distance = distance
+            self.date = date
+        }
+
+        /// Distance in kilometers
+        public var kilometers: Double { distance / 1000 }
+        /// Distance in miles
+        public var miles: Double { distance / 1609.344 }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var totalDistance: Double { items.reduce(0.0) { $0 + $1.distance } }
+    public var totalKilometers: Double { totalDistance / 1000 }
+    public var mostRecent: Item? { items.max(by: { $0.date < $1.date }) }
+}
+
+public struct RowingDistance: Sendable {
+
+    public struct Item: Sendable {
+        public let distance: Double // meters
+        public let date: Date
+
+        public init(distance: Double, date: Date) {
+            self.distance = distance
+            self.date = date
+        }
+
+        /// Distance in kilometers
+        public var kilometers: Double { distance / 1000 }
+        /// Distance in miles
+        public var miles: Double { distance / 1609.344 }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var totalDistance: Double { items.reduce(0.0) { $0 + $1.distance } }
+    public var totalKilometers: Double { totalDistance / 1000 }
+    public var mostRecent: Item? { items.max(by: { $0.date < $1.date }) }
+}
+
+public struct SkatingSportsDistance: Sendable {
+
+    public struct Item: Sendable {
+        public let distance: Double // meters
+        public let date: Date
+
+        public init(distance: Double, date: Date) {
+            self.distance = distance
+            self.date = date
+        }
+
+        /// Distance in kilometers
+        public var kilometers: Double { distance / 1000 }
+        /// Distance in miles
+        public var miles: Double { distance / 1609.344 }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var totalDistance: Double { items.reduce(0.0) { $0 + $1.distance } }
+    public var totalKilometers: Double { totalDistance / 1000 }
+    public var mostRecent: Item? { items.max(by: { $0.date < $1.date }) }
+}
+
 public struct SwimmingDistance: Sendable {
 
     public struct Item: Sendable {
@@ -245,6 +329,60 @@ public struct RunningSpeed: Sendable {
     public var mostRecent: Item? { items.max(by: { $0.date < $1.date }) }
 }
 
+public struct PaddleSportsSpeed: Sendable {
+
+    public struct Item: Sendable {
+        public let speed: Double // m/s
+        public let date: Date
+
+        public init(speed: Double, date: Date) {
+            self.speed = speed
+            self.date = date
+        }
+
+        /// Speed in km/h
+        public var kmPerHour: Double { speed * 3.6 }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var average: Double {
+        items.isEmpty ? 0 : items.reduce(0.0) { $0 + $1.speed } / Double(items.count)
+    }
+    public var mostRecent: Item? { items.max(by: { $0.date < $1.date }) }
+}
+
+public struct RowingSpeed: Sendable {
+
+    public struct Item: Sendable {
+        public let speed: Double // m/s
+        public let date: Date
+
+        public init(speed: Double, date: Date) {
+            self.speed = speed
+            self.date = date
+        }
+
+        /// Speed in km/h
+        public var kmPerHour: Double { speed * 3.6 }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var average: Double {
+        items.isEmpty ? 0 : items.reduce(0.0) { $0 + $1.speed } / Double(items.count)
+    }
+    public var mostRecent: Item? { items.max(by: { $0.date < $1.date }) }
+}
+
 // MARK: - Cycling Specific
 
 public struct CyclingCadence: Sendable {
@@ -411,6 +549,43 @@ public struct MoveTime: Sendable {
     /// Total move time in minutes
     public var total: Double { items.reduce(0.0) { $0 + $1.duration } }
     public var mostRecent: Item? { items.max(by: { $0.date < $1.date }) }
+}
+
+public struct StandHourEvent: Sendable {
+
+    public struct Item: Sendable {
+        public let isStood: Bool
+        public let startDate: Date
+        public let endDate: Date
+
+        public init(isStood: Bool, startDate: Date, endDate: Date) {
+            self.isStood = isStood
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+
+        public var duration: TimeInterval {
+            endDate.timeIntervalSince(startDate)
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var mostRecent: Item? {
+        items.max(by: { $0.endDate < $1.endDate })
+    }
+
+    public var stoodHours: Int {
+        items.filter { $0.isStood }.count
+    }
+
+    public var idleHours: Int {
+        items.count - stoodHours
+    }
 }
 
 // MARK: - Running Specific
@@ -580,6 +755,82 @@ public struct NikeFuel: Sendable {
 }
 
 public struct PhysicalEffort: Sendable {
+
+    public struct Item: Sendable {
+        public let effort: Double // Apple Effort Score (0–10 scale)
+        public let date: Date
+
+        public init(effort: Double, date: Date) {
+            self.effort = effort
+            self.date = date
+        }
+
+        /// Effort intensity level
+        public var intensity: Intensity {
+            switch effort {
+            case ..<3: .low
+            case 3..<6: .moderate
+            case 6..<8: .high
+            default: .veryHigh
+            }
+        }
+
+        public enum Intensity: String, Sendable {
+            case low, moderate, high, veryHigh
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var average: Double {
+        items.isEmpty ? 0 : items.reduce(0.0) { $0 + $1.effort } / Double(items.count)
+    }
+    public var mostRecent: Item? { items.max(by: { $0.date < $1.date }) }
+}
+
+public struct WorkoutEffortScore: Sendable {
+
+    public struct Item: Sendable {
+        public let effort: Double // Apple Effort Score (0–10 scale)
+        public let date: Date
+
+        public init(effort: Double, date: Date) {
+            self.effort = effort
+            self.date = date
+        }
+
+        /// Effort intensity level
+        public var intensity: Intensity {
+            switch effort {
+            case ..<3: .low
+            case 3..<6: .moderate
+            case 6..<8: .high
+            default: .veryHigh
+            }
+        }
+
+        public enum Intensity: String, Sendable {
+            case low, moderate, high, veryHigh
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var average: Double {
+        items.isEmpty ? 0 : items.reduce(0.0) { $0 + $1.effort } / Double(items.count)
+    }
+    public var mostRecent: Item? { items.max(by: { $0.date < $1.date }) }
+}
+
+public struct EstimatedWorkoutEffortScore: Sendable {
 
     public struct Item: Sendable {
         public let effort: Double // Apple Effort Score (0–10 scale)

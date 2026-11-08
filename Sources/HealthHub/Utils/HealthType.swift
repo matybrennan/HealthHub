@@ -67,14 +67,28 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
     case nikeFuel
     case physicalEffort
     case underwaterDepth
+    case distancePaddleSports
+    case paddleSportsSpeed
+    case distanceRowing
+    case rowingSpeed
+    case distanceSkatingSports
+    case estimatedWorkoutEffortScore
+    case workoutEffortScore
+    case appleStandHour
 
     // Heart
     case atrialFibrillation
     case heartRate
     case heartRateVariability
+    /// Available on iOS 27.0+.
+    case heartRateVariabilityRMSSD
     case highHeartRateEvent
     case irregularHeartRhythmEvent
     case lowHeartRateEvent
+    case lowCardioFitnessEvent
+    /// Available on iOS 26.2+. Constructing `sharable`/`readable` for this case on earlier OS
+    /// versions will fail at runtime since the underlying `HKCategoryTypeIdentifier` doesn't exist yet.
+    case hypertensionEvent
     case cardioRecovery
     case peripheralPerfusionIndex
     case restingHeartRate
@@ -87,7 +101,6 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
     case electrodermalActivity
     case height
     case leanBodyMass
-    //case visionPrescription // Probably dont need
     case waistCircumference
     case weight
     case wristTemperature
@@ -103,6 +116,7 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
     case walkingSpeed
     case walkingSteadiness
     case walkingStepLength
+    case walkingSteadinessEvent
 
     // Nutrition
     /// Macronutrients
@@ -154,6 +168,8 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
     
     // Sleep
     case sleepAnalysis
+    case sleepApneaEvent
+    case sleepingBreathingDisturbances
     
     // Mental Wellbeing
     case mindful
@@ -178,6 +194,12 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
     case irregularMenstrualCycles
     case persistentIntermenstrualBleeding
     case prolongedMenstrualPeriods
+    case bleedingDuringPregnancy
+    case bleedingAfterPregnancy
+    /// Available on iOS 27.0+.
+    case bleedingAfterMenopause
+    /// Available on iOS 27.0+.
+    case menopausalState
     
     // Symptoms
     case acne
@@ -239,6 +261,32 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
     case environmentalAudioExposure
     case headphoneAudioExposure
     case audiogram
+    case environmentalAudioExposureEvent
+    case headphoneAudioExposureEvent
+    case environmentalSoundReduction
+
+    /// Whether the underlying HealthKit type exists on the current OS.
+    ///
+    /// Use this when dynamically assembling authorization requests from
+    /// `allCases`, which includes types introduced after the deployment target.
+    public var isAvailable: Bool {
+        switch self {
+        case .hypertensionEvent:
+            if #available(iOS 26.2, *) {
+                true
+            } else {
+                false
+            }
+        case .heartRateVariabilityRMSSD, .bleedingAfterMenopause, .menopausalState:
+            if #available(iOS 27.0, *) {
+                true
+            } else {
+                false
+            }
+        default:
+            true
+        }
+    }
     
     public var sharable: HKSampleType? {
         switch self {
@@ -289,18 +337,34 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .pushCount: HKQuantityType(.pushCount)
         case .nikeFuel: HKQuantityType(.nikeFuel)
         case .physicalEffort: HKQuantityType(.physicalEffort)
-        case .underwaterDepth: nil
+        case .underwaterDepth: HKQuantityType(.underwaterDepth) // audit: writable like other dive/distance metrics (e.g. Oceanic+ writes this)
+        case .distancePaddleSports: HKQuantityType(.distancePaddleSports)
+        case .paddleSportsSpeed: HKQuantityType(.paddleSportsSpeed)
+        case .distanceRowing: HKQuantityType(.distanceRowing)
+        case .rowingSpeed: HKQuantityType(.rowingSpeed)
+        case .distanceSkatingSports: HKQuantityType(.distanceSkatingSports)
+        case .estimatedWorkoutEffortScore: nil // Apple-calculated from heart rate data, read-only
+        case .workoutEffortScore: HKQuantityType(.workoutEffortScore) // user-entered RPE, writable
+        case .appleStandHour: nil // Apple Watch Activity ring component, read-only
 
         // Heart
         case .atrialFibrillation: nil
         case .heartRate: HKQuantityType(.heartRate)
-        case .heartRateVariability: nil
+        case .heartRateVariability: HKQuantityType(.heartRateVariabilitySDNN) // audit: writable (e.g. Garmin/Oura style HRV integrations)
+        case .heartRateVariabilityRMSSD:
+            if #available(iOS 27.0, *) {
+                HKQuantityType(.heartRateVariabilityRMSSD)
+            } else {
+                nil
+            }
         case .highHeartRateEvent: nil
         case .irregularHeartRhythmEvent: nil
         case .lowHeartRateEvent: nil
+        case .lowCardioFitnessEvent: nil // Apple-calculated notification, read-only
+        case .hypertensionEvent: nil // Apple-calculated notification, read-only (iOS 26.2+)
         case .cardioRecovery: HKQuantityType(.heartRateRecoveryOneMinute)
         case .peripheralPerfusionIndex: HKQuantityType(.peripheralPerfusionIndex)
-        case .restingHeartRate: nil
+        case .restingHeartRate: HKQuantityType(.restingHeartRate) // audit: writable (e.g. Garmin/Withings integrations)
         case .walkingHeartRateAverage: nil
 
         // Body
@@ -325,6 +389,8 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .walkingSpeed: HKQuantityType(.walkingSpeed)
         case .walkingSteadiness: nil
         case .walkingStepLength: HKQuantityType(.walkingStepLength)
+        case .walkingSteadinessEvent: nil // Apple-calculated fall risk notification, read-only
+
 
         // Nutrition
         /// Macronutrients
@@ -375,6 +441,8 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
 
         // Sleep
         case .sleepAnalysis: HKCategoryType(.sleepAnalysis)
+        case .sleepApneaEvent: nil // Apple-calculated notification, read-only
+        case .sleepingBreathingDisturbances: nil // Apple Watch-calculated, read-only
 
         // Mental Wellbeing
         case .mindful: HKCategoryType(.mindfulSession)
@@ -399,6 +467,20 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .irregularMenstrualCycles: nil
         case .persistentIntermenstrualBleeding: nil
         case .prolongedMenstrualPeriods: nil
+        case .bleedingDuringPregnancy: HKCategoryType(.bleedingDuringPregnancy)
+        case .bleedingAfterPregnancy: HKCategoryType(.bleedingAfterPregnancy)
+        case .bleedingAfterMenopause:
+            if #available(iOS 27.0, *) {
+                HKCategoryType(.bleedingAfterMenopause)
+            } else {
+                nil
+            }
+        case .menopausalState:
+            if #available(iOS 27.0, *) {
+                HKCategoryType(.menopausalState)
+            } else {
+                nil
+            }
 
         // Symptoms
         case .acne: HKCategoryType(.acne)
@@ -460,6 +542,9 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .environmentalAudioExposure: HKQuantityType(.environmentalAudioExposure)
         case .headphoneAudioExposure: HKQuantityType(.headphoneAudioExposure)
         case .audiogram: nil
+        case .environmentalAudioExposureEvent: nil // Apple-calculated notification, read-only
+        case .headphoneAudioExposureEvent: nil // Apple-calculated notification, read-only
+        case .environmentalSoundReduction: nil // AirPods-calculated measurement, read-only
         }
     }
     
@@ -513,14 +598,36 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .nikeFuel: HKQuantityType(.nikeFuel)
         case .physicalEffort: HKQuantityType(.physicalEffort)
         case .underwaterDepth: HKQuantityType(.underwaterDepth)
+        case .distancePaddleSports: HKQuantityType(.distancePaddleSports)
+        case .paddleSportsSpeed: HKQuantityType(.paddleSportsSpeed)
+        case .distanceRowing: HKQuantityType(.distanceRowing)
+        case .rowingSpeed: HKQuantityType(.rowingSpeed)
+        case .distanceSkatingSports: HKQuantityType(.distanceSkatingSports)
+        case .estimatedWorkoutEffortScore: HKQuantityType(.estimatedWorkoutEffortScore)
+        case .workoutEffortScore: HKQuantityType(.workoutEffortScore)
+        case .appleStandHour: HKCategoryType(.appleStandHour)
 
         // Heart
         case .atrialFibrillation: HKQuantityType(.atrialFibrillationBurden)
         case .heartRate: HKQuantityType(.heartRate)
         case .heartRateVariability: HKQuantityType(.heartRateVariabilitySDNN)
+        case .heartRateVariabilityRMSSD:
+            if #available(iOS 27.0, *) {
+                HKQuantityType(.heartRateVariabilityRMSSD)
+            } else {
+                preconditionFailure("HealthObjectType.heartRateVariabilityRMSSD requires iOS 27.0+")
+            }
         case .highHeartRateEvent: HKCategoryType(.highHeartRateEvent)
         case .irregularHeartRhythmEvent: HKCategoryType(.irregularHeartRhythmEvent)
         case .lowHeartRateEvent: HKCategoryType(.lowHeartRateEvent)
+        case .lowCardioFitnessEvent: HKCategoryType(.lowCardioFitnessEvent)
+        case .hypertensionEvent:
+            if #available(iOS 26.2, *) {
+                HKCategoryType(.hypertensionEvent)
+            } else {
+                // Unreachable: constructing `.hypertensionEvent` itself requires iOS 26.2+ availability at the call site.
+                preconditionFailure("HealthObjectType.hypertensionEvent requires iOS 26.2+")
+            }
         case .cardioRecovery: HKQuantityType(.heartRateRecoveryOneMinute)
         case .peripheralPerfusionIndex: HKQuantityType(.peripheralPerfusionIndex)
         case .restingHeartRate: HKQuantityType(.restingHeartRate)
@@ -548,6 +655,7 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .walkingSpeed: HKQuantityType(.walkingSpeed)
         case .walkingSteadiness: HKQuantityType(.appleWalkingSteadiness)
         case .walkingStepLength: HKQuantityType(.walkingStepLength)
+        case .walkingSteadinessEvent: HKCategoryType(.appleWalkingSteadinessEvent)
 
         // Nutrition
         /// Macronutrients
@@ -598,6 +706,8 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
 
         // Sleep
         case .sleepAnalysis: HKCategoryType(.sleepAnalysis)
+        case .sleepApneaEvent: HKCategoryType(.sleepApneaEvent)
+        case .sleepingBreathingDisturbances: HKQuantityType(.appleSleepingBreathingDisturbances)
 
         // Mental Wellbeing
         case .mindful: HKCategoryType(.mindfulSession)
@@ -622,6 +732,20 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .irregularMenstrualCycles: HKCategoryType(.irregularMenstrualCycles)
         case .persistentIntermenstrualBleeding: HKCategoryType(.persistentIntermenstrualBleeding)
         case .prolongedMenstrualPeriods: HKCategoryType(.prolongedMenstrualPeriods)
+        case .bleedingDuringPregnancy: HKCategoryType(.bleedingDuringPregnancy)
+        case .bleedingAfterPregnancy: HKCategoryType(.bleedingAfterPregnancy)
+        case .bleedingAfterMenopause:
+            if #available(iOS 27.0, *) {
+                HKCategoryType(.bleedingAfterMenopause)
+            } else {
+                preconditionFailure("HealthObjectType.bleedingAfterMenopause requires iOS 27.0+")
+            }
+        case .menopausalState:
+            if #available(iOS 27.0, *) {
+                HKCategoryType(.menopausalState)
+            } else {
+                preconditionFailure("HealthObjectType.menopausalState requires iOS 27.0+")
+            }
 
         // Symptoms
         case .acne: HKCategoryType(.acne)
@@ -683,6 +807,9 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .environmentalAudioExposure: HKQuantityType(.environmentalAudioExposure)
         case .headphoneAudioExposure: HKQuantityType(.headphoneAudioExposure)
         case .audiogram: HKAudiogramSampleType.audiogramSampleType()
+        case .environmentalAudioExposureEvent: HKCategoryType(.environmentalAudioExposureEvent)
+        case .headphoneAudioExposureEvent: HKCategoryType(.headphoneAudioExposureEvent)
+        case .environmentalSoundReduction: HKQuantityType(.environmentalSoundReduction)
         }
     }
 }
@@ -690,10 +817,16 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
 public enum HealthType {
     
     public static func shareTypes(from types: [ShareableType]) -> Set<HKSampleType> {
-        Set(types.compactMap(\.sharable))
+        Set(types.compactMap { type in
+            guard (type as? HealthObjectType)?.isAvailable ?? true else { return nil }
+            return type.sharable
+        })
     }
     
     public static func readTypes(_ types: [ReadableType]) -> Set<HKObjectType> {
-        Set(types.map(\.readable))
+        Set(types.compactMap { type in
+            guard (type as? HealthObjectType)?.isAvailable ?? true else { return nil }
+            return type.readable
+        })
     }
 }

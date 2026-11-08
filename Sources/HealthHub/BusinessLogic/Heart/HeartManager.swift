@@ -10,9 +10,9 @@ import HealthKit
 
 public final class HeartManager {
 
-    private let heartRateService: HeartRateService
+    private let heartRateService: HeartRateServiceProtocol
 
-    public init(heartRateService: HeartRateService) {
+    public init(heartRateService: HeartRateServiceProtocol) {
         self.heartRateService = heartRateService
     }
 
@@ -28,7 +28,7 @@ extension HeartManager: HeartManagerProtocol {
     
     // MARK: - Services
 
-    public var heartRate: HeartRateService {
+    public var heartRate: HeartRateServiceProtocol {
         heartRateService
     }
 
@@ -70,6 +70,20 @@ extension HeartManager: HeartManagerProtocol {
         return HeartRateVariability(items: items)
     }
 
+    public func heartRateVariabilityRMSSD() async throws -> HeartRateVariabilityRMSSD {
+        guard #available(iOS 27.0, *) else {
+            throw AsyncParsingError.unsupportedOSVersion("RMSSD heart rate variability")
+        }
+
+        let samples = try await fetchQuantitySamples(quantityIdentifier: .heartRateVariabilityRMSSD)
+        let items = samples.map { item -> HeartRateVariabilityRMSSD.Item in
+            let rmssd = item.quantity.doubleValue(for: HKUnit.secondUnit(with: .milli))
+            return HeartRateVariabilityRMSSD.Item(rmssd: rmssd, date: item.endDate)
+        }
+
+        return HeartRateVariabilityRMSSD(items: items)
+    }
+
     public func highHeartRateEvents() async throws -> HighHeartRateEvent {
         let samples = try await fetchCategorySamples(categoryIdentifier: .highHeartRateEvent)
         let items = samples.map { item -> HighHeartRateEvent.Item in
@@ -95,6 +109,28 @@ extension HeartManager: HeartManagerProtocol {
         }
 
         return LowHeartRateEvent(items: items)
+    }
+
+    public func lowCardioFitnessEvents() async throws -> LowCardioFitnessEvent {
+        let samples = try await fetchCategorySamples(categoryIdentifier: .lowCardioFitnessEvent)
+        let items = samples.map { item -> LowCardioFitnessEvent.Item in
+            LowCardioFitnessEvent.Item(startDate: item.startDate, endDate: item.endDate)
+        }
+
+        return LowCardioFitnessEvent(items: items)
+    }
+
+    public func hypertensionEvents() async throws -> HypertensionEvent {
+        guard #available(iOS 26.2, *) else {
+            throw AsyncParsingError.unsupportedOSVersion("Hypertension notifications")
+        }
+
+        let samples = try await fetchCategorySamples(categoryIdentifier: .hypertensionEvent)
+        let items = samples.map { item -> HypertensionEvent.Item in
+            HypertensionEvent.Item(startDate: item.startDate, endDate: item.endDate)
+        }
+
+        return HypertensionEvent(items: items)
     }
 
     public func peripheralPerfusionIndex() async throws -> PeripheralPerfusionIndex {

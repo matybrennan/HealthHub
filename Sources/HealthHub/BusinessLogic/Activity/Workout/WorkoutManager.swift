@@ -47,6 +47,14 @@ extension WorkoutManager: WorkoutManagerProtocol {
     public func workoutDetail(for startDate: Date, endDate: Date) async throws -> Workout.Detail {
         try await workoutReadService.workoutDetail(for: startDate, endDate: endDate)
     }
+
+    public func workoutActivities(for startDate: Date, endDate: Date) async throws -> [Workout.Activity] {
+        try await workoutReadService.workoutActivities(for: startDate, endDate: endDate)
+    }
+
+    public func workoutEffortRelationships(for startDate: Date, endDate: Date) async throws -> [Workout.EffortRelationship] {
+        try await workoutReadService.workoutEffortRelationships(for: startDate, endDate: endDate)
+    }
     
     // MARK: Write Service
     

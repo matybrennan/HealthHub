@@ -163,6 +163,54 @@ extension WorkoutReadService: WorkoutReadServiceProtocol {
             heartRateSamples: heartRateSamples
         )
     }
+
+    public func workoutActivities(for startDate: Date, endDate: Date) async throws -> [Workout.Activity] {
+        let workout = try await findWorkout(startDate: startDate, endDate: endDate)
+        return workout.workoutActivities.map {
+            Workout.Activity(
+                activityType: $0.workoutConfiguration.activityType,
+                startDate: $0.startDate,
+                endDate: $0.endDate,
+                duration: $0.duration,
+                metadata: $0.metadata as? [String: Sendable]
+            )
+        }
+    }
+
+    public func workoutEffortRelationships(for startDate: Date, endDate: Date) async throws -> [Workout.EffortRelationship] {
+        let workout = try await findWorkout(startDate: startDate, endDate: endDate)
+        let predicate = HKQuery.predicateForObjects(from: workout)
+        let resumeLock = NSLock()
+        var hasResumed = false
+
+        let relationships = try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<[HKWorkoutEffortRelationship], Error>) in
+            let query = HKWorkoutEffortRelationshipQuery(predicate: predicate, anchor: nil, options: .mostRelevant) { query, relationships, _, error in
+                HealthStoreProvider.shared.stop(query)
+
+                resumeLock.lock()
+                defer { resumeLock.unlock() }
+                guard !hasResumed else { return }
+                hasResumed = true
+
+                if let error {
+                    continuation.resume(throwing: error)
+                    return
+                }
+                continuation.resume(returning: relationships ?? [])
+            }
+            HealthStoreProvider.shared.execute(query)
+        }
+
+        return relationships.map {
+            Workout.EffortRelationship(
+                workoutStartDate: $0.workout.startDate,
+                workoutEndDate: $0.workout.endDate,
+                activityStartDate: $0.activity?.startDate,
+                activityEndDate: $0.activity?.endDate,
+                relatedSampleCount: $0.samples?.count ?? 0
+            )
+        }
+    }
 }
 
 // MARK: - Private Helpers

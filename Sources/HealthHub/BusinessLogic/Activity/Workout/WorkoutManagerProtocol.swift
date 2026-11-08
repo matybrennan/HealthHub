@@ -21,6 +21,8 @@ public protocol WorkoutManagerReadProtocol {
     func workoutHeartRate(for startDate: Date, endDate: Date) async throws -> [Workout.HeartRateSample]
     func workoutEvents(for startDate: Date, endDate: Date) async throws -> [Workout.Event]
     func workoutDetail(for startDate: Date, endDate: Date) async throws -> Workout.Detail
+    func workoutActivities(for startDate: Date, endDate: Date) async throws -> [Workout.Activity]
+    func workoutEffortRelationships(for startDate: Date, endDate: Date) async throws -> [Workout.EffortRelationship]
 }
 
 public typealias WorkoutManagerProtocol = WorkoutManagerWriteProtocol & WorkoutManagerReadProtocol

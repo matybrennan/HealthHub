@@ -99,6 +99,125 @@ public struct HeadphoneAudioExposureEvent: Sendable {
     }
 }
 
+public struct EnvironmentalAudioExposureNotification: Sendable {
+
+    public enum EventType: Int, Sendable {
+        case momentaryLimit = 1
+
+        public var displayName: String {
+            switch self {
+            case .momentaryLimit: "Momentary Limit"
+            }
+        }
+    }
+
+    public struct Item: Sendable {
+        public let type: EventType
+        public let startDate: Date
+        public let endDate: Date
+
+        public init(type: EventType, startDate: Date, endDate: Date) {
+            self.type = type
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+
+        public var duration: TimeInterval {
+            endDate.timeIntervalSince(startDate)
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var mostRecent: Item? {
+        items.max(by: { $0.endDate < $1.endDate })
+    }
+
+    public var totalEvents: Int {
+        items.count
+    }
+}
+
+public struct HeadphoneAudioExposureNotification: Sendable {
+
+    public enum EventType: Int, Sendable {
+        case sevenDayLimit = 1
+
+        public var displayName: String {
+            switch self {
+            case .sevenDayLimit: "Seven-Day Limit"
+            }
+        }
+    }
+
+    public struct Item: Sendable {
+        public let type: EventType
+        public let startDate: Date
+        public let endDate: Date
+
+        public init(type: EventType, startDate: Date, endDate: Date) {
+            self.type = type
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+
+        public var duration: TimeInterval {
+            endDate.timeIntervalSince(startDate)
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var mostRecent: Item? {
+        items.max(by: { $0.endDate < $1.endDate })
+    }
+
+    public var totalEvents: Int {
+        items.count
+    }
+}
+
+public struct EnvironmentalSoundReduction: Sendable {
+
+    public struct Item: Sendable {
+        /// Sound level reduction in dB A-weighted Sound Pressure Level
+        public let value: Double
+        public let startDate: Date
+        public let endDate: Date
+
+        public init(value: Double, startDate: Date, endDate: Date) {
+            self.value = value
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+
+        public var duration: TimeInterval {
+            endDate.timeIntervalSince(startDate)
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var mostRecent: Item? { items.first }
+
+    public var averageReduction: Double? {
+        guard !items.isEmpty else { return nil }
+        return items.reduce(0) { $0 + $1.value } / Double(items.count)
+    }
+}
+
 public struct AudiogramEntry: Sendable {
 
     public struct SensitivityPoint: Sendable {

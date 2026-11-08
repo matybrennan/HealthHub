@@ -49,6 +49,10 @@ public protocol WorkoutReadServiceProtocol {
     func workoutHeartRate(for startDate: Date, endDate: Date) async throws -> [Workout.HeartRateSample]
     func workoutEvents(for startDate: Date, endDate: Date) async throws -> [Workout.Event]
     func workoutDetail(for startDate: Date, endDate: Date) async throws -> Workout.Detail
+    /// Returns the sub-activities (e.g. swim/bike/run legs) that make up a multi-sport workout. Empty for single-activity workouts.
+    func workoutActivities(for startDate: Date, endDate: Date) async throws -> [Workout.Activity]
+    /// Returns effort relationships linking the workout (and, when present, one of its sub-activities) to related samples such as a workout effort score. Requires iOS 18+.
+    func workoutEffortRelationships(for startDate: Date, endDate: Date) async throws -> [Workout.EffortRelationship]
 }
 
 extension WorkoutReadServiceProtocol {

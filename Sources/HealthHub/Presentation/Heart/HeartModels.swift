@@ -188,6 +188,36 @@ public struct HeartRateVariability: Sendable {
     }
 }
 
+/// Root mean square of successive differences heart-rate variability measurements.
+/// Available from iOS 27.0.
+public struct HeartRateVariabilityRMSSD: Sendable {
+
+    public struct Item: Sendable {
+        public let rmssd: Double
+        public let date: Date
+
+        public init(rmssd: Double, date: Date) {
+            self.rmssd = rmssd
+            self.date = date
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var mostRecent: Item? {
+        items.max(by: { $0.date < $1.date })
+    }
+
+    public var averageRMSSD: Double {
+        guard !items.isEmpty else { return 0 }
+        return items.reduce(0.0) { $0 + $1.rmssd } / Double(items.count)
+    }
+}
+
 public struct HighHeartRateEvent: Sendable {
 
     public struct Item: Sendable {
@@ -336,5 +366,68 @@ public struct WalkingHeartRateAverage: Sendable {
     public var average: Double {
         guard !items.isEmpty else { return 0 }
         return items.reduce(0.0) { $0 + $1.bpm } / Double(items.count)
+    }
+}
+
+public struct LowCardioFitnessEvent: Sendable {
+
+    public struct Item: Sendable {
+        public let startDate: Date
+        public let endDate: Date
+
+        public init(startDate: Date, endDate: Date) {
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+
+        public var duration: TimeInterval {
+            endDate.timeIntervalSince(startDate)
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var mostRecent: Item? {
+        items.max(by: { $0.endDate < $1.endDate })
+    }
+
+    public var totalEvents: Int {
+        items.count
+    }
+}
+
+/// Hypertension notification event. Requires iOS 26.2+.
+public struct HypertensionEvent: Sendable {
+
+    public struct Item: Sendable {
+        public let startDate: Date
+        public let endDate: Date
+
+        public init(startDate: Date, endDate: Date) {
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+
+        public var duration: TimeInterval {
+            endDate.timeIntervalSince(startDate)
+        }
+    }
+
+    public let items: [Item]
+
+    public init(items: [Item]) {
+        self.items = items
+    }
+
+    public var mostRecent: Item? {
+        items.max(by: { $0.endDate < $1.endDate })
+    }
+
+    public var totalEvents: Int {
+        items.count
     }
 }

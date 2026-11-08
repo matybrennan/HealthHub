@@ -38,4 +38,20 @@ public protocol HealthHubManagerProtocol {
     var otherData: OtherDataServiceProtocol { get }
 
     var hearing: HearingServiceProtocol { get }
+
+    var clinicalRecords: ClinicalRecordsServiceProtocol { get }
+
+    var cdaDocuments: CDADocumentsServiceProtocol { get }
+
+    var electrocardiogram: ElectrocardiogramServiceProtocol { get }
+
+    var heartbeatSeries: HeartbeatSeriesServiceProtocol { get }
+
+    var verifiableClinicalRecords: VerifiableClinicalRecordsServiceProtocol { get }
+
+    var attachments: AttachmentsServiceProtocol { get }
+
+    var medications: MedicationsServiceProtocol { get }
+
+    var visionPrescriptions: VisionPrescriptionsServiceProtocol { get }
 }
