@@ -467,6 +467,30 @@ try await hub.activityManager.workout.saveWorkout(
 | `workoutActivities(for:endDate:)` | Sub-activity segments for composite workouts (e.g. triathlons) |
 | `workoutEffortRelationships(for:endDate:)` | Links a workout to its linked effort score sample |
 
+##### Heart Rate and Cycling Power Zones (iOS 27)
+
+HealthKit calculates time in each zone for you. Every workout read through HealthHub carries it in `zoneGroups`. Request read access to `.heartRate` and `.cyclingPower` first (the `.heart` and `.activity` scopes cover both).
+
+```swift
+let workout = try await hub.activityManager.workout.workouts(fromWorkoutType: .today).mostRecent
+
+if let zones = workout?.heartRateZones {
+    for entry in zones.timeInZones {
+        print("Zone \(entry.zone.index + 1): \(entry.duration / 60) min")
+    }
+}
+
+// The zones the person prefers (system generated or set in Health settings)
+let preferred = try await health.preferredWorkoutZoneConfiguration(for: .heartRate)
+
+// Save a workout with your own zones instead
+var item = Workout.Item(duration: 1800, startDate: start, endDate: end)
+item.customZones = [try WorkoutZoneConfiguration(metric: .heartRate, boundaries: [120, 140, 160, 175])]
+try await hub.activityManager.workout.saveWorkout(workout: item, extra: nil)
+```
+
+`n` boundaries create `n + 1` zones. Boundaries must be strictly ascending and greater than zero, otherwise `HealthHubError.invalidQuery` is thrown. Only heart rate and cycling power support zones. Live zone updates during a session need your own `HKWorkoutSession` and are not wrapped by HealthHub.
+
 #### Activity Service
 
 All Apple Health activity data types — cycling, running, swimming, skiing, underwater, and more.

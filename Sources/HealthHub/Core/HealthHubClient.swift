@@ -42,6 +42,13 @@ public actor HealthHubClient {
         try await store.earliestAuthorizedDates(for: types)
     }
 
+    /// The zones the person prefers for heart rate or cycling power, or `nil` when none are available.
+    ///
+    /// Requires read access to the metric (`.heartRate` or `.cyclingPower`).
+    public func preferredWorkoutZoneConfiguration(for metric: WorkoutZoneMetric) async throws -> WorkoutZoneConfiguration? {
+        try await store.preferredWorkoutZoneConfiguration(for: metric)
+    }
+
     public func dashboard(for dateRange: DateRangeType = .today) async throws -> HealthDashboard {
         try await HealthDashboardService(store: store).summary(for: dateRange)
     }

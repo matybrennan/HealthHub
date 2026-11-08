@@ -21,12 +21,18 @@ public protocol HealthStoreClientProtocol: Sendable {
     func enableBackgroundUpdates(for types: [HealthObjectType], frequency: HKUpdateFrequency) async throws
     /// Earliest readable date per type when the user granted limited read access. Types with full access are omitted.
     func earliestAuthorizedDates(for types: [HealthObjectType]) async throws -> [HealthObjectType: Date]
+    /// The zones the person prefers for a metric, either system-generated or set in Health settings.
+    func preferredWorkoutZoneConfiguration(for metric: WorkoutZoneMetric) async throws -> WorkoutZoneConfiguration?
 }
 
 public extension HealthStoreClientProtocol {
 
     func earliestAuthorizedDates(for types: [HealthObjectType]) async throws -> [HealthObjectType: Date] {
         [:]
+    }
+
+    func preferredWorkoutZoneConfiguration(for metric: WorkoutZoneMetric) async throws -> WorkoutZoneConfiguration? {
+        nil
     }
 }
 
@@ -66,6 +72,13 @@ public actor HealthStoreClient: HealthStoreClientProtocol {
         return types.reduce(into: [:]) { result, type in
             result[type] = dates[type.readable]
         }
+    }
+
+    public func preferredWorkoutZoneConfiguration(for metric: WorkoutZoneMetric) async throws -> WorkoutZoneConfiguration? {
+        try ensureHealthDataAvailable()
+
+        let configuration = try await healthStore.preferredWorkoutZoneConfiguration(for: metric.quantityType)
+        return configuration.map { WorkoutZoneConfiguration(metric: metric, $0) }
     }
 
     @discardableResult

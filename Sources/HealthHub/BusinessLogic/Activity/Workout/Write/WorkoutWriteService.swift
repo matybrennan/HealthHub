@@ -30,7 +30,12 @@ extension WorkoutWriteService: WorkoutWriteServiceProtocol {
         config.activityType = workout.activityType
 
         let builder = HKWorkoutBuilder(healthStore: healthStore, configuration: config, device: .local())
-        
+
+        // HealthKit only accepts custom zones before collection begins.
+        for zones in workout.customZones {
+            try await builder.setCustomZoneConfiguration(zones.healthKitConfiguration(), for: zones.metric.quantityType)
+        }
+
         try await builder.beginCollection(at: workout.startDate)
 
         // Add workout events (laps, pauses, etc.)

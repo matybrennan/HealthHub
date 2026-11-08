@@ -168,3 +168,80 @@ struct WorkoutManagerTests {
         }
     }
 }
+
+@Suite("Workout Zone Suite")
+struct WorkoutZoneTests {
+
+    @Test("Ascending boundaries create n + 1 app-defined zones with open ends")
+    func boundariesCreateZones() throws {
+        let configuration = try WorkoutZoneConfiguration(metric: .heartRate, boundaries: [100, 120, 140, 160])
+
+        #expect(configuration.source == .app)
+        #expect(configuration.zones.count == 5)
+        #expect(configuration.zones.first?.minimum == nil)
+        #expect(configuration.zones.first?.maximum == 100)
+        #expect(configuration.zones[2].minimum == 120)
+        #expect(configuration.zones[2].maximum == 140)
+        #expect(configuration.zones.last?.minimum == 160)
+        #expect(configuration.zones.last?.maximum == nil)
+        #expect(configuration.zones.map(\.index) == [0, 1, 2, 3, 4])
+    }
+
+    @Test("Cycling power zones are supported")
+    func cyclingPowerZones() throws {
+        let configuration = try WorkoutZoneConfiguration(metric: .cyclingPower, boundaries: [150, 200, 250])
+
+        #expect(configuration.metric == .cyclingPower)
+        #expect(configuration.zones.count == 4)
+    }
+
+    @Test("Invalid boundaries throw an invalidQuery error")
+    func invalidBoundariesThrow() {
+        #expect(throws: HealthHubError.self) {
+            try WorkoutZoneConfiguration(metric: .heartRate, boundaries: [160, 100])
+        }
+        #expect(throws: HealthHubError.self) {
+            try WorkoutZoneConfiguration(metric: .heartRate, boundaries: [])
+        }
+    }
+
+    @Test("A configuration converts back to the same HealthKit zones it was built from")
+    func roundTripsThroughHealthKit() throws {
+        let configuration = try WorkoutZoneConfiguration(metric: .heartRate, boundaries: [100, 120, 140, 160])
+
+        let healthKitConfiguration = try configuration.healthKitConfiguration()
+
+        #expect(WorkoutZoneConfiguration(metric: .heartRate, healthKitConfiguration) == configuration)
+    }
+
+    @Test("Zone groups total their time and are found by metric on a workout item")
+    func zoneGroupsOnWorkoutItem() throws {
+        let configuration = try WorkoutZoneConfiguration(metric: .heartRate, boundaries: [120, 150])
+        let group = WorkoutZoneGroup(
+            configuration: configuration,
+            timeInZones: zip(configuration.zones, [300.0, 900.0, 600.0]).map { .init(zone: $0, duration: $1) }
+        )
+        let workout = Workout.Item(duration: 1800, startDate: Date(), endDate: Date(), zoneGroups: [group])
+
+        #expect(group.totalDuration == 1800)
+        #expect(workout.heartRateZones == group)
+        #expect(workout.cyclingPowerZones == nil)
+        #expect(Workout.Item(duration: 60, startDate: Date(), endDate: Date()).zoneGroups.isEmpty)
+    }
+
+    @Test("Missing or empty HealthKit zone data produces no zone groups")
+    func workoutWithoutZones() {
+        #expect(WorkoutZoneGroup.groups(from: nil).isEmpty)
+        #expect(WorkoutZoneGroup.groups(from: [:]).isEmpty)
+    }
+
+    @Test("Preferred zones come from the injected store and default to none")
+    func preferredZones() async throws {
+        let zones = try WorkoutZoneConfiguration(metric: .heartRate, boundaries: [110, 130, 150, 170]).zones
+        let configuration = WorkoutZoneConfiguration(metric: .heartRate, source: .user, zones: zones)
+        let hub = HealthHubClient(store: MockHealthStoreClient(preferredZones: [.heartRate: configuration]))
+
+        #expect(try await hub.preferredWorkoutZoneConfiguration(for: .heartRate) == configuration)
+        #expect(try await hub.preferredWorkoutZoneConfiguration(for: .cyclingPower) == nil)
+    }
+}

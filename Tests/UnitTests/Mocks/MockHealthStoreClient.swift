@@ -7,6 +7,7 @@ actor MockHealthStoreClient: HealthStoreClientProtocol {
     let requestStatus: HealthAuthorizationRequestStatus
     let requestResult: HealthAuthorizationRequestResult
     let earliestDates: [HealthObjectType: Date]
+    let preferredZones: [WorkoutZoneMetric: WorkoutZoneConfiguration]
     let statisticsByIdentifier: [String: HealthQuantityStatistics]
     let summariesByIdentifier: [String: [HealthSampleSummary]]
 
@@ -14,18 +15,24 @@ actor MockHealthStoreClient: HealthStoreClientProtocol {
         requestStatus: HealthAuthorizationRequestStatus = .shouldRequest,
         requestResult: HealthAuthorizationRequestResult = .requested,
         earliestDates: [HealthObjectType: Date] = [:],
+        preferredZones: [WorkoutZoneMetric: WorkoutZoneConfiguration] = [:],
         statisticsByIdentifier: [String: HealthQuantityStatistics] = [:],
         summariesByIdentifier: [String: [HealthSampleSummary]] = [:]
     ) {
         self.requestStatus = requestStatus
         self.requestResult = requestResult
         self.earliestDates = earliestDates
+        self.preferredZones = preferredZones
         self.statisticsByIdentifier = statisticsByIdentifier
         self.summariesByIdentifier = summariesByIdentifier
     }
 
     func earliestAuthorizedDates(for types: [HealthObjectType]) async throws -> [HealthObjectType: Date] {
         earliestDates.filter { types.contains($0.key) }
+    }
+
+    func preferredWorkoutZoneConfiguration(for metric: WorkoutZoneMetric) async throws -> WorkoutZoneConfiguration? {
+        preferredZones[metric]
     }
 
     func authorizationRequestStatus(for plan: HealthAuthorizationPlan) async throws -> HealthAuthorizationRequestStatus {

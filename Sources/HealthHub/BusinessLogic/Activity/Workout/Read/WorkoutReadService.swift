@@ -188,7 +188,8 @@ private extension WorkoutReadService {
             elevationAscended: workout.metadata?[HKMetadataKeyElevationAscended] as? Double,
             elevationDescended: workout.metadata?[HKMetadataKeyElevationDescended] as? Double,
             swimmingStrokeCount: strokes?.doubleValue(for: Unit.strokeCount),
-            metadata: workout.metadata.sendableMetadata
+            metadata: workout.metadata.sendableMetadata,
+            zoneGroups: WorkoutZoneGroup.groups(from: workout.zoneGroupsByType)
         )
     }
 

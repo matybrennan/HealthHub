@@ -48,7 +48,7 @@ public enum HealthAuthorizationScope: String, CaseIterable, Sendable {
         switch self {
         case .activity:
             [.stepCount, .workout, .activeEnergy, .exerciseMinutes, .standTime, .moveTime,
-             .cyclingDistance, .walkingRunningDistance, .runningSpeed, .runningPower, .flightsClimbed]
+             .cyclingDistance, .cyclingPower, .walkingRunningDistance, .runningSpeed, .runningPower, .flightsClimbed]
         case .heart:
             [.heartRate, .heartRateVariability, .heartRateVariabilityRMSSD, .restingHeartRate,
              .walkingHeartRateAverage, .atrialFibrillation, .cardioRecovery, .peripheralPerfusionIndex,
