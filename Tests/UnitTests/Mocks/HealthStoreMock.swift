@@ -11,8 +11,14 @@ import HealthKit
 
 final class HealthStoreMock: HealthStoreProtocol {
 
+    var requestStatus: HKAuthorizationRequestStatus = .unknown
+    var requestAuthorizationCallCount = 0
+
     func requestAuthorization(toShare typesToShare: Set<HKSampleType>, read typesToRead: Set<HKObjectType>) async throws {
-        //
+        requestAuthorizationCallCount += 1
+    }
+
+    func statusForAuthorizationRequest(toShare typesToShare: Set<HKSampleType>, read typesToRead: Set<HKObjectType>) async throws -> HKAuthorizationRequestStatus {
+        requestStatus
     }
 }
-

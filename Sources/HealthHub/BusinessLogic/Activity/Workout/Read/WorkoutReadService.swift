@@ -40,21 +40,7 @@ extension WorkoutReadService: WorkoutReadServiceProtocol {
             sortDescriptors: [SortDescriptor(\.startDate, order: .reverse)],
             limit: limit
         )
-        let workoutItems = samples.map { sample in
-            Workout.Item(
-                duration: sample.duration,
-                energyBurned: sample.totalEnergyBurned?.doubleValue(for: Unit.workoutEnergy),
-                distance: sample.totalDistance?.doubleValue(for: Unit.workoutDistance),
-                startDate: sample.startDate,
-                endDate: sample.endDate,
-                activityType: sample.workoutActivityType,
-                source: sample.sourceRevision.source.name,
-                elevationAscended: sample.metadata?[HKMetadataKeyElevationAscended] as? Double,
-                elevationDescended: sample.metadata?[HKMetadataKeyElevationDescended] as? Double,
-                swimmingStrokeCount: sample.totalSwimmingStrokeCount?.doubleValue(for: Unit.strokeCount),
-                metadata: sample.metadata as? [String: Sendable]
-            )
-        }
+        let workoutItems = samples.map(workoutItem(from:))
         
         return Workout(items: workoutItems)
     }
@@ -62,16 +48,7 @@ extension WorkoutReadService: WorkoutReadServiceProtocol {
     public func workoutRoute(for startDate: Date, endDate: Date) async throws -> Workout.Route {
         let workout = try await findWorkout(startDate: startDate, endDate: endDate)
         let locations = try await fetchRouteLocations(for: workout)
-        let routeLocations = locations.map {
-            Workout.Route.Location(
-                latitude: $0.coordinate.latitude,
-                longitude: $0.coordinate.longitude,
-                altitude: $0.altitude,
-                timestamp: $0.timestamp,
-                speed: $0.speed >= 0 ? $0.speed : nil,
-                horizontalAccuracy: $0.horizontalAccuracy >= 0 ? $0.horizontalAccuracy : nil
-            )
-        }
+        let routeLocations = locations.map(routeLocation(from:))
         return Workout.Route(locations: routeLocations)
     }
 
@@ -93,56 +70,19 @@ extension WorkoutReadService: WorkoutReadServiceProtocol {
 
     public func workoutEvents(for startDate: Date, endDate: Date) async throws -> [Workout.Event] {
         let workout = try await findWorkout(startDate: startDate, endDate: endDate)
-        guard let hkEvents = workout.workoutEvents else { return [] }
-        return hkEvents.map {
-            Workout.Event(
-                type: $0.type,
-                startDate: $0.dateInterval.start,
-                endDate: $0.dateInterval.end,
-                metadata: $0.metadata as? [String: Sendable]
-            )
-        }
+        return (workout.workoutEvents ?? []).map(workoutEvent(from:))
     }
 
     public func workoutDetail(for startDate: Date, endDate: Date) async throws -> Workout.Detail {
         let workout = try await findWorkout(startDate: startDate, endDate: endDate)
 
-        let item = Workout.Item(
-            duration: workout.duration,
-            energyBurned: workout.totalEnergyBurned?.doubleValue(for: Unit.workoutEnergy),
-            distance: workout.totalDistance?.doubleValue(for: Unit.workoutDistance),
-            startDate: workout.startDate,
-            endDate: workout.endDate,
-            activityType: workout.workoutActivityType,
-            source: workout.sourceRevision.source.name,
-            elevationAscended: workout.metadata?[HKMetadataKeyElevationAscended] as? Double,
-            elevationDescended: workout.metadata?[HKMetadataKeyElevationDescended] as? Double,
-            swimmingStrokeCount: workout.totalSwimmingStrokeCount?.doubleValue(for: Unit.strokeCount),
-            metadata: workout.metadata as? [String: Sendable]
-        )
-
-        let events: [Workout.Event] = (workout.workoutEvents ?? []).map {
-            Workout.Event(
-                type: $0.type,
-                startDate: $0.dateInterval.start,
-                endDate: $0.dateInterval.end,
-                metadata: $0.metadata as? [String: Sendable]
-            )
-        }
+        let item = workoutItem(from: workout)
+        let events = (workout.workoutEvents ?? []).map(workoutEvent(from:))
 
         let route: Workout.Route?
         let locations = try? await fetchRouteLocations(for: workout)
         if let locations, !locations.isEmpty {
-            route = Workout.Route(locations: locations.map {
-                Workout.Route.Location(
-                    latitude: $0.coordinate.latitude,
-                    longitude: $0.coordinate.longitude,
-                    altitude: $0.altitude,
-                    timestamp: $0.timestamp,
-                    speed: $0.speed >= 0 ? $0.speed : nil,
-                    horizontalAccuracy: $0.horizontalAccuracy >= 0 ? $0.horizontalAccuracy : nil
-                )
-            })
+            route = Workout.Route(locations: locations.map(routeLocation(from:)))
         } else {
             route = nil
         }
@@ -172,34 +112,20 @@ extension WorkoutReadService: WorkoutReadServiceProtocol {
                 startDate: $0.startDate,
                 endDate: $0.endDate,
                 duration: $0.duration,
-                metadata: $0.metadata as? [String: Sendable]
+                metadata: $0.metadata.sendableMetadata,
+                zoneGroups: WorkoutZoneGroup.groups(from: $0.zoneGroupsByType)
             )
         }
     }
 
     public func workoutEffortRelationships(for startDate: Date, endDate: Date) async throws -> [Workout.EffortRelationship] {
         let workout = try await findWorkout(startDate: startDate, endDate: endDate)
-        let predicate = HKQuery.predicateForObjects(from: workout)
-        let resumeLock = NSLock()
-        var hasResumed = false
-
-        let relationships = try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<[HKWorkoutEffortRelationship], Error>) in
-            let query = HKWorkoutEffortRelationshipQuery(predicate: predicate, anchor: nil, options: .mostRelevant) { query, relationships, _, error in
-                HealthStoreProvider.shared.stop(query)
-
-                resumeLock.lock()
-                defer { resumeLock.unlock() }
-                guard !hasResumed else { return }
-                hasResumed = true
-
-                if let error {
-                    continuation.resume(throwing: error)
-                    return
-                }
-                continuation.resume(returning: relationships ?? [])
-            }
-            HealthStoreProvider.shared.execute(query)
-        }
+        let descriptor = HKWorkoutEffortRelationshipQueryDescriptor(
+            predicate: HKQuery.predicateForObjects(from: workout),
+            anchor: nil,
+            option: .mostRelevant
+        )
+        let relationships = try await descriptor.result(for: HealthStoreProvider.shared).relationships
 
         return relationships.map {
             Workout.EffortRelationship(
@@ -242,21 +168,49 @@ private extension WorkoutReadService {
             return []
         }
 
-        return try await withCheckedThrowingContinuation { continuation in
-            var allLocations: [CLLocation] = []
-            let query = HKWorkoutRouteQuery(route: workoutRoute) { _, locations, done, error in
-                if let error {
-                    continuation.resume(throwing: error)
-                    return
-                }
-                if let locations {
-                    allLocations.append(contentsOf: locations)
-                }
-                if done {
-                    continuation.resume(returning: allLocations)
-                }
-            }
-            HealthStoreProvider.shared.execute(query)
+        var locations: [CLLocation] = []
+        for try await location in HKWorkoutRouteQueryDescriptor(workoutRoute).results(for: HealthStoreProvider.shared) {
+            locations.append(location)
         }
+        return locations
+    }
+
+    func workoutItem(from workout: HKWorkout) -> Workout.Item {
+        let energy = workout.statistics(for: HKQuantityType(.activeEnergyBurned))?.sumQuantity()
+        let strokes = workout.statistics(for: HKQuantityType(.swimmingStrokeCount))?.sumQuantity()
+        return Workout.Item(
+            duration: workout.duration,
+            energyBurned: energy?.doubleValue(for: Unit.workoutEnergy),
+            distance: workout.totalDistance?.doubleValue(for: Unit.workoutDistance),
+            startDate: workout.startDate,
+            endDate: workout.endDate,
+            activityType: workout.workoutActivityType,
+            source: workout.sourceRevision.source.name,
+            elevationAscended: workout.metadata?[HKMetadataKeyElevationAscended] as? Double,
+            elevationDescended: workout.metadata?[HKMetadataKeyElevationDescended] as? Double,
+            swimmingStrokeCount: strokes?.doubleValue(for: Unit.strokeCount),
+            metadata: workout.metadata.sendableMetadata,
+            zoneGroups: WorkoutZoneGroup.groups(from: workout.zoneGroupsByType)
+        )
+    }
+
+    func workoutEvent(from event: HKWorkoutEvent) -> Workout.Event {
+        Workout.Event(
+            type: event.type,
+            startDate: event.dateInterval.start,
+            endDate: event.dateInterval.end,
+            metadata: event.metadata.sendableMetadata
+        )
+    }
+
+    func routeLocation(from location: CLLocation) -> Workout.Route.Location {
+        Workout.Route.Location(
+            latitude: location.coordinate.latitude,
+            longitude: location.coordinate.longitude,
+            altitude: location.altitude,
+            timestamp: location.timestamp,
+            speed: location.speed >= 0 ? location.speed : nil,
+            horizontalAccuracy: location.horizontalAccuracy >= 0 ? location.horizontalAccuracy : nil
+        )
     }
 }

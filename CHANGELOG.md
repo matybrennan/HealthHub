@@ -7,6 +7,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.0.0] - 2026-11-08
+
+See [MIGRATING_TO_4.0.md](MIGRATING_TO_4.0.md) for upgrade guidance.
+
+### Added
+- `HealthAuthorizationPlan` and domain-based `HealthAuthorizationScope` presets for least-privilege authorization requests
+- `authorizationRequestStatus(for:)` and `requestAuthorization(plan:)` APIs that accurately report request necessity without implying read authorization visibility
+- iOS 27-first `HealthHubClient` and injectable `HealthStoreClient` architecture
+- Unified `HealthQuery`, sample summaries with provenance, quantity statistics, save/delete operations, idempotency metadata, anchored synchronization, observer streams, and background update delivery
+- `HealthDashboardService` for daily activity, heart, workout, and sleep summaries
+- `HealthDataCatalog` and `HealthQueryAnchorStore` for centralized type metadata and persisted incremental sync
+- `HealthHubClient.requestAuthorization(scopes:toShare:)` one-line shortcut for requesting authorization from health domains
+- `earliestAuthorizedDates(for:)` on `HealthHubClient` and `HealthStoreClientProtocol` for iOS 27 limited read access
+- `HeartRateRecoveryTestType` and `CardioRecovery.Item.testType`, read from and written to sample metadata, including the iOS 27.2 step test (`CardioRecovery.Item.init` keeps working because `testType` defaults to `nil`)
+- iOS 27 workout zones: `Workout.Item.zoneGroups` (time in each heart rate or cycling power zone, with `heartRateZones` and `cyclingPowerZones` helpers) and `Workout.Activity.zoneGroups` for each leg of a multi-sport workout, `HealthHubClient.preferredWorkoutZoneConfiguration(for:)`, and `Workout.Item.customZones` / `WorkoutZoneConfiguration(metric:boundaries:)` to save a workout with app-defined zones. Live zone updates are not wrapped because they need an app-owned `HKWorkoutSession`
+
+### Changed
+- `HealthAuthorizationScope.activity` now includes cycling power so cycling power zones can be read
+- **Breaking:** minimum deployment target raised to iOS 27 and Swift 6.4
+- **Breaking:** removed package-wide `MainActor` default isolation; HealthKit I/O now runs in actor-based clients
+- **Breaking:** `ConfigurationServiceProtocol.navigateToHealthSettings()` is now `@MainActor`
+- `requestAuthorization(plan:)` results are `@discardableResult`
+- Workout, steps, heart rate, and audiogram reads use current HealthKit APIs (statistics-based workout totals, `HKStatisticsCollectionQueryDescriptor`, `HKWorkoutRouteQueryDescriptor`, `HKWorkoutEffortRelationshipQueryDescriptor`, and audiogram `tests`) instead of deprecated or callback-based ones
+- Existing `HealthHubManager` and domain services remain available; new cross-domain code should use `HealthHubClient`
+- Example app dashboard now uses `HealthHubClient`
+- Removed dead iOS 26.2/27.0 availability gates now that iOS 27 is the minimum; `HealthObjectType.isAvailable` and `HealthAuthorizationPlan.availableReadTypes`/`availableShareTypes` remain for source compatibility and always report every type as available
+
+### Fixed
+- Authorization status no longer implies per-type read visibility, which HealthKit does not expose
+- Removed all Swift 6.4 compiler warnings, including unsafe captured-variable mutation in workout route and effort queries
+
+## [3.4.0]
+
 ### Added
 - Swift 6.4 package manifest support and Xcode 27.2 CI coverage
 - iOS 27 HealthKit support for RMSSD heart-rate variability, menopausal state, and bleeding after menopause
@@ -38,7 +71,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - The example app now builds in Swift 6 language mode and reports HealthKit authorization errors
-- Generated SwiftPM workspace data is ignored to keep clones clean
+- Generated build artifacts are ignored and no longer tracked
 - Body, Vitals, Respiratory, and Mobility service protocols now accept `DateRangeType` parameter
 - All shared "Case" protocols (BloodPressureCase, CardioFitnessCase, etc.) support date range filtering
 - Backwards compatible — existing code without date range parameters continues to work via protocol extensions

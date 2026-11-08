@@ -1,4 +1,5 @@
 import Testing
+import HealthKit
 @testable import HealthHub
 
 @Suite("HeartType Enum Suite")
@@ -66,5 +67,37 @@ struct HeartTypeTests {
     @Test("Blood pressure unit is mmHg")
     func bloodPressureUnit() {
         #expect(HeartType.bloodPressure.unit == "mmHg")
+    }
+}
+
+@Suite("Heart Rate Recovery Test Type Suite")
+struct HeartRateRecoveryTestTypeTests {
+
+    @Test("Raw values match HKHeartRateRecoveryTestType, including the iOS 27.2 step test")
+    func rawValuesMatchHealthKit() {
+        #expect(HeartRateRecoveryTestType.maxExercise.rawValue == HKHeartRateRecoveryTestType.maxExercise.rawValue)
+        #expect(HeartRateRecoveryTestType.predictionSubMaxExercise.rawValue == HKHeartRateRecoveryTestType.predictionSubMaxExercise.rawValue)
+        #expect(HeartRateRecoveryTestType.predictionNonExercise.rawValue == HKHeartRateRecoveryTestType.predictionNonExercise.rawValue)
+        if #available(iOS 27.2, *) {
+            #expect(HeartRateRecoveryTestType.stepTest.rawValue == HKHeartRateRecoveryTestType.stepTest.rawValue)
+        }
+    }
+
+    @Test("Parses the test type from sample metadata")
+    func parsesMetadata() {
+        let metadata: [String: Any] = [HKMetadataKeyHeartRateRecoveryTestType: HeartRateRecoveryTestType.stepTest.rawValue]
+        #expect(HeartRateRecoveryTestType(metadata: metadata) == .stepTest)
+    }
+
+    @Test("Missing or unknown metadata yields no test type")
+    func ignoresMissingOrUnknownMetadata() {
+        #expect(HeartRateRecoveryTestType(metadata: nil) == nil)
+        #expect(HeartRateRecoveryTestType(metadata: [:]) == nil)
+        #expect(HeartRateRecoveryTestType(metadata: [HKMetadataKeyHeartRateRecoveryTestType: 99]) == nil)
+    }
+
+    @Test("Cardio recovery items default to no test type")
+    func itemsDefaultToNoTestType() {
+        #expect(CardioRecovery.Item(bpm: 30, date: .now).testType == nil)
     }
 }

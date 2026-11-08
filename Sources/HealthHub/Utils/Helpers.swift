@@ -12,11 +12,17 @@ public enum HealthStoreProvider {
     public static let shared = HKHealthStore()
 }
 
-public protocol HealthStoreProtocol: Sendable {
+public protocol HealthStoreProtocol {
     func requestAuthorization(toShare typesToShare: Set<HKSampleType>, read typesToRead: Set<HKObjectType>) async throws
+    func statusForAuthorizationRequest(toShare typesToShare: Set<HKSampleType>, read typesToRead: Set<HKObjectType>) async throws -> HKAuthorizationRequestStatus
 }
 
-extension HKHealthStore: @retroactive @unchecked Sendable { }
+public extension HealthStoreProtocol {
+    func statusForAuthorizationRequest(toShare typesToShare: Set<HKSampleType>, read typesToRead: Set<HKObjectType>) async throws -> HKAuthorizationRequestStatus {
+        .unknown
+    }
+}
+
 extension HKHealthStore: HealthStoreProtocol { }
 
 public enum AuthorizationStatusError: LocalizedError {

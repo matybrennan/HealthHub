@@ -1,11 +1,11 @@
 # 🏥 HealthHub
 
 [![Swift](https://img.shields.io/badge/Swift-6.4-orange.svg)](https://swift.org)
-[![Platform](https://img.shields.io/badge/Platform-iOS_26+-blue.svg)](https://developer.apple.com/ios/)
+[![Platform](https://img.shields.io/badge/Platform-iOS_27+-blue.svg)](https://developer.apple.com/ios/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![SPM](https://img.shields.io/badge/SPM-Compatible-brightgreen.svg)](https://swift.org/package-manager/)
 
-A modern Swift library that makes HealthKit integration simple, testable, and elegant. Read and write health data with protocol-driven architecture and full dependency injection support.
+A Swift 6.4, iOS 27-first HealthKit framework for authorization, querying, live synchronization, analytics, and specialized clinical workflows.
 
 ---
 
@@ -35,6 +35,9 @@ A modern Swift library that makes HealthKit integration simple, testable, and el
 - 👓 **Vision Prescriptions** — Glasses & contact lens prescriptions (full read + write)
 - 🍽️ **Food Correlation** — Group nutrition samples into meals via `HKCorrelationTypeIdentifier.food`
 - 🏊 **Multi-Activity Workouts** — Composite workouts (e.g. triathlons) and workout effort score linking
+- ⚡ **Client-First Core** — Actor-backed, injectable HealthKit client with authorization plans, uniform queries, writes, deletes, statistics, and provenance
+- 🔄 **Reliable Sync** — Observer streams, persisted query anchors, incremental updates, and background delivery
+- 📊 **Dashboard Summaries** — Steps, active energy, heart rate, workouts, and sleep in one query
 
 ---
 
@@ -46,17 +49,60 @@ Add HealthHub to your `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/matybrennan/HealthHub", from: "3.4.0")
+    .package(url: "https://github.com/matybrennan/HealthHub", from: "4.0.0")
 ]
 ```
 
 Or add it via Xcode: **File → Add Package Dependencies** → paste the URL above.
 
-> ⚠️ **Requires iOS 26+ and Swift 6.4** (Xcode 27.2 or later).
+> ⚠️ **Requires iOS 27+ and Swift 6.4** (Xcode 27.2 or later).
 
 ---
 
 ## 🚀 Getting Started
+
+### Modern API
+
+`HealthHubClient` is the iOS 27-first entry point for authorization and cross-domain summaries:
+
+```swift
+let health = HealthHubClient()
+
+try await health.requestAuthorization(scopes: [.activity, .heart, .sleep])
+
+let dashboard = try await health.dashboard()
+print(dashboard.stepCount ?? 0)
+```
+
+`requestAuthorization` only shows the HealthKit prompt when something new needs to be requested, so it is safe to call on every launch. Use `HealthAuthorizationPlan` when you need write access or a custom set of types.
+
+For data pipelines and background sync, use the injectable store directly:
+
+```swift
+let store = HealthStoreClient()
+let query = HealthQuery(dateRange: .lastNDays(30), limit: 100)
+
+let samples = try await store.sampleSummaries(
+    for: [.stepCount],
+    query: query,
+    unit: .count()
+)
+
+let anchors = HealthQueryAnchorStore()
+let change = try await store.synchronize(
+    for: .stepCount,
+    anchorKey: "steps",
+    anchorStore: anchors,
+    query: query,
+    unit: .count()
+)
+```
+
+The existing domain services remain available during the 4.0 migration. See [Migrating to 4.0](MIGRATING_TO_4.0.md) for the new client-first architecture.
+
+### Upgrading from 3.x
+
+4.0 is a major release that raises the deployment target to iOS 27 and removes the package-wide MainActor default isolation. Use `HealthHubClient` for new authorization, synchronization, analytics, and cross-domain code. Existing specialized `HealthHubManager` services remain available once your app targets iOS 27. See [MIGRATING_TO_4.0.md](MIGRATING_TO_4.0.md) for the migration path.
 
 ### 1. Enable HealthKit Capability
 
@@ -76,86 +122,76 @@ In your Xcode project, go to **Signing & Capabilities** → **+ Capability** →
 ```swift
 import HealthHub
 
-let hub = HealthHubManager()
-
-// Request access to read/write specific data types
-try await hub.configuration.requestAuthorization(
-    toShare: [.stepCount, .workout],
-    toRead: [.stepCount, .heartRate, .workout]
+let health = HealthHubClient()
+let plan = HealthAuthorizationPlan(
+    scopes: [.activity, .heart, .sleep],
+    toShare: [.workout]
 )
+
+try await health.requestAuthorization(plan: plan)
+```
+
+### 4. Respect Limited Read Access (iOS 27)
+
+Users can limit how far back your app may read. Ask HealthHub for the earliest readable date and clamp your queries to it. Types with full access are omitted:
+
+```swift
+let earliest = try await health.earliestAuthorizedDates(for: [.stepCount, .heartRate])
+
+if let cutoff = earliest[.stepCount] {
+    let query = HealthQuery(dateRange: .betweenDates(start: cutoff, end: .now))
+    // Query steps without requesting data the user restricted
+}
 ```
 
 ---
 
 ## 🏗️ Architecture
 
-HealthHub uses a **protocol-driven, dependency-injectable architecture** that makes testing easy:
+HealthHub 4.0 uses a **client-first, actor-backed architecture** for cross-domain HealthKit workflows. The specialized services remain available for focused features that HealthKit represents with dedicated types.
 
 ```
-HealthHubManager (facade)
-├── ConfigurationService
-├── ActivityManager
-│   ├── ActiveEnergyService
-│   ├── StepsService
-│   ├── WorkoutManager
-│   │   ├── WorkoutReadService
-│   │   └── WorkoutWriteService
-│   └── ActivityService
-├── HeartManager
-│   └── HeartRateService
-├── BodyMeasurementsService
-├── MobilityService
-├── NutritionService
-├── SleepService
-├── MentalWellbeingService
-├── CycleTracking
-├── SymptomsService
-├── RespiratoryService
-├── VitalsService
-├── OtherDataService
-├── HearingService
-├── ClinicalRecordsService
-├── CDADocumentsService
-├── ElectrocardiogramService
-├── HeartbeatSeriesService
-├── VerifiableClinicalRecordsService
-├── AttachmentsService
-├── MedicationsService
-└── VisionPrescriptionsService
+HealthHubClient (actor)
+├── HealthStoreClientProtocol (injectable)
+│   ├── Authorization plans and request status
+│   ├── Sample summaries and statistics
+│   ├── Save and delete operations
+│   ├── Anchored synchronization and observer streams
+│   └── Background delivery
+├── HealthDashboardService
+├── HealthDataCatalog
+└── Legacy HealthHubManager
+    ├── Activity, heart, body, mobility, nutrition, sleep, and vitals
+    ├── ECG, heartbeat series, workouts, routes, and attachments
+    └── Clinical records, medications, hearing, and vision prescriptions
 ```
 
-Every layer is backed by protocols and supports dependency injection:
+Inject a conforming store for deterministic tests and previews:
 
 ```swift
-// Production — uses default concrete implementations
-let hub = HealthHubManager()
-
-// Testing — inject mocks at any level
-let hub = HealthHubManager(
-    configuration: MockConfigurationService(),
-    activityManager: MockActivityManager(),
-    heartManager: MockHeartManager(),
-    // ... inject what you need
-)
+func makeHealthClient(store: some HealthStoreClientProtocol) -> HealthHubClient {
+    HealthHubClient(store: store)
+}
 ```
 
 ---
 
 ## 📖 Usage
 
-### Using the Main Manager
+### Using the 4.0 Client
 
 ```swift
-let hub = HealthHubManager()
+let health = HealthHubClient()
+let dashboard = try await health.dashboard(for: .today)
 
-// Access any service through the manager
-let workouts = try await hub.activityManager.workout.workouts(fromWorkoutType: .today)
-let heartRate = hub.activityManager.steps
+print(dashboard.stepCount ?? 0)
+print(dashboard.activeEnergyKilocalories ?? 0)
+print(dashboard.averageHeartRate ?? 0)
 ```
 
-### Using Individual Services
+### Using Specialized Services
 
-If you only need a specific service, inject it directly:
+Use `HealthHubManager` or an individual service for workflows that have rich domain models, such as workouts, ECGs, clinical records, or prescriptions:
 
 ```swift
 let workoutManager = WorkoutManager(
@@ -169,34 +205,144 @@ let todayWorkouts = try await workoutManager.workouts(fromWorkoutType: .today)
 
 ## 📚 API Reference
 
-### Configuration
+### Authorization
 
 | Method / Property | Description |
 |--------|-------------|
-| `requestAuthorization(toShare:toRead:)` | Request HealthKit permissions |
-| `authorizationStatus(for:)` | Check read authorization status for a type |
-| `sharingAuthorizationStatus(for:)` | Check write authorization status for a type |
-| `isHealthDataAvailable` | Whether HealthKit is available on device |
-| `state` | Observable authorization state (`.idle` / `.hasRequestedHealthKitInfo`) |
-| `navigateToHealthSettings()` | Open the Apple Health app |
+| `HealthAuthorizationPlan` | Least-privilege read scopes and explicit write types |
+| `authorizationRequestStatus(for:)` | Whether HealthKit would display a permission prompt |
+| `requestAuthorization(plan:)` | Request the plan and return whether a request was needed |
+| `HealthAuthorizationScope` | Activity, heart, body, mobility, nutrition, sleep, mental wellbeing, reproductive health, vitals, and hearing |
+| `HealthHubManager.configuration` | Legacy configuration service for existing manager-based code |
 
 ```swift
-var configuration: ConfigurationServiceProtocol
-
-// Check availability before requesting
-guard hub.configuration.isHealthDataAvailable else { return }
-
-// Request authorization
-try await hub.configuration.requestAuthorization(
-    toShare: [.stepCount, .workout],
-    toRead: [.stepCount, .heartRate, .workout]
+let plan = HealthAuthorizationPlan(
+    scopes: [.activity, .heart],
+    toShare: [.workout]
 )
-
-// Check individual type status
-let status = hub.configuration.authorizationStatus(for: HealthObjectType.heartRate)
+let status = try await health.authorizationRequestStatus(for: plan)
 ```
 
-`requestAuthorization` automatically skips `HealthObjectType` cases that are unavailable on the current OS. Check `isAvailable` before directly using a type introduced after your deployment target.
+HealthKit does not expose whether a user granted read access to an individual type. Request completion means the authorization sheet completed; an empty query can still mean the user declined read access.
+
+### HealthStoreClient
+
+`HealthStoreClient` is an actor and the complete low-level API behind `HealthHubClient`. It can be injected through `HealthHubClient(store:)`.
+
+| API | Description |
+|-----|-------------|
+| `sampleSummaries(for:query:unit:)` | Fetch value-safe samples with UUID, source, device, dates, and optional quantity/category/workout value |
+| `statistics(for:unit:query:)` | Sum, average, minimum, and maximum for a quantity type |
+| `save(_:)` / `delete(_:)` | Save or delete HealthKit objects |
+| `anchoredChanges(for:from:query:unit:)` | Fetch added/deleted records since an anchor |
+| `synchronize(for:anchorKey:anchorStore:query:unit:)` | Fetch changes and persist the replacement anchor |
+| `updates(for:query:)` | `AsyncThrowingStream` of observer events |
+| `enableBackgroundUpdates(for:frequency:)` | Enable HealthKit background delivery |
+
+#### Uniform Queries and Provenance
+
+```swift
+let store = HealthStoreClient()
+let query = HealthQuery(dateRange: .lastNDays(30), limit: 100)
+
+let samples = try await store.sampleSummaries(
+    for: [.stepCount],
+    query: query,
+    unit: .count()
+)
+
+for sample in samples {
+    print(sample.typeIdentifier, sample.sourceBundleIdentifier, sample.deviceName ?? "Unknown device")
+}
+```
+
+Use the correct `HKUnit` for each requested quantity type. `HealthSampleSummary` carries a numeric value only when a unit is supplied for a quantity sample.
+
+`HealthQuery` supports `.today`, `.thisWeek`, `.thisMonth`, `.lastNDays(_)`, `.betweenDates(start:end:)`, and `.allTime`, plus a per-type limit and newest- or oldest-first sorting.
+
+#### Statistics and Dashboards
+
+```swift
+let store = HealthStoreClient()
+let steps = try await store.statistics(
+    for: .stepCount,
+    unit: .count(),
+    query: .init(dateRange: .today)
+)
+print(steps.sum ?? 0)
+
+let dashboard = try await HealthHubClient().dashboard()
+print(dashboard.workoutCount)
+```
+
+`HealthDashboard` includes total steps, active energy, average heart rate, workout count, and sleep duration.
+
+#### Anchored Sync, Observer Streams, and Background Delivery
+
+```swift
+let store = HealthStoreClient()
+let anchors = HealthQueryAnchorStore()
+
+let change = try await store.synchronize(
+    for: .stepCount,
+    anchorKey: "steps",
+    anchorStore: anchors,
+    query: .init(dateRange: .lastNDays(30)),
+    unit: .count()
+)
+print(change.addedSamples.count, change.deletedObjectIDs.count)
+
+try await store.enableBackgroundUpdates(for: [.stepCount], frequency: .hourly)
+let updates = try await store.updates(for: [.stepCount])
+for try await update in updates {
+    print("HealthKit changed: \(update.typeIdentifier)")
+}
+```
+
+Persist anchors with `HealthQueryAnchorStore` or provide your own `HealthQueryAnchorStoring` implementation. Use observer events to trigger another anchored synchronization; do not treat an observer event as the data itself.
+
+#### Writes, Deletions, and Idempotency
+
+```swift
+let metadata = HealthWriteMetadata.idempotency("workout-upload-42")
+// Pass metadata to a domain write API, for example saveWorkout(..., extra: metadata).
+
+try await store.delete(objects)
+```
+
+`HealthSampleSummary` includes source and device provenance. HealthKit only lets an app delete objects it created, so retain object UUIDs and use an idempotency key in your own retry/deduplication strategy.
+
+#### Data Catalog
+
+```swift
+let descriptor = HealthDataCatalog.descriptor(for: .heartRate)
+print(descriptor.displayName)
+print(descriptor.category)
+print(descriptor.isWritable)
+
+let activityTypes = HealthDataCatalog.types(in: .activity)
+```
+
+`HealthDataCatalog` is the centralized source for type availability, HealthKit identifier, write capability, category, and display name. Use it to build authorization screens and diagnostics instead of maintaining separate type lists.
+
+---
+
+#### Errors and Availability
+
+```swift
+do {
+    let statistics = try await store.statistics(
+        for: .stepCount,
+        unit: .count(),
+        query: .init(dateRange: .today)
+    )
+    print(statistics.sum ?? 0)
+} catch let error as HealthHubError {
+    print(error.localizedDescription)
+}
+```
+
+`HealthHubError` distinguishes unavailable HealthKit data, unsupported types, invalid queries, invalid anchors, and missing sharing authorization. Every `HealthObjectType` exists on iOS 27+, so no availability checks are needed; `HealthObjectType.isAvailable` is kept only for source compatibility with 3.x.
 
 ---
 
@@ -321,6 +467,30 @@ try await hub.activityManager.workout.saveWorkout(
 | `workoutActivities(for:endDate:)` | Sub-activity segments for composite workouts (e.g. triathlons) |
 | `workoutEffortRelationships(for:endDate:)` | Links a workout to its linked effort score sample |
 
+##### Heart Rate and Cycling Power Zones (iOS 27)
+
+HealthKit calculates time in each zone for you. Every workout read through HealthHub carries it in `zoneGroups`. Request read access to `.heartRate` and `.cyclingPower` first (the `.heart` and `.activity` scopes cover both).
+
+```swift
+let workout = try await hub.activityManager.workout.workouts(fromWorkoutType: .today).mostRecent
+
+if let zones = workout?.heartRateZones {
+    for entry in zones.timeInZones {
+        print("Zone \(entry.zone.index + 1): \(entry.duration / 60) min")
+    }
+}
+
+// The zones the person prefers (system generated or set in Health settings)
+let preferred = try await health.preferredWorkoutZoneConfiguration(for: .heartRate)
+
+// Save a workout with your own zones instead
+var item = Workout.Item(duration: 1800, startDate: start, endDate: end)
+item.customZones = [try WorkoutZoneConfiguration(metric: .heartRate, boundaries: [120, 140, 160, 175])]
+try await hub.activityManager.workout.saveWorkout(workout: item, extra: nil)
+```
+
+`n` boundaries create `n + 1` zones. Boundaries must be strictly ascending and greater than zero, otherwise `HealthHubError.invalidQuery` is thrown. Only heart rate and cycling power support zones. For multi-sport workouts, each leg returned by `workoutActivities(for:endDate:)` has its own `zoneGroups`. Live zone updates during a session need your own `HKWorkoutSession` and are not wrapped by HealthHub.
+
 #### Activity Service
 
 All Apple Health activity data types — cycling, running, swimming, skiing, underwater, and more.
@@ -372,13 +542,17 @@ print("Latest: \(bp.mostRecent?.value ?? "")")
 let hrv = try await hub.heartManager.heartRateVariability()
 print("Average SDNN: \(hrv.averageSDNN) ms")
 
-if #available(iOS 27.0, *) {
-    let rmssd = try await hub.heartManager.heartRateVariabilityRMSSD()
-    print("Average RMSSD: \(rmssd.averageRMSSD) ms")
-}
+let rmssd = try await hub.heartManager.heartRateVariabilityRMSSD()
+print("Average RMSSD: \(rmssd.averageRMSSD) ms")
 
 let resting = try await hub.heartManager.restingHeartRate()
 print("Resting HR: \(resting.mostRecent?.bpm ?? 0) BPM")
+
+// Cardio recovery reports which test produced each value (`.stepTest` is recorded from iOS 27.2)
+let recovery = try await hub.heartManager.cardioRecovery()
+if let latest = recovery.mostRecent {
+    print("Recovery: \(latest.bpm) BPM via \(latest.testType?.name ?? "unknown test")")
+}
 ```
 
 | Data | Saveable |
@@ -389,11 +563,11 @@ print("Resting HR: \(resting.mostRecent?.bpm ?? 0) BPM")
 | Cardio Fitness (VO₂ Max) | ✅ |
 | Cardio Recovery | ✅ |
 | Heart Rate Variability (SDNN) | — |
-| Heart Rate Variability (RMSSD, iOS 27+) | — |
+| Heart Rate Variability (RMSSD) | — |
 | High Heart Rate Events | — |
 | Irregular Heart Rhythm Events | — |
 | Low Cardio Fitness Event Notifications | — |
-| Hypertension Event Notifications (iOS 26.2+) | — |
+| Hypertension Event Notifications | — |
 | Low Heart Rate Events | — |
 | Peripheral Perfusion Index | ✅ |
 | Resting Heart Rate | — |
@@ -657,13 +831,11 @@ print("Cycle starts: \(menstruation.cycleStarts.count)")
 let contraceptive = try await hub.cycleTracking.contraceptive()
 print("Method: \(contraceptive.mostRecent?.type.name ?? "")")
 
-if #available(iOS 27.0, *) {
-    let menopause = try await hub.cycleTracking.menopausalState()
-    print("State: \(menopause.mostRecent?.state.name ?? "")")
+let menopause = try await hub.cycleTracking.menopausalState()
+print("State: \(menopause.mostRecent?.state.name ?? "")")
 
-    let bleeding = try await hub.cycleTracking.bleedingAfterMenopause()
-    print("Most recent bleeding: \(bleeding.mostRecent?.type.name ?? "")")
-}
+let bleeding = try await hub.cycleTracking.bleedingAfterMenopause()
+print("Most recent bleeding: \(bleeding.mostRecent?.type.name ?? "")")
 
 // Cycle notifications (read-only, generated by Apple)
 let irregular = try await hub.cycleTracking.irregularMenstrualCycles()
@@ -1007,7 +1179,7 @@ try await hub.visionPrescriptions.saveGlassesPrescription(model: item, extra: ni
 
 ## 📅 Date Range Filtering
 
-Most services support flexible date range filtering with `DateRangeType`:
+`HealthQuery` and specialized services support flexible `DateRangeType` filtering:
 
 ```swift
 // Filter body measurements to this month
@@ -1021,6 +1193,13 @@ let speed = try await hub.mobility.walkingSpeed(from: .betweenDates(start: start
 
 // All data (default behavior, backwards compatible)
 let oxygen = try await hub.respiratory.bloodOxygen()  // same as .allTime
+
+// Use the same ranges in a client-first query
+let samples = try await HealthStoreClient().sampleSummaries(
+    for: [.stepCount],
+    query: .init(dateRange: .lastNDays(7)),
+    unit: .count()
+)
 ```
 
 | Range | Description |
@@ -1036,7 +1215,7 @@ let oxygen = try await hub.respiratory.bloodOxygen()  // same as .allTime
 
 ## 🧪 Testing
 
-HealthHub is designed for testability. Every service uses protocols, and managers accept injected dependencies:
+HealthHub is designed for testability. Client-first code injects an `HealthStoreClientProtocol` test double; specialized services keep their focused protocols and mocks:
 
 ```swift
 import Testing
@@ -1061,6 +1240,8 @@ struct WorkoutTests {
 }
 ```
 
+For cross-domain tests, implement `HealthStoreClientProtocol` with fixture summaries and statistics, then inject it with `HealthHubClient(store:)`. This avoids requiring a HealthKit entitlement or user health data in unit tests.
+
 ---
 
 ## 📱 Example App
@@ -1068,12 +1249,13 @@ struct WorkoutTests {
 The `HealthHubExample/` project demonstrates:
 
 - Requesting HealthKit authorization
+- Using the 4.0 client-first dashboard
 - Fetching steps, active energy, workouts, heart rate, RMSSD heart-rate variability, menopause data, weight, and sleep
-- Using `DateRangeType` for date-filtered queries
+- Using `HealthAuthorizationPlan`, `HealthQuery`, and `DateRangeType`
 - `@Observable` integration with SwiftUI
-- Dependency injection with `HealthHubManager`
+- Dependency injection with `HealthHubClient` and `HealthHubManager`
 
-Open `HealthHubExample/HealthHubExample.xcodeproj` in Xcode to run it on a device or simulator.
+Open `HealthHubExample/HealthHubExample.xcodeproj` in Xcode to run it on an iOS 27+ device or simulator.
 
 ---
 

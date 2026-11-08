@@ -30,14 +30,19 @@ extension WorkoutWriteService: WorkoutWriteServiceProtocol {
         config.activityType = workout.activityType
 
         let builder = HKWorkoutBuilder(healthStore: healthStore, configuration: config, device: .local())
-        
+
+        // HealthKit only accepts custom zones before collection begins.
+        for zones in workout.customZones {
+            try await builder.setCustomZoneConfiguration(zones.healthKitConfiguration(), for: zones.metric.quantityType)
+        }
+
         try await builder.beginCollection(at: workout.startDate)
 
         // Add workout events (laps, pauses, etc.)
         if let events {
             for event in events {
                 let dateInterval = DateInterval(start: event.startDate, end: event.endDate ?? event.startDate)
-                let hkEvent = HKWorkoutEvent(type: event.type, dateInterval: dateInterval, metadata: event.metadata as? [String: Any])
+                let hkEvent = HKWorkoutEvent(type: event.type, dateInterval: dateInterval, metadata: event.metadata)
                 try await builder.addWorkoutEvents([hkEvent])
             }
         }
@@ -58,7 +63,7 @@ extension WorkoutWriteService: WorkoutWriteServiceProtocol {
         }
 
         // Add energy and distance as samples for the builder
-        var metadata: [String: Any] = (extra as? [String: Any]) ?? [:]
+        var metadata: [String: Any] = extra ?? [:]
 
         if let energy = workout.energyBurned {
             let energySample = HKQuantitySample(

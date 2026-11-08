@@ -48,15 +48,13 @@ struct ConfigurationView: View {
         authorizationError = nil
         defer { isRequestingAuthorization = false }
 
-        let shareTypes: [HealthObjectType] = [.stepCount, .workout, .heartRate, .weight, .activeEnergy]
-        var readTypes: [HealthObjectType] = [.stepCount, .workout, .heartRate, .weight, .activeEnergy, .sleepAnalysis]
-
-        if #available(iOS 27.0, *) {
-            readTypes += [.heartRateVariabilityRMSSD, .bleedingAfterMenopause, .menopausalState]
-        }
+        let plan = HealthAuthorizationPlan(
+            scopes: [.activity, .heart, .body, .sleep],
+            toShare: [.workout, .weight, .activeEnergy]
+        )
 
         do {
-            try await store.manager.configuration.requestAuthorization(toShare: shareTypes, toRead: readTypes)
+            try await store.health.requestAuthorization(plan: plan)
         } catch {
             authorizationError = error.localizedDescription
         }

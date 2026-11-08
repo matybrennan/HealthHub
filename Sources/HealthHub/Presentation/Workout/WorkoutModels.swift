@@ -25,6 +25,10 @@ public struct Workout: Sendable {
         public var averageHeartRate: Double? // bpm
         public var swimmingStrokeCount: Double?
         public var metadata: [String: Sendable]?
+        /// Time in each heart rate or cycling power zone. Filled in when reading; ignored when saving.
+        public var zoneGroups: [WorkoutZoneGroup]
+        /// App-defined zones HealthKit uses for this workout instead of the person's preferred zones. Applied when saving.
+        public var customZones: [WorkoutZoneConfiguration]
 
         public init(
             duration: Double,
@@ -38,7 +42,9 @@ public struct Workout: Sendable {
             elevationDescended: Double? = nil,
             averageHeartRate: Double? = nil,
             swimmingStrokeCount: Double? = nil,
-            metadata: [String: Sendable]? = nil
+            metadata: [String: Sendable]? = nil,
+            zoneGroups: [WorkoutZoneGroup] = [],
+            customZones: [WorkoutZoneConfiguration] = []
         ) {
             self.duration = duration
             self.energyBurned = energyBurned
@@ -52,6 +58,23 @@ public struct Workout: Sendable {
             self.averageHeartRate = averageHeartRate
             self.swimmingStrokeCount = swimmingStrokeCount
             self.metadata = metadata
+            self.zoneGroups = zoneGroups
+            self.customZones = customZones
+        }
+
+        /// The zone group for a metric, when the workout has one.
+        public func zoneGroup(for metric: WorkoutZoneMetric) -> WorkoutZoneGroup? {
+            zoneGroups.first { $0.metric == metric }
+        }
+
+        /// Time spent in each heart rate zone.
+        public var heartRateZones: WorkoutZoneGroup? {
+            zoneGroup(for: .heartRate)
+        }
+
+        /// Time spent in each cycling power zone.
+        public var cyclingPowerZones: WorkoutZoneGroup? {
+            zoneGroup(for: .cyclingPower)
         }
 
         /// Duration formatted as hours and minutes
@@ -209,13 +232,28 @@ public struct Workout: Sendable {
         public let endDate: Date?
         public let duration: Double // secs
         public let metadata: [String: Sendable]?
+        /// Time in each heart rate or cycling power zone for this leg of the workout.
+        public let zoneGroups: [WorkoutZoneGroup]
 
-        public init(activityType: HKWorkoutActivityType, startDate: Date, endDate: Date? = nil, duration: Double, metadata: [String: Sendable]? = nil) {
+        public init(
+            activityType: HKWorkoutActivityType,
+            startDate: Date,
+            endDate: Date? = nil,
+            duration: Double,
+            metadata: [String: Sendable]? = nil,
+            zoneGroups: [WorkoutZoneGroup] = []
+        ) {
             self.activityType = activityType
             self.startDate = startDate
             self.endDate = endDate
             self.duration = duration
             self.metadata = metadata
+            self.zoneGroups = zoneGroups
+        }
+
+        /// The zone group for a metric, when this activity has one.
+        public func zoneGroup(for metric: WorkoutZoneMetric) -> WorkoutZoneGroup? {
+            zoneGroups.first { $0.metric == metric }
         }
     }
 

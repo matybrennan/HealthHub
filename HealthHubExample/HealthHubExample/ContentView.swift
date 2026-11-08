@@ -31,6 +31,8 @@ struct ContentView: View {
             Section("Configuration") {
                 Label("Setup", systemImage: "gear")
                     .tag(SidebarItem.configuration)
+                Label("Dashboard", systemImage: "rectangle.3.group")
+                    .tag(SidebarItem.dashboard)
             }
 
             Section("Activity") {
@@ -76,6 +78,8 @@ struct ContentView: View {
         switch item {
         case .configuration:
             ConfigurationView(store: store)
+        case .dashboard:
+            DashboardExampleView(store: store)
         case .steps:
             StepsExampleView(store: store)
         case .activeEnergy:
@@ -99,7 +103,7 @@ struct ContentView: View {
 }
 
 enum SidebarItem: Hashable {
-    case configuration
+    case configuration, dashboard
     case steps, activeEnergy, workouts
     case heartRate, heartRateVariability
     case weight

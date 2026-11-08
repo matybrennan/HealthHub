@@ -13,7 +13,7 @@ Thanks for your interest in contributing to HealthHub! Here's how to get started
 ## Development Setup
 
 - **Xcode 27.2+** and **Swift 6.4+** required
-- **iOS 26+ SDK**
+- **iOS 27+ SDK**
 - Open `Package.swift` in Xcode or run `xcodebuild build -scheme HealthHub -destination 'generic/platform=iOS Simulator'`
 
 ### Running the Example App
@@ -46,6 +46,16 @@ Thanks for your interest in contributing to HealthHub! Here's how to get started
 - Include tests where applicable
 - Update documentation if adding/changing public API
 - Ensure the simulator build passes without warnings
+
+### Releasing (maintainers)
+
+Releases are automated by `.github/workflows/release.yml`:
+
+1. In a release PR, move the changes from `## [Unreleased]` into a new `## [x.y.z] - YYYY-MM-DD` section in `CHANGELOG.md`
+2. Merge the PR into `master`
+3. The workflow tags `x.y.z` and publishes a GitHub release using that CHANGELOG section as the notes
+
+Nothing happens if the newest version already has a tag. Versions with a suffix, such as `4.1.0-beta.1`, are published as pre-releases.
 
 ## Reporting Issues
 

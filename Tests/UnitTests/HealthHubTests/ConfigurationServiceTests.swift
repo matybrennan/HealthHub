@@ -18,6 +18,32 @@ struct ConfigurationServiceTests {
         #expect(service.state == .idle)
     }
 
+    @Test("Authorization plans skip a redundant HealthKit request")
+    func authorizationPlanDoesNotRequestWhenUnnecessary() async throws {
+        let store = HealthStoreMock()
+        store.requestStatus = .unnecessary
+        let service = ConfigurationService(healthStore: store)
+        let plan = HealthAuthorizationPlan(scopes: [.activity])
+
+        let result = try await service.requestAuthorization(plan: plan)
+
+        #expect(result == .notRequired)
+        #expect(store.requestAuthorizationCallCount == 0)
+    }
+
+    @Test("Authorization plans request HealthKit when needed")
+    func authorizationPlanRequestsWhenNeeded() async throws {
+        let store = HealthStoreMock()
+        store.requestStatus = .shouldRequest
+        let service = ConfigurationService(healthStore: store)
+        let plan = HealthAuthorizationPlan(scopes: [.heart], toShare: [.heartRate])
+
+        let result = try await service.requestAuthorization(plan: plan)
+
+        #expect(result == .requested)
+        #expect(store.requestAuthorizationCallCount == 1)
+    }
+
     @Test("Mock configuration service tracks call count")
     func mockTracksCallCount() async throws {
         let mock = MockConfigurationService()
@@ -37,4 +63,3 @@ struct ConfigurationServiceTests {
         #expect(mock.requestAuthorizationCallCount == 1)
     }
 }
-

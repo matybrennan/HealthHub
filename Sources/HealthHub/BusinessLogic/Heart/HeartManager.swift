@@ -54,7 +54,7 @@ extension HeartManager: HeartManagerProtocol {
         let samples = try await fetchQuantitySamples(quantityIdentifier: .heartRateRecoveryOneMinute)
         let items = samples.map { item -> CardioRecovery.Item in
             let value = item.quantity.doubleValue(for: HKUnit(from: "count/min"))
-            return CardioRecovery.Item(bpm: Int(value), date: item.endDate)
+            return CardioRecovery.Item(bpm: Int(value), date: item.endDate, testType: HeartRateRecoveryTestType(metadata: item.metadata))
         }
 
         return CardioRecovery(items: items)
@@ -71,10 +71,6 @@ extension HeartManager: HeartManagerProtocol {
     }
 
     public func heartRateVariabilityRMSSD() async throws -> HeartRateVariabilityRMSSD {
-        guard #available(iOS 27.0, *) else {
-            throw AsyncParsingError.unsupportedOSVersion("RMSSD heart rate variability")
-        }
-
         let samples = try await fetchQuantitySamples(quantityIdentifier: .heartRateVariabilityRMSSD)
         let items = samples.map { item -> HeartRateVariabilityRMSSD.Item in
             let rmssd = item.quantity.doubleValue(for: HKUnit.secondUnit(with: .milli))
@@ -121,10 +117,6 @@ extension HeartManager: HeartManagerProtocol {
     }
 
     public func hypertensionEvents() async throws -> HypertensionEvent {
-        guard #available(iOS 26.2, *) else {
-            throw AsyncParsingError.unsupportedOSVersion("Hypertension notifications")
-        }
-
         let samples = try await fetchCategorySamples(categoryIdentifier: .hypertensionEvent)
         let items = samples.map { item -> HypertensionEvent.Item in
             HypertensionEvent.Item(startDate: item.startDate, endDate: item.endDate)
@@ -178,9 +170,13 @@ extension HeartManager: HeartManagerProtocol {
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
         let unit = HKUnit(from: "count/min")
-        let sampleObjects = model.items.map {
-            let quantity = HKQuantity(unit: unit, doubleValue: Double($0.bpm))
-            return HKQuantitySample(type: type, quantity: quantity, start: $0.date, end: $0.date, metadata: extra)
+        let sampleObjects = model.items.map { item in
+            var metadata = extra ?? [:]
+            if let testType = item.testType, testType.isSupportedByCurrentOS {
+                metadata[HKMetadataKeyHeartRateRecoveryTestType] = testType.rawValue
+            }
+            let quantity = HKQuantity(unit: unit, doubleValue: Double(item.bpm))
+            return HKQuantitySample(type: type, quantity: quantity, start: item.date, end: item.date, metadata: metadata.isEmpty ? nil : metadata)
         }
 
         try await HealthStoreProvider.shared.save(sampleObjects)

@@ -82,13 +82,11 @@ public protocol HeartManagerProtocol {
     func cardioFitness() async throws -> CardioFitness
     func cardioRecovery() async throws -> CardioRecovery
     func heartRateVariability() async throws -> HeartRateVariability
-    /// Requires iOS 27.0+. Throws `AsyncParsingError.unsupportedOSVersion` on earlier OS versions.
     func heartRateVariabilityRMSSD() async throws -> HeartRateVariabilityRMSSD
     func highHeartRateEvents() async throws -> HighHeartRateEvent
     func irregularHeartRhythmEvents() async throws -> IrregularHeartRhythmEvent
     func lowHeartRateEvents() async throws -> LowHeartRateEvent
     func lowCardioFitnessEvents() async throws -> LowCardioFitnessEvent
-    /// Requires iOS 26.2+. Throws `AsyncParsingError.unsupportedOSVersion` on earlier OS versions.
     func hypertensionEvents() async throws -> HypertensionEvent
     func peripheralPerfusionIndex() async throws -> PeripheralPerfusionIndex
     func restingHeartRate() async throws -> RestingHeartRate

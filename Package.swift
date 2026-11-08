@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "HealthHub",
-    platforms: [.iOS(.v26)],
+    platforms: [.iOS(.v27)],
     products: [
         .library(
             name: "HealthHub",
@@ -31,7 +31,6 @@ let package = Package(
 for target in package.targets {
   var settings = target.swiftSettings ?? []
   settings.append(contentsOf: [
-    .defaultIsolation(MainActor.self),
     .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
     .enableUpcomingFeature("InferIsolatedConformances")
   ])

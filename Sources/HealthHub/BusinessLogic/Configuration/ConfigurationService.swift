@@ -45,6 +45,39 @@ public final class ConfigurationService: ConfigurationServiceProtocol {
         state = .hasRequestedHealthKitInfo(true)
     }
 
+    public func authorizationRequestStatus(for plan: HealthAuthorizationPlan) async throws -> HealthAuthorizationRequestStatus {
+        guard isHealthDataAvailable else {
+            throw AuthorizationStatusError.healthDataNotAvailable
+        }
+
+        let shareTypes = HealthType.shareTypes(from: plan.availableShareTypes)
+        let readTypes = HealthType.readTypes(plan.availableReadTypes)
+        let status = try await healthStoreInstance.statusForAuthorizationRequest(toShare: shareTypes, read: readTypes)
+
+        switch status {
+        case .unknown:
+            return .unknown
+        case .shouldRequest:
+            return .shouldRequest
+        case .unnecessary:
+            return .unnecessary
+        @unknown default:
+            return .unknown
+        }
+    }
+
+    @discardableResult
+    public func requestAuthorization(plan: HealthAuthorizationPlan) async throws -> HealthAuthorizationRequestResult {
+        switch try await authorizationRequestStatus(for: plan) {
+        case .unnecessary:
+            state = .hasRequestedHealthKitInfo(true)
+            return .notRequired
+        case .unknown, .shouldRequest:
+            try await requestAuthorization(toShare: plan.availableShareTypes, toRead: plan.availableReadTypes)
+            return .requested
+        }
+    }
+
     public func authorizationStatus(for type: ReadableType) -> HKAuthorizationStatus {
         HealthStoreProvider.shared.authorizationStatus(for: type.readable)
     }
@@ -56,6 +89,7 @@ public final class ConfigurationService: ConfigurationServiceProtocol {
             : .shouldRequest
     }
     
+    @MainActor
     public func navigateToHealthSettings() {
         guard let url = URL(string: Self.appleHealthAppURL) else { return }
         UIApplication.shared.open(url)

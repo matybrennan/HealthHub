@@ -104,7 +104,6 @@ public protocol CycleTrackingProtocol {
     func abdominalCramps() async throws -> GenericSymptomModel
     func bloating() async throws -> GenericSymptomModel
     func breastPain() async throws -> GenericSymptomModel
-    /// Requires iOS 27.0+. Throws `AsyncParsingError.unsupportedOSVersion` on earlier OS versions.
     func bleedingAfterMenopause() async throws -> BleedingAfterMenopause
     func bleedingAfterPregnancy() async throws -> BleedingAfterPregnancy
     func bleedingDuringPregnancy() async throws -> BleedingDuringPregnancy
@@ -112,7 +111,6 @@ public protocol CycleTrackingProtocol {
     func contraceptive() async throws -> Contraceptive
     func lactation() async throws -> Lactation
     func menstruation() async throws -> Menstruation
-    /// Requires iOS 27.0+. Throws `AsyncParsingError.unsupportedOSVersion` on earlier OS versions.
     func menopausalState() async throws -> MenopausalState
     func moodChanges() async throws -> GenericSymptomModel
     func ovulation() async throws -> Ovulation
@@ -133,7 +131,6 @@ public protocol CycleTrackingProtocol {
     func saveAbdominalCramps(model: GenericSymptomModel, extra: [String: Sendable]?) async throws
     func saveBloating(model: GenericSymptomModel, extra: [String: Sendable]?) async throws
     func saveBreastPain(model: GenericSymptomModel, extra: [String: Sendable]?) async throws
-    /// Requires iOS 27.0+. Throws `AsyncParsingError.unsupportedOSVersion` on earlier OS versions.
     func saveBleedingAfterMenopause(model: BleedingAfterMenopause, extra: [String: Sendable]?) async throws
     func saveBleedingAfterPregnancy(model: BleedingAfterPregnancy, extra: [String: Sendable]?) async throws
     func saveBleedingDuringPregnancy(model: BleedingDuringPregnancy, extra: [String: Sendable]?) async throws
@@ -141,7 +138,6 @@ public protocol CycleTrackingProtocol {
     func saveContraceptive(model: Contraceptive, extra: [String: Sendable]?) async throws
     func saveLactation(model: Lactation, extra: [String: Sendable]?) async throws
     func saveMenstruation(model: Menstruation, extra: [String: Sendable]?) async throws
-    /// Requires iOS 27.0+. Throws `AsyncParsingError.unsupportedOSVersion` on earlier OS versions.
     func saveMenopausalState(model: MenopausalState, extra: [String: Sendable]?) async throws
     func saveMoodChanges(model: GenericSymptomModel, extra: [String: Sendable]?) async throws
     func saveOvulation(model: Ovulation, extra: [String: Sendable]?) async throws

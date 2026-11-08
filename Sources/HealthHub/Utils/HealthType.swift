@@ -18,7 +18,7 @@ public protocol ReadableType: Sendable {
 
 public typealias ShareableReadableType = ShareableType & ReadableType
 
-public enum HealthObjectType: ShareableReadableType, CaseIterable {
+public enum HealthObjectType: ShareableReadableType, CaseIterable, Hashable {
 
     // Characteristics
     case biologicalSex
@@ -80,14 +80,11 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
     case atrialFibrillation
     case heartRate
     case heartRateVariability
-    /// Available on iOS 27.0+.
     case heartRateVariabilityRMSSD
     case highHeartRateEvent
     case irregularHeartRhythmEvent
     case lowHeartRateEvent
     case lowCardioFitnessEvent
-    /// Available on iOS 26.2+. Constructing `sharable`/`readable` for this case on earlier OS
-    /// versions will fail at runtime since the underlying `HKCategoryTypeIdentifier` doesn't exist yet.
     case hypertensionEvent
     case cardioRecovery
     case peripheralPerfusionIndex
@@ -196,9 +193,7 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
     case prolongedMenstrualPeriods
     case bleedingDuringPregnancy
     case bleedingAfterPregnancy
-    /// Available on iOS 27.0+.
     case bleedingAfterMenopause
-    /// Available on iOS 27.0+.
     case menopausalState
     
     // Symptoms
@@ -267,26 +262,9 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
 
     /// Whether the underlying HealthKit type exists on the current OS.
     ///
-    /// Use this when dynamically assembling authorization requests from
-    /// `allCases`, which includes types introduced after the deployment target.
-    public var isAvailable: Bool {
-        switch self {
-        case .hypertensionEvent:
-            if #available(iOS 26.2, *) {
-                true
-            } else {
-                false
-            }
-        case .heartRateVariabilityRMSSD, .bleedingAfterMenopause, .menopausalState:
-            if #available(iOS 27.0, *) {
-                true
-            } else {
-                false
-            }
-        default:
-            true
-        }
-    }
+    /// HealthHub 4.0 requires iOS 27, where every `HealthObjectType` exists, so this is always `true`.
+    /// It is kept so code written against 3.x keeps compiling.
+    public var isAvailable: Bool { true }
     
     public var sharable: HKSampleType? {
         switch self {
@@ -351,17 +329,12 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .atrialFibrillation: nil
         case .heartRate: HKQuantityType(.heartRate)
         case .heartRateVariability: HKQuantityType(.heartRateVariabilitySDNN) // audit: writable (e.g. Garmin/Oura style HRV integrations)
-        case .heartRateVariabilityRMSSD:
-            if #available(iOS 27.0, *) {
-                HKQuantityType(.heartRateVariabilityRMSSD)
-            } else {
-                nil
-            }
+        case .heartRateVariabilityRMSSD: HKQuantityType(.heartRateVariabilityRMSSD)
         case .highHeartRateEvent: nil
         case .irregularHeartRhythmEvent: nil
         case .lowHeartRateEvent: nil
         case .lowCardioFitnessEvent: nil // Apple-calculated notification, read-only
-        case .hypertensionEvent: nil // Apple-calculated notification, read-only (iOS 26.2+)
+        case .hypertensionEvent: nil // Apple-calculated notification, read-only
         case .cardioRecovery: HKQuantityType(.heartRateRecoveryOneMinute)
         case .peripheralPerfusionIndex: HKQuantityType(.peripheralPerfusionIndex)
         case .restingHeartRate: HKQuantityType(.restingHeartRate) // audit: writable (e.g. Garmin/Withings integrations)
@@ -469,18 +442,8 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .prolongedMenstrualPeriods: nil
         case .bleedingDuringPregnancy: HKCategoryType(.bleedingDuringPregnancy)
         case .bleedingAfterPregnancy: HKCategoryType(.bleedingAfterPregnancy)
-        case .bleedingAfterMenopause:
-            if #available(iOS 27.0, *) {
-                HKCategoryType(.bleedingAfterMenopause)
-            } else {
-                nil
-            }
-        case .menopausalState:
-            if #available(iOS 27.0, *) {
-                HKCategoryType(.menopausalState)
-            } else {
-                nil
-            }
+        case .bleedingAfterMenopause: HKCategoryType(.bleedingAfterMenopause)
+        case .menopausalState: HKCategoryType(.menopausalState)
 
         // Symptoms
         case .acne: HKCategoryType(.acne)
@@ -611,23 +574,12 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .atrialFibrillation: HKQuantityType(.atrialFibrillationBurden)
         case .heartRate: HKQuantityType(.heartRate)
         case .heartRateVariability: HKQuantityType(.heartRateVariabilitySDNN)
-        case .heartRateVariabilityRMSSD:
-            if #available(iOS 27.0, *) {
-                HKQuantityType(.heartRateVariabilityRMSSD)
-            } else {
-                preconditionFailure("HealthObjectType.heartRateVariabilityRMSSD requires iOS 27.0+")
-            }
+        case .heartRateVariabilityRMSSD: HKQuantityType(.heartRateVariabilityRMSSD)
         case .highHeartRateEvent: HKCategoryType(.highHeartRateEvent)
         case .irregularHeartRhythmEvent: HKCategoryType(.irregularHeartRhythmEvent)
         case .lowHeartRateEvent: HKCategoryType(.lowHeartRateEvent)
         case .lowCardioFitnessEvent: HKCategoryType(.lowCardioFitnessEvent)
-        case .hypertensionEvent:
-            if #available(iOS 26.2, *) {
-                HKCategoryType(.hypertensionEvent)
-            } else {
-                // Unreachable: constructing `.hypertensionEvent` itself requires iOS 26.2+ availability at the call site.
-                preconditionFailure("HealthObjectType.hypertensionEvent requires iOS 26.2+")
-            }
+        case .hypertensionEvent: HKCategoryType(.hypertensionEvent)
         case .cardioRecovery: HKQuantityType(.heartRateRecoveryOneMinute)
         case .peripheralPerfusionIndex: HKQuantityType(.peripheralPerfusionIndex)
         case .restingHeartRate: HKQuantityType(.restingHeartRate)
@@ -734,18 +686,8 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
         case .prolongedMenstrualPeriods: HKCategoryType(.prolongedMenstrualPeriods)
         case .bleedingDuringPregnancy: HKCategoryType(.bleedingDuringPregnancy)
         case .bleedingAfterPregnancy: HKCategoryType(.bleedingAfterPregnancy)
-        case .bleedingAfterMenopause:
-            if #available(iOS 27.0, *) {
-                HKCategoryType(.bleedingAfterMenopause)
-            } else {
-                preconditionFailure("HealthObjectType.bleedingAfterMenopause requires iOS 27.0+")
-            }
-        case .menopausalState:
-            if #available(iOS 27.0, *) {
-                HKCategoryType(.menopausalState)
-            } else {
-                preconditionFailure("HealthObjectType.menopausalState requires iOS 27.0+")
-            }
+        case .bleedingAfterMenopause: HKCategoryType(.bleedingAfterMenopause)
+        case .menopausalState: HKCategoryType(.menopausalState)
 
         // Symptoms
         case .acne: HKCategoryType(.acne)
@@ -817,16 +759,10 @@ public enum HealthObjectType: ShareableReadableType, CaseIterable {
 public enum HealthType {
     
     public static func shareTypes(from types: [ShareableType]) -> Set<HKSampleType> {
-        Set(types.compactMap { type in
-            guard (type as? HealthObjectType)?.isAvailable ?? true else { return nil }
-            return type.sharable
-        })
+        Set(types.compactMap(\.sharable))
     }
     
     public static func readTypes(_ types: [ReadableType]) -> Set<HKObjectType> {
-        Set(types.compactMap { type in
-            guard (type as? HealthObjectType)?.isAvailable ?? true else { return nil }
-            return type.readable
-        })
+        Set(types.map(\.readable))
     }
 }
