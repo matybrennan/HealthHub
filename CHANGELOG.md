@@ -29,7 +29,7 @@ See [MIGRATING_TO_4.0.md](MIGRATING_TO_4.0.md) for upgrade guidance.
 - Workout, steps, heart rate, and audiogram reads use current HealthKit APIs (statistics-based workout totals, `HKStatisticsCollectionQueryDescriptor`, `HKWorkoutRouteQueryDescriptor`, `HKWorkoutEffortRelationshipQueryDescriptor`, and audiogram `tests`) instead of deprecated or callback-based ones
 - Existing `HealthHubManager` and domain services remain available; new cross-domain code should use `HealthHubClient`
 - Example app dashboard now uses `HealthHubClient`
-
+- Removed dead iOS 26.2/27.0 availability gates now that iOS 27 is the minimum; `HealthObjectType.isAvailable` and `HealthAuthorizationPlan.availableReadTypes`/`availableShareTypes` remain for source compatibility and always report every type as available
 ### Fixed
 - Authorization status no longer implies per-type read visibility, which HealthKit does not expose
 - Removed all Swift 6.4 compiler warnings, including unsafe captured-variable mutation in workout route and effort queries

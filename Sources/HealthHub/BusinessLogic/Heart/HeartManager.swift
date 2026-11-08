@@ -71,10 +71,6 @@ extension HeartManager: HeartManagerProtocol {
     }
 
     public func heartRateVariabilityRMSSD() async throws -> HeartRateVariabilityRMSSD {
-        guard #available(iOS 27.0, *) else {
-            throw AsyncParsingError.unsupportedOSVersion("RMSSD heart rate variability")
-        }
-
         let samples = try await fetchQuantitySamples(quantityIdentifier: .heartRateVariabilityRMSSD)
         let items = samples.map { item -> HeartRateVariabilityRMSSD.Item in
             let rmssd = item.quantity.doubleValue(for: HKUnit.secondUnit(with: .milli))
@@ -121,10 +117,6 @@ extension HeartManager: HeartManagerProtocol {
     }
 
     public func hypertensionEvents() async throws -> HypertensionEvent {
-        guard #available(iOS 26.2, *) else {
-            throw AsyncParsingError.unsupportedOSVersion("Hypertension notifications")
-        }
-
         let samples = try await fetchCategorySamples(categoryIdentifier: .hypertensionEvent)
         let items = samples.map { item -> HypertensionEvent.Item in
             HypertensionEvent.Item(startDate: item.startDate, endDate: item.endDate)

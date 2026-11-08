@@ -16,15 +16,11 @@ struct MenopauseExampleView: View {
 
     var body: some View {
         List {
-            if #available(iOS 27.0, *) {
-                if isLoading {
-                    ProgressView()
-                } else {
-                    stateSection
-                    bleedingSection
-                }
+            if isLoading {
+                ProgressView()
             } else {
-                ContentUnavailableView("Requires iOS 27", systemImage: "iphone", description: Text("Menopause tracking is available on iOS 27 and later."))
+                stateSection
+                bleedingSection
             }
 
             if let error {
@@ -36,8 +32,6 @@ struct MenopauseExampleView: View {
         }
         .navigationTitle("Menopause")
         .task {
-            guard #available(iOS 27.0, *) else { return }
-
             isLoading = true
             defer { isLoading = false }
 

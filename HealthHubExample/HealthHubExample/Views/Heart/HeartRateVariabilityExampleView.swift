@@ -15,24 +15,20 @@ struct HeartRateVariabilityExampleView: View {
 
     var body: some View {
         List {
-            if #available(iOS 27.0, *) {
-                if isLoading {
-                    ProgressView()
-                } else if let rmssd, !rmssd.items.isEmpty {
-                    Section("RMSSD") {
-                        Text("Average: \(String(format: "%.1f", rmssd.averageRMSSD)) ms")
-                        if let recent = rmssd.mostRecent {
-                            Text("Most Recent: \(String(format: "%.1f", recent.rmssd)) ms")
-                            Text(recent.date.formatted(date: .abbreviated, time: .shortened))
-                                .foregroundStyle(.secondary)
-                        }
-                        Text("Readings: \(rmssd.items.count)")
+            if isLoading {
+                ProgressView()
+            } else if let rmssd, !rmssd.items.isEmpty {
+                Section("RMSSD") {
+                    Text("Average: \(String(format: "%.1f", rmssd.averageRMSSD)) ms")
+                    if let recent = rmssd.mostRecent {
+                        Text("Most Recent: \(String(format: "%.1f", recent.rmssd)) ms")
+                        Text(recent.date.formatted(date: .abbreviated, time: .shortened))
+                            .foregroundStyle(.secondary)
                     }
-                } else if error == nil {
-                    ContentUnavailableView("No RMSSD Readings", systemImage: "waveform.path.ecg", description: Text("No RMSSD heart-rate variability readings are available."))
+                    Text("Readings: \(rmssd.items.count)")
                 }
-            } else {
-                ContentUnavailableView("Requires iOS 27", systemImage: "iphone", description: Text("RMSSD heart-rate variability is available on iOS 27 and later."))
+            } else if error == nil {
+                ContentUnavailableView("No RMSSD Readings", systemImage: "waveform.path.ecg", description: Text("No RMSSD heart-rate variability readings are available."))
             }
 
             if let error {
@@ -44,8 +40,6 @@ struct HeartRateVariabilityExampleView: View {
         }
         .navigationTitle("Heart Rate Variability")
         .task {
-            guard #available(iOS 27.0, *) else { return }
-
             isLoading = true
             defer { isLoading = false }
 

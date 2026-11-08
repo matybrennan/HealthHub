@@ -62,9 +62,8 @@ public actor HealthStoreClient: HealthStoreClientProtocol {
     public func earliestAuthorizedDates(for types: [HealthObjectType]) async throws -> [HealthObjectType: Date] {
         try ensureHealthDataAvailable()
 
-        let available = types.filter(\.isAvailable)
-        let dates = try await healthStore.earliestAuthorizedSampleDate(for: Set(available.map(\.readable)))
-        return available.reduce(into: [:]) { result, type in
+        let dates = try await healthStore.earliestAuthorizedSampleDate(for: Set(types.map(\.readable)))
+        return types.reduce(into: [:]) { result, type in
             result[type] = dates[type.readable]
         }
     }
@@ -113,7 +112,7 @@ public actor HealthStoreClient: HealthStoreClientProtocol {
         unit: HKUnit,
         query: HealthQuery = .init()
     ) async throws -> HealthQuantityStatistics {
-        guard type.isAvailable, let quantityType = type.readable as? HKQuantityType else {
+        guard let quantityType = type.readable as? HKQuantityType else {
             throw HealthHubError.unsupportedType(String(describing: type))
         }
 
@@ -248,9 +247,6 @@ public actor HealthStoreClient: HealthStoreClientProtocol {
     }
 
     private func sampleType(for type: HealthObjectType) throws -> HKSampleType {
-        guard type.isAvailable else {
-            throw HealthHubError.unsupportedType(String(describing: type))
-        }
         guard let sampleType = type.readable as? HKSampleType else {
             throw HealthHubError.unsupportedType(String(describing: type))
         }

@@ -24,15 +24,11 @@ public struct HealthAuthorizationPlan: Sendable {
         self.init(toShare: toShare, toRead: scopes.flatMap(\.readTypes))
     }
 
-    /// Types supported by the current OS version.
-    public var availableShareTypes: [HealthObjectType] {
-        toShare.filter(\.isAvailable)
-    }
+    /// Equivalent to `toShare`; every type exists on iOS 27+. Kept for source compatibility with 3.x.
+    public var availableShareTypes: [HealthObjectType] { toShare }
 
-    /// Types supported by the current OS version.
-    public var availableReadTypes: [HealthObjectType] {
-        toRead.filter(\.isAvailable)
-    }
+    /// Equivalent to `toRead`; every type exists on iOS 27+. Kept for source compatibility with 3.x.
+    public var availableReadTypes: [HealthObjectType] { toRead }
 }
 
 /// Common HealthKit domains for authorization planning.

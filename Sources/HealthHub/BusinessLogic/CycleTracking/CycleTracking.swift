@@ -76,10 +76,6 @@ extension CycleTracking: CycleTrackingProtocol {
     }
 
     public func bleedingAfterMenopause() async throws -> BleedingAfterMenopause {
-        guard #available(iOS 27.0, *) else {
-            throw AsyncParsingError.unsupportedOSVersion("Bleeding after menopause")
-        }
-
         let samples = try await fetchVaginalBleedingSamples(categoryIdentifier: .bleedingAfterMenopause)
         let items = samples.map { item -> BleedingAfterMenopause.Item in
             let type = VaginalBleedingType(rawValue: item.value) ?? .unspecified
@@ -149,10 +145,6 @@ extension CycleTracking: CycleTrackingProtocol {
     }
 
     public func menopausalState() async throws -> MenopausalState {
-        guard #available(iOS 27.0, *) else {
-            throw AsyncParsingError.unsupportedOSVersion("Menopausal state")
-        }
-
         let sortDescriptor = SortDescriptor(\HKCategorySample.endDate, order: .reverse)
         let samples = try await fetchCategorySamples(categoryIdentifier: .menopausalState, sortDescriptors: [sortDescriptor])
         let items = samples.map { item -> MenopausalState.Item in
@@ -266,10 +258,6 @@ extension CycleTracking: CycleTrackingProtocol {
     }
 
     public func saveBleedingAfterMenopause(model: BleedingAfterMenopause, extra: [String: Sendable]?) async throws {
-        guard #available(iOS 27.0, *) else {
-            throw AsyncParsingError.unsupportedOSVersion("Bleeding after menopause")
-        }
-
         let type = try HealthParser.categoryType(for: .bleedingAfterMenopause)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 
@@ -340,10 +328,6 @@ extension CycleTracking: CycleTrackingProtocol {
     }
 
     public func saveMenopausalState(model: MenopausalState, extra: [String: Sendable]?) async throws {
-        guard #available(iOS 27.0, *) else {
-            throw AsyncParsingError.unsupportedOSVersion("Menopausal state")
-        }
-
         let type = try HealthParser.categoryType(for: .menopausalState)
         try HealthParser.checkSharingAuthorizationStatus(for: type)
 

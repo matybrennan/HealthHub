@@ -342,7 +342,7 @@ do {
 }
 ```
 
-`HealthHubError` distinguishes unavailable HealthKit data, unsupported types, invalid queries, invalid anchors, and missing sharing authorization. Platform availability is also exposed through `HealthDataCatalog` and `HealthObjectType.isAvailable`.
+`HealthHubError` distinguishes unavailable HealthKit data, unsupported types, invalid queries, invalid anchors, and missing sharing authorization. Every `HealthObjectType` exists on iOS 27+, so no availability checks are needed; `HealthObjectType.isAvailable` is kept only for source compatibility with 3.x.
 
 ---
 
