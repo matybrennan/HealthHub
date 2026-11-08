@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.0.0] - 2026-11-08
+
+See [MIGRATING_TO_4.0.md](MIGRATING_TO_4.0.md) for upgrade guidance.
+
 ### Added
 - `HealthAuthorizationPlan` and domain-based `HealthAuthorizationScope` presets for least-privilege authorization requests
 - `authorizationRequestStatus(for:)` and `requestAuthorization(plan:)` APIs that accurately report request necessity without implying read authorization visibility
@@ -16,7 +20,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `HealthDataCatalog` and `HealthQueryAnchorStore` for centralized type metadata and persisted incremental sync
 
 ### Changed
-- Minimum deployment target raised to iOS 27
+- **Breaking:** minimum deployment target raised to iOS 27 and Swift 6.4
+- **Breaking:** removed package-wide `MainActor` default isolation; HealthKit I/O now runs in actor-based clients
+- Existing `HealthHubManager` and domain services remain available; new cross-domain code should use `HealthHubClient`
+- Example app dashboard now uses `HealthHubClient`
+
+### Fixed
+- Authorization status no longer implies per-type read visibility, which HealthKit does not expose
 
 ## [3.4.0]
 
