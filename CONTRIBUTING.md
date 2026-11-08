@@ -47,6 +47,16 @@ Thanks for your interest in contributing to HealthHub! Here's how to get started
 - Update documentation if adding/changing public API
 - Ensure the simulator build passes without warnings
 
+### Releasing (maintainers)
+
+Releases are automated by `.github/workflows/release.yml`:
+
+1. In a release PR, move the changes from `## [Unreleased]` into a new `## [x.y.z] - YYYY-MM-DD` section in `CHANGELOG.md`
+2. Merge the PR into `master`
+3. The workflow tags `x.y.z` and publishes a GitHub release using that CHANGELOG section as the notes
+
+Nothing happens if the newest version already has a tag. Versions with a suffix, such as `4.1.0-beta.1`, are published as pre-releases.
+
 ## Reporting Issues
 
 Found a bug? Open an [issue](https://github.com/matybrennan/HealthHub/issues/new) with:

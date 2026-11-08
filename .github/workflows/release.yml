@@ -1,0 +1,87 @@
+name: Release
+
+# Publishes a git tag and GitHub release for the newest version in CHANGELOG.md
+# when that version has no tag yet. Merging a release PR into master is all it takes.
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - CHANGELOG.md
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Tag and publish
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Find the version to release
+        id: version
+        run: |
+          VERSION=$(sed -nE 's/^## \[([0-9]+\.[0-9]+\.[0-9]+[0-9A-Za-z.+-]*)\].*/\1/p' CHANGELOG.md | head -n1)
+          if [ -z "$VERSION" ]; then
+            echo "No released version found in CHANGELOG.md, nothing to do."
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          elif git rev-parse -q --verify "refs/tags/$VERSION" >/dev/null; then
+            echo "$VERSION is already tagged, nothing to do."
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Releasing $VERSION"
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+            echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build release notes
+        if: steps.version.outputs.publish == 'true'
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          # The CHANGELOG section for this version, without its heading.
+          awk -v v="[$VERSION]" '
+            /^## \[/ { if (found) exit; if (index($0, v)) found = 1; next }
+            found { print }
+          ' CHANGELOG.md > section.md
+
+          if [ -z "$(tr -d '[:space:]' < section.md)" ]; then
+            echo "::error::The CHANGELOG.md section for $VERSION is empty."
+            exit 1
+          fi
+
+          # Release notes do not resolve repository-relative links, so point them at the tag.
+          sed -E "s#\]\(([A-Za-z0-9_./-]+\.md)\)#](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/blob/${VERSION}/\1)#g" section.md > notes.md
+
+          PREVIOUS=$(git tag --list --sort=-v:refname | head -n1)
+          if [ -n "$PREVIOUS" ]; then
+            printf '\n**Full changelog**: %s/%s/compare/%s...%s\n' "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$PREVIOUS" "$VERSION" >> notes.md
+          fi
+
+      - name: Create tag and release
+        if: steps.version.outputs.publish == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          case "$VERSION" in
+            *-*) CHANNEL="--prerelease" ;;
+            *) CHANNEL="--latest" ;;
+          esac
+
+          gh release create "$VERSION" \
+            --target "$GITHUB_SHA" \
+            --title "HealthHub $VERSION" \
+            --notes-file notes.md \
+            $CHANNEL
