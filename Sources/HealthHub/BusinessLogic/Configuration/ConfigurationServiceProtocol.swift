@@ -26,6 +26,7 @@ public protocol ConfigurationServiceProtocol {
     func authorizationRequestStatus(for plan: HealthAuthorizationPlan) async throws -> HealthAuthorizationRequestStatus
 
     /// Request authorization with a least-privilege authorization plan.
+    @discardableResult
     func requestAuthorization(plan: HealthAuthorizationPlan) async throws -> HealthAuthorizationRequestResult
 
     /// Legacy sharing status for a specific type.
@@ -37,6 +38,7 @@ public protocol ConfigurationServiceProtocol {
     func sharingAuthorizationStatus(for type: ShareableType) -> HKAuthorizationRequestStatus?
 
     /// Open the Apple Health app
+    @MainActor
     func navigateToHealthSettings()
 }
 
@@ -46,6 +48,7 @@ public extension ConfigurationServiceProtocol {
         .unknown
     }
 
+    @discardableResult
     func requestAuthorization(plan: HealthAuthorizationPlan) async throws -> HealthAuthorizationRequestResult {
         try await requestAuthorization(toShare: plan.availableShareTypes, toRead: plan.availableReadTypes)
         return .requested

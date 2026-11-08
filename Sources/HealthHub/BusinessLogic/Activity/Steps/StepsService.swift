@@ -85,38 +85,21 @@ private extension StepsService {
     func executeStatisticsQuery(predicate: NSPredicate?, interval: DateComponents, anchorDate: Date) async throws -> Steps {
         let stepCountType = try HealthParser.quantityType(for: .stepCount)
 
-        return try await withCheckedThrowingContinuation { continuation in
-            let query = HKStatisticsCollectionQuery(
-                quantityType: stepCountType,
-                quantitySamplePredicate: predicate,
-                options: [.cumulativeSum],
-                anchorDate: anchorDate,
-                intervalComponents: interval
-            )
+        let descriptor = HKStatisticsCollectionQueryDescriptor(
+            predicate: .quantitySample(type: stepCountType, predicate: predicate),
+            options: .cumulativeSum,
+            anchorDate: anchorDate,
+            intervalComponents: interval
+        )
+        let collection = try await descriptor.result(for: HealthStoreProvider.shared)
 
-            query.initialResultsHandler = { _, collection, error in
-                if let error {
-                    continuation.resume(throwing: error)
-                    return
-                }
-
-                guard let statistics = collection?.statistics(), !statistics.isEmpty else {
-                    continuation.resume(returning: Steps(items: []))
-                    return
-                }
-
-                let items = statistics.compactMap { sample -> Steps.Item? in
-                    guard let count = sample.sumQuantity()?.doubleValue(for: Self.stepsUnit) else {
-                        return nil
-                    }
-                    return Steps.Item(count: count, startDate: sample.startDate, endDate: sample.endDate)
-                }
-
-                continuation.resume(returning: Steps(items: items))
+        let items = collection.statistics().compactMap { sample -> Steps.Item? in
+            guard let count = sample.sumQuantity()?.doubleValue(for: Self.stepsUnit) else {
+                return nil
             }
-
-            HealthStoreProvider.shared.execute(query)
+            return Steps.Item(count: count, startDate: sample.startDate, endDate: sample.endDate)
         }
+        return Steps(items: items)
     }
 
     nonisolated static func thisMonthPredicate() -> NSPredicate {

@@ -25,8 +25,11 @@ actor MockHealthStoreClient: HealthStoreClientProtocol {
         requestStatus
     }
 
+    private(set) var requestedPlan: HealthAuthorizationPlan?
+
     func requestAuthorization(plan: HealthAuthorizationPlan) async throws -> HealthAuthorizationRequestResult {
-        requestResult
+        requestedPlan = plan
+        return requestResult
     }
 
     func sampleSummaries(for types: [HealthObjectType], query: HealthQuery, unit: HKUnit?) async throws -> [HealthSampleSummary] {

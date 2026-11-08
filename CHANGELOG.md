@@ -18,15 +18,20 @@ See [MIGRATING_TO_4.0.md](MIGRATING_TO_4.0.md) for upgrade guidance.
 - Unified `HealthQuery`, sample summaries with provenance, quantity statistics, save/delete operations, idempotency metadata, anchored synchronization, observer streams, and background update delivery
 - `HealthDashboardService` for daily activity, heart, workout, and sleep summaries
 - `HealthDataCatalog` and `HealthQueryAnchorStore` for centralized type metadata and persisted incremental sync
+- `HealthHubClient.requestAuthorization(scopes:toShare:)` one-line shortcut for requesting authorization from health domains
 
 ### Changed
 - **Breaking:** minimum deployment target raised to iOS 27 and Swift 6.4
 - **Breaking:** removed package-wide `MainActor` default isolation; HealthKit I/O now runs in actor-based clients
+- **Breaking:** `ConfigurationServiceProtocol.navigateToHealthSettings()` is now `@MainActor`
+- `requestAuthorization(plan:)` results are `@discardableResult`
+- Workout, steps, heart rate, and audiogram reads use current HealthKit APIs (statistics-based workout totals, `HKStatisticsCollectionQueryDescriptor`, `HKWorkoutRouteQueryDescriptor`, `HKWorkoutEffortRelationshipQueryDescriptor`, and audiogram `tests`) instead of deprecated or callback-based ones
 - Existing `HealthHubManager` and domain services remain available; new cross-domain code should use `HealthHubClient`
 - Example app dashboard now uses `HealthHubClient`
 
 ### Fixed
 - Authorization status no longer implies per-type read visibility, which HealthKit does not expose
+- Removed all Swift 6.4 compiler warnings, including unsafe captured-variable mutation in workout route and effort queries
 
 ## [3.4.0]
 

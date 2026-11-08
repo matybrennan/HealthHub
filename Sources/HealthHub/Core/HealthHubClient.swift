@@ -18,8 +18,17 @@ public actor HealthHubClient {
         store = HealthStoreClient()
     }
 
+    @discardableResult
     public func requestAuthorization(plan: HealthAuthorizationPlan) async throws -> HealthAuthorizationRequestResult {
         try await store.requestAuthorization(plan: plan)
+    }
+
+    /// Requests read access for the given domains and optional write access.
+    ///
+    /// The prompt is skipped when HealthKit reports nothing new to request.
+    @discardableResult
+    public func requestAuthorization(scopes: [HealthAuthorizationScope], toShare: [HealthObjectType] = []) async throws -> HealthAuthorizationRequestResult {
+        try await requestAuthorization(plan: HealthAuthorizationPlan(scopes: scopes, toShare: toShare))
     }
 
     public func authorizationRequestStatus(for plan: HealthAuthorizationPlan) async throws -> HealthAuthorizationRequestStatus {

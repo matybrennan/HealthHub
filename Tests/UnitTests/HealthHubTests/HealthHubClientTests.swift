@@ -15,6 +15,18 @@ struct HealthHubClientTests {
         #expect(result == .requested)
     }
 
+    @Test("Builds an authorization plan from domain scopes")
+    func requestsAuthorizationFromScopes() async throws {
+        let client = MockHealthStoreClient()
+        let hub = HealthHubClient(store: client)
+
+        try await hub.requestAuthorization(scopes: [.activity], toShare: [.workout])
+
+        let plan = await client.requestedPlan
+        #expect(plan?.toRead == HealthAuthorizationScope.activity.readTypes)
+        #expect(plan?.toShare == [.workout])
+    }
+
     @Test("Builds a dashboard from injected statistics and samples")
     func buildsDashboard() async throws {
         let now = Date()

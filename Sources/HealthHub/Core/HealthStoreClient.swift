@@ -9,6 +9,7 @@ import HealthKit
 /// A single, injectable gateway for all HealthKit I/O.
 public protocol HealthStoreClientProtocol: Sendable {
     func authorizationRequestStatus(for plan: HealthAuthorizationPlan) async throws -> HealthAuthorizationRequestStatus
+    @discardableResult
     func requestAuthorization(plan: HealthAuthorizationPlan) async throws -> HealthAuthorizationRequestResult
     func sampleSummaries(for types: [HealthObjectType], query: HealthQuery, unit: HKUnit?) async throws -> [HealthSampleSummary]
     func statistics(for type: HealthObjectType, unit: HKUnit, query: HealthQuery) async throws -> HealthQuantityStatistics
@@ -49,6 +50,7 @@ public actor HealthStoreClient: HealthStoreClientProtocol {
         }
     }
 
+    @discardableResult
     public func requestAuthorization(plan: HealthAuthorizationPlan) async throws -> HealthAuthorizationRequestResult {
         switch try await authorizationRequestStatus(for: plan) {
         case .unnecessary:

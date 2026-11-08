@@ -67,15 +67,14 @@ Or add it via Xcode: **File → Add Package Dependencies** → paste the URL abo
 
 ```swift
 let health = HealthHubClient()
-let plan = HealthAuthorizationPlan(scopes: [.activity, .heart, .sleep])
 
-if try await health.authorizationRequestStatus(for: plan) != .unnecessary {
-    try await health.requestAuthorization(plan: plan)
-}
+try await health.requestAuthorization(scopes: [.activity, .heart, .sleep])
 
 let dashboard = try await health.dashboard()
 print(dashboard.stepCount ?? 0)
 ```
+
+`requestAuthorization` only shows the HealthKit prompt when something new needs to be requested, so it is safe to call on every launch. Use `HealthAuthorizationPlan` when you need write access or a custom set of types.
 
 For data pipelines and background sync, use the injectable store directly:
 

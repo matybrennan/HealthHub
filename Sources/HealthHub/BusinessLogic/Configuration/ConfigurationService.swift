@@ -66,6 +66,7 @@ public final class ConfigurationService: ConfigurationServiceProtocol {
         }
     }
 
+    @discardableResult
     public func requestAuthorization(plan: HealthAuthorizationPlan) async throws -> HealthAuthorizationRequestResult {
         switch try await authorizationRequestStatus(for: plan) {
         case .unnecessary:
@@ -88,6 +89,7 @@ public final class ConfigurationService: ConfigurationServiceProtocol {
             : .shouldRequest
     }
     
+    @MainActor
     public func navigateToHealthSettings() {
         guard let url = URL(string: Self.appleHealthAppURL) else { return }
         UIApplication.shared.open(url)

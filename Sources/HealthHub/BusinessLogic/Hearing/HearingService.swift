@@ -85,12 +85,14 @@ extension HearingService: HearingServiceProtocol {
         let items = results.compactMap { sample -> AudiogramEntry.Item? in
             guard let audiogramSample = sample as? HKAudiogramSample else { return nil }
             let points = audiogramSample.sensitivityPoints.map { point -> AudiogramEntry.SensitivityPoint in
-                let leftSensitivity = point.leftEarSensitivity?.doubleValue(for: HKUnit.decibelHearingLevel())
-                let rightSensitivity = point.rightEarSensitivity?.doubleValue(for: HKUnit.decibelHearingLevel())
+                let decibels = HKUnit.decibelHearingLevel()
+                func sensitivity(for side: HKAudiogramSensitivityTestSide) -> Double? {
+                    point.tests.first { $0.side == side }?.sensitivity.doubleValue(for: decibels)
+                }
                 return AudiogramEntry.SensitivityPoint(
                     frequency: point.frequency.doubleValue(for: HKUnit.hertz()),
-                    leftEarSensitivity: leftSensitivity,
-                    rightEarSensitivity: rightSensitivity
+                    leftEarSensitivity: sensitivity(for: .left),
+                    rightEarSensitivity: sensitivity(for: .right)
                 )
             }
             return AudiogramEntry.Item(sensitivityPoints: points, date: audiogramSample.endDate)

@@ -96,40 +96,23 @@ private extension HeartRateService {
     func executeStatisticsQuery(predicate: NSPredicate?, interval: DateComponents, anchorDate: Date) async throws -> HeartRate {
         let heartRateType = try HealthParser.quantityType(for: .heartRate)
 
-        return try await withCheckedThrowingContinuation { continuation in
-            let query = HKStatisticsCollectionQuery(
-                quantityType: heartRateType,
-                quantitySamplePredicate: predicate,
-                options: [.discreteAverage, .discreteMax, .discreteMin],
-                anchorDate: anchorDate,
-                intervalComponents: interval
-            )
+        let descriptor = HKStatisticsCollectionQueryDescriptor(
+            predicate: .quantitySample(type: heartRateType, predicate: predicate),
+            options: [.discreteAverage, .discreteMax, .discreteMin],
+            anchorDate: anchorDate,
+            intervalComponents: interval
+        )
+        let collection = try await descriptor.result(for: HealthStoreProvider.shared)
 
-            query.initialResultsHandler = { _, collection, error in
-                if let error {
-                    continuation.resume(throwing: error)
-                    return
-                }
-
-                guard let statistics = collection?.statistics(), !statistics.isEmpty else {
-                    continuation.resume(returning: HeartRate(items: []))
-                    return
-                }
-
-                let items = statistics.compactMap { sample -> HeartRate.Item? in
-                    guard let max = sample.maximumQuantity()?.doubleValue(for: Self.heartRateUnit),
-                          let min = sample.minimumQuantity()?.doubleValue(for: Self.heartRateUnit),
-                          let average = sample.averageQuantity()?.doubleValue(for: Self.heartRateUnit) else {
-                        return nil
-                    }
-                    return HeartRate.Item(max: max, min: min, average: average, startDate: sample.startDate, endDate: sample.endDate)
-                }
-
-                continuation.resume(returning: HeartRate(items: items))
+        let items = collection.statistics().compactMap { sample -> HeartRate.Item? in
+            guard let max = sample.maximumQuantity()?.doubleValue(for: Self.heartRateUnit),
+                  let min = sample.minimumQuantity()?.doubleValue(for: Self.heartRateUnit),
+                  let average = sample.averageQuantity()?.doubleValue(for: Self.heartRateUnit) else {
+                return nil
             }
-
-            HealthStoreProvider.shared.execute(query)
+            return HeartRate.Item(max: max, min: min, average: average, startDate: sample.startDate, endDate: sample.endDate)
         }
+        return HeartRate(items: items)
     }
 
     static func thisMonthPredicate() -> NSPredicate {
