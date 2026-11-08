@@ -232,13 +232,28 @@ public struct Workout: Sendable {
         public let endDate: Date?
         public let duration: Double // secs
         public let metadata: [String: Sendable]?
+        /// Time in each heart rate or cycling power zone for this leg of the workout.
+        public let zoneGroups: [WorkoutZoneGroup]
 
-        public init(activityType: HKWorkoutActivityType, startDate: Date, endDate: Date? = nil, duration: Double, metadata: [String: Sendable]? = nil) {
+        public init(
+            activityType: HKWorkoutActivityType,
+            startDate: Date,
+            endDate: Date? = nil,
+            duration: Double,
+            metadata: [String: Sendable]? = nil,
+            zoneGroups: [WorkoutZoneGroup] = []
+        ) {
             self.activityType = activityType
             self.startDate = startDate
             self.endDate = endDate
             self.duration = duration
             self.metadata = metadata
+            self.zoneGroups = zoneGroups
+        }
+
+        /// The zone group for a metric, when this activity has one.
+        public func zoneGroup(for metric: WorkoutZoneMetric) -> WorkoutZoneGroup? {
+            zoneGroups.first { $0.metric == metric }
         }
     }
 

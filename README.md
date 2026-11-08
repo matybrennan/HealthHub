@@ -489,7 +489,7 @@ item.customZones = [try WorkoutZoneConfiguration(metric: .heartRate, boundaries:
 try await hub.activityManager.workout.saveWorkout(workout: item, extra: nil)
 ```
 
-`n` boundaries create `n + 1` zones. Boundaries must be strictly ascending and greater than zero, otherwise `HealthHubError.invalidQuery` is thrown. Only heart rate and cycling power support zones. Live zone updates during a session need your own `HKWorkoutSession` and are not wrapped by HealthHub.
+`n` boundaries create `n + 1` zones. Boundaries must be strictly ascending and greater than zero, otherwise `HealthHubError.invalidQuery` is thrown. Only heart rate and cycling power support zones. For multi-sport workouts, each leg returned by `workoutActivities(for:endDate:)` has its own `zoneGroups`. Live zone updates during a session need your own `HKWorkoutSession` and are not wrapped by HealthHub.
 
 #### Activity Service
 

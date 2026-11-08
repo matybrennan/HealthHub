@@ -112,7 +112,8 @@ extension WorkoutReadService: WorkoutReadServiceProtocol {
                 startDate: $0.startDate,
                 endDate: $0.endDate,
                 duration: $0.duration,
-                metadata: $0.metadata.sendableMetadata
+                metadata: $0.metadata.sendableMetadata,
+                zoneGroups: WorkoutZoneGroup.groups(from: $0.zoneGroupsByType)
             )
         }
     }

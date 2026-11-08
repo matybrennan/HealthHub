@@ -229,6 +229,17 @@ struct WorkoutZoneTests {
         #expect(Workout.Item(duration: 60, startDate: Date(), endDate: Date()).zoneGroups.isEmpty)
     }
 
+    @Test("Workout activities expose zone groups by metric and default to none")
+    func zoneGroupsOnActivity() throws {
+        let configuration = try WorkoutZoneConfiguration(metric: .cyclingPower, boundaries: [150, 200, 250])
+        let group = WorkoutZoneGroup(configuration: configuration, timeInZones: [])
+        let leg = Workout.Activity(activityType: .cycling, startDate: Date(), duration: 600, zoneGroups: [group])
+
+        #expect(leg.zoneGroup(for: .cyclingPower) == group)
+        #expect(leg.zoneGroup(for: .heartRate) == nil)
+        #expect(Workout.Activity(activityType: .running, startDate: Date(), duration: 600).zoneGroups.isEmpty)
+    }
+
     @Test("Missing or empty HealthKit zone data produces no zone groups")
     func workoutWithoutZones() {
         #expect(WorkoutZoneGroup.groups(from: nil).isEmpty)
