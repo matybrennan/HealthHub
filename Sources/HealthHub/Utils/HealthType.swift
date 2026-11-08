@@ -18,7 +18,7 @@ public protocol ReadableType: Sendable {
 
 public typealias ShareableReadableType = ShareableType & ReadableType
 
-public enum HealthObjectType: ShareableReadableType, CaseIterable {
+public enum HealthObjectType: ShareableReadableType, CaseIterable, Hashable {
 
     // Characteristics
     case biologicalSex

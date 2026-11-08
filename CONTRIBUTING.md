@@ -13,7 +13,7 @@ Thanks for your interest in contributing to HealthHub! Here's how to get started
 ## Development Setup
 
 - **Xcode 27.2+** and **Swift 6.4+** required
-- **iOS 26+ SDK**
+- **iOS 27+ SDK**
 - Open `Package.swift` in Xcode or run `xcodebuild build -scheme HealthHub -destination 'generic/platform=iOS Simulator'`
 
 ### Running the Example App

@@ -46,17 +46,55 @@ Add HealthHub to your `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/matybrennan/HealthHub", from: "3.4.0")
+    .package(url: "https://github.com/matybrennan/HealthHub", from: "4.0.0")
 ]
 ```
 
 Or add it via Xcode: **File → Add Package Dependencies** → paste the URL above.
 
-> ⚠️ **Requires iOS 26+ and Swift 6.4** (Xcode 27.2 or later).
+> ⚠️ **Requires iOS 27+ and Swift 6.4** (Xcode 27.2 or later).
 
 ---
 
 ## 🚀 Getting Started
+
+### Modern API
+
+`HealthHubClient` is the iOS 27-first entry point for authorization, one-off queries, background updates, anchored synchronization, and dashboard summaries:
+
+```swift
+let health = HealthHubClient()
+let plan = HealthAuthorizationPlan(scopes: [.activity, .heart, .sleep])
+
+try await health.requestAuthorization(plan: plan)
+
+let dashboard = try await health.dashboard()
+print(dashboard.stepCount ?? 0)
+```
+
+For data pipelines and background sync, use the injectable store directly:
+
+```swift
+let store = HealthStoreClient()
+let query = HealthQuery(dateRange: .lastNDays(30), limit: 100)
+
+let samples = try await store.sampleSummaries(
+    for: [.stepCount],
+    query: query,
+    unit: .count()
+)
+
+let anchors = HealthQueryAnchorStore()
+let change = try await store.synchronize(
+    for: .stepCount,
+    anchorKey: "steps",
+    anchorStore: anchors,
+    query: query,
+    unit: .count()
+)
+```
+
+The existing domain services remain available during the 4.0 migration. See [Migrating to 4.0](MIGRATING_TO_4.0.md) for the new client-first architecture.
 
 ### 1. Enable HealthKit Capability
 
@@ -197,6 +235,19 @@ let status = hub.configuration.authorizationStatus(for: HealthObjectType.heartRa
 ```
 
 `requestAuthorization` automatically skips `HealthObjectType` cases that are unavailable on the current OS. Check `isAvailable` before directly using a type introduced after your deployment target.
+
+For a least-privilege, domain-based request:
+
+```swift
+let plan = HealthAuthorizationPlan(
+    scopes: [.activity, .heart],
+    toShare: [.workout]
+)
+
+let result = try await hub.configuration.requestAuthorization(plan: plan)
+```
+
+`authorizationRequestStatus(for:)` reports whether HealthKit would prompt for a plan. HealthKit does not expose whether a user granted read access to an individual type.
 
 ---
 

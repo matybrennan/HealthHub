@@ -19,7 +19,18 @@ public protocol ConfigurationServiceProtocol {
     /// Request authorization to read and/or write specific HealthKit data types
     func requestAuthorization(toShare share: [ShareableType], toRead read: [ReadableType]) async throws
 
-    /// Check the current authorization status for a specific readable type
+    /// Check whether HealthKit would prompt for an authorization plan.
+    ///
+    /// HealthKit does not expose whether read authorization was granted for an
+    /// individual type.
+    func authorizationRequestStatus(for plan: HealthAuthorizationPlan) async throws -> HealthAuthorizationRequestStatus
+
+    /// Request authorization with a least-privilege authorization plan.
+    func requestAuthorization(plan: HealthAuthorizationPlan) async throws -> HealthAuthorizationRequestResult
+
+    /// Legacy sharing status for a specific type.
+    ///
+    /// HealthKit does not expose per-type read authorization status.
     func authorizationStatus(for type: ReadableType) -> HKAuthorizationStatus
 
     /// Check whether a specific type is authorized for sharing (writing)
@@ -27,4 +38,16 @@ public protocol ConfigurationServiceProtocol {
 
     /// Open the Apple Health app
     func navigateToHealthSettings()
+}
+
+public extension ConfigurationServiceProtocol {
+
+    func authorizationRequestStatus(for plan: HealthAuthorizationPlan) async throws -> HealthAuthorizationRequestStatus {
+        .unknown
+    }
+
+    func requestAuthorization(plan: HealthAuthorizationPlan) async throws -> HealthAuthorizationRequestResult {
+        try await requestAuthorization(toShare: plan.availableShareTypes, toRead: plan.availableReadTypes)
+        return .requested
+    }
 }

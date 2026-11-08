@@ -8,6 +8,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- `HealthAuthorizationPlan` and domain-based `HealthAuthorizationScope` presets for least-privilege authorization requests
+- `authorizationRequestStatus(for:)` and `requestAuthorization(plan:)` APIs that accurately report request necessity without implying read authorization visibility
+- iOS 27-first `HealthHubClient` and injectable `HealthStoreClient` architecture
+- Unified `HealthQuery`, sample summaries with provenance, quantity statistics, save/delete operations, idempotency metadata, anchored synchronization, observer streams, and background update delivery
+- `HealthDashboardService` for daily activity, heart, workout, and sleep summaries
+- `HealthDataCatalog` and `HealthQueryAnchorStore` for centralized type metadata and persisted incremental sync
+
+### Changed
+- Minimum deployment target raised to iOS 27
+
+## [3.4.0]
+
+### Added
 - Swift 6.4 package manifest support and Xcode 27.2 CI coverage
 - iOS 27 HealthKit support for RMSSD heart-rate variability, menopausal state, and bleeding after menopause
 - Example views for RMSSD heart-rate variability and menopause tracking, with availability messaging
@@ -38,7 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - The example app now builds in Swift 6 language mode and reports HealthKit authorization errors
-- Generated SwiftPM workspace data is ignored to keep clones clean
+- Generated build artifacts are ignored and no longer tracked
 - Body, Vitals, Respiratory, and Mobility service protocols now accept `DateRangeType` parameter
 - All shared "Case" protocols (BloodPressureCase, CardioFitnessCase, etc.) support date range filtering
 - Backwards compatible — existing code without date range parameters continues to work via protocol extensions

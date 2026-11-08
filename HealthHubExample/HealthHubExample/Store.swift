@@ -8,17 +8,19 @@
 import Foundation
 import HealthHub
 
-/// A simple observable store that demonstrates how to use HealthHubManager
-/// with SwiftUI. In a real app, you'd inject this as an environment object
-/// or use a more structured architecture (MVVM, TCA, etc.)
+/// A simple observable store that demonstrates both the client-first 4.0 API
+/// and focused domain services. In a real app, inject this as an environment
+/// object or use a more structured architecture (MVVM, TCA, etc.).
 @MainActor
 @Observable
 final class Store {
 
     let manager: HealthHubManager
+    let health: HealthHubClient
 
-    init(manager: HealthHubManager) {
+    init(manager: HealthHubManager, health: HealthHubClient = HealthHubClient()) {
         self.manager = manager
+        self.health = health
     }
 
     // MARK: - Example: Fetching multiple data types
