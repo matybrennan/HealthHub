@@ -4,16 +4,19 @@ on:
   push:
     branches:
       - main
+      - master
       - "release/**"
   pull_request:
     branches:
       - main
+      - master
       - "release/**"
 
 jobs:
   build-and-test:
     name: Build & Test
-    runs-on: macos-26
+    # Xcode 27 runner image (public preview); macos-26 does not ship Xcode 27.
+    runs-on: xcode-27
 
     steps:
       - name: Checkout
@@ -28,8 +31,15 @@ jobs:
             -scheme HealthHub \
             -destination 'generic/platform=iOS Simulator'
 
+      - name: Create iOS 27.2 simulator
+        run: |
+          SIMULATOR_ID=$(xcrun simctl create "CI iPhone" \
+            com.apple.CoreSimulator.SimDeviceType.iPhone-18-Pro \
+            com.apple.CoreSimulator.SimRuntime.iOS-27-2)
+          echo "SIMULATOR_ID=$SIMULATOR_ID" >> "$GITHUB_ENV"
+
       - name: Test
         run: |
           xcodebuild test \
             -scheme HealthHub \
-            -destination 'platform=iOS Simulator,OS=latest,name=iPhone 18'
+            -destination "platform=iOS Simulator,id=$SIMULATOR_ID"
