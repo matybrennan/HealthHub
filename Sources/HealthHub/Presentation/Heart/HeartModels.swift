@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import HealthKit
 
 public struct HeartRate: Sendable {
 
@@ -72,15 +73,50 @@ extension HeartRate {
     }
 }
 
+/// The protocol used to determine a heart rate recovery value. Raw values match `HKHeartRateRecoveryTestType`.
+public enum HeartRateRecoveryTestType: Int, Sendable, CaseIterable {
+    case maxExercise = 1
+    case predictionSubMaxExercise
+    case predictionNonExercise
+    /// Recorded by HealthKit from iOS 27.2.
+    case stepTest
+
+    public var name: String {
+        switch self {
+        case .maxExercise: "Max Exercise"
+        case .predictionSubMaxExercise: "Sub-Max Exercise Prediction"
+        case .predictionNonExercise: "Non-Exercise Prediction"
+        case .stepTest: "Step Test"
+        }
+    }
+
+    init?(metadata: [String: Any]?) {
+        guard let value = metadata?[HKMetadataKeyHeartRateRecoveryTestType] as? Int else { return nil }
+        self.init(rawValue: value)
+    }
+
+    /// Whether the running OS knows this test type; `.stepTest` needs iOS 27.2.
+    var isSupportedByCurrentOS: Bool {
+        guard self == .stepTest else { return true }
+        if #available(iOS 27.2, *) {
+            return true
+        }
+        return false
+    }
+}
+
 public struct CardioRecovery: Sendable {
 
     public struct Item: Sendable {
         public let bpm: Int
         public let date: Date
+        /// The test used to determine this value, when HealthKit recorded one.
+        public let testType: HeartRateRecoveryTestType?
 
-        public init(bpm: Int, date: Date) {
+        public init(bpm: Int, date: Date, testType: HeartRateRecoveryTestType? = nil) {
             self.bpm = bpm
             self.date = date
+            self.testType = testType
         }
     }
 

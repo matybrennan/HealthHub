@@ -523,6 +523,12 @@ print("Average RMSSD: \(rmssd.averageRMSSD) ms")
 
 let resting = try await hub.heartManager.restingHeartRate()
 print("Resting HR: \(resting.mostRecent?.bpm ?? 0) BPM")
+
+// Cardio recovery reports which test produced each value (`.stepTest` is recorded from iOS 27.2)
+let recovery = try await hub.heartManager.cardioRecovery()
+if let latest = recovery.mostRecent {
+    print("Recovery: \(latest.bpm) BPM via \(latest.testType?.name ?? "unknown test")")
+}
 ```
 
 | Data | Saveable |

@@ -20,6 +20,7 @@ See [MIGRATING_TO_4.0.md](MIGRATING_TO_4.0.md) for upgrade guidance.
 - `HealthDataCatalog` and `HealthQueryAnchorStore` for centralized type metadata and persisted incremental sync
 - `HealthHubClient.requestAuthorization(scopes:toShare:)` one-line shortcut for requesting authorization from health domains
 - `earliestAuthorizedDates(for:)` on `HealthHubClient` and `HealthStoreClientProtocol` for iOS 27 limited read access
+- `HeartRateRecoveryTestType` and `CardioRecovery.Item.testType`, read from and written to sample metadata, including the iOS 27.2 step test (`CardioRecovery.Item.init` keeps working because `testType` defaults to `nil`)
 
 ### Changed
 - **Breaking:** minimum deployment target raised to iOS 27 and Swift 6.4
