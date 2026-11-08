@@ -7,9 +7,23 @@
 
 import Foundation
 import HealthKit
+import Synchronization
 
+/// The single `HKHealthStore` HealthHub uses, for both `HealthHubClient` and the domain services.
 public enum HealthStoreProvider {
-    public static let shared = HKHealthStore()
+    private static let storage = Mutex(HKHealthStore())
+
+    /// The store HealthHub currently uses. HealthHub creates one for you unless you call `configure(with:)`.
+    public static var shared: HKHealthStore {
+        storage.withLock { $0 }
+    }
+
+    /// Makes HealthHub use your own `HKHealthStore`, so your app and HealthHub share one store.
+    ///
+    /// Call this once at launch, before creating any HealthHub objects.
+    public static func configure(with store: HKHealthStore) {
+        storage.withLock { $0 = store }
+    }
 }
 
 public protocol HealthStoreProtocol {

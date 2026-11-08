@@ -49,7 +49,7 @@ Add HealthHub to your `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/matybrennan/HealthHub", from: "4.0.0")
+    .package(url: "https://github.com/matybrennan/HealthHub", from: "4.1.0")
 ]
 ```
 
@@ -142,6 +142,15 @@ if let cutoff = earliest[.stepCount] {
     let query = HealthQuery(dateRange: .betweenDates(start: cutoff, end: .now))
     // Query steps without requesting data the user restricted
 }
+```
+
+### 5. Share Your Own HKHealthStore (Optional)
+
+HealthHub creates its own `HKHealthStore`. If your app already has one, hand it over once at launch, before creating any HealthHub objects. `HealthHubClient` and every domain service then share it:
+
+```swift
+HealthStoreProvider.configure(with: myHealthStore)
+let health = HealthHubClient()
 ```
 
 ---

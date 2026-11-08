@@ -38,6 +38,18 @@ struct HealthHubClientTests {
         #expect(dates == [.stepCount: cutoff])
     }
 
+    @Test("Lets apps replace the shared HKHealthStore")
+    func configuresSharedStore() {
+        let original = HealthStoreProvider.shared
+        defer { HealthStoreProvider.configure(with: original) }
+
+        let custom = HKHealthStore()
+        HealthStoreProvider.configure(with: custom)
+
+        #expect(HealthStoreProvider.shared === custom)
+        #expect(HealthStoreProvider.shared !== original)
+    }
+
     @Test("Builds a dashboard from injected statistics and samples")
     func buildsDashboard() async throws {
         let now = Date()

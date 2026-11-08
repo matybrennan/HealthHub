@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.1.0] - 2026-11-08
+
+### Added
+- `HealthStoreProvider.configure(with:)` lets an app give HealthHub its own `HKHealthStore`. Call it once at launch, before creating HealthHub objects
+- The example app shows each workout's heart rate zone breakdown and the person's preferred heart rate zones
+
+### Changed
+- `HealthStoreClient()` and `HealthHubClient()` now use `HealthStoreProvider.shared` instead of creating a separate `HKHealthStore`, so the client and the domain services share one store
+- `HealthStoreProvider.shared` is now a read-only property backed by a lock; reading it works exactly as before
+
 ## [4.0.0] - 2026-11-08
 
 See [MIGRATING_TO_4.0.md](MIGRATING_TO_4.0.md) for upgrade guidance.

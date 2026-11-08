@@ -41,7 +41,7 @@ public actor HealthStoreClient: HealthStoreClientProtocol {
 
     private let healthStore: HKHealthStore
 
-    public init(healthStore: HKHealthStore = HKHealthStore()) {
+    public init(healthStore: HKHealthStore = HealthStoreProvider.shared) {
         self.healthStore = healthStore
     }
 
